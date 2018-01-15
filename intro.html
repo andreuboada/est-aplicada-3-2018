@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Aplicada III</title>
   <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2017 (ITAM)">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5.15 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Aplicada III" />
   <meta property="og:type" content="book" />
@@ -686,13 +686,19 @@ llout &lt;-<span class="st"> </span><span class="kw">loglin</span>(tab, <span cl
 <p>Los efectos globales de la variable de admitidos son:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">llout<span class="op">$</span>param<span class="op">$</span>Admit <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">x</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td align="left">Admitted</td>
+<td>Admitted</td>
 <td align="right">-0.3212111</td>
 </tr>
 <tr class="even">
-<td align="left">Rejected</td>
+<td>Rejected</td>
 <td align="right">0.3212111</td>
 </tr>
 </tbody>
@@ -700,29 +706,35 @@ llout &lt;-<span class="st"> </span><span class="kw">loglin</span>(tab, <span cl
 <p>Los efectos globales de la variable Departamento, por ejemplo, nos dicen qué departamentos tienden a tener más solicitantes (el A, el C y el D), aunque en realidad esto no sea tan relevante:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">llout<span class="op">$</span>param<span class="op">$</span>Dept <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">x</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td align="left">A</td>
+<td>A</td>
 <td align="right">0.1537626</td>
 </tr>
 <tr class="even">
-<td align="left">B</td>
+<td>B</td>
 <td align="right">-0.7651684</td>
 </tr>
 <tr class="odd">
-<td align="left">C</td>
+<td>C</td>
 <td align="right">0.5397205</td>
 </tr>
 <tr class="even">
-<td align="left">D</td>
+<td>D</td>
 <td align="right">0.4302153</td>
 </tr>
 <tr class="odd">
-<td align="left">E</td>
+<td>E</td>
 <td align="right">-0.0288135</td>
 </tr>
 <tr class="even">
-<td align="left">F</td>
+<td>F</td>
 <td align="right">-0.3297165</td>
 </tr>
 </tbody>
@@ -730,13 +742,19 @@ llout &lt;-<span class="st"> </span><span class="kw">loglin</span>(tab, <span cl
 <p>Los efectos globales de la variable género también nos dicen que el número de solicitantes hombres es mayor que el número de solicitantes que son mujeres:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">llout<span class="op">$</span>param<span class="op">$</span>Gender <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">x</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td align="left">Female</td>
+<td>Female</td>
 <td align="right">-0.3287569</td>
 </tr>
 <tr class="even">
-<td align="left">Male</td>
+<td>Male</td>
 <td align="right">0.3287569</td>
 </tr>
 </tbody>
@@ -909,6 +927,15 @@ h = \displaystyle{\int_{t\in R}f_M(t)g_t(u)\;\;dt},
 <h2><span class="header-section-number">1.5</span> Otros ejemplos</h2>
 <p>La mayoría de los estados en los Estados Unidos proporcionan servicios y apoyo a personas con discapacidades (por ejemplo, discapacidad intelectual, parálisis cerebral, autismo, etc.) y sus familias. La agencia a través de la cual el estado de California sirve al desarrollo de la población discapacitada es el Departamento de Servicios de Desarrollo de California (DDS).</p>
 <p>Una de las responsabilidades de DDS es asignar fondos que respalden a más de 250,000 residentes con discapacidades de desarrollo (denominados “consumidores”). Hace algunos años, se hizo una alegación de discriminación presentando un análisis univariado que examinaba los gastos anuales promedio de los consumidores por etnia. El análisis reveló que el gasto anual promedio en consumidores hispanos era aproximadamente un tercera parte (1/3) del gasto promedio en consumidores blancos no hispanos. Este hallazgo fue el catalizador para una mayor investigación; posteriormente, los legisladores estatales y los gerentes de departamento buscaron servicios de consultoría de un estadístico.</p>
+<p>El conjunto de datos utilizado en el análisis contiene seis variables:</p>
+<ul>
+<li><p>ID</p></li>
+<li><p>Categoría de edad</p></li>
+<li><p>Edad</p></li>
+<li><p>Género</p></li>
+<li><p>Gastos</p></li>
+<li><p>Origen étnico</p></li>
+</ul>
 <p><em>corregir</em></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Factores de causa común. Incluso cuando faltan factores de confusión, debido, por ejemplo, al estricto control experimental, un fenómeno puede realmente surgir de múltiples causas. La medición de cada causa es útil, así que cuando podemos usar los mismos datos para estimar más de un tipo de influencia, deberíamos. Además, cuando la causalidad es múltiple, una causa puede ocultar a otra. Los modelos multivariados pueden ayudar en dichos entornos.</li>
@@ -985,9 +1012,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

@@ -260,12 +260,10 @@ Los efectos globales de la variable de admitidos son:
 llout$param$Admit %>% knitr::kable()
 ```
 
-
-
+                     x
 ---------  -----------
 Admitted    -0.3212111
 Rejected     0.3212111
----------  -----------
 
 
 Los efectos globales de la variable Departamento, por ejemplo, nos dicen qué departamentos tienden a tener más solicitantes (el A, el C y el D), aunque en realidad esto no sea tan relevante:
@@ -275,8 +273,7 @@ Los efectos globales de la variable Departamento, por ejemplo, nos dicen qué de
 llout$param$Dept %>% knitr::kable()
 ```
 
-
-
+               x
 ---  -----------
 A      0.1537626
 B     -0.7651684
@@ -284,7 +281,6 @@ C      0.5397205
 D      0.4302153
 E     -0.0288135
 F     -0.3297165
----  -----------
 
 
 Los efectos globales de la variable género también nos dicen que el número de solicitantes hombres es mayor que el número de solicitantes que son mujeres:
@@ -294,12 +290,10 @@ Los efectos globales de la variable género también nos dicen que el número de
 llout$param$Gender %>% knitr::kable()
 ```
 
-
-
+                   x
 -------  -----------
 Female    -0.3287569
 Male       0.3287569
--------  -----------
 
 
 Analicemos ahora los términos de interacciones entre variables. Como la variable que nos interesa es la de admisión, veamos la interacción de Admit-Gender y Admit-Department:
@@ -499,6 +493,20 @@ agencia a través de la cual el estado de California sirve al desarrollo de la p
 el Departamento de Servicios de Desarrollo de California (DDS).
 
 Una de las responsabilidades de DDS es asignar fondos que respalden a más de 250,000 residentes con discapacidades de desarrollo (denominados "consumidores"). Hace algunos años, se hizo una alegación de discriminación presentando un análisis univariado que examinaba los gastos anuales promedio de los consumidores por etnia. El análisis reveló que el gasto anual promedio en consumidores hispanos era aproximadamente un tercera parte (1/3) del gasto promedio en consumidores blancos no hispanos. Este hallazgo fue el catalizador para una mayor investigación; posteriormente, los legisladores estatales y los gerentes de departamento buscaron servicios de consultoría de un estadístico.
+
+El conjunto de datos utilizado en el análisis contiene seis variables: 
+
+- ID
+
+- Categoría de edad
+
+- Edad
+
+- Género
+
+- Gastos
+
+- Origen étnico
 
 *corregir*
 
