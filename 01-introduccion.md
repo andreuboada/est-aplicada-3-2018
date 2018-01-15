@@ -508,6 +508,65 @@ El conjunto de datos utilizado en el análisis contiene seis variables:
 
 - Origen étnico
 
+Los primeros 10 renglones de la tabla se muestran a continuación:
+
+
+```r
+dds <- read_csv("datos/californiaDDSData.csv") 
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   Id = col_integer(),
+##   `Age Cohort` = col_character(),
+##   Age = col_integer(),
+##   Gender = col_character(),
+##   Expenditures = col_integer(),
+##   Ethnicity = col_character()
+## )
+```
+
+```r
+dds %>%
+  head(10) %>%
+  knitr::kable()
+```
+
+    Id  Age Cohort    Age  Gender    Expenditures  Ethnicity          
+------  -----------  ----  -------  -------------  -------------------
+ 10210  13-17          17  Female            2113  White not Hispanic 
+ 10409  22-50          37  Male             41924  White not Hispanic 
+ 10486  0-5             3  Male              1454  Hispanic           
+ 10538  18-21          19  Female            6400  Hispanic           
+ 10568  13-17          13  Male              4412  White not Hispanic 
+ 10690  13-17          15  Female            4566  Hispanic           
+ 10711  13-17          13  Female            3915  White not Hispanic 
+ 10778  13-17          17  Male              3873  Black              
+ 10820  13-17          14  Female            5021  White not Hispanic 
+ 10823  13-17          13  Male              2887  Hispanic           
+
+Se puede ver que la columna "Age Cohort" tiene la categoría de edad a la cual correponde la observación.
+
+También podemos utilizar la función `glimpse()` del paquete `tibble`:
+
+```r
+glimpse(dds)
+```
+
+```
+## Observations: 1,000
+## Variables: 6
+## $ Id           <int> 10210, 10409, 10486, 10538, 10568, 10690, 10711, ...
+## $ `Age Cohort` <chr> "13-17", "22-50", "0-5", "18-21", "13-17", "13-17...
+## $ Age          <int> 17, 37, 3, 19, 13, 15, 13, 17, 14, 13, 13, 14, 15...
+## $ Gender       <chr> "Female", "Male", "Male", "Female", "Male", "Fema...
+## $ Expenditures <int> 2113, 41924, 1454, 6400, 4412, 4566, 3915, 3873, ...
+## $ Ethnicity    <chr> "White not Hispanic", "White not Hispanic", "Hisp...
+```
+
+Podemos ver que el conjunto de datos contiene una muestra de exactamente 1000 observaciones que fueron seleccionadas aleatoriamente.
+
 *corregir*
 
 (2) Factores de causa común. Incluso cuando faltan factores de confusión, debido, por ejemplo, al estricto control experimental, un fenómeno puede realmente surgir de múltiples causas. La medición de cada causa es útil, así que cuando podemos usar los mismos datos para estimar más de un tipo de influencia, deberíamos. Además, cuando la causalidad es múltiple, una causa puede ocultar a otra. Los modelos multivariados pueden ayudar en dichos entornos.

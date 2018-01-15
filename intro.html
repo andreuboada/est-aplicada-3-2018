@@ -936,6 +936,126 @@ h = \displaystyle{\int_{t\in R}f_M(t)g_t(u)\;\;dt},
 <li><p>Gastos</p></li>
 <li><p>Origen étnico</p></li>
 </ul>
+<p>Los primeros 10 renglones de la tabla se muestran a continuación:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/californiaDDSData.csv&quot;</span>) </code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Id = col_integer(),
+##   `Age Cohort` = col_character(),
+##   Age = col_integer(),
+##   Gender = col_character(),
+##   Expenditures = col_integer(),
+##   Ethnicity = col_character()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">head</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Id</th>
+<th align="left">Age Cohort</th>
+<th align="right">Age</th>
+<th align="left">Gender</th>
+<th align="right">Expenditures</th>
+<th align="left">Ethnicity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10210</td>
+<td align="left">13-17</td>
+<td align="right">17</td>
+<td align="left">Female</td>
+<td align="right">2113</td>
+<td align="left">White not Hispanic</td>
+</tr>
+<tr class="even">
+<td align="right">10409</td>
+<td align="left">22-50</td>
+<td align="right">37</td>
+<td align="left">Male</td>
+<td align="right">41924</td>
+<td align="left">White not Hispanic</td>
+</tr>
+<tr class="odd">
+<td align="right">10486</td>
+<td align="left">0-5</td>
+<td align="right">3</td>
+<td align="left">Male</td>
+<td align="right">1454</td>
+<td align="left">Hispanic</td>
+</tr>
+<tr class="even">
+<td align="right">10538</td>
+<td align="left">18-21</td>
+<td align="right">19</td>
+<td align="left">Female</td>
+<td align="right">6400</td>
+<td align="left">Hispanic</td>
+</tr>
+<tr class="odd">
+<td align="right">10568</td>
+<td align="left">13-17</td>
+<td align="right">13</td>
+<td align="left">Male</td>
+<td align="right">4412</td>
+<td align="left">White not Hispanic</td>
+</tr>
+<tr class="even">
+<td align="right">10690</td>
+<td align="left">13-17</td>
+<td align="right">15</td>
+<td align="left">Female</td>
+<td align="right">4566</td>
+<td align="left">Hispanic</td>
+</tr>
+<tr class="odd">
+<td align="right">10711</td>
+<td align="left">13-17</td>
+<td align="right">13</td>
+<td align="left">Female</td>
+<td align="right">3915</td>
+<td align="left">White not Hispanic</td>
+</tr>
+<tr class="even">
+<td align="right">10778</td>
+<td align="left">13-17</td>
+<td align="right">17</td>
+<td align="left">Male</td>
+<td align="right">3873</td>
+<td align="left">Black</td>
+</tr>
+<tr class="odd">
+<td align="right">10820</td>
+<td align="left">13-17</td>
+<td align="right">14</td>
+<td align="left">Female</td>
+<td align="right">5021</td>
+<td align="left">White not Hispanic</td>
+</tr>
+<tr class="even">
+<td align="right">10823</td>
+<td align="left">13-17</td>
+<td align="right">13</td>
+<td align="left">Male</td>
+<td align="right">2887</td>
+<td align="left">Hispanic</td>
+</tr>
+</tbody>
+</table>
+<p>Se puede ver que la columna “Age Cohort” tiene la categoría de edad a la cual correponde la observación.</p>
+<p>También podemos utilizar la función <code>glimpse()</code> del paquete <code>tibble</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(dds)</code></pre></div>
+<pre><code>## Observations: 1,000
+## Variables: 6
+## $ Id           &lt;int&gt; 10210, 10409, 10486, 10538, 10568, 10690, 10711, ...
+## $ `Age Cohort` &lt;chr&gt; &quot;13-17&quot;, &quot;22-50&quot;, &quot;0-5&quot;, &quot;18-21&quot;, &quot;13-17&quot;, &quot;13-17...
+## $ Age          &lt;int&gt; 17, 37, 3, 19, 13, 15, 13, 17, 14, 13, 13, 14, 15...
+## $ Gender       &lt;chr&gt; &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Fema...
+## $ Expenditures &lt;int&gt; 2113, 41924, 1454, 6400, 4412, 4566, 3915, 3873, ...
+## $ Ethnicity    &lt;chr&gt; &quot;White not Hispanic&quot;, &quot;White not Hispanic&quot;, &quot;Hisp...</code></pre>
+<p>Podemos ver que el conjunto de datos contiene una muestra de exactamente 1000 observaciones que fueron seleccionadas aleatoriamente.</p>
 <p><em>corregir</em></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Factores de causa común. Incluso cuando faltan factores de confusión, debido, por ejemplo, al estricto control experimental, un fenómeno puede realmente surgir de múltiples causas. La medición de cada causa es útil, así que cuando podemos usar los mismos datos para estimar más de un tipo de influencia, deberíamos. Además, cuando la causalidad es múltiple, una causa puede ocultar a otra. Los modelos multivariados pueden ayudar en dichos entornos.</li>
