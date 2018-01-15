@@ -10,7 +10,7 @@ git config --global user.name "andreuboada"
 
 git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git book-output
 cd book-output
-cp -r ../_book/* ./
+cp -r /home/travis/build/andreuboada/est-aplicada-3-2018/docs/* ./
 git add --all *
 git commit -m "Actualizar notas" || true
 git push -q origin gh-pages
