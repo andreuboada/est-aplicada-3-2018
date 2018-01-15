@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Estadística Aplicada III</title>
+  <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2017 (ITAM)">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Estadística Aplicada III" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas y material para el curso de Estadística Aplicada III, 2017 (ITAM)" />
+  <meta name="github-repo" content="andreuboada/est-aplicada-3-2018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Estadística Aplicada III" />
+  
+  <meta name="twitter:description" content="Notas y material para el curso de Estadística Aplicada III, 2017 (ITAM)" />
+  
+
+<meta name="author" content="Andreu Boada de Atela">
+
+
+<meta name="date" content="2018-01-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="referencias.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="toc.css" type="text/css" />
+<link rel="stylesheet" href="font-awesome.min.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística Aplicada III</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Temario y referencias</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#evaluacion"><i class="fa fa-check"></i>Evaluación</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-r-y-rstudio"><i class="fa fa-check"></i>Software: R y Rstudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#referencia-principal"><i class="fa fa-check"></i>Referencia principal</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#otras-referencias"><i class="fa fa-check"></i>Otras referencias</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#por-que-un-analisis-multivariado"><i class="fa fa-check"></i><b>1.1</b> ¿Por qué un análisis multivariado?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#la-paradoja-de-simpson"><i class="fa fa-check"></i><b>1.2</b> La paradoja de Simpson</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#modelos-log-lineales"><i class="fa fa-check"></i><b>1.3</b> Modelos log-lineales</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#interpretacion-de-parametros"><i class="fa fa-check"></i><b>1.4</b> Interpretación de parámetros</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#ejemplo-dos-monedas"><i class="fa fa-check"></i><b>1.4.1</b> Ejemplo: dos monedas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#otros-ejemplos"><i class="fa fa-check"></i><b>1.5</b> Otros ejemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estadística Aplicada III</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Clase 1</span> Introducción</h1>
+<style>
+  .espacio {
+     margin-bottom: 1cm;
+  }
+</style>
+<p>La investigación científica es un proceso de aprendizaje iterativo. Para explicar un fenómeno físico o social primero se deben especificar los objetivos de una investigación y luego probar los objetivos a través de la recopilación y el análisis de datos pertinentes. A su vez, el análisis de los datos recopilados (experimentalmente o mediante observación) generalmente sugerirá una explicación modificada del fenómeno.</p>
+<p>A lo largo de este proceso iterativo, generalmente se añaden o se excluyen variables del análisis. Por lo tanto, la complejidad de la mayoría de los fenómenos requieren que el investigador recolecte muchas variables de las observaciones. En este curso veremos una introducción a los modelos estadísticos que son <em>multivariados</em>, es decir, modelos en los cuales los datos corresponden a mediciones en <em>muchas variables</em>.</p>
+<div id="por-que-un-analisis-multivariado" class="section level2">
+<h2><span class="header-section-number">1.1</span> ¿Por qué un análisis multivariado?</h2>
+<p>Las razones por las cuales se utilizan modelos multivariados son generalmente <span class="citation">(Johnson, Wichern, and others <a href="#ref-johnson2014applied">2014</a>)</span>:</p>
+<ol style="list-style-type: decimal">
+<li>Factores de <em>“confusión”</em>. Un factor de confusión (o <em>confound</em> variable) es una variable que puede correlacionarse con otra variable de interés. Las correlaciones espurias son un posible tipo de confusión, donde el factor de confusión hace que una variable sin importancia real parezca ser importante. Pero las confusiones pueden ocultar variables reales importantes tan fácilmente como pueden producir falsas. Un ejemplo de esto, conocido como la <em>“paradoja”</em> de Simpson, consiste de datos en los cuales la dirección de una aparente asociación entre un predictor y la variable respuesta se puede revertir al considerar un factor de confusión.</li>
+</ol>
+</div>
+<div id="la-paradoja-de-simpson" class="section level2">
+<h2><span class="header-section-number">1.2</span> La paradoja de Simpson</h2>
+<p>La paradoja de Simpson, también conocida como el <em>efecto Yule-Simpson</em>, ocurre cuando existe una asociación entre dos variables en varios grupos pero la dirección de esta asociación se invierte cuando los datos se combinan para formar un solo grupo.</p>
+<p>En un análisis de los scores de SAT (examen de posicionamiento para la universidad) en Estados Unidos en 1997 se encontró que había una relación negativa entre el salario promedio anual de los maestros y el score total promedio de los alumnos que presentaron el SAT:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+sat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/sat.csv&quot;</span>)
+<span class="kw">ggplot</span>(sat, <span class="kw">aes</span>(<span class="dt">x =</span> teacher_salary, <span class="dt">y =</span> total_score)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> F) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Salario anual promedio (en miles) de maestros&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Score total promedio de SAT&quot;</span>)</code></pre></div>
+<p><img src="01-introduccion_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Podemos revisar el resultado de la regresión lineal (haciendo uso del paquete <code>stargazer</code>):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stargazer)
+out1 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> total_score <span class="op">~</span><span class="st"> </span>teacher_salary, <span class="dt">data =</span> sat)
+<span class="kw">stargazer</span>(out1, <span class="dt">type =</span> <span class="st">&#39;html&#39;</span>, <span class="dt">style =</span> <span class="st">&quot;all&quot;</span>, <span class="dt">single.row =</span> T,
+          <span class="dt">title =</span> <span class="st">&quot;Regresión lineal del promedio de sueldo de maestros vs SAT promedio&quot;</span>)</code></pre></div>
+<table style="text-align:center">
+<caption>
+<strong>Regresión lineal del promedio de sueldo de maestros vs SAT promedio</strong>
+</caption>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+total_score
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+teacher_salary
+</td>
+<td>
+-5.540<sup>***</sup> (1.632)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+t = -3.394
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+p = 0.002
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+1,158.859<sup>***</sup> (57.659)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+t = 20.098
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+p = 0.000
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.193
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.177
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+67.889 (df = 48)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+11.516<sup>***</sup> (df = 1; 48) (p = 0.002)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<p class="espacio">
+</p>
+<p>Podemos observar que el coeficiente de la variable salario es <span class="math inline">\(-5.54\)</span> y es significartivo según la prueba de hipótesis correspondiente.</p>
+<p>Desafortunadamente, la asociación entre salario y score de SAT parece ser negativa: a medida que aumenta el salario, se predice que el score SAT promedio disminuye.</p>
+<p>Afortunadamente para los maestros, una vez que se cuenta la variable de la fracción de alumnos que presentan el SAT, vemos una relación positiva estadísticamente significativa:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> total_score <span class="op">~</span><span class="st"> </span>teacher_salary <span class="op">+</span><span class="st"> </span>perc_take_sat, <span class="dt">data =</span> sat)
+<span class="kw">stargazer</span>(out2, <span class="dt">type =</span> <span class="st">&#39;html&#39;</span>, <span class="dt">style =</span> <span class="st">&quot;all&quot;</span>, <span class="dt">single.row =</span> T,
+          <span class="dt">title =</span> <span class="st">&quot;Incluyendo el factor de confusión&quot;)</span></code></pre></div>
+<table style="text-align:center">
+<caption>
+<strong>Incluyendo el factor de confusión</strong>
+</caption>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+total_score
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+teacher_salary
+</td>
+<td>
+2.180<sup>**</sup> (1.029)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+t = 2.119
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+p = 0.040
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+perc_take_sat
+</td>
+<td>
+-2.779<sup>***</sup> (0.228)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+t = -12.163
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+p = 0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+987.900<sup>***</sup> (31.877)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+t = 30.991
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+p = 0.000
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.806
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.797
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+33.688 (df = 47)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+97.355<sup>***</sup> (df = 2; 47) (p = 0.000)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<p>Podemos ver que el coeficiente de la regresión lineal correspondiente al salario de los maestros se invierte. Gráficamente podemos visualizar este efecto:</p>
+<p><img src="01-introduccion_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Vemos que dentro de cada grupo, la pendiente es positiva (o al menos no negativa). También podríamos agregar etiquetas:</p>
+<p><img src="01-introduccion_files/figure-html/unnamed-chunk-6-1.png" width="768" /></p>
+<p>Otro ejemplo de este fenómeno es cuando la Universidad de California, Berkeley fue demandada por discrimanción hacia mujeres que habían solicitado admisión a un posgrado en 1973. De acuerdo con las estadísticas de admisión, los hombres que presentaron la solicitud tenían mayor probabilidad de ser admitidos que las mujeres, y la diferencia era tan sustancial que uno podría concluir que efectivamente había existido dicha discriminación. Sin embargo, al examinar los datos individualmente por departamento, parecía que no había una diferencia significativa en contra de las mujeres.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ucb &lt;-<span class="st"> </span>UCBAdmissions <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.tibble</span>()
+ucb <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">head</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Admit</th>
+<th align="left">Gender</th>
+<th align="left">Dept</th>
+<th align="right">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Admitted</td>
+<td align="left">Male</td>
+<td align="left">A</td>
+<td align="right">512</td>
+</tr>
+<tr class="even">
+<td align="left">Rejected</td>
+<td align="left">Male</td>
+<td align="left">A</td>
+<td align="right">313</td>
+</tr>
+<tr class="odd">
+<td align="left">Admitted</td>
+<td align="left">Female</td>
+<td align="left">A</td>
+<td align="right">89</td>
+</tr>
+<tr class="even">
+<td align="left">Rejected</td>
+<td align="left">Female</td>
+<td align="left">A</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="left">Admitted</td>
+<td align="left">Male</td>
+<td align="left">B</td>
+<td align="right">353</td>
+</tr>
+<tr class="even">
+<td align="left">Rejected</td>
+<td align="left">Male</td>
+<td align="left">B</td>
+<td align="right">207</td>
+</tr>
+<tr class="odd">
+<td align="left">Admitted</td>
+<td align="left">Female</td>
+<td align="left">B</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="left">Rejected</td>
+<td align="left">Female</td>
+<td align="left">B</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="left">Admitted</td>
+<td align="left">Male</td>
+<td align="left">C</td>
+<td align="right">120</td>
+</tr>
+<tr class="even">
+<td align="left">Rejected</td>
+<td align="left">Male</td>
+<td align="left">C</td>
+<td align="right">205</td>
+</tr>
+</tbody>
+</table>
+<p>Los datos contienen el número de solicitudes y admisiones por género a seis escuelas de postgrado diferentes. Analicemos una tabla de contingencia entre la variable género y la variable admitido:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab &lt;-<span class="st"> </span>ucb <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(Gender, Admit) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">p =</span> <span class="kw">sum</span>(n)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">spread</span>(Admit, p) 
+
+tab <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Gender</th>
+<th align="right">Admitted</th>
+<th align="right">Rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Female</td>
+<td align="right">557</td>
+<td align="right">1278</td>
+</tr>
+<tr class="even">
+<td align="left">Male</td>
+<td align="right">1198</td>
+<td align="right">1493</td>
+</tr>
+</tbody>
+</table>
+<p>Los solicitantes masculinos tenían una tasa de aceptación del 44.52%, en comparación con solo el 30.35% de las mujeres, condicionando en la variable de género:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(Admit, n, <span class="op">-</span>Gender) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> <span class="kw">round</span>(<span class="kw">prop.table</span>(n) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>,<span class="dv">2</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>n) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">spread</span>(Admit, prop) <span class="op">%&gt;%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Gender</th>
+<th align="right">Admitted</th>
+<th align="right">Rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Female</td>
+<td align="right">30.35</td>
+<td align="right">69.65</td>
+</tr>
+<tr class="even">
+<td align="left">Male</td>
+<td align="right">44.52</td>
+<td align="right">55.48</td>
+</tr>
+</tbody>
+</table>
+<p>Incluso podemos proporcionar una prueba estadística para apoyar la afirmación de que hubo sesgo en las admisiones. En R, se puede realizar una prueba de proporciones a través de la función <code>prop.test()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prop.test</span>(tab <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>Gender) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.matrix</span>())</code></pre></div>
+<pre><code>## 
+##  2-sample test for equality of proportions with continuity
+##  correction
+## 
+## data:  tab %&gt;% ungroup() %&gt;% select(-Gender) %&gt;% as.matrix()
+## X-squared = 91.61, df = 1, p-value &lt; 2.2e-16
+## alternative hypothesis: two.sided
+## 95 percent confidence interval:
+##  -0.1703022 -0.1129887
+## sample estimates:
+##    prop 1    prop 2 
+## 0.3035422 0.4451877</code></pre>
+<p><img src="figuras/manicule2.jpg" /> Supongamos que se tienen <span class="math inline">\(n\)</span> observaciones, <span class="math inline">\(\hat{p}_H\)</span> y <span class="math inline">\(\hat{p}_M\)</span> son las proporciones estimadas de solicitantes aceptados en el grupo de hombres y en el grupo de mujeres, respectivamente. La prueba de hipótesis utilizada arriba para estudiar la diferencia entre las proporciones <span class="math inline">\(p_H\)</span> y <span class="math inline">\(p_M\)</span> (porcentaje de hombres aceptados y porcentaje de mujeres aceptadas) es:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(H_0:\; \hat{p}_H \neq \hat{p}_M\)</span>, <span class="math inline">\(\;\;\;\;\;\;\qquad H_a:\; \hat{p}_H = \hat{p}_M\)</span></p></li>
+<li><p><span class="math inline">\(H_0:\; \hat{p}_H - \hat{p}_M \geq 0\)</span>, <span class="math inline">\(\qquad H_a:\; \hat{p}_H - \hat{p}_M &lt; 0\)</span></p></li>
+<li><p><span class="math inline">\(H_0:\; p_H - p_M = 0\)</span>, <span class="math inline">\(\qquad H_a:\; p_H - p_M \neq 0\)</span></p></li>
+<li><p><span class="math inline">\(H_0:\; \hat{p}_H = \hat{p}_M\)</span>, <span class="math inline">\(\;\;\;\;\;\;\qquad H_a:\; \hat{p}_H \neq \hat{p}_M\)</span></p></li>
+</ol>
+<p>A partir de la prueba de hipótesis realizada anteriormente, se puede concluir que hay una diferencias significativa entre la proporción de hombres admitidos y la proporción de mujeres admitidas en los programas de posgrado.</p>
+<p>Sin embargo, si hacemos el mismo análisis por departamento, veremos que las diferencias ya no son tan significativas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ucb <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">spread</span>(Admit, n) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total =</span> Admitted <span class="op">+</span><span class="st"> </span>Rejected,
+         <span class="dt">porc =</span> <span class="kw">round</span>(Admitted<span class="op">/</span>total<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(Gender,Dept,porc) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">spread</span>(Gender, porc) <span class="op">%&gt;%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Dept</th>
+<th align="right">Female</th>
+<th align="right">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">82.41</td>
+<td align="right">62.06</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">68.00</td>
+<td align="right">63.04</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">34.06</td>
+<td align="right">36.92</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="right">34.93</td>
+<td align="right">33.09</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">23.92</td>
+<td align="right">27.75</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">7.04</td>
+<td align="right">5.90</td>
+</tr>
+</tbody>
+</table>
+<p>Condicionando por departamento ahora vemos que las mujeres realmente tienen mayores tasas de admisión en cuatro de los seis departamentos (A, B, D, F). ¿Cómo puede ser esto? En realidad las diferencias tienen que ver con el porcentaje de solicitantes (hombres y mujeres) que son admitidos por departamentos, es decir, hay departamentos más competitivos que otros.</p>
+<p>Consideremos un modelo log-lineal. Sea <span class="math inline">\(p_{ijk}\)</span> la proporción de la población en la celda <span class="math inline">\((i,j,k)\)</span>. Por ejemplo, <span class="math inline">\(p_{112}\)</span> es la proporción de solicitantes que son admitidos, son hombres y se postulan para el Departamento B.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab &lt;-<span class="st"> </span><span class="kw">xtabs</span>(n <span class="op">~</span><span class="st"> </span>., ucb)
+llout &lt;-<span class="st"> </span><span class="kw">loglin</span>(tab, <span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>),<span class="dt">param=</span><span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## 9 iterations: deviation 0.04920393</code></pre>
+<p>Los efectos globales de la variable de admitidos son:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">llout<span class="op">$</span>param<span class="op">$</span>Admit <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Admitted</td>
+<td align="right">-0.3212111</td>
+</tr>
+<tr class="even">
+<td align="left">Rejected</td>
+<td align="right">0.3212111</td>
+</tr>
+</tbody>
+</table>
+<p>Los efectos globales de la variable Departamento, por ejemplo, nos dicen qué departamentos tienden a tener más solicitantes (el A, el C y el D), aunque en realidad esto no sea tan relevante:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">llout<span class="op">$</span>param<span class="op">$</span>Dept <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">0.1537626</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">-0.7651684</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">0.5397205</td>
+</tr>
+<tr class="even">
+<td align="left">D</td>
+<td align="right">0.4302153</td>
+</tr>
+<tr class="odd">
+<td align="left">E</td>
+<td align="right">-0.0288135</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="right">-0.3297165</td>
+</tr>
+</tbody>
+</table>
+<p>Los efectos globales de la variable género también nos dicen que el número de solicitantes hombres es mayor que el número de solicitantes que son mujeres:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">llout<span class="op">$</span>param<span class="op">$</span>Gender <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Female</td>
+<td align="right">-0.3287569</td>
+</tr>
+<tr class="even">
+<td align="left">Male</td>
+<td align="right">0.3287569</td>
+</tr>
+</tbody>
+</table>
+<p>Analicemos ahora los términos de interacciones entre variables. Como la variable que nos interesa es la de admisión, veamos la interacción de Admit-Gender y Admit-Department:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">llout<span class="op">$</span>param<span class="op">$</span>Admit.Gender <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Female</th>
+<th align="right">Male</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Admitted</td>
+<td align="right">0.024937</td>
+<td align="right">-0.024937</td>
+</tr>
+<tr class="even">
+<td>Rejected</td>
+<td align="right">-0.024937</td>
+<td align="right">0.024937</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">llout<span class="op">$</span>param<span class="op">$</span>Admit.Dept <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+<th align="right">D</th>
+<th align="right">E</th>
+<th align="right">F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Admitted</td>
+<td align="right">0.6371804</td>
+<td align="right">0.6154772</td>
+<td align="right">0.0059146</td>
+<td align="right">-0.0101</td>
+<td align="right">-0.2324371</td>
+<td align="right">-1.016035</td>
+</tr>
+<tr class="even">
+<td>Rejected</td>
+<td align="right">-0.6371804</td>
+<td align="right">-0.6154772</td>
+<td align="right">-0.0059146</td>
+<td align="right">0.0101</td>
+<td align="right">0.2324371</td>
+<td align="right">1.016035</td>
+</tr>
+</tbody>
+</table>
+<p>En términos de asociación con la variable de admisión, la relación con la variable de departamento es mucho más fuerte que con la de género, lo que significa que la mayoría de los parámetros estimados son mucho más grandes en el primer caso. En otras palabras, el departamento es la variable más importante, no el género. Más aún, los resultados anteriores también muestran que existe una interacción Admit-Female positiva, es decir, que a las mujeres les va un poco mejor que a los hombres en cuanto a la admisión.</p>
+</div>
+<div id="modelos-log-lineales" class="section level2">
+<h2><span class="header-section-number">1.3</span> Modelos log-lineales</h2>
+<p>Denotemos los 3 factores por <span class="math inline">\(X^{(s)}\)</span>, <span class="math inline">\(s=1,2,3\)</span>. En este caso particular, <span class="math inline">\(X^{(1)}\)</span> es la variable de admisión <code>Admit</code>, y toma valores de <span class="math inline">\(1\)</span> y <span class="math inline">\(2\)</span>, admitido y no admitido respectivamente. <span class="math inline">\(X^{(2)}\)</span> la variable género tomaría valores <span class="math inline">\(1\)</span> y <span class="math inline">\(2\)</span> para hombre y mujer respectivamente, mientras que <span class="math inline">\(X^{(3)}\)</span>, la variable de departamento, toma valores del <span class="math inline">\(1\)</span> al <span class="math inline">\(6\)</span> para representar los departamentos A al F. En esta notación no estamos usando variables indicadoras. Estamos trabajando con variables estrictamente categóricas, cuyos valores son meramente etiquetas.</p>
+<p>Sea <span class="math inline">\(X_r^{(s)}\)</span> el valor de <span class="math inline">\(X^{(s)}\)</span> para el <span class="math inline">\(i\)</span>-ésimo solicitante en la muestra, para <span class="math inline">\(r=1,2,\ldots,n\)</span>. Aquí el número de observaciones es el número de solicitantes $n=$4526. Nuestros datos son los conteos en todas las categorías:</p>
+<p><span class="math display">\[
+N_{ijk} = \mbox{nú}\;\mbox{mero de solicitantes }r\mbox{ tales que }X_r^{(1)}=i, X_r^{(2)}=j,\mbox{ y } X_r^{(3)}=k.
+\]</span></p>
+<p>A esto le llamamos una <strong>tabla de contigencias</strong> en tres variables. Cada valor <span class="math inline">\(N_{ijk}\)</span> es una celda de la tabla.</p>
+<p>Sea <span class="math inline">\(p_{ijk}\)</span> la proporción poblacional de un solicitante elegido al azar en la celda <span class="math inline">\((i,j,k)\)</span>, es decir,</p>
+<p><span class="math display">\[
+p_{ijk} = P(X^{(1)}=i \mbox{ y } X^{(2)}=j \mbox{ y } X^{(3)}=k) = E(N_{ijk})/n.
+\]</span></p>
+<p>Como se mencionó, nos interesan las relaciones entre las factores, en forma de independencia, tanto plena como parcial. De hecho, es común que un analista ajuste sucesivamente modelos más refinados a los datos, asumiendo cada uno una estructura de dependencia más compleja que la anterior. Esto se desarrollará en detalle a continuación.</p>
+<p>Considere primero el modelo que asume la independencia total: <span class="math display">\[
+\begin{eqnarray*}
+p_{ijk} &amp; = &amp; P(X^{(1)}=i \mbox{ y } X^{(2)}=j \mbox{ y } X^{(3)}=k) \\
+&amp;=&amp; P(X^{(1)}=i) \cdot P(X^{(2)}=j) \cdot P(X^{(3)}=k). 
+\end{eqnarray*}
+\]</span> Tomando logaritmo de ambos lados, vemos que la independencia de los tres factores es equivalente a escribir una ecuación de la forma <span class="math display">\[
+\mbox{log}(p_{ijk}) = a_i + b_j + c_k,
+\]</span> donde <span class="math inline">\(a_i,b_j,c_k\)</span> son cantidades estimadas. Por ejemplo, <span class="math display">\[
+b_2 = \mbox{log}\left(P(X^{(2)}=j)\right).
+\]</span> El punto es que el modelo es similar a un modelo de regresión lineal sin interacciones. El análogo de que no haya interacción entre las variables aquí está representado por el supuesto de independencia.</p>
+<p>Por ejemplo, si suponemos que Departamento es independiente de Admisión y Género, pero que Admisión y Género <em>no</em> son independientes entre sí, el modelo incluiría un término de interacción <span class="math inline">\(i-j\)</span>: <span class="math display">\[
+p_{ijk} = P(X^{(1)}=i \mbox{ y } X^{(2)}=j)\cdot P(X^{(3)} = k),
+\]</span> por lo que el modelo sería <span class="math display">\[
+\mbox{log}(p_{ijk}) = a_{ij} + b_k.
+\]</span> La mayoría de los modelos formales reescriben esto como <span class="math display">\[
+a_{ij} = u + v_i + w_j + r_{ij},
+\]</span> de tal forma que el término de interacción <span class="math inline">\(P(X^{(1)}=i \mbox{ y } X^{(2)}=j)\)</span> es una suma de un “efecto global” <span class="math inline">\(u\)</span>, “efectos principales” <span class="math inline">\(v_i\)</span> y <span class="math inline">\(w_j\)</span> y “efectos de interacción” <span class="math inline">\(r_{ij}\)</span>, nuevamente de forma análoga a la regresión lineal.</p>
+<p>Sin embargo, tenga en cuenta que esto en realidad nos da demasiados parámetros. Para el término de interacción <span class="math inline">\(a_{ij}\)</span> del modelo, tenemos <span class="math inline">\(2 \times 3 = 6\)</span> probabilidades reales, pero <span class="math inline">\(1 + 2 + 2 + 2\times 2 = 9\)</span> parámetros (1 para <span class="math inline">\(u\)</span>, 2 para <span class="math inline">\(v_i\)</span> y así sucesivamente). Por esta razón, generalmente los modelos tienen restricciones de la forma <span class="math display">\[
+\displaystyle{\sum_i{v_i}}=0.
+\]</span> Es posible enumerar todas las restricciones, aunque en la mayoría de los modelos aún con restricciones el número de parámetros puede ser muy grande.</p>
+<p><img src="figuras/manicule2.jpg" /> ¿Qué modelo es más apropiado en el ejemplo anterior?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(p_{ijk} = P(X^{(1)}=i) \cdot P(X^{(2)}=j, X^{(3)}=k)\)</span></p></li>
+<li><p><span class="math inline">\(p_{ijk} = P(X^{(1)}=i, X^{(2)}=j, X^{(3)}=k)\)</span></p></li>
+<li><p><span class="math inline">\(p_{ijk} = P(X^{(1)}=i)\cdot P(X^{(2)}=j)\cdot P(X^{(3)}=k)\)</span></p></li>
+<li><p><span class="math inline">\(p_{ijk} = P(X^{(1)}=i, X^{(3)}=k) \cdot P(X^{(2)}=j)\)</span></p></li>
+</ol>
+<p>Otro posible modelo tendría Admitido y Género condicionalmente independientes, dado Departamento, lo que significa que en cualquier género, la proporción de admitidos y su género, no están relacionados. Escribimos el modelo de esta manera</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+p_{ijk} &amp;=&amp; P(X^{(1)}=i, X^{(2)}=j, X^{(3)}=k) \\
+&amp;=&amp; P(X^{(1)}=i, X^{(2)}=j|X^{(3)}=k) \cdot P(X^{(3)}=k) \\
+&amp;=&amp; P(X^{(1)}=i|X^{(3)}=k) \cdot P(X^{(2)}=j|X^{(3)}=k) \cdot P(X^{(3)}=k),
+\end{eqnarray*}
+\]</span> y el modelo sería de la forma <span class="math display">\[
+\mbox{log}(p_{ijk}) = u + a_i + f_{ik} + b_j + h_{jk} + c_k.
+\]</span></p>
+<p><img src="figuras/manicule2.jpg" /> ¿Cuántos parámetros tendría este modelo?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>30</p></li>
+<li><p>35</p></li>
+<li><p>40</p></li>
+<li><p>45</p></li>
+</ol>
+</div>
+<div id="interpretacion-de-parametros" class="section level2">
+<h2><span class="header-section-number">1.4</span> Interpretación de parámetros</h2>
+<p>Consideremos los modelos:</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+\mbox{(1)} &amp; \qquad &amp; \mbox{log}(p_{ijk}) = a_{ij} + b_k, \\
+\mbox{(2)} &amp; \qquad &amp; \mbox{log}(p_{ijk}) = u + a_i + f_{ik} + b_j + h_{jk} + c_k.
+\end{eqnarray*}
+\]</span></p>
+<p>La independencia que representa el modelo (1) tiene una interpretación muy diferente a las independencias representadas por el modelo (2).</p>
+<div id="ejemplo-dos-monedas" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Ejemplo: dos monedas</h3>
+<p>Supongamos que tenemos una gran caja con monedas de dos tipos. Las monedas de tipo 1 tienen probabilidad <span class="math inline">\(p\)</span> de salir águila, y las monedas tipo 2 tienen probabilidad <span class="math inline">\(q\)</span> de salir águila. Una proporción <span class="math inline">\(r\)</span> de las monedas es del tipo 1. Seleccionamos una moneda al azar de la caja, lanzamos esa moneda <span class="math inline">\(M\)</span> veces, y observamos <span class="math inline">\(N\)</span> águilas. ¿Cuál es la distribución de <span class="math inline">\(N\)</span>? <span class="math display">\[
+p_N(k) = r \dbinom{M}{k}p^k (1-p)^{M-k} + (1-r) \dbinom{M}{k}q^k (1-q)^{M-k},
+\]</span> donde <span class="math inline">\(k=0,1,\ldots,M\)</span>. Es fácil ver por qué a esta distribución se le conoce como <em>modelo de mezcla</em>. Esta función de distribución de probabilidad es una mezcla de dos funciones de distribución de probabilidad binomiales, con proporciones de mezcla <span class="math inline">\(r\)</span> y <span class="math inline">\(1-r\)</span>.</p>
+<p>Si <span class="math inline">\(M\)</span> es una variable aleatoria con soporte (o rango) <span class="math inline">\(R\)</span> y <span class="math inline">\(\left\{g_t\right\}_{t\in R}\)</span> es una colección de funciones de densidad, entonces se dice que <span class="math inline">\(h\)</span> es una función de densidad de mezcla si <span class="math display">\[
+h = \displaystyle{\sum_{k\in R}p_M(k)g_k},
+\]</span> cuando <span class="math inline">\(M\)</span> es una variable aleatoria discreta, o si <span class="math display">\[
+h = \displaystyle{\int_{t\in R}f_M(t)g_t(u)\;\;dt},
+\]</span> cuando <span class="math inline">\(M\)</span> es una variable aleatoria continua.</p>
+<p>En el ejemplo de la moneda:</p>
+<ul>
+<li><p><span class="math inline">\(Y = N\)</span></p></li>
+<li><p><span class="math inline">\(S = \{1,2\}\)</span></p></li>
+<li><p><span class="math inline">\(p_M(1) = r, \quad p_M(2) = 1-r\)</span></p></li>
+<li><p><span class="math inline">\(g_1\)</span> es la fn de densidad de una va <span class="math inline">\(\mbox{Binomial}(M,p)\)</span></p></li>
+<li><p><span class="math inline">\(g_2\)</span> es la fn de densidad de una va <span class="math inline">\(\mbox{Binomial}(M,q)\)</span></p></li>
+</ul>
+<p>Dada la elección de moneda, el resultado de la moneda 1 es independiente del resultado de la oneda 2. Sin embargo, los resultados de las monedas no son independientes si no se sabe qué moneda fue seleccionada. Este ejemplo es como el del modelo (2) mencionado arriba.</p>
+<p>Por otro lado, se sabe que la estatura y el peso están asociadas linealmente, pero ambas son independientes de la preferenvia por algún sabor de helado, una situación similar a la del modelo (1).</p>
+<p>Es importante considerar las interacciones que están consideradas en el modelo, por ejemplo:</p>
+<ul>
+<li><p>en el modelo (1) hay una interacción entre los factores <span class="math inline">\(i,j\)</span> pero no hay interacción con el factor <span class="math inline">\(k\)</span>, por lo que <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> se modelan como completamente independientes de <span class="math inline">\(k\)</span> y no entre sí, mientras que</p></li>
+<li><p>en el modelo (2) <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> tienen una interacción con <span class="math inline">\(k\)</span> y no entre sí, por lo que <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> no son independientes entre sí, pero sí los son dado <span class="math inline">\(k\)</span>.</p></li>
+</ul>
+<p><img src="figuras/manicule2.jpg" /> Consideremos ahora el modelo <span class="math display">\[
+\mbox{log}(p_{ijk}) = u + a_i + f_{ik} + b_j + h_{jk} + l_{ij} + c_k,
+\]</span> ¿cuál de las siguientes afirmaciones es cierta?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> son dependientes dado <span class="math inline">\(k\)</span>.</p></li>
+<li><p><span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> son independientes dado <span class="math inline">\(k\)</span>.</p></li>
+<li><p><span class="math inline">\(i\)</span> y <span class="math inline">\(k\)</span> son dependientes dado <span class="math inline">\(j\)</span>.</p></li>
+<li><p><span class="math inline">\(i\)</span> y <span class="math inline">\(k\)</span> son independientes dado <span class="math inline">\(j\)</span>.</p></li>
+</ol>
+<p>Si hubiéramos incluido un término <span class="math inline">\(m_{ijk}\)</span>, que ahora haría que el modelo estuviera lleno (o saturado), entonces sería posible que los factores <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> estuvieran altamente relacionados para algunos valores de <span class="math inline">\(k\)</span>, y menos relacionados para otros. Claramente, cuantas más variables tengamos, y cuanto mayor sea el orden de las interacciones que incluimos, más difícil será interpretar el modelo.</p>
+</div>
+</div>
+<div id="otros-ejemplos" class="section level2">
+<h2><span class="header-section-number">1.5</span> Otros ejemplos</h2>
+<p>La mayoría de los estados en los Estados Unidos proporcionan servicios y apoyo a personas con discapacidades (por ejemplo, discapacidad intelectual, parálisis cerebral, autismo, etc.) y sus familias. La agencia a través de la cual el estado de California sirve al desarrollo de la población discapacitada es el Departamento de Servicios de Desarrollo de California (DDS).</p>
+<p>Una de las responsabilidades de DDS es asignar fondos que respalden a más de 250,000 residentes con discapacidades de desarrollo (denominados “consumidores”). Hace algunos años, se hizo una alegación de discriminación presentando un análisis univariado que examinaba los gastos anuales promedio de los consumidores por etnia. El análisis reveló que el gasto anual promedio en consumidores hispanos era aproximadamente un tercera parte (1/3) del gasto promedio en consumidores blancos no hispanos. Este hallazgo fue el catalizador para una mayor investigación; posteriormente, los legisladores estatales y los gerentes de departamento buscaron servicios de consultoría de un estadístico.</p>
+<p><em>corregir</em></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Factores de causa común. Incluso cuando faltan factores de confusión, debido, por ejemplo, al estricto control experimental, un fenómeno puede realmente surgir de múltiples causas. La medición de cada causa es útil, así que cuando podemos usar los mismos datos para estimar más de un tipo de influencia, deberíamos. Además, cuando la causalidad es múltiple, una causa puede ocultar a otra. Los modelos multivariados pueden ayudar en dichos entornos.</li>
+</ol>
+<p><em>poner ejemplo</em></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Factores de interacción. Incluso cuando las variables no están correlacionadas por completo, la importancia de cada una puede depender de la otra. Por ejemplo, las plantas se benefician tanto de la luz como del agua. Pero en ausencia de cualquiera, el otro no es en absoluto beneficioso. Tales interacciones ocurren en una gran cantidad de sistemas. Entonces la inferencia efectiva sobre una variable generalmente dependerá de la consideración de otras variables.</li>
+</ol>
+<p><em>corregir</em></p>
+<p><strong>Inferencia causal.</strong> A pesar de su importancia central, todavía no existe un enfoque unificado para hacer inferencia causal en las ciencias o en estadística. Incluso hay personas que argumentan que la <em>causa realmente no existe</em>, que es una ilusión psíquica. Por ejemplo, en sistemas dinámicos complejos todo parece causar todo lo demás, por lo que el término “causa” pierde valor intuitivo. Sin embargo, existe un acuerdo general: la inferencia causal siempre depende de supuestos no verificables. Otra forma de decir esto es que siempre nos será posible imaginar alguna forma en la que la inferencia sobre la causa sea incorrecta, sin importar qué tan cuidadosamente se haya realizado el diseño o el análisis. En este curso nuestros análisis jamás van a pretender hacer alguna inferencia sobre la causa de los fenómenos observados; únicamente se harán afirmaciones sobre las asociaciones, interacciones y relaciones entre las variables en los datos observados.</p>
+<p>La mayoría de nuestros análisis se van a enfocar en datos que fueron obtenidos sin que activamente se controlara o manipulara cualquiera de las variables en las cuales se hicieron las mediciones. Los diseños estadísticos en los cuales se controla alguna de las variables observadas en los datos se estudian en el curso de <strong>Diseño de experimentos</strong>. Generalmente vamos a suponer que los factores (o variables) observados son aleatorios. Esto quiere decir que nuestro análisis va a estar basado en el supuesto de que los datos provienen de una muestra aleatoria de la población de interés en un momento determinado del tiempo.</p>
+<p>En muchas ramas de la estadística, contar con datos temporales es muy importante. Por ejemplo, en el curso de <strong>Análisis de supervivencia</strong> se estudia el uso de modelos estadísticos en aplicaciones en las cuáles se desea estimar la distribución de un período entre dos eventos, como la duración del empleo (tiempo transcurrido entre el contrato y el abandono de la empresa), del tiempo de vida de un paciente, la diferencia en algún beneficio terapéutico sobre la prolongación de la vida para un nuevo tratamiento con respecto al tratamiento tradicional, o el tiempo de falla en un sistema mecánico.</p>
+<p>Hoy en día, el uso de herramientas computacionales ha adquirido importancia en la ciencia estadística. Esto resultó en el desarrollo de nuevas técnicas computacionales para fines estadísticos, tales como el uso de muestreo para estimar cantidades estadísticas o parámetros (bootstrap), la simulación de variables aleatorias, la simulación de modelos probabilísticos, la simulación de modelos multivariados, y la inferencia de gráficas estadísticas. Estos temas se ven en el curso de <strong>Estadística computacional</strong>. La técnica de simulación ha sido esencial en los últimos años. Se ha desarrollado una clase de métodos de simulación para poder calcular la distribución posterior, estos se conocen como cadenas de Markov via Monte Carlo (MCMC por sus siglas en inglés). El desarrollo de los métodos MCMC es lo que ha propiciado el desarrollo de la estadística bayesiana en años recientes.</p>
+<p>En el curso de <strong>Estadística bayesiana</strong> se estudia la teoría básica que sirve de fundamento para la estadística bayesiana: la teoría de decisión, la probabilidad subjetiva, la utilidad, la inferencia como problema de decisión, y la inferencia paramétrica bayesiana. El curso de <strong>Regresión avanzada</strong> está diseñado para estudiar inferencia bayesiana y el uso de modelos estadísticos bayesianos en el análisis de aplicaciones reales actuales. El enfoque es en modelos lineales generalizados, modelos dinámicos y modelos jerárquicos o multinivel.</p>
+<p>El uso de la estadística computacional con el fin de hacer predicciones, aprovecha la optimización numérica para estudiar métodos que son útiles para reconocer patrones. En el curso de <strong>Aprendizaje estadístico</strong> se estudian modelos lineales para reconocimiento de patrones, clasificación, y predicción, la regresión múltiple y descenso en gradiente, las redes neuronales (y deep learning), máquinas de soporte vectorial, los árboles y bosques aleatorios. En el curso de <strong>Métodos analíticos</strong> se ven otras técnicas de minería de datos, tales como el análisis de market basket, local sensitivity hashing (LHS), la minería de flujos de datos, los algoritmos de recomendación y la minería de texto.</p>
+<p>Finalmente, debido a la importancia antes mencionada del uso de varias variables en los modelos estadísticos actuales, hay nuevas técnicas estadísticas para estudiar fenómenos multivariados desde una perspectiva bayesiana, como las redes bayesianas, los modelos gráficos no dirigidos, las redes markovianas, los modelos para datos faltantes, modelos de variables latentes, como los modelos de rasgos latentes (LTM), los modelos de perfiles latentes (LPM), los modelos de clases latentes (LCM), y los modelos markovianos de estados ocultos (HMM). Todas estas técnicas se ven en el curso de <strong>Estadística multivariada</strong>. En este curso nuestro enfoque tendrá una persepctiva frecuentista.</p>
+
+</div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-johnson2014applied">
+<p>Johnson, Richard Arnold, Dean W Wichern, and others. 2014. <em>Applied Multivariate Statistical Analysis</em>. Vol. 4. Prentice-Hall New Jersey.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/andreuboada/estadistica-aplicada-3-2018/edit/master/01-introduccion.Rmd",
+"text": "Edit"
+},
+"download": ["estadistica-aplicada-3.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
