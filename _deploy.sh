@@ -12,6 +12,8 @@ git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git b
 cd book-output
 git rm -rf *
 cp -r ../est-aplicada-3-2018/docs/* ./
+echo $(ls)
 git add --all *
 git commit -m "Actualizar notas" || true
+echo "Push to corresponding github branch"
 git push origin gh-pages
