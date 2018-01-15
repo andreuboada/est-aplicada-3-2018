@@ -393,6 +393,24 @@ El conjunto de datos utilizado en el análisis contiene seis variables:
 
 - Origen étnico
 
+Los primeros 10 renglones de la tabla se muestran a continuación:
+
+```{r}
+dds <- read_csv("datos/californiaDDSData.csv") 
+dds %>%
+  head(10) %>%
+  knitr::kable()
+```
+
+Se puede ver que la columna "Age Cohort" tiene la categoría de edad a la cual correponde la observación.
+
+También podemos utilizar la función `glimpse()` del paquete `tibble`:
+```{r}
+glimpse(dds)
+```
+
+Podemos ver que el conjunto de datos contiene una muestra de exactamente 1000 observaciones que fueron seleccionadas aleatoriamente.
+
 *corregir*
 
 (2) Factores de causa común. Incluso cuando faltan factores de confusión, debido, por ejemplo, al estricto control experimental, un fenómeno puede realmente surgir de múltiples causas. La medición de cada causa es útil, así que cuando podemos usar los mismos datos para estimar más de un tipo de influencia, deberíamos. Además, cuando la causalidad es múltiple, una causa puede ocultar a otra. Los modelos multivariados pueden ayudar en dichos entornos.
