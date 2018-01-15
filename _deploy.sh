@@ -8,11 +8,9 @@ set -e
 git config --global user.email "andreuboada@me.com"
 git config --global user.name "andreuboada"
 
-git clone https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git book-output
+git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git book-output
 cd book-output
-git rm -rf *
-mkdir docs
-cp -r ../docs/* ./docs
+cp -r ../_book/* ./
 git add --all *
-git commit -m"Actualizar notas" || true
-git push -q origin master
+git commit -m "Actualizar notas" || true
+git push -q origin gh-pages
