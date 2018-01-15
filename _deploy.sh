@@ -3,7 +3,6 @@
 echo "P0"
 set -e
 echo "P1"
-[ -z "${GITHUB_PAT}" ] && exit 0
 
 echo "P3"
 git config --global user.email "andreuboada@me.com"
