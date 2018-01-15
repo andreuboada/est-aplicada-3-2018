@@ -1,0 +1,11 @@
+book_filename: "estadistica-aplicada-3"
+language:
+  label:
+    fig: "Figura "
+    thm: "Teorema "
+    proof: "Demostración "
+  ui:
+    chapter_name: "Clase "
+delete_merged_file: true
+output_dir: "docs"
+new_session: yes
