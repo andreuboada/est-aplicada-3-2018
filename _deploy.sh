@@ -12,7 +12,6 @@ echo "P4"
 git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git book-output
 cd book-output
 echo "P5"
-git rm -rf
 echo "P6"
 git status
 echo $(ls)*
