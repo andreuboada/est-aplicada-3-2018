@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-01-15">
+<meta name="date" content="2018-01-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -110,6 +110,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-r-y-rstudio"><i class="fa fa-check"></i>Software: R y Rstudio</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#referencia-principal"><i class="fa fa-check"></i>Referencia principal</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#otras-referencias"><i class="fa fa-check"></i>Otras referencias</a></li>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#cuestionario-rapido"><i class="fa fa-check"></i><b>0.1</b> Cuestionario rápido</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#por-que-un-analisis-multivariado"><i class="fa fa-check"></i><b>1.1</b> ¿Por qué un análisis multivariado?</a></li>
@@ -118,7 +119,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#interpretacion-de-parametros"><i class="fa fa-check"></i><b>1.4</b> Interpretación de parámetros</a><ul>
 <li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#ejemplo-dos-monedas"><i class="fa fa-check"></i><b>1.4.1</b> Ejemplo: dos monedas</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#otros-ejemplos"><i class="fa fa-check"></i><b>1.5</b> Otros ejemplos</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#otros-ejemplos"><i class="fa fa-check"></i><b>1.5</b> Otros ejemplos</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#consumo-de-chocolate-y-premios-nobel"><i class="fa fa-check"></i><b>1.5.1</b> Consumo de chocolate y premios Nobel</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -621,13 +624,20 @@ tab <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op"
 ## sample estimates:
 ##    prop 1    prop 2 
 ## 0.3035422 0.4451877</code></pre>
-<p><img src="figuras/manicule2.jpg" /> Supongamos que se tienen <span class="math inline">\(n\)</span> observaciones, <span class="math inline">\(\hat{p}_H\)</span> y <span class="math inline">\(\hat{p}_M\)</span> son las proporciones estimadas de solicitantes aceptados en el grupo de hombres y en el grupo de mujeres, respectivamente. La prueba de hipótesis utilizada arriba para estudiar la diferencia entre las proporciones <span class="math inline">\(p_H\)</span> y <span class="math inline">\(p_M\)</span> (porcentaje de hombres aceptados y porcentaje de mujeres aceptadas) es:</p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>Supongamos que se tienen <span class="math inline">\(n\)</span> observaciones, <span class="math inline">\(\hat{p}_H\)</span> y <span class="math inline">\(\hat{p}_M\)</span> son las proporciones estimadas de solicitantes aceptados en el grupo de hombres y en el grupo de mujeres, respectivamente. La prueba de hipótesis utilizada arriba para estudiar la diferencia entre las proporciones <span class="math inline">\(p_H\)</span> y <span class="math inline">\(p_M\)</span> (porcentaje de hombres aceptados y porcentaje de mujeres aceptadas) es:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(H_0:\; \hat{p}_H \neq \hat{p}_M\)</span>, <span class="math inline">\(\;\;\;\;\;\;\qquad H_a:\; \hat{p}_H = \hat{p}_M\)</span></p></li>
 <li><p><span class="math inline">\(H_0:\; \hat{p}_H - \hat{p}_M \geq 0\)</span>, <span class="math inline">\(\qquad H_a:\; \hat{p}_H - \hat{p}_M &lt; 0\)</span></p></li>
 <li><p><span class="math inline">\(H_0:\; p_H - p_M = 0\)</span>, <span class="math inline">\(\qquad H_a:\; p_H - p_M \neq 0\)</span></p></li>
 <li><p><span class="math inline">\(H_0:\; \hat{p}_H = \hat{p}_M\)</span>, <span class="math inline">\(\;\;\;\;\;\;\qquad H_a:\; \hat{p}_H \neq \hat{p}_M\)</span></p></li>
 </ol>
+<p class="espacio">
+</p>
+</div>
 <p>A partir de la prueba de hipótesis realizada anteriormente, se puede concluir que hay una diferencias significativa entre la proporción de hombres admitidos y la proporción de mujeres admitidas en los programas de posgrado.</p>
 <p>Sin embargo, si hacemos el mismo análisis por departamento, veremos que las diferencias ya no son tan significativas:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ucb <span class="op">%&gt;%</span><span class="st"> </span>
@@ -851,13 +861,20 @@ a_{ij} = u + v_i + w_j + r_{ij},
 <p>Sin embargo, tenga en cuenta que esto en realidad nos da demasiados parámetros. Para el término de interacción <span class="math inline">\(a_{ij}\)</span> del modelo, tenemos <span class="math inline">\(2 \times 3 = 6\)</span> probabilidades reales, pero <span class="math inline">\(1 + 2 + 2 + 2\times 2 = 9\)</span> parámetros (1 para <span class="math inline">\(u\)</span>, 2 para <span class="math inline">\(v_i\)</span> y así sucesivamente). Por esta razón, generalmente los modelos tienen restricciones de la forma <span class="math display">\[
 \displaystyle{\sum_i{v_i}}=0.
 \]</span> Es posible enumerar todas las restricciones, aunque en la mayoría de los modelos aún con restricciones el número de parámetros puede ser muy grande.</p>
-<p><img src="figuras/manicule2.jpg" /> ¿Qué modelo es más apropiado en el ejemplo anterior?</p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>¿Qué modelo es más apropiado en el ejemplo anterior?</p>
 <ol style="list-style-type: lower-alpha">
 <li><p><span class="math inline">\(p_{ijk} = P(X^{(1)}=i) \cdot P(X^{(2)}=j, X^{(3)}=k)\)</span></p></li>
 <li><p><span class="math inline">\(p_{ijk} = P(X^{(1)}=i, X^{(2)}=j, X^{(3)}=k)\)</span></p></li>
 <li><p><span class="math inline">\(p_{ijk} = P(X^{(1)}=i)\cdot P(X^{(2)}=j)\cdot P(X^{(3)}=k)\)</span></p></li>
 <li><p><span class="math inline">\(p_{ijk} = P(X^{(1)}=i, X^{(3)}=k) \cdot P(X^{(2)}=j)\)</span></p></li>
 </ol>
+<p class="espacio">
+</p>
+</div>
 <p>Otro posible modelo tendría Admitido y Género condicionalmente independientes, dado Departamento, lo que significa que en cualquier género, la proporción de admitidos y su género, no están relacionados. Escribimos el modelo de esta manera</p>
 <p><span class="math display">\[
 \begin{eqnarray*}
@@ -868,13 +885,20 @@ p_{ijk} &amp;=&amp; P(X^{(1)}=i, X^{(2)}=j, X^{(3)}=k) \\
 \]</span> y el modelo sería de la forma <span class="math display">\[
 \mbox{log}(p_{ijk}) = u + a_i + f_{ik} + b_j + h_{jk} + c_k.
 \]</span></p>
-<p><img src="figuras/manicule2.jpg" /> ¿Cuántos parámetros tendría este modelo?</p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>¿Cuántos parámetros tendría este modelo?</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>30</p></li>
 <li><p>35</p></li>
 <li><p>40</p></li>
 <li><p>45</p></li>
 </ol>
+<p class="espacio">
+</p>
+</div>
 </div>
 <div id="interpretacion-de-parametros" class="section level2">
 <h2><span class="header-section-number">1.4</span> Interpretación de parámetros</h2>
@@ -911,7 +935,11 @@ h = \displaystyle{\int_{t\in R}f_M(t)g_t(u)\;\;dt},
 <li><p>en el modelo (1) hay una interacción entre los factores <span class="math inline">\(i,j\)</span> pero no hay interacción con el factor <span class="math inline">\(k\)</span>, por lo que <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> se modelan como completamente independientes de <span class="math inline">\(k\)</span> y no entre sí, mientras que</p></li>
 <li><p>en el modelo (2) <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> tienen una interacción con <span class="math inline">\(k\)</span> y no entre sí, por lo que <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> no son independientes entre sí, pero sí los son dado <span class="math inline">\(k\)</span>.</p></li>
 </ul>
-<p><img src="figuras/manicule2.jpg" /> Consideremos ahora el modelo <span class="math display">\[
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>Consideremos ahora el modelo <span class="math display">\[
 \mbox{log}(p_{ijk}) = u + a_i + f_{ik} + b_j + h_{jk} + l_{ij} + c_k,
 \]</span> ¿cuál de las siguientes afirmaciones es cierta?</p>
 <ol style="list-style-type: lower-alpha">
@@ -920,34 +948,28 @@ h = \displaystyle{\int_{t\in R}f_M(t)g_t(u)\;\;dt},
 <li><p><span class="math inline">\(i\)</span> y <span class="math inline">\(k\)</span> son dependientes dado <span class="math inline">\(j\)</span>.</p></li>
 <li><p><span class="math inline">\(i\)</span> y <span class="math inline">\(k\)</span> son independientes dado <span class="math inline">\(j\)</span>.</p></li>
 </ol>
+<p class="espacio">
+</p>
+</div>
 <p>Si hubiéramos incluido un término <span class="math inline">\(m_{ijk}\)</span>, que ahora haría que el modelo estuviera lleno (o saturado), entonces sería posible que los factores <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> estuvieran altamente relacionados para algunos valores de <span class="math inline">\(k\)</span>, y menos relacionados para otros. Claramente, cuantas más variables tengamos, y cuanto mayor sea el orden de las interacciones que incluimos, más difícil será interpretar el modelo.</p>
 </div>
 </div>
 <div id="otros-ejemplos" class="section level2">
 <h2><span class="header-section-number">1.5</span> Otros ejemplos</h2>
 <p>La mayoría de los estados en los Estados Unidos proporcionan servicios y apoyo a personas con discapacidades (por ejemplo, discapacidad intelectual, parálisis cerebral, autismo, etc.) y sus familias. La agencia a través de la cual el estado de California sirve al desarrollo de la población discapacitada es el Departamento de Servicios de Desarrollo de California (DDS).</p>
-<p>Una de las responsabilidades de DDS es asignar fondos que respalden a más de 250,000 residentes con discapacidades de desarrollo (denominados “consumidores”). Hace algunos años, se hizo una alegación de discriminación presentando un análisis univariado que examinaba los gastos anuales promedio de los consumidores por etnia. El análisis reveló que el gasto anual promedio en consumidores hispanos era aproximadamente un tercera parte (1/3) del gasto promedio en consumidores blancos no hispanos. Este hallazgo fue el catalizador para una mayor investigación; posteriormente, los legisladores estatales y los gerentes de departamento buscaron servicios de consultoría de un estadístico.</p>
+<p>Una de las responsabilidades de DDS es asignar fondos que respalden a más de 250,000 residentes con discapacidades de desarrollo (denominados “consumidores”). Hace algunos años, se hizo una alegación de discriminación presentando un análisis univariado que examinaba los gastos anuales promedio de los consumidores por etnia. El análisis reveló que el gasto anual promedio en consumidores hispanos (Hispanic) era aproximadamente un tercera parte (1/3) del gasto promedio en consumidores blancos no hispanos (White non-Hispanic). Este hallazgo fue el catalizador para una mayor investigación; posteriormente, los legisladores estatales y los gerentes de departamento buscaron servicios de consultoría de un estadístico.</p>
 <p>El conjunto de datos utilizado en el análisis contiene seis variables:</p>
 <ul>
-<li><p>ID</p></li>
-<li><p>Categoría de edad</p></li>
-<li><p>Edad</p></li>
-<li><p>Género</p></li>
-<li><p>Gastos</p></li>
-<li><p>Origen étnico</p></li>
+<li><p>ID: identificador único por consumidor,</p></li>
+<li><p>Categoría de edad: es una variable importante porque, aunque la edad suele ser causa de discriminación legal, en este caso, para la población específica de Hispanos no americanos la edad no se consideraría relacionada con los casos de discriminación. El propósito de estas ayudas es que los que viven con alguna discapacidad puedan vivir igual que los que no tienen ninguna discapacidad. Es lógico, por lo tanto, que mientras las personas tienen mayor edad requieran de mayor ayuda económica. Los <em>seis</em> grupos de edad utilizados en este ámbito son: 0 a 5 años de edad, 6 a 12, 13 a 17, 18 a 21, 22 a 50, y más de 51.</p></li>
+<li><p>Edad: edad del consumidor,</p></li>
+<li><p>Género: se incluye en los datos como una variable a considerar porque el género es otro factor sujeto a discriminación,</p></li>
+<li><p>Gastos: el gasto anual que el gobierno le dedica a un consumidor para apoyar a estos individuos y sus familias. El gasto se dedica a: ayuda a la familia, servicios psicológicos, gastos médicos, transporte y costos relacionados a la vivienda como la renta.</p></li>
+<li><p>Origen étnico: es la variable más importante ya que con respecto a esta variable se presentaron las supuestas alegaciones por discriminación.</p></li>
 </ul>
 <p>Los primeros 10 renglones de la tabla se muestran a continuación:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/californiaDDSData.csv&quot;</span>) </code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   Id = col_integer(),
-##   `Age Cohort` = col_character(),
-##   Age = col_integer(),
-##   Gender = col_character(),
-##   Expenditures = col_integer(),
-##   Ethnicity = col_character()
-## )</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/californiaDDSData.csv&quot;</span>) 
+dds <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">head</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
@@ -1056,15 +1078,297 @@ h = \displaystyle{\int_{t\in R}f_M(t)g_t(u)\;\;dt},
 ## $ Expenditures &lt;int&gt; 2113, 41924, 1454, 6400, 4412, 4566, 3915, 3873, ...
 ## $ Ethnicity    &lt;chr&gt; &quot;White not Hispanic&quot;, &quot;White not Hispanic&quot;, &quot;Hisp...</code></pre>
 <p>Podemos ver que el conjunto de datos contiene una muestra de exactamente 1000 observaciones que fueron seleccionadas aleatoriamente.</p>
-<p><em>corregir</em></p>
+<p>Veamos una tabla del gasto promedio por etnicidad:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Ethnicity) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Gasto_promedio =</span> <span class="kw">round</span>(<span class="kw">mean</span>(Expenditures),<span class="dv">0</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Ethnicity</th>
+<th align="right">Gasto_promedio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">American Indian</td>
+<td align="right">36438</td>
+</tr>
+<tr class="even">
+<td align="left">Asian</td>
+<td align="right">18392</td>
+</tr>
+<tr class="odd">
+<td align="left">Black</td>
+<td align="right">20885</td>
+</tr>
+<tr class="even">
+<td align="left">Hispanic</td>
+<td align="right">11066</td>
+</tr>
+<tr class="odd">
+<td align="left">Multi Race</td>
+<td align="right">4457</td>
+</tr>
+<tr class="even">
+<td align="left">Native Hawaiian</td>
+<td align="right">42782</td>
+</tr>
+<tr class="odd">
+<td align="left">Other</td>
+<td align="right">3316</td>
+</tr>
+<tr class="even">
+<td align="left">White not Hispanic</td>
+<td align="right">24698</td>
+</tr>
+</tbody>
+</table>
+<p>Podemos comparar también con el promedio de todos los consumidores:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(dds<span class="op">$</span>Expenditures)</code></pre></div>
+<pre><code>## [1] 18065.79</code></pre>
+<p>Es común hacer gráficas de barras para representar <em>medias</em>, aunque en realidad, esto no es lo más recomendable:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">media_por_etnia &lt;-<span class="st"> </span>dds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Ethnicity) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Media_etnia =</span> <span class="kw">mean</span>(Expenditures))
+media_por_etnia<span class="op">$</span>Etnia &lt;-<span class="st"> </span><span class="kw">reorder</span>(media_por_etnia<span class="op">$</span>Ethnicity, <span class="op">-</span>media_por_etnia<span class="op">$</span>Media_etnia, <span class="dt">FUN =</span> median)
+<span class="kw">ggplot</span>(media_por_etnia, <span class="kw">aes</span>(<span class="dt">x =</span> Etnia, <span class="dt">y =</span> Media_etnia)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&#39;identity&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">25</span>))</code></pre></div>
+<p><img src="01-introduccion_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>¿Se puede concluir que existe evidencia de discriminación contra los Hispanos en comparación con los blancos no hispanos?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Sí</p></li>
+<li><p>No</p></li>
+</ol>
+<p class="espacio">
+</p>
+</div>
+<p>Con respecto a discriminación de género, usualmente concluiríamos que no hay evidencia de discriminación:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Gender) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Gasto_promedio =</span> <span class="kw">round</span>(<span class="kw">mean</span>(Expenditures),<span class="dv">0</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Gender</th>
+<th align="right">Gasto_promedio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Female</td>
+<td align="right">18130</td>
+</tr>
+<tr class="even">
+<td align="left">Male</td>
+<td align="right">18001</td>
+</tr>
+</tbody>
+</table>
+<p>Las necesidades de los consumidores aumentan conforme envejecen, lo que resulta en mayores gastos para personas de mayor edad:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds<span class="op">$</span>Age_Cohort &lt;-<span class="st"> </span><span class="kw">ordered</span>(dds<span class="op">$</span><span class="st">`</span><span class="dt">Age Cohort</span><span class="st">`</span>, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;0-5&quot;</span>,<span class="st">&quot;6-12&quot;</span>,<span class="st">&quot;13-17&quot;</span>,<span class="st">&quot;18-21&quot;</span>,<span class="st">&quot;22-50&quot;</span>,<span class="st">&quot;51+&quot;</span>))
+dds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Age_Cohort) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Gasto_promedio =</span> <span class="kw">round</span>(<span class="kw">mean</span>(Expenditures),<span class="dv">0</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Age_Cohort</th>
+<th align="right">Gasto_promedio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0-5</td>
+<td align="right">1415</td>
+</tr>
+<tr class="even">
+<td align="left">6-12</td>
+<td align="right">2227</td>
+</tr>
+<tr class="odd">
+<td align="left">13-17</td>
+<td align="right">3923</td>
+</tr>
+<tr class="even">
+<td align="left">18-21</td>
+<td align="right">9889</td>
+</tr>
+<tr class="odd">
+<td align="left">22-50</td>
+<td align="right">40209</td>
+</tr>
+<tr class="even">
+<td align="left">51+</td>
+<td align="right">53522</td>
+</tr>
+</tbody>
+</table>
+<p>El problema de que haya discrimnación o no se puede analizar más a fondo viendo, por ejemplo, qué porcentaje de consumidores pertenecen a cada etnia, tal como sucedió en el ejemplo de la controversia de Berkeley:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Ethnicity) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">num_cons =</span> <span class="kw">n</span>(),
+            <span class="dt">porc_cons =</span> <span class="kw">paste0</span>(num_cons<span class="op">/</span><span class="dv">10</span>,<span class="st">&#39;%&#39;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Ethnicity</th>
+<th align="right">num_cons</th>
+<th align="left">porc_cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">American Indian</td>
+<td align="right">4</td>
+<td align="left">0.4%</td>
+</tr>
+<tr class="even">
+<td align="left">Asian</td>
+<td align="right">129</td>
+<td align="left">12.9%</td>
+</tr>
+<tr class="odd">
+<td align="left">Black</td>
+<td align="right">59</td>
+<td align="left">5.9%</td>
+</tr>
+<tr class="even">
+<td align="left">Hispanic</td>
+<td align="right">376</td>
+<td align="left">37.6%</td>
+</tr>
+<tr class="odd">
+<td align="left">Multi Race</td>
+<td align="right">26</td>
+<td align="left">2.6%</td>
+</tr>
+<tr class="even">
+<td align="left">Native Hawaiian</td>
+<td align="right">3</td>
+<td align="left">0.3%</td>
+</tr>
+<tr class="odd">
+<td align="left">Other</td>
+<td align="right">2</td>
+<td align="left">0.2%</td>
+</tr>
+<tr class="even">
+<td align="left">White not Hispanic</td>
+<td align="right">401</td>
+<td align="left">40.1%</td>
+</tr>
+</tbody>
+</table>
+<p>Podemos observar que los dos grandes grupos pertenecen a las 2 etnias del problema de discriminación que estamos analizando de blancos no hispanos vs hispanos.</p>
+<p>Examinemos de nuevo las medias y el porcentaje de consumidores de estos dos grupos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds_blancos_hispanos &lt;-<span class="st"> </span>dds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Ethnicity <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hispanic&quot;</span>,<span class="st">&quot;White not Hispanic&quot;</span>))
+dds_blancos_hispanos <span class="op">%&gt;%</span><span class="st">  </span>
+<span class="st">  </span><span class="kw">group_by</span>(Ethnicity) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">media_gasto =</span> <span class="kw">mean</span>(Expenditures),
+            <span class="dt">porc_consum =</span> <span class="kw">n</span>()<span class="op">/</span><span class="dv">10</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Ethnicity</th>
+<th align="right">media_gasto</th>
+<th align="right">porc_consum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Hispanic</td>
+<td align="right">11065.57</td>
+<td align="right">37.6</td>
+</tr>
+<tr class="even">
+<td align="left">White not Hispanic</td>
+<td align="right">24697.55</td>
+<td align="right">40.1</td>
+</tr>
+</tbody>
+</table>
+<p>Tiende a haber un consenso general de que hay una diferencia significativa en la cantidad promedio de gastos entre el grupo de blancos no hispanos y el de hispanos. ¿Por qué podría haber diferencias en los promedios? ¿Se puede determinar si realmente existe discriminación?</p>
+<p>Algunas razones que sugieren normalmente son:</p>
+<ul>
+<li><p>Los hispanos tienen más apoyo familiar, y por lo tanto, es menos probable que busquen asistencia financiada por el gobierno,</p></li>
+<li><p>Los hispanos están menos informados sobre cómo buscar ayuda.</p></li>
+</ul>
+<p>Ambas razones son difíciles de modelar y podrían apoyar alegaciones de discriminación, en vez de negarlas.</p>
+<p>Analicemos ahora diferencias para cada grupo de edad entre hispanos y blancos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds_blancos_hispanos <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Ethnicity, Age_Cohort) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">media_gasto =</span> <span class="kw">mean</span>(Expenditures)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">spread</span>(Ethnicity, media_gasto)</code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   Age_Cohort Hispanic `White not Hispanic`
+## * &lt;ord&gt;         &lt;dbl&gt;                &lt;dbl&gt;
+## 1 0-5            1393                 1367
+## 2 6-12           2312                 2052
+## 3 13-17          3955                 3904
+## 4 18-21          9960                10133
+## 5 22-50         40924                40188
+## 6 51+           55585                52670</code></pre>
+<p>¿Se puede concluir que el típico hispano recibe menos fondos (es decir, gastos) que el típico blanco?</p>
+<p>Dado que la cantidad típica de gastos para los hispanos (en todos excepto un grupo de edad) es más alta que la cantidad típica de gastos para los blancos que no son hispanos en cada grupo de edad (excepto en uno), la hipótesis de discriminación sería refutada. Si un consumidor hispano fuera a reclamar discriminación porque es hispano (frente a blancos no hispanos), podría hacerlo con base en el promedio general de gastos para todos los consumidores de su grupo.</p>
+<p>Podemos entender mejor porque esta aparente asociación desaparece cuando consideramos la variable de grupo de edad si analizamos el porcentaje de consumidores en cada categoría de edad para los grupos de hispanos y blancos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds_blancos_hispanos <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Ethnicity) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">num_etnia =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Ethnicity, Age_Cohort) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">porc_grupo_edad =</span> <span class="kw">round</span>(<span class="kw">n</span>()<span class="op">/</span><span class="kw">first</span>(num_etnia)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">spread</span>(Ethnicity, porc_grupo_edad)</code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   Age_Cohort Hispanic `White not Hispanic`
+## * &lt;ord&gt;         &lt;dbl&gt;                &lt;dbl&gt;
+## 1 0-5           11.7                  4.99
+## 2 6-12          24.2                 11.5 
+## 3 13-17         27.4                 16.7 
+## 4 18-21         20.7                 17.2 
+## 5 22-50         11.4                 33.2 
+## 6 51+            4.52                16.5</code></pre>
+<p>Veamos estas medias como un promedio ponderado por grupo de edad:</p>
+<p><span class="math display">\[
+\bar{X}_k = \displaystyle{\sum_{i=1}^{m}w_{ki}\bar{X}_{ki}},
+\]</span> donde <span class="math inline">\(\bar{X}_k\)</span> es la media del <span class="math inline">\(k\)</span>-ésimo grupo étnico, <span class="math inline">\(w_{ki}\)</span> es el porcentaje del <span class="math inline">\(k\)</span>-ésimo grupo étnico en el <span class="math inline">\(i\)</span>-ésimo grupo de edad, y <span class="math inline">\(\bar{X}_{ki}\)</span> es la media de gasto del <span class="math inline">\(k\)</span>-ésimo grupo étnico en el <span class="math inline">\(i\)</span>-ésimo grupo de edad.</p>
+<p>Los pesos <span class="math inline">\(w_{ki}\)</span> para la población hispana son más altos para los 4 grupos de edad más jóvenes y más bajas para los 2 grupos de edad más viejos, en comparación con la población blanca no hispana. En otras palabras, la población total de consumidores hispanos es relativamente más joven en comparación con la población de consumidores blancos no hispanos. Dado que los gastos para los consumidores más jóvenes son más bajos, el promedio general de los gastos para los hispanos (frente a los blancos no hispanos) es menor.</p>
 <ol start="2" style="list-style-type: decimal">
-<li>Factores de causa común. Incluso cuando faltan factores de confusión, debido, por ejemplo, al estricto control experimental, un fenómeno puede realmente surgir de múltiples causas. La medición de cada causa es útil, así que cuando podemos usar los mismos datos para estimar más de un tipo de influencia, deberíamos. Además, cuando la causalidad es múltiple, una causa puede ocultar a otra. Los modelos multivariados pueden ayudar en dichos entornos.</li>
+<li>Factores de causa común. Incluso cuando no hay factores de confusión, un fenómeno puede realmente surgir de múltiples causas. Puede ocurrir que exista una correlación entre dos variables, sin embargo, es posible que esto no te diga nada cuando estos dos factores tienen como causa común a un tercer factor. Además, cuando la causalidad es múltiple, una causa puede ocultar a otra.</li>
 </ol>
-<p><em>poner ejemplo</em></p>
+<div id="consumo-de-chocolate-y-premios-nobel" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> Consumo de chocolate y premios Nobel</h3>
+<p>En un artículo reciente se publicó un resultado que demuestra una correlación estadísticamente significativa entre el consumo de chocolate per capita y el número de premios Nobel del país por 10 millones de habitantes. El artículo se puede consultar aquí: (Messerli, 2012)[<a href="http://www.biostat.jhsph.edu/courses/bio621/misc/Chocolate%20consumption%20cognitive%20function%20and%20nobel%20laurates%20(NEJM).pdf">http://www.biostat.jhsph.edu/courses/bio621/misc/Chocolate%20consumption%20cognitive%20function%20and%20nobel%20laurates%20(NEJM).pdf</a>].</p>
+En el artículo está publicada esta gráfica:
+<p class="espacio">
+</p>
+<center>
+<img src="figuras/Messerli2012-ChocolateNobelCorrelation.png" width="600px" />
+</center>
+<p class="espacio">
+</p>
+<p>Los datos de consumo de chocolate per cápita provienen de fuentes de datos distintas: <a href="https://www.confectionerynews.com/Article/2013/07/30/Who-eats-the-most-chocolate">confectionerynews.com</a>, <a href="https://www.theobroma-cacao.de/wissen/wirtschaft/international/konsum/">theobroma-cacao.de</a>, y <a href="https://www.mah.se/PageFiles/55093/caobisco-statistical%20bulletin%202013.pdf">caobisco</a>.</p>
+<p>Por otro lado, los datos del número de premios Nobel por cada 10 millones de habitantes están publicados en <a href="https://en.wikipedia.org/wiki/List_of_countries_by_Nobel_laureates_per_capita">Wikipedia</a>.</p>
+<p>Mientras que Messerli advierte en su artículo que la existencia de una correlación no implica causalidad, esto no impidió que los medios populares publicaran historias con estos titulares:</p>
+<p><a href="http://www.cbsnews.com/8301-204_162-57530422/eating-chocolate-may-help-you-win-nobel-prize/">“Eating Chocolate May Help You Win Nobel Prize”</a> - CBS News</p>
+<p><a href="http://www.huffingtonpost.com/2012/10/10/chocolate-consumption-nobel-prize_n_1956163.html">“Correlation Between Country’s Chocolate Consumption And Nobel Prize Winners ‘Surprisingly Powerful,’ Says Study”</a> - Associated Press</p>
+<p><a href="http://www.psychologytoday.com/blog/birth-babies-and-beyond/201210/why-chocolate-makes-you-smart-or-peacefu">“Why Chocolate Makes You Smart (or Peaceful)”</a> - Psychology Today</p>
+<p><a href="http://www.usatoday.com/story/news/nation/2012/10/10/nobel-prizes-chocolate/1625403/">“Study links eating chocolate to winning Nobels”</a> - USA Today</p>
+<p>Antes de darse cuenta de que el artículo era una nota sarcástica, más que un artículo de investigación, muchos artículos, blogs y medios mostraron que esta aparente correlación no tiene sentido. Estas críticas obviamente muestran que el número de Nobel para 10 millones de habitantes también está “correlacionado” con el PIB per cápita, el índice de desarrollo humano, el consumo de todo tipo de bienes de lujo, etc.</p>
 <ol start="3" style="list-style-type: decimal">
-<li>Factores de interacción. Incluso cuando las variables no están correlacionadas por completo, la importancia de cada una puede depender de la otra. Por ejemplo, las plantas se benefician tanto de la luz como del agua. Pero en ausencia de cualquiera, el otro no es en absoluto beneficioso. Tales interacciones ocurren en una gran cantidad de sistemas. Entonces la inferencia efectiva sobre una variable generalmente dependerá de la consideración de otras variables.</li>
+<li>Factores de interacción. Incluso cuando las variables no están correlacionadas por completo, la importancia de cada una puede depender de la otra. Por ejemplo, las plantas se benefician tanto de la luz como del agua. Pero en ausencia de cualquiera, el otro no es en absoluto beneficioso. Tales interacciones ocurren en una gran cantidad de sistemas. Por lo tanto, la inferencia efectiva sobre una variable generalmente dependerá de la consideración de otras variables.</li>
 </ol>
-<p><em>corregir</em></p>
 <p><strong>Inferencia causal.</strong> A pesar de su importancia central, todavía no existe un enfoque unificado para hacer inferencia causal en las ciencias o en estadística. Incluso hay personas que argumentan que la <em>causa realmente no existe</em>, que es una ilusión psíquica. Por ejemplo, en sistemas dinámicos complejos todo parece causar todo lo demás, por lo que el término “causa” pierde valor intuitivo. Sin embargo, existe un acuerdo general: la inferencia causal siempre depende de supuestos no verificables. Otra forma de decir esto es que siempre nos será posible imaginar alguna forma en la que la inferencia sobre la causa sea incorrecta, sin importar qué tan cuidadosamente se haya realizado el diseño o el análisis. En este curso nuestros análisis jamás van a pretender hacer alguna inferencia sobre la causa de los fenómenos observados; únicamente se harán afirmaciones sobre las asociaciones, interacciones y relaciones entre las variables en los datos observados.</p>
 <p>La mayoría de nuestros análisis se van a enfocar en datos que fueron obtenidos sin que activamente se controlara o manipulara cualquiera de las variables en las cuales se hicieron las mediciones. Los diseños estadísticos en los cuales se controla alguna de las variables observadas en los datos se estudian en el curso de <strong>Diseño de experimentos</strong>. Generalmente vamos a suponer que los factores (o variables) observados son aleatorios. Esto quiere decir que nuestro análisis va a estar basado en el supuesto de que los datos provienen de una muestra aleatoria de la población de interés en un momento determinado del tiempo.</p>
 <p>En muchas ramas de la estadística, contar con datos temporales es muy importante. Por ejemplo, en el curso de <strong>Análisis de supervivencia</strong> se estudia el uso de modelos estadísticos en aplicaciones en las cuáles se desea estimar la distribución de un período entre dos eventos, como la duración del empleo (tiempo transcurrido entre el contrato y el abandono de la empresa), del tiempo de vida de un paciente, la diferencia en algún beneficio terapéutico sobre la prolongación de la vida para un nuevo tratamiento con respecto al tratamiento tradicional, o el tiempo de falla en un sistema mecánico.</p>
@@ -1073,6 +1377,7 @@ h = \displaystyle{\int_{t\in R}f_M(t)g_t(u)\;\;dt},
 <p>El uso de la estadística computacional con el fin de hacer predicciones, aprovecha la optimización numérica para estudiar métodos que son útiles para reconocer patrones. En el curso de <strong>Aprendizaje estadístico</strong> se estudian modelos lineales para reconocimiento de patrones, clasificación, y predicción, la regresión múltiple y descenso en gradiente, las redes neuronales (y deep learning), máquinas de soporte vectorial, los árboles y bosques aleatorios. En el curso de <strong>Métodos analíticos</strong> se ven otras técnicas de minería de datos, tales como el análisis de market basket, local sensitivity hashing (LHS), la minería de flujos de datos, los algoritmos de recomendación y la minería de texto.</p>
 <p>Finalmente, debido a la importancia antes mencionada del uso de varias variables en los modelos estadísticos actuales, hay nuevas técnicas estadísticas para estudiar fenómenos multivariados desde una perspectiva bayesiana, como las redes bayesianas, los modelos gráficos no dirigidos, las redes markovianas, los modelos para datos faltantes, modelos de variables latentes, como los modelos de rasgos latentes (LTM), los modelos de perfiles latentes (LPM), los modelos de clases latentes (LCM), y los modelos markovianos de estados ocultos (HMM). Todas estas técnicas se ven en el curso de <strong>Estadística multivariada</strong>. En este curso nuestro enfoque tendrá una persepctiva frecuentista.</p>
 
+</div>
 </div>
 </div>
 <h3>Referencias</h3>

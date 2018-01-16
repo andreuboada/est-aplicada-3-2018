@@ -199,7 +199,11 @@ prop.test(tab %>% ungroup() %>% select(-Gender) %>% as.matrix())
 ```
 
 
-![](figuras/manicule2.jpg) Supongamos que se tienen $n$ observaciones, $\hat{p}_H$ y $\hat{p}_M$ son las proporciones estimadas de solicitantes aceptados en el grupo de hombres y en el grupo de mujeres, respectivamente. La prueba de hipótesis utilizada arriba para estudiar la diferencia entre las proporciones $p_H$ y $p_M$ (porcentaje de hombres aceptados y porcentaje de mujeres aceptadas) es:
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+Supongamos que se tienen $n$ observaciones, $\hat{p}_H$ y $\hat{p}_M$ son las proporciones estimadas de solicitantes aceptados en el grupo de hombres y en el grupo de mujeres, respectivamente. La prueba de hipótesis utilizada arriba para estudiar la diferencia entre las proporciones $p_H$ y $p_M$ (porcentaje de hombres aceptados y porcentaje de mujeres aceptadas) es:
 
 (a) $H_0:\; \hat{p}_H \neq \hat{p}_M$,   $\;\;\;\;\;\;\qquad H_a:\; \hat{p}_H = \hat{p}_M$
 
@@ -209,6 +213,9 @@ prop.test(tab %>% ungroup() %>% select(-Gender) %>% as.matrix())
 
 (d) $H_0:\; \hat{p}_H = \hat{p}_M$,   $\;\;\;\;\;\;\qquad H_a:\; \hat{p}_H \neq \hat{p}_M$
 
+<p class="espacio">
+</p>
+</div>
 
 A partir de la prueba de hipótesis realizada anteriormente, se puede concluir que hay una diferencias significativa entre la proporción de hombres admitidos y la proporción de mujeres admitidas en los programas de posgrado.
 
@@ -378,7 +385,11 @@ $$
 $$
 Es posible enumerar todas las restricciones, aunque en la mayoría de los modelos aún con restricciones el número de parámetros puede ser muy grande.
 
-![](figuras/manicule2.jpg) ¿Qué modelo es más apropiado en el ejemplo anterior?
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+¿Qué modelo es más apropiado en el ejemplo anterior?
 
 (a) $p_{ijk} = P(X^{(1)}=i) \cdot P(X^{(2)}=j, X^{(3)}=k)$
 
@@ -387,6 +398,10 @@ Es posible enumerar todas las restricciones, aunque en la mayoría de los modelo
 (c) $p_{ijk} = P(X^{(1)}=i)\cdot P(X^{(2)}=j)\cdot P(X^{(3)}=k)$
 
 (d) $p_{ijk} = P(X^{(1)}=i, X^{(3)}=k) \cdot P(X^{(2)}=j)$
+
+<p class="espacio">
+</p>
+</div>
 
 Otro posible modelo tendría Admitido y Género condicionalmente independientes, dado Departamento, lo que significa que en cualquier género, la proporción de admitidos y su género, no están relacionados. Escribimos el modelo de esta manera
 
@@ -402,7 +417,11 @@ $$
 \mbox{log}(p_{ijk}) = u + a_i + f_{ik} + b_j + h_{jk} + c_k.
 $$
 
-![](figuras/manicule2.jpg) ¿Cuántos parámetros tendría este modelo?
+![](figuras/manicule2.jpg)
+<div class="centered">
+<p class="espacio">
+</p>
+¿Cuántos parámetros tendría este modelo?
 
 (a) 30
 
@@ -411,6 +430,10 @@ $$
 (c) 40
 
 (d) 45
+
+<p class="espacio">
+</p>
+</div>
 
 ## Interpretación de parámetros
 
@@ -467,7 +490,11 @@ Es importante considerar las interacciones que están consideradas en el modelo,
 
 - en el modelo (2) $i$ y $j$ tienen una interacción con $k$ y no entre sí, por lo que $i$ y $j$ no son independientes entre sí, pero sí los son dado $k$.
 
-![](figuras/manicule2.jpg) Consideremos ahora el modelo
+![](figuras/manicule2.jpg)
+<div class="centered">
+<p class="espacio">
+</p>
+Consideremos ahora el modelo
 $$
 \mbox{log}(p_{ijk}) = u + a_i + f_{ik} + b_j + h_{jk} + l_{ij} + c_k,
 $$
@@ -481,6 +508,9 @@ $$
 
 (d) $i$ y $k$ son independientes dado $j$.
 
+<p class="espacio">
+</p>
+</div>
 
 Si hubiéramos incluido un término $m_{ijk}$, que ahora haría que el modelo estuviera lleno (o saturado), entonces sería posible que los factores $i$ y $j$ estuvieran altamente relacionados para algunos valores de $k$, y menos relacionados para otros. Claramente, cuantas más variables tengamos, y cuanto mayor sea el orden de las interacciones que incluimos, más difícil será interpretar el modelo.
 
@@ -492,42 +522,27 @@ discapacidades (por ejemplo, discapacidad intelectual, parálisis cerebral, auti
 agencia a través de la cual el estado de California sirve al desarrollo de la población discapacitada es
 el Departamento de Servicios de Desarrollo de California (DDS).
 
-Una de las responsabilidades de DDS es asignar fondos que respalden a más de 250,000 residentes con discapacidades de desarrollo (denominados "consumidores"). Hace algunos años, se hizo una alegación de discriminación presentando un análisis univariado que examinaba los gastos anuales promedio de los consumidores por etnia. El análisis reveló que el gasto anual promedio en consumidores hispanos era aproximadamente un tercera parte (1/3) del gasto promedio en consumidores blancos no hispanos. Este hallazgo fue el catalizador para una mayor investigación; posteriormente, los legisladores estatales y los gerentes de departamento buscaron servicios de consultoría de un estadístico.
+Una de las responsabilidades de DDS es asignar fondos que respalden a más de 250,000 residentes con discapacidades de desarrollo (denominados "consumidores"). Hace algunos años, se hizo una alegación de discriminación presentando un análisis univariado que examinaba los gastos anuales promedio de los consumidores por etnia. El análisis reveló que el gasto anual promedio en consumidores hispanos (Hispanic) era aproximadamente un tercera parte (1/3) del gasto promedio en consumidores blancos no hispanos (White non-Hispanic). Este hallazgo fue el catalizador para una mayor investigación; posteriormente, los legisladores estatales y los gerentes de departamento buscaron servicios de consultoría de un estadístico.
 
 El conjunto de datos utilizado en el análisis contiene seis variables: 
 
-- ID
+- ID: identificador único por consumidor,
 
-- Categoría de edad
+- Categoría de edad: es una variable importante porque, aunque la edad suele ser causa de discriminación legal, en este caso, para la población específica de Hispanos no americanos la edad no se consideraría relacionada con los casos de  discriminación. El propósito de estas ayudas es que los que viven con alguna discapacidad puedan vivir igual que los que no tienen ninguna discapacidad. Es lógico, por lo tanto, que mientras las personas tienen mayor edad requieran de mayor ayuda económica. Los _seis_ grupos de edad utilizados en este ámbito son: 0 a 5 años de edad, 6 a 12, 13 a 17, 18 a 21, 22 a 50, y más de 51.
 
-- Edad
+- Edad: edad del consumidor,
 
-- Género
+- Género: se incluye en los datos como una variable a considerar porque el género es otro factor sujeto a discriminación,
 
-- Gastos
+- Gastos: el gasto anual que el gobierno le dedica a un consumidor para apoyar a estos individuos y sus familias. El gasto se dedica a: ayuda a la familia, servicios psicológicos, gastos médicos, transporte y costos relacionados a la vivienda como la renta.
 
-- Origen étnico
+- Origen étnico: es la variable más importante ya que con respecto a esta variable se presentaron las supuestas alegaciones por discriminación. 
 
 Los primeros 10 renglones de la tabla se muestran a continuación:
 
 
 ```r
 dds <- read_csv("datos/californiaDDSData.csv") 
-```
-
-```
-## Parsed with column specification:
-## cols(
-##   Id = col_integer(),
-##   `Age Cohort` = col_character(),
-##   Age = col_integer(),
-##   Gender = col_character(),
-##   Expenditures = col_integer(),
-##   Ethnicity = col_character()
-## )
-```
-
-```r
 dds %>%
   head(10) %>%
   knitr::kable()
@@ -567,16 +582,260 @@ glimpse(dds)
 
 Podemos ver que el conjunto de datos contiene una muestra de exactamente 1000 observaciones que fueron seleccionadas aleatoriamente.
 
-*corregir*
 
-(2) Factores de causa común. Incluso cuando faltan factores de confusión, debido, por ejemplo, al estricto control experimental, un fenómeno puede realmente surgir de múltiples causas. La medición de cada causa es útil, así que cuando podemos usar los mismos datos para estimar más de un tipo de influencia, deberíamos. Además, cuando la causalidad es múltiple, una causa puede ocultar a otra. Los modelos multivariados pueden ayudar en dichos entornos.
-
-*poner ejemplo*
-
-(3) Factores de interacción. Incluso cuando las variables no están correlacionadas por completo, la importancia de cada una puede depender de la otra. Por ejemplo, las plantas se benefician tanto de la luz como del agua. Pero en ausencia de cualquiera, el otro no es en absoluto beneficioso. Tales interacciones ocurren en una gran cantidad de sistemas. Entonces la inferencia efectiva sobre una variable generalmente dependerá de la consideración de otras variables. 
+Veamos una tabla del gasto promedio por etnicidad:
 
 
-*corregir*
+```r
+dds %>%
+  group_by(Ethnicity) %>%
+  summarise(Gasto_promedio = round(mean(Expenditures),0)) %>%
+  knitr::kable()
+```
+
+
+
+Ethnicity             Gasto_promedio
+-------------------  ---------------
+American Indian                36438
+Asian                          18392
+Black                          20885
+Hispanic                       11066
+Multi Race                      4457
+Native Hawaiian                42782
+Other                           3316
+White not Hispanic             24698
+
+Podemos comparar también con el promedio de todos los consumidores:
+
+
+```r
+mean(dds$Expenditures)
+```
+
+```
+## [1] 18065.79
+```
+
+Es común hacer gráficas de barras para representar _medias_, aunque en realidad, esto no es lo más recomendable:
+
+```r
+media_por_etnia <- dds %>%
+  group_by(Ethnicity) %>%
+  summarise(Media_etnia = mean(Expenditures))
+media_por_etnia$Etnia <- reorder(media_por_etnia$Ethnicity, -media_por_etnia$Media_etnia, FUN = median)
+ggplot(media_por_etnia, aes(x = Etnia, y = Media_etnia)) +
+  geom_bar(stat = 'identity') +
+  theme(axis.text.x = element_text(angle=25))
+```
+
+<img src="01-introduccion_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+
+![](figuras/manicule2.jpg)
+<div class="centered">
+<p class="espacio">
+</p>
+¿Se puede concluir que existe evidencia de discriminación contra los Hispanos en comparación con los blancos no hispanos?
+
+(a) Sí
+
+(b) No
+
+<p class="espacio">
+</p>
+</div>
+
+Con respecto a discriminación de género, usualmente concluiríamos que no hay evidencia de discriminación:
+
+
+```r
+dds %>%
+  group_by(Gender) %>%
+  summarise(Gasto_promedio = round(mean(Expenditures),0)) %>%
+  knitr::kable()
+```
+
+
+
+Gender    Gasto_promedio
+-------  ---------------
+Female             18130
+Male               18001
+
+Las necesidades de los consumidores aumentan conforme envejecen, lo que resulta en mayores gastos para personas de mayor edad:
+
+
+```r
+dds$Age_Cohort <- ordered(dds$`Age Cohort`, levels=c("0-5","6-12","13-17","18-21","22-50","51+"))
+dds %>%
+  group_by(Age_Cohort) %>%
+  summarise(Gasto_promedio = round(mean(Expenditures),0)) %>%
+  knitr::kable()
+```
+
+
+
+Age_Cohort    Gasto_promedio
+-----------  ---------------
+0-5                     1415
+6-12                    2227
+13-17                   3923
+18-21                   9889
+22-50                  40209
+51+                    53522
+
+El problema de que haya discrimnación o no se puede analizar más a fondo viendo, por ejemplo, qué porcentaje de consumidores pertenecen a cada etnia, tal como sucedió en el ejemplo de la controversia de Berkeley:
+
+
+```r
+dds %>%
+  group_by(Ethnicity) %>%
+  summarise(num_cons = n(),
+            porc_cons = paste0(num_cons/10,'%')) %>%
+  knitr::kable()
+```
+
+
+
+Ethnicity             num_cons  porc_cons 
+-------------------  ---------  ----------
+American Indian              4  0.4%      
+Asian                      129  12.9%     
+Black                       59  5.9%      
+Hispanic                   376  37.6%     
+Multi Race                  26  2.6%      
+Native Hawaiian              3  0.3%      
+Other                        2  0.2%      
+White not Hispanic         401  40.1%     
+
+Podemos observar que los dos grandes grupos pertenecen a las 2 etnias del problema de discriminación que estamos analizando de blancos no hispanos vs hispanos.
+
+Examinemos de nuevo las medias y el porcentaje de consumidores de estos dos grupos:
+
+
+```r
+dds_blancos_hispanos <- dds %>%
+  filter(Ethnicity %in% c("Hispanic","White not Hispanic"))
+dds_blancos_hispanos %>%  
+  group_by(Ethnicity) %>%
+  summarise(media_gasto = mean(Expenditures),
+            porc_consum = n()/10) %>%
+  knitr::kable()
+```
+
+
+
+Ethnicity             media_gasto   porc_consum
+-------------------  ------------  ------------
+Hispanic                 11065.57          37.6
+White not Hispanic       24697.55          40.1
+
+
+Tiende a haber un consenso general de que hay una diferencia significativa en la cantidad promedio de gastos entre el grupo de blancos no hispanos y el de hispanos. ¿Por qué podría haber diferencias en los promedios? ¿Se puede determinar si realmente existe discriminación?
+
+Algunas razones que sugieren normalmente son:
+
+- Los hispanos tienen más apoyo familiar, y por lo tanto, es menos probable que busquen asistencia financiada por el gobierno,
+
+- Los hispanos están menos informados sobre cómo buscar ayuda.
+
+Ambas razones son difíciles de modelar y podrían apoyar alegaciones de discriminación, en vez de negarlas.
+
+Analicemos ahora diferencias para cada grupo de edad entre hispanos y blancos:
+
+
+```r
+dds_blancos_hispanos %>%
+  group_by(Ethnicity, Age_Cohort) %>%
+  summarise(media_gasto = mean(Expenditures)) %>%
+  spread(Ethnicity, media_gasto)
+```
+
+```
+## # A tibble: 6 x 3
+##   Age_Cohort Hispanic `White not Hispanic`
+## * <ord>         <dbl>                <dbl>
+## 1 0-5            1393                 1367
+## 2 6-12           2312                 2052
+## 3 13-17          3955                 3904
+## 4 18-21          9960                10133
+## 5 22-50         40924                40188
+## 6 51+           55585                52670
+```
+
+¿Se puede concluir que el típico hispano recibe menos fondos (es decir, gastos) que el típico blanco?
+
+Dado que la cantidad típica de gastos para los hispanos (en todos excepto un grupo de edad) es más alta que la cantidad típica de gastos para los blancos que no son hispanos en cada grupo de edad (excepto en uno), la hipótesis de discriminación sería refutada. Si un consumidor hispano fuera a reclamar discriminación porque es hispano (frente a blancos no hispanos), podría hacerlo con base en el promedio general de gastos para todos los consumidores de su grupo.
+
+Podemos entender mejor porque esta aparente asociación desaparece cuando consideramos la variable de grupo de edad si analizamos el porcentaje de consumidores en cada categoría de edad para los grupos de hispanos y blancos:
+
+
+```r
+dds_blancos_hispanos %>%
+  group_by(Ethnicity) %>%
+  mutate(num_etnia = n()) %>%
+  ungroup() %>%
+  group_by(Ethnicity, Age_Cohort) %>%
+  summarise(porc_grupo_edad = round(n()/first(num_etnia)*100,2)) %>%
+  spread(Ethnicity, porc_grupo_edad)
+```
+
+```
+## # A tibble: 6 x 3
+##   Age_Cohort Hispanic `White not Hispanic`
+## * <ord>         <dbl>                <dbl>
+## 1 0-5           11.7                  4.99
+## 2 6-12          24.2                 11.5 
+## 3 13-17         27.4                 16.7 
+## 4 18-21         20.7                 17.2 
+## 5 22-50         11.4                 33.2 
+## 6 51+            4.52                16.5
+```
+
+Veamos estas medias como un promedio ponderado por grupo de edad:
+
+$$
+\bar{X}_k = \displaystyle{\sum_{i=1}^{m}w_{ki}\bar{X}_{ki}},
+$$
+donde $\bar{X}_k$ es la media del $k$-ésimo grupo étnico, $w_{ki}$ es el porcentaje del $k$-ésimo grupo étnico en el $i$-ésimo grupo de edad, y $\bar{X}_{ki}$ es la media de gasto del $k$-ésimo grupo étnico en el $i$-ésimo grupo de edad. 
+
+Los pesos $w_{ki}$ para la población hispana son más altos para los 4 grupos de edad más jóvenes y más bajas para los 2 grupos de edad más viejos, en comparación con la población blanca no hispana. En otras palabras, la población total de consumidores hispanos es relativamente más joven en comparación con la población de consumidores blancos no hispanos. Dado que los gastos para los consumidores más jóvenes son más bajos, el promedio general de los gastos para los hispanos (frente a los blancos no hispanos) es menor.
+
+
+
+(2) Factores de causa común. Incluso cuando no hay factores de confusión, un fenómeno puede realmente surgir de múltiples causas. Puede ocurrir que exista una correlación entre dos variables, sin embargo, es posible que esto no te diga nada cuando estos dos factores tienen como causa común a un tercer factor. Además, cuando la causalidad es múltiple, una causa puede ocultar a otra. 
+
+### Consumo de chocolate y premios Nobel
+
+En un artículo reciente se publicó un resultado que demuestra una correlación estadísticamente significativa entre el consumo de chocolate per capita y el número de premios Nobel del país por 10 millones de habitantes. El artículo se puede consultar aquí: (Messerli, 2012)[http://www.biostat.jhsph.edu/courses/bio621/misc/Chocolate%20consumption%20cognitive%20function%20and%20nobel%20laurates%20(NEJM).pdf].
+
+En el artículo está publicada esta gráfica:
+<p class="espacio">
+</p>
+<center><img src="figuras/Messerli2012-ChocolateNobelCorrelation.png" width="600px" /></center>
+<p class="espacio">
+</p>
+
+Los datos de consumo de chocolate per cápita provienen de fuentes de datos distintas: [confectionerynews.com](https://www.confectionerynews.com/Article/2013/07/30/Who-eats-the-most-chocolate), [theobroma-cacao.de](https://www.theobroma-cacao.de/wissen/wirtschaft/international/konsum/), y
+[caobisco](https://www.mah.se/PageFiles/55093/caobisco-statistical%20bulletin%202013.pdf).
+
+Por otro lado, los datos del número de premios Nobel por cada 10 millones de habitantes están publicados en [Wikipedia](https://en.wikipedia.org/wiki/List_of_countries_by_Nobel_laureates_per_capita). 
+
+Mientras que Messerli advierte en su artículo que la existencia de una correlación no implica causalidad, esto no impidió que los medios populares publicaran historias con estos titulares:
+
+["Eating Chocolate May Help You Win Nobel Prize"](http://www.cbsnews.com/8301-204_162-57530422/eating-chocolate-may-help-you-win-nobel-prize/) - CBS News
+
+["Correlation Between Country’s Chocolate Consumption And Nobel Prize Winners ‘Surprisingly Powerful,’ Says Study"](http://www.huffingtonpost.com/2012/10/10/chocolate-consumption-nobel-prize_n_1956163.html) - Associated Press
+
+["Why Chocolate Makes You Smart (or Peaceful)"](http://www.psychologytoday.com/blog/birth-babies-and-beyond/201210/why-chocolate-makes-you-smart-or-peacefu) - Psychology Today
+
+["Study links eating chocolate to winning Nobels"](http://www.usatoday.com/story/news/nation/2012/10/10/nobel-prizes-chocolate/1625403/) - USA Today
+
+Antes de darse cuenta de que el artículo era una nota sarcástica, más que un artículo de investigación, muchos artículos, blogs y medios mostraron que esta aparente correlación no tiene sentido. Estas críticas obviamente muestran que el número de Nobel para 10 millones de habitantes también está "correlacionado" con el PIB per cápita, el índice de desarrollo humano, el consumo de todo tipo de bienes de lujo, etc.
+
+
+(3) Factores de interacción. Incluso cuando las variables no están correlacionadas por completo, la importancia de cada una puede depender de la otra. Por ejemplo, las plantas se benefician tanto de la luz como del agua. Pero en ausencia de cualquiera, el otro no es en absoluto beneficioso. Tales interacciones ocurren en una gran cantidad de sistemas. Por lo tanto, la inferencia efectiva sobre una variable generalmente dependerá de la consideración de otras variables. 
+
 
 **Inferencia causal.** A pesar de su importancia central, todavía no existe un enfoque unificado para hacer inferencia causal en las ciencias o en estadística. Incluso hay personas que argumentan que la _causa realmente no existe_, que es una ilusión psíquica. Por ejemplo, en sistemas dinámicos complejos todo parece causar todo lo demás, por lo que el término "causa" pierde valor intuitivo. Sin embargo, existe un acuerdo general: la inferencia causal siempre depende de supuestos no verificables. Otra forma de decir esto es que siempre nos será posible imaginar alguna forma en la que la inferencia sobre la causa sea incorrecta, sin importar qué tan cuidadosamente se haya realizado el diseño o el análisis. En este curso nuestros análisis jamás van a pretender hacer alguna inferencia sobre la causa de los fenómenos observados; únicamente se harán afirmaciones sobre las asociaciones, interacciones y relaciones entre las variables en los datos observados.
 
