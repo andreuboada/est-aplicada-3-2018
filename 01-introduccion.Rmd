@@ -625,7 +625,7 @@ D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
 $$
 donde $X$ son los datos observados y $\hat{\theta}$ es el parámetro a estimar.
 
-Generalmente nos interesa disminuir la devianza. Con los datos del ejemplo de discriminación a hispanos modela la probabilidad $p_{ijk}$ de 
+Generalmente nos interesa disminuir la devianza. Con los datos del ejemplo de discriminación a hispanos modela la probabilidad $p_{ijk}$ de cada categoría $(i,j,k)$ correspondiente al gasto, raza y categoría de edad, respectivamente.
 
 Puedes utilizar la función `loglin` vista en clase o la función `loglm` del paquete `MASS`. Esta última te permite especificar el modelo en forma de función. Puedes ver la ayuda así:
 
@@ -634,18 +634,34 @@ library(MASS)
 ?loglm
 ```
 
-Llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (Gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto con cuantiles utilizando la función `cut2` del paquete `Hmisc`. Por ejemplo, el modelo "G + H + E" representa el modelo de independencias, mientras que "GH + GE + HE" representa interacciones entre gasto en educación y las variables de si es hispano y su edad y la interacción entre si es hispano y su edad.
+Llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (Gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto con cuantiles utilizando la función `cut2` del paquete `Hmisc`. 
+
+Por ejemplo, el modelo "G + H + E" representa el modelo de independencias. Para el modelo "GH + GE + HE" hay interacciones entre:
+
+- GH: gasto en discapacitados y si es hispano,
+
+- GE: gasto y edad, y 
+
+- HE: hispano y edad.
+
+El último modelo tendría parámetros $u$, $a_i$, $b_{ij}$, $c_j$, $d_{ik}$, $e_{jk}$, y $f_k$ tales que
+
+$$
+\mbox{log}(p_{ijk}) = u + a_i + b_{ij} + c_j + d_{ik} + e_{jk} + f_k.
+$$
 
 
-| Modelo       | Devianza | Grados de libertad |
-|--------------|----------|--------------------|
-| G + H + E    |          |                    |
-| GH + E       |          |                    |
-| GE + H       |          |                    |
-| G + HE       |          |                    |
-| GH + GE      |          |                    |
-| GH + HP      |          |                    |
-| GE + HP      |          |                    |
-| GH + HE      |          |                    |
-| GH + GE + HE |          |                    |
+| Modelo       | Devianza | Grados de libertad | Número de parámetros |
+|--------------|----------|--------------------|----------------------|
+| G + H + E    |          |                    |                      |
+| GH + E       |          |                    |                      |
+| GE + H       |          |                    |                      |
+| G + HE       |          |                    |                      |
+| GH + GE      |          |                    |                      |
+| GH + HP      |          |                    |                      |
+| GE + HP      |          |                    |                      |
+| GH + HE      |          |                    |                      |
+| GH + GE + HE |          |                    |                      |
+
+Di qué modelo es mejor, tanto en términos del ajuste de la devianza y su interpretabilidad y explica por qué. ¿Hay algún modelo que no esté en la lista que sea el más apropiado para ajustar los datos?
 
