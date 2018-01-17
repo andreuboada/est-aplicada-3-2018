@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-01-16">
+<meta name="date" content="2018-01-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -110,7 +110,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-r-y-rstudio"><i class="fa fa-check"></i>Software: R y Rstudio</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#referencia-principal"><i class="fa fa-check"></i>Referencia principal</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#otras-referencias"><i class="fa fa-check"></i>Otras referencias</a></li>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#cuestionario-rapido"><i class="fa fa-check"></i><b>0.1</b> Cuestionario rápido</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cuestionario-rapido"><i class="fa fa-check"></i>Cuestionario rápido</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#por-que-un-analisis-multivariado"><i class="fa fa-check"></i><b>1.1</b> ¿Por qué un análisis multivariado?</a></li>
@@ -122,6 +122,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#otros-ejemplos"><i class="fa fa-check"></i><b>1.5</b> Otros ejemplos</a><ul>
 <li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#consumo-de-chocolate-y-premios-nobel"><i class="fa fa-check"></i><b>1.5.1</b> Consumo de chocolate y premios Nobel</a></li>
 </ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#tarea"><i class="fa fa-check"></i><b>1.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -624,20 +625,6 @@ tab <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op"
 ## sample estimates:
 ##    prop 1    prop 2 
 ## 0.3035422 0.4451877</code></pre>
-<img src="figuras/manicule2.jpg" />
-<div class="centered">
-<p class="espacio">
-</p>
-<p>Supongamos que se tienen <span class="math inline">\(n\)</span> observaciones, <span class="math inline">\(\hat{p}_H\)</span> y <span class="math inline">\(\hat{p}_M\)</span> son las proporciones estimadas de solicitantes aceptados en el grupo de hombres y en el grupo de mujeres, respectivamente. La prueba de hipótesis utilizada arriba para estudiar la diferencia entre las proporciones <span class="math inline">\(p_H\)</span> y <span class="math inline">\(p_M\)</span> (porcentaje de hombres aceptados y porcentaje de mujeres aceptadas) es:</p>
-<ol style="list-style-type: lower-alpha">
-<li><p><span class="math inline">\(H_0:\; \hat{p}_H \neq \hat{p}_M\)</span>, <span class="math inline">\(\;\;\;\;\;\;\qquad H_a:\; \hat{p}_H = \hat{p}_M\)</span></p></li>
-<li><p><span class="math inline">\(H_0:\; \hat{p}_H - \hat{p}_M \geq 0\)</span>, <span class="math inline">\(\qquad H_a:\; \hat{p}_H - \hat{p}_M &lt; 0\)</span></p></li>
-<li><p><span class="math inline">\(H_0:\; p_H - p_M = 0\)</span>, <span class="math inline">\(\qquad H_a:\; p_H - p_M \neq 0\)</span></p></li>
-<li><p><span class="math inline">\(H_0:\; \hat{p}_H = \hat{p}_M\)</span>, <span class="math inline">\(\;\;\;\;\;\;\qquad H_a:\; \hat{p}_H \neq \hat{p}_M\)</span></p></li>
-</ol>
-<p class="espacio">
-</p>
-</div>
 <p>A partir de la prueba de hipótesis realizada anteriormente, se puede concluir que hay una diferencias significativa entre la proporción de hombres admitidos y la proporción de mujeres admitidas en los programas de posgrado.</p>
 <p>Sin embargo, si hacemos el mismo análisis por departamento, veremos que las diferencias ya no son tan significativas:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ucb <span class="op">%&gt;%</span><span class="st"> </span>
@@ -849,10 +836,10 @@ p_{ijk} &amp; = &amp; P(X^{(1)}=i \mbox{ y } X^{(2)}=j \mbox{ y } X^{(3)}=k) \\
 \]</span> Tomando logaritmo de ambos lados, vemos que la independencia de los tres factores es equivalente a escribir una ecuación de la forma <span class="math display">\[
 \mbox{log}(p_{ijk}) = a_i + b_j + c_k,
 \]</span> donde <span class="math inline">\(a_i,b_j,c_k\)</span> son cantidades estimadas. Por ejemplo, <span class="math display">\[
-b_2 = \mbox{log}\left(P(X^{(2)}=j)\right).
+b_j = \mbox{log}\left(P(X^{(2)}=j)\right).
 \]</span> El punto es que el modelo es similar a un modelo de regresión lineal sin interacciones. El análogo de que no haya interacción entre las variables aquí está representado por el supuesto de independencia.</p>
 <p>Por ejemplo, si suponemos que Departamento es independiente de Admisión y Género, pero que Admisión y Género <em>no</em> son independientes entre sí, el modelo incluiría un término de interacción <span class="math inline">\(i-j\)</span>: <span class="math display">\[
-p_{ijk} = P(X^{(1)}=i \mbox{ y } X^{(2)}=j)\cdot P(X^{(3)} = k),
+p_{ijk} = P(X^{(1)}=i,  X^{(2)}=j)\cdot P(X^{(3)} = k),
 \]</span> por lo que el modelo sería <span class="math display">\[
 \mbox{log}(p_{ijk}) = a_{ij} + b_k.
 \]</span> La mayoría de los modelos formales reescriben esto como <span class="math display">\[
@@ -1322,7 +1309,7 @@ dds_blancos_hispanos <span class="op">%&gt;%</span><span class="st">  </span>
 ## 6 51+           55585                52670</code></pre>
 <p>¿Se puede concluir que el típico hispano recibe menos fondos (es decir, gastos) que el típico blanco?</p>
 <p>Dado que la cantidad típica de gastos para los hispanos (en todos excepto un grupo de edad) es más alta que la cantidad típica de gastos para los blancos que no son hispanos en cada grupo de edad (excepto en uno), la hipótesis de discriminación sería refutada. Si un consumidor hispano fuera a reclamar discriminación porque es hispano (frente a blancos no hispanos), podría hacerlo con base en el promedio general de gastos para todos los consumidores de su grupo.</p>
-<p>Podemos entender mejor porque esta aparente asociación desaparece cuando consideramos la variable de grupo de edad si analizamos el porcentaje de consumidores en cada categoría de edad para los grupos de hispanos y blancos:</p>
+<p>Podemos entender mejor por qué esta aparente asociación desaparece cuando consideramos la variable de grupo de edad si analizamos el porcentaje de consumidores en cada categoría de edad para los grupos de hispanos y blancos:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds_blancos_hispanos <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(Ethnicity) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">num_etnia =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
@@ -1362,10 +1349,112 @@ En el artículo está publicada esta gráfica:
 <p>Por otro lado, los datos del número de premios Nobel por cada 10 millones de habitantes están publicados en <a href="https://en.wikipedia.org/wiki/List_of_countries_by_Nobel_laureates_per_capita">Wikipedia</a>.</p>
 <p>Mientras que Messerli advierte en su artículo que la existencia de una correlación no implica causalidad, esto no impidió que los medios populares publicaran historias con estos titulares:</p>
 <p><a href="http://www.cbsnews.com/8301-204_162-57530422/eating-chocolate-may-help-you-win-nobel-prize/">“Eating Chocolate May Help You Win Nobel Prize”</a> - CBS News</p>
-<p><a href="http://www.huffingtonpost.com/2012/10/10/chocolate-consumption-nobel-prize_n_1956163.html">“Correlation Between Country’s Chocolate Consumption And Nobel Prize Winners ‘Surprisingly Powerful,’ Says Study”</a> - Associated Press</p>
-<p><a href="http://www.psychologytoday.com/blog/birth-babies-and-beyond/201210/why-chocolate-makes-you-smart-or-peacefu">“Why Chocolate Makes You Smart (or Peaceful)”</a> - Psychology Today</p>
+<p><a href="http://www.businessinsider.com/chocolate-consumption-vs-nobel-prizes-2014-4">There’s A Shocking Connection Between Eating More Chocolate And Winning The Nobel Prize</a> - Business Insider</p>
+<p><a href="https://www.psychologytoday.com/blog/birth-babies-and-beyond/201210/why-chocolate-makes-you-smart-or-peaceful">“Why Chocolate Makes You Smart (or Peaceful)”</a> - Psychology Today</p>
 <p><a href="http://www.usatoday.com/story/news/nation/2012/10/10/nobel-prizes-chocolate/1625403/">“Study links eating chocolate to winning Nobels”</a> - USA Today</p>
-<p>Antes de darse cuenta de que el artículo era una nota sarcástica, más que un artículo de investigación, muchos artículos, blogs y medios mostraron que esta aparente correlación no tiene sentido. Estas críticas obviamente muestran que el número de Nobel para 10 millones de habitantes también está “correlacionado” con el PIB per cápita, el índice de desarrollo humano, el consumo de todo tipo de bienes de lujo, etc.</p>
+<p>Como describimos anteriormente, se tienen datos para varios años del consumo per capita de chocolate (en kg).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">chocolate_nobel &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/chocolate_nobel.csv&quot;</span>)
+chocolate_nobel <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Country</th>
+<th align="right">Year</th>
+<th align="right">Cons_per_capita</th>
+<th align="right">Nobel_Laureates</th>
+<th align="right">Population_2017</th>
+<th align="right">Laureates_per_10_million</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Finland</td>
+<td align="right">2008</td>
+<td align="right">6.97</td>
+<td align="right">3</td>
+<td align="right">5523231</td>
+<td align="right">5.432</td>
+</tr>
+<tr class="even">
+<td align="left">Czech Republic</td>
+<td align="right">2009</td>
+<td align="right">2.08</td>
+<td align="right">3</td>
+<td align="right">10618303</td>
+<td align="right">2.825</td>
+</tr>
+<tr class="odd">
+<td align="left">France</td>
+<td align="right">2009</td>
+<td align="right">6.41</td>
+<td align="right">37</td>
+<td align="right">64979548</td>
+<td align="right">5.694</td>
+</tr>
+<tr class="even">
+<td align="left">Germany</td>
+<td align="right">2010</td>
+<td align="right">11.56</td>
+<td align="right">91</td>
+<td align="right">82114524</td>
+<td align="right">11.082</td>
+</tr>
+<tr class="odd">
+<td align="left">Japan</td>
+<td align="right">2006</td>
+<td align="right">2.23</td>
+<td align="right">22</td>
+<td align="right">127484450</td>
+<td align="right">1.758</td>
+</tr>
+<tr class="even">
+<td align="left">Japan</td>
+<td align="right">2011</td>
+<td align="right">2.16</td>
+<td align="right">22</td>
+<td align="right">127484450</td>
+<td align="right">1.758</td>
+</tr>
+<tr class="odd">
+<td align="left">Denmark</td>
+<td align="right">2012</td>
+<td align="right">7.50</td>
+<td align="right">9</td>
+<td align="right">5773551</td>
+<td align="right">15.588</td>
+</tr>
+<tr class="even">
+<td align="left">Japan</td>
+<td align="right">2008</td>
+<td align="right">2.15</td>
+<td align="right">22</td>
+<td align="right">127484450</td>
+<td align="right">1.758</td>
+</tr>
+<tr class="odd">
+<td align="left">US</td>
+<td align="right">2007</td>
+<td align="right">5.18</td>
+<td align="right">335</td>
+<td align="right">324459463</td>
+<td align="right">10.325</td>
+</tr>
+<tr class="even">
+<td align="left">Brazil</td>
+<td align="right">2008</td>
+<td align="right">2.57</td>
+<td align="right">1</td>
+<td align="right">209288278</td>
+<td align="right">0.048</td>
+</tr>
+</tbody>
+</table>
+<p>Podemos ver una gráfica del consumo de chocolate vs el número de premios nobel:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(chocolate_nobel, <span class="kw">aes</span>(<span class="dt">x=</span>Cons_per_capita, <span class="dt">y =</span> Laureates_per_10_million)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="dt">se =</span> F)</code></pre></div>
+<p><img src="01-introduccion_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p>El artículo original era más una nota sarcástica, que un artículo de investigación. Muchos artículos, blogs y medios mostraron que esta aparente correlación no tiene sentido. Estas críticas muestran que el número de Nobel para 10 millones de habitantes también está “correlacionado” con el PIB per cápita, el índice de desarrollo humano, el consumo de todo tipo de bienes de lujo, etc.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Factores de interacción. Incluso cuando las variables no están correlacionadas por completo, la importancia de cada una puede depender de la otra. Por ejemplo, las plantas se benefician tanto de la luz como del agua. Pero en ausencia de cualquiera, el otro no es en absoluto beneficioso. Tales interacciones ocurren en una gran cantidad de sistemas. Por lo tanto, la inferencia efectiva sobre una variable generalmente dependerá de la consideración de otras variables.</li>
 </ol>
@@ -1376,8 +1465,76 @@ En el artículo está publicada esta gráfica:
 <p>En el curso de <strong>Estadística bayesiana</strong> se estudia la teoría básica que sirve de fundamento para la estadística bayesiana: la teoría de decisión, la probabilidad subjetiva, la utilidad, la inferencia como problema de decisión, y la inferencia paramétrica bayesiana. El curso de <strong>Regresión avanzada</strong> está diseñado para estudiar inferencia bayesiana y el uso de modelos estadísticos bayesianos en el análisis de aplicaciones reales actuales. El enfoque es en modelos lineales generalizados, modelos dinámicos y modelos jerárquicos o multinivel.</p>
 <p>El uso de la estadística computacional con el fin de hacer predicciones, aprovecha la optimización numérica para estudiar métodos que son útiles para reconocer patrones. En el curso de <strong>Aprendizaje estadístico</strong> se estudian modelos lineales para reconocimiento de patrones, clasificación, y predicción, la regresión múltiple y descenso en gradiente, las redes neuronales (y deep learning), máquinas de soporte vectorial, los árboles y bosques aleatorios. En el curso de <strong>Métodos analíticos</strong> se ven otras técnicas de minería de datos, tales como el análisis de market basket, local sensitivity hashing (LHS), la minería de flujos de datos, los algoritmos de recomendación y la minería de texto.</p>
 <p>Finalmente, debido a la importancia antes mencionada del uso de varias variables en los modelos estadísticos actuales, hay nuevas técnicas estadísticas para estudiar fenómenos multivariados desde una perspectiva bayesiana, como las redes bayesianas, los modelos gráficos no dirigidos, las redes markovianas, los modelos para datos faltantes, modelos de variables latentes, como los modelos de rasgos latentes (LTM), los modelos de perfiles latentes (LPM), los modelos de clases latentes (LCM), y los modelos markovianos de estados ocultos (HMM). Todas estas técnicas se ven en el curso de <strong>Estadística multivariada</strong>. En este curso nuestro enfoque tendrá una persepctiva frecuentista.</p>
-
 </div>
+</div>
+<div id="tarea" class="section level2">
+<h2><span class="header-section-number">1.6</span> Tarea</h2>
+<p>Recordemos que la devianza la definimos como <span class="math inline">\(-2\)</span> multiplicado por la log-verosimilitud:</p>
+<p><span class="math display">\[
+D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
+\]</span> donde <span class="math inline">\(X\)</span> son los datos observados y <span class="math inline">\(\hat{\theta}\)</span> es el parámetro a estimar.</p>
+<p>Generalmente nos interesa disminuir la devianza. Con los datos del ejemplo de discriminación a hispanos modela la probabilidad <span class="math inline">\(p_{ijk}\)</span> de</p>
+<p>Puedes utilizar la función <code>loglin</code> vista en clase o la función <code>loglm</code> del paquete <code>MASS</code>. Esta última te permite especificar el modelo en forma de función. Puedes ver la ayuda así:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
+?loglm</code></pre></div>
+<p>Llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (Gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto con cuantiles utilizando la función <code>cut2</code> del paquete <code>Hmisc</code>. Por ejemplo, el modelo “G + H + E” representa el modelo de independencias, mientras que “GH + GE + HE” representa interacciones entre gasto en educación y las variables de si es hispano y su edad y la interacción entre si es hispano y su edad.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Modelo</th>
+<th>Devianza</th>
+<th>Grados de libertad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>G + H + E</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>GH + E</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>GE + H</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>G + HE</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>GH + GE</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>GH + HP</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>GE + HP</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>GH + HE</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>GH + GE + HE</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 <h3>Referencias</h3>

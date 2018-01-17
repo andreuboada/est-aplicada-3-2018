@@ -1,7 +1,7 @@
 --- 
 title: "Estadística Aplicada III"
 author: "Andreu Boada de Atela"
-date: "2018-01-16"
+date: "2018-01-17"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -62,7 +62,7 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2017 
 
 - McLachlan, Geoffrey J. Discriminant analysis and statistical pattern recognition. New York: John Wiley & Sons, 1992. 
 
-## Cuestionario rápido
+## Cuestionario rápido  {-}
 
 ![](figuras/manicule2.jpg) 
 <div class="centered">
@@ -82,13 +82,12 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2017 
 </p>
 </div>
 
-![](figuras/manicule2.jpg) 
 <div class="centered">
 <p class="espacio">
 </p>
 El curso de Estadística Aplicada II...
 
-(a) los cursaste en un semestre anterior a este.
+(a) lo cursaste en un semestre anterior a este.
 
 (b) lo estás cursando este semestre.
 
@@ -99,7 +98,6 @@ El curso de Estadística Aplicada II...
 </p>
 </div>
 
-![](figuras/manicule2.jpg) 
 <div class="centered">
 <p class="espacio">
 </p>
@@ -111,12 +109,13 @@ El curso de Estadística Aplicada I...
 
 (c) lo cursarás en un semestre posterior.
 
+(d) no planeas llevarlo.
+
 
 <p class="espacio">
 </p>
 </div>
 
-![](figuras/manicule2.jpg) 
 <div class="centered">
 <p class="espacio">
 </p>

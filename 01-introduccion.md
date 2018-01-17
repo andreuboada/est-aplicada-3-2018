@@ -198,25 +198,6 @@ prop.test(tab %>% ungroup() %>% select(-Gender) %>% as.matrix())
 ## 0.3035422 0.4451877
 ```
 
-
-![](figuras/manicule2.jpg) 
-<div class="centered">
-<p class="espacio">
-</p>
-Supongamos que se tienen $n$ observaciones, $\hat{p}_H$ y $\hat{p}_M$ son las proporciones estimadas de solicitantes aceptados en el grupo de hombres y en el grupo de mujeres, respectivamente. La prueba de hipótesis utilizada arriba para estudiar la diferencia entre las proporciones $p_H$ y $p_M$ (porcentaje de hombres aceptados y porcentaje de mujeres aceptadas) es:
-
-(a) $H_0:\; \hat{p}_H \neq \hat{p}_M$,   $\;\;\;\;\;\;\qquad H_a:\; \hat{p}_H = \hat{p}_M$
-
-(b) $H_0:\; \hat{p}_H - \hat{p}_M \geq 0$,   $\qquad H_a:\; \hat{p}_H - \hat{p}_M < 0$
-
-(c) $H_0:\; p_H - p_M = 0$,   $\qquad H_a:\; p_H - p_M \neq 0$
-
-(d) $H_0:\; \hat{p}_H = \hat{p}_M$,   $\;\;\;\;\;\;\qquad H_a:\; \hat{p}_H \neq \hat{p}_M$
-
-<p class="espacio">
-</p>
-</div>
-
 A partir de la prueba de hipótesis realizada anteriormente, se puede concluir que hay una diferencias significativa entre la proporción de hombres admitidos y la proporción de mujeres admitidas en los programas de posgrado.
 
 Sin embargo, si hacemos el mismo análisis por departamento, veremos que las diferencias ya no son tan significativas:
@@ -361,13 +342,13 @@ $$
 $$
 donde $a_i,b_j,c_k$ son cantidades estimadas. Por ejemplo,
 $$
-b_2 = \mbox{log}\left(P(X^{(2)}=j)\right).
+b_j = \mbox{log}\left(P(X^{(2)}=j)\right).
 $$
 El punto es que el modelo es similar a un modelo de regresión lineal sin interacciones. El análogo de que no haya interacción entre las variables aquí está representado por el supuesto de independencia.
 
 Por ejemplo, si suponemos que Departamento es independiente de Admisión y Género, pero que Admisión y Género _no_ son independientes entre sí, el modelo incluiría un término de interacción  $i-j$:
 $$
-p_{ijk} = P(X^{(1)}=i \mbox{ y } X^{(2)}=j)\cdot P(X^{(3)} = k),
+p_{ijk} = P(X^{(1)}=i,  X^{(2)}=j)\cdot P(X^{(3)} = k),
 $$
 por lo que el modelo sería
 $$
@@ -767,7 +748,7 @@ dds_blancos_hispanos %>%
 
 Dado que la cantidad típica de gastos para los hispanos (en todos excepto un grupo de edad) es más alta que la cantidad típica de gastos para los blancos que no son hispanos en cada grupo de edad (excepto en uno), la hipótesis de discriminación sería refutada. Si un consumidor hispano fuera a reclamar discriminación porque es hispano (frente a blancos no hispanos), podría hacerlo con base en el promedio general de gastos para todos los consumidores de su grupo.
 
-Podemos entender mejor porque esta aparente asociación desaparece cuando consideramos la variable de grupo de edad si analizamos el porcentaje de consumidores en cada categoría de edad para los grupos de hispanos y blancos:
+Podemos entender mejor por qué esta aparente asociación desaparece cuando consideramos la variable de grupo de edad si analizamos el porcentaje de consumidores en cada categoría de edad para los grupos de hispanos y blancos:
 
 
 ```r
@@ -802,7 +783,6 @@ donde $\bar{X}_k$ es la media del $k$-ésimo grupo étnico, $w_{ki}$ es el porce
 Los pesos $w_{ki}$ para la población hispana son más altos para los 4 grupos de edad más jóvenes y más bajas para los 2 grupos de edad más viejos, en comparación con la población blanca no hispana. En otras palabras, la población total de consumidores hispanos es relativamente más joven en comparación con la población de consumidores blancos no hispanos. Dado que los gastos para los consumidores más jóvenes son más bajos, el promedio general de los gastos para los hispanos (frente a los blancos no hispanos) es menor.
 
 
-
 (2) Factores de causa común. Incluso cuando no hay factores de confusión, un fenómeno puede realmente surgir de múltiples causas. Puede ocurrir que exista una correlación entre dos variables, sin embargo, es posible que esto no te diga nada cuando estos dos factores tienen como causa común a un tercer factor. Además, cuando la causalidad es múltiple, una causa puede ocultar a otra. 
 
 ### Consumo de chocolate y premios Nobel
@@ -825,13 +805,48 @@ Mientras que Messerli advierte en su artículo que la existencia de una correlac
 
 ["Eating Chocolate May Help You Win Nobel Prize"](http://www.cbsnews.com/8301-204_162-57530422/eating-chocolate-may-help-you-win-nobel-prize/) - CBS News
 
-["Correlation Between Country’s Chocolate Consumption And Nobel Prize Winners ‘Surprisingly Powerful,’ Says Study"](http://www.huffingtonpost.com/2012/10/10/chocolate-consumption-nobel-prize_n_1956163.html) - Associated Press
+[There's A Shocking Connection Between Eating More Chocolate And Winning The Nobel Prize](http://www.businessinsider.com/chocolate-consumption-vs-nobel-prizes-2014-4) - Business Insider
 
-["Why Chocolate Makes You Smart (or Peaceful)"](http://www.psychologytoday.com/blog/birth-babies-and-beyond/201210/why-chocolate-makes-you-smart-or-peacefu) - Psychology Today
+["Why Chocolate Makes You Smart (or Peaceful)"](https://www.psychologytoday.com/blog/birth-babies-and-beyond/201210/why-chocolate-makes-you-smart-or-peaceful) - Psychology Today
 
 ["Study links eating chocolate to winning Nobels"](http://www.usatoday.com/story/news/nation/2012/10/10/nobel-prizes-chocolate/1625403/) - USA Today
 
-Antes de darse cuenta de que el artículo era una nota sarcástica, más que un artículo de investigación, muchos artículos, blogs y medios mostraron que esta aparente correlación no tiene sentido. Estas críticas obviamente muestran que el número de Nobel para 10 millones de habitantes también está "correlacionado" con el PIB per cápita, el índice de desarrollo humano, el consumo de todo tipo de bienes de lujo, etc.
+Como describimos anteriormente, se tienen datos para varios años del consumo per capita de chocolate (en kg). 
+
+
+```r
+chocolate_nobel <- read_csv("datos/chocolate_nobel.csv")
+chocolate_nobel %>% sample_n(10) %>% knitr::kable()
+```
+
+
+
+Country           Year   Cons_per_capita   Nobel_Laureates   Population_2017   Laureates_per_10_million
+---------------  -----  ----------------  ----------------  ----------------  -------------------------
+Finland           2008              6.97                 3           5523231                      5.432
+Czech Republic    2009              2.08                 3          10618303                      2.825
+France            2009              6.41                37          64979548                      5.694
+Germany           2010             11.56                91          82114524                     11.082
+Japan             2006              2.23                22         127484450                      1.758
+Japan             2011              2.16                22         127484450                      1.758
+Denmark           2012              7.50                 9           5773551                     15.588
+Japan             2008              2.15                22         127484450                      1.758
+US                2007              5.18               335         324459463                     10.325
+Brazil            2008              2.57                 1         209288278                      0.048
+
+
+Podemos ver una gráfica del consumo de chocolate vs el número de premios nobel:
+
+
+```r
+ggplot(chocolate_nobel, aes(x=Cons_per_capita, y = Laureates_per_10_million)) +
+  geom_point() +
+  geom_smooth(method = 'lm', se = F)
+```
+
+<img src="01-introduccion_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+
+El artículo original era más una nota sarcástica, que un artículo de investigación. Muchos artículos, blogs y medios mostraron que esta aparente correlación no tiene sentido. Estas críticas muestran que el número de Nobel para 10 millones de habitantes también está "correlacionado" con el PIB per cápita, el índice de desarrollo humano, el consumo de todo tipo de bienes de lujo, etc.
 
 
 (3) Factores de interacción. Incluso cuando las variables no están correlacionadas por completo, la importancia de cada una puede depender de la otra. Por ejemplo, las plantas se benefician tanto de la luz como del agua. Pero en ausencia de cualquiera, el otro no es en absoluto beneficioso. Tales interacciones ocurren en una gran cantidad de sistemas. Por lo tanto, la inferencia efectiva sobre una variable generalmente dependerá de la consideración de otras variables. 
@@ -850,3 +865,38 @@ En el curso de __Estadística bayesiana__ se estudia la teoría básica que sirv
 El uso de la estadística computacional con el fin de hacer predicciones, aprovecha la optimización numérica para estudiar métodos que son útiles para reconocer patrones. En el curso de __Aprendizaje estadístico__ se estudian modelos lineales para reconocimiento de patrones, clasificación, y predicción, la regresión múltiple y descenso en gradiente, las redes neuronales (y deep learning), máquinas de soporte vectorial, los árboles y bosques aleatorios. En el curso de __Métodos analíticos__ se ven otras técnicas de minería de datos, tales como el análisis de market basket, local sensitivity hashing (LHS), la minería de flujos de datos, los algoritmos de recomendación y la minería de texto.
 
 Finalmente, debido a la importancia antes mencionada del uso de varias variables en los modelos estadísticos actuales, hay nuevas técnicas estadísticas para estudiar fenómenos multivariados desde una perspectiva bayesiana, como las redes bayesianas, los modelos gráficos no dirigidos, las redes markovianas, los modelos para datos faltantes, modelos de variables latentes, como los modelos de rasgos latentes (LTM), los modelos de perfiles latentes (LPM), los modelos de clases latentes (LCM), y los modelos markovianos de estados ocultos (HMM). Todas estas técnicas se ven en el curso de __Estadística multivariada__. En este curso nuestro enfoque tendrá una persepctiva frecuentista.
+
+## Tarea
+
+Recordemos que la devianza la definimos como $-2$ multiplicado por la log-verosimilitud:
+
+$$
+D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
+$$
+donde $X$ son los datos observados y $\hat{\theta}$ es el parámetro a estimar.
+
+Generalmente nos interesa disminuir la devianza. Con los datos del ejemplo de discriminación a hispanos modela la probabilidad $p_{ijk}$ de 
+
+Puedes utilizar la función `loglin` vista en clase o la función `loglm` del paquete `MASS`. Esta última te permite especificar el modelo en forma de función. Puedes ver la ayuda así:
+
+
+```r
+library(MASS)
+?loglm
+```
+
+Llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (Gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto con cuantiles utilizando la función `cut2` del paquete `Hmisc`. Por ejemplo, el modelo "G + H + E" representa el modelo de independencias, mientras que "GH + GE + HE" representa interacciones entre gasto en educación y las variables de si es hispano y su edad y la interacción entre si es hispano y su edad.
+
+
+| Modelo       | Devianza | Grados de libertad |
+|--------------|----------|--------------------|
+| G + H + E    |          |                    |
+| GH + E       |          |                    |
+| GE + H       |          |                    |
+| G + HE       |          |                    |
+| GH + GE      |          |                    |
+| GH + HP      |          |                    |
+| GE + HP      |          |                    |
+| GH + HE      |          |                    |
+| GH + GE + HE |          |                    |
+
