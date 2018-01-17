@@ -1473,17 +1473,28 @@ chocolate_nobel <span class="op">%&gt;%</span><span class="st"> </span><span cla
 <p><span class="math display">\[
 D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
 \]</span> donde <span class="math inline">\(X\)</span> son los datos observados y <span class="math inline">\(\hat{\theta}\)</span> es el parámetro a estimar.</p>
-<p>Generalmente nos interesa disminuir la devianza. Con los datos del ejemplo de discriminación a hispanos modela la probabilidad <span class="math inline">\(p_{ijk}\)</span> de</p>
+<p>Generalmente nos interesa disminuir la devianza. Con los datos del ejemplo de discriminación a hispanos modela la probabilidad <span class="math inline">\(p_{ijk}\)</span> de cada categoría <span class="math inline">\((i,j,k)\)</span> correspondiente al gasto, raza y categoría de edad, respectivamente.</p>
 <p>Puedes utilizar la función <code>loglin</code> vista en clase o la función <code>loglm</code> del paquete <code>MASS</code>. Esta última te permite especificar el modelo en forma de función. Puedes ver la ayuda así:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
 ?loglm</code></pre></div>
-<p>Llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (Gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto con cuantiles utilizando la función <code>cut2</code> del paquete <code>Hmisc</code>. Por ejemplo, el modelo “G + H + E” representa el modelo de independencias, mientras que “GH + GE + HE” representa interacciones entre gasto en educación y las variables de si es hispano y su edad y la interacción entre si es hispano y su edad.</p>
+<p>Llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (Gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto con cuantiles utilizando la función <code>cut2</code> del paquete <code>Hmisc</code>.</p>
+<p>Por ejemplo, el modelo “G + H + E” representa el modelo de independencias. Para el modelo “GH + GE + HE” hay interacciones entre:</p>
+<ul>
+<li><p>GH: gasto en discapacitados y si es hispano,</p></li>
+<li><p>GE: gasto y edad, y</p></li>
+<li><p>HE: hispano y edad.</p></li>
+</ul>
+<p>El último modelo tendría parámetros <span class="math inline">\(u\)</span>, <span class="math inline">\(a_i\)</span>, <span class="math inline">\(b_{ij}\)</span>, <span class="math inline">\(c_j\)</span>, <span class="math inline">\(d_{ik}\)</span>, <span class="math inline">\(e_{jk}\)</span>, y <span class="math inline">\(f_k\)</span> tales que</p>
+<p><span class="math display">\[
+\mbox{log}(p_{ijk}) = u + a_i + b_{ij} + c_j + d_{ik} + e_{jk} + f_k.
+\]</span></p>
 <table>
 <thead>
 <tr class="header">
 <th>Modelo</th>
 <th>Devianza</th>
 <th>Grados de libertad</th>
+<th>Número de parámetros</th>
 </tr>
 </thead>
 <tbody>
@@ -1491,9 +1502,11 @@ D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
 <td>G + H + E</td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>GH + E</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -1501,9 +1514,11 @@ D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
 <td>GE + H</td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>G + HE</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -1511,9 +1526,11 @@ D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
 <td>GH + GE</td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>GH + HP</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -1521,9 +1538,11 @@ D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
 <td>GE + HP</td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>GH + HE</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -1531,9 +1550,11 @@ D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
 <td>GH + GE + HE</td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<p>Di qué modelo es mejor, tanto en términos del ajuste de la devianza y su interpretabilidad y explica por qué. ¿Hay algún modelo que no esté en la lista que sea el más apropiado para ajustar los datos?</p>
 
 </div>
 </div>
