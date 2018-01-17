@@ -6,6 +6,12 @@
   }
 </style>
 
+<style>
+  .espacio3 {
+     margin-bottom: 3cm;
+  }
+</style>
+
 La investigación científica es un proceso de aprendizaje iterativo. Para explicar un fenómeno físico o social primero se deben especificar los objetivos de una investigación y luego probar los objetivos a través de la recopilación y el análisis de datos pertinentes. A su vez, el análisis de los datos recopilados (experimentalmente o mediante observación) generalmente sugerirá una explicación modificada del fenómeno.
 
 A lo largo de este proceso iterativo, generalmente se añaden o se excluyen variables del análisis. Por lo tanto, la complejidad de la mayoría de los fenómenos requieren que el investigador recolecte muchas variables de las observaciones. En este curso veremos una introducción a los modelos estadísticos que son _multivariados_, es decir, modelos en los cuales los datos corresponden a mediciones en _muchas variables_.
@@ -380,7 +386,7 @@ Es posible enumerar todas las restricciones, aunque en la mayoría de los modelo
 
 (d) $p_{ijk} = P(X^{(1)}=i, X^{(3)}=k) \cdot P(X^{(2)}=j)$
 
-<p class="espacio">
+<p class="espacio3">
 </p>
 </div>
 
@@ -412,7 +418,7 @@ $$
 
 (d) 45
 
-<p class="espacio">
+<p class="espacio3">
 </p>
 </div>
 
@@ -489,7 +495,7 @@ $$
 
 (d) $i$ y $k$ son independientes dado $j$.
 
-<p class="espacio">
+<p class="espacio3">
 </p>
 </div>
 
@@ -622,7 +628,7 @@ ggplot(media_por_etnia, aes(x = Etnia, y = Media_etnia)) +
 
 (b) No
 
-<p class="espacio">
+<p class="espacio3">
 </p>
 </div>
 
