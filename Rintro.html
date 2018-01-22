@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Estadística Aplicada III</title>
+  <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2017 (ITAM)">
+  <meta name="generator" content="bookdown 0.5.15 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Estadística Aplicada III" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas y material para el curso de Estadística Aplicada III, 2017 (ITAM)" />
+  <meta name="github-repo" content="andreuboada/est-aplicada-3-2018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Estadística Aplicada III" />
+  
+  <meta name="twitter:description" content="Notas y material para el curso de Estadística Aplicada III, 2017 (ITAM)" />
+  
+
+<meta name="author" content="Andreu Boada de Atela">
+
+
+<meta name="date" content="2018-01-22">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="referencias.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="toc.css" type="text/css" />
+<link rel="stylesheet" href="font-awesome.min.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística Aplicada III</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Temario y referencias</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#evaluacion"><i class="fa fa-check"></i>Evaluación</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-r-y-rstudio"><i class="fa fa-check"></i>Software: R y Rstudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#referencia-principal"><i class="fa fa-check"></i>Referencia principal</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#otras-referencias"><i class="fa fa-check"></i>Otras referencias</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tareas"><i class="fa fa-check"></i>Tareas</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#por-que-un-analisis-multivariado"><i class="fa fa-check"></i><b>1.1</b> ¿Por qué un análisis multivariado?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#la-paradoja-de-simpson"><i class="fa fa-check"></i><b>1.2</b> La paradoja de Simpson</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#modelos-log-lineales"><i class="fa fa-check"></i><b>1.3</b> Modelos log-lineales</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#interpretacion-de-parametros"><i class="fa fa-check"></i><b>1.4</b> Interpretación de parámetros</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#ejemplo-dos-monedas"><i class="fa fa-check"></i><b>1.4.1</b> Ejemplo: dos monedas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#otros-ejemplos"><i class="fa fa-check"></i><b>1.5</b> Otros ejemplos</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#discriminacion-de-residentes-hispanos-con-discapacidades"><i class="fa fa-check"></i><b>1.5.1</b> Discriminación de residentes hispanos con discapacidades</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#consumo-de-chocolate-y-premios-nobel"><i class="fa fa-check"></i><b>1.5.2</b> Consumo de chocolate y premios Nobel</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#tarea"><i class="fa fa-check"></i><b>1.6</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Rintro.html"><a href="Rintro.html"><i class="fa fa-check"></i><b>2</b> Temas selectos de R</a><ul>
+<li class="chapter" data-level="2.1" data-path="Rintro.html"><a href="Rintro.html#que-ventajas-tiene-r"><i class="fa fa-check"></i><b>2.1</b> ¿Qué ventajas tiene R?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="Rintro.html"><a href="Rintro.html#r-es-gratuito-y-de-codigo-abierto"><i class="fa fa-check"></i><b>2.1.1</b> R es gratuito y de código abierto</a></li>
+<li class="chapter" data-level="2.1.2" data-path="Rintro.html"><a href="Rintro.html#r-tiene-una-comunidad-comprometida"><i class="fa fa-check"></i><b>2.1.2</b> R tiene una comunidad comprometida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="Rintro.html"><a href="Rintro.html#flujo-basico-de-trabajo-para-el-analisis-de-datos-en-r."><i class="fa fa-check"></i><b>2.2</b> Flujo básico de trabajo para el análisis de datos en R.</a></li>
+<li class="chapter" data-level="2.3" data-path="Rintro.html"><a href="Rintro.html#introduccion-a-r-como-lenguaje-de-programacion-y-la-plataforma-interactiva-de-rstudio."><i class="fa fa-check"></i><b>2.3</b> Introducción a R como lenguaje de programación, y la plataforma interactiva de RStudio.</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="Rintro.html"><a href="Rintro.html#como-entender-r"><i class="fa fa-check"></i><b>2.3.1</b> ¿Cómo entender R?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="Rintro.html"><a href="Rintro.html#por-que-r"><i class="fa fa-check"></i><b>2.3.2</b> ¿Por qué R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="Rintro.html"><a href="Rintro.html#estructuras-de-datos"><i class="fa fa-check"></i><b>2.4</b> Estructuras de datos</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="Rintro.html"><a href="Rintro.html#vectores"><i class="fa fa-check"></i><b>2.4.1</b> Vectores</a></li>
+<li class="chapter" data-level="2.4.2" data-path="Rintro.html"><a href="Rintro.html#data-frames"><i class="fa fa-check"></i><b>2.4.2</b> Data Frames</a></li>
+<li class="chapter" data-level="2.4.3" data-path="Rintro.html"><a href="Rintro.html#listas"><i class="fa fa-check"></i><b>2.4.3</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="Rintro.html"><a href="Rintro.html#r-markdown"><i class="fa fa-check"></i><b>2.5</b> R Markdown</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="Rintro.html"><a href="Rintro.html#que-es-r-markdown"><i class="fa fa-check"></i><b>2.5.1</b> ¿Qué es R Markdown?</a></li>
+<li class="chapter" data-level="2.5.2" data-path="Rintro.html"><a href="Rintro.html#estructura-basica-de-r-markdown"><i class="fa fa-check"></i><b>2.5.2</b> Estructura básica de R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="Rintro.html"><a href="Rintro.html#proyectos-de-rstudio"><i class="fa fa-check"></i><b>2.6</b> Proyectos de RStudio</a></li>
+<li class="chapter" data-level="2.7" data-path="Rintro.html"><a href="Rintro.html#otros-aspectos-importantes-de-r"><i class="fa fa-check"></i><b>2.7</b> Otros aspectos importantes de R</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="Rintro.html"><a href="Rintro.html#funciones"><i class="fa fa-check"></i><b>2.7.1</b> Funciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estadística Aplicada III</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Rintro" class="section level1">
+<h1><span class="header-section-number">Clase 2</span> Temas selectos de R</h1>
+<style>
+  .espacio {
+     margin-bottom: 1cm;
+  }
+</style>
+<style>
+  .espacio3 {
+     margin-bottom: 3cm;
+  }
+</style>
+<p>El lenguaje de programación <a href="https://cran.r-project.org">R</a> ha surgido como un avance en el desarrollo de software para análisis estadítico. Hace unos años era común el uso de productos de software proprietario, tales como <a href="https://www.aptech.com/">GAUSS</a>, <a href="https://estima.com/ratsmain.shtml">RATS</a>, <a href="http://www.eviews.com/home.html">EVIEWS</a>, <a href="https://www.ibm.com/products/spss-statistics">SPSS</a>, <a href="https://www.sas.com/es_mx/home.html">SAS</a>, <a href="https://www.mathworks.com/products/matlab.html">Matlab</a>, <a href="http://www.minitab.com/en-us/products/minitab/">Minitab</a>, <a href="https://www.stata.com/">Stata</a> y software que en principio ni siquiera es apropiado para el análisis de datos, como Microsoft Excel. Estos programas generalmente son demasiado costosos y tienen un rendimiento bajo. Si es necesario hacer un análisis más complejo, entonces los archivos se vuelven demasiado grandes y el todo el proceso se vuelve infactible.</p>
+<div id="que-ventajas-tiene-r" class="section level2">
+<h2><span class="header-section-number">2.1</span> ¿Qué ventajas tiene R?</h2>
+<p>R es la herramienta más sobresaliente para la estadística, el análisis de datos y el aprendizaje estadístico. Es más que un paquete estadístico; es un <em>lenguaje de programación</em>, por lo que puede crear sus propios objetos, funciones y paquetes.</p>
+<p>Hablando de paquetes, hay más de 12,000 innovadores paquetes aportados por los usuarios, y que están disponibles en <a href="https://cran.r-project.org/">CRAN</a> (The Comprehensive R Archive Network), eso sin mencionar <a href="https://www.bioconductor.org/">Bioconductor</a>. Para tener una idea de qué paquetes hay disponibles, puedes leer posts en <a href="https://www.r-bloggers.com/">R-bloggers</a> y ver el <a href="https://www.rstudio.com/products/shiny/shiny-user-showcase/"></a>. Muchos paquetes son enviados por miembros prominentes de sus respectivos campos.</p>
+<p>Al igual que todos los programas, los programas de R documentan explícitamente los pasos de su análisis y esto facilita la reproducibilidad del análisis estadístico. Además, provee de herramientas para probar rápidamente muchas ideas y corregir fácilmente los problemas que puedan surgir.</p>
+<p>R puedes usarlo fácilmente en cualquier lugar. Es independiente de la plataforma, por lo que puede usarlo en cualquier sistema operativo. Y es gratis, por lo que puede usarlo en cualquier empleador sin tener que persuadir a su jefe para comprar una licencia.</p>
+<div id="r-es-gratuito-y-de-codigo-abierto" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> R es gratuito y de código abierto</h3>
+<p>R está disponible bajo una licencia de código abierto, lo que significa que cualquiera puede descargar y modificar el código. Esta libertad a menudo se conoce como la de software libre (“free as in speech”). R también está disponible de manera gratuita (“free as in beer”). En términos prácticos, esto significa que podemos descargar y usar R gratis.</p>
+<p>Otro beneficio, aunque un poco más indirecto, es que cualquiera puede acceder al código fuente, modificarlo y mejorarlo. Como resultado, muchos programadores excelentes han contribuido con mejoras y correcciones al código de R. Por esta razón, R es muy <em>estable</em> y <em>confiable</em>.</p>
+<p>Cualquier libertad también tiene asociadas ciertas obligaciones. En el caso de R, estas obligaciones se describen en las condiciones de la licencia bajo la cual se publica: Licencia Pública General de GNU (GPL), Versión 2. Estas obligaciones te pertienen si solamente haces <em>uso</em> de R. Sin embargo, si haces cambios en su código fuente R y lo <em>redistribuyes</em>, entonces estos cambios se deben poner a disposición de todos los usuarios.</p>
+</div>
+<div id="r-tiene-una-comunidad-comprometida" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> R tiene una comunidad comprometida</h3>
+<p>Muchas personas que usan R eventualmente comienzan a ayudar a los nuevos usuarios y proponen el uso de R en sus lugares de trabajo y círculos profesionales. Por ejemplo, si tienes dudas sobre algún aspecto de R, podrás encontrar ayuda en <a href="http://www.stackoverflow.com/questions/tagged/r">Stack Overflow</a>. <a href="https://www.meetup.com/rladiescdmx/">R-Ladies CDMX</a> es parte de <a href="https://rladies.org/">R-Ladies Global</a>, una organización mundial que busca generar una comunidad fuerte para compartir dudas, habilidades y apoyo sobre #RStats en una comunidad con perspectiva de género.</p>
+</div>
+</div>
+<div id="flujo-basico-de-trabajo-para-el-analisis-de-datos-en-r." class="section level2">
+<h2><span class="header-section-number">2.2</span> Flujo básico de trabajo para el análisis de datos en R.</h2>
+<p>En el análisis de datos nos interesan técnicas cuantitativas cómo: recolectar, organizar, entender, interpretar y extraer información de colecciones de datos predominantemente numéricos. Estas tareas se resumen en el proceso de análisis del siguiente diagrama:</p>
+<p><img src="figuras/data-science.png" width="451" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+<p>Primero debe <strong>importar</strong> los datos en R. Esto generalmente significa llevar los datos almacenados en un archivo, una base de datos, o uan Web API, a un <strong>data frame</strong> de R.</p>
+<p><strong>Limpiar</strong> y <strong>transformar</strong> los datos es necesario, para que la forma en que se almacenan los datos coincida con la semántica de los datos. En términos generales, cada columna debe ser una variable y cada rengón una observación.</p>
+<p>La <strong>visualización</strong> es una actividad fundamentalmente humana. Una buena visualización te puede mostrar cosas que no esperabas y puede ayudarte a plantear nuevas preguntas acerca de los datos. Una buena visualización también puede ayudar a determinar si se está haciendo una pregunta equivocada sobre los datos, o si es encesario recolectar más datos, o bien, obtener datos de fuentes distintas. Las visualizaciones pueden sorprenderte, pero requieren de un ser humano para interpretarlas.</p>
+<p>Por otro lado, los <strong>modelos</strong> son una herramienta para complementar las visualizaciones. Los modelos los utilizamos como un instrumento matemático y computacional para responder preguntas precisas acerca de los datos.</p>
+<p>Por último, la <strong>comunicación</strong> de los resultados es una parte absolutamente crítica para cualquier proyecto de análisis de datos.</p>
+</div>
+<div id="introduccion-a-r-como-lenguaje-de-programacion-y-la-plataforma-interactiva-de-rstudio." class="section level2">
+<h2><span class="header-section-number">2.3</span> Introducción a R como lenguaje de programación, y la plataforma interactiva de RStudio.</h2>
+<hr />
+<blockquote>
+<p>Notas basadas en el material de <a href="https://github.com/tereom">Teresa Ortiz</a> y <a href="https://github.com/songeo">Sonia Mendizábal</a> y en el libro “R for Data Science” escrito por Hadley Wickham y Garret Grolemund <span class="citation">(Wickham and Grolemund <a href="#ref-wickham2016r">2016</a>)</span>.</p>
+</blockquote>
+<hr />
+<p>Hay cuatro cosas que necesitan para ejecutar el código en este taller: R, RStudio, una colección de paquetes de R, llamada <strong>tidyverse</strong>, y otros paquetes que vamos a ir instalando progresivamente. Los paquetes son la unidad fundamental del código reproducible en R. Incluyen funciones que se pueden utilizar en un ámbito general, su documentación que describe cómo usarlas y datos de ejemplo con código de ejemplo como ayuda para los usuarios.</p>
+<div id="como-entender-r" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> ¿Cómo entender R?</h3>
+<ul>
+<li><p>Hay una sesión de R corriendo. La consola de R es la interfaz entre R y nosotros.</p></li>
+<li><p>En la sesión hay objetos. Todo en R es un objeto: vectores, tablas, funciones, etc.</p></li>
+<li><p>Operamos aplicando funciones a los objetos y creando nuevos objetos.</p></li>
+</ul>
+</div>
+<div id="por-que-r" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> ¿Por qué R?</h3>
+<ul>
+<li><p>R funciona en casi todas las plataformas (Mac, Windows, Linux e incluso en Playstation 3).</p></li>
+<li><p>R promueve la investigación reproducible.</p></li>
+<li><p>R está actualizado gracias a que tiene una activa comunidad.</p></li>
+<li><p>R se puede combinar con otras herramientas. R permite integrar otros lenguajes (C/C++, Java, Julia, Python) y puede interactuar con muchas fuentes de datos: bases de datos compatibles con ODBC y paquetes estadísticos.</p></li>
+</ul>
+<div id="descargar-r-version-3.4.3" class="section level4">
+<h4><span class="header-section-number">2.3.2.1</span> Descargar R: versión 3.4.3</h4>
+<p>Sigue las instrucciones del instalador:</p>
+<ul>
+<li><p>OSX: <a href="http://cran.stat.ucla.edu/bin/macosx/R-3.4.3.pkg" class="uri">http://cran.stat.ucla.edu/bin/macosx/R-3.4.3.pkg</a></p></li>
+<li><p>Windows: <a href="http://cran.stat.ucla.edu/bin/windows/base/R-3.4.3-win.exe" class="uri">http://cran.stat.ucla.edu/bin/windows/base/R-3.4.3-win.exe</a></p></li>
+</ul>
+</div>
+<div id="descargar-rstudio-version-1.1.414" class="section level4">
+<h4><span class="header-section-number">2.3.2.2</span> Descargar RStudio: versión 1.1.414</h4>
+<ul>
+<li><p>OSX: <a href="https://download1.rstudio.org/RStudio-1.1.414.dmg" class="uri">https://download1.rstudio.org/RStudio-1.1.414.dmg</a></p></li>
+<li><p>Windows: <a href="https://download1.rstudio.org/RStudio-1.1.414.exe" class="uri">https://download1.rstudio.org/RStudio-1.1.414.exe</a></p></li>
+</ul>
+<p>RStudio es libre y gratis. Es un ambiente de desarrollo integrado para R: incluye una consola, un editor de texto y un conjunto de herramientas para administrar el espacio de trabajo cuando se utiliza R.</p>
+<p><img src="figuras/rstudio-console-descr.png" width="1139" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+<p>Algunos <em>shortcuts</em> útiles en RStudio son:</p>
+<p><strong>En el editor</strong></p>
+<ul>
+<li>command/ctrl + enter: enviar código a la consola<br />
+</li>
+<li>ctrl + 2: mover el cursor a la consola</li>
+</ul>
+<p><strong>En la consola</strong></p>
+<ul>
+<li>flecha hacia arriba: recuperar comandos pasados<br />
+</li>
+<li>ctrl + flecha hacia arriba: búsqueda en los comandos<br />
+</li>
+<li>ctrl + 1: mover el cursor al editor</li>
+</ul>
+<p><strong>Más</strong></p>
+<ul>
+<li>alt + shift + k: muestra los <em>shortcuts</em> disponibles.</li>
+</ul>
+<p class="espacio">
+</p>
+<p>Para que el código sea <strong>reproducible</strong> es importante que RStudio únicamente guarde lo relevante para hacer los cálculos, es decir, los scripts y <em>no los cálculos en sí</em>. Con tus scripts de R (y los datos), siempre podemos volver a crear las variables de ambiente. Sin embargo, es casi imposible recuperar un script únicamente a partir de tus variables de ambiente. Por lo tanto, se recomienda ampliamente configurar RStudio para que jamás guarde el ambiente en memoria.</p>
+<p><img src="figuras/rstudio-workspace.png" width="482" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+</div>
+<div id="paquetes-de-r" class="section level4">
+<h4><span class="header-section-number">2.3.2.3</span> Paquetes de R</h4>
+<p>Una de las ventajas de R es la gran comunidad que aporta al desarrollo por medio de paquetes que dan funcionalidad adicional. Esta es la mejor manera de usar R para análisis de datos.</p>
+<p>Existen dos formas de instalar paquetes:</p>
+<ul>
+<li>Desde RStudio:</li>
+</ul>
+<p><img src="figuras/install_packages.png" width="690" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+<ul>
+<li>Desde la consola:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</code></pre></div>
+<p>Una vez instalados los paquetes, se cargan a la sesión de R mediante <code>library</code>. Por ejemplo, para cargar el paquete <code>readr</code> que instalamos anteriormente, hacemos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;tidyverse&#39;</span>)
+<span class="kw">print</span>(read_csv)</code></pre></div>
+<pre><code>## function (file, col_names = TRUE, col_types = NULL, locale = default_locale(), 
+##     na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE, quote = &quot;\&quot;&quot;, comment = &quot;&quot;, 
+##     trim_ws = TRUE, skip = 0, n_max = Inf, guess_max = min(1000, 
+##         n_max), progress = show_progress()) 
+## {
+##     tokenizer &lt;- tokenizer_csv(na = na, quoted_na = TRUE, quote = quote, 
+##         comment = comment, trim_ws = trim_ws)
+##     read_delimited(file, tokenizer, col_names = col_names, col_types = col_types, 
+##         locale = locale, skip = skip, comment = comment, n_max = n_max, 
+##         guess_max = guess_max, progress = progress)
+## }
+## &lt;environment: namespace:readr&gt;</code></pre>
+<p>Como el paquete <code>readr</code> está cargado en la sesión podemos llamar a la función <code>read_csv</code> que se usará más adelante.</p>
+<p><strong>Importante</strong>: Los paquetes se instalan una vez únicamente después de descargar una nueva versión de R. Las librerías se cargan en cada sesión de R nueva.</p>
+<p><br></p>
+<p><br></p>
+</div>
+<div id="ayuda-en-r" class="section level4">
+<h4><span class="header-section-number">2.3.2.4</span> Ayuda en R</h4>
+<p>Existen diferentes formas de pedir ayuda en R.</p>
+<ul>
+<li><p><code>help.start()</code>: ayuda en general</p></li>
+<li><p><code>help(fun)</code> o <code>?fun</code>: ayuda sobre la función <em>fun</em></p></li>
+<li><p><code>apropos(&quot;fun&quot;)</code>: lista de funciones que contiene la palabra <em>fun</em></p></li>
+<li><p><code>example(fun)</code>: muestra un ejemplo de la función <em>fun</em></p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(read_csv)
+?read_csv2</code></pre></div>
+<p><br></p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="estructuras-de-datos" class="section level2">
+<h2><span class="header-section-number">2.4</span> Estructuras de datos</h2>
+<p>En R se puede trabajar con distintas estructuras de datos, algunas son de una sola dimensión y otras permiten más, como indica el siguiente diagrama:</p>
+<p><img src="figuras/data-estructure.png" width="313" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+<div id="vectores" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Vectores</h3>
+<p>Los vectores son estructuras de datos de una dimensión. Un vector se define con la función <code>c()</code>, que concatena diferentes elementos del mismo tipo, esto determina el tipo del vector.</p>
+<p><strong>Nota:</strong> En R, la asignación de un nombre al vector, o en general a cualquier objeto, se realiza con el símbolo <code>&lt;-</code>. Se recomienda usar el shortcut <strong>alt -</strong> genera <code>&lt;-</code>.</p>
+<p><br></p>
+<p>Los vectores en R pueden ser de diferentes tipos o clases, a continuación se presentan algunos casos. En R, la clase de cada vector se extrae con la función <code>class</code>()</p>
+<ul>
+<li><strong>Vectores numéricos</strong>:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="fl">2.5</span>,<span class="dv">3</span>,<span class="fl">4.5</span>,<span class="dv">5</span>,<span class="fl">6.9</span>)
+a</code></pre></div>
+<pre><code>## [1] 1.0 2.5 3.0 4.5 5.0 6.9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># clase del vector</span>
+<span class="kw">class</span>(a)</code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<ul>
+<li><strong>Vectores lógicos</strong>:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bool &lt;-<span class="st"> </span><span class="kw">c</span>(T, F, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)
+bool</code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># clase del vector</span>
+<span class="kw">class</span>(bool)</code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<ul>
+<li><strong>Vectores de caracteres</strong>:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fruits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;pineapple&quot;</span>, <span class="st">&quot;lemon&quot;</span>, <span class="st">&quot;kiwi&quot;</span>)
+fruits</code></pre></div>
+<pre><code>## [1] &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(fruits)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>Para la manipulación de caracteres es recomendable el paquete <strong>stringr</strong> que permite realizar operaciones sobre este tipo de elementos. Más adelante se presenta un ejemplo.</p>
+<p><br></p>
+<p>La <strong>selección de elementos</strong> de un vector se realiza con <strong><code>[ ]</code></strong> para indicar la posición. A diferencia de otros lenguajes de programación las posiciones en R incian en 1.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># elemento en la posición 1</span>
+fruits[<span class="dv">1</span>]</code></pre></div>
+<pre><code>## [1] &quot;apple&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># elemento en la posición 1 y 5</span>
+fruits[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>)]</code></pre></div>
+<pre><code>## [1] &quot;apple&quot; &quot;lemon&quot;</code></pre>
+<p><br></p>
+<p>En R es posible extraer un valor del vector indexándolo con posiciones negativas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># omitir el elemento en la primera posición</span>
+fruits[<span class="op">-</span><span class="dv">1</span>]</code></pre></div>
+<pre><code>## [1] &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
+<p><br></p>
+<p>Una característica particular de vectores en R, es que cada elemento puede ser nombrado. Para hacer esto se usa la función <code>names()</code>. Por ejemplo, al vector <em>fruits</em> agregemos el nombre en español de la fruta para como el nombre de cada elemento.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(fruits) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;manzana&#39;</span>, <span class="st">&#39;platano&#39;</span>, <span class="st">&#39;naranja&#39;</span>, <span class="st">&#39;piña&#39;</span>, <span class="st">&#39;limón&#39;, &#39;</span>kiwi<span class="st">&#39;)</span>
+<span class="st">fruits</span></code></pre></div>
+<pre><code>##     manzana     platano     naranja        piña       limón        kiwi 
+##     &quot;apple&quot;    &quot;banana&quot;    &quot;orange&quot; &quot;pineapple&quot;     &quot;lemon&quot;      &quot;kiwi&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># cada elemento tiene un nombre asignado</span>
+fruits[<span class="dv">5</span>]</code></pre></div>
+<pre><code>##   limón 
+## &quot;lemon&quot;</code></pre>
+<p><br></p>
+<p>Para eliminar los nombres asignados a cada elemento, se asigna <code>NULL</code> a los nombres del vector:</p>
+<pre><code>## NULL</code></pre>
+<pre><code>## [1] &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
+<p><br></p>
+<p><br></p>
+<p>Los tipos que pueden tener los vectores se muestran en la siguiente figura.</p>
+<p class="espacio">
+</p>
+<p><img src="figuras/data-structures-overview.png" width="406" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+<p>Veamos que regresan los siguientes comandos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="ot">TRUE</span>)
+<span class="kw">typeof</span>(1L)
+<span class="kw">typeof</span>(<span class="fl">1.5</span>)
+<span class="kw">typeof</span>(<span class="st">&quot;a&quot;</span>)</code></pre></div>
+<p>Cada vector tiene 3 propiedades:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></code></pre></div>
+<ul>
+<li>Tipo</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(x)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<ul>
+<li>Longitud</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(x)</code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<ul>
+<li>Atributos</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(x)</code></pre></div>
+<pre><code>## NULL</code></pre>
+<p>Existe la función <code>is.vector(x)</code> para determinar si un objeto es un vector:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.vector</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p><br></p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>¿Qué regresa <code>ìs.vector(factor(1:3))</code>?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>TRUE</p></li>
+<li><p>FALSE</p></li>
+<li><p>NA</p></li>
+<li><p>Ninguna de las anteriores</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<p><br></p>
+<p><strong>Ejemplo</strong></p>
+<p>Del vector de seis frutas diferentes llamado <em>fruits</em>, localiza únicamente las frutas que tengan la letra <strong>w</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Cargamos la librería</span>
+<span class="kw">library</span>(stringr)
+fruits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;pineapple&quot;</span>, <span class="st">&quot;lemon&quot;</span>, <span class="st">&quot;kiwi&quot;</span>)
+fruits</code></pre></div>
+<pre><code>## [1] &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
+<p>Esto es posible con la función <code>str_detect()</code>, que regresa un vector booleano para cada elemento del vector donde encontró el patron <strong>w</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_detect</span>(fruits, <span class="dt">pattern =</span> <span class="st">&#39;w&#39;</span>)</code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE  TRUE</code></pre>
+<p>Ahora, seleccionamos únicamente los elementos del vector que tienen la letra <strong>w</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Selecciona el elemento con valor TRUE: kiwi</span>
+fruits[<span class="kw">str_detect</span>(fruits, <span class="dt">pattern =</span> <span class="st">&#39;w&#39;</span>)]</code></pre></div>
+<pre><code>## [1] &quot;kiwi&quot;</code></pre>
+<p><br></p>
+<div id="operaciones-de-vectores" class="section level4">
+<h4><span class="header-section-number">2.4.1.1</span> Operaciones de vectores</h4>
+<p>En R las <strong>operaciones de vectores</strong> son componente a componente.</p>
+<ul>
+<li>Sumas, multiplicaciones y potencias:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Suma del vector longitud 6 y un vector longitud 1</span>
+a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">3</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">6.9</span>)
+b &lt;-<span class="st"> </span><span class="dv">1</span>
+a <span class="op">+</span><span class="st"> </span>b </code></pre></div>
+<pre><code>## [1] 2.0 3.5 4.0 5.5 6.0 7.9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Multiplicaciones componente a componente misma longitud</span>
+a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">3</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">6.9</span>)
+a<span class="op">*</span>a</code></pre></div>
+<pre><code>## [1]  1.00  6.25  9.00 20.25 25.00 47.61</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Multiplicaciones y potencias</span>
+a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">3</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">6.9</span>)
+c &lt;-<span class="st"> </span>(a<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>)<span class="op">*</span><span class="dv">3</span>
+c</code></pre></div>
+<pre><code>## [1]  18.00  33.75  42.00  75.75  90.00 157.83</code></pre>
+<p><br></p>
+<ul>
+<li>Comparaciones: En este tipo de operación se obtiene un vector lógico dependiendo si la condición se cumple o no.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Comparar el vector dado un valor específico</span>
+a <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span> </code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[a <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>] <span class="co"># únicamente elementos que cumple la condicion de ser mayores a 3</span></code></pre></div>
+<pre><code>## [1] 4.5 5.0 6.9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fruits <span class="op">!=</span><span class="st"> &#39;apple&#39;</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fruits[fruits <span class="op">!=</span><span class="st"> &#39;apple&#39;</span>] <span class="co"># únicamente elementos que no son apple</span></code></pre></div>
+<pre><code>## [1] &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Comparar el vector dado otro vector de la misma dimensión</span>
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)
+a <span class="op">==</span><span class="st"> </span>x</code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[a <span class="op">==</span><span class="st"> </span>x] <span class="co"># unicamente los elementos iguales y en la misma posición entre a y x</span></code></pre></div>
+<pre><code>## [1] 1 3 5</code></pre>
+<p><br></p>
+<ul>
+<li>Funciones predeterminadas:</li>
+</ul>
+<p>Algunas funciones predeterminadas del paquete básico de R son muy útiles para la manipulación de vectores y el análisis de datos. A continuación se enlistan algunasde las más comúnes:</p>
+<ul>
+<li><p><code>length</code>: número de elementos en el vector</p></li>
+<li><p><code>class</code>: clase del vector</p></li>
+<li><p><code>summary</code>: resumen de información del vector</p></li>
+<li><p><code>unique</code>: valores unicos del vector</p></li>
+<li><p><code>table</code>: tabla de frecuencias para cada elemento del vector</p></li>
+<li><p><code>sum</code>: suma de los elementos del vector</p></li>
+<li><p><code>mean</code>: promedio de elementos del vector</p></li>
+<li><p><code>sd</code>: desviación estándar de los elementos del vector</p></li>
+<li><p><code>cumsum</code>: suma acumulada de elemento anterior del vector</p></li>
+</ul>
+<p><br></p>
+<p><br></p>
+<p><img src="figuras/manicule.jpg" /> Aplica las funciones comúnes enlistadas antes en el vector <code>x &lt;- c(1, 2, 3, 4, 5, 6)</code></p>
+<p><br></p>
+<p><br></p>
+</div>
+<div id="otros-tipos-de-vectores" class="section level4">
+<h4><span class="header-section-number">2.4.1.2</span> Otros tipos de vectores:</h4>
+<p>Existen tipos de vectores con características importantes:</p>
+<ul>
+<li><strong>Secuencias</strong>: los vectores de secuencias se pueden crear con la función <code>seq()</code> o con <code>:</code>, de la siguiente forma:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># secuecia de 1 al 10 </span>
+<span class="dv">1</span><span class="op">:</span><span class="dv">10</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># secuecia de pares de 0 al 10 </span>
+<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1]  0  2  4  6  8 10</code></pre>
+<p><br></p>
+<ul>
+<li><strong>Vectores de fechas</strong>: se pueden hacer operaciones y algunas funciones definidas de fechas. El paquete <em>lubridate</em> permite manejar fechas con mayor facilidad.</li>
+</ul>
+<p>Se incia la secuencia el 08 de agosto de 2016 y se asigna la clase de fecha con la función <code>as.Date()</code>. Se generan en total 10 fechas <code>length.out = 10</code> y con una distancua semanal <code>by=&quot;1 week&quot;</code>, es decir, se tiene la fecha de 10 semanas consecutivas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lubridate)
+tenweeks &lt;-<span class="st"> </span><span class="kw">seq</span>( <span class="kw">as.Date</span>(<span class="st">&quot;2016-08-08&quot;</span>), <span class="dt">length.out =</span> <span class="dv">10</span>,  <span class="dt">by=</span><span class="st">&quot;1 week&quot;</span>)
+tenweeks</code></pre></div>
+<pre><code>##  [1] &quot;2016-08-08&quot; &quot;2016-08-15&quot; &quot;2016-08-22&quot; &quot;2016-08-29&quot; &quot;2016-09-05&quot;
+##  [6] &quot;2016-09-12&quot; &quot;2016-09-19&quot; &quot;2016-09-26&quot; &quot;2016-10-03&quot; &quot;2016-10-10&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(tenweeks)</code></pre></div>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<p>Se pueden hacer algunas operaciones como se ejemplifica en el siguiente código.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Aumenta un día a cada fecha</span>
+tenweeks <span class="op">+</span><span class="st"> </span><span class="dv">1</span></code></pre></div>
+<pre><code>##  [1] &quot;2016-08-09&quot; &quot;2016-08-16&quot; &quot;2016-08-23&quot; &quot;2016-08-30&quot; &quot;2016-09-06&quot;
+##  [6] &quot;2016-09-13&quot; &quot;2016-09-20&quot; &quot;2016-09-27&quot; &quot;2016-10-04&quot; &quot;2016-10-11&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Aumenta un día a cada fecha</span>
+tenweeks </code></pre></div>
+<pre><code>##  [1] &quot;2016-08-08&quot; &quot;2016-08-15&quot; &quot;2016-08-22&quot; &quot;2016-08-29&quot; &quot;2016-09-05&quot;
+##  [6] &quot;2016-09-12&quot; &quot;2016-09-19&quot; &quot;2016-09-26&quot; &quot;2016-10-03&quot; &quot;2016-10-10&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">weekdays</span>(tenweeks) <span class="co"># Día de la semana de cada fecha</span></code></pre></div>
+<pre><code>##  [1] &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot;
+##  [8] &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot;</code></pre>
+<p><br></p>
+<ul>
+<li><strong>Vectores de factores</strong>: este tipo de vector es usado comúnmente para variables categóricas. En R existe la clase <strong>factor</strong> que se asigna con la función homónima <code>factor()</code> o <code>as.factor()</code>.</li>
+</ul>
+<p>Un vector de factores tiene dos elementos importantes, <em>levels</em> o niveles y <em>labels</em> o etiquetas. Los niveles determinan las categorías únicas del vector y pueden ser etiquetadas, como se muestra en le siguiente código para un vector de frutas.</p>
+<p>En este ejemplo se tienen valores de frutas repetidos, se asigna un orden de niveles específicos y etiquetas específicas para cada nivel.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fruits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;banana&quot;</span>, <span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;pineapple&quot;</span>, <span class="st">&quot;lemon&quot;</span>, <span class="st">&quot;kiwi&quot;</span>, <span class="st">&quot;apple&quot;</span>)
+<span class="co"># Vector de caracteres a vector de factores</span>
+fruits.fac &lt;-<span class="st"> </span><span class="kw">factor</span>(fruits, 
+                   <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;pineapple&quot;</span>, <span class="st">&quot;lemon&quot;</span>, <span class="st">&quot;kiwi&quot;</span>),
+                   <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;manzana&#39;</span>, <span class="st">&#39;platano&#39;</span>, <span class="st">&#39;naranja&#39;</span>, <span class="st">&#39;piña&#39;</span>, <span class="st">&#39;limón&#39;, &#39;</span>kiwi<span class="st">&#39;)</span>
+<span class="st">)</span>
+<span class="st">fruits.fac</span></code></pre></div>
+<pre><code>## [1] platano manzana platano naranja piña    limón   kiwi    manzana
+## Levels: manzana platano naranja piña limón kiwi</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Clase</span>
+<span class="kw">class</span>(fruits.fac)</code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Niveles etiquetados</span>
+<span class="kw">levels</span>(fruits.fac)</code></pre></div>
+<pre><code>## [1] &quot;manzana&quot; &quot;platano&quot; &quot;naranja&quot; &quot;piña&quot;    &quot;limón&quot;   &quot;kiwi&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Niveles únicos</span>
+<span class="kw">as.numeric</span>(fruits.fac)</code></pre></div>
+<pre><code>## [1] 2 1 2 3 4 5 6 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Agregar un nuevo valor</span>
+fruits.fac[<span class="dv">7</span>] &lt;-<span class="st"> &#39;melon&#39;</span></code></pre></div>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7, value = &quot;melon&quot;): invalid factor level,
+## NA generated</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fruits.fac</code></pre></div>
+<pre><code>## [1] platano manzana platano naranja piña    limón   &lt;NA&gt;    manzana
+## Levels: manzana platano naranja piña limón kiwi</code></pre>
+<p><br></p>
+<p><strong>Importante:</strong> En R los vectores no pueden combinar diferentes tipos de elementos. El tipo de elementos es lo que define la clase del vector. Es por esto que en el ejemplo, al sustituir la posición 7 por <em>melon</em> se obtiene un <code>NA</code>, melón no está incluído en los niveles definidos del vector.</p>
+<p>Existen también los <strong>factores ordenados</strong>. Por ejemplo, consideremos los datos de flores de iris de Fisher:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(forcats)
+iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>145</td>
+<td align="right">6.7</td>
+<td align="right">3.3</td>
+<td align="right">5.7</td>
+<td align="right">2.5</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="even">
+<td>62</td>
+<td align="right">5.9</td>
+<td align="right">3.0</td>
+<td align="right">4.2</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="odd">
+<td>40</td>
+<td align="right">5.1</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td>26</td>
+<td align="right">5.0</td>
+<td align="right">3.0</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td>75</td>
+<td align="right">6.4</td>
+<td align="right">2.9</td>
+<td align="right">4.3</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td>96</td>
+<td align="right">5.7</td>
+<td align="right">3.0</td>
+<td align="right">4.2</td>
+<td align="right">1.2</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="odd">
+<td>35</td>
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td>131</td>
+<td align="right">7.4</td>
+<td align="right">2.8</td>
+<td align="right">6.1</td>
+<td align="right">1.9</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="odd">
+<td>69</td>
+<td align="right">6.2</td>
+<td align="right">2.2</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
+<p>Este conjunto de datos multivariados fue presentado por el estadístico y biólogo británico Ronald Fisher en su artículo de 1936 “El uso de mediciones múltiples en problemas taxonómicos como un ejemplo de análisis discriminante lineal”. Edgar Anderson recopiló los datos para cuantificar la variación morfológica de las flores de iris de tres especies relacionadas. Los datos fueron recolectadas en la Península de Gaspé. <span class="citation">(Fisher <a href="#ref-fisher1936use">1936</a>)</span></p>
+<p class="espacio">
+</p>
+<p><img src="figuras/iris_flowers.jpg" width="288" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+<p>El conjunto de datos consiste de 50 observaciones de <em>cada</em> una de las tres especies de Iris (Iris setosa, Iris virginica e Iris versicolor). Se midieron cuatro características de cada muestra: la longitud y el ancho de los sépalos y pétalos, en centímetros. Con base en la combinación de estas cuatro características, Fisher desarrolló un modelo discriminante lineal para distinguir las especies entre sí.</p>
+<p>Supongamos que queremos analizar la distribución del ancho del sépalo por especie de flor de iris:</p>
+<p><img src="02-temas_selectos_R_files/figure-html/unnamed-chunk-17-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>Esto ocurre porque los factores están ordenados alfabéticamente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(iris<span class="op">$</span>Species)</code></pre></div>
+<pre><code>## [1] &quot;setosa&quot;     &quot;versicolor&quot; &quot;virginica&quot;</code></pre>
+<p>Sería mejor que las especies estuvieran <em>ordenadas</em> por la mediana de la distribución para poder hacer mejores comparaciones. Notemos el uso de la función <code>fct_reorder</code> del paquete <code>forcats</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(forcats)
+iris<span class="op">$</span>Species_ord &lt;-<span class="st"> </span><span class="kw">fct_reorder</span>(iris<span class="op">$</span>Species, iris<span class="op">$</span>Sepal.Width, <span class="dt">fun =</span> median)
+<span class="kw">levels</span>(iris<span class="op">$</span>Species_ord)</code></pre></div>
+<pre><code>## [1] &quot;versicolor&quot; &quot;virginica&quot;  &quot;setosa&quot;</code></pre>
+<p><img src="02-temas_selectos_R_files/figure-html/unnamed-chunk-20-1.png" width="768" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="data-frames" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Data Frames</h3>
+<p>Un <strong>data.frame</strong> es un conjunto de vectores del mismo tamaño agrupado en una tabla. Son estructuras rectangulares donde cada columna tiene elementos de la misma clase, pero columnas distintas pueden tener diferentes clases.</p>
+<p>Por ejemplo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tabla &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+<span class="dt">n =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,
+<span class="dt">frutas =</span> fruits[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>], 
+<span class="dt">valor =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">3</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">6.9</span>)
+)
+tabla</code></pre></div>
+<pre><code>##   n    frutas valor
+## 1 1    banana   1.0
+## 2 2     apple   2.5
+## 3 3    banana   3.0
+## 4 4    orange   4.5
+## 5 5 pineapple   5.0
+## 6 6     lemon   6.9</code></pre>
+<p>Similar a las funciones de vectores, en <em>data.frames</em> existen funciones predeterminadas que ayudan a su manipulación.</p>
+<ul>
+<li><code>head</code> permite ver los primeros 6 elemento del data.frame:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mtcars)</code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<ul>
+<li><code>str</code> describe el tipo de variables en el data.frame:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(mtcars)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
+<ul>
+<li><code>dim</code> muestra la dimensión (renglones, columnas) del data.frame:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(mtcars)</code></pre></div>
+<pre><code>## [1] 32 11</code></pre>
+<ul>
+<li><code>colnames</code> y <code>names</code> muestran los nombres de las columnas del data.frame:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(mtcars)</code></pre></div>
+<pre><code>##  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;
+## [11] &quot;carb&quot;</code></pre>
+<ul>
+<li><code>rownames</code> muestra el nombre de los renglones del data.frame:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(mtcars)</code></pre></div>
+<pre><code>##  [1] &quot;Mazda RX4&quot;           &quot;Mazda RX4 Wag&quot;       &quot;Datsun 710&quot;         
+##  [4] &quot;Hornet 4 Drive&quot;      &quot;Hornet Sportabout&quot;   &quot;Valiant&quot;            
+##  [7] &quot;Duster 360&quot;          &quot;Merc 240D&quot;           &quot;Merc 230&quot;           
+## [10] &quot;Merc 280&quot;            &quot;Merc 280C&quot;           &quot;Merc 450SE&quot;         
+## [13] &quot;Merc 450SL&quot;          &quot;Merc 450SLC&quot;         &quot;Cadillac Fleetwood&quot; 
+## [16] &quot;Lincoln Continental&quot; &quot;Chrysler Imperial&quot;   &quot;Fiat 128&quot;           
+## [19] &quot;Honda Civic&quot;         &quot;Toyota Corolla&quot;      &quot;Toyota Corona&quot;      
+## [22] &quot;Dodge Challenger&quot;    &quot;AMC Javelin&quot;         &quot;Camaro Z28&quot;         
+## [25] &quot;Pontiac Firebird&quot;    &quot;Fiat X1-9&quot;           &quot;Porsche 914-2&quot;      
+## [28] &quot;Lotus Europa&quot;        &quot;Ford Pantera L&quot;      &quot;Ferrari Dino&quot;       
+## [31] &quot;Maserati Bora&quot;       &quot;Volvo 142E&quot;</code></pre>
+<ul>
+<li>La forma de indexar data.frames es similar a la de un vector <strong><code>[ ]</code></strong>, pero en este caso es posible indexar renglones y columnas:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># por posiciones de renglones</span>
+mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, ]</code></pre></div>
+<pre><code>##                 mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4      21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag  21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710     22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># por posiciones de columnas</span>
+mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>)]</code></pre></div>
+<pre><code>##                 mpg  hp    wt
+## Mazda RX4      21.0 110 2.620
+## Mazda RX4 Wag  21.0 110 2.875
+## Datsun 710     22.8  93 2.320
+## Hornet 4 Drive 21.4 110 3.215</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># por nombre de renglones específico</span>
+mtcars[<span class="kw">c</span>(<span class="st">&#39;Mazda RX4&#39;</span>, <span class="st">&#39;Mazda RX4 Wag&#39;</span>), ]</code></pre></div>
+<pre><code>##               mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[<span class="kw">str_detect</span>(<span class="kw">rownames</span>(mtcars), <span class="st">&quot;Mazda&quot;</span> ), ]</code></pre></div>
+<pre><code>##               mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
+<ul>
+<li>También se puede seleccionar o filtrar el data.frame dado una condición:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[mtcars<span class="op">$</span>cyl <span class="op">==</span><span class="st"> </span><span class="dv">6</span>, ] <span class="co"># Selecciona los carros con número de cilindros mayor a 6</span></code></pre></div>
+<pre><code>##                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Valiant        18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## Merc 280       19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## Merc 280C      17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</code></pre>
+<ul>
+<li><code>rbind</code> permite unir dos data.frames por renglones, si y solo si, tiene el mismo número de columnas:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(mtcars[<span class="kw">str_detect</span>(<span class="kw">rownames</span>(mtcars), <span class="st">&quot;Mazda&quot;</span> ), ],
+      mtcars[<span class="kw">str_detect</span>(<span class="kw">rownames</span>(mtcars), <span class="st">&quot;Hornet&quot;</span>), ])</code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</code></pre>
+<ul>
+<li><code>cbind</code> permite unir dos data.frames por columna, si y solo si, tiene el mismo número de renglones:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tabla &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+<span class="dt">n =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,
+<span class="dt">frutas =</span> <span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;pineapple&quot;</span>, <span class="st">&quot;lemon&quot;</span>, <span class="st">&quot;apple&quot;</span>), 
+<span class="dt">valor =</span> <span class="kw">runif</span>(<span class="dv">6</span>)
+)
+tabla</code></pre></div>
+<pre><code>##   n    frutas     valor
+## 1 1     apple 0.9838936
+## 2 2    banana 0.5639114
+## 3 3    orange 0.8344072
+## 4 4 pineapple 0.3302192
+## 5 5     lemon 0.8822113
+## 6 6     apple 0.3756047</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tabla.color &lt;-<span class="st">  </span><span class="kw">data.frame</span>(
+<span class="dt">peso =</span> <span class="kw">rnorm</span>(<span class="dv">6</span>),
+<span class="dt">color =</span>   <span class="kw">c</span>(<span class="st">&#39;rojo&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;naranje&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;rojo&#39;</span>)
+)
+tabla.color</code></pre></div>
+<pre><code>##          peso    color
+## 1  0.05408125     rojo
+## 2  1.44309493 amarillo
+## 3  0.39872304  naranje
+## 4 -1.44778186 amarillo
+## 5  1.52618457 amarillo
+## 6 -2.09589909     rojo</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cbind</span>(tabla, tabla.color)</code></pre></div>
+<pre><code>##   n    frutas     valor        peso    color
+## 1 1     apple 0.9838936  0.05408125     rojo
+## 2 2    banana 0.5639114  1.44309493 amarillo
+## 3 3    orange 0.8344072  0.39872304  naranje
+## 4 4 pineapple 0.3302192 -1.44778186 amarillo
+## 5 5     lemon 0.8822113  1.52618457 amarillo
+## 6 6     apple 0.3756047 -2.09589909     rojo</code></pre>
+<p><strong>Nota:</strong> Una forma de seleccionar una columna es con el símbolo <strong>$</strong> (pesitos) y el nombre de la columna.</p>
+<p><br></p>
+<p><br></p>
+<p><img src="figuras/manicule.jpg" /> <code>Ejercicio</code>: Del data.frame <strong>mtcars</strong> realiza lo siguiente:</p>
+<ol style="list-style-type: decimal">
+<li><p>Calcula el promedio de cilindros <em>cyl</em> en los datos.</p></li>
+<li><p>Calcula el número de autos con peso <em>wt</em> mayor a 2.</p></li>
+<li><p>Extrae la información de los coches <em>Merc</em>.</p></li>
+<li><p>Calcula el promedio de millas por galón <em>mpg</em> de los autos <em>Merc</em>.</p></li>
+</ol>
+<p><br></p>
+</div>
+<div id="listas" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Listas</h3>
+<p>La lista es una estructura de datos de una dimensión que permite distintas clases de elementos en el objeto. La función <code>list()</code> permite crear objetos de esta clase. Por ejemplo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista &lt;-<span class="st"> </span><span class="kw">list</span>( <span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">x =</span> <span class="st">&#39;hello&#39;</span>, 
+             <span class="dt">frutas =</span> fruits, <span class="dt">tabla =</span> tabla, 
+             <span class="dt">ejemlista =</span> <span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">15</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">b =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)
+)
+lista</code></pre></div>
+<pre><code>## $n
+## [1] 100
+## 
+## $x
+## [1] &quot;hello&quot;
+## 
+## $frutas
+## [1] &quot;banana&quot;    &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;    
+## [7] &quot;kiwi&quot;      &quot;apple&quot;    
+## 
+## $tabla
+##   n    frutas     valor
+## 1 1     apple 0.9838936
+## 2 2    banana 0.5639114
+## 3 3    orange 0.8344072
+## 4 4 pineapple 0.3302192
+## 5 5     lemon 0.8822113
+## 6 6     apple 0.3756047
+## 
+## $ejemlista
+## $ejemlista$a
+## [1] 15 16 17 18 19 20
+## 
+## $ejemlista$b
+## [1] 1 2 3 4 5</code></pre>
+<p>La lista anterior contiene numeros, caracteres, vectores, data.frames e incluso otra lista con distintas secuencias.</p>
+<p>Se puede indexar una lista de varias formas:</p>
+<ul>
+<li>Usando <strong><code>[ ]</code></strong>: extrae el objeto como una lista, incluyendo el nombre asignado:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista[<span class="dv">1</span>]</code></pre></div>
+<pre><code>## $n
+## [1] 100</code></pre>
+<ul>
+<li>Usando <strong><code>[[ ]]</code></strong>: extrae únicamente el objeto respetando la clase de éste y sin incluir nombres:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista[[<span class="dv">1</span>]]</code></pre></div>
+<pre><code>## [1] 100</code></pre>
+<ul>
+<li>Usando <strong>$</strong> mas el nombre: extrae únicamente el objeto:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista<span class="op">$</span>ejemlista<span class="op">$</span>a</code></pre></div>
+<pre><code>## [1] 15 16 17 18 19 20</code></pre>
+<p><strong>Importante:</strong> Aunque en este tutorial no se usarán las listas son objetos útiles.</p>
+<p><br></p>
+</div>
+</div>
+<div id="r-markdown" class="section level2">
+<h2><span class="header-section-number">2.5</span> R Markdown</h2>
+<p>R Markdown es un sistema para crear documentos, en los cuales se combina tu código de R, los resultados y el texto que escribes como comentario en forma de prosa.</p>
+<p>Algunas ventajas y características de R Markdown son:</p>
+<ul>
+<li><p>cualquier R markdown <strong>Rmd</strong> es totalmente reproducible</p></li>
+<li><p>admite docenas de formatos de salida, como archivos PDF, Word, presentaciones de diapositivas y más.</p></li>
+<li><p>es muy útil para los tomadores de decisiones, quienes quieren enfocarse en las conclusiones, no en el código detrás del análisis.</p></li>
+<li><p>permite colaborar con otras personas de estadística que estén interesadas en tus conclusiones y cómo llegaste a ellas</p></li>
+</ul>
+<div id="que-es-r-markdown" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> ¿Qué es R Markdown?</h3>
+<p>R Markdown integra código de R, comandos de TeX y muchas herramientas externas. Cuando construyes el documento, R Markdown envía un archivo con formato .Rmd a otro paquete llamado <strong>knitr</strong>, <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>, que ejecuta el código de todos los chunks y crea un nuevo archivo de <strong>markdown</strong> con formato <em>md</em> que ya incluye el código y los resultados. Este archivo de markdown generado por knitr después es procesado por <strong>pandoc</strong>, <a href="http://pandoc.org/" class="uri">http://pandoc.org/</a>, que es el que crea el archivo final. La ventaja de este flujo de trabajo de dos pasos es que te permite crear una amplia gama de formatos de salida.</p>
+<p><img src="figuras/RMarkdownFlow.png" width="567" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+</div>
+<div id="estructura-basica-de-r-markdown" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> Estructura básica de R Markdown</h3>
+<p>Éste es un R Markdown, un archivo de texto sin formato que tiene la extensión <code>.Rmd</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(htmltools<span class="op">::</span><span class="kw">includeText</span>(<span class="st">&quot;rmarkdown/ejemplo.Rmd&quot;</span>))</code></pre></div>
+<pre><code>## ---
+## title: &quot;Ejemplo de R Markdown&quot;
+## date: 2018-01-22
+## output: html_document
+## ---
+## 
+## Veamos unos datos de diamantes para analizar la distribución
+## del quilataje de aquellos diamantes que tiene quilataje 
+## menor a 2.5: 
+## 
+## ```{r setup, include = FALSE}
+## library(ggplot2)
+## library(dplyr)
+## 
+## smaller &lt;- diamonds %&gt;% 
+##   filter(carat &lt;= 2.5)
+## ```
+## 
+## En el __chunk__ de arriba se hizo el filtro adecuado, ahora
+## veamos una muestra de tamaño 10 de los datos:
+## 
+## ```{r, echo = FALSE}
+## smaller %&gt;%
+##   sample_n(10) %&gt;%
+##   knitr::kable()
+## ```
+## 
+## Los datos corresponde a `r nrow(diamonds)` diamantes. Solamente
+## `r nrow(diamonds) - nrow(smaller)` son de más de 2.5 quilates.
+## La distribución de los diamantes de menor quilataje se muestra abajo:
+## 
+## ```{r, echo = FALSE}
+## smaller %&gt;% 
+##   ggplot(aes(carat)) + 
+##   geom_freqpoly(binwidth = 0.01)
+## ```</code></pre>
+<p>Contiene tres tipos importantes de contenido:</p>
+<p>1 Un encabezado en formato <strong>YAML</strong> rodeado por <code>---</code>s..</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p><strong>Chunks</strong> de código de R rodeados por <code>```</code>.</p></li>
+<li><p>Texto mezclado con formato de texto simple como <code># heading</code> y <code>_italics_</code>.</p></li>
+</ol>
+<p>Cuando abres un <code>.Rmd</code>, RStudio muestra una interfaz de tipo <em>notebook</em> en la cual tanto el código como la salida están intercalados. Puedes ejecutars cada <em>chunk</em> de código presionando el botón de “Run” (en la parte superior derecha de la ventana de script), o bien, Cmd/Ctrl + Shift + Enter. RStudio ejecuta el código y muestra los resultados junto con el código.</p>
+<p>Para generar un informe completo que contenga todo el texto, el código y los resultados, presiona el botón “Knit”, o bien, Cmd/Ctrl + Shift + K. Esto generará un reporte en una nueva ventana y creará un archivo HTML independiente que podrás compartir con los demás.</p>
+<p><img src="rmarkdown/ejemplo.png" width="3456" style="display: block; margin: auto;" /></p>
+<p>Para comenzar con tu propio archivo <code>.Rmd</code>, selecciona <em>File &gt; New File &gt; R Markdown…</em> en la barra superior. RStudio te mostrará un asistente que puedes usar para crear un archivo de R Markdown con ejemplos básicos.</p>
+<p>Como R Markdown integara varias herramientas, entonces no es posible que la ayuda esté autocontenida en RStudio. Esto significa que gran parte de la ayuda no la podrás encontrar a través de <code>?</code>. Hay mucha documentación en línea y un recurso es particularmente útil son los <em>cheatsheets</em> de RStudio, que están disponibles en <a href="http://rstudio.com/cheatsheets">http://rstudio.com/cheatsheets.</a></p>
+</div>
+</div>
+<div id="proyectos-de-rstudio" class="section level2">
+<h2><span class="header-section-number">2.6</span> Proyectos de RStudio</h2>
+<p>Los proyectos de RStudio son útiles para mantener juntos todos los archivos asociados a un análisis (o proyecto) específico: datos de entrada, scripts de R, resultados, gráficas, datos de salida. Ésta es una práctica limpia y ordenada de trabajar y RStudio tiene soporte integrado para esto a través de los <em>proyectos</em>.</p>
+<p>Hagamos un proyecto. Para esto debes presionar <em>File &gt; New Project</em>, luego:</p>
+<p><img src="figuras/rstudio-project-1.png" width="50%" /><img src="figuras/rstudio-project-2.png" width="50%" /><img src="figuras/rstudio-project-3.png" width="50%" /></p>
+<p><br></p>
+<p>Puedes cerrar el proyecto y después hacer doble click en el archivo <code>.Rproj</code> para volver a abrir el proyecto. Observa que regresas a donde estabas, en el mismo directorio de trabajo, con el mismo historial de comandos, y todos los archivos en los que estaba trabajando siguen abiertos.</p>
+<p>En resumen, los proyectos de RStudio te brindan un flujo de trabajo sólido que te servirá en el futuro:</p>
+<ul>
+<li><p>Creas un proyecto de RStudio para cada proyecto de análisis de datos.</p></li>
+<li><p>Mantienes los archivos de datos ahí mismo para después cargarlos en un script.</p></li>
+<li><p>Mantienes tus scripts organizados en el mismo directorio, y los puedes encontrar fácilmente para editarlos y ejecutarlos.</p></li>
+<li><p>Puedes guardar ahí mismo las salidas del código, como gráficas y datos limpios.</p></li>
+<li><p>Solamente utilizas rutas relativas, no absolutas.</p></li>
+</ul>
+<p>Todo lo que necesitas está en un solo lugar y separado de los demás proyectos en los que estés trabajando.</p>
+</div>
+<div id="otros-aspectos-importantes-de-r" class="section level2">
+<h2><span class="header-section-number">2.7</span> Otros aspectos importantes de R</h2>
+<div id="funciones" class="section level3">
+<h3><span class="header-section-number">2.7.1</span> Funciones</h3>
+<p>Todas las operaciones en R son producto de la llamada a una función, esto incluye operaciones como +, operadores que controlan flujo como for, if y while, e incluso operadores para obtener subconjuntos como <code>[ ]</code> y <code>$</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span>
+y &lt;-<span class="st"> </span><span class="dv">4</span>
+<span class="st">`</span><span class="dt">+</span><span class="st">`</span>(x, y)</code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="kw">print</span>(i)</code></pre></div>
+<pre><code>## [1] 1
+## [1] 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">for</span><span class="st">`</span>(i, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="kw">print</span>(i))</code></pre></div>
+<pre><code>## [1] 1
+## [1] 2</code></pre>
+<p>Cuando llamamos a una función podemos especificar los argumentos en base a posición, nombre completo o nombre parcial:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="cf">function</span>(abcdef, bcde1, bcde2) {
+  <span class="kw">list</span>(<span class="dt">a =</span> abcdef, <span class="dt">b1 =</span> bcde1, <span class="dt">b2 =</span> bcde2)
+}
+<span class="kw">str</span>(<span class="kw">f</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</code></pre></div>
+<pre><code>## List of 3
+##  $ a : num 1
+##  $ b1: num 2
+##  $ b2: num 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(<span class="kw">f</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dt">abcdef =</span> <span class="dv">1</span>))</code></pre></div>
+<pre><code>## List of 3
+##  $ a : num 1
+##  $ b1: num 2
+##  $ b2: num 3</code></pre>
+<p><br></p>
+<p>Podemos abreviar el nombre de los argumentos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(<span class="kw">f</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dt">a =</span> <span class="dv">1</span>))</code></pre></div>
+<pre><code>## List of 3
+##  $ a : num 1
+##  $ b1: num 2
+##  $ b2: num 3</code></pre>
+<p>Siempre y cuando la abreviación no sea ambigua:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#f(1, 3, b = 1)</span></code></pre></div>
+<p>Los argumentos de las funciones en R se evaluan conforme se necesitan:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="cf">function</span>(a, b){
+  a <span class="op">^</span><span class="st"> </span><span class="dv">2</span>
+}
+<span class="kw">f</span>(<span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>La función anterior nunca utiliza el argumento b, de tal manera que f(2) no produce ningún error.</p>
+<!--### Funcionales
+
+
+
+
+
+
+### Rendimiento en R-->
+
+</div>
+</div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-wickham2016r">
+<p>Wickham, Hadley, and Garrett Grolemund. 2016. “R for Data Science.” Sebastopol, CA: O’Reilly. ‘http://r4ds.had.co.nz‘.</p>
+</div>
+<div id="ref-fisher1936use">
+<p>Fisher, Ronald A. 1936. “The Use of Multiple Measurements in Taxonomic Problems.” <em>Annals of Human Genetics</em> 7 (2). Wiley Online Library: 179–88.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/andreuboada/estadistica-aplicada-3-2018/edit/master/02-temas_selectos_R.Rmd",
+"text": "Edit"
+},
+"download": ["estadistica-aplicada-3.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
