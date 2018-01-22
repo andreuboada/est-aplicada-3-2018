@@ -388,6 +388,7 @@ Si hubiéramos incluido un término $m_{ijk}$, que ahora haría que el modelo es
 
 ## Otros ejemplos
 
+### Discriminación de residentes hispanos con discapacidades
 
 La mayoría de los estados en los Estados Unidos proporcionan servicios y apoyo a personas con
 discapacidades (por ejemplo, discapacidad intelectual, parálisis cerebral, autismo, etc.) y sus familias. La
@@ -562,12 +563,16 @@ Los pesos $w_{ki}$ para la población hispana son más altos para los 4 grupos d
 
 ### Consumo de chocolate y premios Nobel
 
-En un artículo reciente se publicó un resultado que demuestra una correlación estadísticamente significativa entre el consumo de chocolate per capita y el número de premios Nobel del país por 10 millones de habitantes. El artículo se puede consultar aquí: (Messerli, 2012)[http://www.biostat.jhsph.edu/courses/bio621/misc/Chocolate%20consumption%20cognitive%20function%20and%20nobel%20laurates%20(NEJM).pdf].
+En un artículo reciente se publicó un resultado que demuestra una correlación estadísticamente significativa entre el consumo de chocolate per capita y el número de premios Nobel del país por 10 millones de habitantes. El artículo se puede consultar aquí: [Messerli, 2012](http://www.biostat.jhsph.edu/courses/bio621/misc/Chocolate%20consumption%20cognitive%20function%20and%20nobel%20laurates%20(NEJM).pdf).
 
 En el artículo está publicada esta gráfica:
-<p class="espacio">
+<p class="espacio3">
 </p>
-<center><img src="figuras/Messerli2012-ChocolateNobelCorrelation.png" width="600px" /></center>
+
+```{r echo=FALSE, fig.align='center', dpi=75}
+knitr::include_graphics("figuras/Messerli2012-ChocolateNobelCorrelation.png")
+```
+
 <p class="espacio">
 </p>
 
@@ -640,7 +645,7 @@ library(MASS)
 ?loglm
 ```
 
-Llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (Gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto con cuantiles utilizando la función `cut2` del paquete `Hmisc`. 
+Llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (Gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto con cuantiles utilizando la función `cut2` del paquete `Hmisc`. Puedes usar el número de grupos que creas que es más adecuado.
 
 Por ejemplo, el modelo "G + H + E" representa el modelo de independencias. Para el modelo "GH + GE + HE" hay interacciones entre:
 
@@ -671,3 +676,4 @@ $$
 
 Di qué modelo es mejor, tanto en términos del ajuste de la devianza y su interpretabilidad y explica por qué. ¿Hay algún modelo que no esté en la lista que sea el más apropiado para ajustar los datos?
 
+Manda tu tarea por correo electrónico a: [andreuboada@gmail.com](andreuboada@gmail.com) con el asunto "EAPLICADA3-Tarea-[XX]-[clave única 1]-[clave única 2]" donde [XX] es el número de la tarea (en este caso es la tarea 01), y [clave única 1] y [clave única 2] son tu clave y la de tu compañero con quien vas a trabajar durante el semestre.

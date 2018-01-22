@@ -1,0 +1,36 @@
+---
+title: "Ejemplo de R Markdown"
+date: 2018-01-22
+output: html_document
+---
+
+Veamos unos datos de diamantes para analizar la distribución
+del quilataje de aquellos diamantes que tiene quilataje 
+menor a 2.5: 
+
+```{r setup, include = FALSE}
+library(ggplot2)
+library(dplyr)
+
+smaller <- diamonds %>% 
+  filter(carat <= 2.5)
+```
+
+En el __chunk__ de arriba se hizo el filtro adecuado, ahora
+veamos una muestra de tamaño 10 de los datos:
+
+```{r, echo = FALSE}
+smaller %>%
+  sample_n(10) %>%
+  knitr::kable()
+```
+
+Los datos corresponde a `r nrow(diamonds)` diamantes. Solamente
+`r nrow(diamonds) - nrow(smaller)` son de más de 2.5 quilates.
+La distribución de los diamantes de menor quilataje se muestra abajo:
+
+```{r, echo = FALSE}
+smaller %>% 
+  ggplot(aes(carat)) + 
+  geom_freqpoly(binwidth = 0.01)
+```
