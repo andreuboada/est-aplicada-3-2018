@@ -760,8 +760,6 @@ lista[[1]]
 lista$ejemlista$a
 ```
 
-**Importante:** Aunque en este tutorial no se usarán las listas son objetos útiles. 
-
 <br>
 
 ## R Markdown
@@ -1385,7 +1383,6 @@ Una forma de reducir la lista obtenida a un vector es con la función `unlist()`
 unlist(potencia_lista)
 ```
 
-
 <br>
 
 ---
@@ -1405,274 +1402,19 @@ res_nchar_s
 Esta función es *peligrosa* ya que únicamente simplifica la estructura del resultado cuando es posible, de lo contrario, regresará una lista igual que `lapply()`.
 ```
 
----
+#### Funciones `map`
 
-![](figuras/manicule.jpg)  Considerando la lista siguiente,
+Hacer el **loop** sobre un vector, es decir, hacer algo para cada elemento y guardar los resultados, es tan común que el paquete `purrr` proporciona una familia de funciones para que esto sea más sencillo. Hay una función para cada tipo de salida:
 
-```{r}
-cdmx_list <- list(
-  pop = 8918653,
-  delegaciones = c("Alvaro Obregón", "Azcapotzalco" ,"Benito Juárez" ,
-                   "Coyoacán" ,"Cuajimalpa de Morelos" ,"Cuauhtémoc" ,
-                   "Gustavo A. Madero" ,
-                   "Iztacalco" ,"Iztapalapa" ,
-                   "Magdalena Contreras" ,"Miguel Hidalgo" ,"Milpa Alta" ,
-                   "Tláhuac" ,"Tlalpan" ,
-                   "Venustiano Carranza" ,"Xochimilco"),
-  capital = TRUE
-)
-```
+* `map()` crea una lista.
 
-obtén la clase de cada elemento con la función `lapply()`.
+* `map_lgl()` crea un vector lógico.
 
-```{r, eval = F}
-lapply( , class)
-```
+* `map_int()` crea un vector de enteros.
 
-<br>
+* `map_dbl()` crea un vector numérico.
 
----
-
-![](figuras/manicule.jpg)  La siguiente función extrae la letra de menor posición y mayor posición en orden alfabético.
-
-```{r}
-min_max_fun <- function(nombre){
-  nombre_sinespacios <- gsub(" ", "", nombre)
-  letras <- strsplit(nombre_sinespacios, split = "")[[1]]
-  c(minimo = min(letras), maximo = max(letras))
-}
-```
-
-Es decir, si incluimos las letras `abcz` la letra *mínima* es a y la *máxima* es z.
-```{r}
-min_max_fun("abcz")
-```
-
-El siguiente vector incluye el nombre de las 16 delegaciones de la Ciudad de México.
-
-```{r}
-delegaciones <- c("Alvaro Obregon", "Azcapotzalco" ,"Benito Juarez" ,
-                   "Coyoacan" ,"Cuajimalpa de Morelos" ,"Cuauhtemoc" ,
-                   "Gustavo Madero" ,
-                   "Iztacalco" ,"Iztapalapa" ,
-                   "Magdalena Contreras" ,"Miguel Hidalgo" ,"Milpa Alta" ,
-                   "Tlahuac" ,"Tlalpan" ,
-                   "Venustiano Carranza" ,"Xochimilco")
-```
-
-Aplica la función `sapply()` para obtener un arreglo con la letra máxima y mínima de cada nombre. 
-
-```{r, eval=F}
-sapply(, )
-```
-
-```{r, echo = F, eval=F}
-sapply(delegaciones, min_max_fun)
-```
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  El siguiente vector incluye el precio de la gasolina en diferentes estados del país en julio de 2017. 
-
-```{r}
-gas_cdmx <- c(15.82, 15.77, 15.83, 15.23, 14.95, 15.42, 15.55)
-gas_cdmx
-```
-
-1. Crea una función que convierta el precio a dolares suponiendo que un dolar equivale a 17.76 pesos.
-
-```{r eval = F}
-conv_fun <- function(precio){
-  /17.76
-  return()
-}
-```
-
-```{r echo = F}
-conv_fun <- function(precio){
-  conv <- precio/17
-  conv
-}
-```
-
-2. Usando la función `lapply()` convierte el precio de la gasolina a dolares.
-
-```{r, eval = F}
-gas_cdmx_usd_lista <- lapply(, conv_fun)
-```
-
-```{r, echo = F}
-gas_cdmx_usd_lista <- lapply(gas_cdmx, conv_fun)
-```
-
-3. Usa la función `unlist()` para convertir la lista a un vector. 
-
-```{r, eval = F}
-gas_cdmx_usd <- unlist()
-print(gas_cdmx_usd)
-```
-
-```{r, echo = F}
-gas_cdmx_usd <- unlist(gas_cdmx_usd_lista)
-```
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  Estadísticos importantes
-
-
-```{r}
-estadisticos <- c("GAUSS:1777", "BAYES:1702", "FISHER:1890", "PEARSON:1857")
-split_estadisticos <- strsplit(estadisticos, split = ":")
-split_estadisticos
-```
-
-Utiliza la función predefinida `tolower()` y `lapply()` para convertir a minúsculas cada letra de la lista `split_estadisticos`.
-
-```{r eval = F}
-split_lower <- lapply( , )
-print(split_lower)
-```
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  Usando el vector `split_estadísticos` del ejercicio anterior.
-
-```{r}
-str(split_estadisticos)
-```
-
-1. Crea una función que regrese la primera posición. 
-
-```{r, eval = F}
-primera_pos_fun <- function(lista){
-  
-}
-```
-
-2. Crea una función que regrese la segunda posición.
-```{r, eval = F}
-segunda_pos_fun <- function(lista){
-  
-}
-```
-
-3. Usando `lapply()` crea una lista con los nombres de los estadísticos y otra con la fecha de nacimiento. 
-
-```{r, eval = F}
-nombres <- lapply()
-fechas <- lapply()
-```
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  Usando una función anónima y el vector `split_estadísticos` en un solo `lapply()` o `sapply()` obtén un vector compuesto de la primera posición, es decir el nombre, en minúsculas. 
-
-Tip: si usas `lapply()` recuerda usar la función `unlist()`.
-
-```{r, eval = F}
-nombre_estadisticos <- (split_estadisticos, function(elemento){
-  tolower()
-})
-nombre_estadisticos
-```
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  En la siguiente lista se presenta el registro de temperatura de tres ciudades a las 07:00 am, 10:00 am, 01:00 pm, 04:00 pm y  07:00 pm.
-
-```{r}
-temp_lista <- list(
-  cdmx = c(13, 15, 19, 22, 20),
-  guadalajara = c(18, 18, 22, 26, 27),
-  tuxtla_gtz = c(22, 24, 29, 32, 28)
-)
-str(temp_lista)
-```
-
-Completa la siguiente función que obtiene el promedio entre el valor mínimo y máximo registrados.
-
-```{r, eval = F}
-promedio_extremos_fun <-  function(x) {
-  ( min() + max() ) / 2
-}
-```
-
-Aplica la función a la lista y obtén la temperatura promedio de extremos para cada ciudad usando `lapply()` y `sapply()`.
-
-```{r, eval = F}
-lapply(,)
-```
-
-```{r, eval = F}
-sapply(,)
-```
-
-
-```{r, eval = F, echo = F}
-# Resultado
-promedio_extremos_fun <-  function(x) {
-  ( min(x) + max(x) ) / 2
-}
-lapply(temp_lista, promedio_extremos_fun)
-sapply(temp_lista, promedio_extremos_fun)
-```
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  Crea una función en la que _mientras_ la velocidad sea mayor a 50 km/hr se reduzca de la siguiente forma:
-
-- Si es mayor a 80 km/hr se reducen 20 km/hr e imprime **¡Demasido rápido!**.
-
-- Si es menor o igual a 80km/hr se reducen únicamente 5 km/hr.
-
-```{r, eval = F}
-velocidad_act <- 140
-while(velocidad_act > ){
-  
-  if(velocidad_act > ){
-    print()
-    velocidad_act <- 
-  }
-  if(velocidad_act < ){
-    velocidad_act <- 
-  }
-  
-  velocidad_act
-}
-```
-
-```{r, echo = F, eval = F}
-velocidad_act <- 200
-while(velocidad_act > 50){
-  
-  if(velocidad_act > 80){
-    print("¡Demasido rápido!")
-    velocidad_act <- velocidad_act - 20
-  }
-  if(velocidad_act <= 80){
-    velocidad_act <- velocidad_act - 5
-  }
-  print( paste("Velocidad:", velocidad_act ))
-  velocidad_act
-}
-```
-
-#### 
-
-
+* `map_chr()` crea un vector de tipo caracter.
 
 
 ### Rendimiento en R
@@ -1941,3 +1683,267 @@ A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectoriza
 
 Paralelizar usa varios cores para trabajar de manera simultánea en varias secciones de un problema, no reduce el tiempo computacional pero incrementa el tiempo del usuario pues aprovecha los recursos. Como referencia está [Parallel Computing for Data Science](https://www.amazon.com/Parallel-Computing-Data-Science-Examples/dp/1466587016) de Norm Matloff.
 
+## Tarea
+
+1.  Considerando la lista siguiente,
+
+```{r}
+cdmx_list <- list(
+  pop = 8918653,
+  delegaciones = c("Alvaro Obregón", "Azcapotzalco" ,"Benito Juárez" ,
+                   "Coyoacán" ,"Cuajimalpa de Morelos" ,"Cuauhtémoc" ,
+                   "Gustavo A. Madero" ,
+                   "Iztacalco" ,"Iztapalapa" ,
+                   "Magdalena Contreras" ,"Miguel Hidalgo" ,"Milpa Alta" ,
+                   "Tláhuac" ,"Tlalpan" ,
+                   "Venustiano Carranza" ,"Xochimilco"),
+  capital = TRUE
+)
+```
+
+obtén la clase de cada elemento con la función `lapply()`.
+
+```{r, eval = F}
+lapply( , class)
+```
+
+<br>
+
+---
+
+2. La siguiente función extrae la letra de menor posición y mayor posición en orden alfabético.
+
+```{r}
+min_max_fun <- function(nombre){
+  nombre_sinespacios <- gsub(" ", "", nombre)
+  letras <- strsplit(nombre_sinespacios, split = "")[[1]]
+  c(minimo = min(letras), maximo = max(letras))
+}
+```
+
+Es decir, si incluimos las letras `abcz` la letra *mínima* es a y la *máxima* es z.
+```{r}
+min_max_fun("abcz")
+```
+
+El siguiente vector incluye el nombre de las 16 delegaciones de la Ciudad de México.
+
+```{r}
+delegaciones <- c("Alvaro Obregon", "Azcapotzalco" ,"Benito Juarez" ,
+                   "Coyoacan" ,"Cuajimalpa de Morelos" ,"Cuauhtemoc" ,
+                   "Gustavo Madero" ,
+                   "Iztacalco" ,"Iztapalapa" ,
+                   "Magdalena Contreras" ,"Miguel Hidalgo" ,"Milpa Alta" ,
+                   "Tlahuac" ,"Tlalpan" ,
+                   "Venustiano Carranza" ,"Xochimilco")
+```
+
+Aplica la función `sapply()` para obtener un arreglo con la letra máxima y mínima de cada nombre. 
+
+```{r, eval=F}
+sapply(, )
+```
+
+```{r, echo = F, eval=F}
+sapply(delegaciones, min_max_fun)
+```
+
+<br>
+
+---
+
+3.  El siguiente vector incluye el precio de la gasolina en diferentes estados del país en julio de 2017. 
+
+```{r}
+gas_cdmx <- c(15.82, 15.77, 15.83, 15.23, 14.95, 15.42, 15.55)
+gas_cdmx
+```
+
+1. Crea una función que convierta el precio a dolares suponiendo que un dolar equivale a 17.76 pesos.
+
+```{r eval = F}
+conv_fun <- function(precio){
+  /17.76
+  return()
+}
+```
+
+```{r echo = F}
+conv_fun <- function(precio){
+  conv <- precio/17
+  conv
+}
+```
+
+2. Usando la función `lapply()` convierte el precio de la gasolina a dolares.
+
+```{r, eval = F}
+gas_cdmx_usd_lista <- lapply(, conv_fun)
+```
+
+```{r, echo = F}
+gas_cdmx_usd_lista <- lapply(gas_cdmx, conv_fun)
+```
+
+3. Usa la función `unlist()` para convertir la lista a un vector. 
+
+```{r, eval = F}
+gas_cdmx_usd <- unlist()
+print(gas_cdmx_usd)
+```
+
+```{r, echo = F}
+gas_cdmx_usd <- unlist(gas_cdmx_usd_lista)
+```
+
+<br>
+
+---
+
+4. Estadísticos importantes
+
+
+```{r}
+estadisticos <- c("GAUSS:1777", "BAYES:1702", "FISHER:1890", "PEARSON:1857")
+split_estadisticos <- strsplit(estadisticos, split = ":")
+split_estadisticos
+```
+
+Utiliza la función predefinida `tolower()` y `lapply()` para convertir a minúsculas cada letra de la lista `split_estadisticos`.
+
+```{r eval = F}
+split_lower <- lapply( , )
+print(split_lower)
+```
+
+<br>
+
+---
+
+5.  Usando el vector `split_estadísticos` del ejercicio anterior.
+
+```{r}
+str(split_estadisticos)
+```
+
+1. Crea una función que regrese la primera posición. 
+
+```{r, eval = F}
+primera_pos_fun <- function(lista){
+  
+}
+```
+
+2. Crea una función que regrese la segunda posición.
+```{r, eval = F}
+segunda_pos_fun <- function(lista){
+  
+}
+```
+
+3. Usando `lapply()` crea una lista con los nombres de los estadísticos y otra con la fecha de nacimiento. 
+
+```{r, eval = F}
+nombres <- lapply()
+fechas <- lapply()
+```
+
+<br>
+
+---
+
+6.  Usando una función anónima y el vector `split_estadísticos` en un solo `lapply()` o `sapply()` obtén un vector compuesto de la primera posición, es decir el nombre, en minúsculas. 
+
+Tip: si usas `lapply()` recuerda usar la función `unlist()`.
+
+```{r, eval = F}
+nombre_estadisticos <- (split_estadisticos, function(elemento){
+  tolower()
+})
+nombre_estadisticos
+```
+
+<br>
+
+---
+
+7.  En la siguiente lista se presenta el registro de temperatura de tres ciudades a las 07:00 am, 10:00 am, 01:00 pm, 04:00 pm y  07:00 pm.
+
+```{r}
+temp_lista <- list(
+  cdmx = c(13, 15, 19, 22, 20),
+  guadalajara = c(18, 18, 22, 26, 27),
+  tuxtla_gtz = c(22, 24, 29, 32, 28)
+)
+str(temp_lista)
+```
+
+Completa la siguiente función que obtiene el promedio entre el valor mínimo y máximo registrados.
+
+```{r, eval = F}
+promedio_extremos_fun <-  function(x) {
+  ( min() + max() ) / 2
+}
+```
+
+Aplica la función a la lista y obtén la temperatura promedio de extremos para cada ciudad usando `lapply()` y `sapply()`.
+
+```{r, eval = F}
+lapply(,)
+```
+
+```{r, eval = F}
+sapply(,)
+```
+
+
+```{r, eval = F, echo = F}
+# Resultado
+promedio_extremos_fun <-  function(x) {
+  ( min(x) + max(x) ) / 2
+}
+lapply(temp_lista, promedio_extremos_fun)
+sapply(temp_lista, promedio_extremos_fun)
+```
+
+<br>
+
+---
+
+8.  Crea una función en la que _mientras_ la velocidad sea mayor a 50 km/hr se reduzca de la siguiente forma:
+
+- Si es mayor a 80 km/hr se reducen 20 km/hr e imprime **¡Demasido rápido!**.
+
+- Si es menor o igual a 80km/hr se reducen únicamente 5 km/hr.
+
+```{r, eval = F}
+velocidad_act <- 140
+while(velocidad_act > ){
+  
+  if(velocidad_act > ){
+    print()
+    velocidad_act <- 
+  }
+  if(velocidad_act < ){
+    velocidad_act <- 
+  }
+  
+  velocidad_act
+}
+```
+
+```{r, echo = F, eval = F}
+velocidad_act <- 200
+while(velocidad_act > 50){
+  
+  if(velocidad_act > 80){
+    print("¡Demasido rápido!")
+    velocidad_act <- velocidad_act - 20
+  }
+  if(velocidad_act <= 80){
+    velocidad_act <- velocidad_act - 5
+  }
+  print( paste("Velocidad:", velocidad_act ))
+  velocidad_act
+}
+```

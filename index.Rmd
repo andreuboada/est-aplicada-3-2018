@@ -64,4 +64,4 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2018 
 
 ### Tareas {-}
 
-Enviar tareas por correo electrónico a: [andreuboada@gmail.com](andreuboada@gmail.com) con el asunto "EAPLICADA3-Tarea-[XX]-[clave única 1]-[clave única 2]" donde [XX] es el número de la tarea, [clave única 1] y [clave única 2] son tu clave y la de tu compañero con quien vas a trabajar durante el semestre.
+Enviar tareas por correo electrónico a: [andreuboadadeatela@gmail.com](andreuboadadeatela@gmail.com) con el asunto "EAPLICADA3-Tarea-[XX]-[clave única 1]-[clave única 2]" donde [XX] es el número de la tarea, [clave única 1] y [clave única 2] son tu clave y la de tu compañero con quien vas a trabajar durante el semestre.
