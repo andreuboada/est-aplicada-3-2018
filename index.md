@@ -1,7 +1,7 @@
 --- 
 title: "Estadística Aplicada III"
 author: "Andreu Boada de Atela"
-date: "2018-01-22"
+date: "2018-01-25"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -9,22 +9,22 @@ bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: andreuboada/est-aplicada-3-2018
-description: "Notas y material para el curso de Estadística Aplicada III, 2017 (ITAM)"
+description: "Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)"
 ---
 
 # Temario y referencias {-}
 
-**Todas las notas y material del curso estarán en este** [repositorio](https://github.com/andreuboada/est-aplicada-3-2017).
+**Todas las notas y material del curso estarán en este** [repositorio](https://github.com/andreuboada/est-aplicada-3-2018).
 
-- Análisis exploratorio de datos. 
+- Análisis exploratorio de datos
+- Análisis de datos categórica
+- Análisis de conglomerados: clustering jerárquico, k-medias
 - Componentes principales
 - Análisis de factores
 - Análisis canónico
 - Análisis discriminante
 - Regresión logística 
 - Regularización y selección de modelos
-- Análisis de conglomerados: clustering jerárquico, k-medias
-- Análisis de correspondencias
 - Introducción a la estadística espacial
 
 

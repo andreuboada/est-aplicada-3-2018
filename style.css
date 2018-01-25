@@ -16,3 +16,59 @@ pre code {
     background-color:#F5F5F5;
     padding: 20px;
 }
+.comentario {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5;
+  position:relative;
+}
+.comentario:before {
+    content: "\f075";
+    font-family: FontAwesome;
+    left:10px;
+    position:absolute;
+    top:0px;
+    font-size: 45px;
+ }
+.warning {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5;
+  position:relative;
+}
+.warning:before {
+    content: "\f071";
+    font-family: FontAwesome;
+    left:10px;
+    position:absolute;
+    top:0px;
+    font-size: 45px;
+ }
+.information {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5;
+  position:relative;
+}
+.information:before {
+    content: "\f05a";
+    font-family: FontAwesome;
+    left:10px;
+    position:absolute;
+    top:0px;
+    font-size: 45px;
+ }
+.nota {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5;
+  position:relative;
+}
+.nota:before {
+    content: "\f044";
+    font-family: FontAwesome;
+    left:10px;
+    position:absolute;
+    top:0px;
+    font-size: 45px;
+ }

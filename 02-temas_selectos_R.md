@@ -216,6 +216,8 @@ help(read_csv)
 
 ## Estructuras de datos
 
+> Todo lo que existe en R es un objeto.
+
 En R se puede trabajar con distintas estructuras de datos, algunas son de una sola dimensión y otras permiten más, como indica el siguiente diagrama:
 
 <img src="figuras/data-estructure.png" width="313" style="display: block; margin: auto;" />
@@ -225,14 +227,14 @@ En R se puede trabajar con distintas estructuras de datos, algunas son de una so
 
 ### Vectores
 
-Los vectores son estructuras de datos de una dimensión. Un vector se define con la función `c()`, que concatena diferentes elementos del mismo tipo, esto determina el tipo del vector.
+Los vectores son estructuras de datos de una dimensión. Un vector se define con la función `c()`, que _concatena_ diferentes elementos del mismo tipo, esto determina el tipo del vector.
 
 
 **Nota:** En R, la asignación de un nombre al vector, o en general a cualquier objeto, se realiza con el símbolo `<-`. Se recomienda usar el shortcut  **alt -** genera `<-`.
 
 <br>
 
-Los vectores en R pueden ser de diferentes tipos o clases, a continuación se presentan algunos casos. En R, la clase de cada vector se extrae con la función `class`()
+Los vectores en R pueden ser de diferentes tipos o clases, a continuación se presentan algunos casos. En R, la clase de cada vector se extrae con la función `class()`.
 
 *  __Vectores numéricos__:
 
@@ -816,16 +818,16 @@ iris %>% sample_n(10) %>% knitr::kable()
 
        Sepal.Length   Sepal.Width   Petal.Length   Petal.Width  Species    
 ----  -------------  ------------  -------------  ------------  -----------
-145             6.7           3.3            5.7           2.5  virginica  
-62              5.9           3.0            4.2           1.5  versicolor 
-40              5.1           3.4            1.5           0.2  setosa     
-26              5.0           3.0            1.6           0.2  setosa     
-75              6.4           2.9            4.3           1.3  versicolor 
-96              5.7           3.0            4.2           1.2  versicolor 
-35              4.9           3.1            1.5           0.2  setosa     
-131             7.4           2.8            6.1           1.9  virginica  
-69              6.2           2.2            4.5           1.5  versicolor 
-12              4.8           3.4            1.6           0.2  setosa     
+76              6.6           3.0            4.4           1.4  versicolor 
+24              5.1           3.3            1.7           0.5  setosa     
+93              5.8           2.6            4.0           1.2  versicolor 
+17              5.4           3.9            1.3           0.4  setosa     
+23              4.6           3.6            1.0           0.2  setosa     
+114             5.7           2.5            5.0           2.0  virginica  
+94              5.0           2.3            3.3           1.0  versicolor 
+47              5.1           3.8            1.6           0.2  setosa     
+100             5.7           2.8            4.1           1.3  versicolor 
+117             6.5           3.0            5.5           1.8  virginica  
 
 Este conjunto de datos multivariados fue presentado por el estadístico y biólogo británico Ronald Fisher en su artículo de 1936 "El uso de mediciones múltiples en problemas taxonómicos como un ejemplo de análisis discriminante lineal". Edgar Anderson recopiló los datos para cuantificar la variación morfológica de las flores de iris de tres especies relacionadas. Los datos fueron recolectadas en la Península de Gaspé. [@fisher1936use]
 
@@ -1081,13 +1083,13 @@ tabla
 ```
 
 ```
-##   n    frutas     valor
-## 1 1     apple 0.9838936
-## 2 2    banana 0.5639114
-## 3 3    orange 0.8344072
-## 4 4 pineapple 0.3302192
-## 5 5     lemon 0.8822113
-## 6 6     apple 0.3756047
+##   n    frutas      valor
+## 1 1     apple 0.91105108
+## 2 2    banana 0.66714187
+## 3 3    orange 0.69287339
+## 4 4 pineapple 0.76913217
+## 5 5     lemon 0.05792242
+## 6 6     apple 0.41570551
 ```
 
 ```r
@@ -1099,13 +1101,13 @@ tabla.color
 ```
 
 ```
-##          peso    color
-## 1  0.05408125     rojo
-## 2  1.44309493 amarillo
-## 3  0.39872304  naranje
-## 4 -1.44778186 amarillo
-## 5  1.52618457 amarillo
-## 6 -2.09589909     rojo
+##         peso    color
+## 1  1.2376857     rojo
+## 2 -0.4146773 amarillo
+## 3 -0.2025595  naranje
+## 4 -0.5081795 amarillo
+## 5 -0.2345212 amarillo
+## 6 -1.4100427     rojo
 ```
 
 ```r
@@ -1113,13 +1115,13 @@ cbind(tabla, tabla.color)
 ```
 
 ```
-##   n    frutas     valor        peso    color
-## 1 1     apple 0.9838936  0.05408125     rojo
-## 2 2    banana 0.5639114  1.44309493 amarillo
-## 3 3    orange 0.8344072  0.39872304  naranje
-## 4 4 pineapple 0.3302192 -1.44778186 amarillo
-## 5 5     lemon 0.8822113  1.52618457 amarillo
-## 6 6     apple 0.3756047 -2.09589909     rojo
+##   n    frutas      valor       peso    color
+## 1 1     apple 0.91105108  1.2376857     rojo
+## 2 2    banana 0.66714187 -0.4146773 amarillo
+## 3 3    orange 0.69287339 -0.2025595  naranje
+## 4 4 pineapple 0.76913217 -0.5081795 amarillo
+## 5 5     lemon 0.05792242 -0.2345212 amarillo
+## 6 6     apple 0.41570551 -1.4100427     rojo
 ```
 
 
@@ -1170,13 +1172,13 @@ lista
 ## [7] "kiwi"      "apple"    
 ## 
 ## $tabla
-##   n    frutas     valor
-## 1 1     apple 0.9838936
-## 2 2    banana 0.5639114
-## 3 3    orange 0.8344072
-## 4 4 pineapple 0.3302192
-## 5 5     lemon 0.8822113
-## 6 6     apple 0.3756047
+##   n    frutas      valor
+## 1 1     apple 0.91105108
+## 2 2    banana 0.66714187
+## 3 3    orange 0.69287339
+## 4 4 pineapple 0.76913217
+## 5 5     lemon 0.05792242
+## 6 6     apple 0.41570551
 ## 
 ## $ejemlista
 ## $ejemlista$a
@@ -1325,7 +1327,11 @@ Los proyectos de RStudio son útiles para mantener juntos todos los archivos aso
 
 Hagamos un proyecto. Para esto debes presionar _File > New Project_, luego:
 
-<img src="figuras/rstudio-project-1.png" width="50%" /><img src="figuras/rstudio-project-2.png" width="50%" /><img src="figuras/rstudio-project-3.png" width="50%" />
+<img src="figuras/rstudio-project-1.png" width="50%" />
+
+<img src="figuras/rstudio-project-2.png" width="50%" />
+
+<img src="figuras/rstudio-project-3.png" width="50%" />
 
 <br>
 
@@ -1347,7 +1353,412 @@ Todo lo que necesitas está en un solo lugar y separado de los demás proyectos 
 
 ## Otros aspectos importantes de R
 
+### Valores faltantes
+
+En R los datos faltantes se expresan como `NA`. La función `is.na()` regresa un vector lógico sobre los valores que son o no `NA`.
+
+
+```r
+is.na(c(4, 2, NA))
+```
+
+```
+## [1] FALSE FALSE  TRUE
+```
+
+\BeginKnitrBlock{comentario}<div class="comentario">El default de R es propagar los valores faltantes, esto es, si se desconoce el valor de una de las componentes de un vector, también se desconoce la suma del mismo, en general, cualquier operación.</div>\EndKnitrBlock{comentario}
+
+
+```r
+sum(c(4, 2, NA))
+```
+
+```
+## [1] NA
+```
+
+
+```r
+mean(c(4, 2, NA))
+```
+
+```
+## [1] NA
+```
+
+
+```r
+3 > NA
+```
+
+```
+## [1] NA
+```
+
+
+```r
+(NA == NA)
+```
+
+```
+## [1] NA
+```
+
+Sin embargo, muchas funciones tienen un argumento `na.rm` para removerlos. 
+
+```r
+sum(c(4, 2, NA), na.rm = T)
+```
+
+```
+## [1] 6
+```
+
+```r
+mean(c(4, 2, NA), na.rm = T)
+```
+
+```
+## [1] 3
+```
+
+<br>
+
+---
+
 ### Funciones
+
+> Todo lo que sucede en R es una función.
+
+R es un _lenguaje de programación funcional_. Es decir, proporciona muchas herramientas para la creación y manipulación de funciones.
+
+En R las funciones, al igual que los vectores, se pueden asignar a variables, guardarlas en listas, usarlas como argumentos en otras funciones, crearlas dentro de otras funciones, e incluso regresar como resultado de una función más funciones.
+
+#### Una caja negra {-}
+
+\BeginKnitrBlock{information}<div class="information">Una función puede verse como una caja negra que realiza un proceso o serie de instrucciones condicionadas a un valor de entrada, y cuyo resultado es un valor de salida. </div>\EndKnitrBlock{information}
+
+
+En R existen algunas funciones pre cargadas que ya hemos usado, por ejemplo, .la función `mean()`.
+
+
+```r
+input <- c(1:5)
+output <- mean( input )
+output
+```
+
+```
+## [1] 3
+```
+
+
+Sin embargo, también es posible escribir nuestras propias funciones. 
+
+<br>
+
+#### Escibir una función {-}
+
+En R es posible escribir funciones y es muy recomendable para dar soluciones a problemas simples. 
+
+Existen ocasiones en las que al programar copias y pegas cierto código varias veces para una meta en especial. En ese momento, es necesario pasar el código a una función. 
+
+
+\BeginKnitrBlock{nota}<div class="nota">Una función soluciona un problema en particular. </div>\EndKnitrBlock{nota}
+
+La función `function()` nos permite crear funciones con la siguiente estructura:
+
+
+```r
+my_fun <- function( arg1 ){
+  
+  body
+  
+  return()
+}
+```
+
+
+\BeginKnitrBlock{warning}<div class="warning">En general, esta estructura se respeta en las funciones predeterminadas de R.</div>\EndKnitrBlock{warning}
+
+Creamos una función que sume uno a cualquier número. 
+
+
+```r
+suma_uno_fun <- function( x ){
+   y = x + 1
+   return(y)
+}
+```
+
+Aplicamos la función:
+
+
+```r
+suma_uno_fun(5)
+```
+
+```
+## [1] 6
+```
+
+Podemos ver que en nuestra sesión ya existe la función con la función `ls()`. 
+
+```r
+ls()
+```
+
+```
+##  [1] "a"            "b"            "bool"         "c"           
+##  [5] "fruits"       "fruits.fac"   "input"        "iris"        
+##  [9] "lista"        "output"       "suma_uno_fun" "tabla"       
+## [13] "tabla.color"  "tenweeks"     "x"
+```
+
+Esta función en lista los objetos existente en la sesión actual.
+
+<br>
+
+#### Argumentos de funciones {-}
+
+En R los argumentos de las funciones pueden llamarse por **posición** o **nombre**. Consideremos la siguiente función en la que se eleva un numero a un exponente determinado.
+
+
+```r
+potencia_fun <- function(base, exponente){
+  base^exponente
+}
+```
+
+Los argumentos pueden indicarse por posición:
+
+```r
+potencia_fun(2, 3)
+```
+
+```
+## [1] 8
+```
+
+O bien por nombre:
+
+```r
+potencia_fun(exponente = 2, base = 3)
+```
+
+```
+## [1] 9
+```
+
+<br> 
+
+#### Argumentos predeterminados {-}
+
+En una función es posible asignar valores predeterminados a los argumentos.
+
+Por ejemplo, modificamos la función para asignar un valor predeterminado del exponente.
+
+```r
+potencia_default_fun <- function(base, exponente = 2){
+  base^exponente
+}
+```
+
+Al llamar la función, no es necesario definir un valor para el exponente y en automático tomará el valor `exponente = 2`.
+
+
+```r
+potencia_default_fun(2)
+```
+
+```
+## [1] 4
+```
+
+<br>
+
+#### Argumentos nulos {-}
+
+Una función puede no tener argumentos y simplemente correr un proceso. 
+
+En este caso, usaremos la función `sample()` que elige una muestra aleatoria de tamaño 1 de un vector de 1 a 6 imitando un dado dentro la la función `lanza_dado()`.
+
+```r
+lanza_dado <- function() {
+  numero <- sample(1:6, size = 1)
+  numero
+}
+```
+
+Ahora tiraremos dos veces los dados.
+
+**Primer lanzamiento:**
+
+
+```r
+lanza_dado()
+```
+
+```
+## [1] 5
+```
+
+**Segundo lanzamiento:**
+
+
+```r
+lanza_dado()
+```
+
+```
+## [1] 5
+```
+
+---
+
+<br>
+
+#### Alcance de la función {-}
+
+Es importante mencionar que las variables que son definidas dentro de la función no son accesibles fuera de la función. Es decir, las funciones en R tienen un **ambiente local**.
+
+Por ejemplo, al correr la siguiente función e intentar imprimir el objeto `x` regresa un error.
+
+
+```r
+xs_fun <- function(a){
+  x <- 2
+  a*x
+}
+xs_fun(2)
+```
+
+```
+## [1] 4
+```
+
+```r
+# print(x)
+```
+
+La función crea un ambiente nuevo dentro de la misma, en caso de no encontrar el valor de la variable en el ambiente local, **sube un nivel**. 
+
+Este nuevo nivel puede ser el ambiente global. Por ejemplo:
+
+
+```r
+y <- 10
+ys_fun <- function(a){
+  a*y
+}
+ys_fun(2)
+```
+
+```
+## [1] 20
+```
+
+Si la función está contenida en otra función, primero buscará en el ambiente local, después en el ambiente local de la función superior y luego en el ambiente global.
+
+Por ejemplo:
+
+
+```r
+y <- 10
+mas_uno_fun <- function(a){
+  c <- 1
+  y <- 1
+  ys_add_fun <- function(a){
+    a*y + c
+  }
+  ys_add_fun(a)
+}
+```
+
+Si llamamos la función con un valor `a = 2` al igual que en el ejemplo anterior, ¿por qué da el siguiente resultado y no 21 o 20?
+
+
+```r
+mas_uno_fun(a = 2)
+```
+
+```
+## [1] 3
+```
+
+<br>
+
+---
+
+#### Funciones para funciones {-}
+
+O bien funciones para entender las partes de la función. 
+
+- `body()`
+
+```r
+body(suma_uno_fun)
+```
+
+```
+## {
+##     y = x + 1
+##     return(y)
+## }
+```
+
+- `args()`
+
+```r
+args(mean.default)
+```
+
+```
+## function (x, trim = 0, na.rm = FALSE, ...) 
+## NULL
+```
+
+- `if()`
+Una función que se usa al programar funciones es `if()` que permite agregar una condición. 
+
+
+```r
+divide_fun <- function(num, den){
+  if(den == 0){
+    return("Denominador es cero")
+  }else{
+    return(num/den)
+  }
+}
+```
+
+Al ejecutar la función y tener cero en el denominador imprime el string.
+
+
+```r
+divide_fun(10, 0)
+```
+
+```
+## [1] "Denominador es cero"
+```
+
+Al no tener cero en el denominador la operación se ejecuta.
+
+
+```r
+divide_fun(10, 2)
+```
+
+```
+## [1] 5
+```
+
+<br>
+
+---
+
+<br>
 
 Todas las operaciones en R son producto de la llamada a una función, esto incluye operaciones como +, operadores que controlan flujo como for, if y while, e incluso operadores para obtener subconjuntos como `[ ]` y `$`.
 
@@ -1361,7 +1772,6 @@ y <- 4
 ```
 ## [1] 7
 ```
-
 
 
 ```r
@@ -1383,7 +1793,9 @@ for (i in 1:2) print(i)
 ## [1] 2
 ```
 
-Cuando llamamos a una función podemos especificar los argumentos en base a posición, nombre completo o nombre parcial:
+<br>
+
+Cuando llamamos a una función podemos especificar los argumentos con base en la posición, el nombre completo o el nombre parcial:
 
 
 ```r
@@ -1399,7 +1811,6 @@ str(f(1, 2, 3))
 ##  $ b1: num 2
 ##  $ b2: num 3
 ```
-
 
 
 ```r
@@ -1450,16 +1861,1062 @@ f(2)
 ## [1] 4
 ```
 
-
 La función anterior nunca utiliza el argumento b, de tal manera que f(2) no produce ningún error.
 
+<br>
 
-<!--### Funcionales
+### Funcionales
+
+La familia de funciones **apply** pertenece a la librería `base` en R y facilitan la manipulación de datos de forma repetitiva.
+
+Las funciones de esta familia son: `apply()`, `lapply()`, `sapply()`, `vapply()`, `mapply()`, `rapply()`, y `tapply()`.
+
+\BeginKnitrBlock{comentario}<div class="comentario">La estructura de los datos de entrada y el formato del resultado o salida determinarán cual función usar. </div>\EndKnitrBlock{comentario}
+
+En este taller solo se verán las primeras tres funciones. 
+
+---
+
+#### apply() {-}
+
+Esta es la función que manipula arreglos homogéneos, en particular, se revisa el caso de matrices que son arreglos de dos dimensiones.
+
+La función tiene los siguientes argumentos: `apply(X, MARGIN, FUN, ...)`
+
+- `X` representa el arreglo de dos dimensiones.
+
+- `MARGIN` representa la dimensión sobre la que se va a resumir la información. Donde **1 = renglon o primera dimensión** y **2 = columna o segunda dimensión**.
+
+- `FUN` representa la función que resume la información.
+
+Tomemos la siguiente matriz de simulaciones:
+
+
+```r
+set.seed(1)
+mat_norm <- matrix(rnorm(24, mean = 0, sd = 1), nrow = 4, ncol = 6)
+mat_norm
+```
+
+```
+##            [,1]       [,2]       [,3]        [,4]        [,5]        [,6]
+## [1,] -0.6264538  0.3295078  0.5757814 -0.62124058 -0.01619026  0.91897737
+## [2,]  0.1836433 -0.8204684 -0.3053884 -2.21469989  0.94383621  0.78213630
+## [3,] -0.8356286  0.4874291  1.5117812  1.12493092  0.82122120  0.07456498
+## [4,]  1.5952808  0.7383247  0.3898432 -0.04493361  0.59390132 -1.98935170
+```
+
+<br>
+
+**Deseamos obtener la suma de cada columna de la matriz.**
+
+<br>
+
+El primer método, quizá el mas intuitivo en este momento, es obtener cada elemento o columna, aplicar la función a cada elemento y concatenar:
+
+
+```r
+prom_col_m1 <- c(sum(mat_norm[, 1]), 
+                 sum(mat_norm[, 2]), 
+                 sum(mat_norm[, 3]), 
+                 sum(mat_norm[, 4]),
+                 sum(mat_norm[, 5]),
+                 sum(mat_norm[, 6]))
+prom_col_m1
+```
+
+```
+## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730
+```
+
+Segundo método:
+
+
+```r
+prom_col_m2 <- vector( length = ncol(mat_norm))
+for(j in 1:ncol(mat_norm)){
+  prom_col_m2[j] <- sum(mat_norm[, j])
+}
+prom_col_m2
+```
+
+```
+## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730
+```
+
+Tercer método:
+
+<img src="figures/applycol.png" style="display: block; margin: auto;" />
+
+
+
+```r
+prom_col_m3 <- apply(X = mat_norm, MARGIN = 2, FUN = sum)
+prom_col_m3
+```
+
+```
+## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730
+```
+
+Cuarto método:
+
+
+```r
+prom_col_m4 <- colSums(mat_norm)
+prom_col_m4
+```
+
+```
+## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730
+```
+
+<br>
+
+Ahora, para obtener la suma por renglón usando el tercer método de la función `apply()`, únicamente es necesario cambiar la dimensión sobre la que voy a resumir con el argumento `MARGIN = 1`.
+
+
+```r
+prom_row_m3 <- apply(mat_norm, 1, sum)
+prom_row_m3
+```
+
+```
+## [1]  0.5603818 -1.4309408  3.1842987  1.2830648
+```
+
+Esto es equivalente al primer método que usamos:
+
+
+```r
+prom_row_m1 <- c(sum(mat_norm[1, ]), 
+                 sum(mat_norm[2, ]), 
+                 sum(mat_norm[3, ]), 
+                 sum(mat_norm[4, ]))
+prom_row_m1
+```
+
+```
+## [1]  0.5603818 -1.4309408  3.1842987  1.2830648
+```
+
+
+La ventaja de usar la función `apply()` es que se puede usar cualquier función. Por ejemplo, obtener la desviación estándar.
+
+
+```r
+apply(mat_norm, 1, sd)
+```
+
+```
+## [1] 0.6341809 1.1718660 0.8338847 1.2066403
+```
+
+
+O bien, una crear una función propia (definida por el usuario) con la función `function()`:
+
+
+```r
+cv_vec_m3 <- apply(mat_norm, 1, function(reng){
+  cv <- mean(reng)/sd(reng)
+  return(cv)
+})
+cv_vec_m3
+```
+
+```
+## [1]  0.1472718 -0.2035131  0.6364386  0.1772228
+```
+
+\BeginKnitrBlock{nota}<div class="nota">**Funciones Anónimas:**
+
+A este tipo de funciones se les llama
+**funciones anónimas** porque no se nombran ni guardan en
+el ambiente de R
+y únicamente funcionan dentro del
+comando que las llama.</div>\EndKnitrBlock{nota}
+
+---
+
+#### lapply() {-}
+
+La función `lapply()` aplica una función sobre una lista o un vector y regresa el resultado en otra lista.
+
+Vector de ciudades:
+
+```r
+ciudades_vec <- c("Aguascalientes", "Monterrey", "Guadalajara", "México")
+ciudades_vec
+```
+
+```
+## [1] "Aguascalientes" "Monterrey"      "Guadalajara"    "México"
+```
+
+
+
+```r
+res_nchar_l <- lapply(ciudades_vec, nchar)
+res_nchar_l
+```
+
+```
+## [[1]]
+## [1] 14
+## 
+## [[2]]
+## [1] 9
+## 
+## [[3]]
+## [1] 11
+## 
+## [[4]]
+## [1] 6
+```
+
+
+\BeginKnitrBlock{comentario}<div class="comentario">Esta función permite implementar funciones que regresen objetos de diferentes tipos, porque la listas permiten almacenar contenido heterogéneo.</div>\EndKnitrBlock{comentario}
+
+<br>
+
+La función `lapply()` permite incluir argumentos de las funciones que implementa. Estos argumentos se incluyen dentro de `lapply()` después de la función a implementar.
+
+Por ejemplo, usamos la función potencia que se creó antes.
+
+
+```r
+potencia_fun <- function(base, exponente){
+  base^exponente
+}
+```
+
+El objetivo es aplicar a cada elemento de la  siguiente lista la función potencia y elevarlo al cubo.
+
+
+```r
+nums_lista <- list(1, 3, 4)
+nums_lista
+```
+
+```
+## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 3
+## 
+## [[3]]
+## [1] 4
+```
+
+En la función `lapply()` se agrega el argumento `exponente = 3` como último argumento.
+
+
+```r
+potencia_lista <- lapply(nums_lista, potencia_fun, exponente = 3)
+potencia_lista
+```
+
+```
+## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 27
+## 
+## [[3]]
+## [1] 64
+```
+
+
+Una forma de reducir la lista obtenida a un vector es con la función `unlist()` que vimos antes.
+
+
+```r
+unlist(potencia_lista)
+```
+
+```
+## [1]  1 27 64
+```
+
+
+<br>
+
+---
+
+#### sapply() {-}
+
+La función `sapply()` es muy similar a `lapply()`. La única diferencia es la **s** que surge de **simplified apply**. 
+
+Al igual que `lapply()` aplica una función sobre una lista o un vector pero simplifica el resultado en un arreglo.
+
+
+```r
+res_nchar_s <- sapply(ciudades_vec, nchar)
+res_nchar_s
+```
+
+```
+## Aguascalientes      Monterrey    Guadalajara         México 
+##             14              9             11              6
+```
+
+\BeginKnitrBlock{warning}<div class="warning">Esta función es *peligrosa* ya que únicamente simplifica la estructura del resultado cuando es posible, de lo contrario, regresará una lista igual que `lapply()`.</div>\EndKnitrBlock{warning}
+
+---
+
+![](figuras/manicule.jpg)  Considerando la lista siguiente,
+
+
+```r
+cdmx_list <- list(
+  pop = 8918653,
+  delegaciones = c("Alvaro Obregón", "Azcapotzalco" ,"Benito Juárez" ,
+                   "Coyoacán" ,"Cuajimalpa de Morelos" ,"Cuauhtémoc" ,
+                   "Gustavo A. Madero" ,
+                   "Iztacalco" ,"Iztapalapa" ,
+                   "Magdalena Contreras" ,"Miguel Hidalgo" ,"Milpa Alta" ,
+                   "Tláhuac" ,"Tlalpan" ,
+                   "Venustiano Carranza" ,"Xochimilco"),
+  capital = TRUE
+)
+```
+
+obtén la clase de cada elemento con la función `lapply()`.
+
+
+```r
+lapply( , class)
+```
+
+<br>
+
+---
+
+![](figuras/manicule.jpg)  La siguiente función extrae la letra de menor posición y mayor posición en orden alfabético.
+
+
+```r
+min_max_fun <- function(nombre){
+  nombre_sinespacios <- gsub(" ", "", nombre)
+  letras <- strsplit(nombre_sinespacios, split = "")[[1]]
+  c(minimo = min(letras), maximo = max(letras))
+}
+```
+
+Es decir, si incluimos las letras `abcz` la letra *mínima* es a y la *máxima* es z.
+
+```r
+min_max_fun("abcz")
+```
+
+```
+## minimo maximo 
+##    "a"    "z"
+```
+
+El siguiente vector incluye el nombre de las 16 delegaciones de la Ciudad de México.
+
+
+```r
+delegaciones <- c("Alvaro Obregon", "Azcapotzalco" ,"Benito Juarez" ,
+                   "Coyoacan" ,"Cuajimalpa de Morelos" ,"Cuauhtemoc" ,
+                   "Gustavo Madero" ,
+                   "Iztacalco" ,"Iztapalapa" ,
+                   "Magdalena Contreras" ,"Miguel Hidalgo" ,"Milpa Alta" ,
+                   "Tlahuac" ,"Tlalpan" ,
+                   "Venustiano Carranza" ,"Xochimilco")
+```
+
+Aplica la función `sapply()` para obtener un arreglo con la letra máxima y mínima de cada nombre. 
+
+
+```r
+sapply(, )
+```
+
+
+
+<br>
+
+---
+
+![](figuras/manicule.jpg)  El siguiente vector incluye el precio de la gasolina en diferentes estados del país en julio de 2017. 
+
+
+```r
+gas_cdmx <- c(15.82, 15.77, 15.83, 15.23, 14.95, 15.42, 15.55)
+gas_cdmx
+```
+
+```
+## [1] 15.82 15.77 15.83 15.23 14.95 15.42 15.55
+```
+
+1. Crea una función que convierta el precio a dolares suponiendo que un dolar equivale a 17.76 pesos.
+
+
+```r
+conv_fun <- function(precio){
+  /17.76
+  return()
+}
+```
+
+
+
+2. Usando la función `lapply()` convierte el precio de la gasolina a dolares.
+
+
+```r
+gas_cdmx_usd_lista <- lapply(, conv_fun)
+```
+
+
+
+3. Usa la función `unlist()` para convertir la lista a un vector. 
+
+
+```r
+gas_cdmx_usd <- unlist()
+print(gas_cdmx_usd)
+```
+
+
+
+<br>
+
+---
+
+![](figuras/manicule.jpg)  Estadísticos importantes
+
+
+
+```r
+estadisticos <- c("GAUSS:1777", "BAYES:1702", "FISHER:1890", "PEARSON:1857")
+split_estadisticos <- strsplit(estadisticos, split = ":")
+split_estadisticos
+```
+
+```
+## [[1]]
+## [1] "GAUSS" "1777" 
+## 
+## [[2]]
+## [1] "BAYES" "1702" 
+## 
+## [[3]]
+## [1] "FISHER" "1890"  
+## 
+## [[4]]
+## [1] "PEARSON" "1857"
+```
+
+Utiliza la función predefinida `tolower()` y `lapply()` para convertir a minúsculas cada letra de la lista `split_estadisticos`.
+
+
+```r
+split_lower <- lapply( , )
+print(split_lower)
+```
+
+<br>
+
+---
+
+![](figuras/manicule.jpg)  Usando el vector `split_estadísticos` del ejercicio anterior.
+
+
+```r
+str(split_estadisticos)
+```
+
+```
+## List of 4
+##  $ : chr [1:2] "GAUSS" "1777"
+##  $ : chr [1:2] "BAYES" "1702"
+##  $ : chr [1:2] "FISHER" "1890"
+##  $ : chr [1:2] "PEARSON" "1857"
+```
+
+1. Crea una función que regrese la primera posición. 
+
+
+```r
+primera_pos_fun <- function(lista){
+  
+}
+```
+
+2. Crea una función que regrese la segunda posición.
+
+```r
+segunda_pos_fun <- function(lista){
+  
+}
+```
+
+3. Usando `lapply()` crea una lista con los nombres de los estadísticos y otra con la fecha de nacimiento. 
+
+
+```r
+nombres <- lapply()
+fechas <- lapply()
+```
+
+<br>
+
+---
+
+![](figuras/manicule.jpg)  Usando una función anónima y el vector `split_estadísticos` en un solo `lapply()` o `sapply()` obtén un vector compuesto de la primera posición, es decir el nombre, en minúsculas. 
+
+Tip: si usas `lapply()` recuerda usar la función `unlist()`.
+
+
+```r
+nombre_estadisticos <- (split_estadisticos, function(elemento){
+  tolower()
+})
+nombre_estadisticos
+```
+
+<br>
+
+---
+
+![](figuras/manicule.jpg)  En la siguiente lista se presenta el registro de temperatura de tres ciudades a las 07:00 am, 10:00 am, 01:00 pm, 04:00 pm y  07:00 pm.
+
+
+```r
+temp_lista <- list(
+  cdmx = c(13, 15, 19, 22, 20),
+  guadalajara = c(18, 18, 22, 26, 27),
+  tuxtla_gtz = c(22, 24, 29, 32, 28)
+)
+str(temp_lista)
+```
+
+```
+## List of 3
+##  $ cdmx       : num [1:5] 13 15 19 22 20
+##  $ guadalajara: num [1:5] 18 18 22 26 27
+##  $ tuxtla_gtz : num [1:5] 22 24 29 32 28
+```
+
+Completa la siguiente función que obtiene el promedio entre el valor mínimo y máximo registrados.
+
+
+```r
+promedio_extremos_fun <-  function(x) {
+  ( min() + max() ) / 2
+}
+```
+
+Aplica la función a la lista y obtén la temperatura promedio de extremos para cada ciudad usando `lapply()` y `sapply()`.
+
+
+```r
+lapply(,)
+```
+
+
+```r
+sapply(,)
+```
 
 
 
 
+<br>
+
+---
+
+![](figuras/manicule.jpg)  Crea una función en la que _mientras_ la velocidad sea mayor a 50 km/hr se reduzca de la siguiente forma:
+
+- Si es mayor a 80 km/hr se reducen 20 km/hr e imprime **¡Demasido rápido!**.
+
+- Si es menor o igual a 80km/hr se reducen únicamente 5 km/hr.
 
 
-### Rendimiento en R-->
+```r
+velocidad_act <- 140
+while(velocidad_act > ){
+  
+  if(velocidad_act > ){
+    print()
+    velocidad_act <- 
+  }
+  if(velocidad_act < ){
+    velocidad_act <- 
+  }
+  
+  velocidad_act
+}
+```
+
+
+
+#### 
+
+
+
+
+### Rendimiento en R
+
+> “We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%. A good programmer will not be lulled into complacency by such reasoning, he will be wise to look carefully at the critical code; but only after that code has been identified.” -Donald Knuth
+
+Diseña primero, luego optimiza. La optimización del código es un proceso iterativo:
+
+1. Encuentra el cuello de botella (más importante).
+
+2. Intenta eliminarlo (no siempre se puede).
+
+3. Repite hasta que tu código sea lo suficientemente rápido.
+
+
+#### Diagnosticar {-}
+
+Una vez que tienes código que se puede leer y funciona, el perfilamiento (profiling) del código es un método sistemático que nos permite conocer cuanto tiempo se esta usando en diferentes partes del programa.
+
+Comenzaremos con la función system.time (no es perfilamiento aún), esta calcula el timepo en segundos que toma ejecutar una expresión (si hay un error, regresa el tiempo hasta que ocurre el error):
+
+
+```r
+library(Lahman)
+Batting %>% sample_n(10) %>% knitr::kable()
+```
+
+        playerID     yearID   stint  teamID   lgID     G    AB    R    H   X2B   X3B   HR   RBI   SB   CS   BB   SO   IBB   HBP   SH   SF   GIDP
+------  ----------  -------  ------  -------  -----  ---  ----  ---  ---  ----  ----  ---  ----  ---  ---  ---  ---  ----  ----  ---  ---  -----
+75294   vaughgr01      1996       2  SDN      NL      43   141   20   29     3     1   10    22    4    1   24   31     2     2    0    0      1
+71224   jorgete01      1993       1  MIN      AL      59   152   15   34     7     0    1    12    1    0   10   21     0     0    0    1      7
+49106   alyeabr01      1971       1  MIN      AL      79   158   13   28     4     0    2    15    1    1   24   38     3     1    0    5      7
+88544   thormsc01      2006       1  ATL      NL      55   128   13   30    11     0    5    14    1    0    5   21     0     0    0    0      0
+45042   brandja01      1966       1  PHI      NL      82   164   16   41     6     1    1    15    0    2   17   36     2     0    4    2      4
+25168   garmsde01      1933       1  SLA      AL      78   189   35   60    10     2    4    24    2    5   30   21    NA     2    2   NA     NA
+7267    clarkbo02      1898       1  BLN      NL      82   285   26   69     5     2    0    27    2   NA    4   NA    NA    15    4   NA     NA
+10227   camerja01      1906       1  BSN      NL      18    61    3   11     0     0    0     4    0   NA    2   NA    NA     0    0   NA     NA
+32516   olsenve01      1946       1  CHN      NL       5     0    0    0     0     0    0     0    0    0    0    0     0     0    0    0      0
+53320   peterfr01      1975       1  CLE      AL      25     0    0    0     0     0    0     0    0    0    0    0     0     0    0    0      0
+
+
+```r
+system.time(lm(R ~ AB + teamID, Batting))
+```
+
+```
+##    user  system elapsed 
+##   2.935   0.088   3.022
+```
+
+- __user time__: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.
+
+- __elapsed time__: tiempo en el reloj, tiempo que experimenta la persona.
+
+El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:
+
+
+```r
+system.time(readLines("http://www.jhsph.edu"))
+```
+
+```
+##    user  system elapsed 
+##   0.021   0.004   1.217
+```
+
+
+```r
+library(parallel)
+system.time(mclapply(2000:2006, 
+  function(x){
+    sub <- subset(Batting, yearID == x)
+    lm(R ~ AB, sub)
+}, mc.cores = 5))
+```
+
+```
+##    user  system elapsed 
+##   0.058   0.060   0.097
+```
+
+Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.
+
+
+```r
+# dplyr
+dplyr_st <- system.time({
+  Batting %>%
+  group_by(playerID) %>%
+  summarise(total = sum(R, na.rm = TRUE), n = n()) %>%
+  dplyr::arrange(desc(total))
+})
+
+# plyr
+plyr_st <- system.time({
+    Batting %>% 
+    plyr::ddply("playerID", plyr::summarise, total = sum(R, na.rm = TRUE), n = length(R)) %>% 
+    dplyr::arrange(-total)
+})
+
+# estándar lento
+est_l_st <- system.time({
+  players <- unique(Batting$playerID)
+  n_players <- length(players)
+  total <- rep(NA, n_players)
+  n <- rep(NA, n_players)
+  for(i in 1:n_players){
+    sub_batting <- Batting[Batting$playerID == players[i], ]
+    total[i] <- sum(sub_batting$R, na.rm = TRUE)
+    n[i] <- nrow(sub_batting)
+  }
+  batting_2 <- data.frame(playerID = players, total = total, n = n)
+  batting_2[order(batting_2$total, decreasing = TRUE), ]
+})
+
+# estándar rápido
+est_r_st <- system.time({
+  batting_2 <- aggregate(. ~ playerID, data = Batting[, c("playerID", "R")], sum)
+  batting_ord <- batting_2[order(batting_2$R, decreasing = TRUE), ]
+})
+
+dplyr_st
+```
+
+```
+##    user  system elapsed 
+##   0.148   0.004   0.152
+```
+
+
+```r
+plyr_st
+```
+
+```
+##    user  system elapsed 
+##   7.390   0.040   7.432
+```
+
+
+```r
+est_l_st
+```
+
+```
+##    user  system elapsed 
+##  67.315   0.136  67.462
+```
+
+
+```r
+est_r_st
+```
+
+```
+##    user  system elapsed 
+##   0.615   0.000   0.616
+```
+
+La función `system.time` supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es `Rprof()`.
+
+Rprof es un perfilador de muestreo que registra cambios en la pila de funciones, funciona tomando muestras a intervalos regulares y tabula cuánto tiempo se lleva en cada función.
+
+
+```r
+Rprof("out/lm_rprof.out", interval = 0.015, line.profiling = TRUE)
+mod <- lm(R ~ AB + teamID, Batting)
+Rprof(NULL)
+```
+
+Usamos la función `summaryRprof para tabular las salidas de Rprof y calcular cuánto tiempo se toma en cada función.
+
+
+```r
+summaryRprof("out/lm_rprof.out")
+```
+
+```
+## $by.self
+##                         self.time self.pct total.time total.pct
+## "lm.fit"                     2.84    90.43       2.84     90.43
+## ".External2"                 0.22     7.18       0.24      7.66
+## "as.character"               0.04     1.44       0.04      1.44
+## "anyDuplicated.default"      0.02     0.48       0.02      0.48
+## "sys.call"                   0.02     0.48       0.02      0.48
+## 
+## $by.total
+##                         total.time total.pct self.time self.pct
+## "<Anonymous>"                 3.13    100.00      0.00     0.00
+## "block_exec"                  3.13    100.00      0.00     0.00
+## "call_block"                  3.13    100.00      0.00     0.00
+## "do.call"                     3.13    100.00      0.00     0.00
+## "eval.parent"                 3.13    100.00      0.00     0.00
+## "eval"                        3.13    100.00      0.00     0.00
+## "evaluate_call"               3.13    100.00      0.00     0.00
+## "evaluate::evaluate"          3.13    100.00      0.00     0.00
+## "evaluate"                    3.13    100.00      0.00     0.00
+## "handle"                      3.13    100.00      0.00     0.00
+## "in_dir"                      3.13    100.00      0.00     0.00
+## "knitr::knit"                 3.13    100.00      0.00     0.00
+## "lm"                          3.13    100.00      0.00     0.00
+## "local"                       3.13    100.00      0.00     0.00
+## "process_file"                3.13    100.00      0.00     0.00
+## "process_group.block"         3.13    100.00      0.00     0.00
+## "process_group"               3.13    100.00      0.00     0.00
+## "timing_fn"                   3.13    100.00      0.00     0.00
+## "withCallingHandlers"         3.13    100.00      0.00     0.00
+## "withVisible"                 3.13    100.00      0.00     0.00
+## "lm.fit"                      2.84     90.43      2.84    90.43
+## ".External2"                  0.24      7.66      0.22     7.18
+## "model.matrix.default"        0.22      7.18      0.00     0.00
+## "model.matrix"                0.22      7.18      0.00     0.00
+## "as.character"                0.04      1.44      0.04     1.44
+## "model.response"              0.04      1.44      0.00     0.00
+## "anyDuplicated.default"       0.02      0.48      0.02     0.48
+## "sys.call"                    0.02      0.48      0.02     0.48
+## "[.data.frame"                0.02      0.48      0.00     0.00
+## "["                           0.02      0.48      0.00     0.00
+## "[[.data.frame"               0.02      0.48      0.00     0.00
+## "[["                          0.02      0.48      0.00     0.00
+## "%in%"                        0.02      0.48      0.00     0.00
+## "$.data.frame"                0.02      0.48      0.00     0.00
+## "$"                           0.02      0.48      0.00     0.00
+## "anyDuplicated"               0.02      0.48      0.00     0.00
+## "as.vector"                   0.02      0.48      0.00     0.00
+## "model.frame.default"         0.02      0.48      0.00     0.00
+## "model.weights"               0.02      0.48      0.00     0.00
+## "na.omit.data.frame"          0.02      0.48      0.00     0.00
+## "na.omit"                     0.02      0.48      0.00     0.00
+## "stats::model.frame"          0.02      0.48      0.00     0.00
+## 
+## $sample.interval
+## [1] 0.015
+## 
+## $sampling.time
+## [1] 3.135
+```
+
+Hay dos métodos para normalizar los datos de Rprof:
+
+1. **by.total** divide el tiempo que se toma en cada función entre el tiempo total en correr.
+
+2. **by.self** similar a **by.total** pero primero resta el tiempo que se toman las funciones en la cima de la pila.
+
+
+```r
+Rprof("out/plyr_rprof.out")
+Batting %>%
+    plyr::ddply("playerID", plyr::summarise, total = sum(R, na.rm = TRUE), n = length(R)) %>%
+    plyr::arrange(-total) %>%
+    head()
+```
+
+```
+##    playerID total  n
+## 1 henderi01  2295 29
+## 2  cobbty01  2246 24
+## 3 bondsba01  2227 22
+## 4 aaronha01  2174 23
+## 5  ruthba01  2174 22
+## 6  rosepe01  2165 25
+```
+
+```r
+Rprof(NULL)
+summaryRprof("out/plyr_rprof.out")$by.self[1:10, ]
+```
+
+```
+##                 self.time self.pct total.time total.pct
+## "FUN"                1.22    13.20       1.98     21.43
+## "lapply"             1.18    12.77       3.18     34.42
+## "as.list"            0.70     7.58       0.84      9.09
+## ".fun"               0.40     4.33       3.36     36.36
+## "eval"               0.36     3.90       9.24    100.00
+## "stopifnot"          0.34     3.68       0.68      7.36
+## "extract_rows"       0.32     3.46       3.74     40.48
+## "[["                 0.26     2.81       4.48     48.48
+## "[[.data.frame"      0.24     2.60       0.50      5.41
+## "unique"             0.22     2.38       0.70      7.58
+```
+
+
+
+```r
+# Rprof("out/slow_rprof.out")
+#     players <- unique(batting$playerID)
+#     n_players <- length(players)
+#     total <- rep(NA, n_players)
+#     n <- rep(NA, n_players)
+#     for(i in 1:n_players){
+#       sub_batting <- batting[batting$playerID == players[i], ]
+#       total[i] <- sum(sub_batting$R)
+#       n[i] <- nrow(sub_batting)
+#     }
+#     batting_2 <- data.frame(playerID = players, total = total, n = n)
+#     batting_2[order(batting_2$total, decreasing = TRUE), ]
+# Rprof(NULL)
+
+summaryRprof("out/slow_rprof.out")$by.self[1:10, ]
+```
+
+```
+##                 self.time self.pct total.time total.pct
+## "[.data.frame"      45.50    54.74      82.74     99.54
+## "=="                24.78    29.81      24.78     29.81
+## "attr"               6.70     8.06       6.70      8.06
+## "NextMethod"         3.42     4.11       3.44      4.14
+## "[["                 1.32     1.59       2.12      2.55
+## "[[.data.frame"      0.22     0.26       0.80      0.96
+## "<Anonymous>"        0.20     0.24       0.46      0.55
+## "all"                0.10     0.12       0.10      0.12
+## "sys.call"           0.10     0.12       0.10      0.12
+## "%in%"               0.08     0.10       0.22      0.26
+```
+
+
+#### Estrategias para mejorar desempeño {-}
+
+1. Utilizar apropiadamente funciones de R, o funciones de paquetes que muchas veces están mejor escritas de lo que nosotros podríamos hacer.
+
+2. Hacer lo menos posible.
+
+3. Usar funciones vectorizadas en R (casi siempre). No hacer crecer objetos (es preferible definir su tamaño antes de operar en ellos).
+
+4. Paralelizar.
+
+5. La más simple y muchas veces la más barata: conseguie una máquina más grande (por ejemplo [Amazon Web Services](https://aws.amazon.com/)).
+
+
+**1 Utilizar apropiadamente funciones de R**
+
+Si el cuello de botella es la función de un paquete vale la pena buscar alternativas, CRAN task views es un buen lugar para buscar.
+
+
+**2 Hacer lo menos posible**
+
+Utiliza funciones más específicas, por ejemplo:
+
+* rowSums(), colSums(), rowMeans() y colMeans() son más rápidas que las invocaciones equivalentes de apply().
+
+* Si quieres checar si un vector contiene un valor any(x == 10) es más veloz que 10 %in% x, esto es porque examinar igualdad es más sencillo que examinar inclusión en un conjunto. Este conocimiento requiere que conozcas alternativas, para ello debes construir tu vocabulario, puedes comenzar por lo [básico](http://adv-r.had.co.nz/Vocabulary.html#vocabulary) e ir incrementando conforme lees código.
+
+Otro caso es cuando las funciones son más rápidas cunado les das más información del problema, por ejemplo: 
+
+* read.csv(), especificar las clases de las columnas con colClasses.
+
+* factor() especifica los niveles con el argumento levels.
+
+**3.1 Usar funciones vectorizadas en R**
+
+Es común escuchar que en R vectorizar es conveniente, el enfoque vectorizado va más allá que evitar ciclos for:
+
+* Pensar en objetos, en lugar de enfocarse en las compoentes de un vector, se piensa únicamente en el vector completo.
+  
+* Los ciclos en las funciones vectorizadas de R están escritos en C, lo que los hace más veloces.
+
+Las funciones vectorizadas programadas en R pueden mejorar la interfaz de una función pero no necesariamente mejorar el desempeño. Usar vectorización para desempeño implica encontrar funciones de R implementadas en C.
+
+Al igual que en el punto anterior, vectorizar requiere encontrar las funciones apropiadas, algunos ejemplos incluyen: _rowSums(), colSums(), rowMeans() y colMeans().
+
+**3.2 Evitar copias**
+
+Otro aspecto importante es que generalmente conviene asignar objetos en lugar de hacerlos crecer (es más eficiente asignar toda la memoria necesaria antes del cálculo que asignarla sucesivamente). Esto es porque cuando se usan instrucciones para crear un objeto más grande (e.g. append(), cbind(), c(), rbind()) R debe primero asignar espacio a un nuevo objeto y luego copiar al nuevo lugar. Para leer más sobre esto [The R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf) es una buena referencia.
+
+Veamos unos ejemplos de vectorización y de asignar objetos.
+
+
+```r
+aciertos <- FALSE 
+system.time(
+  for (i in 1:1e+05) {
+    if (runif(1) < 0.3)
+        aciertos[i] <- TRUE
+})
+```
+
+```
+##    user  system elapsed 
+##   0.411   0.076   0.487
+```
+
+
+```r
+aciertos <- rep(FALSE, 1e+06) 
+system.time(
+  for (i in 1:1e+05) {
+    if (runif(1) < 0.3)
+        aciertos[i] <- TRUE
+})
+```
+
+```
+##    user  system elapsed 
+##   0.255   0.028   0.282
+```
+
+Usando `rbind`:
+
+
+```r
+crecer_rbind <- function(){
+mi.df <- data.frame(a = character(0), b = numeric(0)) 
+  for(i in 1:1e3) {
+    mi.df <- rbind(mi.df, data.frame(a = sample(letters, 1), b = runif(1)))
+  }
+mi.df
+}
+system.time(mi.df.1 <- crecer_rbind())
+```
+
+```
+##    user  system elapsed 
+##   0.813   0.004   0.816
+```
+
+Si definimos el tamaño del data.frame obtenemos mejoras:
+
+
+```r
+crecer_rbind_2 <- function() {
+mi.df <- data.frame(a = rep(NA, 1000), b = rep(NA, 1000)) 
+  for (i in 1:1000) {
+    mi.df$a[i] <- sample(letters, 1)
+    mi.df$b[i] <- runif(1) 
+  }
+  mi.df
+}
+system.time(mi.df.1 <- crecer_rbind_2())
+```
+
+```
+##    user  system elapsed 
+##   0.080   0.000   0.079
+```
+
+Finalmente, veamos un enfoque totalmente vectorizado
+
+
+```r
+porcolumna_df <- function(){
+  a <- sample(letters, 1000, replace = TRUE) 
+  b <- runif(1000)
+  mi.df <- data.frame(a = a, b = b)
+  mi.df
+}
+system.time(mi.df.2 <- porcolumna_df())
+```
+
+```
+##    user  system elapsed 
+##   0.001   0.000   0.000
+```
+
+A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectorización, este incremento conlleva un costo en memoria. Si comparamos la versión mas lenta con la más rápida, en la última debemos asignar a, b y mi.df. Entonces, no siempre es mejor vectorizar, pues si consumimos la memoria, entonces la versión vectorizada puede enfrentarse al problema de uso de memoria en disco, que tiene aun más grandes penalizaciones en el desempeño que los ciclos que hemos visto.
+
+**4 Paralelizar**
+
+Paralelizar usa varios cores para trabajar de manera simultánea en varias secciones de un problema, no reduce el tiempo computacional pero incrementa el tiempo del usuario pues aprovecha los recursos. Como referencia está [Parallel Computing for Data Science](https://www.amazon.com/Parallel-Computing-Data-Science-Examples/dp/1466587016) de Norm Matloff.
 
