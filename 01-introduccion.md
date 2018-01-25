@@ -894,7 +894,7 @@ library(MASS)
 ?loglm
 ```
 
-Llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (Gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto con cuantiles utilizando la función `cut2` del paquete `Hmisc`. Puedes usar el número de grupos que creas que es más adecuado.
+Filtra los datos para aquellas observaciones que sólo sean de hispanos o blancos no hispanos y llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (categoría del gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto del gobierno. Puede hacerlo utilizando cuantiles con la función `cut2` del paquete `Hmisc`. Puedes usar el número de grupos que creas que es más adecuado.
 
 Por ejemplo, el modelo "G + H + E" representa el modelo de independencias. Para el modelo "GH + GE + HE" hay interacciones entre:
 
@@ -918,11 +918,9 @@ $$
 | GE + H       |          |                    |                      |
 | G + HE       |          |                    |                      |
 | GH + GE      |          |                    |                      |
-| GH + HP      |          |                    |                      |
-| GE + HP      |          |                    |                      |
 | GH + HE      |          |                    |                      |
 | GH + GE + HE |          |                    |                      |
 
 Di qué modelo es mejor, tanto en términos del ajuste de la devianza y su interpretabilidad y explica por qué. ¿Hay algún modelo que no esté en la lista que sea el más apropiado para ajustar los datos?
 
-Manda tu tarea por correo electrónico a: [andreuboada@gmail.com](andreuboada@gmail.com) con el asunto "EAPLICADA3-Tarea-[XX]-[clave única 1]-[clave única 2]" donde [XX] es el número de la tarea (en este caso es la tarea 01), y [clave única 1] y [clave única 2] son tu clave y la de tu compañero con quien vas a trabajar durante el semestre.
+Manda tu tarea por correo electrónico a: [andreuboadadeatela@gmail.com](andreuboadadeatela@gmail.com) con el asunto "EAPLICADA3-Tarea-[XX]-[clave única 1]-[clave única 2]" donde [XX] es el número de la tarea (en este caso es la tarea 01), y [clave única 1] y [clave única 2] son tu clave y la de tu compañero con quien vas a trabajar durante el semestre.

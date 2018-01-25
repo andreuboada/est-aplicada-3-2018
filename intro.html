@@ -151,6 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.7.3" data-path="Rintro.html"><a href="Rintro.html#funcionales"><i class="fa fa-check"></i><b>2.7.3</b> Funcionales</a></li>
 <li class="chapter" data-level="2.7.4" data-path="Rintro.html"><a href="Rintro.html#rendimiento-en-r"><i class="fa fa-check"></i><b>2.7.4</b> Rendimiento en R</a></li>
 </ul></li>
+<li class="chapter" data-level="2.8" data-path="Rintro.html"><a href="Rintro.html#tarea-1"><i class="fa fa-check"></i><b>2.8</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -1511,7 +1512,7 @@ D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
 <p>Puedes utilizar la función <code>loglin</code> vista en clase o la función <code>loglm</code> del paquete <code>MASS</code>. Esta última te permite especificar el modelo en forma de función. Puedes ver la ayuda así:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
 ?loglm</code></pre></div>
-<p>Llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (Gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto con cuantiles utilizando la función <code>cut2</code> del paquete <code>Hmisc</code>. Puedes usar el número de grupos que creas que es más adecuado.</p>
+<p>Filtra los datos para aquellas observaciones que sólo sean de hispanos o blancos no hispanos y llena la siguiente tabla utilizando factores de interacción como lo vimos anteriormente con las variables G (categoría del gasto del gobierno en discapacitados), H (Hispano o Blanco no hispano), y E (Categoría de edad). Para esto deberás crear una variable de categoría de gasto del gobierno. Puede hacerlo utilizando cuantiles con la función <code>cut2</code> del paquete <code>Hmisc</code>. Puedes usar el número de grupos que creas que es más adecuado.</p>
 <p>Por ejemplo, el modelo “G + H + E” representa el modelo de independencias. Para el modelo “GH + GE + HE” hay interacciones entre:</p>
 <ul>
 <li><p>GH: gasto en discapacitados y si es hispano,</p></li>
@@ -1563,18 +1564,6 @@ D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
 <td></td>
 </tr>
 <tr class="even">
-<td>GH + HP</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>GE + HP</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
 <td>GH + HE</td>
 <td></td>
 <td></td>
@@ -1589,7 +1578,7 @@ D = -2\, \mbox{log}{\left(p(X|\hat{\theta})\right)}
 </tbody>
 </table>
 <p>Di qué modelo es mejor, tanto en términos del ajuste de la devianza y su interpretabilidad y explica por qué. ¿Hay algún modelo que no esté en la lista que sea el más apropiado para ajustar los datos?</p>
-<p>Manda tu tarea por correo electrónico a: <a href="andreuboada@gmail.com" class="uri">andreuboada@gmail.com</a> con el asunto “EAPLICADA3-Tarea-[XX]-[clave única 1]-[clave única 2]” donde [XX] es el número de la tarea (en este caso es la tarea 01), y [clave única 1] y [clave única 2] son tu clave y la de tu compañero con quien vas a trabajar durante el semestre.</p>
+<p>Manda tu tarea por correo electrónico a: <a href="andreuboadadeatela@gmail.com" class="uri">andreuboadadeatela@gmail.com</a> con el asunto “EAPLICADA3-Tarea-[XX]-[clave única 1]-[clave única 2]” donde [XX] es el número de la tarea (en este caso es la tarea 01), y [clave única 1] y [clave única 2] son tu clave y la de tu compañero con quien vas a trabajar durante el semestre.</p>
 
 </div>
 </div>

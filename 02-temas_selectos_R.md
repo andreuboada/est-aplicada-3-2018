@@ -818,16 +818,16 @@ iris %>% sample_n(10) %>% knitr::kable()
 
        Sepal.Length   Sepal.Width   Petal.Length   Petal.Width  Species    
 ----  -------------  ------------  -------------  ------------  -----------
-76              6.6           3.0            4.4           1.4  versicolor 
-24              5.1           3.3            1.7           0.5  setosa     
-93              5.8           2.6            4.0           1.2  versicolor 
-17              5.4           3.9            1.3           0.4  setosa     
-23              4.6           3.6            1.0           0.2  setosa     
-114             5.7           2.5            5.0           2.0  virginica  
-94              5.0           2.3            3.3           1.0  versicolor 
+87              6.7           3.1            4.7           1.5  versicolor 
+60              5.2           2.7            3.9           1.4  versicolor 
+43              4.4           3.2            1.3           0.2  setosa     
+64              6.1           2.9            4.7           1.4  versicolor 
+95              5.6           2.7            4.2           1.3  versicolor 
+11              5.4           3.7            1.5           0.2  setosa     
 47              5.1           3.8            1.6           0.2  setosa     
-100             5.7           2.8            4.1           1.3  versicolor 
-117             6.5           3.0            5.5           1.8  virginica  
+120             6.0           2.2            5.0           1.5  virginica  
+83              5.8           2.7            3.9           1.2  versicolor 
+22              5.1           3.7            1.5           0.4  setosa     
 
 Este conjunto de datos multivariados fue presentado por el estadístico y biólogo británico Ronald Fisher en su artículo de 1936 "El uso de mediciones múltiples en problemas taxonómicos como un ejemplo de análisis discriminante lineal". Edgar Anderson recopiló los datos para cuantificar la variación morfológica de las flores de iris de tres especies relacionadas. Los datos fueron recolectadas en la Península de Gaspé. [@fisher1936use]
 
@@ -1084,12 +1084,12 @@ tabla
 
 ```
 ##   n    frutas      valor
-## 1 1     apple 0.91105108
-## 2 2    banana 0.66714187
-## 3 3    orange 0.69287339
-## 4 4 pineapple 0.76913217
-## 5 5     lemon 0.05792242
-## 6 6     apple 0.41570551
+## 1 1     apple 0.16303446
+## 2 2    banana 0.41363549
+## 3 3    orange 0.08436343
+## 4 4 pineapple 0.64488494
+## 5 5     lemon 0.88179245
+## 6 6     apple 0.35965347
 ```
 
 ```r
@@ -1102,12 +1102,12 @@ tabla.color
 
 ```
 ##         peso    color
-## 1  1.2376857     rojo
-## 2 -0.4146773 amarillo
-## 3 -0.2025595  naranje
-## 4 -0.5081795 amarillo
-## 5 -0.2345212 amarillo
-## 6 -1.4100427     rojo
+## 1 -1.5331638     rojo
+## 2  0.4518210 amarillo
+## 3 -1.6236552  naranje
+## 4  1.2932371 amarillo
+## 5  0.5514982 amarillo
+## 6 -1.5778689     rojo
 ```
 
 ```r
@@ -1116,12 +1116,12 @@ cbind(tabla, tabla.color)
 
 ```
 ##   n    frutas      valor       peso    color
-## 1 1     apple 0.91105108  1.2376857     rojo
-## 2 2    banana 0.66714187 -0.4146773 amarillo
-## 3 3    orange 0.69287339 -0.2025595  naranje
-## 4 4 pineapple 0.76913217 -0.5081795 amarillo
-## 5 5     lemon 0.05792242 -0.2345212 amarillo
-## 6 6     apple 0.41570551 -1.4100427     rojo
+## 1 1     apple 0.16303446 -1.5331638     rojo
+## 2 2    banana 0.41363549  0.4518210 amarillo
+## 3 3    orange 0.08436343 -1.6236552  naranje
+## 4 4 pineapple 0.64488494  1.2932371 amarillo
+## 5 5     lemon 0.88179245  0.5514982 amarillo
+## 6 6     apple 0.35965347 -1.5778689     rojo
 ```
 
 
@@ -1173,12 +1173,12 @@ lista
 ## 
 ## $tabla
 ##   n    frutas      valor
-## 1 1     apple 0.91105108
-## 2 2    banana 0.66714187
-## 3 3    orange 0.69287339
-## 4 4 pineapple 0.76913217
-## 5 5     lemon 0.05792242
-## 6 6     apple 0.41570551
+## 1 1     apple 0.16303446
+## 2 2    banana 0.41363549
+## 3 3    orange 0.08436343
+## 4 4 pineapple 0.64488494
+## 5 5     lemon 0.88179245
+## 6 6     apple 0.35965347
 ## 
 ## $ejemlista
 ## $ejemlista$a
@@ -1225,8 +1225,6 @@ lista$ejemlista$a
 ```
 ## [1] 15 16 17 18 19 20
 ```
-
-**Importante:** Aunque en este tutorial no se usarán las listas son objetos útiles. 
 
 <br>
 
@@ -1611,7 +1609,7 @@ lanza_dado()
 ```
 
 ```
-## [1] 5
+## [1] 1
 ```
 
 ---
@@ -2140,7 +2138,6 @@ unlist(potencia_lista)
 ## [1]  1 27 64
 ```
 
-
 <br>
 
 ---
@@ -2164,302 +2161,19 @@ res_nchar_s
 
 \BeginKnitrBlock{warning}<div class="warning">Esta función es *peligrosa* ya que únicamente simplifica la estructura del resultado cuando es posible, de lo contrario, regresará una lista igual que `lapply()`.</div>\EndKnitrBlock{warning}
 
----
+#### Funciones `map`
 
-![](figuras/manicule.jpg)  Considerando la lista siguiente,
+Hacer el **loop** sobre un vector, es decir, hacer algo para cada elemento y guardar los resultados, es tan común que el paquete `purrr` proporciona una familia de funciones para que esto sea más sencillo. Hay una función para cada tipo de salida:
 
+* `map()` crea una lista.
 
-```r
-cdmx_list <- list(
-  pop = 8918653,
-  delegaciones = c("Alvaro Obregón", "Azcapotzalco" ,"Benito Juárez" ,
-                   "Coyoacán" ,"Cuajimalpa de Morelos" ,"Cuauhtémoc" ,
-                   "Gustavo A. Madero" ,
-                   "Iztacalco" ,"Iztapalapa" ,
-                   "Magdalena Contreras" ,"Miguel Hidalgo" ,"Milpa Alta" ,
-                   "Tláhuac" ,"Tlalpan" ,
-                   "Venustiano Carranza" ,"Xochimilco"),
-  capital = TRUE
-)
-```
+* `map_lgl()` crea un vector lógico.
 
-obtén la clase de cada elemento con la función `lapply()`.
+* `map_int()` crea un vector de enteros.
 
+* `map_dbl()` crea un vector numérico.
 
-```r
-lapply( , class)
-```
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  La siguiente función extrae la letra de menor posición y mayor posición en orden alfabético.
-
-
-```r
-min_max_fun <- function(nombre){
-  nombre_sinespacios <- gsub(" ", "", nombre)
-  letras <- strsplit(nombre_sinespacios, split = "")[[1]]
-  c(minimo = min(letras), maximo = max(letras))
-}
-```
-
-Es decir, si incluimos las letras `abcz` la letra *mínima* es a y la *máxima* es z.
-
-```r
-min_max_fun("abcz")
-```
-
-```
-## minimo maximo 
-##    "a"    "z"
-```
-
-El siguiente vector incluye el nombre de las 16 delegaciones de la Ciudad de México.
-
-
-```r
-delegaciones <- c("Alvaro Obregon", "Azcapotzalco" ,"Benito Juarez" ,
-                   "Coyoacan" ,"Cuajimalpa de Morelos" ,"Cuauhtemoc" ,
-                   "Gustavo Madero" ,
-                   "Iztacalco" ,"Iztapalapa" ,
-                   "Magdalena Contreras" ,"Miguel Hidalgo" ,"Milpa Alta" ,
-                   "Tlahuac" ,"Tlalpan" ,
-                   "Venustiano Carranza" ,"Xochimilco")
-```
-
-Aplica la función `sapply()` para obtener un arreglo con la letra máxima y mínima de cada nombre. 
-
-
-```r
-sapply(, )
-```
-
-
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  El siguiente vector incluye el precio de la gasolina en diferentes estados del país en julio de 2017. 
-
-
-```r
-gas_cdmx <- c(15.82, 15.77, 15.83, 15.23, 14.95, 15.42, 15.55)
-gas_cdmx
-```
-
-```
-## [1] 15.82 15.77 15.83 15.23 14.95 15.42 15.55
-```
-
-1. Crea una función que convierta el precio a dolares suponiendo que un dolar equivale a 17.76 pesos.
-
-
-```r
-conv_fun <- function(precio){
-  /17.76
-  return()
-}
-```
-
-
-
-2. Usando la función `lapply()` convierte el precio de la gasolina a dolares.
-
-
-```r
-gas_cdmx_usd_lista <- lapply(, conv_fun)
-```
-
-
-
-3. Usa la función `unlist()` para convertir la lista a un vector. 
-
-
-```r
-gas_cdmx_usd <- unlist()
-print(gas_cdmx_usd)
-```
-
-
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  Estadísticos importantes
-
-
-
-```r
-estadisticos <- c("GAUSS:1777", "BAYES:1702", "FISHER:1890", "PEARSON:1857")
-split_estadisticos <- strsplit(estadisticos, split = ":")
-split_estadisticos
-```
-
-```
-## [[1]]
-## [1] "GAUSS" "1777" 
-## 
-## [[2]]
-## [1] "BAYES" "1702" 
-## 
-## [[3]]
-## [1] "FISHER" "1890"  
-## 
-## [[4]]
-## [1] "PEARSON" "1857"
-```
-
-Utiliza la función predefinida `tolower()` y `lapply()` para convertir a minúsculas cada letra de la lista `split_estadisticos`.
-
-
-```r
-split_lower <- lapply( , )
-print(split_lower)
-```
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  Usando el vector `split_estadísticos` del ejercicio anterior.
-
-
-```r
-str(split_estadisticos)
-```
-
-```
-## List of 4
-##  $ : chr [1:2] "GAUSS" "1777"
-##  $ : chr [1:2] "BAYES" "1702"
-##  $ : chr [1:2] "FISHER" "1890"
-##  $ : chr [1:2] "PEARSON" "1857"
-```
-
-1. Crea una función que regrese la primera posición. 
-
-
-```r
-primera_pos_fun <- function(lista){
-  
-}
-```
-
-2. Crea una función que regrese la segunda posición.
-
-```r
-segunda_pos_fun <- function(lista){
-  
-}
-```
-
-3. Usando `lapply()` crea una lista con los nombres de los estadísticos y otra con la fecha de nacimiento. 
-
-
-```r
-nombres <- lapply()
-fechas <- lapply()
-```
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  Usando una función anónima y el vector `split_estadísticos` en un solo `lapply()` o `sapply()` obtén un vector compuesto de la primera posición, es decir el nombre, en minúsculas. 
-
-Tip: si usas `lapply()` recuerda usar la función `unlist()`.
-
-
-```r
-nombre_estadisticos <- (split_estadisticos, function(elemento){
-  tolower()
-})
-nombre_estadisticos
-```
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  En la siguiente lista se presenta el registro de temperatura de tres ciudades a las 07:00 am, 10:00 am, 01:00 pm, 04:00 pm y  07:00 pm.
-
-
-```r
-temp_lista <- list(
-  cdmx = c(13, 15, 19, 22, 20),
-  guadalajara = c(18, 18, 22, 26, 27),
-  tuxtla_gtz = c(22, 24, 29, 32, 28)
-)
-str(temp_lista)
-```
-
-```
-## List of 3
-##  $ cdmx       : num [1:5] 13 15 19 22 20
-##  $ guadalajara: num [1:5] 18 18 22 26 27
-##  $ tuxtla_gtz : num [1:5] 22 24 29 32 28
-```
-
-Completa la siguiente función que obtiene el promedio entre el valor mínimo y máximo registrados.
-
-
-```r
-promedio_extremos_fun <-  function(x) {
-  ( min() + max() ) / 2
-}
-```
-
-Aplica la función a la lista y obtén la temperatura promedio de extremos para cada ciudad usando `lapply()` y `sapply()`.
-
-
-```r
-lapply(,)
-```
-
-
-```r
-sapply(,)
-```
-
-
-
-
-<br>
-
----
-
-![](figuras/manicule.jpg)  Crea una función en la que _mientras_ la velocidad sea mayor a 50 km/hr se reduzca de la siguiente forma:
-
-- Si es mayor a 80 km/hr se reducen 20 km/hr e imprime **¡Demasido rápido!**.
-
-- Si es menor o igual a 80km/hr se reducen únicamente 5 km/hr.
-
-
-```r
-velocidad_act <- 140
-while(velocidad_act > ){
-  
-  if(velocidad_act > ){
-    print()
-    velocidad_act <- 
-  }
-  if(velocidad_act < ){
-    velocidad_act <- 
-  }
-  
-  velocidad_act
-}
-```
-
-
-
-#### 
-
-
+* `map_chr()` crea un vector de tipo caracter.
 
 
 ### Rendimiento en R
@@ -2507,7 +2221,7 @@ system.time(lm(R ~ AB + teamID, Batting))
 
 ```
 ##    user  system elapsed 
-##   2.935   0.088   3.022
+##   2.901   0.091   3.124
 ```
 
 - __user time__: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.
@@ -2523,7 +2237,7 @@ system.time(readLines("http://www.jhsph.edu"))
 
 ```
 ##    user  system elapsed 
-##   0.021   0.004   1.217
+##   0.027   0.000   3.051
 ```
 
 
@@ -2538,7 +2252,7 @@ system.time(mclapply(2000:2006,
 
 ```
 ##    user  system elapsed 
-##   0.058   0.060   0.097
+##   0.070   0.075   0.116
 ```
 
 Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.
@@ -2586,7 +2300,7 @@ dplyr_st
 
 ```
 ##    user  system elapsed 
-##   0.148   0.004   0.152
+##   0.141   0.004   0.146
 ```
 
 
@@ -2596,7 +2310,7 @@ plyr_st
 
 ```
 ##    user  system elapsed 
-##   7.390   0.040   7.432
+##   7.372   0.001   7.652
 ```
 
 
@@ -2606,7 +2320,7 @@ est_l_st
 
 ```
 ##    user  system elapsed 
-##  67.315   0.136  67.462
+##  67.456   0.063  70.362
 ```
 
 
@@ -2616,7 +2330,7 @@ est_r_st
 
 ```
 ##    user  system elapsed 
-##   0.615   0.000   0.616
+##   0.616   0.000   0.644
 ```
 
 La función `system.time` supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es `Rprof()`.
@@ -2640,62 +2354,53 @@ summaryRprof("out/lm_rprof.out")
 ```
 ## $by.self
 ##                         self.time self.pct total.time total.pct
-## "lm.fit"                     2.84    90.43       2.84     90.43
-## ".External2"                 0.22     7.18       0.24      7.66
-## "as.character"               0.04     1.44       0.04      1.44
-## "anyDuplicated.default"      0.02     0.48       0.02      0.48
-## "sys.call"                   0.02     0.48       0.02      0.48
+## "lm.fit"                     2.75    90.15       2.75     90.15
+## ".External2"                 0.24     7.88       0.26      8.37
+## "as.character"               0.04     1.48       0.04      1.48
+## "anyDuplicated.default"      0.02     0.49       0.02      0.49
 ## 
 ## $by.total
 ##                         total.time total.pct self.time self.pct
-## "<Anonymous>"                 3.13    100.00      0.00     0.00
-## "block_exec"                  3.13    100.00      0.00     0.00
-## "call_block"                  3.13    100.00      0.00     0.00
-## "do.call"                     3.13    100.00      0.00     0.00
-## "eval.parent"                 3.13    100.00      0.00     0.00
-## "eval"                        3.13    100.00      0.00     0.00
-## "evaluate_call"               3.13    100.00      0.00     0.00
-## "evaluate::evaluate"          3.13    100.00      0.00     0.00
-## "evaluate"                    3.13    100.00      0.00     0.00
-## "handle"                      3.13    100.00      0.00     0.00
-## "in_dir"                      3.13    100.00      0.00     0.00
-## "knitr::knit"                 3.13    100.00      0.00     0.00
-## "lm"                          3.13    100.00      0.00     0.00
-## "local"                       3.13    100.00      0.00     0.00
-## "process_file"                3.13    100.00      0.00     0.00
-## "process_group.block"         3.13    100.00      0.00     0.00
-## "process_group"               3.13    100.00      0.00     0.00
-## "timing_fn"                   3.13    100.00      0.00     0.00
-## "withCallingHandlers"         3.13    100.00      0.00     0.00
-## "withVisible"                 3.13    100.00      0.00     0.00
-## "lm.fit"                      2.84     90.43      2.84    90.43
-## ".External2"                  0.24      7.66      0.22     7.18
-## "model.matrix.default"        0.22      7.18      0.00     0.00
-## "model.matrix"                0.22      7.18      0.00     0.00
-## "as.character"                0.04      1.44      0.04     1.44
-## "model.response"              0.04      1.44      0.00     0.00
-## "anyDuplicated.default"       0.02      0.48      0.02     0.48
-## "sys.call"                    0.02      0.48      0.02     0.48
-## "[.data.frame"                0.02      0.48      0.00     0.00
-## "["                           0.02      0.48      0.00     0.00
-## "[[.data.frame"               0.02      0.48      0.00     0.00
-## "[["                          0.02      0.48      0.00     0.00
-## "%in%"                        0.02      0.48      0.00     0.00
-## "$.data.frame"                0.02      0.48      0.00     0.00
-## "$"                           0.02      0.48      0.00     0.00
-## "anyDuplicated"               0.02      0.48      0.00     0.00
-## "as.vector"                   0.02      0.48      0.00     0.00
-## "model.frame.default"         0.02      0.48      0.00     0.00
-## "model.weights"               0.02      0.48      0.00     0.00
-## "na.omit.data.frame"          0.02      0.48      0.00     0.00
-## "na.omit"                     0.02      0.48      0.00     0.00
-## "stats::model.frame"          0.02      0.48      0.00     0.00
+## "<Anonymous>"                 3.04    100.00      0.00     0.00
+## "block_exec"                  3.04    100.00      0.00     0.00
+## "call_block"                  3.04    100.00      0.00     0.00
+## "do.call"                     3.04    100.00      0.00     0.00
+## "eval.parent"                 3.04    100.00      0.00     0.00
+## "eval"                        3.04    100.00      0.00     0.00
+## "evaluate_call"               3.04    100.00      0.00     0.00
+## "evaluate::evaluate"          3.04    100.00      0.00     0.00
+## "evaluate"                    3.04    100.00      0.00     0.00
+## "handle"                      3.04    100.00      0.00     0.00
+## "in_dir"                      3.04    100.00      0.00     0.00
+## "knitr::knit"                 3.04    100.00      0.00     0.00
+## "lm"                          3.04    100.00      0.00     0.00
+## "local"                       3.04    100.00      0.00     0.00
+## "process_file"                3.04    100.00      0.00     0.00
+## "process_group.block"         3.04    100.00      0.00     0.00
+## "process_group"               3.04    100.00      0.00     0.00
+## "timing_fn"                   3.04    100.00      0.00     0.00
+## "withCallingHandlers"         3.04    100.00      0.00     0.00
+## "withVisible"                 3.04    100.00      0.00     0.00
+## "lm.fit"                      2.75     90.15      2.75    90.15
+## ".External2"                  0.26      8.37      0.24     7.88
+## "model.matrix.default"        0.24      7.88      0.00     0.00
+## "model.matrix"                0.24      7.88      0.00     0.00
+## "as.character"                0.04      1.48      0.04     1.48
+## "model.response"              0.04      1.48      0.00     0.00
+## "anyDuplicated.default"       0.02      0.49      0.02     0.49
+## "[.data.frame"                0.02      0.49      0.00     0.00
+## "["                           0.02      0.49      0.00     0.00
+## "anyDuplicated"               0.02      0.49      0.00     0.00
+## "model.frame.default"         0.02      0.49      0.00     0.00
+## "na.omit.data.frame"          0.02      0.49      0.00     0.00
+## "na.omit"                     0.02      0.49      0.00     0.00
+## "stats::model.frame"          0.02      0.49      0.00     0.00
 ## 
 ## $sample.interval
 ## [1] 0.015
 ## 
 ## $sampling.time
-## [1] 3.135
+## [1] 3.045
 ```
 
 Hay dos métodos para normalizar los datos de Rprof:
@@ -2730,16 +2435,16 @@ summaryRprof("out/plyr_rprof.out")$by.self[1:10, ]
 
 ```
 ##                 self.time self.pct total.time total.pct
-## "FUN"                1.22    13.20       1.98     21.43
-## "lapply"             1.18    12.77       3.18     34.42
-## "as.list"            0.70     7.58       0.84      9.09
-## ".fun"               0.40     4.33       3.36     36.36
-## "eval"               0.36     3.90       9.24    100.00
-## "stopifnot"          0.34     3.68       0.68      7.36
-## "extract_rows"       0.32     3.46       3.74     40.48
-## "[["                 0.26     2.81       4.48     48.48
-## "[[.data.frame"      0.24     2.60       0.50      5.41
-## "unique"             0.22     2.38       0.70      7.58
+## "FUN"                1.20    15.46       1.90     24.48
+## "lapply"             0.88    11.34       2.84     36.60
+## "eval"               0.34     4.38       7.76    100.00
+## "[[.data.frame"      0.32     4.12       0.68      8.76
+## "as.list"            0.32     4.12       0.36      4.64
+## "$"                  0.28     3.61       0.28      3.61
+## "extract_rows"       0.26     3.35       3.38     43.56
+## "stopifnot"          0.26     3.35       0.58      7.47
+## "make_names"         0.22     2.84       0.40      5.15
+## "[["                 0.18     2.32       4.14     53.35
 ```
 
 
@@ -2839,7 +2544,7 @@ system.time(
 
 ```
 ##    user  system elapsed 
-##   0.411   0.076   0.487
+##   0.249   0.063   0.328
 ```
 
 
@@ -2854,7 +2559,7 @@ system.time(
 
 ```
 ##    user  system elapsed 
-##   0.255   0.028   0.282
+##   0.236   0.040   0.283
 ```
 
 Usando `rbind`:
@@ -2873,7 +2578,7 @@ system.time(mi.df.1 <- crecer_rbind())
 
 ```
 ##    user  system elapsed 
-##   0.813   0.004   0.816
+##   0.774   0.000   0.814
 ```
 
 Si definimos el tamaño del data.frame obtenemos mejoras:
@@ -2893,7 +2598,7 @@ system.time(mi.df.1 <- crecer_rbind_2())
 
 ```
 ##    user  system elapsed 
-##   0.080   0.000   0.079
+##   0.078   0.000   0.093
 ```
 
 Finalmente, veamos un enfoque totalmente vectorizado
@@ -2911,7 +2616,7 @@ system.time(mi.df.2 <- porcolumna_df())
 
 ```
 ##    user  system elapsed 
-##   0.001   0.000   0.000
+##   0.001   0.000   0.001
 ```
 
 A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectorización, este incremento conlleva un costo en memoria. Si comparamos la versión mas lenta con la más rápida, en la última debemos asignar a, b y mi.df. Entonces, no siempre es mejor vectorizar, pues si consumimos la memoria, entonces la versión vectorizada puede enfrentarse al problema de uso de memoria en disco, que tiene aun más grandes penalizaciones en el desempeño que los ciclos que hemos visto.
@@ -2919,4 +2624,296 @@ A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectoriza
 **4 Paralelizar**
 
 Paralelizar usa varios cores para trabajar de manera simultánea en varias secciones de un problema, no reduce el tiempo computacional pero incrementa el tiempo del usuario pues aprovecha los recursos. Como referencia está [Parallel Computing for Data Science](https://www.amazon.com/Parallel-Computing-Data-Science-Examples/dp/1466587016) de Norm Matloff.
+
+## Tarea
+
+1.  Considerando la lista siguiente,
+
+
+```r
+cdmx_list <- list(
+  pop = 8918653,
+  delegaciones = c("Alvaro Obregón", "Azcapotzalco" ,"Benito Juárez" ,
+                   "Coyoacán" ,"Cuajimalpa de Morelos" ,"Cuauhtémoc" ,
+                   "Gustavo A. Madero" ,
+                   "Iztacalco" ,"Iztapalapa" ,
+                   "Magdalena Contreras" ,"Miguel Hidalgo" ,"Milpa Alta" ,
+                   "Tláhuac" ,"Tlalpan" ,
+                   "Venustiano Carranza" ,"Xochimilco"),
+  capital = TRUE
+)
+```
+
+obtén la clase de cada elemento con la función `lapply()`.
+
+
+```r
+lapply( , class)
+```
+
+<br>
+
+---
+
+2. La siguiente función extrae la letra de menor posición y mayor posición en orden alfabético.
+
+
+```r
+min_max_fun <- function(nombre){
+  nombre_sinespacios <- gsub(" ", "", nombre)
+  letras <- strsplit(nombre_sinespacios, split = "")[[1]]
+  c(minimo = min(letras), maximo = max(letras))
+}
+```
+
+Es decir, si incluimos las letras `abcz` la letra *mínima* es a y la *máxima* es z.
+
+```r
+min_max_fun("abcz")
+```
+
+```
+## minimo maximo 
+##    "a"    "z"
+```
+
+El siguiente vector incluye el nombre de las 16 delegaciones de la Ciudad de México.
+
+
+```r
+delegaciones <- c("Alvaro Obregon", "Azcapotzalco" ,"Benito Juarez" ,
+                   "Coyoacan" ,"Cuajimalpa de Morelos" ,"Cuauhtemoc" ,
+                   "Gustavo Madero" ,
+                   "Iztacalco" ,"Iztapalapa" ,
+                   "Magdalena Contreras" ,"Miguel Hidalgo" ,"Milpa Alta" ,
+                   "Tlahuac" ,"Tlalpan" ,
+                   "Venustiano Carranza" ,"Xochimilco")
+```
+
+Aplica la función `sapply()` para obtener un arreglo con la letra máxima y mínima de cada nombre. 
+
+
+```r
+sapply(, )
+```
+
+
+
+<br>
+
+---
+
+3.  El siguiente vector incluye el precio de la gasolina en diferentes estados del país en julio de 2017. 
+
+
+```r
+gas_cdmx <- c(15.82, 15.77, 15.83, 15.23, 14.95, 15.42, 15.55)
+gas_cdmx
+```
+
+```
+## [1] 15.82 15.77 15.83 15.23 14.95 15.42 15.55
+```
+
+1. Crea una función que convierta el precio a dolares suponiendo que un dolar equivale a 17.76 pesos.
+
+
+```r
+conv_fun <- function(precio){
+  /17.76
+  return()
+}
+```
+
+
+
+2. Usando la función `lapply()` convierte el precio de la gasolina a dolares.
+
+
+```r
+gas_cdmx_usd_lista <- lapply(, conv_fun)
+```
+
+
+
+3. Usa la función `unlist()` para convertir la lista a un vector. 
+
+
+```r
+gas_cdmx_usd <- unlist()
+print(gas_cdmx_usd)
+```
+
+
+
+<br>
+
+---
+
+4. Estadísticos importantes
+
+
+
+```r
+estadisticos <- c("GAUSS:1777", "BAYES:1702", "FISHER:1890", "PEARSON:1857")
+split_estadisticos <- strsplit(estadisticos, split = ":")
+split_estadisticos
+```
+
+```
+## [[1]]
+## [1] "GAUSS" "1777" 
+## 
+## [[2]]
+## [1] "BAYES" "1702" 
+## 
+## [[3]]
+## [1] "FISHER" "1890"  
+## 
+## [[4]]
+## [1] "PEARSON" "1857"
+```
+
+Utiliza la función predefinida `tolower()` y `lapply()` para convertir a minúsculas cada letra de la lista `split_estadisticos`.
+
+
+```r
+split_lower <- lapply( , )
+print(split_lower)
+```
+
+<br>
+
+---
+
+5.  Usando el vector `split_estadísticos` del ejercicio anterior.
+
+
+```r
+str(split_estadisticos)
+```
+
+```
+## List of 4
+##  $ : chr [1:2] "GAUSS" "1777"
+##  $ : chr [1:2] "BAYES" "1702"
+##  $ : chr [1:2] "FISHER" "1890"
+##  $ : chr [1:2] "PEARSON" "1857"
+```
+
+1. Crea una función que regrese la primera posición. 
+
+
+```r
+primera_pos_fun <- function(lista){
+  
+}
+```
+
+2. Crea una función que regrese la segunda posición.
+
+```r
+segunda_pos_fun <- function(lista){
+  
+}
+```
+
+3. Usando `lapply()` crea una lista con los nombres de los estadísticos y otra con la fecha de nacimiento. 
+
+
+```r
+nombres <- lapply()
+fechas <- lapply()
+```
+
+<br>
+
+---
+
+6.  Usando una función anónima y el vector `split_estadísticos` en un solo `lapply()` o `sapply()` obtén un vector compuesto de la primera posición, es decir el nombre, en minúsculas. 
+
+Tip: si usas `lapply()` recuerda usar la función `unlist()`.
+
+
+```r
+nombre_estadisticos <- (split_estadisticos, function(elemento){
+  tolower()
+})
+nombre_estadisticos
+```
+
+<br>
+
+---
+
+7.  En la siguiente lista se presenta el registro de temperatura de tres ciudades a las 07:00 am, 10:00 am, 01:00 pm, 04:00 pm y  07:00 pm.
+
+
+```r
+temp_lista <- list(
+  cdmx = c(13, 15, 19, 22, 20),
+  guadalajara = c(18, 18, 22, 26, 27),
+  tuxtla_gtz = c(22, 24, 29, 32, 28)
+)
+str(temp_lista)
+```
+
+```
+## List of 3
+##  $ cdmx       : num [1:5] 13 15 19 22 20
+##  $ guadalajara: num [1:5] 18 18 22 26 27
+##  $ tuxtla_gtz : num [1:5] 22 24 29 32 28
+```
+
+Completa la siguiente función que obtiene el promedio entre el valor mínimo y máximo registrados.
+
+
+```r
+promedio_extremos_fun <-  function(x) {
+  ( min() + max() ) / 2
+}
+```
+
+Aplica la función a la lista y obtén la temperatura promedio de extremos para cada ciudad usando `lapply()` y `sapply()`.
+
+
+```r
+lapply(,)
+```
+
+
+```r
+sapply(,)
+```
+
+
+
+
+<br>
+
+---
+
+8.  Crea una función en la que _mientras_ la velocidad sea mayor a 50 km/hr se reduzca de la siguiente forma:
+
+- Si es mayor a 80 km/hr se reducen 20 km/hr e imprime **¡Demasido rápido!**.
+
+- Si es menor o igual a 80km/hr se reducen únicamente 5 km/hr.
+
+
+```r
+velocidad_act <- 140
+while(velocidad_act > ){
+  
+  if(velocidad_act > ){
+    print()
+    velocidad_act <- 
+  }
+  if(velocidad_act < ){
+    velocidad_act <- 
+  }
+  
+  velocidad_act
+}
+```
+
 

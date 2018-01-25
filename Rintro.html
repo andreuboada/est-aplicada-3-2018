@@ -151,6 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.7.3" data-path="Rintro.html"><a href="Rintro.html#funcionales"><i class="fa fa-check"></i><b>2.7.3</b> Funcionales</a></li>
 <li class="chapter" data-level="2.7.4" data-path="Rintro.html"><a href="Rintro.html#rendimiento-en-r"><i class="fa fa-check"></i><b>2.7.4</b> Rendimiento en R</a></li>
 </ul></li>
+<li class="chapter" data-level="2.8" data-path="Rintro.html"><a href="Rintro.html#tarea-1"><i class="fa fa-check"></i><b>2.8</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -613,62 +614,54 @@ iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 </thead>
 <tbody>
 <tr class="odd">
-<td>76</td>
-<td align="right">6.6</td>
-<td align="right">3.0</td>
-<td align="right">4.4</td>
+<td>87</td>
+<td align="right">6.7</td>
+<td align="right">3.1</td>
+<td align="right">4.7</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td>60</td>
+<td align="right">5.2</td>
+<td align="right">2.7</td>
+<td align="right">3.9</td>
 <td align="right">1.4</td>
 <td align="left">versicolor</td>
 </tr>
-<tr class="even">
-<td>24</td>
-<td align="right">5.1</td>
-<td align="right">3.3</td>
-<td align="right">1.7</td>
-<td align="right">0.5</td>
-<td align="left">setosa</td>
-</tr>
 <tr class="odd">
-<td>93</td>
-<td align="right">5.8</td>
-<td align="right">2.6</td>
-<td align="right">4.0</td>
-<td align="right">1.2</td>
-<td align="left">versicolor</td>
-</tr>
-<tr class="even">
-<td>17</td>
-<td align="right">5.4</td>
-<td align="right">3.9</td>
+<td>43</td>
+<td align="right">4.4</td>
+<td align="right">3.2</td>
 <td align="right">1.3</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td>23</td>
-<td align="right">4.6</td>
-<td align="right">3.6</td>
-<td align="right">1.0</td>
 <td align="right">0.2</td>
 <td align="left">setosa</td>
 </tr>
 <tr class="even">
-<td>114</td>
-<td align="right">5.7</td>
-<td align="right">2.5</td>
-<td align="right">5.0</td>
-<td align="right">2.0</td>
-<td align="left">virginica</td>
+<td>64</td>
+<td align="right">6.1</td>
+<td align="right">2.9</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
 </tr>
 <tr class="odd">
-<td>94</td>
-<td align="right">5.0</td>
-<td align="right">2.3</td>
-<td align="right">3.3</td>
-<td align="right">1.0</td>
+<td>95</td>
+<td align="right">5.6</td>
+<td align="right">2.7</td>
+<td align="right">4.2</td>
+<td align="right">1.3</td>
 <td align="left">versicolor</td>
 </tr>
 <tr class="even">
+<td>11</td>
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
 <td>47</td>
 <td align="right">5.1</td>
 <td align="right">3.8</td>
@@ -676,21 +669,29 @@ iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 <td align="right">0.2</td>
 <td align="left">setosa</td>
 </tr>
+<tr class="even">
+<td>120</td>
+<td align="right">6.0</td>
+<td align="right">2.2</td>
+<td align="right">5.0</td>
+<td align="right">1.5</td>
+<td align="left">virginica</td>
+</tr>
 <tr class="odd">
-<td>100</td>
-<td align="right">5.7</td>
-<td align="right">2.8</td>
-<td align="right">4.1</td>
-<td align="right">1.3</td>
+<td>83</td>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">3.9</td>
+<td align="right">1.2</td>
 <td align="left">versicolor</td>
 </tr>
 <tr class="even">
-<td>117</td>
-<td align="right">6.5</td>
-<td align="right">3.0</td>
-<td align="right">5.5</td>
-<td align="right">1.8</td>
-<td align="left">virginica</td>
+<td>22</td>
+<td align="right">5.1</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
 </tr>
 </tbody>
 </table>
@@ -843,32 +844,32 @@ mtcars[<span class="kw">c</span>(<span class="st">&#39;Mazda RX4&#39;</span>, <s
 )
 tabla</code></pre></div>
 <pre><code>##   n    frutas      valor
-## 1 1     apple 0.91105108
-## 2 2    banana 0.66714187
-## 3 3    orange 0.69287339
-## 4 4 pineapple 0.76913217
-## 5 5     lemon 0.05792242
-## 6 6     apple 0.41570551</code></pre>
+## 1 1     apple 0.16303446
+## 2 2    banana 0.41363549
+## 3 3    orange 0.08436343
+## 4 4 pineapple 0.64488494
+## 5 5     lemon 0.88179245
+## 6 6     apple 0.35965347</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tabla.color &lt;-<span class="st">  </span><span class="kw">data.frame</span>(
 <span class="dt">peso =</span> <span class="kw">rnorm</span>(<span class="dv">6</span>),
 <span class="dt">color =</span>   <span class="kw">c</span>(<span class="st">&#39;rojo&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;naranje&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;rojo&#39;</span>)
 )
 tabla.color</code></pre></div>
 <pre><code>##         peso    color
-## 1  1.2376857     rojo
-## 2 -0.4146773 amarillo
-## 3 -0.2025595  naranje
-## 4 -0.5081795 amarillo
-## 5 -0.2345212 amarillo
-## 6 -1.4100427     rojo</code></pre>
+## 1 -1.5331638     rojo
+## 2  0.4518210 amarillo
+## 3 -1.6236552  naranje
+## 4  1.2932371 amarillo
+## 5  0.5514982 amarillo
+## 6 -1.5778689     rojo</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cbind</span>(tabla, tabla.color)</code></pre></div>
 <pre><code>##   n    frutas      valor       peso    color
-## 1 1     apple 0.91105108  1.2376857     rojo
-## 2 2    banana 0.66714187 -0.4146773 amarillo
-## 3 3    orange 0.69287339 -0.2025595  naranje
-## 4 4 pineapple 0.76913217 -0.5081795 amarillo
-## 5 5     lemon 0.05792242 -0.2345212 amarillo
-## 6 6     apple 0.41570551 -1.4100427     rojo</code></pre>
+## 1 1     apple 0.16303446 -1.5331638     rojo
+## 2 2    banana 0.41363549  0.4518210 amarillo
+## 3 3    orange 0.08436343 -1.6236552  naranje
+## 4 4 pineapple 0.64488494  1.2932371 amarillo
+## 5 5     lemon 0.88179245  0.5514982 amarillo
+## 6 6     apple 0.35965347 -1.5778689     rojo</code></pre>
 <p><strong>Nota:</strong> Una forma de seleccionar una columna es con el símbolo <strong>$</strong> (pesitos) y el nombre de la columna.</p>
 <p><br></p>
 <p><br></p>
@@ -901,12 +902,12 @@ lista</code></pre></div>
 ## 
 ## $tabla
 ##   n    frutas      valor
-## 1 1     apple 0.91105108
-## 2 2    banana 0.66714187
-## 3 3    orange 0.69287339
-## 4 4 pineapple 0.76913217
-## 5 5     lemon 0.05792242
-## 6 6     apple 0.41570551
+## 1 1     apple 0.16303446
+## 2 2    banana 0.41363549
+## 3 3    orange 0.08436343
+## 4 4 pineapple 0.64488494
+## 5 5     lemon 0.88179245
+## 6 6     apple 0.35965347
 ## 
 ## $ejemlista
 ## $ejemlista$a
@@ -932,7 +933,6 @@ lista</code></pre></div>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista<span class="op">$</span>ejemlista<span class="op">$</span>a</code></pre></div>
 <pre><code>## [1] 15 16 17 18 19 20</code></pre>
-<p><strong>Importante:</strong> Aunque en este tutorial no se usarán las listas son objetos útiles.</p>
 <p><br></p>
 </div>
 </div>
@@ -1153,7 +1153,7 @@ En general, esta estructura se respeta en las funciones predeterminadas de R.
 <pre><code>## [1] 5</code></pre>
 <p><strong>Segundo lanzamiento:</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lanza_dado</span>()</code></pre></div>
-<pre><code>## [1] 5</code></pre>
+<pre><code>## [1] 1</code></pre>
 <hr />
 <p><br></p>
 </div>
@@ -1433,162 +1433,17 @@ res_nchar_s</code></pre></div>
 Esta función es <em>peligrosa</em> ya que únicamente simplifica la estructura del resultado cuando es posible, de lo contrario, regresará una lista igual que <code>lapply()</code>.
 </div>
 
-<hr />
-<p><img src="figuras/manicule.jpg" /> Considerando la lista siguiente,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cdmx_list &lt;-<span class="st"> </span><span class="kw">list</span>(
-  <span class="dt">pop =</span> <span class="dv">8918653</span>,
-  <span class="dt">delegaciones =</span> <span class="kw">c</span>(<span class="st">&quot;Alvaro Obregón&quot;, &quot;</span>Azcapotzalco<span class="st">&quot; ,&quot;</span>Benito Juárez<span class="st">&quot; ,</span>
-<span class="st">                   &quot;</span>Coyoacán<span class="st">&quot; ,&quot;</span>Cuajimalpa de Morelos<span class="st">&quot; ,&quot;</span>Cuauhtémoc<span class="st">&quot; ,</span>
-<span class="st">                   &quot;</span>Gustavo A. Madero<span class="st">&quot; ,</span>
-<span class="st">                   &quot;</span>Iztacalco<span class="st">&quot; ,&quot;</span>Iztapalapa<span class="st">&quot; ,</span>
-<span class="st">                   &quot;</span>Magdalena Contreras<span class="st">&quot; ,&quot;</span>Miguel Hidalgo<span class="st">&quot; ,&quot;</span>Milpa Alta<span class="st">&quot; ,</span>
-<span class="st">                   &quot;</span>Tláhuac<span class="st">&quot; ,&quot;</span>Tlalpan<span class="st">&quot; ,</span>
-<span class="st">                   &quot;</span>Venustiano Carranza<span class="st">&quot; ,&quot;</span>Xochimilco<span class="st">&quot;),</span>
-<span class="st">  capital = TRUE</span>
-<span class="st">)</span></code></pre></div>
-<p>obtén la clase de cada elemento con la función <code>lapply()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>( , class)</code></pre></div>
-<p><br></p>
-<hr />
-<p><img src="figuras/manicule.jpg" /> La siguiente función extrae la letra de menor posición y mayor posición en orden alfabético.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">min_max_fun &lt;-<span class="st"> </span><span class="cf">function</span>(nombre){
-  nombre_sinespacios &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;&quot;</span>, nombre)
-  letras &lt;-<span class="st"> </span><span class="kw">strsplit</span>(nombre_sinespacios, <span class="dt">split =</span> <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]
-  <span class="kw">c</span>(<span class="dt">minimo =</span> <span class="kw">min</span>(letras), <span class="dt">maximo =</span> <span class="kw">max</span>(letras))
-}</code></pre></div>
-<p>Es decir, si incluimos las letras <code>abcz</code> la letra <em>mínima</em> es a y la <em>máxima</em> es z.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min_max_fun</span>(<span class="st">&quot;abcz&quot;</span>)</code></pre></div>
-<pre><code>## minimo maximo 
-##    &quot;a&quot;    &quot;z&quot;</code></pre>
-<p>El siguiente vector incluye el nombre de las 16 delegaciones de la Ciudad de México.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">delegaciones &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Alvaro Obregon&quot;</span>, <span class="st">&quot;Azcapotzalco&quot;</span> ,<span class="st">&quot;Benito Juarez&quot;</span> ,
-                   <span class="st">&quot;Coyoacan&quot;</span> ,<span class="st">&quot;Cuajimalpa de Morelos&quot;</span> ,<span class="st">&quot;Cuauhtemoc&quot;</span> ,
-                   <span class="st">&quot;Gustavo Madero&quot;</span> ,
-                   <span class="st">&quot;Iztacalco&quot;</span> ,<span class="st">&quot;Iztapalapa&quot;</span> ,
-                   <span class="st">&quot;Magdalena Contreras&quot;</span> ,<span class="st">&quot;Miguel Hidalgo&quot;</span> ,<span class="st">&quot;Milpa Alta&quot;</span> ,
-                   <span class="st">&quot;Tlahuac&quot;</span> ,<span class="st">&quot;Tlalpan&quot;</span> ,
-                   <span class="st">&quot;Venustiano Carranza&quot;</span> ,<span class="st">&quot;Xochimilco&quot;</span>)</code></pre></div>
-<p>Aplica la función <code>sapply()</code> para obtener un arreglo con la letra máxima y mínima de cada nombre.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(, )</code></pre></div>
-<p><br></p>
-<hr />
-<p><img src="figuras/manicule.jpg" /> El siguiente vector incluye el precio de la gasolina en diferentes estados del país en julio de 2017.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gas_cdmx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">15.82</span>, <span class="fl">15.77</span>, <span class="fl">15.83</span>, <span class="fl">15.23</span>, <span class="fl">14.95</span>, <span class="fl">15.42</span>, <span class="fl">15.55</span>)
-gas_cdmx</code></pre></div>
-<pre><code>## [1] 15.82 15.77 15.83 15.23 14.95 15.42 15.55</code></pre>
-<ol style="list-style-type: decimal">
-<li>Crea una función que convierta el precio a dolares suponiendo que un dolar equivale a 17.76 pesos.</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">conv_fun &lt;-<span class="st"> </span><span class="cf">function</span>(precio){
-  <span class="op">/</span><span class="fl">17.76</span>
-  <span class="kw">return</span>()
-}</code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li>Usando la función <code>lapply()</code> convierte el precio de la gasolina a dolares.</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gas_cdmx_usd_lista &lt;-<span class="st"> </span><span class="kw">lapply</span>(, conv_fun)</code></pre></div>
-<ol start="3" style="list-style-type: decimal">
-<li>Usa la función <code>unlist()</code> para convertir la lista a un vector.</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gas_cdmx_usd &lt;-<span class="st"> </span><span class="kw">unlist</span>()
-<span class="kw">print</span>(gas_cdmx_usd)</code></pre></div>
-<p><br></p>
-<hr />
-<p><img src="figuras/manicule.jpg" /> Estadísticos importantes</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">estadisticos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GAUSS:1777&quot;</span>, <span class="st">&quot;BAYES:1702&quot;</span>, <span class="st">&quot;FISHER:1890&quot;</span>, <span class="st">&quot;PEARSON:1857&quot;</span>)
-split_estadisticos &lt;-<span class="st"> </span><span class="kw">strsplit</span>(estadisticos, <span class="dt">split =</span> <span class="st">&quot;:&quot;</span>)
-split_estadisticos</code></pre></div>
-<pre><code>## [[1]]
-## [1] &quot;GAUSS&quot; &quot;1777&quot; 
-## 
-## [[2]]
-## [1] &quot;BAYES&quot; &quot;1702&quot; 
-## 
-## [[3]]
-## [1] &quot;FISHER&quot; &quot;1890&quot;  
-## 
-## [[4]]
-## [1] &quot;PEARSON&quot; &quot;1857&quot;</code></pre>
-<p>Utiliza la función predefinida <code>tolower()</code> y <code>lapply()</code> para convertir a minúsculas cada letra de la lista <code>split_estadisticos</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">split_lower &lt;-<span class="st"> </span><span class="kw">lapply</span>( , )
-<span class="kw">print</span>(split_lower)</code></pre></div>
-<p><br></p>
-<hr />
-<p><img src="figuras/manicule.jpg" /> Usando el vector <code>split_estadísticos</code> del ejercicio anterior.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(split_estadisticos)</code></pre></div>
-<pre><code>## List of 4
-##  $ : chr [1:2] &quot;GAUSS&quot; &quot;1777&quot;
-##  $ : chr [1:2] &quot;BAYES&quot; &quot;1702&quot;
-##  $ : chr [1:2] &quot;FISHER&quot; &quot;1890&quot;
-##  $ : chr [1:2] &quot;PEARSON&quot; &quot;1857&quot;</code></pre>
-<ol style="list-style-type: decimal">
-<li>Crea una función que regrese la primera posición.</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">primera_pos_fun &lt;-<span class="st"> </span><span class="cf">function</span>(lista){
-  
-}</code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li>Crea una función que regrese la segunda posición.</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">segunda_pos_fun &lt;-<span class="st"> </span><span class="cf">function</span>(lista){
-  
-}</code></pre></div>
-<ol start="3" style="list-style-type: decimal">
-<li>Usando <code>lapply()</code> crea una lista con los nombres de los estadísticos y otra con la fecha de nacimiento.</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nombres &lt;-<span class="st"> </span><span class="kw">lapply</span>()
-fechas &lt;-<span class="st"> </span><span class="kw">lapply</span>()</code></pre></div>
-<p><br></p>
-<hr />
-<p><img src="figuras/manicule.jpg" /> Usando una función anónima y el vector <code>split_estadísticos</code> en un solo <code>lapply()</code> o <code>sapply()</code> obtén un vector compuesto de la primera posición, es decir el nombre, en minúsculas.</p>
-<p>Tip: si usas <code>lapply()</code> recuerda usar la función <code>unlist()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nombre_estadisticos &lt;-<span class="st"> </span>(split_estadisticos, <span class="cf">function</span>(elemento){
-  <span class="kw">tolower</span>()
-})
-nombre_estadisticos</code></pre></div>
-<p><br></p>
-<hr />
-<p><img src="figuras/manicule.jpg" /> En la siguiente lista se presenta el registro de temperatura de tres ciudades a las 07:00 am, 10:00 am, 01:00 pm, 04:00 pm y 07:00 pm.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp_lista &lt;-<span class="st"> </span><span class="kw">list</span>(
-  <span class="dt">cdmx =</span> <span class="kw">c</span>(<span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">20</span>),
-  <span class="dt">guadalajara =</span> <span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">26</span>, <span class="dv">27</span>),
-  <span class="dt">tuxtla_gtz =</span> <span class="kw">c</span>(<span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">29</span>, <span class="dv">32</span>, <span class="dv">28</span>)
-)
-<span class="kw">str</span>(temp_lista)</code></pre></div>
-<pre><code>## List of 3
-##  $ cdmx       : num [1:5] 13 15 19 22 20
-##  $ guadalajara: num [1:5] 18 18 22 26 27
-##  $ tuxtla_gtz : num [1:5] 22 24 29 32 28</code></pre>
-<p>Completa la siguiente función que obtiene el promedio entre el valor mínimo y máximo registrados.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">promedio_extremos_fun &lt;-<span class="st">  </span><span class="cf">function</span>(x) {
-  ( <span class="kw">min</span>() <span class="op">+</span><span class="st"> </span><span class="kw">max</span>() ) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>
-}</code></pre></div>
-<p>Aplica la función a la lista y obtén la temperatura promedio de extremos para cada ciudad usando <code>lapply()</code> y <code>sapply()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(,)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(,)</code></pre></div>
-<p><br></p>
-<hr />
-<p><img src="figuras/manicule.jpg" /> Crea una función en la que <em>mientras</em> la velocidad sea mayor a 50 km/hr se reduzca de la siguiente forma:</p>
-<ul>
-<li><p>Si es mayor a 80 km/hr se reducen 20 km/hr e imprime <strong>¡Demasido rápido!</strong>.</p></li>
-<li><p>Si es menor o igual a 80km/hr se reducen únicamente 5 km/hr.</p></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">velocidad_act &lt;-<span class="st"> </span><span class="dv">140</span>
-<span class="cf">while</span>(velocidad_act <span class="op">&gt;</span><span class="st"> </span>){
-  
-  <span class="cf">if</span>(velocidad_act <span class="op">&gt;</span><span class="st"> </span>){
-    <span class="kw">print</span>()
-    velocidad_act &lt;-<span class="st"> </span>
-<span class="st">  </span>}
-  <span class="cf">if</span>(velocidad_act <span class="op">&lt;</span><span class="st"> </span>){
-    velocidad_act &lt;-<span class="st"> </span>
-<span class="st">  </span>}
-  
-  velocidad_act
-}</code></pre></div>
 </div>
-<div id="section" class="section level4">
-<h4><span class="header-section-number">2.7.3.1</span> </h4>
+<div id="funciones-map" class="section level4">
+<h4><span class="header-section-number">2.7.3.1</span> Funciones <code>map</code></h4>
+<p>Hacer el <strong>loop</strong> sobre un vector, es decir, hacer algo para cada elemento y guardar los resultados, es tan común que el paquete <code>purrr</code> proporciona una familia de funciones para que esto sea más sencillo. Hay una función para cada tipo de salida:</p>
+<ul>
+<li><p><code>map()</code> crea una lista.</p></li>
+<li><p><code>map_lgl()</code> crea un vector lógico.</p></li>
+<li><p><code>map_int()</code> crea un vector de enteros.</p></li>
+<li><p><code>map_dbl()</code> crea un vector numérico.</p></li>
+<li><p><code>map_chr()</code> crea un vector de tipo caracter.</p></li>
+</ul>
 </div>
 </div>
 <div id="rendimiento-en-r" class="section level3">
@@ -1891,7 +1746,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB <span class="op">+</span><span class="st"> </span>teamID, Batting))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   2.935   0.088   3.022</code></pre>
+##   2.901   0.091   3.124</code></pre>
 <ul>
 <li><p><strong>user time</strong>: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.</p></li>
 <li><p><strong>elapsed time</strong>: tiempo en el reloj, tiempo que experimenta la persona.</p></li>
@@ -1899,7 +1754,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <p>El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">readLines</span>(<span class="st">&quot;http://www.jhsph.edu&quot;</span>))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.021   0.004   1.217</code></pre>
+##   0.027   0.000   3.051</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(parallel)
 <span class="kw">system.time</span>(<span class="kw">mclapply</span>(<span class="dv">2000</span><span class="op">:</span><span class="dv">2006</span>, 
   <span class="cf">function</span>(x){
@@ -1907,7 +1762,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
     <span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB, sub)
 }, <span class="dt">mc.cores =</span> <span class="dv">5</span>))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.058   0.060   0.097</code></pre>
+##   0.070   0.075   0.116</code></pre>
 <p>Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr</span>
 dplyr_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
@@ -1947,16 +1802,16 @@ est_r_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
 
 dplyr_st</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.148   0.004   0.152</code></pre>
+##   0.141   0.004   0.146</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plyr_st</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   7.390   0.040   7.432</code></pre>
+##   7.372   0.001   7.652</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_l_st</code></pre></div>
 <pre><code>##    user  system elapsed 
-##  67.315   0.136  67.462</code></pre>
+##  67.456   0.063  70.362</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_r_st</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.615   0.000   0.616</code></pre>
+##   0.616   0.000   0.644</code></pre>
 <p>La función <code>system.time</code> supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es <code>Rprof()</code>.</p>
 <p>Rprof es un perfilador de muestreo que registra cambios en la pila de funciones, funciona tomando muestras a intervalos regulares y tabula cuánto tiempo se lleva en cada función.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>, <span class="dt">interval =</span> <span class="fl">0.015</span>, <span class="dt">line.profiling =</span> <span class="ot">TRUE</span>)
@@ -1966,62 +1821,53 @@ mod &lt;-<span class="st"> </span><span class="kw">lm</span>(R <span class="op">
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summaryRprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>)</code></pre></div>
 <pre><code>## $by.self
 ##                         self.time self.pct total.time total.pct
-## &quot;lm.fit&quot;                     2.84    90.43       2.84     90.43
-## &quot;.External2&quot;                 0.22     7.18       0.24      7.66
-## &quot;as.character&quot;               0.04     1.44       0.04      1.44
-## &quot;anyDuplicated.default&quot;      0.02     0.48       0.02      0.48
-## &quot;sys.call&quot;                   0.02     0.48       0.02      0.48
+## &quot;lm.fit&quot;                     2.75    90.15       2.75     90.15
+## &quot;.External2&quot;                 0.24     7.88       0.26      8.37
+## &quot;as.character&quot;               0.04     1.48       0.04      1.48
+## &quot;anyDuplicated.default&quot;      0.02     0.49       0.02      0.49
 ## 
 ## $by.total
 ##                         total.time total.pct self.time self.pct
-## &quot;&lt;Anonymous&gt;&quot;                 3.13    100.00      0.00     0.00
-## &quot;block_exec&quot;                  3.13    100.00      0.00     0.00
-## &quot;call_block&quot;                  3.13    100.00      0.00     0.00
-## &quot;do.call&quot;                     3.13    100.00      0.00     0.00
-## &quot;eval.parent&quot;                 3.13    100.00      0.00     0.00
-## &quot;eval&quot;                        3.13    100.00      0.00     0.00
-## &quot;evaluate_call&quot;               3.13    100.00      0.00     0.00
-## &quot;evaluate::evaluate&quot;          3.13    100.00      0.00     0.00
-## &quot;evaluate&quot;                    3.13    100.00      0.00     0.00
-## &quot;handle&quot;                      3.13    100.00      0.00     0.00
-## &quot;in_dir&quot;                      3.13    100.00      0.00     0.00
-## &quot;knitr::knit&quot;                 3.13    100.00      0.00     0.00
-## &quot;lm&quot;                          3.13    100.00      0.00     0.00
-## &quot;local&quot;                       3.13    100.00      0.00     0.00
-## &quot;process_file&quot;                3.13    100.00      0.00     0.00
-## &quot;process_group.block&quot;         3.13    100.00      0.00     0.00
-## &quot;process_group&quot;               3.13    100.00      0.00     0.00
-## &quot;timing_fn&quot;                   3.13    100.00      0.00     0.00
-## &quot;withCallingHandlers&quot;         3.13    100.00      0.00     0.00
-## &quot;withVisible&quot;                 3.13    100.00      0.00     0.00
-## &quot;lm.fit&quot;                      2.84     90.43      2.84    90.43
-## &quot;.External2&quot;                  0.24      7.66      0.22     7.18
-## &quot;model.matrix.default&quot;        0.22      7.18      0.00     0.00
-## &quot;model.matrix&quot;                0.22      7.18      0.00     0.00
-## &quot;as.character&quot;                0.04      1.44      0.04     1.44
-## &quot;model.response&quot;              0.04      1.44      0.00     0.00
-## &quot;anyDuplicated.default&quot;       0.02      0.48      0.02     0.48
-## &quot;sys.call&quot;                    0.02      0.48      0.02     0.48
-## &quot;[.data.frame&quot;                0.02      0.48      0.00     0.00
-## &quot;[&quot;                           0.02      0.48      0.00     0.00
-## &quot;[[.data.frame&quot;               0.02      0.48      0.00     0.00
-## &quot;[[&quot;                          0.02      0.48      0.00     0.00
-## &quot;%in%&quot;                        0.02      0.48      0.00     0.00
-## &quot;$.data.frame&quot;                0.02      0.48      0.00     0.00
-## &quot;$&quot;                           0.02      0.48      0.00     0.00
-## &quot;anyDuplicated&quot;               0.02      0.48      0.00     0.00
-## &quot;as.vector&quot;                   0.02      0.48      0.00     0.00
-## &quot;model.frame.default&quot;         0.02      0.48      0.00     0.00
-## &quot;model.weights&quot;               0.02      0.48      0.00     0.00
-## &quot;na.omit.data.frame&quot;          0.02      0.48      0.00     0.00
-## &quot;na.omit&quot;                     0.02      0.48      0.00     0.00
-## &quot;stats::model.frame&quot;          0.02      0.48      0.00     0.00
+## &quot;&lt;Anonymous&gt;&quot;                 3.04    100.00      0.00     0.00
+## &quot;block_exec&quot;                  3.04    100.00      0.00     0.00
+## &quot;call_block&quot;                  3.04    100.00      0.00     0.00
+## &quot;do.call&quot;                     3.04    100.00      0.00     0.00
+## &quot;eval.parent&quot;                 3.04    100.00      0.00     0.00
+## &quot;eval&quot;                        3.04    100.00      0.00     0.00
+## &quot;evaluate_call&quot;               3.04    100.00      0.00     0.00
+## &quot;evaluate::evaluate&quot;          3.04    100.00      0.00     0.00
+## &quot;evaluate&quot;                    3.04    100.00      0.00     0.00
+## &quot;handle&quot;                      3.04    100.00      0.00     0.00
+## &quot;in_dir&quot;                      3.04    100.00      0.00     0.00
+## &quot;knitr::knit&quot;                 3.04    100.00      0.00     0.00
+## &quot;lm&quot;                          3.04    100.00      0.00     0.00
+## &quot;local&quot;                       3.04    100.00      0.00     0.00
+## &quot;process_file&quot;                3.04    100.00      0.00     0.00
+## &quot;process_group.block&quot;         3.04    100.00      0.00     0.00
+## &quot;process_group&quot;               3.04    100.00      0.00     0.00
+## &quot;timing_fn&quot;                   3.04    100.00      0.00     0.00
+## &quot;withCallingHandlers&quot;         3.04    100.00      0.00     0.00
+## &quot;withVisible&quot;                 3.04    100.00      0.00     0.00
+## &quot;lm.fit&quot;                      2.75     90.15      2.75    90.15
+## &quot;.External2&quot;                  0.26      8.37      0.24     7.88
+## &quot;model.matrix.default&quot;        0.24      7.88      0.00     0.00
+## &quot;model.matrix&quot;                0.24      7.88      0.00     0.00
+## &quot;as.character&quot;                0.04      1.48      0.04     1.48
+## &quot;model.response&quot;              0.04      1.48      0.00     0.00
+## &quot;anyDuplicated.default&quot;       0.02      0.49      0.02     0.49
+## &quot;[.data.frame&quot;                0.02      0.49      0.00     0.00
+## &quot;[&quot;                           0.02      0.49      0.00     0.00
+## &quot;anyDuplicated&quot;               0.02      0.49      0.00     0.00
+## &quot;model.frame.default&quot;         0.02      0.49      0.00     0.00
+## &quot;na.omit.data.frame&quot;          0.02      0.49      0.00     0.00
+## &quot;na.omit&quot;                     0.02      0.49      0.00     0.00
+## &quot;stats::model.frame&quot;          0.02      0.49      0.00     0.00
 ## 
 ## $sample.interval
 ## [1] 0.015
 ## 
 ## $sampling.time
-## [1] 3.135</code></pre>
+## [1] 3.045</code></pre>
 <p>Hay dos métodos para normalizar los datos de Rprof:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>by.total</strong> divide el tiempo que se toma en cada función entre el tiempo total en correr.</p></li>
@@ -2042,16 +1888,16 @@ Batting <span class="op">%&gt;%</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="ot">NULL</span>)
 <span class="kw">summaryRprof</span>(<span class="st">&quot;out/plyr_rprof.out&quot;</span>)<span class="op">$</span>by.self[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]</code></pre></div>
 <pre><code>##                 self.time self.pct total.time total.pct
-## &quot;FUN&quot;                1.22    13.20       1.98     21.43
-## &quot;lapply&quot;             1.18    12.77       3.18     34.42
-## &quot;as.list&quot;            0.70     7.58       0.84      9.09
-## &quot;.fun&quot;               0.40     4.33       3.36     36.36
-## &quot;eval&quot;               0.36     3.90       9.24    100.00
-## &quot;stopifnot&quot;          0.34     3.68       0.68      7.36
-## &quot;extract_rows&quot;       0.32     3.46       3.74     40.48
-## &quot;[[&quot;                 0.26     2.81       4.48     48.48
-## &quot;[[.data.frame&quot;      0.24     2.60       0.50      5.41
-## &quot;unique&quot;             0.22     2.38       0.70      7.58</code></pre>
+## &quot;FUN&quot;                1.20    15.46       1.90     24.48
+## &quot;lapply&quot;             0.88    11.34       2.84     36.60
+## &quot;eval&quot;               0.34     4.38       7.76    100.00
+## &quot;[[.data.frame&quot;      0.32     4.12       0.68      8.76
+## &quot;as.list&quot;            0.32     4.12       0.36      4.64
+## &quot;$&quot;                  0.28     3.61       0.28      3.61
+## &quot;extract_rows&quot;       0.26     3.35       3.38     43.56
+## &quot;stopifnot&quot;          0.26     3.35       0.58      7.47
+## &quot;make_names&quot;         0.22     2.84       0.40      5.15
+## &quot;[[&quot;                 0.18     2.32       4.14     53.35</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Rprof(&quot;out/slow_rprof.out&quot;)</span>
 <span class="co">#     players &lt;- unique(batting$playerID)</span>
 <span class="co">#     n_players &lt;- length(players)</span>
@@ -2119,7 +1965,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.411   0.076   0.487</code></pre>
+##   0.249   0.063   0.328</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aciertos &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">FALSE</span>, <span class="fl">1e+06</span>) 
 <span class="kw">system.time</span>(
   <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="fl">1e+05</span>) {
@@ -2127,7 +1973,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.255   0.028   0.282</code></pre>
+##   0.236   0.040   0.283</code></pre>
 <p>Usando <code>rbind</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind &lt;-<span class="st"> </span><span class="cf">function</span>(){
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">character</span>(<span class="dv">0</span>), <span class="dt">b =</span> <span class="kw">numeric</span>(<span class="dv">0</span>)) 
@@ -2138,7 +1984,7 @@ mi.df
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind</span>())</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.813   0.004   0.816</code></pre>
+##   0.774   0.000   0.814</code></pre>
 <p>Si definimos el tamaño del data.frame obtenemos mejoras:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="cf">function</span>() {
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>), <span class="dt">b =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)) 
@@ -2150,7 +1996,7 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind_2</span>())</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.080   0.000   0.079</code></pre>
+##   0.078   0.000   0.093</code></pre>
 <p>Finalmente, veamos un enfoque totalmente vectorizado</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">porcolumna_df &lt;-<span class="st"> </span><span class="cf">function</span>(){
   a &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>) 
@@ -2160,13 +2006,184 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">porcolumna_df</span>())</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.001   0.000   0.000</code></pre>
+##   0.001   0.000   0.001</code></pre>
 <p>A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectorización, este incremento conlleva un costo en memoria. Si comparamos la versión mas lenta con la más rápida, en la última debemos asignar a, b y mi.df. Entonces, no siempre es mejor vectorizar, pues si consumimos la memoria, entonces la versión vectorizada puede enfrentarse al problema de uso de memoria en disco, que tiene aun más grandes penalizaciones en el desempeño que los ciclos que hemos visto.</p>
 <p><strong>4 Paralelizar</strong></p>
 <p>Paralelizar usa varios cores para trabajar de manera simultánea en varias secciones de un problema, no reduce el tiempo computacional pero incrementa el tiempo del usuario pues aprovecha los recursos. Como referencia está <a href="https://www.amazon.com/Parallel-Computing-Data-Science-Examples/dp/1466587016">Parallel Computing for Data Science</a> de Norm Matloff.</p>
+</div>
+</div>
+</div>
+<div id="tarea-1" class="section level2">
+<h2><span class="header-section-number">2.8</span> Tarea</h2>
+<ol style="list-style-type: decimal">
+<li>Considerando la lista siguiente,</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cdmx_list &lt;-<span class="st"> </span><span class="kw">list</span>(
+  <span class="dt">pop =</span> <span class="dv">8918653</span>,
+  <span class="dt">delegaciones =</span> <span class="kw">c</span>(<span class="st">&quot;Alvaro Obregón&quot;, &quot;</span>Azcapotzalco<span class="st">&quot; ,&quot;</span>Benito Juárez<span class="st">&quot; ,</span>
+<span class="st">                   &quot;</span>Coyoacán<span class="st">&quot; ,&quot;</span>Cuajimalpa de Morelos<span class="st">&quot; ,&quot;</span>Cuauhtémoc<span class="st">&quot; ,</span>
+<span class="st">                   &quot;</span>Gustavo A. Madero<span class="st">&quot; ,</span>
+<span class="st">                   &quot;</span>Iztacalco<span class="st">&quot; ,&quot;</span>Iztapalapa<span class="st">&quot; ,</span>
+<span class="st">                   &quot;</span>Magdalena Contreras<span class="st">&quot; ,&quot;</span>Miguel Hidalgo<span class="st">&quot; ,&quot;</span>Milpa Alta<span class="st">&quot; ,</span>
+<span class="st">                   &quot;</span>Tláhuac<span class="st">&quot; ,&quot;</span>Tlalpan<span class="st">&quot; ,</span>
+<span class="st">                   &quot;</span>Venustiano Carranza<span class="st">&quot; ,&quot;</span>Xochimilco<span class="st">&quot;),</span>
+<span class="st">  capital = TRUE</span>
+<span class="st">)</span></code></pre></div>
+<p>obtén la clase de cada elemento con la función <code>lapply()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>( , class)</code></pre></div>
+<p><br></p>
+<hr />
+<ol start="2" style="list-style-type: decimal">
+<li>La siguiente función extrae la letra de menor posición y mayor posición en orden alfabético.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">min_max_fun &lt;-<span class="st"> </span><span class="cf">function</span>(nombre){
+  nombre_sinespacios &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;&quot;</span>, nombre)
+  letras &lt;-<span class="st"> </span><span class="kw">strsplit</span>(nombre_sinespacios, <span class="dt">split =</span> <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]
+  <span class="kw">c</span>(<span class="dt">minimo =</span> <span class="kw">min</span>(letras), <span class="dt">maximo =</span> <span class="kw">max</span>(letras))
+}</code></pre></div>
+<p>Es decir, si incluimos las letras <code>abcz</code> la letra <em>mínima</em> es a y la <em>máxima</em> es z.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min_max_fun</span>(<span class="st">&quot;abcz&quot;</span>)</code></pre></div>
+<pre><code>## minimo maximo 
+##    &quot;a&quot;    &quot;z&quot;</code></pre>
+<p>El siguiente vector incluye el nombre de las 16 delegaciones de la Ciudad de México.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">delegaciones &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Alvaro Obregon&quot;</span>, <span class="st">&quot;Azcapotzalco&quot;</span> ,<span class="st">&quot;Benito Juarez&quot;</span> ,
+                   <span class="st">&quot;Coyoacan&quot;</span> ,<span class="st">&quot;Cuajimalpa de Morelos&quot;</span> ,<span class="st">&quot;Cuauhtemoc&quot;</span> ,
+                   <span class="st">&quot;Gustavo Madero&quot;</span> ,
+                   <span class="st">&quot;Iztacalco&quot;</span> ,<span class="st">&quot;Iztapalapa&quot;</span> ,
+                   <span class="st">&quot;Magdalena Contreras&quot;</span> ,<span class="st">&quot;Miguel Hidalgo&quot;</span> ,<span class="st">&quot;Milpa Alta&quot;</span> ,
+                   <span class="st">&quot;Tlahuac&quot;</span> ,<span class="st">&quot;Tlalpan&quot;</span> ,
+                   <span class="st">&quot;Venustiano Carranza&quot;</span> ,<span class="st">&quot;Xochimilco&quot;</span>)</code></pre></div>
+<p>Aplica la función <code>sapply()</code> para obtener un arreglo con la letra máxima y mínima de cada nombre.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(, )</code></pre></div>
+<p><br></p>
+<hr />
+<ol start="3" style="list-style-type: decimal">
+<li>El siguiente vector incluye el precio de la gasolina en diferentes estados del país en julio de 2017.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gas_cdmx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">15.82</span>, <span class="fl">15.77</span>, <span class="fl">15.83</span>, <span class="fl">15.23</span>, <span class="fl">14.95</span>, <span class="fl">15.42</span>, <span class="fl">15.55</span>)
+gas_cdmx</code></pre></div>
+<pre><code>## [1] 15.82 15.77 15.83 15.23 14.95 15.42 15.55</code></pre>
+<ol style="list-style-type: decimal">
+<li>Crea una función que convierta el precio a dolares suponiendo que un dolar equivale a 17.76 pesos.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">conv_fun &lt;-<span class="st"> </span><span class="cf">function</span>(precio){
+  <span class="op">/</span><span class="fl">17.76</span>
+  <span class="kw">return</span>()
+}</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Usando la función <code>lapply()</code> convierte el precio de la gasolina a dolares.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gas_cdmx_usd_lista &lt;-<span class="st"> </span><span class="kw">lapply</span>(, conv_fun)</code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Usa la función <code>unlist()</code> para convertir la lista a un vector.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gas_cdmx_usd &lt;-<span class="st"> </span><span class="kw">unlist</span>()
+<span class="kw">print</span>(gas_cdmx_usd)</code></pre></div>
+<p><br></p>
+<hr />
+<ol start="4" style="list-style-type: decimal">
+<li>Estadísticos importantes</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">estadisticos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GAUSS:1777&quot;</span>, <span class="st">&quot;BAYES:1702&quot;</span>, <span class="st">&quot;FISHER:1890&quot;</span>, <span class="st">&quot;PEARSON:1857&quot;</span>)
+split_estadisticos &lt;-<span class="st"> </span><span class="kw">strsplit</span>(estadisticos, <span class="dt">split =</span> <span class="st">&quot;:&quot;</span>)
+split_estadisticos</code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;GAUSS&quot; &quot;1777&quot; 
+## 
+## [[2]]
+## [1] &quot;BAYES&quot; &quot;1702&quot; 
+## 
+## [[3]]
+## [1] &quot;FISHER&quot; &quot;1890&quot;  
+## 
+## [[4]]
+## [1] &quot;PEARSON&quot; &quot;1857&quot;</code></pre>
+<p>Utiliza la función predefinida <code>tolower()</code> y <code>lapply()</code> para convertir a minúsculas cada letra de la lista <code>split_estadisticos</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">split_lower &lt;-<span class="st"> </span><span class="kw">lapply</span>( , )
+<span class="kw">print</span>(split_lower)</code></pre></div>
+<p><br></p>
+<hr />
+<ol start="5" style="list-style-type: decimal">
+<li>Usando el vector <code>split_estadísticos</code> del ejercicio anterior.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(split_estadisticos)</code></pre></div>
+<pre><code>## List of 4
+##  $ : chr [1:2] &quot;GAUSS&quot; &quot;1777&quot;
+##  $ : chr [1:2] &quot;BAYES&quot; &quot;1702&quot;
+##  $ : chr [1:2] &quot;FISHER&quot; &quot;1890&quot;
+##  $ : chr [1:2] &quot;PEARSON&quot; &quot;1857&quot;</code></pre>
+<ol style="list-style-type: decimal">
+<li>Crea una función que regrese la primera posición.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">primera_pos_fun &lt;-<span class="st"> </span><span class="cf">function</span>(lista){
+  
+}</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Crea una función que regrese la segunda posición.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">segunda_pos_fun &lt;-<span class="st"> </span><span class="cf">function</span>(lista){
+  
+}</code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Usando <code>lapply()</code> crea una lista con los nombres de los estadísticos y otra con la fecha de nacimiento.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nombres &lt;-<span class="st"> </span><span class="kw">lapply</span>()
+fechas &lt;-<span class="st"> </span><span class="kw">lapply</span>()</code></pre></div>
+<p><br></p>
+<hr />
+<ol start="6" style="list-style-type: decimal">
+<li>Usando una función anónima y el vector <code>split_estadísticos</code> en un solo <code>lapply()</code> o <code>sapply()</code> obtén un vector compuesto de la primera posición, es decir el nombre, en minúsculas.</li>
+</ol>
+<p>Tip: si usas <code>lapply()</code> recuerda usar la función <code>unlist()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nombre_estadisticos &lt;-<span class="st"> </span>(split_estadisticos, <span class="cf">function</span>(elemento){
+  <span class="kw">tolower</span>()
+})
+nombre_estadisticos</code></pre></div>
+<p><br></p>
+<hr />
+<ol start="7" style="list-style-type: decimal">
+<li>En la siguiente lista se presenta el registro de temperatura de tres ciudades a las 07:00 am, 10:00 am, 01:00 pm, 04:00 pm y 07:00 pm.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp_lista &lt;-<span class="st"> </span><span class="kw">list</span>(
+  <span class="dt">cdmx =</span> <span class="kw">c</span>(<span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">20</span>),
+  <span class="dt">guadalajara =</span> <span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">26</span>, <span class="dv">27</span>),
+  <span class="dt">tuxtla_gtz =</span> <span class="kw">c</span>(<span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">29</span>, <span class="dv">32</span>, <span class="dv">28</span>)
+)
+<span class="kw">str</span>(temp_lista)</code></pre></div>
+<pre><code>## List of 3
+##  $ cdmx       : num [1:5] 13 15 19 22 20
+##  $ guadalajara: num [1:5] 18 18 22 26 27
+##  $ tuxtla_gtz : num [1:5] 22 24 29 32 28</code></pre>
+<p>Completa la siguiente función que obtiene el promedio entre el valor mínimo y máximo registrados.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">promedio_extremos_fun &lt;-<span class="st">  </span><span class="cf">function</span>(x) {
+  ( <span class="kw">min</span>() <span class="op">+</span><span class="st"> </span><span class="kw">max</span>() ) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>
+}</code></pre></div>
+<p>Aplica la función a la lista y obtén la temperatura promedio de extremos para cada ciudad usando <code>lapply()</code> y <code>sapply()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(,)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(,)</code></pre></div>
+<p><br></p>
+<hr />
+<ol start="8" style="list-style-type: decimal">
+<li>Crea una función en la que <em>mientras</em> la velocidad sea mayor a 50 km/hr se reduzca de la siguiente forma:</li>
+</ol>
+<ul>
+<li><p>Si es mayor a 80 km/hr se reducen 20 km/hr e imprime <strong>¡Demasido rápido!</strong>.</p></li>
+<li><p>Si es menor o igual a 80km/hr se reducen únicamente 5 km/hr.</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">velocidad_act &lt;-<span class="st"> </span><span class="dv">140</span>
+<span class="cf">while</span>(velocidad_act <span class="op">&gt;</span><span class="st"> </span>){
+  
+  <span class="cf">if</span>(velocidad_act <span class="op">&gt;</span><span class="st"> </span>){
+    <span class="kw">print</span>()
+    velocidad_act &lt;-<span class="st"> </span>
+<span class="st">  </span>}
+  <span class="cf">if</span>(velocidad_act <span class="op">&lt;</span><span class="st"> </span>){
+    velocidad_act &lt;-<span class="st"> </span>
+<span class="st">  </span>}
+  
+  velocidad_act
+}</code></pre></div>
 
-</div>
-</div>
 </div>
 </div>
 <h3>Referencias</h3>
