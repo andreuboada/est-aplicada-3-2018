@@ -358,13 +358,13 @@ billboard %>% sample_n(5) %>% knitr::kable()
 
 
 
- year  artist              track              time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
------  ------------------  -----------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
- 2000  Dixie Chicks, The   Cold Day In July   5:12   2000-06-24       80    79    76    72    68    68    65    70    84     91     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Third Eye Blind     Never Let You Go   3:57   2000-01-22       65    32    25    24    23    22    22    21    19     16     14     16     16     17     18     21     22     25     27     33     45     46     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Aaliyah             I Don't Wanna      4:15   2000-01-29       84    62    51    41    38    35    35    38    38     36     37     37     38     49     61     63     62     67     83     86     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Hill, Faith         Let's Make Love    4:11   2000-08-12       83    83    73    73    67    60    60    60    57     55     54     69     88     91     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  DMX                 What's My Name     3:50   2000-01-15       98    76    69    69    67    73    76    90    90     94    100     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ year  artist                track                     time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
+-----  --------------------  ------------------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+ 2000  Dion, Celine          That's The Way It Is      4:03   1999-11-13       74    68    65    49    44    34    30    30    17     14     11      8      9     10     11     11      6      8      7      7      9     10     14     16     26     31     35     42     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Gray, Macy            I Try                     3:52   2000-02-19       68    51    47    36    30    20    15    12     8      7      7      7      6      5      6      9     10     11     14     16     16     16     21     27     34     40     46     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Jay-Z                 Do It Again (Put Ya ...   3:47   2000-01-15       95    68    65    65    74    84    92    96    95     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  McGraw, Tim           My Next Thirty Years      3:37   2000-10-21       73    62    56    52    46    40    36    31    27     27     28     40     33     33     39     40     48     53     58     62     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Aguilera, Christina   I Turn To You             4:00   2000-04-15       50    39    30    28    21    19    20    17    17     17     17      3      3      7     10     17     25     29     29     40     43     50     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
 
 Queremos apilar las semanas de manera que sea una sola columna (nuevamente alargamos los datos):
   
@@ -415,18 +415,18 @@ billboard_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
- year  artist                 track                     time    week   rank  date       
------  ---------------------  ------------------------  -----  -----  -----  -----------
- 2000  Rimes, LeAnn           Can't Fight The Moon...   3:33      13     79  2000-12-02 
- 2000  Mya                    Case Of The Ex (What...   3:50      18      2  2000-12-16 
- 2000  De La Soul             All Good?                 5:02       3    100  2001-01-06 
- 2000  98^0                   Give Me Just One Nig...   3:24      10      6  2000-10-21 
- 2000  Blige, Mary J.         Deep Inside               5:26       6     73  1999-12-18 
- 2000  Backstreet Boys, The   Shape Of My Heart         3:49       4     15  2000-11-04 
- 2000  TLC                    Dear Lie                  4:36       5     56  2000-03-11 
- 2000  Davidson, Clay         Unconditional             3:56      17     51  2000-07-15 
- 2000  Sisqo                  Got To Get It             3:52      16     64  2000-03-04 
- 2000  Gill, Vince            Feels Like Love           4:13       5     73  2000-09-30 
+ year  artist            track                  time    week   rank  date       
+-----  ----------------  ---------------------  -----  -----  -----  -----------
+ 2000  Destiny's Child   Jumpin' Jumpin'        3:48      19      3  2000-09-16 
+ 2000  Henley, Don       Taking You Home        4:08       8     58  2000-08-12 
+ 2000  Adams, Yolanda    Open My Heart          5:30       3     74  2000-09-09 
+ 2000  Creed             With Arms Wide Open    3:52      26      3  2000-11-04 
+ 2000  Blink-182         All The Small Things   2:52      19     18  2000-04-08 
+ 2000  Pink              Most Girls             4:06      15      5  2000-11-18 
+ 2000  Aaliyah           Try Again              4:03       6     18  2000-04-22 
+ 2000  Papa Roach        Last Resort            3:19       9     66  2000-09-23 
+ 2000  3 Doors Down      Loser                  4:24      11     61  2000-12-30 
+ 2000  Savage Garden     I Knew I Loved You     4:07      14      2  2000-01-22 
 
 
 Nuevamente, podemos hacer gráficas facilmente.
@@ -464,11 +464,11 @@ tb %>% sample_n(5) %>% knitr::kable()
 
 iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name                     
 -----  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  ---------------------------------
-DE      1983           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Germany                          
-BO      1995           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Bolivia (Plurinational State of) 
-TO      1980           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Tonga                            
-CG      1994           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Congo                            
-MO      1997           NA            NA             1             15             38             47             37             34           55          NA           NA            NA             4             10             16             21              5              6           15          NA  Macao                            
+GT      1985           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Guatemala                        
+KW      1997           NA            NA             1             23             38             37             22              6            7          NA           NA            NA             1             17             26             11              7              1            4          NA  Kuwait                           
+NP      1984           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Nepal                            
+FM      1990           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Micronesia (Federated States of) 
+BZ      1995           NA            NA             1              1              2              4              0              1            1          NA           NA            NA             0              6              2              0              1              1            2          NA  Belize                           
 
 De manera similar, utilizando la función `gather()` se busca apilar las columnas correspondientes a sexo-edad.
 
@@ -483,18 +483,18 @@ tb_long %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name                                demog           casos
------  -----  ------------------------------------------  -------------  ------
-KH      2005  Cambodia                                    new_sp_m4554     2043
-IE      2001  Ireland                                     new_sp_f2534        6
-LC      2005  Saint Lucia                                 new_sp_f65          2
-MK      1998  The former Yugoslav Republic of Macedonia   new_sp_m65         13
-LC      2005  Saint Lucia                                 new_sp_f1524        1
-HR      2006  Croatia                                     new_sp_m4554       69
-IT      2007  Italy                                       new_sp_m3544      113
-PR      2003  Puerto Rico                                 new_sp_m5564       12
-KH      2006  Cambodia                                    new_sp_m3544     2205
-TN      2008  Tunisia                                     new_sp_f014         7
+iso2    year  country_name             demog           casos
+-----  -----  -----------------------  -------------  ------
+CN      1999  China                    new_sp_f014      1431
+SR      2003  Suriname                 new_sp_f3544        2
+CA      2006  Canada                   new_sp_f4554       16
+ER      1998  Eritrea                  new_sp_f3544       11
+FR      2006  France                   new_sp_m5564      153
+BD      2008  Bangladesh               new_sp_m3544    12761
+CZ      2002  Czech Republic           new_sp_f2534       10
+BA      2004  Bosnia and Herzegovina   new_sp_m4554       82
+SC      2003  Seychelles               new_sp_m1524        1
+GH      1996  Ghana                    new_sp_f3544      200
 
 
 Las variables sexo y edad se obtienen separando la columna **demog**, para esto se usa la función `separate()`con los siguientes argumentos: `tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
@@ -586,18 +586,18 @@ tb_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name        sex        age     casos
------  -----  ------------------  ---------  -----  ------
-FR      1995  France              new_sp_m   5564      297
-PA      2003  Panama              new_sp_m   65         67
-LR      2002  Liberia             new_sp_f   5564       41
-BW      2000  Botswana            new_sp_f   5564       57
-SI      2008  Slovenia            new_sp_m   1524        3
-GQ      1998  Equatorial Guinea   new_sp_f   2534       31
-MY      2006  Malaysia            new_sp_m   3544      734
-EE      2007  Estonia             new_sp_f   u           0
-SR      2006  Suriname            new_sp_f   4554        8
-SG      2004  Singapore           new_sp_f   65         48
+iso2    year  country_name                                           sex        age     casos
+-----  -----  -----------------------------------------------------  ---------  -----  ------
+HT      2001  Haiti                                                  new_sp_f   5564      109
+GW      2000  Guinea Bissau                                          new_sp_f   1524       30
+GB      2005  United Kingdom of Great Britain and Northern Ireland   new_sp_m   3544      166
+AM      2006  Armenia                                                new_sp_m   65         17
+IQ      2002  Iraq                                                   new_sp_f   1524      338
+AO      2002  Angola                                                 new_sp_f   4554      972
+EG      2002  Egypt                                                  new_sp_f   3544      245
+MM      1996  Myanmar                                                new_sp_m   65        400
+CO      2008  Colombia                                               new_sp_f   014       133
+CM      2004  Cameroon                                               new_sp_f   4554      412
 
 <br>
 <br>
@@ -758,13 +758,13 @@ billboard_tidy %>% sample_n(5) %>% select(artist, track, year, time) %>% knitr::
 
 
 
-artist            track           year  time 
-----------------  -------------  -----  -----
-Santana           Maria, Maria    2000  4:18 
-Metallica         I Disappear     2000  4:26 
-matchbox twenty   Bent            2000  4:12 
-Pink              There U Go      2000  3:23 
-Common            The Light       2000  3:55 
+artist                track                 year  time 
+--------------------  -------------------  -----  -----
+Madison Avenue        Don't Call Me Baby    2000  3:44 
+McEntire, Reba        What Do You Say       2000  3:26 
+Tippin, Aaron         Kiss This             2000  2:53 
+Aguilera, Christina   I Turn To You         2000  4:00 
+Black Rob             Whoa!                 2000  4:04 
 
 Separemos esta base de datos en dos: la tabla canción que almacena artista, nombre de la canción y duración; la tabla rank que almacena el ranking de la canción en cada semana.
 
@@ -6148,26 +6148,26 @@ specdata %>% sample_n(20) %>% knitr::kable()
 
            id   monitor  date          sulfate   nitrate
 -------  ----  --------  -----------  --------  --------
-559505    240       240  2010-12-13         NA        NA
-570564    244       244  2006-03-25         NA        NA
-372356    160       160  2009-07-10         NA        NA
-141985     59        59  2004-10-05         NA        NA
-241219    100       100  2010-06-20         NA        NA
-203334     86        86  2004-09-27         NA        NA
-372795    160       160  2010-09-22         NA        NA
-395056    171       171  2009-09-05         NA        NA
-698555    299       299  2004-09-01         NA        NA
-14119       6         6  2002-08-29         NA        NA
-639855    271       271  2004-12-15         NA        NA
-335253    144       144  2001-12-08         NA        NA
-602550    256       256  2002-10-23      2.310    0.7460
-39595      21        21  2002-05-30         NA        NA
-655752    277       277  2010-06-26         NA        NA
-674581    286       286  2005-01-11         NA        NA
-364252    156       156  2008-05-02         NA        NA
-413833    179       179  2004-02-03      0.212    0.0688
-712999    303       303  2006-03-20         NA        NA
-617232    262       262  2007-01-04         NA        NA
+23359      10        10  2003-12-17      0.323     0.998
+540644    231       231  2007-04-21         NA        NA
+635067    268       268  2010-11-05         NA        NA
+403931    176       176  2000-12-23         NA        NA
+688681    293       293  2005-08-19         NA        NA
+623311    265       265  2007-08-28     10.800     0.318
+517516    221       221  2004-12-22         NA        NA
+652571    277       277  2001-10-10      4.680     0.592
+254516    108       108  2004-11-17      4.940     2.940
+131599     54        54  2005-04-29         NA        NA
+165827     68        68  2002-01-16         NA        NA
+305057    128       128  2008-04-04         NA        NA
+351539    150       150  2008-07-12         NA        NA
+711214    302       302  2008-04-30      1.440     0.210
+659712    279       279  2007-04-30         NA        NA
+499166    214       214  2002-09-25         NA        NA
+503798    215       215  2006-06-01         NA        NA
+615095    262       262  2001-02-27         NA        NA
+378828    165       165  2005-03-30         NA        NA
+749803    322       322  2008-12-25         NA        NA
 
 #### 6. Otras consideraciones {-}
 
@@ -6414,7 +6414,189 @@ df_ej %>%
 
 ---
 
+## Muertes por armas de fuego en Estados Unidos {-}
 
+Los datos que vamos a utilizar provienen principalmente de la base de datos de causas múltiples de la muerte de los Centros para el Control y Prevención de la Enfermedad (CDCs) de Estados Unidos, de certificados de defunción de los 50 estados. Se considera que esta fuente de información es la base de datos más completa de muertes por armas de fuego.
+
+Para más información puedes leer el artículo: <https://fivethirtyeight.com/features/gun-deaths/>
+
+Comencemos leyendo los datos para los años 2012, 2013 y 2014:
+
+
+```r
+guns_12 <- read_csv("datos/guns_12.csv", na = "")
+guns_13 <- read_csv("datos/guns_13.csv", na = "")
+guns_14 <- read_csv("datos/guns_14.csv", na = "")
+```
+
+Las tres tablas tienen las mismas variables en el mismo orden. Examinemos la tabla para el año 2012:
+
+
+```r
+glimpse(guns_12)
+```
+
+```
+## Observations: 33,096
+## Variables: 40
+## $ res_status       <int> 1, 3, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, ...
+## $ education_89     <chr> "16", "13", "16", "17", "12", "10", "12", "12...
+## $ education_03     <chr> "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA...
+## $ education_flag   <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
+## $ month            <chr> "01", "01", "01", "02", "02", "02", "02", "03...
+## $ sex              <chr> "M", "F", "M", "M", "M", "M", "M", "M", "M", ...
+## $ detail_age       <int> 1034, 1021, 1060, 1064, 1031, 1017, 1048, 104...
+## $ age_flag         <chr> "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA...
+## $ age_recode       <int> 32, 30, 38, 38, 32, 29, 35, 34, 36, 32, 30, 3...
+## $ age_recode2      <chr> "12", "10", "18", "18", "12", "09", "15", "14...
+## $ age_group        <chr> "05", "04", "08", "08", "05", "04", "07", "06...
+## $ age_infant       <chr> "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA...
+## $ death_place      <int> 4, 7, 7, 4, 7, 4, 1, 7, 7, 4, 4, 4, 2, 4, 4, ...
+## $ marital          <chr> "S", "S", "M", "S", "U", "S", "W", "M", "M", ...
+## $ day_of_week      <int> 6, 4, 7, 7, 1, 7, 5, 1, 7, 5, 1, 5, 4, 4, 5, ...
+## $ data_year        <int> 2012, 2012, 2012, 2012, 2012, 2012, 2012, 201...
+## $ at_work          <chr> "N", "N", "N", "N", "N", "N", "N", "N", "N", ...
+## $ death_manner     <chr> "2", "2", "2", "2", "2", "2", "5", "2", "1", ...
+## $ burial           <chr> "U", "U", "U", "U", "U", "U", "U", "U", "U", ...
+## $ autopsy          <chr> "N", "N", "N", "N", "Y", "N", "N", "N", "N", ...
+## $ activity         <int> 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, ...
+## $ injury_place     <int> 0, 4, 8, 0, 8, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, ...
+## $ underlying_cause <chr> "X74", "X74", "X72", "X74", "X72", "X73", "Y2...
+## $ cause_recode358  <int> 429, 429, 429, 429, 429, 429, 446, 429, 407, ...
+## $ cause_recode113  <int> 125, 125, 125, 125, 125, 125, 132, 125, 119, ...
+## $ cause_recode130  <chr> "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA...
+## $ cause_recode39   <int> 40, 40, 40, 40, 40, 40, 42, 40, 39, 40, 40, 4...
+## $ race             <chr> "68", "01", "01", "01", "01", "03", "01", "03...
+## $ race_bridged     <chr> "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA...
+## $ race_flag        <chr> "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA...
+## $ race_recode      <int> 2, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, ...
+## $ race_recode2     <int> 4, 1, 1, 1, 1, 3, 1, 3, 1, 1, 3, 1, 3, 1, 3, ...
+## $ hispanic         <int> 100, 100, 100, 100, 100, 100, 100, 100, 100, ...
+## $ hispanic_recode  <int> 8, 6, 6, 6, 6, 8, 6, 8, 6, 6, 8, 6, 8, 6, 8, ...
+## $ intent           <chr> "Suicide", "Suicide", "Suicide", "Suicide", "...
+## $ police           <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
+## $ weapon           <chr> "Other/unknown", "Other/unknown", "Handgun", ...
+## $ year             <int> 2012, 2012, 2012, 2012, 2012, 2012, 2012, 201...
+## $ age              <int> 34, 21, 60, 64, 31, 17, 48, 41, 50, 30, 21, 4...
+## $ place            <chr> "Home", "Street", "Other specified", "Home", ...
+```
+
+
+Para pegar las tablas para los 3 años vamos a utilizar la función `bind_rows()` del paquete `dplyr`:
+
+
+```r
+guns <- guns_12 %>%
+  bind_rows(guns_13) %>%
+  bind_rows(guns_14)
+```
+
+
+Veamos otro ejemplo de cómo recodificar variables categóricas, en este caso para la variable de nivel educativo:
+
+
+```r
+guns <- guns %>%
+  mutate(education = ifelse(education_flag == 1,
+                            cut(as.numeric(education_03), breaks = c(0, 2, 3, 5, 8, 9, labels = c("Less than HS", "HS/GED", "Some college", "BA+", NA))),
+                            cut(as.numeric(education_89), breaks = c(0, 11, 12, 15, 17, 99), labels = c("Less than HS", "HS/GED", "Some college", "BA+", NA))))
+```
+
+
+Otro ejemplo, para la variable de raza:
+
+
+```r
+guns <- guns %>%
+  mutate(race = as.integer(race),
+         race = ifelse(hispanic > 199 & hispanic <996, "Hispanic",
+                       ifelse(race == "01", "White",
+                              ifelse(race == "02", "Black",
+                                     ifelse(as.numeric(race) >= 4 & as.numeric(race) <= 78, "Asian/Pacific Islander","Native American/Native Alaskan")))),
+         race = ifelse(is.na(race), "Unknown", race))
+```
+
+
+Para quedarnos con las variables con las que vamos a trabajar utilizamos la función `select()`:
+
+
+```r
+guns <- guns %>%
+  select(year, month, intent, police, sex, age, race, hispanic, place, education)
+```
+
+Veamos de nuevo cómo es la estructura de la tabla:
+
+
+```r
+str(guns)
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	99396 obs. of  10 variables:
+##  $ year     : int  2012 2012 2012 2012 2012 2012 2012 2012 2012 2012 ...
+##  $ month    : chr  "01" "01" "01" "02" ...
+##  $ intent   : chr  "Suicide" "Suicide" "Suicide" "Suicide" ...
+##  $ police   : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ sex      : chr  "M" "F" "M" "M" ...
+##  $ age      : int  34 21 60 64 31 17 48 41 50 30 ...
+##  $ race     : chr  "Asian/Pacific Islander" "Native American/Native Alaskan" "Native American/Native Alaskan" "Native American/Native Alaskan" ...
+##  $ hispanic : int  100 100 100 100 100 100 100 100 100 100 ...
+##  $ place    : chr  "Home" "Street" "Other specified" "Home" ...
+##  $ education: int  4 3 4 4 2 1 2 2 3 3 ...
+```
+
+Supongamos que nos interesa analizar el número de suicidios por arma de fuego para cada uno de los tres años. Esto quiere decir que es necesario agrupar y usar una función de resumen:
+
+
+```r
+guns %>%
+  filter(intent == "Suicide") %>%
+  group_by(year) %>%
+  summarize(suicides = n())
+```
+
+```
+## # A tibble: 3 x 2
+##    year suicides
+##   <int>    <int>
+## 1  2012    20663
+## 2  2013    21172
+## 3  2014    21333
+```
+
+
+Supongamos que deseamos filtar (quitar las observaciones) de homicidios para los cuales se tiene la categoría de "Other", para ello utilizamos la función `filter()`:
+
+
+```r
+guns_sin_especificar <- guns %>%
+  filter(place != "Other unspecified" & place != "Other specified")
+```
+
+
+Podemos analizar la siguiente gráfica de mosaico:
+
+
+```r
+ggplot(guns_sin_especificar, aes(x=as.factor(place), fill=as.factor(intent))) +
+    geom_bar(position='fill') +
+    coord_flip() +
+    theme(aspect.ratio = 1,legend.position="bottom",
+          axis.text.y=element_text(color='black',size=10),
+          axis.text.x=element_text(color='black',size=10),
+          axis.title.x=element_text(size=10),
+          axis.title.y=element_text(size=10),
+          legend.text=element_text(size=10)) +
+    scale_fill_discrete("") +
+    ylab('Proporción') + xlab("Lugar") +
+    ggtitle("Lugar de homicidios por intención")
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-54-1.png" width="576" style="display: block; margin: auto;" />
+
+
+Dado que el homicidio ocurrió en una granja, lo más probable es que haya sido un suicidio.
 
 
 

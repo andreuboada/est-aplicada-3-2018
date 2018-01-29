@@ -159,6 +159,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#limpieza-de-datos"><i class="fa fa-check"></i><b>3.2</b> Limpieza de datos</a></li>
 <li class="chapter" data-level="3.3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#split-apply-combine"><i class="fa fa-check"></i><b>3.3</b> <em>Split-apply-combine</em></a></li>
+<li class="chapter" data-level="" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#muertes-por-armas-de-fuego-en-estados-unidos"><i class="fa fa-check"></i>Muertes por armas de fuego en Estados Unidos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -621,84 +622,84 @@ iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 </thead>
 <tbody>
 <tr class="odd">
-<td>63</td>
-<td align="right">6.0</td>
-<td align="right">2.2</td>
-<td align="right">4.0</td>
-<td align="right">1.0</td>
-<td align="left">versicolor</td>
-</tr>
-<tr class="even">
-<td>49</td>
-<td align="right">5.3</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td>70</td>
-<td align="right">5.6</td>
-<td align="right">2.5</td>
-<td align="right">3.9</td>
-<td align="right">1.1</td>
-<td align="left">versicolor</td>
-</tr>
-<tr class="even">
-<td>106</td>
-<td align="right">7.6</td>
+<td>130</td>
+<td align="right">7.2</td>
 <td align="right">3.0</td>
-<td align="right">6.6</td>
-<td align="right">2.1</td>
+<td align="right">5.8</td>
+<td align="right">1.6</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="even">
+<td>124</td>
+<td align="right">6.3</td>
+<td align="right">2.7</td>
+<td align="right">4.9</td>
+<td align="right">1.8</td>
 <td align="left">virginica</td>
 </tr>
 <tr class="odd">
-<td>84</td>
-<td align="right">6.0</td>
-<td align="right">2.7</td>
-<td align="right">5.1</td>
-<td align="right">1.6</td>
-<td align="left">versicolor</td>
-</tr>
-<tr class="even">
-<td>11</td>
-<td align="right">5.4</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td>42</td>
-<td align="right">4.5</td>
-<td align="right">2.3</td>
-<td align="right">1.3</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td>75</td>
-<td align="right">6.4</td>
-<td align="right">2.9</td>
-<td align="right">4.3</td>
-<td align="right">1.3</td>
-<td align="left">versicolor</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td align="right">4.6</td>
+<td>29</td>
+<td align="right">5.2</td>
 <td align="right">3.4</td>
 <td align="right">1.4</td>
-<td align="right">0.3</td>
+<td align="right">0.2</td>
 <td align="left">setosa</td>
 </tr>
 <tr class="even">
-<td>39</td>
-<td align="right">4.4</td>
-<td align="right">3.0</td>
+<td>71</td>
+<td align="right">5.9</td>
+<td align="right">3.2</td>
+<td align="right">4.8</td>
+<td align="right">1.8</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="odd">
+<td>100</td>
+<td align="right">5.7</td>
+<td align="right">2.8</td>
+<td align="right">4.1</td>
 <td align="right">1.3</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td>118</td>
+<td align="right">7.7</td>
+<td align="right">3.8</td>
+<td align="right">6.7</td>
+<td align="right">2.2</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="odd">
+<td>76</td>
+<td align="right">6.6</td>
+<td align="right">3.0</td>
+<td align="right">4.4</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td>95</td>
+<td align="right">5.6</td>
+<td align="right">2.7</td>
+<td align="right">4.2</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="odd">
+<td>111</td>
+<td align="right">6.5</td>
+<td align="right">3.2</td>
+<td align="right">5.1</td>
+<td align="right">2.0</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="even">
+<td>109</td>
+<td align="right">6.7</td>
+<td align="right">2.5</td>
+<td align="right">5.8</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
 </tr>
 </tbody>
 </table>
@@ -851,32 +852,32 @@ mtcars[<span class="kw">c</span>(<span class="st">&#39;Mazda RX4&#39;</span>, <s
 )
 tabla</code></pre></div>
 <pre><code>##   n    frutas     valor
-## 1 1     apple 0.9484374
-## 2 2    banana 0.4192685
-## 3 3    orange 0.5428452
-## 4 4 pineapple 0.8229099
-## 5 5     lemon 0.5577102
-## 6 6     apple 0.2843160</code></pre>
+## 1 1     apple 0.2844213
+## 2 2    banana 0.8148610
+## 3 3    orange 0.4456867
+## 4 4 pineapple 0.1344743
+## 5 5     lemon 0.7167795
+## 6 6     apple 0.4259955</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tabla.color &lt;-<span class="st">  </span><span class="kw">data.frame</span>(
 <span class="dt">peso =</span> <span class="kw">rnorm</span>(<span class="dv">6</span>),
 <span class="dt">color =</span>   <span class="kw">c</span>(<span class="st">&#39;rojo&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;naranje&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;rojo&#39;</span>)
 )
 tabla.color</code></pre></div>
-<pre><code>##          peso    color
-## 1  0.04355088     rojo
-## 2 -0.16114393 amarillo
-## 3 -0.41124500  naranje
-## 4  1.37714351 amarillo
-## 5 -0.93075416 amarillo
-## 6 -0.17733025     rojo</code></pre>
+<pre><code>##         peso    color
+## 1  1.4192886     rojo
+## 2 -0.1826140 amarillo
+## 3  1.8672332  naranje
+## 4 -0.3370813 amarillo
+## 5 -1.4063163 amarillo
+## 6  0.3853461     rojo</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cbind</span>(tabla, tabla.color)</code></pre></div>
-<pre><code>##   n    frutas     valor        peso    color
-## 1 1     apple 0.9484374  0.04355088     rojo
-## 2 2    banana 0.4192685 -0.16114393 amarillo
-## 3 3    orange 0.5428452 -0.41124500  naranje
-## 4 4 pineapple 0.8229099  1.37714351 amarillo
-## 5 5     lemon 0.5577102 -0.93075416 amarillo
-## 6 6     apple 0.2843160 -0.17733025     rojo</code></pre>
+<pre><code>##   n    frutas     valor       peso    color
+## 1 1     apple 0.2844213  1.4192886     rojo
+## 2 2    banana 0.8148610 -0.1826140 amarillo
+## 3 3    orange 0.4456867  1.8672332  naranje
+## 4 4 pineapple 0.1344743 -0.3370813 amarillo
+## 5 5     lemon 0.7167795 -1.4063163 amarillo
+## 6 6     apple 0.4259955  0.3853461     rojo</code></pre>
 <p><strong>Nota:</strong> Una forma de seleccionar una columna es con el símbolo <strong>$</strong> (pesitos) y el nombre de la columna.</p>
 <p><br></p>
 <p><br></p>
@@ -909,12 +910,12 @@ lista</code></pre></div>
 ## 
 ## $tabla
 ##   n    frutas     valor
-## 1 1     apple 0.9484374
-## 2 2    banana 0.4192685
-## 3 3    orange 0.5428452
-## 4 4 pineapple 0.8229099
-## 5 5     lemon 0.5577102
-## 6 6     apple 0.2843160
+## 1 1     apple 0.2844213
+## 2 2    banana 0.8148610
+## 3 3    orange 0.4456867
+## 4 4 pineapple 0.1344743
+## 5 5     lemon 0.7167795
+## 6 6     apple 0.4259955
 ## 
 ## $ejemlista
 ## $ejemlista$a
@@ -1157,10 +1158,10 @@ En general, esta estructura se respeta en las funciones predeterminadas de R.
 <p>Ahora tiraremos dos veces los dados.</p>
 <p><strong>Primer lanzamiento:</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lanza_dado</span>()</code></pre></div>
-<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 1</code></pre>
 <p><strong>Segundo lanzamiento:</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lanza_dado</span>()</code></pre></div>
-<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 4</code></pre>
 <hr />
 <p><br></p>
 </div>
@@ -1871,7 +1872,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB <span class="op">+</span><span class="st"> </span>teamID, Batting))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   2.852   0.088   2.940</code></pre>
+##   3.156   0.092   3.248</code></pre>
 <ul>
 <li><p><strong>user time</strong>: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.</p></li>
 <li><p><strong>elapsed time</strong>: tiempo en el reloj, tiempo que experimenta la persona.</p></li>
@@ -1879,7 +1880,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <p>El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">readLines</span>(<span class="st">&quot;http://www.jhsph.edu&quot;</span>))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.031   0.000   1.166</code></pre>
+##   0.022   0.004   0.331</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(parallel)
 <span class="kw">system.time</span>(<span class="kw">mclapply</span>(<span class="dv">2000</span><span class="op">:</span><span class="dv">2006</span>, 
   <span class="cf">function</span>(x){
@@ -1887,7 +1888,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
     <span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB, sub)
 }, <span class="dt">mc.cores =</span> <span class="dv">5</span>))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.081   0.058   0.090</code></pre>
+##   0.065   0.051   0.091</code></pre>
 <p>Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr</span>
 dplyr_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
@@ -1927,16 +1928,16 @@ est_r_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
 
 dplyr_st</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.152   0.000   0.151</code></pre>
+##   0.177   0.000   0.177</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plyr_st</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   7.555   0.004   7.559</code></pre>
+##   7.559   0.000   7.559</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_l_st</code></pre></div>
 <pre><code>##    user  system elapsed 
-##  74.196   0.112  74.314</code></pre>
+##  64.101   0.084  64.183</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_r_st</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.630   0.016   0.645</code></pre>
+##   0.610   0.008   0.619</code></pre>
 <p>La función <code>system.time</code> supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es <code>Rprof()</code>.</p>
 <p>Rprof es un perfilador de muestreo que registra cambios en la pila de funciones, funciona tomando muestras a intervalos regulares y tabula cuánto tiempo se lleva en cada función.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>, <span class="dt">interval =</span> <span class="fl">0.015</span>, <span class="dt">line.profiling =</span> <span class="ot">TRUE</span>)
@@ -1946,53 +1947,53 @@ mod &lt;-<span class="st"> </span><span class="kw">lm</span>(R <span class="op">
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summaryRprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>)</code></pre></div>
 <pre><code>## $by.self
 ##                         self.time self.pct total.time total.pct
-## &quot;lm.fit&quot;                     2.77    89.81       2.77     89.81
-## &quot;.External2&quot;                 0.24     7.77       0.26      8.25
-## &quot;as.character&quot;               0.06     1.94       0.06      1.94
-## &quot;anyDuplicated.default&quot;      0.02     0.49       0.02      0.49
+## &quot;lm.fit&quot;                     2.79    89.86       2.79     89.86
+## &quot;.External2&quot;                 0.24     7.73       0.26      8.21
+## &quot;as.character&quot;               0.06     1.93       0.06      1.93
+## &quot;anyDuplicated.default&quot;      0.02     0.48       0.02      0.48
 ## 
 ## $by.total
 ##                         total.time total.pct self.time self.pct
-## &quot;&lt;Anonymous&gt;&quot;                 3.09    100.00      0.00     0.00
-## &quot;block_exec&quot;                  3.09    100.00      0.00     0.00
-## &quot;call_block&quot;                  3.09    100.00      0.00     0.00
-## &quot;do.call&quot;                     3.09    100.00      0.00     0.00
-## &quot;eval.parent&quot;                 3.09    100.00      0.00     0.00
-## &quot;eval&quot;                        3.09    100.00      0.00     0.00
-## &quot;evaluate_call&quot;               3.09    100.00      0.00     0.00
-## &quot;evaluate::evaluate&quot;          3.09    100.00      0.00     0.00
-## &quot;evaluate&quot;                    3.09    100.00      0.00     0.00
-## &quot;handle&quot;                      3.09    100.00      0.00     0.00
-## &quot;in_dir&quot;                      3.09    100.00      0.00     0.00
-## &quot;knitr::knit&quot;                 3.09    100.00      0.00     0.00
-## &quot;lm&quot;                          3.09    100.00      0.00     0.00
-## &quot;local&quot;                       3.09    100.00      0.00     0.00
-## &quot;process_file&quot;                3.09    100.00      0.00     0.00
-## &quot;process_group.block&quot;         3.09    100.00      0.00     0.00
-## &quot;process_group&quot;               3.09    100.00      0.00     0.00
-## &quot;timing_fn&quot;                   3.09    100.00      0.00     0.00
-## &quot;withCallingHandlers&quot;         3.09    100.00      0.00     0.00
-## &quot;withVisible&quot;                 3.09    100.00      0.00     0.00
-## &quot;lm.fit&quot;                      2.77     89.81      2.77    89.81
-## &quot;.External2&quot;                  0.26      8.25      0.24     7.77
-## &quot;model.matrix.default&quot;        0.24      7.77      0.00     0.00
-## &quot;model.matrix&quot;                0.24      7.77      0.00     0.00
-## &quot;as.character&quot;                0.06      1.94      0.06     1.94
-## &quot;model.response&quot;              0.06      1.94      0.00     0.00
-## &quot;anyDuplicated.default&quot;       0.02      0.49      0.02     0.49
-## &quot;[.data.frame&quot;                0.02      0.49      0.00     0.00
-## &quot;[&quot;                           0.02      0.49      0.00     0.00
-## &quot;anyDuplicated&quot;               0.02      0.49      0.00     0.00
-## &quot;model.frame.default&quot;         0.02      0.49      0.00     0.00
-## &quot;na.omit.data.frame&quot;          0.02      0.49      0.00     0.00
-## &quot;na.omit&quot;                     0.02      0.49      0.00     0.00
-## &quot;stats::model.frame&quot;          0.02      0.49      0.00     0.00
+## &quot;&lt;Anonymous&gt;&quot;                 3.10    100.00      0.00     0.00
+## &quot;block_exec&quot;                  3.10    100.00      0.00     0.00
+## &quot;call_block&quot;                  3.10    100.00      0.00     0.00
+## &quot;do.call&quot;                     3.10    100.00      0.00     0.00
+## &quot;eval.parent&quot;                 3.10    100.00      0.00     0.00
+## &quot;eval&quot;                        3.10    100.00      0.00     0.00
+## &quot;evaluate_call&quot;               3.10    100.00      0.00     0.00
+## &quot;evaluate::evaluate&quot;          3.10    100.00      0.00     0.00
+## &quot;evaluate&quot;                    3.10    100.00      0.00     0.00
+## &quot;handle&quot;                      3.10    100.00      0.00     0.00
+## &quot;in_dir&quot;                      3.10    100.00      0.00     0.00
+## &quot;knitr::knit&quot;                 3.10    100.00      0.00     0.00
+## &quot;lm&quot;                          3.10    100.00      0.00     0.00
+## &quot;local&quot;                       3.10    100.00      0.00     0.00
+## &quot;process_file&quot;                3.10    100.00      0.00     0.00
+## &quot;process_group.block&quot;         3.10    100.00      0.00     0.00
+## &quot;process_group&quot;               3.10    100.00      0.00     0.00
+## &quot;timing_fn&quot;                   3.10    100.00      0.00     0.00
+## &quot;withCallingHandlers&quot;         3.10    100.00      0.00     0.00
+## &quot;withVisible&quot;                 3.10    100.00      0.00     0.00
+## &quot;lm.fit&quot;                      2.79     89.86      2.79    89.86
+## &quot;.External2&quot;                  0.26      8.21      0.24     7.73
+## &quot;model.matrix.default&quot;        0.24      7.73      0.00     0.00
+## &quot;model.matrix&quot;                0.24      7.73      0.00     0.00
+## &quot;as.character&quot;                0.06      1.93      0.06     1.93
+## &quot;model.response&quot;              0.06      1.93      0.00     0.00
+## &quot;anyDuplicated.default&quot;       0.02      0.48      0.02     0.48
+## &quot;[.data.frame&quot;                0.02      0.48      0.00     0.00
+## &quot;[&quot;                           0.02      0.48      0.00     0.00
+## &quot;anyDuplicated&quot;               0.02      0.48      0.00     0.00
+## &quot;model.frame.default&quot;         0.02      0.48      0.00     0.00
+## &quot;na.omit.data.frame&quot;          0.02      0.48      0.00     0.00
+## &quot;na.omit&quot;                     0.02      0.48      0.00     0.00
+## &quot;stats::model.frame&quot;          0.02      0.48      0.00     0.00
 ## 
 ## $sample.interval
 ## [1] 0.015
 ## 
 ## $sampling.time
-## [1] 3.09</code></pre>
+## [1] 3.105</code></pre>
 <p>Hay dos métodos para normalizar los datos de Rprof:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>by.total</strong> divide el tiempo que se toma en cada función entre el tiempo total en correr.</p></li>
@@ -2012,17 +2013,17 @@ Batting <span class="op">%&gt;%</span>
 ## 6  rosepe01  2165 25</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="ot">NULL</span>)
 <span class="kw">summaryRprof</span>(<span class="st">&quot;out/plyr_rprof.out&quot;</span>)<span class="op">$</span>by.self[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]</code></pre></div>
-<pre><code>##                self.time self.pct total.time total.pct
-## &quot;lapply&quot;            0.98    12.19       2.72     33.83
-## &quot;FUN&quot;               0.86    10.70       1.74     21.64
-## &quot;eval&quot;              0.58     7.21       8.04    100.00
-## &quot;$&quot;                 0.30     3.73       0.30      3.73
-## &quot;.subset&quot;           0.28     3.48       0.28      3.48
-## &quot;.fun&quot;              0.24     2.99       2.78     34.58
-## &quot;make_names&quot;        0.24     2.99       0.38      4.73
-## &quot;as.list&quot;           0.24     2.99       0.32      3.98
-## &quot;extract_rows&quot;      0.22     2.74       3.10     38.56
-## &quot;stopifnot&quot;         0.22     2.74       0.60      7.46</code></pre>
+<pre><code>##               self.time self.pct total.time total.pct
+## &quot;FUN&quot;              1.22    14.81       2.10     25.49
+## &quot;lapply&quot;           0.58     7.04       2.70     32.77
+## &quot;eval&quot;             0.46     5.58       8.24    100.00
+## &quot;as.list&quot;          0.30     3.64       0.42      5.10
+## &quot;stopifnot&quot;        0.28     3.40       0.90     10.92
+## &quot;match.call&quot;       0.28     3.40       0.54      6.55
+## &quot;[[&quot;               0.24     2.91       3.62     43.93
+## &quot;unique&quot;           0.24     2.91       0.62      7.52
+## &quot;sys.call&quot;         0.22     2.67       0.24      2.91
+## &quot;&lt;Anonymous&gt;&quot;      0.20     2.43       8.24    100.00</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Rprof(&quot;out/slow_rprof.out&quot;)</span>
 <span class="co">#     players &lt;- unique(batting$playerID)</span>
 <span class="co">#     n_players &lt;- length(players)</span>
@@ -2098,7 +2099,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.236   0.000   0.236</code></pre>
+##   0.207   0.000   0.206</code></pre>
 <p>Usando <code>rbind</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind &lt;-<span class="st"> </span><span class="cf">function</span>(){
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">character</span>(<span class="dv">0</span>), <span class="dt">b =</span> <span class="kw">numeric</span>(<span class="dv">0</span>)) 
@@ -2109,7 +2110,7 @@ mi.df
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind</span>())</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.760   0.000   0.761</code></pre>
+##   0.756   0.000   0.756</code></pre>
 <p>Si definimos el tamaño del data.frame obtenemos mejoras:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="cf">function</span>() {
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>), <span class="dt">b =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)) 
@@ -2121,7 +2122,7 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind_2</span>())</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.088   0.000   0.088</code></pre>
+##   0.082   0.000   0.082</code></pre>
 <p>Finalmente, veamos un enfoque totalmente vectorizado</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">porcolumna_df &lt;-<span class="st"> </span><span class="cf">function</span>(){
   a &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>) 

@@ -159,6 +159,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#limpieza-de-datos"><i class="fa fa-check"></i><b>3.2</b> Limpieza de datos</a></li>
 <li class="chapter" data-level="3.3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#split-apply-combine"><i class="fa fa-check"></i><b>3.3</b> <em>Split-apply-combine</em></a></li>
+<li class="chapter" data-level="" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#muertes-por-armas-de-fuego-en-estados-unidos"><i class="fa fa-check"></i>Muertes por armas de fuego en Estados Unidos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -815,38 +816,38 @@ billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 <tbody>
 <tr class="odd">
 <td align="right">2000</td>
-<td align="left">Dixie Chicks, The</td>
-<td align="left">Cold Day In July</td>
-<td align="left">5:12</td>
-<td align="left">2000-06-24</td>
-<td align="right">80</td>
-<td align="right">79</td>
-<td align="right">76</td>
-<td align="right">72</td>
-<td align="right">68</td>
+<td align="left">Dion, Celine</td>
+<td align="left">That’s The Way It Is</td>
+<td align="left">4:03</td>
+<td align="left">1999-11-13</td>
+<td align="right">74</td>
 <td align="right">68</td>
 <td align="right">65</td>
-<td align="right">70</td>
-<td align="right">84</td>
-<td align="right">91</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<td align="right">49</td>
+<td align="right">44</td>
+<td align="right">34</td>
+<td align="right">30</td>
+<td align="right">30</td>
+<td align="right">17</td>
+<td align="right">14</td>
+<td align="right">11</td>
+<td align="right">8</td>
+<td align="right">9</td>
+<td align="right">10</td>
+<td align="right">11</td>
+<td align="right">11</td>
+<td align="right">6</td>
+<td align="right">8</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">9</td>
+<td align="right">10</td>
+<td align="right">14</td>
+<td align="right">16</td>
+<td align="right">26</td>
+<td align="right">31</td>
+<td align="right">35</td>
+<td align="right">42</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -898,31 +899,36 @@ billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 </tr>
 <tr class="even">
 <td align="right">2000</td>
-<td align="left">Third Eye Blind</td>
-<td align="left">Never Let You Go</td>
-<td align="left">3:57</td>
-<td align="left">2000-01-22</td>
-<td align="right">65</td>
-<td align="right">32</td>
-<td align="right">25</td>
-<td align="right">24</td>
-<td align="right">23</td>
-<td align="right">22</td>
-<td align="right">22</td>
-<td align="right">21</td>
-<td align="right">19</td>
-<td align="right">16</td>
+<td align="left">Gray, Macy</td>
+<td align="left">I Try</td>
+<td align="left">3:52</td>
+<td align="left">2000-02-19</td>
+<td align="right">68</td>
+<td align="right">51</td>
+<td align="right">47</td>
+<td align="right">36</td>
+<td align="right">30</td>
+<td align="right">20</td>
+<td align="right">15</td>
+<td align="right">12</td>
+<td align="right">8</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">6</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">9</td>
+<td align="right">10</td>
+<td align="right">11</td>
 <td align="right">14</td>
 <td align="right">16</td>
 <td align="right">16</td>
-<td align="right">17</td>
-<td align="right">18</td>
+<td align="right">16</td>
 <td align="right">21</td>
-<td align="right">22</td>
-<td align="right">25</td>
 <td align="right">27</td>
-<td align="right">33</td>
-<td align="right">45</td>
+<td align="right">34</td>
+<td align="right">40</td>
 <td align="right">46</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -962,11 +968,6 @@ billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -981,30 +982,30 @@ billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 </tr>
 <tr class="odd">
 <td align="right">2000</td>
-<td align="left">Aaliyah</td>
-<td align="left">I Don’t Wanna</td>
-<td align="left">4:15</td>
-<td align="left">2000-01-29</td>
+<td align="left">Jay-Z</td>
+<td align="left">Do It Again (Put Ya …</td>
+<td align="left">3:47</td>
+<td align="left">2000-01-15</td>
+<td align="right">95</td>
+<td align="right">68</td>
+<td align="right">65</td>
+<td align="right">65</td>
+<td align="right">74</td>
 <td align="right">84</td>
-<td align="right">62</td>
-<td align="right">51</td>
-<td align="right">41</td>
-<td align="right">38</td>
-<td align="right">35</td>
-<td align="right">35</td>
-<td align="right">38</td>
-<td align="right">38</td>
-<td align="right">36</td>
-<td align="right">37</td>
-<td align="right">37</td>
-<td align="right">38</td>
-<td align="right">49</td>
-<td align="right">61</td>
-<td align="right">63</td>
-<td align="right">62</td>
-<td align="right">67</td>
-<td align="right">83</td>
-<td align="right">86</td>
+<td align="right">92</td>
+<td align="right">96</td>
+<td align="right">95</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1064,30 +1065,30 @@ billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 </tr>
 <tr class="even">
 <td align="right">2000</td>
-<td align="left">Hill, Faith</td>
-<td align="left">Let’s Make Love</td>
-<td align="left">4:11</td>
-<td align="left">2000-08-12</td>
-<td align="right">83</td>
-<td align="right">83</td>
+<td align="left">McGraw, Tim</td>
+<td align="left">My Next Thirty Years</td>
+<td align="left">3:37</td>
+<td align="left">2000-10-21</td>
 <td align="right">73</td>
-<td align="right">73</td>
-<td align="right">67</td>
-<td align="right">60</td>
-<td align="right">60</td>
-<td align="right">60</td>
-<td align="right">57</td>
-<td align="right">55</td>
-<td align="right">54</td>
-<td align="right">69</td>
-<td align="right">88</td>
-<td align="right">91</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<td align="right">62</td>
+<td align="right">56</td>
+<td align="right">52</td>
+<td align="right">46</td>
+<td align="right">40</td>
+<td align="right">36</td>
+<td align="right">31</td>
+<td align="right">27</td>
+<td align="right">27</td>
+<td align="right">28</td>
+<td align="right">40</td>
+<td align="right">33</td>
+<td align="right">33</td>
+<td align="right">39</td>
+<td align="right">40</td>
+<td align="right">48</td>
+<td align="right">53</td>
+<td align="right">58</td>
+<td align="right">62</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1147,32 +1148,32 @@ billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 </tr>
 <tr class="odd">
 <td align="right">2000</td>
-<td align="left">DMX</td>
-<td align="left">What’s My Name</td>
-<td align="left">3:50</td>
-<td align="left">2000-01-15</td>
-<td align="right">98</td>
-<td align="right">76</td>
-<td align="right">69</td>
-<td align="right">69</td>
-<td align="right">67</td>
-<td align="right">73</td>
-<td align="right">76</td>
-<td align="right">90</td>
-<td align="right">90</td>
-<td align="right">94</td>
-<td align="right">100</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<td align="left">Aguilera, Christina</td>
+<td align="left">I Turn To You</td>
+<td align="left">4:00</td>
+<td align="left">2000-04-15</td>
+<td align="right">50</td>
+<td align="right">39</td>
+<td align="right">30</td>
+<td align="right">28</td>
+<td align="right">21</td>
+<td align="right">19</td>
+<td align="right">20</td>
+<td align="right">17</td>
+<td align="right">17</td>
+<td align="right">17</td>
+<td align="right">17</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">7</td>
+<td align="right">10</td>
+<td align="right">17</td>
+<td align="right">25</td>
+<td align="right">29</td>
+<td align="right">29</td>
+<td align="right">40</td>
+<td align="right">43</td>
+<td align="right">50</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1271,93 +1272,93 @@ billboard_long</code></pre></div>
 <tbody>
 <tr class="odd">
 <td align="right">2000</td>
-<td align="left">Rimes, LeAnn</td>
-<td align="left">Can’t Fight The Moon…</td>
-<td align="left">3:33</td>
-<td align="right">13</td>
-<td align="right">79</td>
-<td align="left">2000-12-02</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Mya</td>
-<td align="left">Case Of The Ex (What…</td>
-<td align="left">3:50</td>
-<td align="right">18</td>
-<td align="right">2</td>
-<td align="left">2000-12-16</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">De La Soul</td>
-<td align="left">All Good?</td>
-<td align="left">5:02</td>
+<td align="left">Destiny’s Child</td>
+<td align="left">Jumpin’ Jumpin’</td>
+<td align="left">3:48</td>
+<td align="right">19</td>
 <td align="right">3</td>
-<td align="right">100</td>
-<td align="left">2001-01-06</td>
+<td align="left">2000-09-16</td>
 </tr>
 <tr class="even">
 <td align="right">2000</td>
-<td align="left">98^0</td>
-<td align="left">Give Me Just One Nig…</td>
-<td align="left">3:24</td>
-<td align="right">10</td>
-<td align="right">6</td>
-<td align="left">2000-10-21</td>
+<td align="left">Henley, Don</td>
+<td align="left">Taking You Home</td>
+<td align="left">4:08</td>
+<td align="right">8</td>
+<td align="right">58</td>
+<td align="left">2000-08-12</td>
 </tr>
 <tr class="odd">
 <td align="right">2000</td>
-<td align="left">Blige, Mary J.</td>
-<td align="left">Deep Inside</td>
-<td align="left">5:26</td>
-<td align="right">6</td>
-<td align="right">73</td>
-<td align="left">1999-12-18</td>
+<td align="left">Adams, Yolanda</td>
+<td align="left">Open My Heart</td>
+<td align="left">5:30</td>
+<td align="right">3</td>
+<td align="right">74</td>
+<td align="left">2000-09-09</td>
 </tr>
 <tr class="even">
 <td align="right">2000</td>
-<td align="left">Backstreet Boys, The</td>
-<td align="left">Shape Of My Heart</td>
-<td align="left">3:49</td>
-<td align="right">4</td>
-<td align="right">15</td>
+<td align="left">Creed</td>
+<td align="left">With Arms Wide Open</td>
+<td align="left">3:52</td>
+<td align="right">26</td>
+<td align="right">3</td>
 <td align="left">2000-11-04</td>
 </tr>
 <tr class="odd">
 <td align="right">2000</td>
-<td align="left">TLC</td>
-<td align="left">Dear Lie</td>
-<td align="left">4:36</td>
-<td align="right">5</td>
-<td align="right">56</td>
-<td align="left">2000-03-11</td>
+<td align="left">Blink-182</td>
+<td align="left">All The Small Things</td>
+<td align="left">2:52</td>
+<td align="right">19</td>
+<td align="right">18</td>
+<td align="left">2000-04-08</td>
 </tr>
 <tr class="even">
 <td align="right">2000</td>
-<td align="left">Davidson, Clay</td>
-<td align="left">Unconditional</td>
-<td align="left">3:56</td>
-<td align="right">17</td>
-<td align="right">51</td>
-<td align="left">2000-07-15</td>
+<td align="left">Pink</td>
+<td align="left">Most Girls</td>
+<td align="left">4:06</td>
+<td align="right">15</td>
+<td align="right">5</td>
+<td align="left">2000-11-18</td>
 </tr>
 <tr class="odd">
 <td align="right">2000</td>
-<td align="left">Sisqo</td>
-<td align="left">Got To Get It</td>
-<td align="left">3:52</td>
-<td align="right">16</td>
-<td align="right">64</td>
-<td align="left">2000-03-04</td>
+<td align="left">Aaliyah</td>
+<td align="left">Try Again</td>
+<td align="left">4:03</td>
+<td align="right">6</td>
+<td align="right">18</td>
+<td align="left">2000-04-22</td>
 </tr>
 <tr class="even">
 <td align="right">2000</td>
-<td align="left">Gill, Vince</td>
-<td align="left">Feels Like Love</td>
-<td align="left">4:13</td>
-<td align="right">5</td>
-<td align="right">73</td>
-<td align="left">2000-09-30</td>
+<td align="left">Papa Roach</td>
+<td align="left">Last Resort</td>
+<td align="left">3:19</td>
+<td align="right">9</td>
+<td align="right">66</td>
+<td align="left">2000-09-23</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">3 Doors Down</td>
+<td align="left">Loser</td>
+<td align="left">4:24</td>
+<td align="right">11</td>
+<td align="right">61</td>
+<td align="left">2000-12-30</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">Savage Garden</td>
+<td align="left">I Knew I Loved You</td>
+<td align="left">4:07</td>
+<td align="right">14</td>
+<td align="right">2</td>
+<td align="left">2000-01-22</td>
 </tr>
 </tbody>
 </table>
@@ -1409,8 +1410,8 @@ tb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sampl
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">DE</td>
-<td align="right">1983</td>
+<td align="left">GT</td>
+<td align="right">1985</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1431,107 +1432,107 @@ tb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sampl
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="left">Germany</td>
+<td align="left">Guatemala</td>
 </tr>
 <tr class="even">
-<td align="left">BO</td>
-<td align="right">1995</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">Bolivia (Plurinational State of)</td>
-</tr>
-<tr class="odd">
-<td align="left">TO</td>
-<td align="right">1980</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">Tonga</td>
-</tr>
-<tr class="even">
-<td align="left">CG</td>
-<td align="right">1994</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">Congo</td>
-</tr>
-<tr class="odd">
-<td align="left">MO</td>
+<td align="left">KW</td>
 <td align="right">1997</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">1</td>
-<td align="right">15</td>
+<td align="right">23</td>
 <td align="right">38</td>
-<td align="right">47</td>
 <td align="right">37</td>
-<td align="right">34</td>
-<td align="right">55</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">4</td>
-<td align="right">10</td>
-<td align="right">16</td>
-<td align="right">21</td>
-<td align="right">5</td>
+<td align="right">22</td>
 <td align="right">6</td>
-<td align="right">15</td>
+<td align="right">7</td>
 <td align="right">NA</td>
-<td align="left">Macao</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">17</td>
+<td align="right">26</td>
+<td align="right">11</td>
+<td align="right">7</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">NA</td>
+<td align="left">Kuwait</td>
+</tr>
+<tr class="odd">
+<td align="left">NP</td>
+<td align="right">1984</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">Nepal</td>
+</tr>
+<tr class="even">
+<td align="left">FM</td>
+<td align="right">1990</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">Micronesia (Federated States of)</td>
+</tr>
+<tr class="odd">
+<td align="left">BZ</td>
+<td align="right">1995</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="left">Belize</td>
 </tr>
 </tbody>
 </table>
@@ -1552,74 +1553,74 @@ tb_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">KH</td>
-<td align="right">2005</td>
-<td align="left">Cambodia</td>
-<td align="left">new_sp_m4554</td>
-<td align="right">2043</td>
+<td align="left">CN</td>
+<td align="right">1999</td>
+<td align="left">China</td>
+<td align="left">new_sp_f014</td>
+<td align="right">1431</td>
 </tr>
 <tr class="even">
-<td align="left">IE</td>
-<td align="right">2001</td>
-<td align="left">Ireland</td>
-<td align="left">new_sp_f2534</td>
-<td align="right">6</td>
-</tr>
-<tr class="odd">
-<td align="left">LC</td>
-<td align="right">2005</td>
-<td align="left">Saint Lucia</td>
-<td align="left">new_sp_f65</td>
+<td align="left">SR</td>
+<td align="right">2003</td>
+<td align="left">Suriname</td>
+<td align="left">new_sp_f3544</td>
 <td align="right">2</td>
 </tr>
+<tr class="odd">
+<td align="left">CA</td>
+<td align="right">2006</td>
+<td align="left">Canada</td>
+<td align="left">new_sp_f4554</td>
+<td align="right">16</td>
+</tr>
 <tr class="even">
-<td align="left">MK</td>
+<td align="left">ER</td>
 <td align="right">1998</td>
-<td align="left">The former Yugoslav Republic of Macedonia</td>
-<td align="left">new_sp_m65</td>
-<td align="right">13</td>
+<td align="left">Eritrea</td>
+<td align="left">new_sp_f3544</td>
+<td align="right">11</td>
 </tr>
 <tr class="odd">
-<td align="left">LC</td>
-<td align="right">2005</td>
-<td align="left">Saint Lucia</td>
-<td align="left">new_sp_f1524</td>
+<td align="left">FR</td>
+<td align="right">2006</td>
+<td align="left">France</td>
+<td align="left">new_sp_m5564</td>
+<td align="right">153</td>
+</tr>
+<tr class="even">
+<td align="left">BD</td>
+<td align="right">2008</td>
+<td align="left">Bangladesh</td>
+<td align="left">new_sp_m3544</td>
+<td align="right">12761</td>
+</tr>
+<tr class="odd">
+<td align="left">CZ</td>
+<td align="right">2002</td>
+<td align="left">Czech Republic</td>
+<td align="left">new_sp_f2534</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="left">BA</td>
+<td align="right">2004</td>
+<td align="left">Bosnia and Herzegovina</td>
+<td align="left">new_sp_m4554</td>
+<td align="right">82</td>
+</tr>
+<tr class="odd">
+<td align="left">SC</td>
+<td align="right">2003</td>
+<td align="left">Seychelles</td>
+<td align="left">new_sp_m1524</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">HR</td>
-<td align="right">2006</td>
-<td align="left">Croatia</td>
-<td align="left">new_sp_m4554</td>
-<td align="right">69</td>
-</tr>
-<tr class="odd">
-<td align="left">IT</td>
-<td align="right">2007</td>
-<td align="left">Italy</td>
-<td align="left">new_sp_m3544</td>
-<td align="right">113</td>
-</tr>
-<tr class="even">
-<td align="left">PR</td>
-<td align="right">2003</td>
-<td align="left">Puerto Rico</td>
-<td align="left">new_sp_m5564</td>
-<td align="right">12</td>
-</tr>
-<tr class="odd">
-<td align="left">KH</td>
-<td align="right">2006</td>
-<td align="left">Cambodia</td>
-<td align="left">new_sp_m3544</td>
-<td align="right">2205</td>
-</tr>
-<tr class="even">
-<td align="left">TN</td>
-<td align="right">2008</td>
-<td align="left">Tunisia</td>
-<td align="left">new_sp_f014</td>
-<td align="right">7</td>
+<td align="left">GH</td>
+<td align="right">1996</td>
+<td align="left">Ghana</td>
+<td align="left">new_sp_f3544</td>
+<td align="right">200</td>
 </tr>
 </tbody>
 </table>
@@ -2005,84 +2006,84 @@ tb_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">FR</td>
-<td align="right">1995</td>
-<td align="left">France</td>
-<td align="left">new_sp_m</td>
-<td align="left">5564</td>
-<td align="right">297</td>
-</tr>
-<tr class="even">
-<td align="left">PA</td>
-<td align="right">2003</td>
-<td align="left">Panama</td>
-<td align="left">new_sp_m</td>
-<td align="left">65</td>
-<td align="right">67</td>
-</tr>
-<tr class="odd">
-<td align="left">LR</td>
-<td align="right">2002</td>
-<td align="left">Liberia</td>
+<td align="left">HT</td>
+<td align="right">2001</td>
+<td align="left">Haiti</td>
 <td align="left">new_sp_f</td>
 <td align="left">5564</td>
-<td align="right">41</td>
+<td align="right">109</td>
 </tr>
 <tr class="even">
-<td align="left">BW</td>
+<td align="left">GW</td>
 <td align="right">2000</td>
-<td align="left">Botswana</td>
+<td align="left">Guinea Bissau</td>
 <td align="left">new_sp_f</td>
-<td align="left">5564</td>
-<td align="right">57</td>
-</tr>
-<tr class="odd">
-<td align="left">SI</td>
-<td align="right">2008</td>
-<td align="left">Slovenia</td>
-<td align="left">new_sp_m</td>
 <td align="left">1524</td>
-<td align="right">3</td>
-</tr>
-<tr class="even">
-<td align="left">GQ</td>
-<td align="right">1998</td>
-<td align="left">Equatorial Guinea</td>
-<td align="left">new_sp_f</td>
-<td align="left">2534</td>
-<td align="right">31</td>
+<td align="right">30</td>
 </tr>
 <tr class="odd">
-<td align="left">MY</td>
-<td align="right">2006</td>
-<td align="left">Malaysia</td>
+<td align="left">GB</td>
+<td align="right">2005</td>
+<td align="left">United Kingdom of Great Britain and Northern Ireland</td>
 <td align="left">new_sp_m</td>
 <td align="left">3544</td>
-<td align="right">734</td>
+<td align="right">166</td>
 </tr>
 <tr class="even">
-<td align="left">EE</td>
-<td align="right">2007</td>
-<td align="left">Estonia</td>
-<td align="left">new_sp_f</td>
-<td align="left">u</td>
-<td align="right">0</td>
+<td align="left">AM</td>
+<td align="right">2006</td>
+<td align="left">Armenia</td>
+<td align="left">new_sp_m</td>
+<td align="left">65</td>
+<td align="right">17</td>
 </tr>
 <tr class="odd">
-<td align="left">SR</td>
-<td align="right">2006</td>
-<td align="left">Suriname</td>
+<td align="left">IQ</td>
+<td align="right">2002</td>
+<td align="left">Iraq</td>
 <td align="left">new_sp_f</td>
-<td align="left">4554</td>
-<td align="right">8</td>
+<td align="left">1524</td>
+<td align="right">338</td>
 </tr>
 <tr class="even">
-<td align="left">SG</td>
-<td align="right">2004</td>
-<td align="left">Singapore</td>
+<td align="left">AO</td>
+<td align="right">2002</td>
+<td align="left">Angola</td>
 <td align="left">new_sp_f</td>
+<td align="left">4554</td>
+<td align="right">972</td>
+</tr>
+<tr class="odd">
+<td align="left">EG</td>
+<td align="right">2002</td>
+<td align="left">Egypt</td>
+<td align="left">new_sp_f</td>
+<td align="left">3544</td>
+<td align="right">245</td>
+</tr>
+<tr class="even">
+<td align="left">MM</td>
+<td align="right">1996</td>
+<td align="left">Myanmar</td>
+<td align="left">new_sp_m</td>
 <td align="left">65</td>
-<td align="right">48</td>
+<td align="right">400</td>
+</tr>
+<tr class="odd">
+<td align="left">CO</td>
+<td align="right">2008</td>
+<td align="left">Colombia</td>
+<td align="left">new_sp_f</td>
+<td align="left">014</td>
+<td align="right">133</td>
+</tr>
+<tr class="even">
+<td align="left">CM</td>
+<td align="right">2004</td>
+<td align="left">Cameroon</td>
+<td align="left">new_sp_f</td>
+<td align="left">4554</td>
+<td align="right">412</td>
 </tr>
 </tbody>
 </table>
@@ -2202,34 +2203,34 @@ clima_lm &lt;-<span class="st"> </span><span class="kw">lm</span>(TMAX <span cla
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Santana</td>
-<td align="left">Maria, Maria</td>
+<td align="left">Madison Avenue</td>
+<td align="left">Don’t Call Me Baby</td>
 <td align="right">2000</td>
-<td align="left">4:18</td>
+<td align="left">3:44</td>
 </tr>
 <tr class="even">
-<td align="left">Metallica</td>
-<td align="left">I Disappear</td>
+<td align="left">McEntire, Reba</td>
+<td align="left">What Do You Say</td>
 <td align="right">2000</td>
-<td align="left">4:26</td>
+<td align="left">3:26</td>
 </tr>
 <tr class="odd">
-<td align="left">matchbox twenty</td>
-<td align="left">Bent</td>
+<td align="left">Tippin, Aaron</td>
+<td align="left">Kiss This</td>
 <td align="right">2000</td>
-<td align="left">4:12</td>
+<td align="left">2:53</td>
 </tr>
 <tr class="even">
-<td align="left">Pink</td>
-<td align="left">There U Go</td>
+<td align="left">Aguilera, Christina</td>
+<td align="left">I Turn To You</td>
 <td align="right">2000</td>
-<td align="left">3:23</td>
+<td align="left">4:00</td>
 </tr>
 <tr class="odd">
-<td align="left">Common</td>
-<td align="left">The Light</td>
+<td align="left">Black Rob</td>
+<td align="left">Whoa!</td>
 <td align="right">2000</td>
-<td align="left">3:55</td>
+<td align="left">4:04</td>
 </tr>
 </tbody>
 </table>
@@ -34134,162 +34135,162 @@ specdata &lt;-<span class="st"> </span>specdata_US <span class="op">%&gt;%</span
 </thead>
 <tbody>
 <tr class="odd">
-<td>559505</td>
-<td align="right">240</td>
-<td align="right">240</td>
-<td align="left">2010-12-13</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<td>23359</td>
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="left">2003-12-17</td>
+<td align="right">0.323</td>
+<td align="right">0.998</td>
 </tr>
 <tr class="even">
-<td>570564</td>
-<td align="right">244</td>
-<td align="right">244</td>
-<td align="left">2006-03-25</td>
+<td>540644</td>
+<td align="right">231</td>
+<td align="right">231</td>
+<td align="left">2007-04-21</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>372356</td>
-<td align="right">160</td>
-<td align="right">160</td>
-<td align="left">2009-07-10</td>
+<td>635067</td>
+<td align="right">268</td>
+<td align="right">268</td>
+<td align="left">2010-11-05</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>141985</td>
-<td align="right">59</td>
-<td align="right">59</td>
-<td align="left">2004-10-05</td>
+<td>403931</td>
+<td align="right">176</td>
+<td align="right">176</td>
+<td align="left">2000-12-23</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>241219</td>
-<td align="right">100</td>
-<td align="right">100</td>
-<td align="left">2010-06-20</td>
+<td>688681</td>
+<td align="right">293</td>
+<td align="right">293</td>
+<td align="left">2005-08-19</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>203334</td>
-<td align="right">86</td>
-<td align="right">86</td>
-<td align="left">2004-09-27</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<td>623311</td>
+<td align="right">265</td>
+<td align="right">265</td>
+<td align="left">2007-08-28</td>
+<td align="right">10.800</td>
+<td align="right">0.318</td>
 </tr>
 <tr class="odd">
-<td>372795</td>
-<td align="right">160</td>
-<td align="right">160</td>
-<td align="left">2010-09-22</td>
+<td>517516</td>
+<td align="right">221</td>
+<td align="right">221</td>
+<td align="left">2004-12-22</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>395056</td>
-<td align="right">171</td>
-<td align="right">171</td>
-<td align="left">2009-09-05</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td>698555</td>
-<td align="right">299</td>
-<td align="right">299</td>
-<td align="left">2004-09-01</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td>14119</td>
-<td align="right">6</td>
-<td align="right">6</td>
-<td align="left">2002-08-29</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td>639855</td>
-<td align="right">271</td>
-<td align="right">271</td>
-<td align="left">2004-12-15</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td>335253</td>
-<td align="right">144</td>
-<td align="right">144</td>
-<td align="left">2001-12-08</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td>602550</td>
-<td align="right">256</td>
-<td align="right">256</td>
-<td align="left">2002-10-23</td>
-<td align="right">2.310</td>
-<td align="right">0.7460</td>
-</tr>
-<tr class="even">
-<td>39595</td>
-<td align="right">21</td>
-<td align="right">21</td>
-<td align="left">2002-05-30</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td>655752</td>
+<td>652571</td>
 <td align="right">277</td>
 <td align="right">277</td>
-<td align="left">2010-06-26</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<td align="left">2001-10-10</td>
+<td align="right">4.680</td>
+<td align="right">0.592</td>
+</tr>
+<tr class="odd">
+<td>254516</td>
+<td align="right">108</td>
+<td align="right">108</td>
+<td align="left">2004-11-17</td>
+<td align="right">4.940</td>
+<td align="right">2.940</td>
 </tr>
 <tr class="even">
-<td>674581</td>
-<td align="right">286</td>
-<td align="right">286</td>
-<td align="left">2005-01-11</td>
+<td>131599</td>
+<td align="right">54</td>
+<td align="right">54</td>
+<td align="left">2005-04-29</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>364252</td>
-<td align="right">156</td>
-<td align="right">156</td>
-<td align="left">2008-05-02</td>
+<td>165827</td>
+<td align="right">68</td>
+<td align="right">68</td>
+<td align="left">2002-01-16</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>413833</td>
-<td align="right">179</td>
-<td align="right">179</td>
-<td align="left">2004-02-03</td>
-<td align="right">0.212</td>
-<td align="right">0.0688</td>
+<td>305057</td>
+<td align="right">128</td>
+<td align="right">128</td>
+<td align="left">2008-04-04</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>712999</td>
-<td align="right">303</td>
-<td align="right">303</td>
-<td align="left">2006-03-20</td>
+<td>351539</td>
+<td align="right">150</td>
+<td align="right">150</td>
+<td align="left">2008-07-12</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>617232</td>
+<td>711214</td>
+<td align="right">302</td>
+<td align="right">302</td>
+<td align="left">2008-04-30</td>
+<td align="right">1.440</td>
+<td align="right">0.210</td>
+</tr>
+<tr class="odd">
+<td>659712</td>
+<td align="right">279</td>
+<td align="right">279</td>
+<td align="left">2007-04-30</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td>499166</td>
+<td align="right">214</td>
+<td align="right">214</td>
+<td align="left">2002-09-25</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td>503798</td>
+<td align="right">215</td>
+<td align="right">215</td>
+<td align="left">2006-06-01</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td>615095</td>
 <td align="right">262</td>
 <td align="right">262</td>
-<td align="left">2007-01-04</td>
+<td align="left">2001-02-27</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td>378828</td>
+<td align="right">165</td>
+<td align="right">165</td>
+<td align="left">2005-03-30</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td>749803</td>
+<td align="right">322</td>
+<td align="right">322</td>
+<td align="left">2008-12-25</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
@@ -34439,8 +34440,123 @@ df_ej</code></pre></div>
 ## 2 mujer      1.65</code></pre>
 <p><br></p>
 <hr />
-
 </div>
+</div>
+<div id="muertes-por-armas-de-fuego-en-estados-unidos" class="section level2 unnumbered">
+<h2>Muertes por armas de fuego en Estados Unidos</h2>
+<p>Los datos que vamos a utilizar provienen principalmente de la base de datos de causas múltiples de la muerte de los Centros para el Control y Prevención de la Enfermedad (CDCs) de Estados Unidos, de certificados de defunción de los 50 estados. Se considera que esta fuente de información es la base de datos más completa de muertes por armas de fuego.</p>
+<p>Para más información puedes leer el artículo: <a href="https://fivethirtyeight.com/features/gun-deaths/" class="uri">https://fivethirtyeight.com/features/gun-deaths/</a></p>
+<p>Comencemos leyendo los datos para los años 2012, 2013 y 2014:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">guns_<span class="dv">12</span> &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/guns_12.csv&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;&quot;</span>)
+guns_<span class="dv">13</span> &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/guns_13.csv&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;&quot;</span>)
+guns_<span class="dv">14</span> &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/guns_14.csv&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;&quot;</span>)</code></pre></div>
+<p>Las tres tablas tienen las mismas variables en el mismo orden. Examinemos la tabla para el año 2012:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(guns_<span class="dv">12</span>)</code></pre></div>
+<pre><code>## Observations: 33,096
+## Variables: 40
+## $ res_status       &lt;int&gt; 1, 3, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, ...
+## $ education_89     &lt;chr&gt; &quot;16&quot;, &quot;13&quot;, &quot;16&quot;, &quot;17&quot;, &quot;12&quot;, &quot;10&quot;, &quot;12&quot;, &quot;12...
+## $ education_03     &lt;chr&gt; &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA...
+## $ education_flag   &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
+## $ month            &lt;chr&gt; &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;02&quot;, &quot;02&quot;, &quot;02&quot;, &quot;02&quot;, &quot;03...
+## $ sex              &lt;chr&gt; &quot;M&quot;, &quot;F&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, ...
+## $ detail_age       &lt;int&gt; 1034, 1021, 1060, 1064, 1031, 1017, 1048, 104...
+## $ age_flag         &lt;chr&gt; &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA...
+## $ age_recode       &lt;int&gt; 32, 30, 38, 38, 32, 29, 35, 34, 36, 32, 30, 3...
+## $ age_recode2      &lt;chr&gt; &quot;12&quot;, &quot;10&quot;, &quot;18&quot;, &quot;18&quot;, &quot;12&quot;, &quot;09&quot;, &quot;15&quot;, &quot;14...
+## $ age_group        &lt;chr&gt; &quot;05&quot;, &quot;04&quot;, &quot;08&quot;, &quot;08&quot;, &quot;05&quot;, &quot;04&quot;, &quot;07&quot;, &quot;06...
+## $ age_infant       &lt;chr&gt; &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA...
+## $ death_place      &lt;int&gt; 4, 7, 7, 4, 7, 4, 1, 7, 7, 4, 4, 4, 2, 4, 4, ...
+## $ marital          &lt;chr&gt; &quot;S&quot;, &quot;S&quot;, &quot;M&quot;, &quot;S&quot;, &quot;U&quot;, &quot;S&quot;, &quot;W&quot;, &quot;M&quot;, &quot;M&quot;, ...
+## $ day_of_week      &lt;int&gt; 6, 4, 7, 7, 1, 7, 5, 1, 7, 5, 1, 5, 4, 4, 5, ...
+## $ data_year        &lt;int&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 201...
+## $ at_work          &lt;chr&gt; &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, ...
+## $ death_manner     &lt;chr&gt; &quot;2&quot;, &quot;2&quot;, &quot;2&quot;, &quot;2&quot;, &quot;2&quot;, &quot;2&quot;, &quot;5&quot;, &quot;2&quot;, &quot;1&quot;, ...
+## $ burial           &lt;chr&gt; &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, ...
+## $ autopsy          &lt;chr&gt; &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;Y&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, ...
+## $ activity         &lt;int&gt; 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, ...
+## $ injury_place     &lt;int&gt; 0, 4, 8, 0, 8, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, ...
+## $ underlying_cause &lt;chr&gt; &quot;X74&quot;, &quot;X74&quot;, &quot;X72&quot;, &quot;X74&quot;, &quot;X72&quot;, &quot;X73&quot;, &quot;Y2...
+## $ cause_recode358  &lt;int&gt; 429, 429, 429, 429, 429, 429, 446, 429, 407, ...
+## $ cause_recode113  &lt;int&gt; 125, 125, 125, 125, 125, 125, 132, 125, 119, ...
+## $ cause_recode130  &lt;chr&gt; &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA...
+## $ cause_recode39   &lt;int&gt; 40, 40, 40, 40, 40, 40, 42, 40, 39, 40, 40, 4...
+## $ race             &lt;chr&gt; &quot;68&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;03&quot;, &quot;01&quot;, &quot;03...
+## $ race_bridged     &lt;chr&gt; &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA...
+## $ race_flag        &lt;chr&gt; &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA&quot;, &quot;NA...
+## $ race_recode      &lt;int&gt; 2, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, ...
+## $ race_recode2     &lt;int&gt; 4, 1, 1, 1, 1, 3, 1, 3, 1, 1, 3, 1, 3, 1, 3, ...
+## $ hispanic         &lt;int&gt; 100, 100, 100, 100, 100, 100, 100, 100, 100, ...
+## $ hispanic_recode  &lt;int&gt; 8, 6, 6, 6, 6, 8, 6, 8, 6, 6, 8, 6, 8, 6, 8, ...
+## $ intent           &lt;chr&gt; &quot;Suicide&quot;, &quot;Suicide&quot;, &quot;Suicide&quot;, &quot;Suicide&quot;, &quot;...
+## $ police           &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
+## $ weapon           &lt;chr&gt; &quot;Other/unknown&quot;, &quot;Other/unknown&quot;, &quot;Handgun&quot;, ...
+## $ year             &lt;int&gt; 2012, 2012, 2012, 2012, 2012, 2012, 2012, 201...
+## $ age              &lt;int&gt; 34, 21, 60, 64, 31, 17, 48, 41, 50, 30, 21, 4...
+## $ place            &lt;chr&gt; &quot;Home&quot;, &quot;Street&quot;, &quot;Other specified&quot;, &quot;Home&quot;, ...</code></pre>
+<p>Para pegar las tablas para los 3 años vamos a utilizar la función <code>bind_rows()</code> del paquete <code>dplyr</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">guns &lt;-<span class="st"> </span>guns_<span class="dv">12</span> <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">bind_rows</span>(guns_<span class="dv">13</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">bind_rows</span>(guns_<span class="dv">14</span>)</code></pre></div>
+<p>Veamos otro ejemplo de cómo recodificar variables categóricas, en este caso para la variable de nivel educativo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">guns &lt;-<span class="st"> </span>guns <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">education =</span> <span class="kw">ifelse</span>(education_flag <span class="op">==</span><span class="st"> </span><span class="dv">1</span>,
+                            <span class="kw">cut</span>(<span class="kw">as.numeric</span>(education_<span class="dv">03</span>), <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Less than HS&quot;</span>, <span class="st">&quot;HS/GED&quot;</span>, <span class="st">&quot;Some college&quot;</span>, <span class="st">&quot;BA+&quot;</span>, <span class="ot">NA</span>))),
+                            <span class="kw">cut</span>(<span class="kw">as.numeric</span>(education_<span class="dv">89</span>), <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">17</span>, <span class="dv">99</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Less than HS&quot;</span>, <span class="st">&quot;HS/GED&quot;</span>, <span class="st">&quot;Some college&quot;</span>, <span class="st">&quot;BA+&quot;</span>, <span class="ot">NA</span>))))</code></pre></div>
+<p>Otro ejemplo, para la variable de raza:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">guns &lt;-<span class="st"> </span>guns <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">race =</span> <span class="kw">as.integer</span>(race),
+         <span class="dt">race =</span> <span class="kw">ifelse</span>(hispanic <span class="op">&gt;</span><span class="st"> </span><span class="dv">199</span> <span class="op">&amp;</span><span class="st"> </span>hispanic <span class="op">&lt;</span><span class="dv">996</span>, <span class="st">&quot;Hispanic&quot;</span>,
+                       <span class="kw">ifelse</span>(race <span class="op">==</span><span class="st"> &quot;01&quot;</span>, <span class="st">&quot;White&quot;</span>,
+                              <span class="kw">ifelse</span>(race <span class="op">==</span><span class="st"> &quot;02&quot;</span>, <span class="st">&quot;Black&quot;</span>,
+                                     <span class="kw">ifelse</span>(<span class="kw">as.numeric</span>(race) <span class="op">&gt;=</span><span class="st"> </span><span class="dv">4</span> <span class="op">&amp;</span><span class="st"> </span><span class="kw">as.numeric</span>(race) <span class="op">&lt;=</span><span class="st"> </span><span class="dv">78</span>, <span class="st">&quot;Asian/Pacific Islander&quot;</span>,<span class="st">&quot;Native American/Native Alaskan&quot;</span>)))),
+         <span class="dt">race =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(race), <span class="st">&quot;Unknown&quot;</span>, race))</code></pre></div>
+<p>Para quedarnos con las variables con las que vamos a trabajar utilizamos la función <code>select()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">guns &lt;-<span class="st"> </span>guns <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(year, month, intent, police, sex, age, race, hispanic, place, education)</code></pre></div>
+<p>Veamos de nuevo cómo es la estructura de la tabla:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(guns)</code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    99396 obs. of  10 variables:
+##  $ year     : int  2012 2012 2012 2012 2012 2012 2012 2012 2012 2012 ...
+##  $ month    : chr  &quot;01&quot; &quot;01&quot; &quot;01&quot; &quot;02&quot; ...
+##  $ intent   : chr  &quot;Suicide&quot; &quot;Suicide&quot; &quot;Suicide&quot; &quot;Suicide&quot; ...
+##  $ police   : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ sex      : chr  &quot;M&quot; &quot;F&quot; &quot;M&quot; &quot;M&quot; ...
+##  $ age      : int  34 21 60 64 31 17 48 41 50 30 ...
+##  $ race     : chr  &quot;Asian/Pacific Islander&quot; &quot;Native American/Native Alaskan&quot; &quot;Native American/Native Alaskan&quot; &quot;Native American/Native Alaskan&quot; ...
+##  $ hispanic : int  100 100 100 100 100 100 100 100 100 100 ...
+##  $ place    : chr  &quot;Home&quot; &quot;Street&quot; &quot;Other specified&quot; &quot;Home&quot; ...
+##  $ education: int  4 3 4 4 2 1 2 2 3 3 ...</code></pre>
+<p>Supongamos que nos interesa analizar el número de suicidios por arma de fuego para cada uno de los tres años. Esto quiere decir que es necesario agrupar y usar una función de resumen:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">guns <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(intent <span class="op">==</span><span class="st"> &quot;Suicide&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(year) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">suicides =</span> <span class="kw">n</span>())</code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##    year suicides
+##   &lt;int&gt;    &lt;int&gt;
+## 1  2012    20663
+## 2  2013    21172
+## 3  2014    21333</code></pre>
+<p>Supongamos que deseamos filtar (quitar las observaciones) de homicidios para los cuales se tiene la categoría de “Other”, para ello utilizamos la función <code>filter()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">guns_sin_especificar &lt;-<span class="st"> </span>guns <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(place <span class="op">!=</span><span class="st"> &quot;Other unspecified&quot;</span> <span class="op">&amp;</span><span class="st"> </span>place <span class="op">!=</span><span class="st"> &quot;Other specified&quot;</span>)</code></pre></div>
+<p>Podemos analizar la siguiente gráfica de mosaico:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(guns_sin_especificar, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">as.factor</span>(place), <span class="dt">fill=</span><span class="kw">as.factor</span>(intent))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&#39;fill&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">coord_flip</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">aspect.ratio =</span> <span class="dv">1</span>,<span class="dt">legend.position=</span><span class="st">&quot;bottom&quot;</span>,
+          <span class="dt">axis.text.y=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&#39;black&#39;</span>,<span class="dt">size=</span><span class="dv">10</span>),
+          <span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&#39;black&#39;</span>,<span class="dt">size=</span><span class="dv">10</span>),
+          <span class="dt">axis.title.x=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>),
+          <span class="dt">axis.title.y=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>),
+          <span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">10</span>)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_fill_discrete</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&#39;Proporción&#39;) + xlab(&quot;Lugar&quot;) +</span>
+<span class="st">    ggtitle(&quot;Lugar de homicidios por intención&quot;)</span></code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-54-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Dado que el homicidio ocurrió en una granja, lo más probable es que haya sido un suicidio.</p>
+
 </div>
 </div>
             </section>
