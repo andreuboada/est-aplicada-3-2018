@@ -305,11 +305,11 @@ contiene el número de casos confirmados de tuberculosis por país y año, la
 información esta por grupo demográfico de acuerdo a sexo (m, f), y
 edad (0-4, 5-14, etc).
 
-```{r, message=F, warning=F}
+```{r message=F, warning=F, paged.print=FALSE}
 library(countrycode)
-tb <- read.csv("datos/tb.csv")
+tb <- read_csv("datos/tb.csv")
 tb$country_name <- countrycode(tb$iso2, 'iso2c', 'country.name')
-glimpse(tb)
+tb %>% sample_n(5) %>% knitr::kable()
 ```
 
 De manera similar, utilizando la función `gather()` se busca apilar las columnas correspondientes a sexo-edad.
@@ -317,25 +317,25 @@ De manera similar, utilizando la función `gather()` se busca apilar las columna
 **¿Cómo podemos separar la "variable" sexo-edad en dos columnas?**
 
 ```{r}
-tb.long <- tb %>%
+tb_long <- tb %>%
   gather(demog, casos, new_sp_m04:new_sp_fu, na.rm=TRUE)
-knitr::kable(tb.long %>% head(20))
+knitr::kable(tb_long %>% head(20))
 ```
 
 
 Las variables sexo y edad se obtienen separando la columna **demog**, para esto se usa la función `separate()`con los siguientes argumentos: `tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
 
 ```{r}
-tb.tidy <- tb.long %>%
+tb_tidy <- tb_long %>%
   separate(col = demog, into = c("sex", "age"), sep = 8)
-knitr::kable(tb.tidy %>% head(20))
+knitr::kable(tb_tidy %>% head(20))
 ```
 
 Ahora para hacer mejor variable **sex** y **age** usaremos la función `mutate()` que permite crear nuevas variables sin modificar la dimensión del dataframe.
 
 ```{r}
 library(stringr)
-tb.tidy <- tb.long %>%
+tb_tidy <- tb_long %>%
   separate(col = demog, into = c("sex", "age"), sep = 8) %>%
   mutate(sex = str_sub(sex, 8, 8),
          age = factor(age,
@@ -345,29 +345,26 @@ tb.tidy <- tb.long %>%
                                   "45-54", "5-14",  "55-64", "65+","unknown")
                        )
           )
-knitr::kable(tb.tidy %>% head(20))
+knitr::kable(tb_tidy %>% head(20))
 ```
 
 <br>
 
-Ahora separaremos las variables sexo y edad de la columna demo, para ello debemos pasar a la función _separate_ la posición de donde deseamos "cortar".
+Se puede separar la columna `demog` en dos variables, sexo y edad, utilizando la función _separate_. Se debe indicar la posición de donde deseamos "cortar":
 
 ```{r}
-tb_tidy <- separate(tb_long, demo, c("sex", "age"), 8)
-tb_tidy
-table(tb_tidy$sex)
-
-# creamos un mejor código de genero
-tb_tidy <- mutate(tb_tidy, sex = substr(sex, 8, 8))
-table(tb_tidy$sex)
+tb_tidy <- tidyr::separate(tb_long, demog, c("sex", "age"), 8)
+tb_tidy %>% sample_n(10) %>% knitr::kable()
 ```
+
+
 
 #### 3. Variables almacenadas en filas y columnas {-}
 
 El problema más difícil es cuando las variables están tanto en filas como encolumnas, veamos una base de datos de clima en Cuernavaca. ¿Cuáles son las variables en estos datos?
 
 ```{r}
-clima <- tbl_df(read.delim("data/clima.txt", stringsAsFactors=FALSE))
+clima <- tbl_df(read.delim("datos/clima.txt", stringsAsFactors=FALSE))
 clima
 ```
 
@@ -412,7 +409,7 @@ En ocasiones las bases de datos involucran valores en diferentes niveles, endife
 ¿Cuáles son las unidades observacionales de los datos de billboard?
 
 ```{r}
-billboard_tidy
+billboard_tidy %>% sample_n(20) %>% knitr::kable()
 ```
 
 
@@ -464,19 +461,14 @@ names(paths) <- basename(paths)
 La función `map_df` del paquete `purrr` itera sobre cada dirección, lee el csv en dicha dirección y los combina en un data frame.
 
 ```{r}
-library(plyr)
-
-specdata_US <- map_df(paths, read_csv)
-specdata_US
+specdata_US <- map_df(paths, read.csv, stringsAsFactors = FALSE)
 
 specdata <- specdata_US %>%
-  mutate(monitor = extract_numeric(.id), date = as.Date(Date)) %>%
+  mutate(monitor = extract_numeric(ID), date = as.Date(Date)) %>%
   select(id = ID, monitor, date, sulfate, nitrate)
+
+specdata %>% sample_n(20) %>% knitr::kable()
 ```
 
-Veamos la estructura de la tabla resultante:
 
-```{r}
-specdata %>% str()
-```
 
