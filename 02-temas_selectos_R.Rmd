@@ -1263,8 +1263,8 @@ prom_col_m2
 
 Tercer método:
 
-```{r, echo = F, fig.align='center'}
-knitr::include_graphics("figures/applycol.png")
+```{r, echo = F, fig.align='center', dpi=145}
+knitr::include_graphics("figuras/applycol.png")
 ```
 
 

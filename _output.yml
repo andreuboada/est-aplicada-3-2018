@@ -6,8 +6,6 @@ bookdown::gitbook:
         <li><a href="./">Estadística Aplicada III</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
-    edit: https://github.com/andreuboada/estadistica-aplicada-3-2018/edit/master/%s
-    download: []
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

@@ -116,6 +116,9 @@ as.data.frame(ds)
 **Nota:** Para mayor información de este tipo de dataframes consulta la documentación de la libreria `tibble`.
 ```
 
+<br>
+
+<br>
 
 ## El principio de datos limpios
 
@@ -203,19 +206,17 @@ La mayor parte de estos problemas se pueden arreglar con pocas herramientas, a c
 
 * **spread**: recibe 2 columnas y las separa, haciendo los datos más anchos.
 
----
-
 Repasaremos los problemas más comunes que se encuentran en conjuntos de datos sucios y mostraremos cómo se puede manipular la tabla de datos (usando las funciones *gather* y *spread*) con el fin de estructurarla para que cumpla los principios de datos limpios.
 
 <br>
-<br>
+
 ---
 
 #### 1. Los encabezados de las columnas son valores  {-}
 
 Analicemos los datos que provienen de una encuesta de [Pew Research](http://www.pewforum.org/2009/01/30/income-distribution-within-us-religious-groups/) que investiga la relación entre ingreso y afiliación religiosa. ¿Cuáles son las variables en estos datos?
 
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 pew <- read_csv("datos/pew.csv")
 knitr::kable(pew)
 ```
@@ -231,17 +232,6 @@ head(pew_tidy)
 
 La nueva estructura de la base de datos nos permite, por ejemplo, hacer fácilmente una gráfica donde podemos comparar las diferencias en las frecuencias.
 
-```{r, fig.height = 4.5, fig.width = 8.5, warning = FALSE}
-ggplot(pew_tidy, aes(x = income, y = frequency, color = religion, group = religion)) +
-  geom_line(size = 1) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  guides(color = guide_legend(ncol=2))
-```
-
-<br>
-
-Podemos hacer gráficas más interesantes si creamos nuevas variables:
-
 ```{r, fig.height = 4, fig.width = 7.7}
 library(dplyr)
 by_religion <- group_by(pew_tidy, religion)
@@ -251,8 +241,6 @@ pew_tidy_2 <- pew_tidy %>%
   mutate(percent = frequency / sum(frequency)) %>% 
   filter(sum(frequency) > 1000)
 
-head(pew_tidy_2)
-
 ggplot(pew_tidy_2, aes(x = income, y = percent, group = religion)) +
   facet_wrap(~ religion, nrow = 1) +
   geom_bar(stat = "identity", fill = "darkgray") + 
@@ -261,26 +249,33 @@ ggplot(pew_tidy_2, aes(x = income, y = percent, group = religion)) +
 
 En el código de arriba utilizamos las funciones `group_by`, `filter` y `mutate` que estudiaremos más adelante.
 
+<br>
+
+<br>
+
+---
+
 Otro ejemplo,
 
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 billboard <- tbl_df(read.csv("datos/billboard.csv", stringsAsFactors = FALSE))
-billboard %>% sample_n(5) %>% knitr::kable()
+billboard %>% sample_n(5) %>% knitr::kable() %>%
+  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 7)
 ```
 
 Queremos apilar las semanas de manera que sea una sola columna (nuevamente alargamos los datos):
   
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 library(tidyr)
-billboard_long <- gather(billboard, week, rank, wk1:wk76,na.rm=TRUE)
-billboard_long
+billboard_long <- gather(billboard, week, rank, wk1:wk76, na.rm=TRUE)
+billboard_long %>% sample_n(10) %>% knitr::kable()
 ```
 
-La instrucción na.rm = TRUE se utiliza para eliminar los valores faltantes en 
+La instrucción `na.rm = TRUE` se utiliza para eliminar los valores faltantes en 
 las columnas wk1 a wk76. Realizamos una limpieza adicional creando mejores 
 variables de fecha.
 
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 billboard_tidy <- billboard_long %>%
   mutate(
     week = extract_numeric(week),
@@ -290,9 +285,9 @@ billboard_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
 
-Nuevamente, podemos hacer gráficas facilmente.
+Nuevamente, podemos hacer gráficas fácilmente.
 
-```{r, fig.height = 3.8, fig.width = 7.7}
+```{r, fig.height = 3.4, fig.align='center'}
 tracks <- billboard_tidy %>%
   filter(track %in% c("Come On Over Baby (A...", "What A Girl Wants", "Say My Name", "Jumpin' Jumpin'", "Bye Bye Bye"))
 
@@ -303,14 +298,16 @@ ggplot(tracks, aes(x = date, y = rank)) +
 ```
 
 <br>
+
 <br>
+
 ---
 
 #### 2. Una columna asociada a más de una variable {-}
 
 La siguiente base de datos proviene de la Organización Mundial de la Salud y contiene el número de casos confirmados de tuberculosis por país y año, la información esta por grupo demográfico de acuerdo a sexo (m, f), y edad (0-4, 5-14, etc).
 
-```{r message=F, warning=F, paged.print=FALSE}
+```{r message=F, warning=F, paged.print=TRUE}
 library(countrycode)
 tb <- read_csv("datos/tb.csv")
 tb$country_name <- countrycode(tb$iso2, 'iso2c', 'country.name')
@@ -321,7 +318,7 @@ De manera similar, utilizando la función `gather()` se busca apilar las columna
 
 **¿Cómo podemos separar la "variable" sexo-edad en dos columnas?**
 
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 tb_long <- tb %>%
   gather(demog, casos, new_sp_m04:new_sp_fu, na.rm=TRUE)
 tb_long %>% sample_n(10) %>% knitr::kable()
@@ -330,15 +327,15 @@ tb_long %>% sample_n(10) %>% knitr::kable()
 
 Las variables sexo y edad se obtienen separando la columna **demog**, para esto se usa la función `separate()`con los siguientes argumentos: `tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
 
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 tb_tidy <- tb_long %>%
   separate(col = demog, into = c("sex", "age"), sep = 8)
-knitr::kable(tb_tidy %>% head(20))
+tb_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
 Ahora para hacer mejor variable **sex** y **age** usaremos la función `mutate()` que permite crear nuevas variables sin modificar la dimensión del dataframe.
 
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 library(stringr)
 tb_tidy <- tb_long %>%
   separate(col = demog, into = c("sex", "age"), sep = 8) %>%
@@ -350,7 +347,7 @@ tb_tidy <- tb_long %>%
                                   "45-54", "5-14",  "55-64", "65+","unknown")
                        )
           )
-knitr::kable(tb_tidy %>% head(20))
+tb_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
 <br>
@@ -363,14 +360,16 @@ tb_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
 <br>
+
 <br>
+
 ---
 
 #### 3. Variables almacenadas en filas y columnas {-}
 
 El problema más difícil es cuando las variables están tanto en filas como encolumnas, veamos una base de datos de clima en Cuernavaca. ¿Cuáles son las variables en estos datos?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 clima <- tbl_df(read.delim("datos/clima.txt", stringsAsFactors=FALSE))
 clima
 ```
@@ -394,10 +393,10 @@ head(clima_vars)
 
 Finalmente, la columna *element* no es una variable, sino que almacena el nombre de dos variables, la operación que debemos aplicar (spread) es el inverso de apilar (gather):
   
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 clima_tidy <- clima_vars %>%
   spread(element, value)
-head(clima_tidy)
+clima_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
 Ahora es inmediato no solo hacer gráficas sino también ajustar un modelo.
@@ -409,13 +408,19 @@ clima_lm <- lm(TMAX ~ factor(month), data = clima_tidy)
 summary(clima_lm)
 ```
 
+<br>
+
+<br>
+
+---
+
 #### 4. Mas de un tipo de observación en una misma tabla {-}
 
 En ocasiones las bases de datos involucran valores en diferentes niveles, endiferentes tipos de unidad observacional. En la limpieza de datos, cada unidad observacional debe estar almacenada en su propia tabla (esto esta ligado a normalización de una base de datos), es importante para evitar inconsistencias en los datos.
 
 ¿Cuáles son las unidades observacionales de los datos de billboard?
 
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 billboard_tidy %>% sample_n(5) %>% select(artist, track, year, time) %>% knitr::kable()
 ```
 
@@ -429,9 +434,7 @@ song <- billboard_tidy %>%
   mutate(song_id = row_number(artist))
 ```
 
-
-
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 rank <- billboard_tidy %>%
   left_join(song, c("artist", "track", "year", "time")) %>%
   select(song_id, date, week, rank) %>%
@@ -439,6 +442,12 @@ rank <- billboard_tidy %>%
   tbl_df
 rank %>% knitr::kable()
 ```
+
+<br>
+
+<br>
+
+---
 
 #### 5. Una misma unidad observacional está almacenada en múltiples tablas {-}
 
@@ -466,7 +475,7 @@ names(paths) <- basename(paths)
 
 La función `map_df` del paquete `purrr` itera sobre cada dirección, lee el csv en dicha dirección y los combina en un data frame.
 
-```{r}
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 specdata_US <- map_df(paths, read.csv, stringsAsFactors = FALSE)
 
 specdata <- specdata_US %>%
@@ -475,6 +484,12 @@ specdata <- specdata_US %>%
 
 specdata %>% sample_n(20) %>% knitr::kable()
 ```
+
+<br>
+
+<br>
+
+---
 
 #### 6. Otras consideraciones {-}
 
@@ -819,6 +834,7 @@ Cuando analizamos los datos de manera gráfica en un histograma encontramos ráp
 ```{r echo=FALSE, fig.align='center', dpi=200}
 knitr::include_graphics("figuras/Anscombe.png")
 ```
+
 <p class="espacio">
 </p>
 
@@ -848,12 +864,16 @@ En general, según Leland Wilkinson, hay dos principios generales que se deben s
 
 Vamos a ver cómo visualizar los datos usando ggplot2. R tiene varios sistemas para hacer gráficas, pero ggplot2 es uno de los más elegantes y versátiles. ggplot2 implementa la __gramática de gráficas__,  un sistema consistente para describir y construir gráficas. Con ggplot2, pueden hacerse cosas más rápido, aprendiendo un único sistema consistente, y aplicándolo de muchas formas.
 
-Para mayor información sobre los fundamentos teóricos de ggplot2 se recomienda leer el artículo titulado "The Layered Grammar of Graphics", visitando la siguiente liga: <http://vita.had.co.nz/papers/layered-grammar.pdf>.
+Para mayor información sobre los fundamentos teóricos de `ggplot2` se recomienda leer el artículo titulado "The Layered Grammar of Graphics", visitando la siguiente liga: <http://vita.had.co.nz/papers/layered-grammar.pdf>.
 
 Lo más importante para entender ggplot es comprender la estructura y la lógica para hacer una gráfica. El código debe decir cuáles son las conexiones entre las variables en los datos y los elementos de la gráfica tal como los vamos a ver en la pantalla, los puntos, los colores y las formas. En ggplot, estas conexiones lógicas entre los datos y los elementos de la gráfica se denominan *asignaciones estéticas* o simplemente *estéticas*. Se comienza una gráfica indicando a ggplot cuáles son los datos, qué variables en los datos se van a usar y luego cómo las variables en estos datos se mapean lógicamente en la estética de la gráfica. Luego, toma el resultado y se indica qué tipo de gráfica se desea, por ejemplo, un diagrama de dispersión, una gráfica de barras, o una gráfica de línea. En ggplot este tipo general de gráficas se llama `geom`. Cada *geom* tiene una función que lo crea. Por ejemplo, `geom_point()` hace diagramas de dispersión, `geom_bar()` hace gráficas de barras, `geom_line()` hace gráficas de línea, y así sucesivamente. Para combinar estas dos piezas, el objeto `ggplot()` y el `geom` se suman literalmente en una expresión, utilizando el símbolo "`+`".
  
 <div style="text-align: center;">**¿Qué geometrías son más adecuadas para cada tipo de variable?**</div>
-<center><img src="figuras/visual-variables.png" width="600px" /></center>
+
+```{r echo=FALSE, fig.align='center', dpi=145}
+knitr::include_graphics("figuras/visual-variables.png")
+```
+
 <p class="espacio">
 </p>
 
@@ -959,7 +979,7 @@ Iraq Body Count (IBC) mantiene la base de datos pública más grande sobre muert
 Para mayor información puedes visitar <https://www.iraqbodycount.org/>.
 
 Los datos los leemos con la función `read_csv()` de la librería `readr`:
-```{r}
+```{r message=FALSE, warning=FALSE}
 ibc <- read_csv("datos/ibc-incidents-2016-8-8.csv")
 glimpse(ibc)
 ```
@@ -1035,7 +1055,7 @@ La siguiente pregunta de la encuesta es el punto de partida para medir el materi
 
 La medida se basa entonces en la observación de que dos de las cuatro opciones, la primera y la tercera, se consideran como "preferencia hacia el valor adquisitivo en relación con la protección y adquisición de bienes". Si se eligen las dos opciones postmaterialistas, entonces la puntuación es 3. Si se elige sólo una opción post-materialista, entonces la puntuación es 2, y de lo contrario es 1. Como todas las opciones podrían ser deseables, la medida se relaciona con la "prioridad relativa" de las elecciones materialistas sobre la segunda y cuarta y aborda las concesiones que típicamente conllevan las decisiones políticas. La conceptualización del postmaterialismo a lo largo de un continuo unidimensional está cerca del concepto de la "jerarquía de necesidades" propuesta por Maslow.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 factores_inglehart <- read_csv(file = "datos/factores_inglehart.csv")
 glimpse(factores_inglehart)
