@@ -643,7 +643,7 @@ df_ej %>%
 
 ---
 
-## Muertes por armas de fuego en Estados Unidos {-}
+## Muertes por armas de fuego en EUA
 
 Los datos que vamos a utilizar provienen principalmente de la base de datos de causas múltiples de la muerte de los Centros para el Control y Prevención de la Enfermedad (CDCs) de Estados Unidos, de certificados de defunción de los 50 estados. Se considera que esta fuente de información es la base de datos más completa de muertes por armas de fuego.
 
@@ -748,5 +748,445 @@ ggplot(guns_sin_especificar, aes(x=as.factor(place), fill=as.factor(intent))) +
 
 Dado que el homicidio ocurrió en una granja, lo más probable es que haya sido un suicidio.
 
+---
 
+<br>
+<br>
+
+---
+
+## El Cuarteto de Anscombe
+
+> "The simple graph has brought more information to the data analyst’s mind 
+> than any other device." --- John Tukey
+
+En 1971 un estadístico llamado Frank Anscombe (fundador del departamento de Estadística de la Universidad de Yale) encontró cuatro conjuntos de datos (I, II, III y IV). Cada uno consiste de 11 observaciones y tienen las mismas propiedades estadísticas.
+
+```{r, eval=FALSE}
+anscombe
+```
+
+
++------+-------+-------+-------+-------+-------+------+-------+
+|$x_1$ |$y_1$  |$x_2$  |$y_2$  |$x_3$  |$y_3$  |$x_4$ |$y_4$  |
++======+=======+=======+=======+=======+=======+======+=======+
+| 10.0 |  8.04 |  10.0 |  9.14 |  10.0 |  7.46 |  8.0 |  6.58 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  8.0 |  6.95 |  8.0  |  8.14 |  8.0  |  6.77 |  8.0 |  5.76 |
++------+-------+-------+-------+-------+-------+------+-------+
+| 13.0 |  7.58 | 13.0  |  8.74 | 13.0  | 12.74 |  8.0 |  7.71 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  9.0 |  8.81 |  9.0  |  8.77 |  9.0  |  7.11 |  8.0 |  8.84 |
++------+-------+-------+-------+-------+-------+------+-------+
+| 11.0 |  8.33 | 11.0  |  9.26 | 11.0  |  7.81 |  8.0 |  8.47 |
++------+-------+-------+-------+-------+-------+------+-------+
+| 14.0 |  9.96 | 14.0  |  8.10 | 14.0  |  8.84 |  8.0 |  7.04 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  6.0 |  7.24 |  6.0  |  6.13 |  6.0  |  6.08 |  8.0 |  5.25 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  4.0 |  4.26 |  4.0  |  3.10 |  4.0  |  5.39 | 19.0 | 12.50 |
++------+-------+-------+-------+-------+-------+------+-------+
+| 12.0 | 10.84 | 12.0  |  9.13 | 12.0  |  8.15 |  8.0 |  5.56 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  7.0 |  4.82 |  7.0  |  7.26 |  7.0  |  6.42 |  8.0 |  7.91 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  5.0 |  5.68 |  5.0  |  4.74 |  5.0  |  5.73 |  8.0 |  6.89 |
++------+-------+-------+-------+-------+-------+------+-------+
+
+Por ejemplo, todos los conjuntos de datos I, II, III, y IV, tienen exactamente misma media de $x$, $\bar{x}_i = \bar{x}_j$, y misma media de $y$, $\bar{y}_i = \bar{y}_j$ para toda $i,j=1,2,3,4$. Además, se puede ver que todos tienen misma varianza muestral de $x$ y de $y$. En cada conjunto de datos la correlación entre $x$ y $y$ es la misma, y por consiguiente, los coeficientes de la regresión lineal $\beta_0$ y $\beta_1$ también son iguales. 
+
++-----------------------------+-------------------+
+|Propiedad                    |Valor              |
++=============================+===================+
+|Media de $x$                 |9                  |
++-----------------------------+-------------------+
+|Varianza muestral de $x$     |11                 |
++-----------------------------+-------------------+
+|Media de $y$                 |7.50               |
++-----------------------------+-------------------+
+|Varianza muestral de $y$     |4.12               |
++-----------------------------+-------------------+
+|Correlación entre $x$ y $y$  |0.816              |
++-----------------------------+-------------------+
+|Línea de regresión lineal    |$y = 3.00 + 0.500x$|
++-----------------------------+-------------------+
+
+¿En qué son diferentes estos conjuntos de datos? ¿Es posible con la información anterior concluir que los cuatro conjuntos de datos deben ser similares? ¿Que tengan estadísticas similares asegura que provienen de un mismo modelo?
+
+Cuando analizamos los datos de manera gráfica en un histograma encontramos rápidamente que los conjuntos de datos son muy distintos.
+
+<div style="text-align: center;">**“Una imagen dice más que mil palabras.”**</div>
+```{r echo=FALSE, fig.align='center', dpi=200}
+knitr::include_graphics("figuras/Anscombe.png")
+```
+<p class="espacio">
+</p>
+
+En la gráfica del primer conjunto de datos, se ven datos como los que se tendrían en una relación lineal simple con un modelo que cumple los supuestos de normalidad. La segunda gráfica (la de arriba a la derecha) muestra unos datos que tienen una asociación pero definitivamente no es lineal y el coeficiente de correlación no es relevante en este caso. En la tercera gráfica (abajo a la izquierda) están puntos alineados perfectamente en una línea recta, excepto por uno de ellos. En la última gráfica podemos ver un ejemplo en el cual basta tener una observación atípica para que se produzca un coeficiente de correlación alto aún cuando en realidad no existe una asociación lineal entre las dos variables.  
+
+Edward Tufte usó el cuarteto en la primera página del primer capítulo de su libro The Visual Display of Quantitative Information, para enfatizar la importancia de mirar los datos antes de analizarlos. [@tufte2014visual]
+
+## The _Grammar of Graphics_ de Leland Wilkinson
+
+Una ventaje de ggplot es que implementa una gramática de gráficas de forma organizada y con sentido orientada a esta forma de asociar variables con geometrías (Wilkinson 2005). En lugar de tener una lista enorme y conceptualmente plana de opciones para hacer gráficas, ggplot parte en varios pasos el procedimiento para realizar una gráfica:
+
+1. primero, se debe proporcionar información a la función sobre qué datos y qué variables se van a utilizar.
+
+2. segundo, se debe vincular las variables que se van a utilizar en la gráfica con las características específicas que se requiere tener en la gráfica.
+
+3. tercero, se debe elegir una función `geom_` para indicar qué tipo de gráfica se dibujará, un diagrama de dispersión, una gráfica de barras o un diagrama de caja.
+
+En general, según Leland Wilkinson, hay dos principios generales que se deben seguir:
+
+- La geometría utilizada debe coincidir con los datos que se están visualizando.
+
+- La geometría utilizada debe ser fácil de interpretar.
+
+---
+
+## ggplot
+
+Vamos a ver cómo visualizar los datos usando ggplot2. R tiene varios sistemas para hacer gráficas, pero ggplot2 es uno de los más elegantes y versátiles. ggplot2 implementa la __gramática de gráficas__,  un sistema consistente para describir y construir gráficas. Con ggplot2, pueden hacerse cosas más rápido, aprendiendo un único sistema consistente, y aplicándolo de muchas formas.
+
+Para mayor información sobre los fundamentos teóricos de ggplot2 se recomienda leer el artículo titulado "The Layered Grammar of Graphics", visitando la siguiente liga: <http://vita.had.co.nz/papers/layered-grammar.pdf>.
+
+Lo más importante para entender ggplot es comprender la estructura y la lógica para hacer una gráfica. El código debe decir cuáles son las conexiones entre las variables en los datos y los elementos de la gráfica tal como los vamos a ver en la pantalla, los puntos, los colores y las formas. En ggplot, estas conexiones lógicas entre los datos y los elementos de la gráfica se denominan *asignaciones estéticas* o simplemente *estéticas*. Se comienza una gráfica indicando a ggplot cuáles son los datos, qué variables en los datos se van a usar y luego cómo las variables en estos datos se mapean lógicamente en la estética de la gráfica. Luego, toma el resultado y se indica qué tipo de gráfica se desea, por ejemplo, un diagrama de dispersión, una gráfica de barras, o una gráfica de línea. En ggplot este tipo general de gráficas se llama `geom`. Cada *geom* tiene una función que lo crea. Por ejemplo, `geom_point()` hace diagramas de dispersión, `geom_bar()` hace gráficas de barras, `geom_line()` hace gráficas de línea, y así sucesivamente. Para combinar estas dos piezas, el objeto `ggplot()` y el `geom` se suman literalmente en una expresión, utilizando el símbolo "`+`".
+ 
+<div style="text-align: center;">**¿Qué geometrías son más adecuadas para cada tipo de variable?**</div>
+<center><img src="figuras/visual-variables.png" width="600px" /></center>
+<p class="espacio">
+</p>
+
+Usaremos los datos de `gapminder` para hacer nuestras primeras gráficas. Vamos a asegurarnos de que la biblioteca que contiene los datos esté cargada:
+
+```{r, message=FALSE, warning=FALSE}
+library(gapminder)
+```
+
+Esto hace que una tabla de datos esté disponible para su uso. Para ver un pedazo de la tabla utilizamos la función `glimpse()`:
+
+```{r}
+library(tidyverse)
+glimpse(gapminder)
+```
+
+Supongamos que queremos graficar la esperanza de vida vs el PIB per cápita para todos los años y países en los datos. Haremos esto creando un objeto que contenga parte de la información necesario y a partir de ahí vamos a construir nuestra gráfica. Primero debemos indicarle a la función `ggplot()` qué datos estamos utilizando:
+
+```{r}
+p <- ggplot(data = gapminder)
+p
+```
+
+En este punto, ggplot sabe cuáles son nuestros datos, pero no cuál es el mapeo, es decir, qué variables de los datos deben correlacionarse con qué elementos visuales de la trama. Tampoco sabe qué tipo de trama queremos. En ggplot, las asignaciones se especifican utilizando la función `aes()`. Me gusta esta:
+
+Hasta este punto ggplot conoce qué datos se van a utilizar para hacer la gráfico, pero no el *mapeo* o *asociación* de qué variables se van a relacionar con los elementos visuales de la gráfica. Tampoco se sabe qué tipo de gráfica se va a hacer. En ggplot, las asignaciones se especifican utilizando la función `aes()`:
+
+```{r}
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp))
+```
+
+El argumento `mapping = aes(...)` _vincula variables a cosas que se van a ver en la gráfica_. Los valores de $x$ y $y$ son los más obvios. Otras asignaciones estéticas pueden incluir, por ejemplo, el color, la forma, el tamaño y el tipo de línea (si una línea es sólida o discontinua, o algún otro patrón). Un mapeo no dice directamente qué formas o colores van a aparecer en la gráfica. Más bien, dicen qué _variables_ en los datos serán _representadas_ por los elementos visuales como color, forma o un punto.
+
+¿Qué sucede si simplemente escribimos `p` en la consola y ejecutamos?
+
+```{r, fig.width = 5, fig.height = 4}
+p
+```
+
+El objeto `p` ha sido creado por la función `ggplot()`, y ya tiene información sobre las asignaciones que queremos, junto con mucha otra información añadida por defecto. (Si quiere ver cuánta información hay en el objeto `p`, intente solicitar `str(p)`). Sin embargo, no le hemos dado ninguna instrucción acerca de qué tipo de diagrama dibujar. Necesitamos agregar una capa a la trama. Esto significa elegir una función `geom_*`. Usaremos `geom_point()`. Sabe cómo tomar valores xey y trazarlos en un diagrama de dispersión.
+
+Se ha creado el objeto `p` utilizando la función `ggplot()` y este objeto ya tiene información de las asignacionesque queremos. Sin embargo, no se le ha dado ninguna instrucción sobre qué tipo de gráfica se quiere dibujar. Necesitamos agregar una capa a la gráfica. Esto se hace mediante el símbolo `+`. Esto significa elegir una función `geom_`. Utilizaremos `geom_point()` para hacer un diagrama de dispersión. 
+
+```{r, fig.width = 5, fig.height = 4}
+p + geom_point()
+```
+
+El mapeo de las propiedades estéticas se denomina *escalamiento* y depende del tipo de variable, las variables discretas (por ejemplo, genero, escolaridad, país) se mapean a distintas escalas que las variables continuas (variables numéricas como edad, estatura, etc.), los *defaults* para algunos atributos son (estos se pueden modificar):
+
+aes       |Discreta      |Continua  
+----------|--------------|---------
+Color (`color`)|Arcoiris de colores         |Gradiente de colores  
+Tamaño (`size`)  |Escala discreta de tamaños  |Mapeo lineal entre el área y el valor  
+Forma (`shape`)    |Distintas formas            |No aplica
+Transparencia (`alpha`) | No aplica | Mapeo lineal a la transparencia   
+
+Los *_geoms_* controlan el tipo de gráfica:
+
+```{r, fig.height=4, fig.width=5, message=FALSE, warning=FALSE}
+p + geom_smooth()
+```
+
+Podemos ver de inmediato que algunos de estos `geoms` hacen mucho más que simplemente poner puntos en una cuadrícula. Aquí `geom_smooth()` ha calculado una línea suavizada y la región sombreada representa el error estándar de la línea suavizada. Si queremos ver los puntos de datos y la línea juntos, simplemente agregamos `geom_point()` de nuevo como una capa adicional utilizando `+`:
+
+```{r, fig.height=4, fig.width=5, message=FALSE, warning=FALSE}
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y=lifeExp))
+p + geom_point() + geom_smooth()
+```
+
+El mensaje de la consola de R nos dice que la función `geom_smooth()` está utilizando un método llamado gam, que en este caso significa que se ajusta a un modelo aditivo generalizado. Esto sugiere que tal vez haya otros métodos en `geom_smooth()`. Podemos intentar agregar `method = "lm"` (para "modelo lineal") como un argumento para `geom_smooth()`:
+
+```{r, fig.width = 5, fig.height = 4}
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y=lifeExp))
+p + geom_point() + geom_smooth(method="lm")
+```
+
+Se puede agregar al mapeo del color de la línea el continente y del relleno de los puntos (fill) también el continente para obtener una gráfica que nos dé una idea más general de como se tiene esta relación por continente.
+
+```{r, fig.width = 10, fig.height = 6}
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp,
+                          color = continent,
+                          fill = continent))
+p + geom_point() +
+    geom_smooth(method='loess') +
+    scale_x_log10()
+```
+
+<p class="espacio">
+</p>
+
+## Un histograma de las muertes en Iraq
+
+Iraq Body Count (IBC) mantiene la base de datos pública más grande sobre muertes violentas de civiles desde la invasión en Iraq del 2003. Los datos de IBC provienen de informes de medios cruzados, de hospitales, morgue, ONG y cifras o registros oficiales.
+
+Para mayor información puedes visitar <https://www.iraqbodycount.org/>.
+
+Los datos los leemos con la función `read_csv()` de la librería `readr`:
+```{r}
+ibc <- read_csv("datos/ibc-incidents-2016-8-8.csv")
+glimpse(ibc)
+```
+
+Primero filtramos los incidentes en los que hubo al menos cinco fatalidades:
+
+
+```{r}
+ibc_fatalidades <- ibc %>%
+  filter(Deaths_recorded >= 5)
+```
+
+
+Una forma fácil de dibujar un histograma es utilizando la geometría `geom_histogram()`:
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(ibc_fatalidades, aes(x=Deaths_recorded)) +
+  geom_histogram() +
+  scale_x_log10()
+```
+
+## Inglehart–Welzel: un mapa cultural del mundo
+
+Los teóricos de la modernización de Karl Marx a Daniel Bell han sostenido que el desarrollo económico trae cambios culturales penetrantes. Pero otros, desde Max Weber hasta Samuel Huntington, han afirmado que los valores culturales son una influencia duradera y autónoma sobre la sociedad. 
+
+En un artículo de la ciencia política, los autores Inglehart y Welzel de la Universidad de Michigan, afirman que el desarrollo económico está vinculado a cambios sistemáticos en los valores culturales. Utilizando los datos de la encuesta de valores mundiales WVS (World Values Survey), crearon dos índices: uno que pone énfasis en valores tradicionales y otro que pone énfasis en valores de supervivencia.
+
+Características de valores tradicionales en una sociedad:
+
+- fuerte sentimiento de orgullo nacional
+
+- le da más importancia a que un niño aprenda obediencia y fé religiosa en lugar de independencia y determinación
+
+- el aborta nunca es justificada
+
+- fuerte sentido de orgullo nacional
+
+- favorece más el respeto por la autoridad.
+
+
+Los valores seculares o racionales enfatizan lo opuesto.
+
+Características de valores de supervivencia en una sociedad:
+
+- le da prioridad a la economía sobre la calidad de vida
+
+- se describe como no muy feliz
+
+- aún no ha firmado o jamás firmaría una petición
+
+- la homosexualidad nuna es justificada
+
+- se debe ser muy cuidadoso al confiar en las personas.
+
+
+Los valores de autoexpresión enfatizan lo opuesto.
+
+```{r echo=FALSE, fig.align='center', dpi=580}
+knitr::include_graphics("figuras/Culture_Map_2017.png")
+```
+
+Ronald Inglehart en su artículo de 1971 __The silent revolution in Europe. Intergenerational change in post-industrial societies.__ publicado en el __American Political Science Review__, propone una medida de los valores postmaterialistas de una sociedad. Esta medida se conoce como índice post-materialista de Inglehart (4-item) .
+
+La siguiente pregunta de la encuesta es el punto de partida para medir el materialismo o el post-materialismo: "Si tuvieras que elegir entre las siguientes cosas, ¿cuáles son las dos que te parecen más deseables?"
+
+- Mantener el orden en la nación.
+
+- Dando a la gente más voz en importantes decisiones políticas.
+
+- La lucha contra el aumento de los precios.
+
+- Proteger la libertad de expresión.
+
+La medida se basa entonces en la observación de que dos de las cuatro opciones, la primera y la tercera, se consideran como "preferencia hacia el valor adquisitivo en relación con la protección y adquisición de bienes". Si se eligen las dos opciones postmaterialistas, entonces la puntuación es 3. Si se elige sólo una opción post-materialista, entonces la puntuación es 2, y de lo contrario es 1. Como todas las opciones podrían ser deseables, la medida se relaciona con la "prioridad relativa" de las elecciones materialistas sobre la segunda y cuarta y aborda las concesiones que típicamente conllevan las decisiones políticas. La conceptualización del postmaterialismo a lo largo de un continuo unidimensional está cerca del concepto de la "jerarquía de necesidades" propuesta por Maslow.
+
+```{r}
+library(tidyverse)
+factores_inglehart <- read_csv(file = "datos/factores_inglehart.csv")
+glimpse(factores_inglehart)
+```
+
+### Creando un ggplot
+
+Para graficar `factores_inglehart`, ejecuta este código para poner `survival_selfexpression` en el eje x (eje horizontal) y `traditional_secular` en el eje y (eje vertical):
+
+```{r}
+ggplot(data = factores_inglehart) + 
+  geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
+```
+
+### Mapeos: Aesthetics
+
+> "The greatest value of a picture is when it forces us to notice what we
+> never expected to see." --- John Tukey
+
+En la gráfica de abajo, un grupo de puntos (en rojo) parece estar fuera de la tendencia lineal. Estos países tienen menores valores de supervivencia de lo que esperaríamos de acuerdo a sus mayores valores de tradicionalismo.
+
+```{r, echo = FALSE}
+ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular)) +
+  geom_point() + 
+  geom_point(data = dplyr::filter(factores_inglehart, survival_selfexpression > 0, traditional_secular < -0.5), colour = "red", size = 2.2)
+```
+
+Podemos formular la hipótesis de que se trata de países latinoamericanos. Una forma de probar esta hipótesis es con la variable `reg`. La variable `reg` del conjunto de datos `factores_inglehart` clasifica a los países de acuerdo a su región geográfica.
+
+Podemos agregar una tercera variable, como `reg`, a un diagrama de dispersión bidimensional asignándolo a un __aesthetic__ o mapeo. Un mapeo es una propiedad visual de los objetos en la gráfica. 
+
+Un mapeo incluye cosas como el tamaño, la forma o el color de los puntos. Puede mostrar un punto (como el que se muestra a continuación) de diferentes maneras cambiando los valores de sus propiedades de mapeos. 
+
+Aquí cambiamos los niveles de tamaño, forma y color de un punto para hacer que el punto sea pequeño, triangular o azul:
+
+```{r, echo = FALSE, asp = 1/4}
+ggplot() +
+  geom_point(aes(1, 1), size = 20) +
+  geom_point(aes(2, 1), size = 10) + 
+  geom_point(aes(3, 1), size = 20, shape = 17) + 
+  geom_point(aes(4, 1), size = 20, colour = "blue") + 
+  scale_x_continuous(NULL, limits = c(0.5, 4.5), labels = NULL) + 
+  scale_y_continuous(NULL, limits = c(0.9, 1.1), labels = NULL) + 
+  theme(aspect.ratio = 1/3)
+```
+
+Podemos transmitir información sobre los datos mapeando los aesthetics en la gráfica a las variables del data frame. Por ejemplo, podemos asignar los colores de los puntos a la variable `reg` para revelar la región de cada país.
+
+```{r}
+ggplot(data = factores_inglehart) + 
+  geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular, color=reg))
+```
+
+Para asignar una característica a una variable, asociamos el nombre del mapeo al nombre de la variable dentro de `aes()`. ggplot2 asignará automáticamente un nivel único de dicha característica (o mapeo) a cada valor único de la variable, un proceso conocido como __escalamiento__. ggplot2 también agregará una leyenda que explique qué niveles corresponden a qué valores.
+
+También podríamos agregar etiquetas:
+
+```{r, echo=FALSE, results='hide', comment=NA, message=FALSE, warning=FALSE}
+library(maptools)
+etiquetar <- function(df, x, y, etiq = "etiq", size = 3.5){
+  df <- as.data.frame(df)
+  plot(df[, x], df[, y])
+  orden <- pointLabel(df[, x], df[, y], df[, etiq], doPlot = TRUE,
+    cex = 0.5 * size, xpd = TRUE)
+  dev.off()
+  df$a <- orden$x
+  df$b <- orden$y
+  df
+}
+set.seed(720528)
+factores_inglehart_etiq <- etiquetar(factores_inglehart, "survival_selfexpression",
+                         "traditional_secular", etiq = "country", size = 2.1)
+```
+
+```{r, fig.height=8, fig.width=10, message=FALSE, warning=FALSE, echo = FALSE}
+ggplot(data = factores_inglehart_etiq,
+       aes(x=survival_selfexpression,y=traditional_secular,color=reg,group=reg)) +
+  geom_point(size = 2) +
+  geom_text(aes(x = a, y = b, label = country), size = 4) +
+  theme(legend.position = "bottom") +
+  scale_color_manual("Region", values = RColorBrewer::brewer.pal(6,"Dark2")) + 
+  ylab("Traditional/secular values") + 
+  xlab("Survival/Self expression values")
+```
+
+#### Objetos geométricos
+
+¿En qué se parecen las siguiente dos gráficas? 
+
+```{r echo = FALSE, out.width = "50%", fig.align="default", message = FALSE}
+ggplot(data = factores_inglehart) + 
+  geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
+
+ggplot(data = factores_inglehart) + 
+  geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular), method = "loess")
+```
+
+Ambas gráficas contienen la misma variable x, la misma variable y, y ambas describen los mismos datos. Pero las gráficas no son idénticas. Cada una utiliza un objeto visual diferente para representar los datos. En la sintaxis de ggplot2, decimos que usan diferentes __geoms__.
+
+Un __geom__ es un objeto geométrico que una gráfica utiliza para representar a los datos. La gente a menudo describe las gráficas por el tipo de geometría que usa la gráfica. Por ejemplo, las gráficas de barras usan geometrías de barras, los gráficos de línea utilizan geoms de línea, los boxplots usan geoms de boxplot, y así sucesivamente. Los diagramas de dispersión rompen la tendencia; Utilizan la geometría de punto. 
+
+La gráfica de la izquierda utiliza el punto geom, y la gráfica de la derecha utiliza el geom de smooth, una línea ajustada a los datos. Para hacer las gráficas mostradas arriba se puede utilizar el siguiente código.
+
+```{r eval = FALSE}
+#izquierda
+ggplot(data = factores_inglehart) + 
+  geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
+
+#derecha
+ggplot(data = factores_inglehart) + 
+  geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular), method = "loess")
+```
+
+Cada función geom en ggplot2 toma un argumento `mapping`. Sin embargo, no todas las propiedades de __aesthetics__ funciona con cada geom. Podríamos cambiar la forma de un punto, pero no la "forma" de una línea. Por otro lado, podríamos establecer el tipo de línea de una línea. `geom_smooth()` dibujará una línea diferente, con un tipo de línea diferente, para cada valor único de la variable que se asigna al tipo de línea.
+
+```{r, message = FALSE, warning=FALSE, comment=NA}
+ggplot(data = factores_inglehart) + 
+  geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular, linetype = reg), method = "loess", se = F, span = 1)
+```
+
+Aquí `geom_smooth()` separa los países en líneas basándose en su valor de `reg` (región geográfica).
+
+Podemos superponer las líneas encima de los datos sin procesar y luego coloreándolo todo de acuerdo a `reg`.
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular, color = reg)) + 
+  geom_point() +
+  geom_smooth(mapping = aes(linetype = reg), method = "loess", se = F)
+```
+
+Para mostrar varios geoms en la misma gráfica, agregamos varias funciones geom a `ggplot()`:
+
+```{r, message = FALSE}
+ggplot(data = factores_inglehart) + 
+  geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular)) +
+  geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular), method = "loess")
+```
+
+Este código genera la misma gráfica que el código anterior:
+
+```{r, eval = FALSE}
+ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular)) + 
+  geom_point() + 
+  geom_smooth(method = "loess")
+```
+
+Si colocan asignaciones en una función `geom`, `ggplot2` las tratará como asignaciones locales para cada capa, de tal forma que usará estas asignaciones para extender o sobrescribir las asignaciones globales _para esa capa solamente_. Esto hace posible visualizar elementos diferentes en diferentes capas.
+
+```{r, message = FALSE}
+ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular)) + 
+  geom_point(mapping = aes(color = reg)) + 
+  geom_smooth(method = "loess")
+```
 
