@@ -219,16 +219,16 @@ knitr::kable(pew)
 Para _limpiarla_ es necesario apilar las columnas, es decir, pasar los datos a _forma larga_. Esto lo realizaremos con la función `gather()`:
 
 ```{r}
-pew.long <- pew %>%
+pew_tidy <- pew %>%
   gather(income, frequency, -religion)
 # vemos las primeras líneas de nuestros datos alargados
-head(pew.long)
+head(pew_tidy)
 ```
 
 La nueva estructura de la base de datos nos permite, por ejemplo, hacer fácilmente una gráfica donde podemos comparar las diferencias en las frecuencias.
 
 ```{r, fig.height = 4.5, fig.width = 8.5, warning = FALSE}
-ggplot(pew.long, aes(x = income, y = frequency, color = religion, group = religion)) +
+ggplot(pew_tidy, aes(x = income, y = frequency, color = religion, group = religion)) +
   geom_line(size = 1) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   guides(color = guide_legend(ncol=2))
@@ -259,7 +259,7 @@ En el código de arriba utilizamos las funciones `group_by`, `filter` y `mutate`
 
 Otro ejemplo, 
 ```{r}
-billboard <- tbl_df(read.csv("data/billboard.csv", stringsAsFactors = FALSE))
+billboard <- tbl_df(read.csv("datos/billboard.csv", stringsAsFactors = FALSE))
 billboard
 ```
 
@@ -312,9 +312,8 @@ tb$country_name <- countrycode(tb$iso2, 'iso2c', 'country.name')
 glimpse(tb)
 ```
 
-De manera similar al inciso a.,
-utilizando la función `gather()` se busca apilar las
-columnas correspondientes a sexo-edad.
+De manera similar, utilizando la función `gather()` se busca apilar las columnas correspondientes a sexo-edad.
+
 **¿Cómo podemos separar la "variable" sexo-edad en dos columnas?**
 
 ```{r}
@@ -324,9 +323,7 @@ knitr::kable(tb.long %>% head(20))
 ```
 
 
-Las variables sexo y edad se obtienen separando la columna **demog**,
-para esto se usa la función `separate()`con los siguientes argumentos:
-`tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
+Las variables sexo y edad se obtienen separando la columna **demog**, para esto se usa la función `separate()`con los siguientes argumentos: `tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
 
 ```{r}
 tb.tidy <- tb.long %>%
@@ -334,9 +331,7 @@ tb.tidy <- tb.long %>%
 knitr::kable(tb.tidy %>% head(20))
 ```
 
-Ahora para hacer mejor variable **sex** y **age** usaremos la función
-`mutate()` que permite crear nuevas variables sin modificar la
-dimensión del dataframe.
+Ahora para hacer mejor variable **sex** y **age** usaremos la función `mutate()` que permite crear nuevas variables sin modificar la dimensión del dataframe.
 
 ```{r}
 library(stringr)
@@ -355,8 +350,7 @@ knitr::kable(tb.tidy %>% head(20))
 
 <br>
 
-Ahora separaremos las variables sexo y edad de la columna demo, para ello debemos
-pasar a la función _separate_ la posición de donde deseamos "cortar".
+Ahora separaremos las variables sexo y edad de la columna demo, para ello debemos pasar a la función _separate_ la posición de donde deseamos "cortar".
 
 ```{r}
 tb_tidy <- separate(tb_long, demo, c("sex", "age"), 8)
@@ -370,18 +364,14 @@ table(tb_tidy$sex)
 
 #### 3. Variables almacenadas en filas y columnas {-}
 
-El problema más difícil es cuando las variables están tanto en filas como en 
-columnas, veamos una base de datos de clima en Cuernavaca. ¿Cuáles son las 
-variables en estos datos?
+El problema más difícil es cuando las variables están tanto en filas como encolumnas, veamos una base de datos de clima en Cuernavaca. ¿Cuáles son las variables en estos datos?
 
 ```{r}
 clima <- tbl_df(read.delim("data/clima.txt", stringsAsFactors=FALSE))
 clima
 ```
 
-Estos datos tienen variables en columnas individuales (id, año, mes), en 
-múltiples columnas (día, d1-d31) y en filas (tmin, tmax). Comencemos por apilar 
-las columnas.
+Estos datos tienen variables en columnas individuales (id, año, mes), en múltiples columnas (día, d1-d31) y en filas (tmin, tmax). Comencemos por apilar las columnas.
 
 ```{r}
 clima_long <- clima %>%
@@ -398,9 +388,7 @@ clima_vars <- clima_long %>%
 head(clima_vars)
 ```
 
-Finalmente, la columna *element* no es una variable, sino que almacena el nombre 
-de dos variables, la operación que debemos aplicar (spread) es el inverso de 
-apilar (gather):
+Finalmente, la columna *element* no es una variable, sino que almacena el nombre de dos variables, la operación que debemos aplicar (spread) es el inverso de apilar (gather):
   
 ```{r}
 clima_tidy <- clima_vars %>%
@@ -451,21 +439,17 @@ rank %>% knitr::kable()
 
 #### 5. Una misma unidad observacional está almacenada en múltiples tablas {-}
 
-También es común que los valores sobre una misma unidad observacional estén separados en muchas tablas o archivos, es común que estas tablas esten divididas 
-de acuerdo a una variable, de tal manera que cada archivo representa a una 
-persona, año o ubicación. Para juntar los archivos hacemos lo siguiente:
+También es común que los valores sobre una misma unidad observacional estén separados en muchas tablas o archivos, es común que estas tablas esten divididas de acuerdo a una variable, de tal manera que cada archivo representa a una persona, año o ubicación. Para juntar los archivos hacemos lo siguiente:
   
-  1. Leemos los archivos en una lista de tablas. 
-2. Para cada tabla agregamos una columna que registra el nombre del archivo original. 
+1. Leemos los archivos en una lista de tablas.
+
+2. Para cada tabla agregamos una columna que registra el nombre del archivo original.
+
 3. Combinamos las tablas en un solo data frame.  
 
-Veamos un ejemplo, la carpeta specdata contiene 332 archivos csv que almacenan
-información de monitoreo de contaminación en 332 ubicaciones de EUA. Cada 
-archivo contiene información de una unidad de monitoreo y el número de identificación del monitor es el nombre del archivo.
+Veamos un ejemplo, la carpeta specdata contiene 332 archivos csv que almacenan información de monitoreo de contaminación en 332 ubicaciones de EUA. Cada archivo contiene información de una unidad de monitoreo y el número de identificación del monitor es el nombre del archivo.
 
-Los pasos en R (usando el paquete plyr), primero creamos un vector con los
-nombres de los archivos en un directorio, aligiendo aquellos que contengan las
-letras ".csv".
+Los pasos en R (usando el paquete plyr), primero creamos un vector con los nombres de los archivos en un directorio, aligiendo aquellos que contengan las letras ".csv".
 
 ```{r}
 paths <- dir("datos/specdata", pattern = "\\.csv$", full.names = TRUE)
