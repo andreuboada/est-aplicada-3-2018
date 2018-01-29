@@ -358,13 +358,13 @@ billboard %>% sample_n(5) %>% knitr::kable()
 
 
 
- year  artist                track                     time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
------  --------------------  ------------------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
- 2000  Dion, Celine          That's The Way It Is      4:03   1999-11-13       74    68    65    49    44    34    30    30    17     14     11      8      9     10     11     11      6      8      7      7      9     10     14     16     26     31     35     42     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Gray, Macy            I Try                     3:52   2000-02-19       68    51    47    36    30    20    15    12     8      7      7      7      6      5      6      9     10     11     14     16     16     16     21     27     34     40     46     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Jay-Z                 Do It Again (Put Ya ...   3:47   2000-01-15       95    68    65    65    74    84    92    96    95     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  McGraw, Tim           My Next Thirty Years      3:37   2000-10-21       73    62    56    52    46    40    36    31    27     27     28     40     33     33     39     40     48     53     58     62     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Aguilera, Christina   I Turn To You             4:00   2000-04-15       50    39    30    28    21    19    20    17    17     17     17      3      3      7     10     17     25     29     29     40     43     50     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ year  artist              track              time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
+-----  ------------------  -----------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+ 2000  Kelis               Caught Out There   4:09   1999-12-04       84    68    67    63    63    54    56    59    68     67     75     90     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Trick Daddy         Shut Up            4:17   2000-05-20       99    95    87    87    83    83    89    87    92     92     97     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Anastacia           I'm Outta Love     4:01   2000-04-01       92    NA    NA    95    NA    NA    NA    NA    NA     NA     NA     97     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Dixie Chicks, The   Cold Day In July   5:12   2000-06-24       80    79    76    72    68    68    65    70    84     91     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Barenaked Ladies    Pinch Me           3:46   2000-09-09       77    76    69    45    51    37    33    29    26     25     16     15     15     19     19     20     22     20     21     34     44     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
 
 Queremos apilar las semanas de manera que sea una sola columna (nuevamente alargamos los datos):
   
@@ -415,18 +415,18 @@ billboard_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
- year  artist            track                  time    week   rank  date       
------  ----------------  ---------------------  -----  -----  -----  -----------
- 2000  Destiny's Child   Jumpin' Jumpin'        3:48      19      3  2000-09-16 
- 2000  Henley, Don       Taking You Home        4:08       8     58  2000-08-12 
- 2000  Adams, Yolanda    Open My Heart          5:30       3     74  2000-09-09 
- 2000  Creed             With Arms Wide Open    3:52      26      3  2000-11-04 
- 2000  Blink-182         All The Small Things   2:52      19     18  2000-04-08 
- 2000  Pink              Most Girls             4:06      15      5  2000-11-18 
- 2000  Aaliyah           Try Again              4:03       6     18  2000-04-22 
- 2000  Papa Roach        Last Resort            3:19       9     66  2000-09-23 
- 2000  3 Doors Down      Loser                  4:24      11     61  2000-12-30 
- 2000  Savage Garden     I Knew I Loved You     4:07      14      2  2000-01-22 
+ year  artist                 track                     time    week   rank  date       
+-----  ---------------------  ------------------------  -----  -----  -----  -----------
+ 2000  Limp Bizkit            Rollin'                   4:04      15     93  2001-02-17 
+ 2000  Mary Mary              Shackles (Praise You...   3:12       7     34  2000-05-06 
+ 2000  Ruff Endz              No More                   3:56      25     33  2000-12-16 
+ 2000  Ja Rule                Between Me And You        4:05       1     85  2000-09-16 
+ 2000  Eastsidaz, The         G'D Up                    4:27       2     77  2000-01-15 
+ 2000  Sisqo                  Thong Song                4:05      13      5  2000-04-22 
+ 2000  Backstreet Boys, The   The One                   3:46      14     93  2000-08-26 
+ 2000  M2M                    Don't Say You Love M...   3:41       2     53  1999-11-27 
+ 2000  Houston, Whitney       Could I Have This Ki...   3:54       6     59  2000-07-22 
+ 2000  Destiny's Child        Jumpin' Jumpin'           3:48      24      7  2000-10-21 
 
 
 Nuevamente, podemos hacer gráficas facilmente.
@@ -462,13 +462,13 @@ tb %>% sample_n(5) %>% knitr::kable()
 
 
 
-iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name                     
------  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  ---------------------------------
-GT      1985           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Guatemala                        
-KW      1997           NA            NA             1             23             38             37             22              6            7          NA           NA            NA             1             17             26             11              7              1            4          NA  Kuwait                           
-NP      1984           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Nepal                            
-FM      1990           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Micronesia (Federated States of) 
-BZ      1995           NA            NA             1              1              2              4              0              1            1          NA           NA            NA             0              6              2              0              1              1            2          NA  Belize                           
+iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name 
+-----  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -------------
+IQ      2002           NA            NA            47            706            923            308            284            205          158          NA           NA            NA            45            338            288            172            176            129          116          NA  Iraq         
+SI      2007            0             0             0              0              7             15             14             12            9           0            0             0             0              1              5              6              2              3           16           0  Slovenia     
+BJ      1989           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Benin        
+SM      1993           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  San Marino   
+GU      1987           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Guam         
 
 De manera similar, utilizando la función `gather()` se busca apilar las columnas correspondientes a sexo-edad.
 
@@ -485,16 +485,16 @@ tb_long %>% sample_n(10) %>% knitr::kable()
 
 iso2    year  country_name             demog           casos
 -----  -----  -----------------------  -------------  ------
-CN      1999  China                    new_sp_f014      1431
-SR      2003  Suriname                 new_sp_f3544        2
-CA      2006  Canada                   new_sp_f4554       16
-ER      1998  Eritrea                  new_sp_f3544       11
-FR      2006  France                   new_sp_m5564      153
-BD      2008  Bangladesh               new_sp_m3544    12761
-CZ      2002  Czech Republic           new_sp_f2534       10
-BA      2004  Bosnia and Herzegovina   new_sp_m4554       82
-SC      2003  Seychelles               new_sp_m1524        1
-GH      1996  Ghana                    new_sp_f3544      200
+CV      2004  Cabo Verde               new_sp_m5564        2
+MW      1996  Malawi                   new_sp_f4554      347
+MW      1997  Malawi                   new_sp_f4554      347
+BS      1995  Bahamas                  new_sp_f1524        1
+LY      2008  Libya                    new_sp_f1524       56
+BA      2004  Bosnia and Herzegovina   new_sp_f2534       67
+KH      2003  Cambodia                 new_sp_m3544     2183
+KR      2005  Republic of Korea        new_sp_f1524      590
+WS      2005  Samoa                    new_sp_m4554        1
+CM      1999  Cameroon                 new_sp_f5564       95
 
 
 Las variables sexo y edad se obtienen separando la columna **demog**, para esto se usa la función `separate()`con los siguientes argumentos: `tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
@@ -586,18 +586,18 @@ tb_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name                                           sex        age     casos
------  -----  -----------------------------------------------------  ---------  -----  ------
-HT      2001  Haiti                                                  new_sp_f   5564      109
-GW      2000  Guinea Bissau                                          new_sp_f   1524       30
-GB      2005  United Kingdom of Great Britain and Northern Ireland   new_sp_m   3544      166
-AM      2006  Armenia                                                new_sp_m   65         17
-IQ      2002  Iraq                                                   new_sp_f   1524      338
-AO      2002  Angola                                                 new_sp_f   4554      972
-EG      2002  Egypt                                                  new_sp_f   3544      245
-MM      1996  Myanmar                                                new_sp_m   65        400
-CO      2008  Colombia                                               new_sp_f   014       133
-CM      2004  Cameroon                                               new_sp_f   4554      412
+iso2    year  country_name                                sex        age     casos
+-----  -----  ------------------------------------------  ---------  -----  ------
+KI      2002  Kiribati                                    new_sp_f   65          1
+MK      2001  The former Yugoslav Republic of Macedonia   new_sp_m   2534       17
+JM      2005  Jamaica                                     new_sp_m   3544        6
+UA      2008  Ukraine                                     new_sp_f   1524      585
+PK      2007  Pakistan                                    new_sp_f   5564     4065
+GQ      2004  Equatorial Guinea                           new_sp_m   65         15
+SK      2001  Slovakia                                    new_sp_m   2534       13
+KY      2007  Cayman Islands                              new_sp_m   514         0
+AL      2003  Albania                                     new_sp_f   5564       12
+MA      1995  Morocco                                     new_sp_f   014       191
 
 <br>
 <br>
@@ -758,13 +758,13 @@ billboard_tidy %>% sample_n(5) %>% select(artist, track, year, time) %>% knitr::
 
 
 
-artist                track                 year  time 
---------------------  -------------------  -----  -----
-Madison Avenue        Don't Call Me Baby    2000  3:44 
-McEntire, Reba        What Do You Say       2000  3:26 
-Tippin, Aaron         Kiss This             2000  2:53 
-Aguilera, Christina   I Turn To You         2000  4:00 
-Black Rob             Whoa!                 2000  4:04 
+artist            track                      year  time 
+----------------  ------------------------  -----  -----
+Mya               Case Of The Ex (What...    2000  3:50 
+Jackson, Alan     www.memory                 2000  2:36 
+Dion, Celine      That's The Way It Is       2000  4:03 
+3 Doors Down      Kryptonite                 2000  3:53 
+Destiny's Child   Say My Name                2000  4:31 
 
 Separemos esta base de datos en dos: la tabla canción que almacena artista, nombre de la canción y duración; la tabla rank que almacena el ranking de la canción en cada semana.
 
@@ -6148,26 +6148,26 @@ specdata %>% sample_n(20) %>% knitr::kable()
 
            id   monitor  date          sulfate   nitrate
 -------  ----  --------  -----------  --------  --------
-23359      10        10  2003-12-17      0.323     0.998
-540644    231       231  2007-04-21         NA        NA
-635067    268       268  2010-11-05         NA        NA
-403931    176       176  2000-12-23         NA        NA
-688681    293       293  2005-08-19         NA        NA
-623311    265       265  2007-08-28     10.800     0.318
-517516    221       221  2004-12-22         NA        NA
-652571    277       277  2001-10-10      4.680     0.592
-254516    108       108  2004-11-17      4.940     2.940
-131599     54        54  2005-04-29         NA        NA
-165827     68        68  2002-01-16         NA        NA
-305057    128       128  2008-04-04         NA        NA
-351539    150       150  2008-07-12         NA        NA
-711214    302       302  2008-04-30      1.440     0.210
-659712    279       279  2007-04-30         NA        NA
-499166    214       214  2002-09-25         NA        NA
-503798    215       215  2006-06-01         NA        NA
-615095    262       262  2001-02-27         NA        NA
-378828    165       165  2005-03-30         NA        NA
-749803    322       322  2008-12-25         NA        NA
+533324    228       228  2002-04-05      0.965     1.220
+415216    179       179  2007-11-17         NA        NA
+356561    153       153  2003-04-12      3.120     1.070
+656594    278       278  2003-10-16         NA        NA
+290643    122       122  2006-10-17         NA        NA
+316971    135       135  2001-11-16         NA        NA
+103644     41        41  2006-10-12         NA        NA
+432554    186       186  2005-05-08         NA        NA
+682314    289       289  2004-03-15         NA        NA
+590580    252       252  2007-01-13         NA        NA
+590639    252       252  2007-03-13      4.960     0.466
+731534    314       314  2000-12-18         NA        NA
+694952    296       296  2010-10-20         NA        NA
+473532    201       201  2006-07-20         NA        NA
+338340    145       145  2001-05-22         NA        NA
+217885     91        91  2008-07-29      6.980     0.767
+130324     53        53  2010-11-01         NA        NA
+133882     56        56  2004-07-29      2.840     0.861
+452369    194       194  2004-08-08         NA        NA
+13442       5         5  2009-10-21         NA        NA
 
 #### 6. Otras consideraciones {-}
 
