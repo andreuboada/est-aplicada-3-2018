@@ -1404,7 +1404,36 @@ Esta función es *peligrosa* ya que únicamente simplifica la estructura del res
 
 #### Funciones `map`
 
-Hacer el **loop** sobre un vector, es decir, hacer algo para cada elemento y guardar los resultados, es tan común que el paquete `purrr` proporciona una familia de funciones para que esto sea más sencillo. Hay una función para cada tipo de salida:
+Un problema con `sapply()` y `lapply()` es que puedes no tener control sobre el _tipo_ que obtienes y esto es importante si el código está dentro de una función:
+
+```{r}
+x1 <- list(
+  c(0.27, 0.37, 0.57, 0.91, 0.20),
+  c(0.90, 0.94, 0.66, 0.63, 0.06), 
+  c(0.21, 0.18, 0.69, 0.38, 0.77)
+)
+x2 <- list(
+  c(0.50, 0.72, 0.99, 0.38, 0.78), 
+  c(0.93, 0.21, 0.65, 0.13, 0.27), 
+  c(0.39, 0.01, 0.38, 0.87, 0.34)
+)
+
+threshold <- function(x, cutoff = 0.8) x[x > cutoff]
+x1 %>% sapply(threshold) %>% str()
+```
+
+```{r}
+x2 %>% sapply(threshold) %>% str()
+```
+
+Las funciones del paquete `purrr` son útiles porque hacen que los _loops_ sobre vectores sean sencillos:
+
+- tienen nombres similares, y 
+
+- tienen argumentos consistentes.
+
+
+Hay una función para cada tipo de salida:
 
 * `map()` crea una lista.
 
@@ -1416,6 +1445,97 @@ Hacer el **loop** sobre un vector, es decir, hacer algo para cada elemento y gua
 
 * `map_chr()` crea un vector de tipo caracter.
 
+Cada función toma un vector como entrada, aplica una función a cada elemento y luego devuelve un nuevo vector que tiene la misma longitud (y tiene los mismos nombres) que la entrada, y el tipo de vector está determinado por el sufijo de la función.
+
+Por ejemplo, supongamos que deseamos calcular el número de valores únicos en cada columna de `iris`. Utilizamos, entonces, la función `map_int` porque deseamos obtener como resultado un vector de enteros donde cada entero represente el número de valores únicos en cada columna:
+
+```{r}
+map_int(.x = iris, .f = function(x){length(unique(x))
+})
+```
+
+Para generar cuatro vectores cada uno de tamaño 5 de valores que provienen de una distribución normal con medias $\mu=-10, 0, 10, 100$ podemos utilizar la función `map`:
+
+```{r}
+mu <- list(-10, 0, 10, 100)
+mu %>% 
+  map(rnorm, n = 5) %>% 
+  str()
+```
+
+Podemos usar `map2()` para iterar sobre dos vectores en paralelo:
+
+```{r}
+sigma <- list(1, 5, 10, 100)
+map2(mu, sigma, rnorm, n = 5) %>% str()
+```
+
+Las funciones de `map` también preservan nombres:
+
+```{r}
+z <- list(x = 1:3, y = 4:5)
+map_int(z, length)
+```
+
+Hay algunos _shortcuts_ que podemos usar con `.f` para guardar un poco de tipeo. Supongamos que queremos ajustar un modelo lineal a cada subconjunto en un conjunto de datos. Pensemos en los datos de `mtcars` divididos en tres subconjuntos (uno para cada valor de cilindro) y se ajusta el mismo modelo lineal en cada subconjunto (millas por galón `mpg` vs peso `wt`):
+
+```{r}
+models <- mtcars %>% 
+  split(.$cyl) %>% 
+  map(~lm(mpg ~ wt, data = .))
+```
+
+Con el símbolo `~` se puede declarar una **función anónima** con un argumento al cual se hace referencia después utilizando el `.`.
+
+Cuando vemos muchos modelos, generalmente deseamos extraer un resumen estadístico como la $R^2$. Para hacer eso necesitamos ejecutar primero `summary()` y luego extraer el componente llamado `r.squared`. Podríamos hacer eso usando la abreviatura de funciones anónimas:
+
+```{r}
+models %>% 
+  map(summary) %>% 
+  map_dbl(~.$r.squared)
+```
+
+Pero `purrr` tiene un shortcut para extraer estos componentes en una cadena:
+
+```{r}
+models %>% 
+  map(summary) %>% 
+  map_dbl("r.squared")
+```
+
+También se puede usar un número entero para seleccionar elementos por posición:
+
+```{r}
+x <- list(list(1, 2, 3), list(4, 5, 6), list(7, 8, 9))
+x %>% map_dbl(2)
+```
+
+La función `pmap()` recibe una lista de argumentos para aplicarlos a una función:
+
+```{r}
+params <- tribble(
+  ~mean, ~sd, ~n,
+    5,     1,  1,
+   10,     5,  3,
+   -3,    10,  5
+)
+params %>% 
+  pmap(rnorm)
+```
+
+Hay un paso más en la complejidad: además de variar los argumentos para una función, también puedes variar la función misma y para esto se usa la función `invoke_map()`:
+
+```{r}
+sim <- tribble(
+  ~f,      ~params,
+  "runif", list(min = -1, max = 1),
+  "rnorm", list(sd = 5),
+  "rpois", list(lambda = 10)
+)
+sim %>% 
+  mutate(sim = invoke_map(f, params, n = 10)) %>% 
+  str()
+```
 
 ### Rendimiento en R
 
