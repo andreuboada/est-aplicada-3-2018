@@ -358,13 +358,13 @@ billboard %>% sample_n(5) %>% knitr::kable()
 
 
 
- year  artist              track              time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
------  ------------------  -----------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
- 2000  Kelis               Caught Out There   4:09   1999-12-04       84    68    67    63    63    54    56    59    68     67     75     90     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Trick Daddy         Shut Up            4:17   2000-05-20       99    95    87    87    83    83    89    87    92     92     97     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Anastacia           I'm Outta Love     4:01   2000-04-01       92    NA    NA    95    NA    NA    NA    NA    NA     NA     NA     97     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Dixie Chicks, The   Cold Day In July   5:12   2000-06-24       80    79    76    72    68    68    65    70    84     91     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Barenaked Ladies    Pinch Me           3:46   2000-09-09       77    76    69    45    51    37    33    29    26     25     16     15     15     19     19     20     22     20     21     34     44     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ year  artist          track                     time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
+-----  --------------  ------------------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+ 2000  Goo Goo Dolls   Broadway                  3:54   2000-04-22       74    58    53    42    35    31    29    25    29     26     24     33     46     48     57     62     74     82     85     87     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Badu, Erkyah    Bag Lady                  5:03   2000-08-19       67    53    42    41    48    42    34     6     9      9      8     11     15     21     26     29     26     38     56     66     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Brock, Chad     A Country Boy Can Su...   3:54   2000-01-01       93    75    92    NA    NA    NA    NA    NA    NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Evans, Sara     Born To Fly               5:36   2000-10-21       77    71    64    57    55    51    46    44    36     39     34     46     44     36     42     53     58     74     81     86     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Sonique         It Feels So Good          3:48   2000-01-22       67    52    30    23    19    17    16    16    14     12     13     13     11      8     10     10     11     14     17     19     21     31     38     49     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
 
 Queremos apilar las semanas de manera que sea una sola columna (nuevamente alargamos los datos):
   
@@ -415,18 +415,18 @@ billboard_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
- year  artist                 track                     time    week   rank  date       
------  ---------------------  ------------------------  -----  -----  -----  -----------
- 2000  Limp Bizkit            Rollin'                   4:04      15     93  2001-02-17 
- 2000  Mary Mary              Shackles (Praise You...   3:12       7     34  2000-05-06 
- 2000  Ruff Endz              No More                   3:56      25     33  2000-12-16 
- 2000  Ja Rule                Between Me And You        4:05       1     85  2000-09-16 
- 2000  Eastsidaz, The         G'D Up                    4:27       2     77  2000-01-15 
- 2000  Sisqo                  Thong Song                4:05      13      5  2000-04-22 
- 2000  Backstreet Boys, The   The One                   3:46      14     93  2000-08-26 
- 2000  M2M                    Don't Say You Love M...   3:41       2     53  1999-11-27 
- 2000  Houston, Whitney       Could I Have This Ki...   3:54       6     59  2000-07-22 
- 2000  Destiny's Child        Jumpin' Jumpin'           3:48      24      7  2000-10-21 
+ year  artist                         track                time    week   rank  date       
+-----  -----------------------------  -------------------  -----  -----  -----  -----------
+ 2000  Pink                           There U Go           3:23      30     41  2000-09-23 
+ 2000  Tippin, Aaron                  Kiss This            2:53      16     94  2000-12-09 
+ 2000  Jordan, Montell                Get It On.. Tonite   4:34       2     80  1999-10-30 
+ 2000  Bloodhound Gang                The Bad Touch        4:20      12     98  2000-06-03 
+ 2000  Elliott, Missy "Misdemeanor"   Hot Boyz             3:51       3     13  1999-12-11 
+ 2000  Anthony, Marc                  You Sang To Me       3:50       7     21  2000-04-08 
+ 2000  BBMak                          Back Here            3:35      22     17  2000-09-23 
+ 2000  Stone Temple Pilots            Sour Girl            4:16       3     79  2000-07-22 
+ 2000  3 Doors Down                   Kryptonite           3:53       1     81  2000-04-08 
+ 2000  Backstreet Boys, The           The One              3:46      11     76  2000-08-05 
 
 
 Nuevamente, podemos hacer gráficas facilmente.
@@ -464,11 +464,11 @@ tb %>% sample_n(5) %>% knitr::kable()
 
 iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name 
 -----  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -------------
-IQ      2002           NA            NA            47            706            923            308            284            205          158          NA           NA            NA            45            338            288            172            176            129          116          NA  Iraq         
-SI      2007            0             0             0              0              7             15             14             12            9           0            0             0             0              1              5              6              2              3           16           0  Slovenia     
-BJ      1989           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Benin        
-SM      1993           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  San Marino   
-GU      1987           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Guam         
+NA      2006           NA            NA            86            347           1052            799            386            174          146          NA           NA            NA            74            485            875            521            239             92           80          NA  NA           
+BJ      1994           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Benin        
+ZM      2006           NA            NA           150            945           3496           1645            684            323          186          NA           NA            NA           224           1500           2834           1257            452            207          122          NA  Zambia       
+NA      2008           NA            NA            30            387           1033            757            346            149          132           0           NA            NA            73            466            702            437            226            110           80           0  NA           
+TG      1994           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Togo         
 
 De manera similar, utilizando la función `gather()` se busca apilar las columnas correspondientes a sexo-edad.
 
@@ -483,18 +483,18 @@ tb_long %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name             demog           casos
------  -----  -----------------------  -------------  ------
-CV      2004  Cabo Verde               new_sp_m5564        2
-MW      1996  Malawi                   new_sp_f4554      347
-MW      1997  Malawi                   new_sp_f4554      347
-BS      1995  Bahamas                  new_sp_f1524        1
-LY      2008  Libya                    new_sp_f1524       56
-BA      2004  Bosnia and Herzegovina   new_sp_f2534       67
-KH      2003  Cambodia                 new_sp_m3544     2183
-KR      2005  Republic of Korea        new_sp_f1524      590
-WS      2005  Samoa                    new_sp_m4554        1
-CM      1999  Cameroon                 new_sp_f5564       95
+iso2    year  country_name                                           demog           casos
+-----  -----  -----------------------------------------------------  -------------  ------
+BA      2008  Bosnia and Herzegovina                                 new_sp_m014         0
+MN      2000  Mongolia                                               new_sp_f3544      113
+TV      2008  Tuvalu                                                 new_sp_f5564        0
+IT      2008  Italy                                                  new_sp_m65        104
+MD      2004  Republic of Moldova                                    new_sp_m5564       89
+BW      2006  Botswana                                               new_sp_m5564      122
+CR      1997  Costa Rica                                             new_sp_m65         45
+DE      1997  Germany                                                new_sp_f4554       93
+GW      2005  Guinea Bissau                                          new_sp_m4554      130
+GB      2002  United Kingdom of Great Britain and Northern Ireland   new_sp_f3544       66
 
 
 Las variables sexo y edad se obtienen separando la columna **demog**, para esto se usa la función `separate()`con los siguientes argumentos: `tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
@@ -586,18 +586,18 @@ tb_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name                                sex        age     casos
------  -----  ------------------------------------------  ---------  -----  ------
-KI      2002  Kiribati                                    new_sp_f   65          1
-MK      2001  The former Yugoslav Republic of Macedonia   new_sp_m   2534       17
-JM      2005  Jamaica                                     new_sp_m   3544        6
-UA      2008  Ukraine                                     new_sp_f   1524      585
-PK      2007  Pakistan                                    new_sp_f   5564     4065
-GQ      2004  Equatorial Guinea                           new_sp_m   65         15
-SK      2001  Slovakia                                    new_sp_m   2534       13
-KY      2007  Cayman Islands                              new_sp_m   514         0
-AL      2003  Albania                                     new_sp_f   5564       12
-MA      1995  Morocco                                     new_sp_f   014       191
+iso2    year  country_name               sex        age     casos
+-----  -----  -------------------------  ---------  -----  ------
+PA      1999  Panama                     new_sp_m   2534      209
+KG      2004  Kyrgyzstan                 new_sp_f   5564       34
+SE      2004  Sweden                     new_sp_m   3544        8
+MX      2000  Mexico                     new_sp_m   4554     1235
+SN      1996  Senegal                    new_sp_f   65         74
+DE      2001  Germany                    new_sp_m   65        119
+CN      2005  China                      new_sp_f   65      21244
+LK      1999  Sri Lanka                  new_sp_m   3544      621
+ER      2003  Eritrea                    new_sp_f   5564       36
+CF      2001  Central African Republic   new_sp_m   5564       45
 
 <br>
 <br>
@@ -760,11 +760,11 @@ billboard_tidy %>% sample_n(5) %>% select(artist, track, year, time) %>% knitr::
 
 artist            track                      year  time 
 ----------------  ------------------------  -----  -----
-Mya               Case Of The Ex (What...    2000  3:50 
-Jackson, Alan     www.memory                 2000  2:36 
-Dion, Celine      That's The Way It Is       2000  4:03 
-3 Doors Down      Kryptonite                 2000  3:53 
 Destiny's Child   Say My Name                2000  4:31 
+Davidson, Clay    Unconditional              2000  3:56 
+Wright, Chely     It Was                     2000  3:51 
+Jackson, Alan     www.memory                 2000  2:36 
+Jay-Z             I Just Wanna Love U ...    2000  3:50 
 
 Separemos esta base de datos en dos: la tabla canción que almacena artista, nombre de la canción y duración; la tabla rank que almacena el ranking de la canción en cada semana.
 
@@ -6148,26 +6148,26 @@ specdata %>% sample_n(20) %>% knitr::kable()
 
            id   monitor  date          sulfate   nitrate
 -------  ----  --------  -----------  --------  --------
-533324    228       228  2002-04-05      0.965     1.220
-415216    179       179  2007-11-17         NA        NA
-356561    153       153  2003-04-12      3.120     1.070
-656594    278       278  2003-10-16         NA        NA
-290643    122       122  2006-10-17         NA        NA
-316971    135       135  2001-11-16         NA        NA
-103644     41        41  2006-10-12         NA        NA
-432554    186       186  2005-05-08         NA        NA
-682314    289       289  2004-03-15         NA        NA
-590580    252       252  2007-01-13         NA        NA
-590639    252       252  2007-03-13      4.960     0.466
-731534    314       314  2000-12-18         NA        NA
-694952    296       296  2010-10-20         NA        NA
-473532    201       201  2006-07-20         NA        NA
-338340    145       145  2001-05-22         NA        NA
-217885     91        91  2008-07-29      6.980     0.767
-130324     53        53  2010-11-01         NA        NA
-133882     56        56  2004-07-29      2.840     0.861
-452369    194       194  2004-08-08         NA        NA
-13442       5         5  2009-10-21         NA        NA
+356643    153       153  2003-07-03         NA        NA
+633891    268       268  2007-08-17         NA        NA
+502395    215       215  2002-07-29         NA        NA
+174447     72        72  2001-08-24         NA        NA
+227074     96        96  2002-09-27         NA        NA
+607326    258       258  2001-11-20         NA        NA
+678031    287       287  2008-06-22         NA        NA
+595783    254       254  2002-04-13         NA        NA
+222132     93        93  2009-03-16         NA        NA
+346185    148       148  2008-11-13         NA        NA
+300458    127       127  2004-08-31         NA      0.27
+252649    106       106  2010-10-07         NA        NA
+504900    215       215  2009-06-07         NA        NA
+332036    142       142  2003-02-16         NA        NA
+460438    197       197  2000-09-11         NA        NA
+114259     47        47  2006-11-06         NA        NA
+460836    197       197  2001-10-14         NA        NA
+331069    141       141  2004-06-24         NA        NA
+580259    247       247  2005-10-10         NA        NA
+682971    290       290  2000-01-01         NA        NA
 
 #### 6. Otras consideraciones {-}
 
@@ -6414,7 +6414,7 @@ df_ej %>%
 
 ---
 
-## Muertes por armas de fuego en Estados Unidos {-}
+## Muertes por armas de fuego en EUA
 
 Los datos que vamos a utilizar provienen principalmente de la base de datos de causas múltiples de la muerte de los Centros para el Control y Prevención de la Enfermedad (CDCs) de Estados Unidos, de certificados de defunción de los 50 estados. Se considera que esta fuente de información es la base de datos más completa de muertes por armas de fuego.
 
@@ -6598,5 +6598,511 @@ ggplot(guns_sin_especificar, aes(x=as.factor(place), fill=as.factor(intent))) +
 
 Dado que el homicidio ocurrió en una granja, lo más probable es que haya sido un suicidio.
 
+---
 
+<br>
+<br>
+
+---
+
+## El Cuarteto de Anscombe
+
+> "The simple graph has brought more information to the data analyst’s mind 
+> than any other device." --- John Tukey
+
+En 1971 un estadístico llamado Frank Anscombe (fundador del departamento de Estadística de la Universidad de Yale) encontró cuatro conjuntos de datos (I, II, III y IV). Cada uno consiste de 11 observaciones y tienen las mismas propiedades estadísticas.
+
+
+```r
+anscombe
+```
+
+
++------+-------+-------+-------+-------+-------+------+-------+
+|$x_1$ |$y_1$  |$x_2$  |$y_2$  |$x_3$  |$y_3$  |$x_4$ |$y_4$  |
++======+=======+=======+=======+=======+=======+======+=======+
+| 10.0 |  8.04 |  10.0 |  9.14 |  10.0 |  7.46 |  8.0 |  6.58 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  8.0 |  6.95 |  8.0  |  8.14 |  8.0  |  6.77 |  8.0 |  5.76 |
++------+-------+-------+-------+-------+-------+------+-------+
+| 13.0 |  7.58 | 13.0  |  8.74 | 13.0  | 12.74 |  8.0 |  7.71 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  9.0 |  8.81 |  9.0  |  8.77 |  9.0  |  7.11 |  8.0 |  8.84 |
++------+-------+-------+-------+-------+-------+------+-------+
+| 11.0 |  8.33 | 11.0  |  9.26 | 11.0  |  7.81 |  8.0 |  8.47 |
++------+-------+-------+-------+-------+-------+------+-------+
+| 14.0 |  9.96 | 14.0  |  8.10 | 14.0  |  8.84 |  8.0 |  7.04 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  6.0 |  7.24 |  6.0  |  6.13 |  6.0  |  6.08 |  8.0 |  5.25 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  4.0 |  4.26 |  4.0  |  3.10 |  4.0  |  5.39 | 19.0 | 12.50 |
++------+-------+-------+-------+-------+-------+------+-------+
+| 12.0 | 10.84 | 12.0  |  9.13 | 12.0  |  8.15 |  8.0 |  5.56 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  7.0 |  4.82 |  7.0  |  7.26 |  7.0  |  6.42 |  8.0 |  7.91 |
++------+-------+-------+-------+-------+-------+------+-------+
+|  5.0 |  5.68 |  5.0  |  4.74 |  5.0  |  5.73 |  8.0 |  6.89 |
++------+-------+-------+-------+-------+-------+------+-------+
+
+Por ejemplo, todos los conjuntos de datos I, II, III, y IV, tienen exactamente misma media de $x$, $\bar{x}_i = \bar{x}_j$, y misma media de $y$, $\bar{y}_i = \bar{y}_j$ para toda $i,j=1,2,3,4$. Además, se puede ver que todos tienen misma varianza muestral de $x$ y de $y$. En cada conjunto de datos la correlación entre $x$ y $y$ es la misma, y por consiguiente, los coeficientes de la regresión lineal $\beta_0$ y $\beta_1$ también son iguales. 
+
++-----------------------------+-------------------+
+|Propiedad                    |Valor              |
++=============================+===================+
+|Media de $x$                 |9                  |
++-----------------------------+-------------------+
+|Varianza muestral de $x$     |11                 |
++-----------------------------+-------------------+
+|Media de $y$                 |7.50               |
++-----------------------------+-------------------+
+|Varianza muestral de $y$     |4.12               |
++-----------------------------+-------------------+
+|Correlación entre $x$ y $y$  |0.816              |
++-----------------------------+-------------------+
+|Línea de regresión lineal    |$y = 3.00 + 0.500x$|
++-----------------------------+-------------------+
+
+¿En qué son diferentes estos conjuntos de datos? ¿Es posible con la información anterior concluir que los cuatro conjuntos de datos deben ser similares? ¿Que tengan estadísticas similares asegura que provienen de un mismo modelo?
+
+Cuando analizamos los datos de manera gráfica en un histograma encontramos rápidamente que los conjuntos de datos son muy distintos.
+
+<div style="text-align: center;">**“Una imagen dice más que mil palabras.”**</div>
+<img src="figuras/Anscombe.png" width="246" style="display: block; margin: auto;" />
+<p class="espacio">
+</p>
+
+En la gráfica del primer conjunto de datos, se ven datos como los que se tendrían en una relación lineal simple con un modelo que cumple los supuestos de normalidad. La segunda gráfica (la de arriba a la derecha) muestra unos datos que tienen una asociación pero definitivamente no es lineal y el coeficiente de correlación no es relevante en este caso. En la tercera gráfica (abajo a la izquierda) están puntos alineados perfectamente en una línea recta, excepto por uno de ellos. En la última gráfica podemos ver un ejemplo en el cual basta tener una observación atípica para que se produzca un coeficiente de correlación alto aún cuando en realidad no existe una asociación lineal entre las dos variables.  
+
+Edward Tufte usó el cuarteto en la primera página del primer capítulo de su libro The Visual Display of Quantitative Information, para enfatizar la importancia de mirar los datos antes de analizarlos. [@tufte2014visual]
+
+## The _Grammar of Graphics_ de Leland Wilkinson
+
+Una ventaje de ggplot es que implementa una gramática de gráficas de forma organizada y con sentido orientada a esta forma de asociar variables con geometrías (Wilkinson 2005). En lugar de tener una lista enorme y conceptualmente plana de opciones para hacer gráficas, ggplot parte en varios pasos el procedimiento para realizar una gráfica:
+
+1. primero, se debe proporcionar información a la función sobre qué datos y qué variables se van a utilizar.
+
+2. segundo, se debe vincular las variables que se van a utilizar en la gráfica con las características específicas que se requiere tener en la gráfica.
+
+3. tercero, se debe elegir una función `geom_` para indicar qué tipo de gráfica se dibujará, un diagrama de dispersión, una gráfica de barras o un diagrama de caja.
+
+En general, según Leland Wilkinson, hay dos principios generales que se deben seguir:
+
+- La geometría utilizada debe coincidir con los datos que se están visualizando.
+
+- La geometría utilizada debe ser fácil de interpretar.
+
+---
+
+## ggplot
+
+Vamos a ver cómo visualizar los datos usando ggplot2. R tiene varios sistemas para hacer gráficas, pero ggplot2 es uno de los más elegantes y versátiles. ggplot2 implementa la __gramática de gráficas__,  un sistema consistente para describir y construir gráficas. Con ggplot2, pueden hacerse cosas más rápido, aprendiendo un único sistema consistente, y aplicándolo de muchas formas.
+
+Para mayor información sobre los fundamentos teóricos de ggplot2 se recomienda leer el artículo titulado "The Layered Grammar of Graphics", visitando la siguiente liga: <http://vita.had.co.nz/papers/layered-grammar.pdf>.
+
+Lo más importante para entender ggplot es comprender la estructura y la lógica para hacer una gráfica. El código debe decir cuáles son las conexiones entre las variables en los datos y los elementos de la gráfica tal como los vamos a ver en la pantalla, los puntos, los colores y las formas. En ggplot, estas conexiones lógicas entre los datos y los elementos de la gráfica se denominan *asignaciones estéticas* o simplemente *estéticas*. Se comienza una gráfica indicando a ggplot cuáles son los datos, qué variables en los datos se van a usar y luego cómo las variables en estos datos se mapean lógicamente en la estética de la gráfica. Luego, toma el resultado y se indica qué tipo de gráfica se desea, por ejemplo, un diagrama de dispersión, una gráfica de barras, o una gráfica de línea. En ggplot este tipo general de gráficas se llama `geom`. Cada *geom* tiene una función que lo crea. Por ejemplo, `geom_point()` hace diagramas de dispersión, `geom_bar()` hace gráficas de barras, `geom_line()` hace gráficas de línea, y así sucesivamente. Para combinar estas dos piezas, el objeto `ggplot()` y el `geom` se suman literalmente en una expresión, utilizando el símbolo "`+`".
+ 
+<div style="text-align: center;">**¿Qué geometrías son más adecuadas para cada tipo de variable?**</div>
+<center><img src="figuras/visual-variables.png" width="600px" /></center>
+<p class="espacio">
+</p>
+
+Usaremos los datos de `gapminder` para hacer nuestras primeras gráficas. Vamos a asegurarnos de que la biblioteca que contiene los datos esté cargada:
+
+
+```r
+library(gapminder)
+```
+
+Esto hace que una tabla de datos esté disponible para su uso. Para ver un pedazo de la tabla utilizamos la función `glimpse()`:
+
+
+```r
+library(tidyverse)
+glimpse(gapminder)
+```
+
+```
+## Observations: 1,704
+## Variables: 6
+## $ country   <fct> Afghanistan, Afghanistan, Afghanistan, Afghanistan, ...
+## $ continent <fct> Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia...
+## $ year      <int> 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992...
+## $ lifeExp   <dbl> 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.8...
+## $ pop       <int> 8425333, 9240934, 10267083, 11537966, 13079460, 1488...
+## $ gdpPercap <dbl> 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 78...
+```
+
+Supongamos que queremos graficar la esperanza de vida vs el PIB per cápita para todos los años y países en los datos. Haremos esto creando un objeto que contenga parte de la información necesario y a partir de ahí vamos a construir nuestra gráfica. Primero debemos indicarle a la función `ggplot()` qué datos estamos utilizando:
+
+
+```r
+p <- ggplot(data = gapminder)
+p
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-59-1.png" width="672" />
+
+En este punto, ggplot sabe cuáles son nuestros datos, pero no cuál es el mapeo, es decir, qué variables de los datos deben correlacionarse con qué elementos visuales de la trama. Tampoco sabe qué tipo de trama queremos. En ggplot, las asignaciones se especifican utilizando la función `aes()`. Me gusta esta:
+
+Hasta este punto ggplot conoce qué datos se van a utilizar para hacer la gráfico, pero no el *mapeo* o *asociación* de qué variables se van a relacionar con los elementos visuales de la gráfica. Tampoco se sabe qué tipo de gráfica se va a hacer. En ggplot, las asignaciones se especifican utilizando la función `aes()`:
+
+
+```r
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp))
+```
+
+El argumento `mapping = aes(...)` _vincula variables a cosas que se van a ver en la gráfica_. Los valores de $x$ y $y$ son los más obvios. Otras asignaciones estéticas pueden incluir, por ejemplo, el color, la forma, el tamaño y el tipo de línea (si una línea es sólida o discontinua, o algún otro patrón). Un mapeo no dice directamente qué formas o colores van a aparecer en la gráfica. Más bien, dicen qué _variables_ en los datos serán _representadas_ por los elementos visuales como color, forma o un punto.
+
+¿Qué sucede si simplemente escribimos `p` en la consola y ejecutamos?
+
+
+```r
+p
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-61-1.png" width="480" />
+
+El objeto `p` ha sido creado por la función `ggplot()`, y ya tiene información sobre las asignaciones que queremos, junto con mucha otra información añadida por defecto. (Si quiere ver cuánta información hay en el objeto `p`, intente solicitar `str(p)`). Sin embargo, no le hemos dado ninguna instrucción acerca de qué tipo de diagrama dibujar. Necesitamos agregar una capa a la trama. Esto significa elegir una función `geom_*`. Usaremos `geom_point()`. Sabe cómo tomar valores xey y trazarlos en un diagrama de dispersión.
+
+Se ha creado el objeto `p` utilizando la función `ggplot()` y este objeto ya tiene información de las asignacionesque queremos. Sin embargo, no se le ha dado ninguna instrucción sobre qué tipo de gráfica se quiere dibujar. Necesitamos agregar una capa a la gráfica. Esto se hace mediante el símbolo `+`. Esto significa elegir una función `geom_`. Utilizaremos `geom_point()` para hacer un diagrama de dispersión. 
+
+
+```r
+p + geom_point()
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-62-1.png" width="480" />
+
+El mapeo de las propiedades estéticas se denomina *escalamiento* y depende del tipo de variable, las variables discretas (por ejemplo, genero, escolaridad, país) se mapean a distintas escalas que las variables continuas (variables numéricas como edad, estatura, etc.), los *defaults* para algunos atributos son (estos se pueden modificar):
+
+aes       |Discreta      |Continua  
+----------|--------------|---------
+Color (`color`)|Arcoiris de colores         |Gradiente de colores  
+Tamaño (`size`)  |Escala discreta de tamaños  |Mapeo lineal entre el área y el valor  
+Forma (`shape`)    |Distintas formas            |No aplica
+Transparencia (`alpha`) | No aplica | Mapeo lineal a la transparencia   
+
+Los *_geoms_* controlan el tipo de gráfica:
+
+
+```r
+p + geom_smooth()
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-63-1.png" width="480" />
+
+Podemos ver de inmediato que algunos de estos `geoms` hacen mucho más que simplemente poner puntos en una cuadrícula. Aquí `geom_smooth()` ha calculado una línea suavizada y la región sombreada representa el error estándar de la línea suavizada. Si queremos ver los puntos de datos y la línea juntos, simplemente agregamos `geom_point()` de nuevo como una capa adicional utilizando `+`:
+
+
+```r
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y=lifeExp))
+p + geom_point() + geom_smooth()
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-64-1.png" width="480" />
+
+El mensaje de la consola de R nos dice que la función `geom_smooth()` está utilizando un método llamado gam, que en este caso significa que se ajusta a un modelo aditivo generalizado. Esto sugiere que tal vez haya otros métodos en `geom_smooth()`. Podemos intentar agregar `method = "lm"` (para "modelo lineal") como un argumento para `geom_smooth()`:
+
+
+```r
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y=lifeExp))
+p + geom_point() + geom_smooth(method="lm")
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-65-1.png" width="480" />
+
+Se puede agregar al mapeo del color de la línea el continente y del relleno de los puntos (fill) también el continente para obtener una gráfica que nos dé una idea más general de como se tiene esta relación por continente.
+
+
+```r
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp,
+                          color = continent,
+                          fill = continent))
+p + geom_point() +
+    geom_smooth(method='loess') +
+    scale_x_log10()
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-66-1.png" width="960" />
+
+<p class="espacio">
+</p>
+
+## Un histograma de las muertes en Iraq
+
+Iraq Body Count (IBC) mantiene la base de datos pública más grande sobre muertes violentas de civiles desde la invasión en Iraq del 2003. Los datos de IBC provienen de informes de medios cruzados, de hospitales, morgue, ONG y cifras o registros oficiales.
+
+Para mayor información puedes visitar <https://www.iraqbodycount.org/>.
+
+Los datos los leemos con la función `read_csv()` de la librería `readr`:
+
+```r
+ibc <- read_csv("datos/ibc-incidents-2016-8-8.csv")
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   IBC_code = col_character(),
+##   Start_Date = col_character(),
+##   End_Date = col_character(),
+##   Time = col_character(),
+##   Location = col_character(),
+##   Target = col_character(),
+##   Weapons = col_character(),
+##   Deaths_recorded = col_integer(),
+##   Sources = col_character()
+## )
+```
+
+```r
+glimpse(ibc)
+```
+
+```
+## Observations: 48,084
+## Variables: 9
+## $ IBC_code        <chr> "x493g", "k1848", "x493f", "x493h", "x490", "x...
+## $ Start_Date      <chr> "1-Jul-06", "31-Aug-05", "1-Jun-06", "1-Aug-06...
+## $ End_Date        <chr> "31-Jul-06", "31-Aug-05", "30-Jun-06", "31-Aug...
+## $ Time            <chr> NA, "11:30 AM", NA, NA, NA, NA, NA, NA, NA, NA...
+## $ Location        <chr> "Baghdad (city and governorate)", "Aimma Bridg...
+## $ Target          <chr> "additional violent deaths recorded at the Bag...
+## $ Weapons         <chr> "some 90 percent by gunfire - may include some...
+## $ Deaths_recorded <int> 982, 965, 919, 866, 709, 633, 625, 600, 590, 5...
+## $ Sources         <chr> "REU 09 Aug, AP 09 Aug, BBC 09 Aug, NYT 16 Aug...
+```
+
+Primero filtramos los incidentes en los que hubo al menos cinco fatalidades:
+
+
+
+```r
+ibc_fatalidades <- ibc %>%
+  filter(Deaths_recorded >= 5)
+```
+
+
+Una forma fácil de dibujar un histograma es utilizando la geometría `geom_histogram()`:
+
+
+```r
+ggplot(ibc_fatalidades, aes(x=Deaths_recorded)) +
+  geom_histogram() +
+  scale_x_log10()
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-69-1.png" width="672" />
+
+## Inglehart–Welzel: un mapa cultural del mundo
+
+Los teóricos de la modernización de Karl Marx a Daniel Bell han sostenido que el desarrollo económico trae cambios culturales penetrantes. Pero otros, desde Max Weber hasta Samuel Huntington, han afirmado que los valores culturales son una influencia duradera y autónoma sobre la sociedad. 
+
+En un artículo de la ciencia política, los autores Inglehart y Welzel de la Universidad de Michigan, afirman que el desarrollo económico está vinculado a cambios sistemáticos en los valores culturales. Utilizando los datos de la encuesta de valores mundiales WVS (World Values Survey), crearon dos índices: uno que pone énfasis en valores tradicionales y otro que pone énfasis en valores de supervivencia.
+
+Características de valores tradicionales en una sociedad:
+
+- fuerte sentimiento de orgullo nacional
+
+- le da más importancia a que un niño aprenda obediencia y fé religiosa en lugar de independencia y determinación
+
+- el aborta nunca es justificada
+
+- fuerte sentido de orgullo nacional
+
+- favorece más el respeto por la autoridad.
+
+
+Los valores seculares o racionales enfatizan lo opuesto.
+
+Características de valores de supervivencia en una sociedad:
+
+- le da prioridad a la economía sobre la calidad de vida
+
+- se describe como no muy feliz
+
+- aún no ha firmado o jamás firmaría una petición
+
+- la homosexualidad nuna es justificada
+
+- se debe ser muy cuidadoso al confiar en las personas.
+
+
+Los valores de autoexpresión enfatizan lo opuesto.
+
+<img src="figuras/Culture_Map_2017.png" width="240" style="display: block; margin: auto;" />
+
+Ronald Inglehart en su artículo de 1971 __The silent revolution in Europe. Intergenerational change in post-industrial societies.__ publicado en el __American Political Science Review__, propone una medida de los valores postmaterialistas de una sociedad. Esta medida se conoce como índice post-materialista de Inglehart (4-item) .
+
+La siguiente pregunta de la encuesta es el punto de partida para medir el materialismo o el post-materialismo: "Si tuvieras que elegir entre las siguientes cosas, ¿cuáles son las dos que te parecen más deseables?"
+
+- Mantener el orden en la nación.
+
+- Dando a la gente más voz en importantes decisiones políticas.
+
+- La lucha contra el aumento de los precios.
+
+- Proteger la libertad de expresión.
+
+La medida se basa entonces en la observación de que dos de las cuatro opciones, la primera y la tercera, se consideran como "preferencia hacia el valor adquisitivo en relación con la protección y adquisición de bienes". Si se eligen las dos opciones postmaterialistas, entonces la puntuación es 3. Si se elige sólo una opción post-materialista, entonces la puntuación es 2, y de lo contrario es 1. Como todas las opciones podrían ser deseables, la medida se relaciona con la "prioridad relativa" de las elecciones materialistas sobre la segunda y cuarta y aborda las concesiones que típicamente conllevan las decisiones políticas. La conceptualización del postmaterialismo a lo largo de un continuo unidimensional está cerca del concepto de la "jerarquía de necesidades" propuesta por Maslow.
+
+
+```r
+library(tidyverse)
+factores_inglehart <- read_csv(file = "datos/factores_inglehart.csv")
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   country_code = col_integer(),
+##   country = col_character(),
+##   region = col_character(),
+##   reg = col_character(),
+##   traditional_secular = col_double(),
+##   survival_selfexpression = col_double()
+## )
+```
+
+```r
+glimpse(factores_inglehart)
+```
+
+```
+## Observations: 60
+## Variables: 6
+## $ country_code            <int> 112, 12, 152, 156, 158, 170, 196, 218,...
+## $ country                 <chr> "Belarus", "Algeria", "Chile", "China"...
+## $ region                  <chr> "Eastern Europe", "Northern Africa", "...
+## $ reg                     <chr> "Europe & Eurasia", "Middle East & Nor...
+## $ traditional_secular     <dbl> 0.91765783, -0.68002658, 0.14525131, 1...
+## $ survival_selfexpression <dbl> -0.31871982, -0.33001995, 1.57689761, ...
+```
+
+### Creando un ggplot
+
+Para graficar `factores_inglehart`, ejecuta este código para poner `survival_selfexpression` en el eje x (eje horizontal) y `traditional_secular` en el eje y (eje vertical):
+
+
+```r
+ggplot(data = factores_inglehart) + 
+  geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-72-1.png" width="672" />
+
+### Mapeos: Aesthetics
+
+> "The greatest value of a picture is when it forces us to notice what we
+> never expected to see." --- John Tukey
+
+En la gráfica de abajo, un grupo de puntos (en rojo) parece estar fuera de la tendencia lineal. Estos países tienen menores valores de supervivencia de lo que esperaríamos de acuerdo a sus mayores valores de tradicionalismo.
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-73-1.png" width="672" />
+
+Podemos formular la hipótesis de que se trata de países latinoamericanos. Una forma de probar esta hipótesis es con la variable `reg`. La variable `reg` del conjunto de datos `factores_inglehart` clasifica a los países de acuerdo a su región geográfica.
+
+Podemos agregar una tercera variable, como `reg`, a un diagrama de dispersión bidimensional asignándolo a un __aesthetic__ o mapeo. Un mapeo es una propiedad visual de los objetos en la gráfica. 
+
+Un mapeo incluye cosas como el tamaño, la forma o el color de los puntos. Puede mostrar un punto (como el que se muestra a continuación) de diferentes maneras cambiando los valores de sus propiedades de mapeos. 
+
+Aquí cambiamos los niveles de tamaño, forma y color de un punto para hacer que el punto sea pequeño, triangular o azul:
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-74-1.png" width="672" />
+
+Podemos transmitir información sobre los datos mapeando los aesthetics en la gráfica a las variables del data frame. Por ejemplo, podemos asignar los colores de los puntos a la variable `reg` para revelar la región de cada país.
+
+
+```r
+ggplot(data = factores_inglehart) + 
+  geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular, color=reg))
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-75-1.png" width="672" />
+
+Para asignar una característica a una variable, asociamos el nombre del mapeo al nombre de la variable dentro de `aes()`. ggplot2 asignará automáticamente un nivel único de dicha característica (o mapeo) a cada valor único de la variable, un proceso conocido como __escalamiento__. ggplot2 también agregará una leyenda que explique qué niveles corresponden a qué valores.
+
+También podríamos agregar etiquetas:
+
+
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-77-1.png" width="960" />
+
+#### Objetos geométricos
+
+¿En qué se parecen las siguiente dos gráficas? 
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-1.png" width="50%" /><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-2.png" width="50%" />
+
+Ambas gráficas contienen la misma variable x, la misma variable y, y ambas describen los mismos datos. Pero las gráficas no son idénticas. Cada una utiliza un objeto visual diferente para representar los datos. En la sintaxis de ggplot2, decimos que usan diferentes __geoms__.
+
+Un __geom__ es un objeto geométrico que una gráfica utiliza para representar a los datos. La gente a menudo describe las gráficas por el tipo de geometría que usa la gráfica. Por ejemplo, las gráficas de barras usan geometrías de barras, los gráficos de línea utilizan geoms de línea, los boxplots usan geoms de boxplot, y así sucesivamente. Los diagramas de dispersión rompen la tendencia; Utilizan la geometría de punto. 
+
+La gráfica de la izquierda utiliza el punto geom, y la gráfica de la derecha utiliza el geom de smooth, una línea ajustada a los datos. Para hacer las gráficas mostradas arriba se puede utilizar el siguiente código.
+
+
+```r
+#izquierda
+ggplot(data = factores_inglehart) + 
+  geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
+
+#derecha
+ggplot(data = factores_inglehart) + 
+  geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular), method = "loess")
+```
+
+Cada función geom en ggplot2 toma un argumento `mapping`. Sin embargo, no todas las propiedades de __aesthetics__ funciona con cada geom. Podríamos cambiar la forma de un punto, pero no la "forma" de una línea. Por otro lado, podríamos establecer el tipo de línea de una línea. `geom_smooth()` dibujará una línea diferente, con un tipo de línea diferente, para cada valor único de la variable que se asigna al tipo de línea.
+
+
+```r
+ggplot(data = factores_inglehart) + 
+  geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular, linetype = reg), method = "loess", se = F, span = 1)
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-80-1.png" width="672" />
+
+Aquí `geom_smooth()` separa los países en líneas basándose en su valor de `reg` (región geográfica).
+
+Podemos superponer las líneas encima de los datos sin procesar y luego coloreándolo todo de acuerdo a `reg`.
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-81-1.png" width="672" />
+
+Para mostrar varios geoms en la misma gráfica, agregamos varias funciones geom a `ggplot()`:
+
+
+```r
+ggplot(data = factores_inglehart) + 
+  geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular)) +
+  geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular), method = "loess")
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-82-1.png" width="672" />
+
+Este código genera la misma gráfica que el código anterior:
+
+
+```r
+ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular)) + 
+  geom_point() + 
+  geom_smooth(method = "loess")
+```
+
+Si colocan asignaciones en una función `geom`, `ggplot2` las tratará como asignaciones locales para cada capa, de tal forma que usará estas asignaciones para extender o sobrescribir las asignaciones globales _para esa capa solamente_. Esto hace posible visualizar elementos diferentes en diferentes capas.
+
+
+```r
+ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular)) + 
+  geom_point(mapping = aes(color = reg)) + 
+  geom_smooth(method = "loess")
+```
+
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-84-1.png" width="672" />
 

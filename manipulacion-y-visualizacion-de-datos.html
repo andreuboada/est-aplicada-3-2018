@@ -159,7 +159,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#limpieza-de-datos"><i class="fa fa-check"></i><b>3.2</b> Limpieza de datos</a></li>
 <li class="chapter" data-level="3.3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#split-apply-combine"><i class="fa fa-check"></i><b>3.3</b> <em>Split-apply-combine</em></a></li>
-<li class="chapter" data-level="" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#muertes-por-armas-de-fuego-en-estados-unidos"><i class="fa fa-check"></i>Muertes por armas de fuego en Estados Unidos</a></li>
+<li class="chapter" data-level="3.4" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#muertes-por-armas-de-fuego-en-eua"><i class="fa fa-check"></i><b>3.4</b> Muertes por armas de fuego en EUA</a></li>
+<li class="chapter" data-level="3.5" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#el-cuarteto-de-anscombe"><i class="fa fa-check"></i><b>3.5</b> El Cuarteto de Anscombe</a></li>
+<li class="chapter" data-level="3.6" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#the-grammar-of-graphics-de-leland-wilkinson"><i class="fa fa-check"></i><b>3.6</b> The <em>Grammar of Graphics</em> de Leland Wilkinson</a></li>
+<li class="chapter" data-level="3.7" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#ggplot"><i class="fa fa-check"></i><b>3.7</b> ggplot</a></li>
+<li class="chapter" data-level="3.8" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#un-histograma-de-las-muertes-en-iraq"><i class="fa fa-check"></i><b>3.8</b> Un histograma de las muertes en Iraq</a></li>
+<li class="chapter" data-level="3.9" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#inglehartwelzel-un-mapa-cultural-del-mundo"><i class="fa fa-check"></i><b>3.9</b> Inglehart–Welzel: un mapa cultural del mundo</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#creando-un-ggplot"><i class="fa fa-check"></i><b>3.9.1</b> Creando un ggplot</a></li>
+<li class="chapter" data-level="3.9.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#mapeos-aesthetics"><i class="fa fa-check"></i><b>3.9.2</b> Mapeos: Aesthetics</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -816,366 +824,366 @@ billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 <tbody>
 <tr class="odd">
 <td align="right">2000</td>
-<td align="left">Kelis</td>
-<td align="left">Caught Out There</td>
-<td align="left">4:09</td>
-<td align="left">1999-12-04</td>
-<td align="right">84</td>
-<td align="right">68</td>
-<td align="right">67</td>
-<td align="right">63</td>
-<td align="right">63</td>
-<td align="right">54</td>
-<td align="right">56</td>
-<td align="right">59</td>
-<td align="right">68</td>
-<td align="right">67</td>
-<td align="right">75</td>
-<td align="right">90</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Trick Daddy</td>
-<td align="left">Shut Up</td>
-<td align="left">4:17</td>
-<td align="left">2000-05-20</td>
-<td align="right">99</td>
-<td align="right">95</td>
-<td align="right">87</td>
-<td align="right">87</td>
-<td align="right">83</td>
-<td align="right">83</td>
-<td align="right">89</td>
-<td align="right">87</td>
-<td align="right">92</td>
-<td align="right">92</td>
-<td align="right">97</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">Anastacia</td>
-<td align="left">I’m Outta Love</td>
-<td align="left">4:01</td>
-<td align="left">2000-04-01</td>
-<td align="right">92</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">95</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">97</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Dixie Chicks, The</td>
-<td align="left">Cold Day In July</td>
-<td align="left">5:12</td>
-<td align="left">2000-06-24</td>
-<td align="right">80</td>
-<td align="right">79</td>
-<td align="right">76</td>
-<td align="right">72</td>
-<td align="right">68</td>
-<td align="right">68</td>
-<td align="right">65</td>
-<td align="right">70</td>
-<td align="right">84</td>
-<td align="right">91</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">Barenaked Ladies</td>
-<td align="left">Pinch Me</td>
-<td align="left">3:46</td>
-<td align="left">2000-09-09</td>
-<td align="right">77</td>
-<td align="right">76</td>
-<td align="right">69</td>
-<td align="right">45</td>
-<td align="right">51</td>
-<td align="right">37</td>
-<td align="right">33</td>
+<td align="left">Goo Goo Dolls</td>
+<td align="left">Broadway</td>
+<td align="left">3:54</td>
+<td align="left">2000-04-22</td>
+<td align="right">74</td>
+<td align="right">58</td>
+<td align="right">53</td>
+<td align="right">42</td>
+<td align="right">35</td>
+<td align="right">31</td>
+<td align="right">29</td>
+<td align="right">25</td>
 <td align="right">29</td>
 <td align="right">26</td>
-<td align="right">25</td>
-<td align="right">16</td>
-<td align="right">15</td>
-<td align="right">15</td>
-<td align="right">19</td>
-<td align="right">19</td>
-<td align="right">20</td>
-<td align="right">22</td>
-<td align="right">20</td>
-<td align="right">21</td>
+<td align="right">24</td>
+<td align="right">33</td>
+<td align="right">46</td>
+<td align="right">48</td>
+<td align="right">57</td>
+<td align="right">62</td>
+<td align="right">74</td>
+<td align="right">82</td>
+<td align="right">85</td>
+<td align="right">87</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">Badu, Erkyah</td>
+<td align="left">Bag Lady</td>
+<td align="left">5:03</td>
+<td align="left">2000-08-19</td>
+<td align="right">67</td>
+<td align="right">53</td>
+<td align="right">42</td>
+<td align="right">41</td>
+<td align="right">48</td>
+<td align="right">42</td>
 <td align="right">34</td>
+<td align="right">6</td>
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">8</td>
+<td align="right">11</td>
+<td align="right">15</td>
+<td align="right">21</td>
+<td align="right">26</td>
+<td align="right">29</td>
+<td align="right">26</td>
+<td align="right">38</td>
+<td align="right">56</td>
+<td align="right">66</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">Brock, Chad</td>
+<td align="left">A Country Boy Can Su…</td>
+<td align="left">3:54</td>
+<td align="left">2000-01-01</td>
+<td align="right">93</td>
+<td align="right">75</td>
+<td align="right">92</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">Evans, Sara</td>
+<td align="left">Born To Fly</td>
+<td align="left">5:36</td>
+<td align="left">2000-10-21</td>
+<td align="right">77</td>
+<td align="right">71</td>
+<td align="right">64</td>
+<td align="right">57</td>
+<td align="right">55</td>
+<td align="right">51</td>
+<td align="right">46</td>
 <td align="right">44</td>
+<td align="right">36</td>
+<td align="right">39</td>
+<td align="right">34</td>
+<td align="right">46</td>
+<td align="right">44</td>
+<td align="right">36</td>
+<td align="right">42</td>
+<td align="right">53</td>
+<td align="right">58</td>
+<td align="right">74</td>
+<td align="right">81</td>
+<td align="right">86</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">Sonique</td>
+<td align="left">It Feels So Good</td>
+<td align="left">3:48</td>
+<td align="left">2000-01-22</td>
+<td align="right">67</td>
+<td align="right">52</td>
+<td align="right">30</td>
+<td align="right">23</td>
+<td align="right">19</td>
+<td align="right">17</td>
+<td align="right">16</td>
+<td align="right">16</td>
+<td align="right">14</td>
+<td align="right">12</td>
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="right">11</td>
+<td align="right">8</td>
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">11</td>
+<td align="right">14</td>
+<td align="right">17</td>
+<td align="right">19</td>
+<td align="right">21</td>
+<td align="right">31</td>
+<td align="right">38</td>
+<td align="right">49</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1272,93 +1280,93 @@ billboard_long</code></pre></div>
 <tbody>
 <tr class="odd">
 <td align="right">2000</td>
-<td align="left">Limp Bizkit</td>
-<td align="left">Rollin’</td>
-<td align="left">4:04</td>
-<td align="right">15</td>
-<td align="right">93</td>
-<td align="left">2001-02-17</td>
+<td align="left">Pink</td>
+<td align="left">There U Go</td>
+<td align="left">3:23</td>
+<td align="right">30</td>
+<td align="right">41</td>
+<td align="left">2000-09-23</td>
 </tr>
 <tr class="even">
 <td align="right">2000</td>
-<td align="left">Mary Mary</td>
-<td align="left">Shackles (Praise You…</td>
-<td align="left">3:12</td>
-<td align="right">7</td>
-<td align="right">34</td>
-<td align="left">2000-05-06</td>
+<td align="left">Tippin, Aaron</td>
+<td align="left">Kiss This</td>
+<td align="left">2:53</td>
+<td align="right">16</td>
+<td align="right">94</td>
+<td align="left">2000-12-09</td>
 </tr>
 <tr class="odd">
 <td align="right">2000</td>
-<td align="left">Ruff Endz</td>
-<td align="left">No More</td>
-<td align="left">3:56</td>
-<td align="right">25</td>
-<td align="right">33</td>
-<td align="left">2000-12-16</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Ja Rule</td>
-<td align="left">Between Me And You</td>
-<td align="left">4:05</td>
-<td align="right">1</td>
-<td align="right">85</td>
-<td align="left">2000-09-16</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">Eastsidaz, The</td>
-<td align="left">G’D Up</td>
-<td align="left">4:27</td>
+<td align="left">Jordan, Montell</td>
+<td align="left">Get It On.. Tonite</td>
+<td align="left">4:34</td>
 <td align="right">2</td>
-<td align="right">77</td>
-<td align="left">2000-01-15</td>
+<td align="right">80</td>
+<td align="left">1999-10-30</td>
 </tr>
 <tr class="even">
 <td align="right">2000</td>
-<td align="left">Sisqo</td>
-<td align="left">Thong Song</td>
-<td align="left">4:05</td>
-<td align="right">13</td>
-<td align="right">5</td>
-<td align="left">2000-04-22</td>
+<td align="left">Bloodhound Gang</td>
+<td align="left">The Bad Touch</td>
+<td align="left">4:20</td>
+<td align="right">12</td>
+<td align="right">98</td>
+<td align="left">2000-06-03</td>
 </tr>
 <tr class="odd">
+<td align="right">2000</td>
+<td align="left">Elliott, Missy “Misdemeanor”</td>
+<td align="left">Hot Boyz</td>
+<td align="left">3:51</td>
+<td align="right">3</td>
+<td align="right">13</td>
+<td align="left">1999-12-11</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">Anthony, Marc</td>
+<td align="left">You Sang To Me</td>
+<td align="left">3:50</td>
+<td align="right">7</td>
+<td align="right">21</td>
+<td align="left">2000-04-08</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">BBMak</td>
+<td align="left">Back Here</td>
+<td align="left">3:35</td>
+<td align="right">22</td>
+<td align="right">17</td>
+<td align="left">2000-09-23</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">Stone Temple Pilots</td>
+<td align="left">Sour Girl</td>
+<td align="left">4:16</td>
+<td align="right">3</td>
+<td align="right">79</td>
+<td align="left">2000-07-22</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">3 Doors Down</td>
+<td align="left">Kryptonite</td>
+<td align="left">3:53</td>
+<td align="right">1</td>
+<td align="right">81</td>
+<td align="left">2000-04-08</td>
+</tr>
+<tr class="even">
 <td align="right">2000</td>
 <td align="left">Backstreet Boys, The</td>
 <td align="left">The One</td>
 <td align="left">3:46</td>
-<td align="right">14</td>
-<td align="right">93</td>
-<td align="left">2000-08-26</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">M2M</td>
-<td align="left">Don’t Say You Love M…</td>
-<td align="left">3:41</td>
-<td align="right">2</td>
-<td align="right">53</td>
-<td align="left">1999-11-27</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">Houston, Whitney</td>
-<td align="left">Could I Have This Ki…</td>
-<td align="left">3:54</td>
-<td align="right">6</td>
-<td align="right">59</td>
-<td align="left">2000-07-22</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Destiny’s Child</td>
-<td align="left">Jumpin’ Jumpin’</td>
-<td align="left">3:48</td>
-<td align="right">24</td>
-<td align="right">7</td>
-<td align="left">2000-10-21</td>
+<td align="right">11</td>
+<td align="right">76</td>
+<td align="left">2000-08-05</td>
 </tr>
 </tbody>
 </table>
@@ -1410,58 +1418,33 @@ tb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sampl
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">IQ</td>
-<td align="right">2002</td>
+<td align="left">NA</td>
+<td align="right">2006</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">47</td>
-<td align="right">706</td>
-<td align="right">923</td>
-<td align="right">308</td>
-<td align="right">284</td>
-<td align="right">205</td>
-<td align="right">158</td>
+<td align="right">86</td>
+<td align="right">347</td>
+<td align="right">1052</td>
+<td align="right">799</td>
+<td align="right">386</td>
+<td align="right">174</td>
+<td align="right">146</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">45</td>
-<td align="right">338</td>
-<td align="right">288</td>
-<td align="right">172</td>
-<td align="right">176</td>
-<td align="right">129</td>
-<td align="right">116</td>
+<td align="right">74</td>
+<td align="right">485</td>
+<td align="right">875</td>
+<td align="right">521</td>
+<td align="right">239</td>
+<td align="right">92</td>
+<td align="right">80</td>
 <td align="right">NA</td>
-<td align="left">Iraq</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
-<td align="left">SI</td>
-<td align="right">2007</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">7</td>
-<td align="right">15</td>
-<td align="right">14</td>
-<td align="right">12</td>
-<td align="right">9</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">5</td>
-<td align="right">6</td>
-<td align="right">2</td>
-<td align="right">3</td>
-<td align="right">16</td>
-<td align="right">0</td>
-<td align="left">Slovenia</td>
-</tr>
-<tr class="odd">
 <td align="left">BJ</td>
-<td align="right">1989</td>
+<td align="right">1994</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1484,34 +1467,59 @@ tb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sampl
 <td align="right">NA</td>
 <td align="left">Benin</td>
 </tr>
+<tr class="odd">
+<td align="left">ZM</td>
+<td align="right">2006</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">150</td>
+<td align="right">945</td>
+<td align="right">3496</td>
+<td align="right">1645</td>
+<td align="right">684</td>
+<td align="right">323</td>
+<td align="right">186</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">224</td>
+<td align="right">1500</td>
+<td align="right">2834</td>
+<td align="right">1257</td>
+<td align="right">452</td>
+<td align="right">207</td>
+<td align="right">122</td>
+<td align="right">NA</td>
+<td align="left">Zambia</td>
+</tr>
 <tr class="even">
-<td align="left">SM</td>
-<td align="right">1993</td>
+<td align="left">NA</td>
+<td align="right">2008</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
+<td align="right">30</td>
+<td align="right">387</td>
+<td align="right">1033</td>
+<td align="right">757</td>
+<td align="right">346</td>
+<td align="right">149</td>
+<td align="right">132</td>
+<td align="right">0</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">San Marino</td>
+<td align="right">73</td>
+<td align="right">466</td>
+<td align="right">702</td>
+<td align="right">437</td>
+<td align="right">226</td>
+<td align="right">110</td>
+<td align="right">80</td>
+<td align="right">0</td>
+<td align="left">NA</td>
 </tr>
 <tr class="odd">
-<td align="left">GU</td>
-<td align="right">1987</td>
+<td align="left">TG</td>
+<td align="right">1994</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1532,7 +1540,7 @@ tb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sampl
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="left">Guam</td>
+<td align="left">Togo</td>
 </tr>
 </tbody>
 </table>
@@ -1553,74 +1561,74 @@ tb_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">CV</td>
-<td align="right">2004</td>
-<td align="left">Cabo Verde</td>
-<td align="left">new_sp_m5564</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">MW</td>
-<td align="right">1996</td>
-<td align="left">Malawi</td>
-<td align="left">new_sp_f4554</td>
-<td align="right">347</td>
-</tr>
-<tr class="odd">
-<td align="left">MW</td>
-<td align="right">1997</td>
-<td align="left">Malawi</td>
-<td align="left">new_sp_f4554</td>
-<td align="right">347</td>
-</tr>
-<tr class="even">
-<td align="left">BS</td>
-<td align="right">1995</td>
-<td align="left">Bahamas</td>
-<td align="left">new_sp_f1524</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">LY</td>
-<td align="right">2008</td>
-<td align="left">Libya</td>
-<td align="left">new_sp_f1524</td>
-<td align="right">56</td>
-</tr>
-<tr class="even">
 <td align="left">BA</td>
-<td align="right">2004</td>
+<td align="right">2008</td>
 <td align="left">Bosnia and Herzegovina</td>
-<td align="left">new_sp_f2534</td>
-<td align="right">67</td>
-</tr>
-<tr class="odd">
-<td align="left">KH</td>
-<td align="right">2003</td>
-<td align="left">Cambodia</td>
-<td align="left">new_sp_m3544</td>
-<td align="right">2183</td>
+<td align="left">new_sp_m014</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
-<td align="left">KR</td>
-<td align="right">2005</td>
-<td align="left">Republic of Korea</td>
-<td align="left">new_sp_f1524</td>
-<td align="right">590</td>
+<td align="left">MN</td>
+<td align="right">2000</td>
+<td align="left">Mongolia</td>
+<td align="left">new_sp_f3544</td>
+<td align="right">113</td>
 </tr>
 <tr class="odd">
-<td align="left">WS</td>
-<td align="right">2005</td>
-<td align="left">Samoa</td>
-<td align="left">new_sp_m4554</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">CM</td>
-<td align="right">1999</td>
-<td align="left">Cameroon</td>
+<td align="left">TV</td>
+<td align="right">2008</td>
+<td align="left">Tuvalu</td>
 <td align="left">new_sp_f5564</td>
-<td align="right">95</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">IT</td>
+<td align="right">2008</td>
+<td align="left">Italy</td>
+<td align="left">new_sp_m65</td>
+<td align="right">104</td>
+</tr>
+<tr class="odd">
+<td align="left">MD</td>
+<td align="right">2004</td>
+<td align="left">Republic of Moldova</td>
+<td align="left">new_sp_m5564</td>
+<td align="right">89</td>
+</tr>
+<tr class="even">
+<td align="left">BW</td>
+<td align="right">2006</td>
+<td align="left">Botswana</td>
+<td align="left">new_sp_m5564</td>
+<td align="right">122</td>
+</tr>
+<tr class="odd">
+<td align="left">CR</td>
+<td align="right">1997</td>
+<td align="left">Costa Rica</td>
+<td align="left">new_sp_m65</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">DE</td>
+<td align="right">1997</td>
+<td align="left">Germany</td>
+<td align="left">new_sp_f4554</td>
+<td align="right">93</td>
+</tr>
+<tr class="odd">
+<td align="left">GW</td>
+<td align="right">2005</td>
+<td align="left">Guinea Bissau</td>
+<td align="left">new_sp_m4554</td>
+<td align="right">130</td>
+</tr>
+<tr class="even">
+<td align="left">GB</td>
+<td align="right">2002</td>
+<td align="left">United Kingdom of Great Britain and Northern Ireland</td>
+<td align="left">new_sp_f3544</td>
+<td align="right">66</td>
 </tr>
 </tbody>
 </table>
@@ -2006,84 +2014,84 @@ tb_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">KI</td>
-<td align="right">2002</td>
-<td align="left">Kiribati</td>
-<td align="left">new_sp_f</td>
-<td align="left">65</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">MK</td>
-<td align="right">2001</td>
-<td align="left">The former Yugoslav Republic of Macedonia</td>
+<td align="left">PA</td>
+<td align="right">1999</td>
+<td align="left">Panama</td>
 <td align="left">new_sp_m</td>
 <td align="left">2534</td>
-<td align="right">17</td>
+<td align="right">209</td>
+</tr>
+<tr class="even">
+<td align="left">KG</td>
+<td align="right">2004</td>
+<td align="left">Kyrgyzstan</td>
+<td align="left">new_sp_f</td>
+<td align="left">5564</td>
+<td align="right">34</td>
 </tr>
 <tr class="odd">
-<td align="left">JM</td>
-<td align="right">2005</td>
-<td align="left">Jamaica</td>
+<td align="left">SE</td>
+<td align="right">2004</td>
+<td align="left">Sweden</td>
 <td align="left">new_sp_m</td>
 <td align="left">3544</td>
-<td align="right">6</td>
+<td align="right">8</td>
 </tr>
 <tr class="even">
-<td align="left">UA</td>
-<td align="right">2008</td>
-<td align="left">Ukraine</td>
-<td align="left">new_sp_f</td>
-<td align="left">1524</td>
-<td align="right">585</td>
+<td align="left">MX</td>
+<td align="right">2000</td>
+<td align="left">Mexico</td>
+<td align="left">new_sp_m</td>
+<td align="left">4554</td>
+<td align="right">1235</td>
 </tr>
 <tr class="odd">
-<td align="left">PK</td>
-<td align="right">2007</td>
-<td align="left">Pakistan</td>
+<td align="left">SN</td>
+<td align="right">1996</td>
+<td align="left">Senegal</td>
 <td align="left">new_sp_f</td>
-<td align="left">5564</td>
-<td align="right">4065</td>
+<td align="left">65</td>
+<td align="right">74</td>
 </tr>
 <tr class="even">
-<td align="left">GQ</td>
-<td align="right">2004</td>
-<td align="left">Equatorial Guinea</td>
+<td align="left">DE</td>
+<td align="right">2001</td>
+<td align="left">Germany</td>
 <td align="left">new_sp_m</td>
 <td align="left">65</td>
-<td align="right">15</td>
+<td align="right">119</td>
 </tr>
 <tr class="odd">
-<td align="left">SK</td>
-<td align="right">2001</td>
-<td align="left">Slovakia</td>
-<td align="left">new_sp_m</td>
-<td align="left">2534</td>
-<td align="right">13</td>
+<td align="left">CN</td>
+<td align="right">2005</td>
+<td align="left">China</td>
+<td align="left">new_sp_f</td>
+<td align="left">65</td>
+<td align="right">21244</td>
 </tr>
 <tr class="even">
-<td align="left">KY</td>
-<td align="right">2007</td>
-<td align="left">Cayman Islands</td>
+<td align="left">LK</td>
+<td align="right">1999</td>
+<td align="left">Sri Lanka</td>
 <td align="left">new_sp_m</td>
-<td align="left">514</td>
-<td align="right">0</td>
+<td align="left">3544</td>
+<td align="right">621</td>
 </tr>
 <tr class="odd">
-<td align="left">AL</td>
+<td align="left">ER</td>
 <td align="right">2003</td>
-<td align="left">Albania</td>
+<td align="left">Eritrea</td>
 <td align="left">new_sp_f</td>
 <td align="left">5564</td>
-<td align="right">12</td>
+<td align="right">36</td>
 </tr>
 <tr class="even">
-<td align="left">MA</td>
-<td align="right">1995</td>
-<td align="left">Morocco</td>
-<td align="left">new_sp_f</td>
-<td align="left">014</td>
-<td align="right">191</td>
+<td align="left">CF</td>
+<td align="right">2001</td>
+<td align="left">Central African Republic</td>
+<td align="left">new_sp_m</td>
+<td align="left">5564</td>
+<td align="right">45</td>
 </tr>
 </tbody>
 </table>
@@ -2203,10 +2211,22 @@ clima_lm &lt;-<span class="st"> </span><span class="kw">lm</span>(TMAX <span cla
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Mya</td>
-<td align="left">Case Of The Ex (What…</td>
+<td align="left">Destiny’s Child</td>
+<td align="left">Say My Name</td>
 <td align="right">2000</td>
-<td align="left">3:50</td>
+<td align="left">4:31</td>
+</tr>
+<tr class="even">
+<td align="left">Davidson, Clay</td>
+<td align="left">Unconditional</td>
+<td align="right">2000</td>
+<td align="left">3:56</td>
+</tr>
+<tr class="odd">
+<td align="left">Wright, Chely</td>
+<td align="left">It Was</td>
+<td align="right">2000</td>
+<td align="left">3:51</td>
 </tr>
 <tr class="even">
 <td align="left">Jackson, Alan</td>
@@ -2215,22 +2235,10 @@ clima_lm &lt;-<span class="st"> </span><span class="kw">lm</span>(TMAX <span cla
 <td align="left">2:36</td>
 </tr>
 <tr class="odd">
-<td align="left">Dion, Celine</td>
-<td align="left">That’s The Way It Is</td>
+<td align="left">Jay-Z</td>
+<td align="left">I Just Wanna Love U …</td>
 <td align="right">2000</td>
-<td align="left">4:03</td>
-</tr>
-<tr class="even">
-<td align="left">3 Doors Down</td>
-<td align="left">Kryptonite</td>
-<td align="right">2000</td>
-<td align="left">3:53</td>
-</tr>
-<tr class="odd">
-<td align="left">Destiny’s Child</td>
-<td align="left">Say My Name</td>
-<td align="right">2000</td>
-<td align="left">4:31</td>
+<td align="left">3:50</td>
 </tr>
 </tbody>
 </table>
@@ -34135,162 +34143,162 @@ specdata &lt;-<span class="st"> </span>specdata_US <span class="op">%&gt;%</span
 </thead>
 <tbody>
 <tr class="odd">
-<td>533324</td>
-<td align="right">228</td>
-<td align="right">228</td>
-<td align="left">2002-04-05</td>
-<td align="right">0.965</td>
-<td align="right">1.220</td>
-</tr>
-<tr class="even">
-<td>415216</td>
-<td align="right">179</td>
-<td align="right">179</td>
-<td align="left">2007-11-17</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td>356561</td>
+<td>356643</td>
 <td align="right">153</td>
 <td align="right">153</td>
-<td align="left">2003-04-12</td>
-<td align="right">3.120</td>
-<td align="right">1.070</td>
+<td align="left">2003-07-03</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>656594</td>
-<td align="right">278</td>
-<td align="right">278</td>
-<td align="left">2003-10-16</td>
+<td>633891</td>
+<td align="right">268</td>
+<td align="right">268</td>
+<td align="left">2007-08-17</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>290643</td>
-<td align="right">122</td>
-<td align="right">122</td>
-<td align="left">2006-10-17</td>
+<td>502395</td>
+<td align="right">215</td>
+<td align="right">215</td>
+<td align="left">2002-07-29</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>316971</td>
-<td align="right">135</td>
-<td align="right">135</td>
-<td align="left">2001-11-16</td>
+<td>174447</td>
+<td align="right">72</td>
+<td align="right">72</td>
+<td align="left">2001-08-24</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>103644</td>
-<td align="right">41</td>
-<td align="right">41</td>
-<td align="left">2006-10-12</td>
+<td>227074</td>
+<td align="right">96</td>
+<td align="right">96</td>
+<td align="left">2002-09-27</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>432554</td>
-<td align="right">186</td>
-<td align="right">186</td>
-<td align="left">2005-05-08</td>
+<td>607326</td>
+<td align="right">258</td>
+<td align="right">258</td>
+<td align="left">2001-11-20</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>682314</td>
-<td align="right">289</td>
-<td align="right">289</td>
-<td align="left">2004-03-15</td>
+<td>678031</td>
+<td align="right">287</td>
+<td align="right">287</td>
+<td align="left">2008-06-22</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>590580</td>
-<td align="right">252</td>
-<td align="right">252</td>
-<td align="left">2007-01-13</td>
+<td>595783</td>
+<td align="right">254</td>
+<td align="right">254</td>
+<td align="left">2002-04-13</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>590639</td>
-<td align="right">252</td>
-<td align="right">252</td>
-<td align="left">2007-03-13</td>
-<td align="right">4.960</td>
-<td align="right">0.466</td>
+<td>222132</td>
+<td align="right">93</td>
+<td align="right">93</td>
+<td align="left">2009-03-16</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>731534</td>
-<td align="right">314</td>
-<td align="right">314</td>
-<td align="left">2000-12-18</td>
+<td>346185</td>
+<td align="right">148</td>
+<td align="right">148</td>
+<td align="left">2008-11-13</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>694952</td>
-<td align="right">296</td>
-<td align="right">296</td>
-<td align="left">2010-10-20</td>
+<td>300458</td>
+<td align="right">127</td>
+<td align="right">127</td>
+<td align="left">2004-08-31</td>
 <td align="right">NA</td>
-<td align="right">NA</td>
+<td align="right">0.27</td>
 </tr>
 <tr class="even">
-<td>473532</td>
-<td align="right">201</td>
-<td align="right">201</td>
-<td align="left">2006-07-20</td>
+<td>252649</td>
+<td align="right">106</td>
+<td align="right">106</td>
+<td align="left">2010-10-07</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>338340</td>
-<td align="right">145</td>
-<td align="right">145</td>
-<td align="left">2001-05-22</td>
+<td>504900</td>
+<td align="right">215</td>
+<td align="right">215</td>
+<td align="left">2009-06-07</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>217885</td>
-<td align="right">91</td>
-<td align="right">91</td>
-<td align="left">2008-07-29</td>
-<td align="right">6.980</td>
-<td align="right">0.767</td>
+<td>332036</td>
+<td align="right">142</td>
+<td align="right">142</td>
+<td align="left">2003-02-16</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>130324</td>
-<td align="right">53</td>
-<td align="right">53</td>
-<td align="left">2010-11-01</td>
+<td>460438</td>
+<td align="right">197</td>
+<td align="right">197</td>
+<td align="left">2000-09-11</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>133882</td>
-<td align="right">56</td>
-<td align="right">56</td>
-<td align="left">2004-07-29</td>
-<td align="right">2.840</td>
-<td align="right">0.861</td>
+<td>114259</td>
+<td align="right">47</td>
+<td align="right">47</td>
+<td align="left">2006-11-06</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>452369</td>
-<td align="right">194</td>
-<td align="right">194</td>
-<td align="left">2004-08-08</td>
+<td>460836</td>
+<td align="right">197</td>
+<td align="right">197</td>
+<td align="left">2001-10-14</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>13442</td>
-<td align="right">5</td>
-<td align="right">5</td>
-<td align="left">2009-10-21</td>
+<td>331069</td>
+<td align="right">141</td>
+<td align="right">141</td>
+<td align="left">2004-06-24</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td>580259</td>
+<td align="right">247</td>
+<td align="right">247</td>
+<td align="left">2005-10-10</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td>682971</td>
+<td align="right">290</td>
+<td align="right">290</td>
+<td align="left">2000-01-01</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
@@ -34442,8 +34450,8 @@ df_ej</code></pre></div>
 <hr />
 </div>
 </div>
-<div id="muertes-por-armas-de-fuego-en-estados-unidos" class="section level2 unnumbered">
-<h2>Muertes por armas de fuego en Estados Unidos</h2>
+<div id="muertes-por-armas-de-fuego-en-eua" class="section level2">
+<h2><span class="header-section-number">3.4</span> Muertes por armas de fuego en EUA</h2>
 <p>Los datos que vamos a utilizar provienen principalmente de la base de datos de causas múltiples de la muerte de los Centros para el Control y Prevención de la Enfermedad (CDCs) de Estados Unidos, de certificados de defunción de los 50 estados. Se considera que esta fuente de información es la base de datos más completa de muertes por armas de fuego.</p>
 <p>Para más información puedes leer el artículo: <a href="https://fivethirtyeight.com/features/gun-deaths/" class="uri">https://fivethirtyeight.com/features/gun-deaths/</a></p>
 <p>Comencemos leyendo los datos para los años 2012, 2013 y 2014:</p>
@@ -34556,7 +34564,487 @@ guns_<span class="dv">14</span> &lt;-<span class="st"> </span><span class="kw">r
 <span class="st">    ggtitle(&quot;Lugar de homicidios por intención&quot;)</span></code></pre></div>
 <p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-54-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Dado que el homicidio ocurrió en una granja, lo más probable es que haya sido un suicidio.</p>
+<hr />
+<p><br> <br></p>
+<hr />
+</div>
+<div id="el-cuarteto-de-anscombe" class="section level2">
+<h2><span class="header-section-number">3.5</span> El Cuarteto de Anscombe</h2>
+<blockquote>
+<p>“The simple graph has brought more information to the data analyst’s mind than any other device.” — John Tukey</p>
+</blockquote>
+<p>En 1971 un estadístico llamado Frank Anscombe (fundador del departamento de Estadística de la Universidad de Yale) encontró cuatro conjuntos de datos (I, II, III y IV). Cada uno consiste de 11 observaciones y tienen las mismas propiedades estadísticas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">anscombe</code></pre></div>
+<table style="width:86%;">
+<colgroup>
+<col width="9%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="9%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x_1\)</span></th>
+<th><span class="math inline">\(y_1\)</span></th>
+<th><span class="math inline">\(x_2\)</span></th>
+<th><span class="math inline">\(y_2\)</span></th>
+<th><span class="math inline">\(x_3\)</span></th>
+<th><span class="math inline">\(y_3\)</span></th>
+<th><span class="math inline">\(x_4\)</span></th>
+<th><span class="math inline">\(y_4\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>10.0</p></td>
+<td><p>8.04</p></td>
+<td><p>10.0</p></td>
+<td><p>9.14</p></td>
+<td><p>10.0</p></td>
+<td><p>7.46</p></td>
+<td><p>8.0</p></td>
+<td><p>6.58</p></td>
+</tr>
+<tr class="even">
+<td><p>8.0</p></td>
+<td><p>6.95</p></td>
+<td><p>8.0</p></td>
+<td><p>8.14</p></td>
+<td><p>8.0</p></td>
+<td><p>6.77</p></td>
+<td><p>8.0</p></td>
+<td><p>5.76</p></td>
+</tr>
+<tr class="odd">
+<td><p>13.0</p></td>
+<td><p>7.58</p></td>
+<td><p>13.0</p></td>
+<td><p>8.74</p></td>
+<td><p>13.0</p></td>
+<td><p>12.74</p></td>
+<td><p>8.0</p></td>
+<td><p>7.71</p></td>
+</tr>
+<tr class="even">
+<td><p>9.0</p></td>
+<td><p>8.81</p></td>
+<td><p>9.0</p></td>
+<td><p>8.77</p></td>
+<td><p>9.0</p></td>
+<td><p>7.11</p></td>
+<td><p>8.0</p></td>
+<td><p>8.84</p></td>
+</tr>
+<tr class="odd">
+<td><p>11.0</p></td>
+<td><p>8.33</p></td>
+<td><p>11.0</p></td>
+<td><p>9.26</p></td>
+<td><p>11.0</p></td>
+<td><p>7.81</p></td>
+<td><p>8.0</p></td>
+<td><p>8.47</p></td>
+</tr>
+<tr class="even">
+<td><p>14.0</p></td>
+<td><p>9.96</p></td>
+<td><p>14.0</p></td>
+<td><p>8.10</p></td>
+<td><p>14.0</p></td>
+<td><p>8.84</p></td>
+<td><p>8.0</p></td>
+<td><p>7.04</p></td>
+</tr>
+<tr class="odd">
+<td><p>6.0</p></td>
+<td><p>7.24</p></td>
+<td><p>6.0</p></td>
+<td><p>6.13</p></td>
+<td><p>6.0</p></td>
+<td><p>6.08</p></td>
+<td><p>8.0</p></td>
+<td><p>5.25</p></td>
+</tr>
+<tr class="even">
+<td><p>4.0</p></td>
+<td><p>4.26</p></td>
+<td><p>4.0</p></td>
+<td><p>3.10</p></td>
+<td><p>4.0</p></td>
+<td><p>5.39</p></td>
+<td><p>19.0</p></td>
+<td><p>12.50</p></td>
+</tr>
+<tr class="odd">
+<td><p>12.0</p></td>
+<td><p>10.84</p></td>
+<td><p>12.0</p></td>
+<td><p>9.13</p></td>
+<td><p>12.0</p></td>
+<td><p>8.15</p></td>
+<td><p>8.0</p></td>
+<td><p>5.56</p></td>
+</tr>
+<tr class="even">
+<td><p>7.0</p></td>
+<td><p>4.82</p></td>
+<td><p>7.0</p></td>
+<td><p>7.26</p></td>
+<td><p>7.0</p></td>
+<td><p>6.42</p></td>
+<td><p>8.0</p></td>
+<td><p>7.91</p></td>
+</tr>
+<tr class="odd">
+<td><p>5.0</p></td>
+<td><p>5.68</p></td>
+<td><p>5.0</p></td>
+<td><p>4.74</p></td>
+<td><p>5.0</p></td>
+<td><p>5.73</p></td>
+<td><p>8.0</p></td>
+<td><p>6.89</p></td>
+</tr>
+</tbody>
+</table>
+<p>Por ejemplo, todos los conjuntos de datos I, II, III, y IV, tienen exactamente misma media de <span class="math inline">\(x\)</span>, <span class="math inline">\(\bar{x}_i = \bar{x}_j\)</span>, y misma media de <span class="math inline">\(y\)</span>, <span class="math inline">\(\bar{y}_i = \bar{y}_j\)</span> para toda <span class="math inline">\(i,j=1,2,3,4\)</span>. Además, se puede ver que todos tienen misma varianza muestral de <span class="math inline">\(x\)</span> y de <span class="math inline">\(y\)</span>. En cada conjunto de datos la correlación entre <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> es la misma, y por consiguiente, los coeficientes de la regresión lineal <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> también son iguales.</p>
+<table style="width:69%;">
+<colgroup>
+<col width="41%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>Media de <span class="math inline">\(x\)</span></p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="even">
+<td><p>Varianza muestral de <span class="math inline">\(x\)</span></p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="odd">
+<td><p>Media de <span class="math inline">\(y\)</span></p></td>
+<td><p>7.50</p></td>
+</tr>
+<tr class="even">
+<td><p>Varianza muestral de <span class="math inline">\(y\)</span></p></td>
+<td><p>4.12</p></td>
+</tr>
+<tr class="odd">
+<td><p>Correlación entre <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span></p></td>
+<td><p>0.816</p></td>
+</tr>
+<tr class="even">
+<td><p>Línea de regresión lineal</p></td>
+<td><p><span class="math inline">\(y = 3.00 + 0.500x\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>¿En qué son diferentes estos conjuntos de datos? ¿Es posible con la información anterior concluir que los cuatro conjuntos de datos deben ser similares? ¿Que tengan estadísticas similares asegura que provienen de un mismo modelo?</p>
+<p>Cuando analizamos los datos de manera gráfica en un histograma encontramos rápidamente que los conjuntos de datos son muy distintos.</p>
+<div style="text-align: center;">
+<strong>“Una imagen dice más que mil palabras.”</strong>
+</div>
+<img src="figuras/Anscombe.png" width="246" style="display: block; margin: auto;" />
+<p class="espacio">
+</p>
+<p>En la gráfica del primer conjunto de datos, se ven datos como los que se tendrían en una relación lineal simple con un modelo que cumple los supuestos de normalidad. La segunda gráfica (la de arriba a la derecha) muestra unos datos que tienen una asociación pero definitivamente no es lineal y el coeficiente de correlación no es relevante en este caso. En la tercera gráfica (abajo a la izquierda) están puntos alineados perfectamente en una línea recta, excepto por uno de ellos. En la última gráfica podemos ver un ejemplo en el cual basta tener una observación atípica para que se produzca un coeficiente de correlación alto aún cuando en realidad no existe una asociación lineal entre las dos variables.</p>
+<p>Edward Tufte usó el cuarteto en la primera página del primer capítulo de su libro The Visual Display of Quantitative Information, para enfatizar la importancia de mirar los datos antes de analizarlos. <span class="citation">(Tufte and Graves-Morris <a href="#ref-tufte2014visual">2014</a>)</span></p>
+</div>
+<div id="the-grammar-of-graphics-de-leland-wilkinson" class="section level2">
+<h2><span class="header-section-number">3.6</span> The <em>Grammar of Graphics</em> de Leland Wilkinson</h2>
+<p>Una ventaje de ggplot es que implementa una gramática de gráficas de forma organizada y con sentido orientada a esta forma de asociar variables con geometrías (Wilkinson 2005). En lugar de tener una lista enorme y conceptualmente plana de opciones para hacer gráficas, ggplot parte en varios pasos el procedimiento para realizar una gráfica:</p>
+<ol style="list-style-type: decimal">
+<li><p>primero, se debe proporcionar información a la función sobre qué datos y qué variables se van a utilizar.</p></li>
+<li><p>segundo, se debe vincular las variables que se van a utilizar en la gráfica con las características específicas que se requiere tener en la gráfica.</p></li>
+<li><p>tercero, se debe elegir una función <code>geom_</code> para indicar qué tipo de gráfica se dibujará, un diagrama de dispersión, una gráfica de barras o un diagrama de caja.</p></li>
+</ol>
+<p>En general, según Leland Wilkinson, hay dos principios generales que se deben seguir:</p>
+<ul>
+<li><p>La geometría utilizada debe coincidir con los datos que se están visualizando.</p></li>
+<li><p>La geometría utilizada debe ser fácil de interpretar.</p></li>
+</ul>
+<hr />
+</div>
+<div id="ggplot" class="section level2">
+<h2><span class="header-section-number">3.7</span> ggplot</h2>
+<p>Vamos a ver cómo visualizar los datos usando ggplot2. R tiene varios sistemas para hacer gráficas, pero ggplot2 es uno de los más elegantes y versátiles. ggplot2 implementa la <strong>gramática de gráficas</strong>, un sistema consistente para describir y construir gráficas. Con ggplot2, pueden hacerse cosas más rápido, aprendiendo un único sistema consistente, y aplicándolo de muchas formas.</p>
+<p>Para mayor información sobre los fundamentos teóricos de ggplot2 se recomienda leer el artículo titulado “The Layered Grammar of Graphics”, visitando la siguiente liga: <a href="http://vita.had.co.nz/papers/layered-grammar.pdf" class="uri">http://vita.had.co.nz/papers/layered-grammar.pdf</a>.</p>
+<p>Lo más importante para entender ggplot es comprender la estructura y la lógica para hacer una gráfica. El código debe decir cuáles son las conexiones entre las variables en los datos y los elementos de la gráfica tal como los vamos a ver en la pantalla, los puntos, los colores y las formas. En ggplot, estas conexiones lógicas entre los datos y los elementos de la gráfica se denominan <em>asignaciones estéticas</em> o simplemente <em>estéticas</em>. Se comienza una gráfica indicando a ggplot cuáles son los datos, qué variables en los datos se van a usar y luego cómo las variables en estos datos se mapean lógicamente en la estética de la gráfica. Luego, toma el resultado y se indica qué tipo de gráfica se desea, por ejemplo, un diagrama de dispersión, una gráfica de barras, o una gráfica de línea. En ggplot este tipo general de gráficas se llama <code>geom</code>. Cada <em>geom</em> tiene una función que lo crea. Por ejemplo, <code>geom_point()</code> hace diagramas de dispersión, <code>geom_bar()</code> hace gráficas de barras, <code>geom_line()</code> hace gráficas de línea, y así sucesivamente. Para combinar estas dos piezas, el objeto <code>ggplot()</code> y el <code>geom</code> se suman literalmente en una expresión, utilizando el símbolo “<code>+</code>”.</p>
+<div style="text-align: center;">
+<strong>¿Qué geometrías son más adecuadas para cada tipo de variable?</strong>
+</div>
+<center>
+<img src="figuras/visual-variables.png" width="600px" />
+</center>
+<p class="espacio">
+</p>
+<p>Usaremos los datos de <code>gapminder</code> para hacer nuestras primeras gráficas. Vamos a asegurarnos de que la biblioteca que contiene los datos esté cargada:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gapminder)</code></pre></div>
+<p>Esto hace que una tabla de datos esté disponible para su uso. Para ver un pedazo de la tabla utilizamos la función <code>glimpse()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">glimpse</span>(gapminder)</code></pre></div>
+<pre><code>## Observations: 1,704
+## Variables: 6
+## $ country   &lt;fct&gt; Afghanistan, Afghanistan, Afghanistan, Afghanistan, ...
+## $ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia...
+## $ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992...
+## $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.8...
+## $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 1488...
+## $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 78...</code></pre>
+<p>Supongamos que queremos graficar la esperanza de vida vs el PIB per cápita para todos los años y países en los datos. Haremos esto creando un objeto que contenga parte de la información necesario y a partir de ahí vamos a construir nuestra gráfica. Primero debemos indicarle a la función <code>ggplot()</code> qué datos estamos utilizando:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder)
+p</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p>En este punto, ggplot sabe cuáles son nuestros datos, pero no cuál es el mapeo, es decir, qué variables de los datos deben correlacionarse con qué elementos visuales de la trama. Tampoco sabe qué tipo de trama queremos. En ggplot, las asignaciones se especifican utilizando la función <code>aes()</code>. Me gusta esta:</p>
+<p>Hasta este punto ggplot conoce qué datos se van a utilizar para hacer la gráfico, pero no el <em>mapeo</em> o <em>asociación</em> de qué variables se van a relacionar con los elementos visuales de la gráfica. Tampoco se sabe qué tipo de gráfica se va a hacer. En ggplot, las asignaciones se especifican utilizando la función <code>aes()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder,
+            <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap,
+                          <span class="dt">y =</span> lifeExp))</code></pre></div>
+<p>El argumento <code>mapping = aes(...)</code> <em>vincula variables a cosas que se van a ver en la gráfica</em>. Los valores de <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> son los más obvios. Otras asignaciones estéticas pueden incluir, por ejemplo, el color, la forma, el tamaño y el tipo de línea (si una línea es sólida o discontinua, o algún otro patrón). Un mapeo no dice directamente qué formas o colores van a aparecer en la gráfica. Más bien, dicen qué <em>variables</em> en los datos serán <em>representadas</em> por los elementos visuales como color, forma o un punto.</p>
+<p>¿Qué sucede si simplemente escribimos <code>p</code> en la consola y ejecutamos?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-61-1.png" width="480" /></p>
+<p>El objeto <code>p</code> ha sido creado por la función <code>ggplot()</code>, y ya tiene información sobre las asignaciones que queremos, junto con mucha otra información añadida por defecto. (Si quiere ver cuánta información hay en el objeto <code>p</code>, intente solicitar <code>str(p)</code>). Sin embargo, no le hemos dado ninguna instrucción acerca de qué tipo de diagrama dibujar. Necesitamos agregar una capa a la trama. Esto significa elegir una función <code>geom_*</code>. Usaremos <code>geom_point()</code>. Sabe cómo tomar valores xey y trazarlos en un diagrama de dispersión.</p>
+<p>Se ha creado el objeto <code>p</code> utilizando la función <code>ggplot()</code> y este objeto ya tiene información de las asignacionesque queremos. Sin embargo, no se le ha dado ninguna instrucción sobre qué tipo de gráfica se quiere dibujar. Necesitamos agregar una capa a la gráfica. Esto se hace mediante el símbolo <code>+</code>. Esto significa elegir una función <code>geom_</code>. Utilizaremos <code>geom_point()</code> para hacer un diagrama de dispersión.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-62-1.png" width="480" /></p>
+<p>El mapeo de las propiedades estéticas se denomina <em>escalamiento</em> y depende del tipo de variable, las variables discretas (por ejemplo, genero, escolaridad, país) se mapean a distintas escalas que las variables continuas (variables numéricas como edad, estatura, etc.), los <em>defaults</em> para algunos atributos son (estos se pueden modificar):</p>
+<table style="width:50%;">
+<colgroup>
+<col width="15%" />
+<col width="20%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>aes</th>
+<th>Discreta</th>
+<th>Continua</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Color (<code>color</code>)</td>
+<td>Arcoiris de colores</td>
+<td>Gradiente de colores</td>
+</tr>
+<tr class="even">
+<td>Tamaño (<code>size</code>)</td>
+<td>Escala discreta de tamaños</td>
+<td>Mapeo lineal entre el área y el valor</td>
+</tr>
+<tr class="odd">
+<td>Forma (<code>shape</code>)</td>
+<td>Distintas formas</td>
+<td>No aplica</td>
+</tr>
+<tr class="even">
+<td>Transparencia (<code>alpha</code>)</td>
+<td>No aplica</td>
+<td>Mapeo lineal a la transparencia</td>
+</tr>
+</tbody>
+</table>
+<p>Los <em><em>geoms</em></em> controlan el tipo de gráfica:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>()</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-63-1.png" width="480" /></p>
+<p>Podemos ver de inmediato que algunos de estos <code>geoms</code> hacen mucho más que simplemente poner puntos en una cuadrícula. Aquí <code>geom_smooth()</code> ha calculado una línea suavizada y la región sombreada representa el error estándar de la línea suavizada. Si queremos ver los puntos de datos y la línea juntos, simplemente agregamos <code>geom_point()</code> de nuevo como una capa adicional utilizando <code>+</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder,
+            <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap,
+                          <span class="dt">y=</span>lifeExp))
+p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>()</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-64-1.png" width="480" /></p>
+<p>El mensaje de la consola de R nos dice que la función <code>geom_smooth()</code> está utilizando un método llamado gam, que en este caso significa que se ajusta a un modelo aditivo generalizado. Esto sugiere que tal vez haya otros métodos en <code>geom_smooth()</code>. Podemos intentar agregar <code>method = &quot;lm&quot;</code> (para “modelo lineal”) como un argumento para <code>geom_smooth()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder,
+            <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap,
+                          <span class="dt">y=</span>lifeExp))
+p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>)</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-65-1.png" width="480" /></p>
+<p>Se puede agregar al mapeo del color de la línea el continente y del relleno de los puntos (fill) también el continente para obtener una gráfica que nos dé una idea más general de como se tiene esta relación por continente.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder,
+            <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap,
+                          <span class="dt">y =</span> lifeExp,
+                          <span class="dt">color =</span> continent,
+                          <span class="dt">fill =</span> continent))
+p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&#39;loess&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_x_log10</span>()</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-66-1.png" width="960" /></p>
+<p class="espacio">
+</p>
+</div>
+<div id="un-histograma-de-las-muertes-en-iraq" class="section level2">
+<h2><span class="header-section-number">3.8</span> Un histograma de las muertes en Iraq</h2>
+<p>Iraq Body Count (IBC) mantiene la base de datos pública más grande sobre muertes violentas de civiles desde la invasión en Iraq del 2003. Los datos de IBC provienen de informes de medios cruzados, de hospitales, morgue, ONG y cifras o registros oficiales.</p>
+<p>Para mayor información puedes visitar <a href="https://www.iraqbodycount.org/" class="uri">https://www.iraqbodycount.org/</a>.</p>
+<p>Los datos los leemos con la función <code>read_csv()</code> de la librería <code>readr</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ibc &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/ibc-incidents-2016-8-8.csv&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   IBC_code = col_character(),
+##   Start_Date = col_character(),
+##   End_Date = col_character(),
+##   Time = col_character(),
+##   Location = col_character(),
+##   Target = col_character(),
+##   Weapons = col_character(),
+##   Deaths_recorded = col_integer(),
+##   Sources = col_character()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(ibc)</code></pre></div>
+<pre><code>## Observations: 48,084
+## Variables: 9
+## $ IBC_code        &lt;chr&gt; &quot;x493g&quot;, &quot;k1848&quot;, &quot;x493f&quot;, &quot;x493h&quot;, &quot;x490&quot;, &quot;x...
+## $ Start_Date      &lt;chr&gt; &quot;1-Jul-06&quot;, &quot;31-Aug-05&quot;, &quot;1-Jun-06&quot;, &quot;1-Aug-06...
+## $ End_Date        &lt;chr&gt; &quot;31-Jul-06&quot;, &quot;31-Aug-05&quot;, &quot;30-Jun-06&quot;, &quot;31-Aug...
+## $ Time            &lt;chr&gt; NA, &quot;11:30 AM&quot;, NA, NA, NA, NA, NA, NA, NA, NA...
+## $ Location        &lt;chr&gt; &quot;Baghdad (city and governorate)&quot;, &quot;Aimma Bridg...
+## $ Target          &lt;chr&gt; &quot;additional violent deaths recorded at the Bag...
+## $ Weapons         &lt;chr&gt; &quot;some 90 percent by gunfire - may include some...
+## $ Deaths_recorded &lt;int&gt; 982, 965, 919, 866, 709, 633, 625, 600, 590, 5...
+## $ Sources         &lt;chr&gt; &quot;REU 09 Aug, AP 09 Aug, BBC 09 Aug, NYT 16 Aug...</code></pre>
+<p>Primero filtramos los incidentes en los que hubo al menos cinco fatalidades:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ibc_fatalidades &lt;-<span class="st"> </span>ibc <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Deaths_recorded <span class="op">&gt;=</span><span class="st"> </span><span class="dv">5</span>)</code></pre></div>
+<p>Una forma fácil de dibujar un histograma es utilizando la geometría <code>geom_histogram()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ibc_fatalidades, <span class="kw">aes</span>(<span class="dt">x=</span>Deaths_recorded)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_log10</span>()</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+</div>
+<div id="inglehartwelzel-un-mapa-cultural-del-mundo" class="section level2">
+<h2><span class="header-section-number">3.9</span> Inglehart–Welzel: un mapa cultural del mundo</h2>
+<p>Los teóricos de la modernización de Karl Marx a Daniel Bell han sostenido que el desarrollo económico trae cambios culturales penetrantes. Pero otros, desde Max Weber hasta Samuel Huntington, han afirmado que los valores culturales son una influencia duradera y autónoma sobre la sociedad.</p>
+<p>En un artículo de la ciencia política, los autores Inglehart y Welzel de la Universidad de Michigan, afirman que el desarrollo económico está vinculado a cambios sistemáticos en los valores culturales. Utilizando los datos de la encuesta de valores mundiales WVS (World Values Survey), crearon dos índices: uno que pone énfasis en valores tradicionales y otro que pone énfasis en valores de supervivencia.</p>
+<p>Características de valores tradicionales en una sociedad:</p>
+<ul>
+<li><p>fuerte sentimiento de orgullo nacional</p></li>
+<li><p>le da más importancia a que un niño aprenda obediencia y fé religiosa en lugar de independencia y determinación</p></li>
+<li><p>el aborta nunca es justificada</p></li>
+<li><p>fuerte sentido de orgullo nacional</p></li>
+<li><p>favorece más el respeto por la autoridad.</p></li>
+</ul>
+<p>Los valores seculares o racionales enfatizan lo opuesto.</p>
+<p>Características de valores de supervivencia en una sociedad:</p>
+<ul>
+<li><p>le da prioridad a la economía sobre la calidad de vida</p></li>
+<li><p>se describe como no muy feliz</p></li>
+<li><p>aún no ha firmado o jamás firmaría una petición</p></li>
+<li><p>la homosexualidad nuna es justificada</p></li>
+<li><p>se debe ser muy cuidadoso al confiar en las personas.</p></li>
+</ul>
+<p>Los valores de autoexpresión enfatizan lo opuesto.</p>
+<p><img src="figuras/Culture_Map_2017.png" width="240" style="display: block; margin: auto;" /></p>
+<p>Ronald Inglehart en su artículo de 1971 <strong>The silent revolution in Europe. Intergenerational change in post-industrial societies.</strong> publicado en el <strong>American Political Science Review</strong>, propone una medida de los valores postmaterialistas de una sociedad. Esta medida se conoce como índice post-materialista de Inglehart (4-item) .</p>
+<p>La siguiente pregunta de la encuesta es el punto de partida para medir el materialismo o el post-materialismo: “Si tuvieras que elegir entre las siguientes cosas, ¿cuáles son las dos que te parecen más deseables?”</p>
+<ul>
+<li><p>Mantener el orden en la nación.</p></li>
+<li><p>Dando a la gente más voz en importantes decisiones políticas.</p></li>
+<li><p>La lucha contra el aumento de los precios.</p></li>
+<li><p>Proteger la libertad de expresión.</p></li>
+</ul>
+<p>La medida se basa entonces en la observación de que dos de las cuatro opciones, la primera y la tercera, se consideran como “preferencia hacia el valor adquisitivo en relación con la protección y adquisición de bienes”. Si se eligen las dos opciones postmaterialistas, entonces la puntuación es 3. Si se elige sólo una opción post-materialista, entonces la puntuación es 2, y de lo contrario es 1. Como todas las opciones podrían ser deseables, la medida se relaciona con la “prioridad relativa” de las elecciones materialistas sobre la segunda y cuarta y aborda las concesiones que típicamente conllevan las decisiones políticas. La conceptualización del postmaterialismo a lo largo de un continuo unidimensional está cerca del concepto de la “jerarquía de necesidades” propuesta por Maslow.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+factores_inglehart &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="dt">file =</span> <span class="st">&quot;datos/factores_inglehart.csv&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   country_code = col_integer(),
+##   country = col_character(),
+##   region = col_character(),
+##   reg = col_character(),
+##   traditional_secular = col_double(),
+##   survival_selfexpression = col_double()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(factores_inglehart)</code></pre></div>
+<pre><code>## Observations: 60
+## Variables: 6
+## $ country_code            &lt;int&gt; 112, 12, 152, 156, 158, 170, 196, 218,...
+## $ country                 &lt;chr&gt; &quot;Belarus&quot;, &quot;Algeria&quot;, &quot;Chile&quot;, &quot;China&quot;...
+## $ region                  &lt;chr&gt; &quot;Eastern Europe&quot;, &quot;Northern Africa&quot;, &quot;...
+## $ reg                     &lt;chr&gt; &quot;Europe &amp; Eurasia&quot;, &quot;Middle East &amp; Nor...
+## $ traditional_secular     &lt;dbl&gt; 0.91765783, -0.68002658, 0.14525131, 1...
+## $ survival_selfexpression &lt;dbl&gt; -0.31871982, -0.33001995, 1.57689761, ...</code></pre>
+<div id="creando-un-ggplot" class="section level3">
+<h3><span class="header-section-number">3.9.1</span> Creando un ggplot</h3>
+<p>Para graficar <code>factores_inglehart</code>, ejecuta este código para poner <code>survival_selfexpression</code> en el eje x (eje horizontal) y <code>traditional_secular</code> en el eje y (eje vertical):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> factores_inglehart) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> survival_selfexpression, <span class="dt">y =</span> traditional_secular))</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+</div>
+<div id="mapeos-aesthetics" class="section level3">
+<h3><span class="header-section-number">3.9.2</span> Mapeos: Aesthetics</h3>
+<blockquote>
+<p>“The greatest value of a picture is when it forces us to notice what we never expected to see.” — John Tukey</p>
+</blockquote>
+<p>En la gráfica de abajo, un grupo de puntos (en rojo) parece estar fuera de la tendencia lineal. Estos países tienen menores valores de supervivencia de lo que esperaríamos de acuerdo a sus mayores valores de tradicionalismo.</p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p>Podemos formular la hipótesis de que se trata de países latinoamericanos. Una forma de probar esta hipótesis es con la variable <code>reg</code>. La variable <code>reg</code> del conjunto de datos <code>factores_inglehart</code> clasifica a los países de acuerdo a su región geográfica.</p>
+<p>Podemos agregar una tercera variable, como <code>reg</code>, a un diagrama de dispersión bidimensional asignándolo a un <strong>aesthetic</strong> o mapeo. Un mapeo es una propiedad visual de los objetos en la gráfica.</p>
+<p>Un mapeo incluye cosas como el tamaño, la forma o el color de los puntos. Puede mostrar un punto (como el que se muestra a continuación) de diferentes maneras cambiando los valores de sus propiedades de mapeos.</p>
+<p>Aquí cambiamos los niveles de tamaño, forma y color de un punto para hacer que el punto sea pequeño, triangular o azul:</p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p>Podemos transmitir información sobre los datos mapeando los aesthetics en la gráfica a las variables del data frame. Por ejemplo, podemos asignar los colores de los puntos a la variable <code>reg</code> para revelar la región de cada país.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> factores_inglehart) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> survival_selfexpression, <span class="dt">y =</span> traditional_secular, <span class="dt">color=</span>reg))</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<p>Para asignar una característica a una variable, asociamos el nombre del mapeo al nombre de la variable dentro de <code>aes()</code>. ggplot2 asignará automáticamente un nivel único de dicha característica (o mapeo) a cada valor único de la variable, un proceso conocido como <strong>escalamiento</strong>. ggplot2 también agregará una leyenda que explique qué niveles corresponden a qué valores.</p>
+<p>También podríamos agregar etiquetas:</p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-77-1.png" width="960" /></p>
+<div id="objetos-geometricos" class="section level4">
+<h4><span class="header-section-number">3.9.2.1</span> Objetos geométricos</h4>
+<p>¿En qué se parecen las siguiente dos gráficas?</p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-1.png" width="50%" /><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-2.png" width="50%" /></p>
+<p>Ambas gráficas contienen la misma variable x, la misma variable y, y ambas describen los mismos datos. Pero las gráficas no son idénticas. Cada una utiliza un objeto visual diferente para representar los datos. En la sintaxis de ggplot2, decimos que usan diferentes <strong>geoms</strong>.</p>
+<p>Un <strong>geom</strong> es un objeto geométrico que una gráfica utiliza para representar a los datos. La gente a menudo describe las gráficas por el tipo de geometría que usa la gráfica. Por ejemplo, las gráficas de barras usan geometrías de barras, los gráficos de línea utilizan geoms de línea, los boxplots usan geoms de boxplot, y así sucesivamente. Los diagramas de dispersión rompen la tendencia; Utilizan la geometría de punto.</p>
+<p>La gráfica de la izquierda utiliza el punto geom, y la gráfica de la derecha utiliza el geom de smooth, una línea ajustada a los datos. Para hacer las gráficas mostradas arriba se puede utilizar el siguiente código.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#izquierda</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> factores_inglehart) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> survival_selfexpression, <span class="dt">y =</span> traditional_secular))
 
+<span class="co">#derecha</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> factores_inglehart) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> survival_selfexpression, <span class="dt">y =</span> traditional_secular), <span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>)</code></pre></div>
+<p>Cada función geom en ggplot2 toma un argumento <code>mapping</code>. Sin embargo, no todas las propiedades de <strong>aesthetics</strong> funciona con cada geom. Podríamos cambiar la forma de un punto, pero no la “forma” de una línea. Por otro lado, podríamos establecer el tipo de línea de una línea. <code>geom_smooth()</code> dibujará una línea diferente, con un tipo de línea diferente, para cada valor único de la variable que se asigna al tipo de línea.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> factores_inglehart) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> survival_selfexpression, <span class="dt">y =</span> traditional_secular, <span class="dt">linetype =</span> reg), <span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">se =</span> F, <span class="dt">span =</span> <span class="dv">1</span>)</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<p>Aquí <code>geom_smooth()</code> separa los países en líneas basándose en su valor de <code>reg</code> (región geográfica).</p>
+<p>Podemos superponer las líneas encima de los datos sin procesar y luego coloreándolo todo de acuerdo a <code>reg</code>.</p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+<p>Para mostrar varios geoms en la misma gráfica, agregamos varias funciones geom a <code>ggplot()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> factores_inglehart) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> survival_selfexpression, <span class="dt">y =</span> traditional_secular)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> survival_selfexpression, <span class="dt">y =</span> traditional_secular), <span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>)</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<p>Este código genera la misma gráfica que el código anterior:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> factores_inglehart, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> survival_selfexpression, <span class="dt">y =</span> traditional_secular)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>)</code></pre></div>
+<p>Si colocan asignaciones en una función <code>geom</code>, <code>ggplot2</code> las tratará como asignaciones locales para cada capa, de tal forma que usará estas asignaciones para extender o sobrescribir las asignaciones globales <em>para esa capa solamente</em>. Esto hace posible visualizar elementos diferentes en diferentes capas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> factores_inglehart, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> survival_selfexpression, <span class="dt">y =</span> traditional_secular)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> reg)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>)</code></pre></div>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-tufte2014visual">
+<p>Tufte, Edward, and P Graves-Morris. 2014. “The Visual Display of Quantitative Information.; 1983.”</p>
 </div>
 </div>
             </section>
