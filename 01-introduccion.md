@@ -742,7 +742,7 @@ dds_blancos_hispanos %>%
 ```
 ## # A tibble: 6 x 3
 ##   Age_Cohort Hispanic `White not Hispanic`
-## * <ord>         <dbl>                <dbl>
+##   <ord>         <dbl>                <dbl>
 ## 1 0-5            1393                 1367
 ## 2 6-12           2312                 2052
 ## 3 13-17          3955                 3904
@@ -771,7 +771,7 @@ dds_blancos_hispanos %>%
 ```
 ## # A tibble: 6 x 3
 ##   Age_Cohort Hispanic `White not Hispanic`
-## * <ord>         <dbl>                <dbl>
+##   <ord>         <dbl>                <dbl>
 ## 1 0-5           11.7                  4.99
 ## 2 6-12          24.2                 11.5 
 ## 3 13-17         27.4                 16.7 
