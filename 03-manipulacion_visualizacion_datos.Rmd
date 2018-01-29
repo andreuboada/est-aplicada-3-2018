@@ -643,7 +643,110 @@ df_ej %>%
 
 ---
 
+## Muertes por armas de fuego en Estados Unidos {-}
 
+Los datos que vamos a utilizar provienen principalmente de la base de datos de causas múltiples de la muerte de los Centros para el Control y Prevención de la Enfermedad (CDCs) de Estados Unidos, de certificados de defunción de los 50 estados. Se considera que esta fuente de información es la base de datos más completa de muertes por armas de fuego.
+
+Para más información puedes leer el artículo: <https://fivethirtyeight.com/features/gun-deaths/>
+
+Comencemos leyendo los datos para los años 2012, 2013 y 2014:
+
+```{r, message=FALSE, warning=FALSE, comment=NA, results='hide'}
+guns_12 <- read_csv("datos/guns_12.csv", na = "")
+guns_13 <- read_csv("datos/guns_13.csv", na = "")
+guns_14 <- read_csv("datos/guns_14.csv", na = "")
+```
+
+Las tres tablas tienen las mismas variables en el mismo orden. Examinemos la tabla para el año 2012:
+
+```{r}
+glimpse(guns_12)
+```
+
+
+Para pegar las tablas para los 3 años vamos a utilizar la función `bind_rows()` del paquete `dplyr`:
+
+```{r}
+guns <- guns_12 %>%
+  bind_rows(guns_13) %>%
+  bind_rows(guns_14)
+```
+
+
+Veamos otro ejemplo de cómo recodificar variables categóricas, en este caso para la variable de nivel educativo:
+
+```{r, message=FALSE, warning=FALSE, comment=NA, results=FALSE}
+guns <- guns %>%
+  mutate(education = ifelse(education_flag == 1,
+                            cut(as.numeric(education_03), breaks = c(0, 2, 3, 5, 8, 9, labels = c("Less than HS", "HS/GED", "Some college", "BA+", NA))),
+                            cut(as.numeric(education_89), breaks = c(0, 11, 12, 15, 17, 99), labels = c("Less than HS", "HS/GED", "Some college", "BA+", NA))))
+
+```
+
+
+Otro ejemplo, para la variable de raza:
+
+```{r}
+guns <- guns %>%
+  mutate(race = as.integer(race),
+         race = ifelse(hispanic > 199 & hispanic <996, "Hispanic",
+                       ifelse(race == "01", "White",
+                              ifelse(race == "02", "Black",
+                                     ifelse(as.numeric(race) >= 4 & as.numeric(race) <= 78, "Asian/Pacific Islander","Native American/Native Alaskan")))),
+         race = ifelse(is.na(race), "Unknown", race))
+```
+
+
+Para quedarnos con las variables con las que vamos a trabajar utilizamos la función `select()`:
+
+```{r}
+guns <- guns %>%
+  select(year, month, intent, police, sex, age, race, hispanic, place, education)
+```
+
+Veamos de nuevo cómo es la estructura de la tabla:
+
+```{r}
+str(guns)
+```
+
+Supongamos que nos interesa analizar el número de suicidios por arma de fuego para cada uno de los tres años. Esto quiere decir que es necesario agrupar y usar una función de resumen:
+
+```{r}
+guns %>%
+  filter(intent == "Suicide") %>%
+  group_by(year) %>%
+  summarize(suicides = n())
+```
+
+
+Supongamos que deseamos filtar (quitar las observaciones) de homicidios para los cuales se tiene la categoría de "Other", para ello utilizamos la función `filter()`:
+
+```{r}
+guns_sin_especificar <- guns %>%
+  filter(place != "Other unspecified" & place != "Other specified")
+```
+
+
+Podemos analizar la siguiente gráfica de mosaico:
+
+```{r, fig.height=5, fig.width=6, message=FALSE, warning=FALSE, fig.align='center'}
+ggplot(guns_sin_especificar, aes(x=as.factor(place), fill=as.factor(intent))) +
+    geom_bar(position='fill') +
+    coord_flip() +
+    theme(aspect.ratio = 1,legend.position="bottom",
+          axis.text.y=element_text(color='black',size=10),
+          axis.text.x=element_text(color='black',size=10),
+          axis.title.x=element_text(size=10),
+          axis.title.y=element_text(size=10),
+          legend.text=element_text(size=10)) +
+    scale_fill_discrete("") +
+    ylab('Proporción') + xlab("Lugar") +
+    ggtitle("Lugar de homicidios por intención")
+```
+
+
+Dado que el homicidio ocurrió en una granja, lo más probable es que haya sido un suicidio.
 
 
 
