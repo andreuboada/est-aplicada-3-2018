@@ -207,6 +207,10 @@ La mayor parte de estos problemas se pueden arreglar con pocas herramientas, a c
 
 Repasaremos los problemas más comunes que se encuentran en conjuntos de datos sucios y mostraremos cómo se puede manipular la tabla de datos (usando las funciones *gather* y *spread*) con el fin de estructurarla para que cumpla los principios de datos limpios.
 
+<br>
+<br>
+---
+
 #### 1. Los encabezados de las columnas son valores  {-}
 
 Analicemos los datos que provienen de una encuesta de [Pew Research](http://www.pewforum.org/2009/01/30/income-distribution-within-us-religious-groups/) que investiga la relación entre ingreso y afiliación religiosa. ¿Cuáles son las variables en estos datos?
@@ -257,10 +261,11 @@ ggplot(pew_tidy_2, aes(x = income, y = percent, group = religion)) +
 
 En el código de arriba utilizamos las funciones `group_by`, `filter` y `mutate` que estudiaremos más adelante.
 
-Otro ejemplo, 
+Otro ejemplo,
+
 ```{r}
 billboard <- tbl_df(read.csv("datos/billboard.csv", stringsAsFactors = FALSE))
-billboard
+billboard %>% sample_n(5) %>% knitr::kable()
 ```
 
 Queremos apilar las semanas de manera que sea una sola columna (nuevamente alargamos los datos):
@@ -281,7 +286,7 @@ billboard_tidy <- billboard_long %>%
     week = extract_numeric(week),
     date = as.Date(date.entered) + 7 * (week - 1)) %>%
   select(-date.entered)
-billboard_tidy
+billboard_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
 
@@ -289,7 +294,7 @@ Nuevamente, podemos hacer gráficas facilmente.
 
 ```{r, fig.height = 3.8, fig.width = 7.7}
 tracks <- billboard_tidy %>%
-  filter(track %in% c("Higher", "Amazed", "Kryptonite", "Breathe", "With Arms Wide Open"))
+  filter(track %in% c("Come On Over Baby (A...", "What A Girl Wants", "Say My Name", "Jumpin' Jumpin'", "Bye Bye Bye"))
 
 ggplot(tracks, aes(x = date, y = rank)) +
   geom_line() + 
@@ -297,13 +302,13 @@ ggplot(tracks, aes(x = date, y = rank)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
+<br>
+<br>
+---
 
 #### 2. Una columna asociada a más de una variable {-}
 
-La siguiente base de datos proviene de la Organización Mundial de la Salud y
-contiene el número de casos confirmados de tuberculosis por país y año, la
-información esta por grupo demográfico de acuerdo a sexo (m, f), y
-edad (0-4, 5-14, etc).
+La siguiente base de datos proviene de la Organización Mundial de la Salud y contiene el número de casos confirmados de tuberculosis por país y año, la información esta por grupo demográfico de acuerdo a sexo (m, f), y edad (0-4, 5-14, etc).
 
 ```{r message=F, warning=F, paged.print=FALSE}
 library(countrycode)
@@ -319,7 +324,7 @@ De manera similar, utilizando la función `gather()` se busca apilar las columna
 ```{r}
 tb_long <- tb %>%
   gather(demog, casos, new_sp_m04:new_sp_fu, na.rm=TRUE)
-knitr::kable(tb_long %>% head(20))
+tb_long %>% sample_n(10) %>% knitr::kable()
 ```
 
 
@@ -357,7 +362,9 @@ tb_tidy <- tidyr::separate(tb_long, demog, c("sex", "age"), 8)
 tb_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
-
+<br>
+<br>
+---
 
 #### 3. Variables almacenadas en filas y columnas {-}
 
@@ -409,9 +416,8 @@ En ocasiones las bases de datos involucran valores en diferentes niveles, endife
 ¿Cuáles son las unidades observacionales de los datos de billboard?
 
 ```{r}
-billboard_tidy %>% sample_n(20) %>% knitr::kable()
+billboard_tidy %>% sample_n(5) %>% select(artist, track, year, time) %>% knitr::kable()
 ```
-
 
 Separemos esta base de datos en dos: la tabla canción que almacena artista, nombre de la canción y duración; la tabla rank que almacena el ranking de la canción en cada semana.
 
@@ -421,8 +427,8 @@ song <- billboard_tidy %>%
   unique() %>%
   arrange(artist) %>%
   mutate(song_id = row_number(artist))
-song %>% knitr::kable()
 ```
+
 
 
 ```{r}
@@ -469,6 +475,175 @@ specdata <- specdata_US %>%
 
 specdata %>% sample_n(20) %>% knitr::kable()
 ```
+
+#### 6. Otras consideraciones {-}
+
+En las buenas prácticas es importante tomar en cuenta los siguientes puntos:
+
+* Incluir un encabezado con el nombre de las variables.
+
+* Los nombres de las variables deben ser entendibles (e.g. age_at_diagnosis es mejor que AgeDx).
+
+* En general los datos se deben guardar en un archivo por tabla.
+
+* Escribir un script con las modificaciones que se hicieron a los _datos crudos_ (reproducibilidad).
+
+* Otros aspectos importantes en la _limpieza_ de datos son: selección del tipo de variables (por ejemplo fechas), datos faltantes, _typos_ y detección de valores atípicos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+## *Split-apply-combine*
+
+```{r, echo = F, fig.align='center', out.width='12%'}
+knitr::include_graphics("figures/lib-dplyr.png")
+```
+
+Muchos problemas de análisis de datos involucran la aplicación de la estrategia **_split-apply-combine_** de [Hadley Whickam, 2011](http://www.jstatsoft.org/v40/i01/paper). Esto se traduce en realizar filtros, cálculos y agregación de datos.
+
+
+
+```{block2, type = "nota"}
+**_Split-apply-combine_**
+  
+1. **Separa** la base de datos original.
+
+2. **Aplica** funciones a cada subconjunto.
+
+3. **Combina** los resultados en una nueva base de datos.
+
+Consiste en romper un problema en pedazos (de acuerdo a una variable de interés), operar sobre cada subconjunto de manera independiente (calcular la media de cada grupo) y después unir los pedazos nuevamente. 
+```
+
+```{r, echo = F, fig.align='center', dpi=100}
+knitr::include_graphics("figuras/divide-aplica-combina.png")
+```
+
+
+Cuando pensamos como implementar la estrategia divide-aplica-combina es natural pensar en iteraciones para recorrer cada grupo de interés y aplicar las funciones. 
+
+
+```{block2, type = "comentario"}
+Para esto usaremos la librería `dplyr` que 
+contiene funciones que facilitan la implementación de la 
+estrategia.
+```
+
+En este taller se estudiarán las siguientes funciones de la librería `dplyr`:
+  
+* **filter**: obtiene un subconjunto de las filas de acuerdo a una condición.
+* **select**: selecciona columnas de acuerdo al nombre.
+* **arrange**: re ordena las filas.
+* **mutate**: agrega nuevas variables.
+* **summarise**: reduce variables a valores (crear nuevas bases de datos).
+
+Para mostrar las funciones se usará el siguiente dataframe.
+  
+```{r}
+df_ej <- data.frame(genero = c("mujer", "hombre", "mujer", "mujer", "hombre"), 
+                    estatura = c(1.65, 1.80, 1.70, 1.60, 1.67))
+df_ej
+```
+
+#### Filtrar {-}
+
+Filtrar una base de datos dependiendo de una condición requiere la función `filter()` que tiene los siguientes argumentos `dplyr::filter(data, condition)`. 
+
+```{r}
+df_ej %>% filter(genero == "mujer")
+```
+
+
+#### Seleccionar {-}
+
+Elegir columnas de un conjunto de datos se puede hacer con la función `select()` que tiene los siguientes argumentos `dplyr::select(data, seq_variables)`. 
+
+```{r}
+df_ej %>% select(genero)
+```
+
+También, existen funciones que se usan exclusivamente en `select()`:
+
+- `starts_with(x, ignore.case = TRUE)`: los nombres empiezan con _x_.
+
+- `ends_with(x, ignore.case = TRUE)`: los nombres terminan con _x_.
+
+- `contains(x, ignore.case = TRUE)`: selecciona las variable que contengan _x_.
+
+- `matches(x, ignore.case = TRUE)`: selecciona las variable que igualen la expresión regular _x_.
+
+- `num_range("x", 1:5, width = 2)`: selecciona las variables (numéricamente) de x01 a x05.
+
+- `one_of("x", "y", "z")`: selecciona las variables que estén en un vector de caracteres.
+
+- `everything()`: selecciona todas las variables.
+
+Por ejemplo:
+
+```{r}
+df_ej %>% select(starts_with("g"))
+```
+
+#### Arreglar {-}
+
+Arreglar u ordenar de acuerdo al valor de una o más variables es posible con la función `arrange()` que tiene los siguientes argumentos `dplyr::arrange(data, variables_por_las_que_ordenar)`. La función `desc()` permite que se ordene de forma descendiente. 
+  
+```{r}
+df_ej %>% arrange(desc(estatura))
+```
+
+
+#### Mutar {-}
+
+Mutar consiste en crear nuevas variables  con la función `mutate()` que tiene los siguientes argumentos `dplyr::mutate(data, nuevas_variables = operaciones)`:
+
+```{r}
+df_ej %>% mutate(estatura_cm = estatura * 100) 
+```
+
+#### Resumir {-}
+
+Los resúmenes permiten crear nuevas bases de datos que son agregaciones de los datos originales. 
+
+La función `summarise()` permite realizar este resumen`dplyr::summarise(data, nuevas_variables = operaciones)`:
+
+```{r}
+df_ej %>% dplyr::summarise(promedio = mean(estatura))
+```
+
+
+También es posible hacer resúmenes agrupando por variables determinadas de la base de datos. Pero,  primero es necesario crear una base agrupada con la función `group_by()` con argumentos `dplyr::group_by(data, add = variables_por_agrupar)`:
+  
+```{r}
+df_ej %>% 
+  group_by(genero)
+```
+
+Después se opera sobre cada grupo, creando un resumen a nivel grupo y uniendo los subconjuntos en una base nueva:
+
+```{r}
+df_ej %>% 
+  group_by(genero) %>% 
+  dplyr::summarise(promedio = mean(estatura))
+```
+
+<br>
+
+---
+
+
 
 
 
