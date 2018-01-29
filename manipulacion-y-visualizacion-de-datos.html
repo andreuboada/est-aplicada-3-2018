@@ -158,6 +158,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#ejemplo"><i class="fa fa-check"></i>Ejemplo:</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#limpieza-de-datos"><i class="fa fa-check"></i><b>3.2</b> Limpieza de datos</a></li>
+<li class="chapter" data-level="3.3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#split-apply-combine"><i class="fa fa-check"></i><b>3.3</b> <em>Split-apply-combine</em></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -402,6 +403,7 @@ ds
 </ul>
 <hr />
 <p>Repasaremos los problemas más comunes que se encuentran en conjuntos de datos sucios y mostraremos cómo se puede manipular la tabla de datos (usando las funciones <em>gather</em> y <em>spread</em>) con el fin de estructurarla para que cumpla los principios de datos limpios.</p>
+<p><br> <br> —</p>
 <div id="los-encabezados-de-las-columnas-son-valores" class="section level4 unnumbered">
 <h4>1. Los encabezados de las columnas son valores</h4>
 <p>Analicemos los datos que provienen de una encuesta de <a href="http://www.pewforum.org/2009/01/30/income-distribution-within-us-religious-groups/">Pew Research</a> que investiga la relación entre ingreso y afiliación religiosa. ¿Cuáles son las variables en estos datos?</p>
@@ -723,35 +725,511 @@ pew_tidy_<span class="dv">2</span> &lt;-<span class="st"> </span>pew_tidy <span 
 <p>En el código de arriba utilizamos las funciones <code>group_by</code>, <code>filter</code> y <code>mutate</code> que estudiaremos más adelante.</p>
 <p>Otro ejemplo,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(<span class="kw">read.csv</span>(<span class="st">&quot;datos/billboard.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>))
-billboard</code></pre></div>
-<pre><code>## # A tibble: 317 x 81
-##     year artist   track   time  date.entered   wk1   wk2   wk3   wk4   wk5
-##    &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;        &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
-##  1  2000 2 Pac    Baby D… 4:22  2000-02-26      87    82    72    77    87
-##  2  2000 2Ge+her  The Ha… 3:15  2000-09-02      91    87    92    NA    NA
-##  3  2000 3 Doors… Krypto… 3:53  2000-04-08      81    70    68    67    66
-##  4  2000 3 Doors… Loser   4:24  2000-10-21      76    76    72    69    67
-##  5  2000 504 Boyz Wobble… 3:35  2000-04-15      57    34    25    17    17
-##  6  2000 98^0     Give M… 3:24  2000-08-19      51    39    34    26    26
-##  7  2000 A*Teens  Dancin… 3:44  2000-07-08      97    97    96    95   100
-##  8  2000 Aaliyah  I Don&#39;… 4:15  2000-01-29      84    62    51    41    38
-##  9  2000 Aaliyah  Try Ag… 4:03  2000-03-18      59    53    38    28    21
-## 10  2000 Adams, … Open M… 5:30  2000-08-26      76    76    74    69    68
-## # ... with 307 more rows, and 71 more variables: wk6 &lt;int&gt;, wk7 &lt;int&gt;,
-## #   wk8 &lt;int&gt;, wk9 &lt;int&gt;, wk10 &lt;int&gt;, wk11 &lt;int&gt;, wk12 &lt;int&gt;, wk13 &lt;int&gt;,
-## #   wk14 &lt;int&gt;, wk15 &lt;int&gt;, wk16 &lt;int&gt;, wk17 &lt;int&gt;, wk18 &lt;int&gt;,
-## #   wk19 &lt;int&gt;, wk20 &lt;int&gt;, wk21 &lt;int&gt;, wk22 &lt;int&gt;, wk23 &lt;int&gt;,
-## #   wk24 &lt;int&gt;, wk25 &lt;int&gt;, wk26 &lt;int&gt;, wk27 &lt;int&gt;, wk28 &lt;int&gt;,
-## #   wk29 &lt;int&gt;, wk30 &lt;int&gt;, wk31 &lt;int&gt;, wk32 &lt;int&gt;, wk33 &lt;int&gt;,
-## #   wk34 &lt;int&gt;, wk35 &lt;int&gt;, wk36 &lt;int&gt;, wk37 &lt;int&gt;, wk38 &lt;int&gt;,
-## #   wk39 &lt;int&gt;, wk40 &lt;int&gt;, wk41 &lt;int&gt;, wk42 &lt;int&gt;, wk43 &lt;int&gt;,
-## #   wk44 &lt;int&gt;, wk45 &lt;int&gt;, wk46 &lt;int&gt;, wk47 &lt;int&gt;, wk48 &lt;int&gt;,
-## #   wk49 &lt;int&gt;, wk50 &lt;int&gt;, wk51 &lt;int&gt;, wk52 &lt;int&gt;, wk53 &lt;int&gt;,
-## #   wk54 &lt;int&gt;, wk55 &lt;int&gt;, wk56 &lt;int&gt;, wk57 &lt;int&gt;, wk58 &lt;int&gt;,
-## #   wk59 &lt;int&gt;, wk60 &lt;int&gt;, wk61 &lt;int&gt;, wk62 &lt;int&gt;, wk63 &lt;int&gt;,
-## #   wk64 &lt;int&gt;, wk65 &lt;int&gt;, wk66 &lt;lgl&gt;, wk67 &lt;lgl&gt;, wk68 &lt;lgl&gt;,
-## #   wk69 &lt;lgl&gt;, wk70 &lt;lgl&gt;, wk71 &lt;lgl&gt;, wk72 &lt;lgl&gt;, wk73 &lt;lgl&gt;,
-## #   wk74 &lt;lgl&gt;, wk75 &lt;lgl&gt;, wk76 &lt;lgl&gt;</code></pre>
+billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="left">artist</th>
+<th align="left">track</th>
+<th align="left">time</th>
+<th align="left">date.entered</th>
+<th align="right">wk1</th>
+<th align="right">wk2</th>
+<th align="right">wk3</th>
+<th align="right">wk4</th>
+<th align="right">wk5</th>
+<th align="right">wk6</th>
+<th align="right">wk7</th>
+<th align="right">wk8</th>
+<th align="right">wk9</th>
+<th align="right">wk10</th>
+<th align="right">wk11</th>
+<th align="right">wk12</th>
+<th align="right">wk13</th>
+<th align="right">wk14</th>
+<th align="right">wk15</th>
+<th align="right">wk16</th>
+<th align="right">wk17</th>
+<th align="right">wk18</th>
+<th align="right">wk19</th>
+<th align="right">wk20</th>
+<th align="right">wk21</th>
+<th align="right">wk22</th>
+<th align="right">wk23</th>
+<th align="right">wk24</th>
+<th align="right">wk25</th>
+<th align="right">wk26</th>
+<th align="right">wk27</th>
+<th align="right">wk28</th>
+<th align="right">wk29</th>
+<th align="right">wk30</th>
+<th align="right">wk31</th>
+<th align="right">wk32</th>
+<th align="right">wk33</th>
+<th align="right">wk34</th>
+<th align="right">wk35</th>
+<th align="right">wk36</th>
+<th align="right">wk37</th>
+<th align="right">wk38</th>
+<th align="right">wk39</th>
+<th align="right">wk40</th>
+<th align="right">wk41</th>
+<th align="right">wk42</th>
+<th align="right">wk43</th>
+<th align="right">wk44</th>
+<th align="right">wk45</th>
+<th align="right">wk46</th>
+<th align="right">wk47</th>
+<th align="right">wk48</th>
+<th align="right">wk49</th>
+<th align="right">wk50</th>
+<th align="right">wk51</th>
+<th align="right">wk52</th>
+<th align="right">wk53</th>
+<th align="right">wk54</th>
+<th align="right">wk55</th>
+<th align="right">wk56</th>
+<th align="right">wk57</th>
+<th align="right">wk58</th>
+<th align="right">wk59</th>
+<th align="right">wk60</th>
+<th align="right">wk61</th>
+<th align="right">wk62</th>
+<th align="right">wk63</th>
+<th align="right">wk64</th>
+<th align="right">wk65</th>
+<th align="left">wk66</th>
+<th align="left">wk67</th>
+<th align="left">wk68</th>
+<th align="left">wk69</th>
+<th align="left">wk70</th>
+<th align="left">wk71</th>
+<th align="left">wk72</th>
+<th align="left">wk73</th>
+<th align="left">wk74</th>
+<th align="left">wk75</th>
+<th align="left">wk76</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">Dixie Chicks, The</td>
+<td align="left">Cold Day In July</td>
+<td align="left">5:12</td>
+<td align="left">2000-06-24</td>
+<td align="right">80</td>
+<td align="right">79</td>
+<td align="right">76</td>
+<td align="right">72</td>
+<td align="right">68</td>
+<td align="right">68</td>
+<td align="right">65</td>
+<td align="right">70</td>
+<td align="right">84</td>
+<td align="right">91</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">Third Eye Blind</td>
+<td align="left">Never Let You Go</td>
+<td align="left">3:57</td>
+<td align="left">2000-01-22</td>
+<td align="right">65</td>
+<td align="right">32</td>
+<td align="right">25</td>
+<td align="right">24</td>
+<td align="right">23</td>
+<td align="right">22</td>
+<td align="right">22</td>
+<td align="right">21</td>
+<td align="right">19</td>
+<td align="right">16</td>
+<td align="right">14</td>
+<td align="right">16</td>
+<td align="right">16</td>
+<td align="right">17</td>
+<td align="right">18</td>
+<td align="right">21</td>
+<td align="right">22</td>
+<td align="right">25</td>
+<td align="right">27</td>
+<td align="right">33</td>
+<td align="right">45</td>
+<td align="right">46</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">Aaliyah</td>
+<td align="left">I Don’t Wanna</td>
+<td align="left">4:15</td>
+<td align="left">2000-01-29</td>
+<td align="right">84</td>
+<td align="right">62</td>
+<td align="right">51</td>
+<td align="right">41</td>
+<td align="right">38</td>
+<td align="right">35</td>
+<td align="right">35</td>
+<td align="right">38</td>
+<td align="right">38</td>
+<td align="right">36</td>
+<td align="right">37</td>
+<td align="right">37</td>
+<td align="right">38</td>
+<td align="right">49</td>
+<td align="right">61</td>
+<td align="right">63</td>
+<td align="right">62</td>
+<td align="right">67</td>
+<td align="right">83</td>
+<td align="right">86</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">Hill, Faith</td>
+<td align="left">Let’s Make Love</td>
+<td align="left">4:11</td>
+<td align="left">2000-08-12</td>
+<td align="right">83</td>
+<td align="right">83</td>
+<td align="right">73</td>
+<td align="right">73</td>
+<td align="right">67</td>
+<td align="right">60</td>
+<td align="right">60</td>
+<td align="right">60</td>
+<td align="right">57</td>
+<td align="right">55</td>
+<td align="right">54</td>
+<td align="right">69</td>
+<td align="right">88</td>
+<td align="right">91</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">DMX</td>
+<td align="left">What’s My Name</td>
+<td align="left">3:50</td>
+<td align="left">2000-01-15</td>
+<td align="right">98</td>
+<td align="right">76</td>
+<td align="right">69</td>
+<td align="right">69</td>
+<td align="right">67</td>
+<td align="right">73</td>
+<td align="right">76</td>
+<td align="right">90</td>
+<td align="right">90</td>
+<td align="right">94</td>
+<td align="right">100</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
 <p>Queremos apilar las semanas de manera que sea una sola columna (nuevamente alargamos los datos):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
 billboard_long &lt;-<span class="st"> </span><span class="kw">gather</span>(billboard, week, rank, wk1<span class="op">:</span>wk76,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)
@@ -777,30 +1255,122 @@ billboard_long</code></pre></div>
     <span class="dt">date =</span> <span class="kw">as.Date</span>(date.entered) <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">*</span><span class="st"> </span>(week <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>date.entered)</code></pre></div>
 <pre><code>## extract_numeric() is deprecated: please use readr::parse_number() instead</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard_tidy</code></pre></div>
-<pre><code>## # A tibble: 5,307 x 7
-##     year artist         track                 time   week  rank date      
-##    &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;                 &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;date&gt;    
-##  1  2000 2 Pac          Baby Don&#39;t Cry (Keep… 4:22   1.00    87 2000-02-26
-##  2  2000 2Ge+her        The Hardest Part Of … 3:15   1.00    91 2000-09-02
-##  3  2000 3 Doors Down   Kryptonite            3:53   1.00    81 2000-04-08
-##  4  2000 3 Doors Down   Loser                 4:24   1.00    76 2000-10-21
-##  5  2000 504 Boyz       Wobble Wobble         3:35   1.00    57 2000-04-15
-##  6  2000 98^0           Give Me Just One Nig… 3:24   1.00    51 2000-08-19
-##  7  2000 A*Teens        Dancing Queen         3:44   1.00    97 2000-07-08
-##  8  2000 Aaliyah        I Don&#39;t Wanna         4:15   1.00    84 2000-01-29
-##  9  2000 Aaliyah        Try Again             4:03   1.00    59 2000-03-18
-## 10  2000 Adams, Yolanda Open My Heart         5:30   1.00    76 2000-08-26
-## # ... with 5,297 more rows</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="left">artist</th>
+<th align="left">track</th>
+<th align="left">time</th>
+<th align="right">week</th>
+<th align="right">rank</th>
+<th align="left">date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">Rimes, LeAnn</td>
+<td align="left">Can’t Fight The Moon…</td>
+<td align="left">3:33</td>
+<td align="right">13</td>
+<td align="right">79</td>
+<td align="left">2000-12-02</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">Mya</td>
+<td align="left">Case Of The Ex (What…</td>
+<td align="left">3:50</td>
+<td align="right">18</td>
+<td align="right">2</td>
+<td align="left">2000-12-16</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">De La Soul</td>
+<td align="left">All Good?</td>
+<td align="left">5:02</td>
+<td align="right">3</td>
+<td align="right">100</td>
+<td align="left">2001-01-06</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">98^0</td>
+<td align="left">Give Me Just One Nig…</td>
+<td align="left">3:24</td>
+<td align="right">10</td>
+<td align="right">6</td>
+<td align="left">2000-10-21</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">Blige, Mary J.</td>
+<td align="left">Deep Inside</td>
+<td align="left">5:26</td>
+<td align="right">6</td>
+<td align="right">73</td>
+<td align="left">1999-12-18</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">Backstreet Boys, The</td>
+<td align="left">Shape Of My Heart</td>
+<td align="left">3:49</td>
+<td align="right">4</td>
+<td align="right">15</td>
+<td align="left">2000-11-04</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">TLC</td>
+<td align="left">Dear Lie</td>
+<td align="left">4:36</td>
+<td align="right">5</td>
+<td align="right">56</td>
+<td align="left">2000-03-11</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">Davidson, Clay</td>
+<td align="left">Unconditional</td>
+<td align="left">3:56</td>
+<td align="right">17</td>
+<td align="right">51</td>
+<td align="left">2000-07-15</td>
+</tr>
+<tr class="odd">
+<td align="right">2000</td>
+<td align="left">Sisqo</td>
+<td align="left">Got To Get It</td>
+<td align="left">3:52</td>
+<td align="right">16</td>
+<td align="right">64</td>
+<td align="left">2000-03-04</td>
+</tr>
+<tr class="even">
+<td align="right">2000</td>
+<td align="left">Gill, Vince</td>
+<td align="left">Feels Like Love</td>
+<td align="left">4:13</td>
+<td align="right">5</td>
+<td align="right">73</td>
+<td align="left">2000-09-30</td>
+</tr>
+</tbody>
+</table>
 <p>Nuevamente, podemos hacer gráficas facilmente.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tracks &lt;-<span class="st"> </span>billboard_tidy <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(track <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Higher&quot;</span>, <span class="st">&quot;Amazed&quot;</span>, <span class="st">&quot;Kryptonite&quot;</span>, <span class="st">&quot;Breathe&quot;</span>, <span class="st">&quot;With Arms Wide Open&quot;</span>))
+<span class="st">  </span><span class="kw">filter</span>(track <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Come On Over Baby (A...&quot;</span>, <span class="st">&quot;What A Girl Wants&quot;</span>, <span class="st">&quot;Say My Name&quot;</span>, <span class="st">&quot;Jumpin&#39; Jumpin&#39;&quot;</span>, <span class="st">&quot;Bye Bye Bye&quot;</span>))
 
 <span class="kw">ggplot</span>(tracks, <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> rank)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>track, <span class="dt">nrow =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
 <p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-15-1.png" width="739.2" /></p>
+<p><br> <br> —</p>
 </div>
 <div id="una-columna-asociada-a-mas-de-una-variable" class="section level4 unnumbered">
 <h4>2. Una columna asociada a más de una variable</h4>
@@ -839,8 +1409,8 @@ tb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sampl
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">PA</td>
-<td align="right">1981</td>
+<td align="left">DE</td>
+<td align="right">1983</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -861,36 +1431,36 @@ tb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sampl
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="left">Panama</td>
+<td align="left">Germany</td>
 </tr>
 <tr class="even">
-<td align="left">IQ</td>
+<td align="left">BO</td>
 <td align="right">1995</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">1125</td>
-<td align="right">862</td>
-<td align="right">1409</td>
-<td align="right">1085</td>
-<td align="right">863</td>
-<td align="right">900</td>
-<td align="right">271</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">725</td>
-<td align="right">304</td>
-<td align="right">1208</td>
-<td align="right">915</td>
-<td align="right">800</td>
-<td align="right">886</td>
-<td align="right">200</td>
 <td align="right">NA</td>
-<td align="left">Iraq</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">Bolivia (Plurinational State of)</td>
 </tr>
 <tr class="odd">
-<td align="left">NP</td>
-<td align="right">1989</td>
+<td align="left">TO</td>
+<td align="right">1980</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -911,11 +1481,11 @@ tb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sampl
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="left">Nepal</td>
+<td align="left">Tonga</td>
 </tr>
 <tr class="even">
-<td align="left">TH</td>
-<td align="right">1987</td>
+<td align="left">CG</td>
+<td align="right">1994</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -936,32 +1506,32 @@ tb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sampl
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="left">Thailand</td>
+<td align="left">Congo</td>
 </tr>
 <tr class="odd">
-<td align="left">GR</td>
-<td align="right">2006</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">11</td>
-<td align="right">32</td>
-<td align="right">22</td>
-<td align="right">24</td>
-<td align="right">22</td>
-<td align="right">27</td>
-<td align="right">3</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">13</td>
-<td align="right">12</td>
-<td align="right">8</td>
+<td align="left">MO</td>
+<td align="right">1997</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">15</td>
+<td align="right">38</td>
+<td align="right">47</td>
+<td align="right">37</td>
+<td align="right">34</td>
+<td align="right">55</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">4</td>
+<td align="right">10</td>
+<td align="right">16</td>
+<td align="right">21</td>
 <td align="right">5</td>
 <td align="right">6</td>
-<td align="right">24</td>
-<td align="right">1</td>
-<td align="left">Greece</td>
+<td align="right">15</td>
+<td align="right">NA</td>
+<td align="left">Macao</td>
 </tr>
 </tbody>
 </table>
@@ -969,7 +1539,7 @@ tb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sampl
 <p><strong>¿Cómo podemos separar la “variable” sexo-edad en dos columnas?</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tb_long &lt;-<span class="st"> </span>tb <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">gather</span>(demog, casos, new_sp_m04<span class="op">:</span>new_sp_fu, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)
-knitr<span class="op">::</span><span class="kw">kable</span>(tb_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">20</span>))</code></pre></div>
+tb_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -982,144 +1552,74 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tb_long <span class
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">AD</td>
+<td align="left">KH</td>
 <td align="right">2005</td>
-<td align="left">Andorra</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
+<td align="left">Cambodia</td>
+<td align="left">new_sp_m4554</td>
+<td align="right">2043</td>
 </tr>
 <tr class="even">
-<td align="left">AD</td>
-<td align="right">2006</td>
-<td align="left">Andorra</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
+<td align="left">IE</td>
+<td align="right">2001</td>
+<td align="left">Ireland</td>
+<td align="left">new_sp_f2534</td>
+<td align="right">6</td>
 </tr>
 <tr class="odd">
-<td align="left">AD</td>
-<td align="right">2008</td>
-<td align="left">Andorra</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">AE</td>
-<td align="right">2006</td>
-<td align="left">United Arab Emirates</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">AE</td>
-<td align="right">2007</td>
-<td align="left">United Arab Emirates</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">AE</td>
-<td align="right">2008</td>
-<td align="left">United Arab Emirates</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">AG</td>
-<td align="right">2007</td>
-<td align="left">Antigua and Barbuda</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">AL</td>
+<td align="left">LC</td>
 <td align="right">2005</td>
-<td align="left">Albania</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
+<td align="left">Saint Lucia</td>
+<td align="left">new_sp_f65</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">MK</td>
+<td align="right">1998</td>
+<td align="left">The former Yugoslav Republic of Macedonia</td>
+<td align="left">new_sp_m65</td>
+<td align="right">13</td>
 </tr>
 <tr class="odd">
-<td align="left">AL</td>
-<td align="right">2006</td>
-<td align="left">Albania</td>
-<td align="left">new_sp_m04</td>
+<td align="left">LC</td>
+<td align="right">2005</td>
+<td align="left">Saint Lucia</td>
+<td align="left">new_sp_f1524</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">AL</td>
-<td align="right">2007</td>
-<td align="left">Albania</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">AL</td>
-<td align="right">2008</td>
-<td align="left">Albania</td>
-<td align="left">new_sp_m04</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">AM</td>
-<td align="right">2005</td>
-<td align="left">Armenia</td>
-<td align="left">new_sp_m04</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">AM</td>
+<td align="left">HR</td>
 <td align="right">2006</td>
-<td align="left">Armenia</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
+<td align="left">Croatia</td>
+<td align="left">new_sp_m4554</td>
+<td align="right">69</td>
 </tr>
-<tr class="even">
-<td align="left">AM</td>
+<tr class="odd">
+<td align="left">IT</td>
 <td align="right">2007</td>
-<td align="left">Armenia</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">AM</td>
-<td align="right">2008</td>
-<td align="left">Armenia</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
+<td align="left">Italy</td>
+<td align="left">new_sp_m3544</td>
+<td align="right">113</td>
 </tr>
 <tr class="even">
-<td align="left">AN</td>
+<td align="left">PR</td>
+<td align="right">2003</td>
+<td align="left">Puerto Rico</td>
+<td align="left">new_sp_m5564</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="left">KH</td>
 <td align="right">2006</td>
-<td align="left">Netherlands Antilles</td>
-<td align="left">new_sp_m04</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">AR</td>
-<td align="right">2006</td>
-<td align="left">Argentina</td>
-<td align="left">new_sp_m04</td>
-<td align="right">19</td>
+<td align="left">Cambodia</td>
+<td align="left">new_sp_m3544</td>
+<td align="right">2205</td>
 </tr>
 <tr class="even">
-<td align="left">AR</td>
-<td align="right">2007</td>
-<td align="left">Argentina</td>
-<td align="left">new_sp_m04</td>
-<td align="right">14</td>
-</tr>
-<tr class="odd">
-<td align="left">AR</td>
+<td align="left">TN</td>
 <td align="right">2008</td>
-<td align="left">Argentina</td>
-<td align="left">new_sp_m04</td>
-<td align="right">11</td>
-</tr>
-<tr class="even">
-<td align="left">AT</td>
-<td align="right">2005</td>
-<td align="left">Austria</td>
-<td align="left">new_sp_m04</td>
-<td align="right">1</td>
+<td align="left">Tunisia</td>
+<td align="left">new_sp_f014</td>
+<td align="right">7</td>
 </tr>
 </tbody>
 </table>
@@ -1505,87 +2005,88 @@ tb_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">BW</td>
-<td align="right">1999</td>
-<td align="left">Botswana</td>
-<td align="left">new_sp_f</td>
-<td align="left">2534</td>
-<td align="right">434</td>
+<td align="left">FR</td>
+<td align="right">1995</td>
+<td align="left">France</td>
+<td align="left">new_sp_m</td>
+<td align="left">5564</td>
+<td align="right">297</td>
 </tr>
 <tr class="even">
+<td align="left">PA</td>
+<td align="right">2003</td>
+<td align="left">Panama</td>
+<td align="left">new_sp_m</td>
+<td align="left">65</td>
+<td align="right">67</td>
+</tr>
+<tr class="odd">
+<td align="left">LR</td>
+<td align="right">2002</td>
+<td align="left">Liberia</td>
+<td align="left">new_sp_f</td>
+<td align="left">5564</td>
+<td align="right">41</td>
+</tr>
+<tr class="even">
+<td align="left">BW</td>
+<td align="right">2000</td>
+<td align="left">Botswana</td>
+<td align="left">new_sp_f</td>
+<td align="left">5564</td>
+<td align="right">57</td>
+</tr>
+<tr class="odd">
 <td align="left">SI</td>
 <td align="right">2008</td>
 <td align="left">Slovenia</td>
 <td align="left">new_sp_m</td>
-<td align="left">4554</td>
-<td align="right">17</td>
-</tr>
-<tr class="odd">
-<td align="left">MW</td>
-<td align="right">2004</td>
-<td align="left">Malawi</td>
-<td align="left">new_sp_m</td>
-<td align="left">4554</td>
-<td align="right">508</td>
-</tr>
-<tr class="even">
-<td align="left">CM</td>
-<td align="right">1995</td>
-<td align="left">Cameroon</td>
-<td align="left">new_sp_f</td>
-<td align="left">5564</td>
-<td align="right">106</td>
-</tr>
-<tr class="odd">
-<td align="left">AT</td>
-<td align="right">2000</td>
-<td align="left">Austria</td>
-<td align="left">new_sp_m</td>
-<td align="left">4554</td>
-<td align="right">42</td>
-</tr>
-<tr class="even">
-<td align="left">HN</td>
-<td align="right">2003</td>
-<td align="left">Honduras</td>
-<td align="left">new_sp_m</td>
-<td align="left">4554</td>
-<td align="right">227</td>
-</tr>
-<tr class="odd">
-<td align="left">CU</td>
-<td align="right">1996</td>
-<td align="left">Cuba</td>
-<td align="left">new_sp_m</td>
 <td align="left">1524</td>
-<td align="right">54</td>
-</tr>
-<tr class="even">
-<td align="left">PK</td>
-<td align="right">2008</td>
-<td align="left">Pakistan</td>
-<td align="left">new_sp_f</td>
-<td align="left">3544</td>
-<td align="right">8146</td>
-</tr>
-<tr class="odd">
-<td align="left">JO</td>
-<td align="right">2008</td>
-<td align="left">Jordan</td>
-<td align="left">new_sp_m</td>
-<td align="left">3544</td>
 <td align="right">3</td>
 </tr>
 <tr class="even">
-<td align="left">GM</td>
-<td align="right">1999</td>
-<td align="left">Gambia (Islamic Republic of the)</td>
+<td align="left">GQ</td>
+<td align="right">1998</td>
+<td align="left">Equatorial Guinea</td>
+<td align="left">new_sp_f</td>
+<td align="left">2534</td>
+<td align="right">31</td>
+</tr>
+<tr class="odd">
+<td align="left">MY</td>
+<td align="right">2006</td>
+<td align="left">Malaysia</td>
+<td align="left">new_sp_m</td>
+<td align="left">3544</td>
+<td align="right">734</td>
+</tr>
+<tr class="even">
+<td align="left">EE</td>
+<td align="right">2007</td>
+<td align="left">Estonia</td>
+<td align="left">new_sp_f</td>
+<td align="left">u</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">SR</td>
+<td align="right">2006</td>
+<td align="left">Suriname</td>
+<td align="left">new_sp_f</td>
+<td align="left">4554</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">SG</td>
+<td align="right">2004</td>
+<td align="left">Singapore</td>
 <td align="left">new_sp_f</td>
 <td align="left">65</td>
-<td align="right">13</td>
+<td align="right">48</td>
 </tr>
 </tbody>
 </table>
+<p><br> <br> —</p>
 </div>
 <div id="variables-almacenadas-en-filas-y-columnas" class="section level4 unnumbered">
 <h4>3. Variables almacenadas en filas y columnas</h4>
@@ -1689,199 +2190,46 @@ clima_lm &lt;-<span class="st"> </span><span class="kw">lm</span>(TMAX <span cla
 <h4>4. Mas de un tipo de observación en una misma tabla</h4>
 <p>En ocasiones las bases de datos involucran valores en diferentes niveles, endiferentes tipos de unidad observacional. En la limpieza de datos, cada unidad observacional debe estar almacenada en su propia tabla (esto esta ligado a normalización de una base de datos), es importante para evitar inconsistencias en los datos.</p>
 <p>¿Cuáles son las unidades observacionales de los datos de billboard?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">20</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(artist, track, year, time) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th align="right">year</th>
 <th align="left">artist</th>
 <th align="left">track</th>
+<th align="right">year</th>
 <th align="left">time</th>
-<th align="right">week</th>
-<th align="right">rank</th>
-<th align="left">date</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">Santana</td>
+<td align="left">Maria, Maria</td>
 <td align="right">2000</td>
-<td align="left">Blaque</td>
-<td align="left">Bring It All To Me</td>
-<td align="left">3:46</td>
-<td align="right">15</td>
-<td align="right">5</td>
-<td align="left">2000-01-29</td>
+<td align="left">4:18</td>
 </tr>
 <tr class="even">
+<td align="left">Metallica</td>
+<td align="left">I Disappear</td>
 <td align="right">2000</td>
-<td align="left">DMX</td>
-<td align="left">Party Up (Up In Here…</td>
-<td align="left">3:45</td>
-<td align="right">19</td>
-<td align="right">44</td>
-<td align="left">2000-07-01</td>
+<td align="left">4:26</td>
 </tr>
 <tr class="odd">
+<td align="left">matchbox twenty</td>
+<td align="left">Bent</td>
 <td align="right">2000</td>
-<td align="left">Smash Mouth</td>
-<td align="left">Then The Morning Com…</td>
-<td align="left">3:04</td>
-<td align="right">22</td>
-<td align="right">31</td>
-<td align="left">2000-03-25</td>
+<td align="left">4:12</td>
 </tr>
 <tr class="even">
+<td align="left">Pink</td>
+<td align="left">There U Go</td>
 <td align="right">2000</td>
-<td align="left">Anthony, Marc</td>
-<td align="left">My Baby You</td>
-<td align="left">3:59</td>
-<td align="right">5</td>
-<td align="right">82</td>
-<td align="left">2000-10-14</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">Joe</td>
-<td align="left">I Wanna Know</td>
-<td align="left">4:57</td>
-<td align="right">44</td>
-<td align="right">45</td>
-<td align="left">2000-10-28</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Keith, Toby</td>
-<td align="left">Country Comes To Tow…</td>
-<td align="left">3:39</td>
-<td align="right">11</td>
-<td align="right">54</td>
-<td align="left">2000-10-14</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">McEntire, Reba</td>
-<td align="left">I’ll Be</td>
-<td align="left">4:23</td>
-<td align="right">11</td>
-<td align="right">52</td>
-<td align="left">2000-07-22</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Lonestar</td>
-<td align="left">Smile</td>
-<td align="left">3:33</td>
-<td align="right">9</td>
-<td align="right">39</td>
-<td align="left">2000-02-12</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">Limp Bizkit</td>
-<td align="left">Rollin’</td>
-<td align="left">4:04</td>
-<td align="right">6</td>
-<td align="right">65</td>
-<td align="left">2000-12-16</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Rimes, LeAnn</td>
-<td align="left">Big Deal</td>
-<td align="left">3:03</td>
-<td align="right">8</td>
-<td align="right">37</td>
-<td align="left">1999-12-04</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">Carter, Aaron</td>
-<td align="left">Aaron’s Party (Come …</td>
 <td align="left">3:23</td>
-<td align="right">11</td>
-<td align="right">67</td>
-<td align="left">2000-11-04</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Keith, Toby</td>
-<td align="left">Country Comes To Tow…</td>
-<td align="left">3:39</td>
-<td align="right">4</td>
-<td align="right">69</td>
-<td align="left">2000-08-26</td>
 </tr>
 <tr class="odd">
+<td align="left">Common</td>
+<td align="left">The Light</td>
 <td align="right">2000</td>
-<td align="left">Rimes, LeAnn</td>
-<td align="left">I Need You</td>
-<td align="left">3:42</td>
-<td align="right">5</td>
-<td align="right">59</td>
-<td align="left">2000-06-24</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Rimes, LeAnn</td>
-<td align="left">Can’t Fight The Moon…</td>
-<td align="left">3:33</td>
-<td align="right">2</td>
-<td align="right">71</td>
-<td align="left">2000-09-16</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">Dixie Chicks, The</td>
-<td align="left">Cowboy Take Me Away</td>
-<td align="left">4:51</td>
-<td align="right">3</td>
-<td align="right">70</td>
-<td align="left">1999-12-11</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Hanson</td>
-<td align="left">This Time Around</td>
-<td align="left">4:14</td>
-<td align="right">3</td>
-<td align="right">20</td>
-<td align="left">2000-05-06</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">Blige, Mary J.</td>
-<td align="left">Deep Inside</td>
-<td align="left">5:26</td>
-<td align="right">4</td>
-<td align="right">75</td>
-<td align="left">1999-12-04</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Loveless, Patty</td>
-<td align="left">That’s The Kind Of M…</td>
-<td align="left">3:27</td>
-<td align="right">11</td>
-<td align="right">71</td>
-<td align="left">2000-11-25</td>
-</tr>
-<tr class="odd">
-<td align="right">2000</td>
-<td align="left">Chesney, Kenny</td>
-<td align="left">What I Need To Do</td>
-<td align="left">4:05</td>
-<td align="right">6</td>
-<td align="right">69</td>
-<td align="left">2000-05-06</td>
-</tr>
-<tr class="even">
-<td align="right">2000</td>
-<td align="left">Aaliyah</td>
-<td align="left">I Don’t Wanna</td>
-<td align="left">4:15</td>
-<td align="right">7</td>
-<td align="right">35</td>
-<td align="left">2000-03-11</td>
+<td align="left">3:55</td>
 </tr>
 </tbody>
 </table>
@@ -1890,2240 +2238,7 @@ clima_lm &lt;-<span class="st"> </span><span class="kw">lm</span>(TMAX <span cla
 <span class="st">  </span><span class="kw">select</span>(artist, track, year, time) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">arrange</span>(artist) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">song_id =</span> <span class="kw">row_number</span>(artist))
-song <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">artist</th>
-<th align="left">track</th>
-<th align="right">year</th>
-<th align="left">time</th>
-<th align="right">song_id</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">2 Pac</td>
-<td align="left">Baby Don’t Cry (Keep…</td>
-<td align="right">2000</td>
-<td align="left">4:22</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">2Ge+her</td>
-<td align="left">The Hardest Part Of …</td>
-<td align="right">2000</td>
-<td align="left">3:15</td>
-<td align="right">2</td>
-</tr>
-<tr class="odd">
-<td align="left">3 Doors Down</td>
-<td align="left">Kryptonite</td>
-<td align="right">2000</td>
-<td align="left">3:53</td>
-<td align="right">3</td>
-</tr>
-<tr class="even">
-<td align="left">3 Doors Down</td>
-<td align="left">Loser</td>
-<td align="right">2000</td>
-<td align="left">4:24</td>
-<td align="right">4</td>
-</tr>
-<tr class="odd">
-<td align="left">504 Boyz</td>
-<td align="left">Wobble Wobble</td>
-<td align="right">2000</td>
-<td align="left">3:35</td>
-<td align="right">5</td>
-</tr>
-<tr class="even">
-<td align="left">98^0</td>
-<td align="left">Give Me Just One Nig…</td>
-<td align="right">2000</td>
-<td align="left">3:24</td>
-<td align="right">6</td>
-</tr>
-<tr class="odd">
-<td align="left">A*Teens</td>
-<td align="left">Dancing Queen</td>
-<td align="right">2000</td>
-<td align="left">3:44</td>
-<td align="right">7</td>
-</tr>
-<tr class="even">
-<td align="left">Aaliyah</td>
-<td align="left">I Don’t Wanna</td>
-<td align="right">2000</td>
-<td align="left">4:15</td>
-<td align="right">8</td>
-</tr>
-<tr class="odd">
-<td align="left">Aaliyah</td>
-<td align="left">Try Again</td>
-<td align="right">2000</td>
-<td align="left">4:03</td>
-<td align="right">9</td>
-</tr>
-<tr class="even">
-<td align="left">Adams, Yolanda</td>
-<td align="left">Open My Heart</td>
-<td align="right">2000</td>
-<td align="left">5:30</td>
-<td align="right">10</td>
-</tr>
-<tr class="odd">
-<td align="left">Adkins, Trace</td>
-<td align="left">More</td>
-<td align="right">2000</td>
-<td align="left">3:05</td>
-<td align="right">11</td>
-</tr>
-<tr class="even">
-<td align="left">Aguilera, Christina</td>
-<td align="left">Come On Over Baby (A…</td>
-<td align="right">2000</td>
-<td align="left">3:38</td>
-<td align="right">12</td>
-</tr>
-<tr class="odd">
-<td align="left">Aguilera, Christina</td>
-<td align="left">I Turn To You</td>
-<td align="right">2000</td>
-<td align="left">4:00</td>
-<td align="right">13</td>
-</tr>
-<tr class="even">
-<td align="left">Aguilera, Christina</td>
-<td align="left">What A Girl Wants</td>
-<td align="right">2000</td>
-<td align="left">3:18</td>
-<td align="right">14</td>
-</tr>
-<tr class="odd">
-<td align="left">Alice Deejay</td>
-<td align="left">Better Off Alone</td>
-<td align="right">2000</td>
-<td align="left">6:50</td>
-<td align="right">15</td>
-</tr>
-<tr class="even">
-<td align="left">Allan, Gary</td>
-<td align="left">Smoke Rings In The D…</td>
-<td align="right">2000</td>
-<td align="left">4:18</td>
-<td align="right">16</td>
-</tr>
-<tr class="odd">
-<td align="left">Amber</td>
-<td align="left">Sexual</td>
-<td align="right">2000</td>
-<td align="left">4:38</td>
-<td align="right">17</td>
-</tr>
-<tr class="even">
-<td align="left">Anastacia</td>
-<td align="left">I’m Outta Love</td>
-<td align="right">2000</td>
-<td align="left">4:01</td>
-<td align="right">18</td>
-</tr>
-<tr class="odd">
-<td align="left">Anthony, Marc</td>
-<td align="left">My Baby You</td>
-<td align="right">2000</td>
-<td align="left">3:59</td>
-<td align="right">19</td>
-</tr>
-<tr class="even">
-<td align="left">Anthony, Marc</td>
-<td align="left">You Sang To Me</td>
-<td align="right">2000</td>
-<td align="left">3:50</td>
-<td align="right">20</td>
-</tr>
-<tr class="odd">
-<td align="left">Avant</td>
-<td align="left">My First Love</td>
-<td align="right">2000</td>
-<td align="left">4:28</td>
-<td align="right">21</td>
-</tr>
-<tr class="even">
-<td align="left">Avant</td>
-<td align="left">Separated</td>
-<td align="right">2000</td>
-<td align="left">4:13</td>
-<td align="right">22</td>
-</tr>
-<tr class="odd">
-<td align="left">Backstreet Boys, The</td>
-<td align="left">Shape Of My Heart</td>
-<td align="right">2000</td>
-<td align="left">3:49</td>
-<td align="right">24</td>
-</tr>
-<tr class="even">
-<td align="left">Backstreet Boys, The</td>
-<td align="left">Show Me The Meaning …</td>
-<td align="right">2000</td>
-<td align="left">3:54</td>
-<td align="right">25</td>
-</tr>
-<tr class="odd">
-<td align="left">Backstreet Boys, The</td>
-<td align="left">The One</td>
-<td align="right">2000</td>
-<td align="left">3:46</td>
-<td align="right">26</td>
-</tr>
-<tr class="even">
-<td align="left">Badu, Erkyah</td>
-<td align="left">Bag Lady</td>
-<td align="right">2000</td>
-<td align="left">5:03</td>
-<td align="right">27</td>
-</tr>
-<tr class="odd">
-<td align="left">Baha Men</td>
-<td align="left">Who Let The Dogs Out</td>
-<td align="right">2000</td>
-<td align="left">3:17</td>
-<td align="right">28</td>
-</tr>
-<tr class="even">
-<td align="left">Barenaked Ladies</td>
-<td align="left">Pinch Me</td>
-<td align="right">2000</td>
-<td align="left">3:46</td>
-<td align="right">29</td>
-</tr>
-<tr class="odd">
-<td align="left">BBMak</td>
-<td align="left">Back Here</td>
-<td align="right">2000</td>
-<td align="left">3:35</td>
-<td align="right">23</td>
-</tr>
-<tr class="even">
-<td align="left">Beenie Man</td>
-<td align="left">Girls Dem Sugar</td>
-<td align="right">2000</td>
-<td align="left">4:17</td>
-<td align="right">30</td>
-</tr>
-<tr class="odd">
-<td align="left">Before Dark</td>
-<td align="left">Monica</td>
-<td align="right">2000</td>
-<td align="left">4:04</td>
-<td align="right">31</td>
-</tr>
-<tr class="even">
-<td align="left">Bega, Lou</td>
-<td align="left">Tricky Tricky</td>
-<td align="right">2000</td>
-<td align="left">3:23</td>
-<td align="right">32</td>
-</tr>
-<tr class="odd">
-<td align="left">Big Punisher</td>
-<td align="left">It’s So Hard</td>
-<td align="right">2000</td>
-<td align="left">3:25</td>
-<td align="right">33</td>
-</tr>
-<tr class="even">
-<td align="left">Black Rob</td>
-<td align="left">Whoa!</td>
-<td align="right">2000</td>
-<td align="left">4:04</td>
-<td align="right">34</td>
-</tr>
-<tr class="odd">
-<td align="left">Black, Clint</td>
-<td align="left">Been There</td>
-<td align="right">2000</td>
-<td align="left">5:28</td>
-<td align="right">35</td>
-</tr>
-<tr class="even">
-<td align="left">Blaque</td>
-<td align="left">Bring It All To Me</td>
-<td align="right">2000</td>
-<td align="left">3:46</td>
-<td align="right">36</td>
-</tr>
-<tr class="odd">
-<td align="left">Blige, Mary J.</td>
-<td align="left">Deep Inside</td>
-<td align="right">2000</td>
-<td align="left">5:26</td>
-<td align="right">37</td>
-</tr>
-<tr class="even">
-<td align="left">Blige, Mary J.</td>
-<td align="left">Give Me You</td>
-<td align="right">2000</td>
-<td align="left">5:00</td>
-<td align="right">38</td>
-</tr>
-<tr class="odd">
-<td align="left">Blink-182</td>
-<td align="left">All The Small Things</td>
-<td align="right">2000</td>
-<td align="left">2:52</td>
-<td align="right">39</td>
-</tr>
-<tr class="even">
-<td align="left">Bloodhound Gang</td>
-<td align="left">The Bad Touch</td>
-<td align="right">2000</td>
-<td align="left">4:20</td>
-<td align="right">40</td>
-</tr>
-<tr class="odd">
-<td align="left">Bon Jovi</td>
-<td align="left">It’s My Life</td>
-<td align="right">2000</td>
-<td align="left">3:44</td>
-<td align="right">41</td>
-</tr>
-<tr class="even">
-<td align="left">Braxton, Toni</td>
-<td align="left">He Wasn’t Man Enough</td>
-<td align="right">2000</td>
-<td align="left">4:21</td>
-<td align="right">42</td>
-</tr>
-<tr class="odd">
-<td align="left">Braxton, Toni</td>
-<td align="left">Just Be A Man About …</td>
-<td align="right">2000</td>
-<td align="left">4:10</td>
-<td align="right">43</td>
-</tr>
-<tr class="even">
-<td align="left">Braxton, Toni</td>
-<td align="left">Spanish Guitar</td>
-<td align="right">2000</td>
-<td align="left">4:24</td>
-<td align="right">44</td>
-</tr>
-<tr class="odd">
-<td align="left">Brock, Chad</td>
-<td align="left">A Country Boy Can Su…</td>
-<td align="right">2000</td>
-<td align="left">3:54</td>
-<td align="right">45</td>
-</tr>
-<tr class="even">
-<td align="left">Brock, Chad</td>
-<td align="left">Yes!</td>
-<td align="right">2000</td>
-<td align="left">3:22</td>
-<td align="right">46</td>
-</tr>
-<tr class="odd">
-<td align="left">Brooks &amp; Dunn</td>
-<td align="left">You’ll Always Be Lov…</td>
-<td align="right">2000</td>
-<td align="left">2:58</td>
-<td align="right">47</td>
-</tr>
-<tr class="even">
-<td align="left">Brooks, Garth</td>
-<td align="left">Do What You Gotta Do</td>
-<td align="right">2000</td>
-<td align="left">2:56</td>
-<td align="right">48</td>
-</tr>
-<tr class="odd">
-<td align="left">Byrd, Tracy</td>
-<td align="left">Put Your Hand In Min…</td>
-<td align="right">2000</td>
-<td align="left">4:30</td>
-<td align="right">49</td>
-</tr>
-<tr class="even">
-<td align="left">Cagle, Chris</td>
-<td align="left">My Love Goes On And …</td>
-<td align="right">2000</td>
-<td align="left">3:02</td>
-<td align="right">50</td>
-</tr>
-<tr class="odd">
-<td align="left">Cam’ron</td>
-<td align="left">What Means The World…</td>
-<td align="right">2000</td>
-<td align="left">4:38</td>
-<td align="right">51</td>
-</tr>
-<tr class="even">
-<td align="left">Carey, Mariah</td>
-<td align="left">Crybaby</td>
-<td align="right">2000</td>
-<td align="left">5:19</td>
-<td align="right">52</td>
-</tr>
-<tr class="odd">
-<td align="left">Carey, Mariah</td>
-<td align="left">Thank God I Found Yo…</td>
-<td align="right">2000</td>
-<td align="left">4:14</td>
-<td align="right">53</td>
-</tr>
-<tr class="even">
-<td align="left">Carter, Aaron</td>
-<td align="left">Aaron’s Party (Come …</td>
-<td align="right">2000</td>
-<td align="left">3:23</td>
-<td align="right">54</td>
-</tr>
-<tr class="odd">
-<td align="left">Carter, Torrey</td>
-<td align="left">Take That</td>
-<td align="right">2000</td>
-<td align="left">3:43</td>
-<td align="right">55</td>
-</tr>
-<tr class="even">
-<td align="left">Changing Faces</td>
-<td align="left">That Other Woman</td>
-<td align="right">2000</td>
-<td align="left">4:00</td>
-<td align="right">56</td>
-</tr>
-<tr class="odd">
-<td align="left">Chesney, Kenny</td>
-<td align="left">I Lost It</td>
-<td align="right">2000</td>
-<td align="left">3:54</td>
-<td align="right">57</td>
-</tr>
-<tr class="even">
-<td align="left">Chesney, Kenny</td>
-<td align="left">What I Need To Do</td>
-<td align="right">2000</td>
-<td align="left">4:05</td>
-<td align="right">58</td>
-</tr>
-<tr class="odd">
-<td align="left">Clark Family Experience</td>
-<td align="left">Meanwhile Back At Th…</td>
-<td align="right">2000</td>
-<td align="left">2:56</td>
-<td align="right">59</td>
-</tr>
-<tr class="even">
-<td align="left">Clark, Terri</td>
-<td align="left">A Little Gasoline</td>
-<td align="right">2000</td>
-<td align="left">3:07</td>
-<td align="right">60</td>
-</tr>
-<tr class="odd">
-<td align="left">Common</td>
-<td align="left">The Light</td>
-<td align="right">2000</td>
-<td align="left">3:55</td>
-<td align="right">61</td>
-</tr>
-<tr class="even">
-<td align="left">Counting Crows</td>
-<td align="left">Hanginaround</td>
-<td align="right">2000</td>
-<td align="left">4:07</td>
-<td align="right">62</td>
-</tr>
-<tr class="odd">
-<td align="left">Creed</td>
-<td align="left">Higher</td>
-<td align="right">2000</td>
-<td align="left">5:16</td>
-<td align="right">63</td>
-</tr>
-<tr class="even">
-<td align="left">Creed</td>
-<td align="left">With Arms Wide Open</td>
-<td align="right">2000</td>
-<td align="left">3:52</td>
-<td align="right">64</td>
-</tr>
-<tr class="odd">
-<td align="left">Cyrus, Billy Ray</td>
-<td align="left">You Won’t Be Lonely …</td>
-<td align="right">2000</td>
-<td align="left">3:45</td>
-<td align="right">65</td>
-</tr>
-<tr class="even">
-<td align="left">D’Angelo</td>
-<td align="left">Left &amp; Right</td>
-<td align="right">2000</td>
-<td align="left">4:35</td>
-<td align="right">66</td>
-</tr>
-<tr class="odd">
-<td align="left">D’Angelo</td>
-<td align="left">Untitled (How Does I…</td>
-<td align="right">2000</td>
-<td align="left">7:10</td>
-<td align="right">67</td>
-</tr>
-<tr class="even">
-<td align="left">Da Brat</td>
-<td align="left">That’s What I’m Look…</td>
-<td align="right">2000</td>
-<td align="left">3:44</td>
-<td align="right">71</td>
-</tr>
-<tr class="odd">
-<td align="left">Da Brat</td>
-<td align="left">What’Chu Like</td>
-<td align="right">2000</td>
-<td align="left">3:57</td>
-<td align="right">72</td>
-</tr>
-<tr class="even">
-<td align="left">Davidson, Clay</td>
-<td align="left">Unconditional</td>
-<td align="right">2000</td>
-<td align="left">3:56</td>
-<td align="right">73</td>
-</tr>
-<tr class="odd">
-<td align="left">De La Soul</td>
-<td align="left">All Good?</td>
-<td align="right">2000</td>
-<td align="left">5:02</td>
-<td align="right">74</td>
-</tr>
-<tr class="even">
-<td align="left">Destiny’s Child</td>
-<td align="left">Independent Women Pa…</td>
-<td align="right">2000</td>
-<td align="left">3:38</td>
-<td align="right">75</td>
-</tr>
-<tr class="odd">
-<td align="left">Destiny’s Child</td>
-<td align="left">Jumpin’ Jumpin’</td>
-<td align="right">2000</td>
-<td align="left">3:48</td>
-<td align="right">76</td>
-</tr>
-<tr class="even">
-<td align="left">Destiny’s Child</td>
-<td align="left">Say My Name</td>
-<td align="right">2000</td>
-<td align="left">4:31</td>
-<td align="right">77</td>
-</tr>
-<tr class="odd">
-<td align="left">Diffie, Joe</td>
-<td align="left">It’s Always Somethin…</td>
-<td align="right">2000</td>
-<td align="left">2:55</td>
-<td align="right">78</td>
-</tr>
-<tr class="even">
-<td align="left">Diffie, Joe</td>
-<td align="left">The Quittin’ Kind</td>
-<td align="right">2000</td>
-<td align="left">3:23</td>
-<td align="right">79</td>
-</tr>
-<tr class="odd">
-<td align="left">Dion, Celine</td>
-<td align="left">That’s The Way It Is</td>
-<td align="right">2000</td>
-<td align="left">4:03</td>
-<td align="right">80</td>
-</tr>
-<tr class="even">
-<td align="left">Dixie Chicks, The</td>
-<td align="left">Cold Day In July</td>
-<td align="right">2000</td>
-<td align="left">5:12</td>
-<td align="right">81</td>
-</tr>
-<tr class="odd">
-<td align="left">Dixie Chicks, The</td>
-<td align="left">Cowboy Take Me Away</td>
-<td align="right">2000</td>
-<td align="left">4:51</td>
-<td align="right">82</td>
-</tr>
-<tr class="even">
-<td align="left">Dixie Chicks, The</td>
-<td align="left">Goodbye Earl</td>
-<td align="right">2000</td>
-<td align="left">4:19</td>
-<td align="right">83</td>
-</tr>
-<tr class="odd">
-<td align="left">Dixie Chicks, The</td>
-<td align="left">Without You</td>
-<td align="right">2000</td>
-<td align="left">3:32</td>
-<td align="right">84</td>
-</tr>
-<tr class="even">
-<td align="left">DMX</td>
-<td align="left">Party Up (Up In Here…</td>
-<td align="right">2000</td>
-<td align="left">3:45</td>
-<td align="right">68</td>
-</tr>
-<tr class="odd">
-<td align="left">DMX</td>
-<td align="left">What You Want</td>
-<td align="right">2000</td>
-<td align="left">4:05</td>
-<td align="right">69</td>
-</tr>
-<tr class="even">
-<td align="left">DMX</td>
-<td align="left">What’s My Name</td>
-<td align="right">2000</td>
-<td align="left">3:50</td>
-<td align="right">70</td>
-</tr>
-<tr class="odd">
-<td align="left">Dr. Dre</td>
-<td align="left">Forgot About Dre</td>
-<td align="right">2000</td>
-<td align="left">3:42</td>
-<td align="right">85</td>
-</tr>
-<tr class="even">
-<td align="left">Dr. Dre</td>
-<td align="left">The Next Episode</td>
-<td align="right">2000</td>
-<td align="left">2:38</td>
-<td align="right">86</td>
-</tr>
-<tr class="odd">
-<td align="left">Drama</td>
-<td align="left">Left, Right, Left</td>
-<td align="right">2000</td>
-<td align="left">3:37</td>
-<td align="right">87</td>
-</tr>
-<tr class="even">
-<td align="left">Dream</td>
-<td align="left">He Loves U Not</td>
-<td align="right">2000</td>
-<td align="left">3:43</td>
-<td align="right">88</td>
-</tr>
-<tr class="odd">
-<td align="left">Eastsidaz, The</td>
-<td align="left">G’D Up</td>
-<td align="right">2000</td>
-<td align="left">4:27</td>
-<td align="right">89</td>
-</tr>
-<tr class="even">
-<td align="left">Eastsidaz, The</td>
-<td align="left">Got Beef</td>
-<td align="right">2000</td>
-<td align="left">3:58</td>
-<td align="right">90</td>
-</tr>
-<tr class="odd">
-<td align="left">Eiffel 65</td>
-<td align="left">Blue</td>
-<td align="right">2000</td>
-<td align="left">3:29</td>
-<td align="right">91</td>
-</tr>
-<tr class="even">
-<td align="left">Elliott, Missy “Misdemeanor”</td>
-<td align="left">Hot Boyz</td>
-<td align="right">2000</td>
-<td align="left">3:51</td>
-<td align="right">92</td>
-</tr>
-<tr class="odd">
-<td align="left">Eminem</td>
-<td align="left">Stan</td>
-<td align="right">2000</td>
-<td align="left">5:26</td>
-<td align="right">93</td>
-</tr>
-<tr class="even">
-<td align="left">Eminem</td>
-<td align="left">The Real Slim Shady</td>
-<td align="right">2000</td>
-<td align="left">4:42</td>
-<td align="right">94</td>
-</tr>
-<tr class="odd">
-<td align="left">Eminem</td>
-<td align="left">The Way I Am</td>
-<td align="right">2000</td>
-<td align="left">4:40</td>
-<td align="right">95</td>
-</tr>
-<tr class="even">
-<td align="left">En Vogue</td>
-<td align="left">Riddle</td>
-<td align="right">2000</td>
-<td align="left">5:10</td>
-<td align="right">96</td>
-</tr>
-<tr class="odd">
-<td align="left">Estefan, Gloria</td>
-<td align="left">No Me Dejes De Quere…</td>
-<td align="right">2000</td>
-<td align="left">3:25</td>
-<td align="right">97</td>
-</tr>
-<tr class="even">
-<td align="left">Evans, Sara</td>
-<td align="left">Born To Fly</td>
-<td align="right">2000</td>
-<td align="left">5:36</td>
-<td align="right">98</td>
-</tr>
-<tr class="odd">
-<td align="left">Eve</td>
-<td align="left">Got It All</td>
-<td align="right">2000</td>
-<td align="left">3:48</td>
-<td align="right">99</td>
-</tr>
-<tr class="even">
-<td align="left">Eve</td>
-<td align="left">Love Is Blind</td>
-<td align="right">2000</td>
-<td align="left">3:51</td>
-<td align="right">100</td>
-</tr>
-<tr class="odd">
-<td align="left">Everclear</td>
-<td align="left">Wonderful</td>
-<td align="right">2000</td>
-<td align="left">4:30</td>
-<td align="right">101</td>
-</tr>
-<tr class="even">
-<td align="left">Fabian, Lara</td>
-<td align="left">I Will Love Again</td>
-<td align="right">2000</td>
-<td align="left">3:43</td>
-<td align="right">102</td>
-</tr>
-<tr class="odd">
-<td align="left">Fatboy Slim</td>
-<td align="left">The Rockafeller Skan…</td>
-<td align="right">2000</td>
-<td align="left">4:00</td>
-<td align="right">103</td>
-</tr>
-<tr class="even">
-<td align="left">Filter</td>
-<td align="left">Take A Picture</td>
-<td align="right">2000</td>
-<td align="left">4:23</td>
-<td align="right">104</td>
-</tr>
-<tr class="odd">
-<td align="left">Foo Fighters</td>
-<td align="left">Learn To Fly</td>
-<td align="right">2000</td>
-<td align="left">3:55</td>
-<td align="right">105</td>
-</tr>
-<tr class="even">
-<td align="left">Fragma</td>
-<td align="left">Toca’s Miracle</td>
-<td align="right">2000</td>
-<td align="left">3:22</td>
-<td align="right">106</td>
-</tr>
-<tr class="odd">
-<td align="left">Funkmaster Flex</td>
-<td align="left">Do You</td>
-<td align="right">2000</td>
-<td align="left">4:14</td>
-<td align="right">107</td>
-</tr>
-<tr class="even">
-<td align="left">Ghostface Killah</td>
-<td align="left">Cherchez LaGhost</td>
-<td align="right">2000</td>
-<td align="left">3:04</td>
-<td align="right">108</td>
-</tr>
-<tr class="odd">
-<td align="left">Gill, Vince</td>
-<td align="left">Feels Like Love</td>
-<td align="right">2000</td>
-<td align="left">4:13</td>
-<td align="right">109</td>
-</tr>
-<tr class="even">
-<td align="left">Gilman, Billy</td>
-<td align="left">One Voice</td>
-<td align="right">2000</td>
-<td align="left">4:07</td>
-<td align="right">110</td>
-</tr>
-<tr class="odd">
-<td align="left">Ginuwine</td>
-<td align="left">None Of Ur Friends B…</td>
-<td align="right">2000</td>
-<td align="left">4:12</td>
-<td align="right">111</td>
-</tr>
-<tr class="even">
-<td align="left">Ginuwine</td>
-<td align="left">The Best Man I Can B…</td>
-<td align="right">2000</td>
-<td align="left">4:06</td>
-<td align="right">112</td>
-</tr>
-<tr class="odd">
-<td align="left">Goo Goo Dolls</td>
-<td align="left">Broadway</td>
-<td align="right">2000</td>
-<td align="left">3:54</td>
-<td align="right">113</td>
-</tr>
-<tr class="even">
-<td align="left">Gray, Macy</td>
-<td align="left">I Try</td>
-<td align="right">2000</td>
-<td align="left">3:52</td>
-<td align="right">114</td>
-</tr>
-<tr class="odd">
-<td align="left">Griggs, Andy</td>
-<td align="left">She’s More</td>
-<td align="right">2000</td>
-<td align="left">3:19</td>
-<td align="right">115</td>
-</tr>
-<tr class="even">
-<td align="left">Guy</td>
-<td align="left">Dancin’</td>
-<td align="right">2000</td>
-<td align="left">4:08</td>
-<td align="right">116</td>
-</tr>
-<tr class="odd">
-<td align="left">Hanson</td>
-<td align="left">This Time Around</td>
-<td align="right">2000</td>
-<td align="left">4:14</td>
-<td align="right">117</td>
-</tr>
-<tr class="even">
-<td align="left">Hart, Beth</td>
-<td align="left">L.A. Song</td>
-<td align="right">2000</td>
-<td align="left">3:47</td>
-<td align="right">118</td>
-</tr>
-<tr class="odd">
-<td align="left">Heatherly, Eric</td>
-<td align="left">Flowers On The Wall</td>
-<td align="right">2000</td>
-<td align="left">3:16</td>
-<td align="right">119</td>
-</tr>
-<tr class="even">
-<td align="left">Henley, Don</td>
-<td align="left">Taking You Home</td>
-<td align="right">2000</td>
-<td align="left">4:08</td>
-<td align="right">120</td>
-</tr>
-<tr class="odd">
-<td align="left">Herndon, Ty</td>
-<td align="left">No Mercy</td>
-<td align="right">2000</td>
-<td align="left">4:43</td>
-<td align="right">121</td>
-</tr>
-<tr class="even">
-<td align="left">Hill, Faith</td>
-<td align="left">Breathe</td>
-<td align="right">2000</td>
-<td align="left">4:04</td>
-<td align="right">122</td>
-</tr>
-<tr class="odd">
-<td align="left">Hill, Faith</td>
-<td align="left">Let’s Make Love</td>
-<td align="right">2000</td>
-<td align="left">4:11</td>
-<td align="right">123</td>
-</tr>
-<tr class="even">
-<td align="left">Hoku</td>
-<td align="left">Another Dumb Blonde</td>
-<td align="right">2000</td>
-<td align="left">3:47</td>
-<td align="right">124</td>
-</tr>
-<tr class="odd">
-<td align="left">Hollister, Dave</td>
-<td align="left">Can’t Stay</td>
-<td align="right">2000</td>
-<td align="left">6:17</td>
-<td align="right">125</td>
-</tr>
-<tr class="even">
-<td align="left">Hot Boys</td>
-<td align="left">I Need A Hot Girl</td>
-<td align="right">2000</td>
-<td align="left">4:16</td>
-<td align="right">126</td>
-</tr>
-<tr class="odd">
-<td align="left">Houston, Whitney</td>
-<td align="left">Could I Have This Ki…</td>
-<td align="right">2000</td>
-<td align="left">3:54</td>
-<td align="right">127</td>
-</tr>
-<tr class="even">
-<td align="left">Houston, Whitney</td>
-<td align="left">I Learned From The B…</td>
-<td align="right">2000</td>
-<td align="left">4:18</td>
-<td align="right">128</td>
-</tr>
-<tr class="odd">
-<td align="left">Houston, Whitney</td>
-<td align="left">My Love Is Your Love</td>
-<td align="right">2000</td>
-<td align="left">4:16</td>
-<td align="right">129</td>
-</tr>
-<tr class="even">
-<td align="left">Houston, Whitney</td>
-<td align="left">Same Script, Differe…</td>
-<td align="right">2000</td>
-<td align="left">4:45</td>
-<td align="right">130</td>
-</tr>
-<tr class="odd">
-<td align="left">Ice Cube</td>
-<td align="left">You Can Do It</td>
-<td align="right">2000</td>
-<td align="left">4:20</td>
-<td align="right">132</td>
-</tr>
-<tr class="even">
-<td align="left">Ideal</td>
-<td align="left">Whatever</td>
-<td align="right">2000</td>
-<td align="left">3:48</td>
-<td align="right">133</td>
-</tr>
-<tr class="odd">
-<td align="left">Iglesias, Enrique</td>
-<td align="left">Be With You</td>
-<td align="right">2000</td>
-<td align="left">3:36</td>
-<td align="right">134</td>
-</tr>
-<tr class="even">
-<td align="left">Iglesias, Enrique</td>
-<td align="left">Rhythm Divine</td>
-<td align="right">2000</td>
-<td align="left">7:35</td>
-<td align="right">135</td>
-</tr>
-<tr class="odd">
-<td align="left">IMx</td>
-<td align="left">Stay The Night</td>
-<td align="right">2000</td>
-<td align="left">3:37</td>
-<td align="right">131</td>
-</tr>
-<tr class="even">
-<td align="left">J-Shin</td>
-<td align="left">One Night Stand</td>
-<td align="right">2000</td>
-<td align="left">4:34</td>
-<td align="right">136</td>
-</tr>
-<tr class="odd">
-<td align="left">Ja Rule</td>
-<td align="left">Between Me And You</td>
-<td align="right">2000</td>
-<td align="left">4:05</td>
-<td align="right">137</td>
-</tr>
-<tr class="even">
-<td align="left">Jackson, Alan</td>
-<td align="left">It Must Be Love</td>
-<td align="right">2000</td>
-<td align="left">2:53</td>
-<td align="right">138</td>
-</tr>
-<tr class="odd">
-<td align="left">Jackson, Alan</td>
-<td align="left">Pop A Top</td>
-<td align="right">2000</td>
-<td align="left">3:04</td>
-<td align="right">139</td>
-</tr>
-<tr class="even">
-<td align="left">Jackson, Alan</td>
-<td align="left">www.memory</td>
-<td align="right">2000</td>
-<td align="left">2:36</td>
-<td align="right">140</td>
-</tr>
-<tr class="odd">
-<td align="left">Jagged Edge</td>
-<td align="left">He Can’t Love U</td>
-<td align="right">2000</td>
-<td align="left">3:30</td>
-<td align="right">141</td>
-</tr>
-<tr class="even">
-<td align="left">Jagged Edge</td>
-<td align="left">Let’s Get Married</td>
-<td align="right">2000</td>
-<td align="left">4:23</td>
-<td align="right">142</td>
-</tr>
-<tr class="odd">
-<td align="left">Janet</td>
-<td align="left">Doesn’t Really Matte…</td>
-<td align="right">2000</td>
-<td align="left">4:17</td>
-<td align="right">143</td>
-</tr>
-<tr class="even">
-<td align="left">Jay-Z</td>
-<td align="left">Anything</td>
-<td align="right">2000</td>
-<td align="left">3:41</td>
-<td align="right">144</td>
-</tr>
-<tr class="odd">
-<td align="left">Jay-Z</td>
-<td align="left">Big Pimpin’</td>
-<td align="right">2000</td>
-<td align="left">3:55</td>
-<td align="right">145</td>
-</tr>
-<tr class="even">
-<td align="left">Jay-Z</td>
-<td align="left">Do It Again (Put Ya …</td>
-<td align="right">2000</td>
-<td align="left">3:47</td>
-<td align="right">146</td>
-</tr>
-<tr class="odd">
-<td align="left">Jay-Z</td>
-<td align="left">Hey Papi</td>
-<td align="right">2000</td>
-<td align="left">3:40</td>
-<td align="right">147</td>
-</tr>
-<tr class="even">
-<td align="left">Jay-Z</td>
-<td align="left">I Just Wanna Love U …</td>
-<td align="right">2000</td>
-<td align="left">3:50</td>
-<td align="right">148</td>
-</tr>
-<tr class="odd">
-<td align="left">Jean, Wyclef</td>
-<td align="left">911</td>
-<td align="right">2000</td>
-<td align="left">4:00</td>
-<td align="right">149</td>
-</tr>
-<tr class="even">
-<td align="left">Joe</td>
-<td align="left">I Wanna Know</td>
-<td align="right">2000</td>
-<td align="left">4:57</td>
-<td align="right">150</td>
-</tr>
-<tr class="odd">
-<td align="left">Joe</td>
-<td align="left">Treat Her Like A Lad…</td>
-<td align="right">2000</td>
-<td align="left">4:12</td>
-<td align="right">151</td>
-</tr>
-<tr class="even">
-<td align="left">John, Elton</td>
-<td align="left">Someday Out Of The B…</td>
-<td align="right">2000</td>
-<td align="left">4:41</td>
-<td align="right">152</td>
-</tr>
-<tr class="odd">
-<td align="left">Jones, Donell</td>
-<td align="left">Where I Wanna Be</td>
-<td align="right">2000</td>
-<td align="left">6:22</td>
-<td align="right">153</td>
-</tr>
-<tr class="even">
-<td align="left">Jordan, Montell</td>
-<td align="left">Get It On.. Tonite</td>
-<td align="right">2000</td>
-<td align="left">4:34</td>
-<td align="right">154</td>
-</tr>
-<tr class="odd">
-<td align="left">Juvenile</td>
-<td align="left">U Understand</td>
-<td align="right">2000</td>
-<td align="left">3:51</td>
-<td align="right">155</td>
-</tr>
-<tr class="even">
-<td align="left">Kandi</td>
-<td align="left">Don’t Think I’m Not</td>
-<td align="right">2000</td>
-<td align="left">3:50</td>
-<td align="right">156</td>
-</tr>
-<tr class="odd">
-<td align="left">Keith, Toby</td>
-<td align="left">Country Comes To Tow…</td>
-<td align="right">2000</td>
-<td align="left">3:39</td>
-<td align="right">157</td>
-</tr>
-<tr class="even">
-<td align="left">Keith, Toby</td>
-<td align="left">How Do You Like Me N…</td>
-<td align="right">2000</td>
-<td align="left">3:29</td>
-<td align="right">158</td>
-</tr>
-<tr class="odd">
-<td align="left">Kelis</td>
-<td align="left">Caught Out There</td>
-<td align="right">2000</td>
-<td align="left">4:09</td>
-<td align="right">159</td>
-</tr>
-<tr class="even">
-<td align="left">Kenny G</td>
-<td align="left">Auld Lang Syne (The …</td>
-<td align="right">2000</td>
-<td align="left">7:50</td>
-<td align="right">160</td>
-</tr>
-<tr class="odd">
-<td align="left">Kid Rock</td>
-<td align="left">Only God Knows Why</td>
-<td align="right">2000</td>
-<td align="left">5:27</td>
-<td align="right">161</td>
-</tr>
-<tr class="even">
-<td align="left">Kravitz, Lenny</td>
-<td align="left">I Belong To You</td>
-<td align="right">2000</td>
-<td align="left">4:17</td>
-<td align="right">162</td>
-</tr>
-<tr class="odd">
-<td align="left">Kumbia Kings</td>
-<td align="left">U Don’t Love Me</td>
-<td align="right">2000</td>
-<td align="left">3:50</td>
-<td align="right">163</td>
-</tr>
-<tr class="even">
-<td align="left">Larrieux, Amel</td>
-<td align="left">Get Up</td>
-<td align="right">2000</td>
-<td align="left">4:02</td>
-<td align="right">167</td>
-</tr>
-<tr class="odd">
-<td align="left">Lawrence, Tracy</td>
-<td align="left">Lessons Learned</td>
-<td align="right">2000</td>
-<td align="left">2:55</td>
-<td align="right">168</td>
-</tr>
-<tr class="even">
-<td align="left">Levert, Gerald</td>
-<td align="left">Baby U Are</td>
-<td align="right">2000</td>
-<td align="left">4:10</td>
-<td align="right">169</td>
-</tr>
-<tr class="odd">
-<td align="left">Levert, Gerald</td>
-<td align="left">Mr. Too Damn Good</td>
-<td align="right">2000</td>
-<td align="left">4:06</td>
-<td align="right">170</td>
-</tr>
-<tr class="even">
-<td align="left">LFO</td>
-<td align="left">I Don’t Wanna Kiss Y…</td>
-<td align="right">2000</td>
-<td align="left">5:00</td>
-<td align="right">164</td>
-</tr>
-<tr class="odd">
-<td align="left">LFO</td>
-<td align="left">West Side Story</td>
-<td align="right">2000</td>
-<td align="left">3:27</td>
-<td align="right">165</td>
-</tr>
-<tr class="even">
-<td align="left">Lil Bow Wow</td>
-<td align="left">Bounce With Me</td>
-<td align="right">2000</td>
-<td align="left">3:22</td>
-<td align="right">171</td>
-</tr>
-<tr class="odd">
-<td align="left">Lil Wayne</td>
-<td align="left">Tha Block Is Hot</td>
-<td align="right">2000</td>
-<td align="left">4:13</td>
-<td align="right">172</td>
-</tr>
-<tr class="even">
-<td align="left">Lil’ Kim</td>
-<td align="left">How Many Licks?</td>
-<td align="right">2000</td>
-<td align="left">3:50</td>
-<td align="right">173</td>
-</tr>
-<tr class="odd">
-<td align="left">Lil’ Kim</td>
-<td align="left">No Matter What They …</td>
-<td align="right">2000</td>
-<td align="left">4:12</td>
-<td align="right">174</td>
-</tr>
-<tr class="even">
-<td align="left">Lil’ Mo</td>
-<td align="left">Ta Da</td>
-<td align="right">2000</td>
-<td align="left">4:17</td>
-<td align="right">175</td>
-</tr>
-<tr class="odd">
-<td align="left">Lil’ Zane</td>
-<td align="left">Callin’ Me</td>
-<td align="right">2000</td>
-<td align="left">3:43</td>
-<td align="right">176</td>
-</tr>
-<tr class="even">
-<td align="left">Limp Bizkit</td>
-<td align="left">N 2 Gether Now</td>
-<td align="right">2000</td>
-<td align="left">3:55</td>
-<td align="right">177</td>
-</tr>
-<tr class="odd">
-<td align="left">Limp Bizkit</td>
-<td align="left">Re-Arranged</td>
-<td align="right">2000</td>
-<td align="left">4:08</td>
-<td align="right">178</td>
-</tr>
-<tr class="even">
-<td align="left">Limp Bizkit</td>
-<td align="left">Rollin’</td>
-<td align="right">2000</td>
-<td align="left">4:04</td>
-<td align="right">179</td>
-</tr>
-<tr class="odd">
-<td align="left">LL Cool J</td>
-<td align="left">Imagine That</td>
-<td align="right">2000</td>
-<td align="left">4:00</td>
-<td align="right">166</td>
-</tr>
-<tr class="even">
-<td align="left">Lonestar</td>
-<td align="left">Amazed</td>
-<td align="right">2000</td>
-<td align="left">4:25</td>
-<td align="right">180</td>
-</tr>
-<tr class="odd">
-<td align="left">Lonestar</td>
-<td align="left">Smile</td>
-<td align="right">2000</td>
-<td align="left">3:33</td>
-<td align="right">181</td>
-</tr>
-<tr class="even">
-<td align="left">Lonestar</td>
-<td align="left">What About Now</td>
-<td align="right">2000</td>
-<td align="left">3:30</td>
-<td align="right">182</td>
-</tr>
-<tr class="odd">
-<td align="left">Lopez, Jennifer</td>
-<td align="left">Feelin’ Good</td>
-<td align="right">2000</td>
-<td align="left">4:28</td>
-<td align="right">183</td>
-</tr>
-<tr class="even">
-<td align="left">Loveless, Patty</td>
-<td align="left">That’s The Kind Of M…</td>
-<td align="right">2000</td>
-<td align="left">3:27</td>
-<td align="right">184</td>
-</tr>
-<tr class="odd">
-<td align="left">Lox</td>
-<td align="left">Ryde or Die, Chick</td>
-<td align="right">2000</td>
-<td align="left">3:56</td>
-<td align="right">185</td>
-</tr>
-<tr class="even">
-<td align="left">Lucy Pearl</td>
-<td align="left">Dance Tonight</td>
-<td align="right">2000</td>
-<td align="left">3:45</td>
-<td align="right">186</td>
-</tr>
-<tr class="odd">
-<td align="left">Ludacris</td>
-<td align="left">What’s Your Fantasy</td>
-<td align="right">2000</td>
-<td align="left">4:16</td>
-<td align="right">187</td>
-</tr>
-<tr class="even">
-<td align="left">M2M</td>
-<td align="left">Don’t Say You Love M…</td>
-<td align="right">2000</td>
-<td align="left">3:41</td>
-<td align="right">188</td>
-</tr>
-<tr class="odd">
-<td align="left">M2M</td>
-<td align="left">Mirror Mirror</td>
-<td align="right">2000</td>
-<td align="left">3:19</td>
-<td align="right">189</td>
-</tr>
-<tr class="even">
-<td align="left">Madison Avenue</td>
-<td align="left">Don’t Call Me Baby</td>
-<td align="right">2000</td>
-<td align="left">3:44</td>
-<td align="right">190</td>
-</tr>
-<tr class="odd">
-<td align="left">Madonna</td>
-<td align="left">American Pie</td>
-<td align="right">2000</td>
-<td align="left">4:30</td>
-<td align="right">191</td>
-</tr>
-<tr class="even">
-<td align="left">Madonna</td>
-<td align="left">Music</td>
-<td align="right">2000</td>
-<td align="left">3:45</td>
-<td align="right">192</td>
-</tr>
-<tr class="odd">
-<td align="left">Martin, Ricky</td>
-<td align="left">Private Emotion</td>
-<td align="right">2000</td>
-<td align="left">4:02</td>
-<td align="right">193</td>
-</tr>
-<tr class="even">
-<td align="left">Martin, Ricky</td>
-<td align="left">Shake Your Bon-Bon</td>
-<td align="right">2000</td>
-<td align="left">3:08</td>
-<td align="right">194</td>
-</tr>
-<tr class="odd">
-<td align="left">Martin, Ricky</td>
-<td align="left">She Bangs</td>
-<td align="right">2000</td>
-<td align="left">4:02</td>
-<td align="right">195</td>
-</tr>
-<tr class="even">
-<td align="left">Mary Mary</td>
-<td align="left">Shackles (Praise You…</td>
-<td align="right">2000</td>
-<td align="left">3:12</td>
-<td align="right">196</td>
-</tr>
-<tr class="odd">
-<td align="left">Master P</td>
-<td align="left">Souljas</td>
-<td align="right">2000</td>
-<td align="left">3:33</td>
-<td align="right">197</td>
-</tr>
-<tr class="even">
-<td align="left">matchbox twenty</td>
-<td align="left">Bent</td>
-<td align="right">2000</td>
-<td align="left">4:12</td>
-<td align="right">317</td>
-</tr>
-<tr class="odd">
-<td align="left">McBride, Martina</td>
-<td align="left">Love’s The Only Hous…</td>
-<td align="right">2000</td>
-<td align="left">5:13</td>
-<td align="right">198</td>
-</tr>
-<tr class="even">
-<td align="left">McBride, Martina</td>
-<td align="left">There You Are</td>
-<td align="right">2000</td>
-<td align="left">3:26</td>
-<td align="right">199</td>
-</tr>
-<tr class="odd">
-<td align="left">McEntire, Reba</td>
-<td align="left">I’ll Be</td>
-<td align="right">2000</td>
-<td align="left">4:23</td>
-<td align="right">200</td>
-</tr>
-<tr class="even">
-<td align="left">McEntire, Reba</td>
-<td align="left">What Do You Say</td>
-<td align="right">2000</td>
-<td align="left">3:26</td>
-<td align="right">201</td>
-</tr>
-<tr class="odd">
-<td align="left">McGraw, Tim</td>
-<td align="left">My Best Friend</td>
-<td align="right">2000</td>
-<td align="left">4:33</td>
-<td align="right">202</td>
-</tr>
-<tr class="even">
-<td align="left">McGraw, Tim</td>
-<td align="left">My Next Thirty Years</td>
-<td align="right">2000</td>
-<td align="left">3:37</td>
-<td align="right">203</td>
-</tr>
-<tr class="odd">
-<td align="left">McGraw, Tim</td>
-<td align="left">Some Things Never Ch…</td>
-<td align="right">2000</td>
-<td align="left">3:56</td>
-<td align="right">204</td>
-</tr>
-<tr class="even">
-<td align="left">McKnight, Brian</td>
-<td align="left">Stay Or Let It Go</td>
-<td align="right">2000</td>
-<td align="left">4:32</td>
-<td align="right">205</td>
-</tr>
-<tr class="odd">
-<td align="left">Messina, Jo Dee</td>
-<td align="left">Because You Love Me</td>
-<td align="right">2000</td>
-<td align="left">3:50</td>
-<td align="right">206</td>
-</tr>
-<tr class="even">
-<td align="left">Messina, Jo Dee</td>
-<td align="left">That’s The Way</td>
-<td align="right">2000</td>
-<td align="left">3:17</td>
-<td align="right">207</td>
-</tr>
-<tr class="odd">
-<td align="left">Metallica</td>
-<td align="left">I Disappear</td>
-<td align="right">2000</td>
-<td align="left">4:26</td>
-<td align="right">208</td>
-</tr>
-<tr class="even">
-<td align="left">Metallica</td>
-<td align="left">No Leaf Clover (Live…</td>
-<td align="right">2000</td>
-<td align="left">5:43</td>
-<td align="right">209</td>
-</tr>
-<tr class="odd">
-<td align="left">Montgomery Gentry</td>
-<td align="left">Daddy Won’t Sell The…</td>
-<td align="right">2000</td>
-<td align="left">4:18</td>
-<td align="right">210</td>
-</tr>
-<tr class="even">
-<td align="left">Montgomery, John Michael</td>
-<td align="left">The Little Girl</td>
-<td align="right">2000</td>
-<td align="left">3:52</td>
-<td align="right">211</td>
-</tr>
-<tr class="odd">
-<td align="left">Moore, Chante</td>
-<td align="left">Straight Up</td>
-<td align="right">2000</td>
-<td align="left">3:40</td>
-<td align="right">212</td>
-</tr>
-<tr class="even">
-<td align="left">Moore, Mandy</td>
-<td align="left">I Wanna Be With You</td>
-<td align="right">2000</td>
-<td align="left">4:12</td>
-<td align="right">213</td>
-</tr>
-<tr class="odd">
-<td align="left">Mumba, Samantha</td>
-<td align="left">Gotta Tell You</td>
-<td align="right">2000</td>
-<td align="left">3:19</td>
-<td align="right">214</td>
-</tr>
-<tr class="even">
-<td align="left">Musiq</td>
-<td align="left">Just Friends</td>
-<td align="right">2000</td>
-<td align="left">4:02</td>
-<td align="right">215</td>
-</tr>
-<tr class="odd">
-<td align="left">Mya</td>
-<td align="left">Case Of The Ex (What…</td>
-<td align="right">2000</td>
-<td align="left">3:50</td>
-<td align="right">216</td>
-</tr>
-<tr class="even">
-<td align="left">Mya</td>
-<td align="left">The Best Of Me</td>
-<td align="right">2000</td>
-<td align="left">4:12</td>
-<td align="right">217</td>
-</tr>
-<tr class="odd">
-<td align="left">Mystikal</td>
-<td align="left">Shake Ya Ass</td>
-<td align="right">2000</td>
-<td align="left">4:46</td>
-<td align="right">218</td>
-</tr>
-<tr class="even">
-<td align="left">N’Sync</td>
-<td align="left">Bye Bye Bye</td>
-<td align="right">2000</td>
-<td align="left">3:15</td>
-<td align="right">219</td>
-</tr>
-<tr class="odd">
-<td align="left">N’Sync</td>
-<td align="left">It’s Gonna Be Me</td>
-<td align="right">2000</td>
-<td align="left">3:10</td>
-<td align="right">220</td>
-</tr>
-<tr class="even">
-<td align="left">N’Sync</td>
-<td align="left">This I Promise You</td>
-<td align="right">2000</td>
-<td align="left">4:23</td>
-<td align="right">221</td>
-</tr>
-<tr class="odd">
-<td align="left">Nas</td>
-<td align="left">You Owe Me</td>
-<td align="right">2000</td>
-<td align="left">3:51</td>
-<td align="right">222</td>
-</tr>
-<tr class="even">
-<td align="left">Nelly</td>
-<td align="left">(Hot S**t) Country G…</td>
-<td align="right">2000</td>
-<td align="left">4:17</td>
-<td align="right">223</td>
-</tr>
-<tr class="odd">
-<td align="left">Next</td>
-<td align="left">Wifey</td>
-<td align="right">2000</td>
-<td align="left">4:03</td>
-<td align="right">224</td>
-</tr>
-<tr class="even">
-<td align="left">Nine Days</td>
-<td align="left">Absolutely (Story Of…</td>
-<td align="right">2000</td>
-<td align="left">3:09</td>
-<td align="right">225</td>
-</tr>
-<tr class="odd">
-<td align="left">Nine Days</td>
-<td align="left">If I Am</td>
-<td align="right">2000</td>
-<td align="left">4:18</td>
-<td align="right">226</td>
-</tr>
-<tr class="even">
-<td align="left">No Doubt</td>
-<td align="left">Simple Kind Of Life</td>
-<td align="right">2000</td>
-<td align="left">4:11</td>
-<td align="right">227</td>
-</tr>
-<tr class="odd">
-<td align="left">Nu Flavor</td>
-<td align="left">3 Little Words</td>
-<td align="right">2000</td>
-<td align="left">3:54</td>
-<td align="right">228</td>
-</tr>
-<tr class="even">
-<td align="left">Offspring, The</td>
-<td align="left">Original Prankster</td>
-<td align="right">2000</td>
-<td align="left">3:42</td>
-<td align="right">229</td>
-</tr>
-<tr class="odd">
-<td align="left">Paisley, Brad</td>
-<td align="left">Me Neither</td>
-<td align="right">2000</td>
-<td align="left">3:19</td>
-<td align="right">230</td>
-</tr>
-<tr class="even">
-<td align="left">Paisley, Brad</td>
-<td align="left">We Danced</td>
-<td align="right">2000</td>
-<td align="left">3:45</td>
-<td align="right">231</td>
-</tr>
-<tr class="odd">
-<td align="left">Papa Roach</td>
-<td align="left">Last Resort</td>
-<td align="right">2000</td>
-<td align="left">3:19</td>
-<td align="right">232</td>
-</tr>
-<tr class="even">
-<td align="left">Pearl Jam</td>
-<td align="left">Nothing As It Seems</td>
-<td align="right">2000</td>
-<td align="left">5:20</td>
-<td align="right">233</td>
-</tr>
-<tr class="odd">
-<td align="left">Pink</td>
-<td align="left">Most Girls</td>
-<td align="right">2000</td>
-<td align="left">4:06</td>
-<td align="right">234</td>
-</tr>
-<tr class="even">
-<td align="left">Pink</td>
-<td align="left">There U Go</td>
-<td align="right">2000</td>
-<td align="left">3:23</td>
-<td align="right">235</td>
-</tr>
-<tr class="odd">
-<td align="left">Price, Kelly</td>
-<td align="left">As We Lay</td>
-<td align="right">2000</td>
-<td align="left">6:20</td>
-<td align="right">236</td>
-</tr>
-<tr class="even">
-<td align="left">Price, Kelly</td>
-<td align="left">Love Sets You Free</td>
-<td align="right">2000</td>
-<td align="left">3:46</td>
-<td align="right">237</td>
-</tr>
-<tr class="odd">
-<td align="left">Price, Kelly</td>
-<td align="left">You Should’ve Told M…</td>
-<td align="right">2000</td>
-<td align="left">3:12</td>
-<td align="right">238</td>
-</tr>
-<tr class="even">
-<td align="left">Profyle</td>
-<td align="left">Liar</td>
-<td align="right">2000</td>
-<td align="left">3:57</td>
-<td align="right">239</td>
-</tr>
-<tr class="odd">
-<td align="left">Puff Daddy</td>
-<td align="left">Best Friend</td>
-<td align="right">2000</td>
-<td align="left">5:33</td>
-<td align="right">240</td>
-</tr>
-<tr class="even">
-<td align="left">Q-Tip</td>
-<td align="left">Breathe And Stop</td>
-<td align="right">2000</td>
-<td align="left">4:06</td>
-<td align="right">241</td>
-</tr>
-<tr class="odd">
-<td align="left">R.E.M.</td>
-<td align="left">The Great Beyond</td>
-<td align="right">2000</td>
-<td align="left">4:10</td>
-<td align="right">242</td>
-</tr>
-<tr class="even">
-<td align="left">Rascal Flatts</td>
-<td align="left">Prayin’ For Daylight</td>
-<td align="right">2000</td>
-<td align="left">3:36</td>
-<td align="right">243</td>
-</tr>
-<tr class="odd">
-<td align="left">Raye, Collin</td>
-<td align="left">Couldn’t Last A Mome…</td>
-<td align="right">2000</td>
-<td align="left">3:40</td>
-<td align="right">244</td>
-</tr>
-<tr class="even">
-<td align="left">Red Hot Chili Peppers</td>
-<td align="left">Californication</td>
-<td align="right">2000</td>
-<td align="left">5:21</td>
-<td align="right">245</td>
-</tr>
-<tr class="odd">
-<td align="left">Red Hot Chili Peppers</td>
-<td align="left">Otherside</td>
-<td align="right">2000</td>
-<td align="left">4:13</td>
-<td align="right">246</td>
-</tr>
-<tr class="even">
-<td align="left">Rimes, LeAnn</td>
-<td align="left">Big Deal</td>
-<td align="right">2000</td>
-<td align="left">3:03</td>
-<td align="right">247</td>
-</tr>
-<tr class="odd">
-<td align="left">Rimes, LeAnn</td>
-<td align="left">Can’t Fight The Moon…</td>
-<td align="right">2000</td>
-<td align="left">3:33</td>
-<td align="right">248</td>
-</tr>
-<tr class="even">
-<td align="left">Rimes, LeAnn</td>
-<td align="left">I Need You</td>
-<td align="right">2000</td>
-<td align="left">3:42</td>
-<td align="right">249</td>
-</tr>
-<tr class="odd">
-<td align="left">Rogers, Kenny</td>
-<td align="left">Buy Me A Rose</td>
-<td align="right">2000</td>
-<td align="left">3:46</td>
-<td align="right">250</td>
-</tr>
-<tr class="even">
-<td align="left">Ruff Endz</td>
-<td align="left">No More</td>
-<td align="right">2000</td>
-<td align="left">3:56</td>
-<td align="right">251</td>
-</tr>
-<tr class="odd">
-<td align="left">Sammie</td>
-<td align="left">I Like It</td>
-<td align="right">2000</td>
-<td align="left">4:09</td>
-<td align="right">252</td>
-</tr>
-<tr class="even">
-<td align="left">Santana</td>
-<td align="left">Maria, Maria</td>
-<td align="right">2000</td>
-<td align="left">4:18</td>
-<td align="right">253</td>
-</tr>
-<tr class="odd">
-<td align="left">Savage Garden</td>
-<td align="left">Crash And Burn</td>
-<td align="right">2000</td>
-<td align="left">4:41</td>
-<td align="right">254</td>
-</tr>
-<tr class="even">
-<td align="left">Savage Garden</td>
-<td align="left">I Knew I Loved You</td>
-<td align="right">2000</td>
-<td align="left">4:07</td>
-<td align="right">255</td>
-</tr>
-<tr class="odd">
-<td align="left">SheDaisy</td>
-<td align="left">Deck The Halls</td>
-<td align="right">2000</td>
-<td align="left">3:46</td>
-<td align="right">256</td>
-</tr>
-<tr class="even">
-<td align="left">SheDaisy</td>
-<td align="left">I Will.. But</td>
-<td align="right">2000</td>
-<td align="left">3:40</td>
-<td align="right">257</td>
-</tr>
-<tr class="odd">
-<td align="left">SheDaisy</td>
-<td align="left">This Woman Needs</td>
-<td align="right">2000</td>
-<td align="left">3:20</td>
-<td align="right">258</td>
-</tr>
-<tr class="even">
-<td align="left">Sheist, Shade</td>
-<td align="left">Where I Wanna Be</td>
-<td align="right">2000</td>
-<td align="left">4:16</td>
-<td align="right">259</td>
-</tr>
-<tr class="odd">
-<td align="left">Shyne</td>
-<td align="left">Bad Boyz</td>
-<td align="right">2000</td>
-<td align="left">4:22</td>
-<td align="right">260</td>
-</tr>
-<tr class="even">
-<td align="left">Simpson, Jessica</td>
-<td align="left">I Think I’m In Love …</td>
-<td align="right">2000</td>
-<td align="left">3:32</td>
-<td align="right">261</td>
-</tr>
-<tr class="odd">
-<td align="left">Simpson, Jessica</td>
-<td align="left">Where You Are</td>
-<td align="right">2000</td>
-<td align="left">3:51</td>
-<td align="right">262</td>
-</tr>
-<tr class="even">
-<td align="left">Sisqo</td>
-<td align="left">Got To Get It</td>
-<td align="right">2000</td>
-<td align="left">3:52</td>
-<td align="right">263</td>
-</tr>
-<tr class="odd">
-<td align="left">Sisqo</td>
-<td align="left">Incomplete</td>
-<td align="right">2000</td>
-<td align="left">3:52</td>
-<td align="right">264</td>
-</tr>
-<tr class="even">
-<td align="left">Sisqo</td>
-<td align="left">Thong Song</td>
-<td align="right">2000</td>
-<td align="left">4:05</td>
-<td align="right">265</td>
-</tr>
-<tr class="odd">
-<td align="left">Sister Hazel</td>
-<td align="left">Change Your Mind</td>
-<td align="right">2000</td>
-<td align="left">4:02</td>
-<td align="right">266</td>
-</tr>
-<tr class="even">
-<td align="left">Smash Mouth</td>
-<td align="left">Then The Morning Com…</td>
-<td align="right">2000</td>
-<td align="left">3:04</td>
-<td align="right">267</td>
-</tr>
-<tr class="odd">
-<td align="left">Smith, Will</td>
-<td align="left">Freakin’ It</td>
-<td align="right">2000</td>
-<td align="left">3:58</td>
-<td align="right">268</td>
-</tr>
-<tr class="even">
-<td align="left">Son By Four</td>
-<td align="left">A Puro Dolor (Purest…</td>
-<td align="right">2000</td>
-<td align="left">3:30</td>
-<td align="right">269</td>
-</tr>
-<tr class="odd">
-<td align="left">Sonique</td>
-<td align="left">It Feels So Good</td>
-<td align="right">2000</td>
-<td align="left">3:48</td>
-<td align="right">270</td>
-</tr>
-<tr class="even">
-<td align="left">SoulDecision</td>
-<td align="left">Faded</td>
-<td align="right">2000</td>
-<td align="left">3:25</td>
-<td align="right">271</td>
-</tr>
-<tr class="odd">
-<td align="left">Spears, Britney</td>
-<td align="left">From The Bottom Of M…</td>
-<td align="right">2000</td>
-<td align="left">4:30</td>
-<td align="right">272</td>
-</tr>
-<tr class="even">
-<td align="left">Spears, Britney</td>
-<td align="left">Lucky</td>
-<td align="right">2000</td>
-<td align="left">3:23</td>
-<td align="right">273</td>
-</tr>
-<tr class="odd">
-<td align="left">Spears, Britney</td>
-<td align="left">Oops!.. I Did It Aga…</td>
-<td align="right">2000</td>
-<td align="left">3:30</td>
-<td align="right">274</td>
-</tr>
-<tr class="even">
-<td align="left">Spencer, Tracie</td>
-<td align="left">Still In My Heart</td>
-<td align="right">2000</td>
-<td align="left">4:11</td>
-<td align="right">275</td>
-</tr>
-<tr class="odd">
-<td align="left">Splender</td>
-<td align="left">I Think God Can Expl…</td>
-<td align="right">2000</td>
-<td align="left">3:55</td>
-<td align="right">276</td>
-</tr>
-<tr class="even">
-<td align="left">Sting</td>
-<td align="left">Desert Rose</td>
-<td align="right">2000</td>
-<td align="left">3:52</td>
-<td align="right">277</td>
-</tr>
-<tr class="odd">
-<td align="left">Stone Temple Pilots</td>
-<td align="left">Sour Girl</td>
-<td align="right">2000</td>
-<td align="left">4:16</td>
-<td align="right">278</td>
-</tr>
-<tr class="even">
-<td align="left">Stone, Angie</td>
-<td align="left">No More Rain (In Thi…</td>
-<td align="right">2000</td>
-<td align="left">4:42</td>
-<td align="right">279</td>
-</tr>
-<tr class="odd">
-<td align="left">Strait, George</td>
-<td align="left">Go On</td>
-<td align="right">2000</td>
-<td align="left">3:48</td>
-<td align="right">280</td>
-</tr>
-<tr class="even">
-<td align="left">Strait, George</td>
-<td align="left">The Best Day</td>
-<td align="right">2000</td>
-<td align="left">3:24</td>
-<td align="right">281</td>
-</tr>
-<tr class="odd">
-<td align="left">Sugar Ray</td>
-<td align="left">Falls Apart</td>
-<td align="right">2000</td>
-<td align="left">4:15</td>
-<td align="right">282</td>
-</tr>
-<tr class="even">
-<td align="left">Tamar</td>
-<td align="left">If You Don’t Wanna L…</td>
-<td align="right">2000</td>
-<td align="left">4:02</td>
-<td align="right">284</td>
-</tr>
-<tr class="odd">
-<td align="left">Tamia</td>
-<td align="left">Can’t Go For That</td>
-<td align="right">2000</td>
-<td align="left">3:38</td>
-<td align="right">285</td>
-</tr>
-<tr class="even">
-<td align="left">Third Eye Blind</td>
-<td align="left">Deep Inside Of You</td>
-<td align="right">2000</td>
-<td align="left">4:10</td>
-<td align="right">286</td>
-</tr>
-<tr class="odd">
-<td align="left">Third Eye Blind</td>
-<td align="left">Never Let You Go</td>
-<td align="right">2000</td>
-<td align="left">3:57</td>
-<td align="right">287</td>
-</tr>
-<tr class="even">
-<td align="left">Thomas, Carl</td>
-<td align="left">Emotional</td>
-<td align="right">2000</td>
-<td align="left">4:31</td>
-<td align="right">288</td>
-</tr>
-<tr class="odd">
-<td align="left">Thomas, Carl</td>
-<td align="left">I Wish</td>
-<td align="right">2000</td>
-<td align="left">3:50</td>
-<td align="right">289</td>
-</tr>
-<tr class="even">
-<td align="left">Thomas, Carl</td>
-<td align="left">Summer Rain</td>
-<td align="right">2000</td>
-<td align="left">4:57</td>
-<td align="right">290</td>
-</tr>
-<tr class="odd">
-<td align="left">Tippin, Aaron</td>
-<td align="left">Kiss This</td>
-<td align="right">2000</td>
-<td align="left">2:53</td>
-<td align="right">291</td>
-</tr>
-<tr class="even">
-<td align="left">TLC</td>
-<td align="left">Dear Lie</td>
-<td align="right">2000</td>
-<td align="left">4:36</td>
-<td align="right">283</td>
-</tr>
-<tr class="odd">
-<td align="left">Train</td>
-<td align="left">Meet Virginia</td>
-<td align="right">2000</td>
-<td align="left">3:55</td>
-<td align="right">292</td>
-</tr>
-<tr class="even">
-<td align="left">Trick Daddy</td>
-<td align="left">Shut Up</td>
-<td align="right">2000</td>
-<td align="left">4:17</td>
-<td align="right">293</td>
-</tr>
-<tr class="odd">
-<td align="left">Trina</td>
-<td align="left">Pull Over</td>
-<td align="right">2000</td>
-<td align="left">2:58</td>
-<td align="right">294</td>
-</tr>
-<tr class="even">
-<td align="left">Tritt, Travis</td>
-<td align="left">Best Of Intentions</td>
-<td align="right">2000</td>
-<td align="left">4:15</td>
-<td align="right">295</td>
-</tr>
-<tr class="odd">
-<td align="left">Tuesday</td>
-<td align="left">I Know</td>
-<td align="right">2000</td>
-<td align="left">4:06</td>
-<td align="right">296</td>
-</tr>
-<tr class="even">
-<td align="left">Urban, Keith</td>
-<td align="left">Your Everything</td>
-<td align="right">2000</td>
-<td align="left">4:10</td>
-<td align="right">297</td>
-</tr>
-<tr class="odd">
-<td align="left">Usher</td>
-<td align="left">Pop Ya Collar</td>
-<td align="right">2000</td>
-<td align="left">3:36</td>
-<td align="right">298</td>
-</tr>
-<tr class="even">
-<td align="left">Vassar, Phil</td>
-<td align="left">Carlene</td>
-<td align="right">2000</td>
-<td align="left">4:07</td>
-<td align="right">299</td>
-</tr>
-<tr class="odd">
-<td align="left">Vassar, Phil</td>
-<td align="left">Just Another Day In …</td>
-<td align="right">2000</td>
-<td align="left">3:54</td>
-<td align="right">300</td>
-</tr>
-<tr class="even">
-<td align="left">Vertical Horizon</td>
-<td align="left">Everything You Want</td>
-<td align="right">2000</td>
-<td align="left">4:01</td>
-<td align="right">301</td>
-</tr>
-<tr class="odd">
-<td align="left">Vertical Horizon</td>
-<td align="left">You’re A God</td>
-<td align="right">2000</td>
-<td align="left">3:45</td>
-<td align="right">302</td>
-</tr>
-<tr class="even">
-<td align="left">Vitamin C</td>
-<td align="left">Graduation (Friends …</td>
-<td align="right">2000</td>
-<td align="left">4:23</td>
-<td align="right">303</td>
-</tr>
-<tr class="odd">
-<td align="left">Vitamin C</td>
-<td align="left">The Itch</td>
-<td align="right">2000</td>
-<td align="left">3:30</td>
-<td align="right">304</td>
-</tr>
-<tr class="even">
-<td align="left">Walker, Clay</td>
-<td align="left">Live, Laugh, Love</td>
-<td align="right">2000</td>
-<td align="left">4:06</td>
-<td align="right">305</td>
-</tr>
-<tr class="odd">
-<td align="left">Walker, Clay</td>
-<td align="left">The Chain Of Love</td>
-<td align="right">2000</td>
-<td align="left">5:03</td>
-<td align="right">306</td>
-</tr>
-<tr class="even">
-<td align="left">Wallflowers, The</td>
-<td align="left">Sleepwalker</td>
-<td align="right">2000</td>
-<td align="left">3:29</td>
-<td align="right">307</td>
-</tr>
-<tr class="odd">
-<td align="left">Westlife</td>
-<td align="left">Swear It Again</td>
-<td align="right">2000</td>
-<td align="left">4:07</td>
-<td align="right">308</td>
-</tr>
-<tr class="even">
-<td align="left">Williams, Robbie</td>
-<td align="left">Angels</td>
-<td align="right">2000</td>
-<td align="left">3:56</td>
-<td align="right">309</td>
-</tr>
-<tr class="odd">
-<td align="left">Wills, Mark</td>
-<td align="left">Back At One</td>
-<td align="right">2000</td>
-<td align="left">4:00</td>
-<td align="right">310</td>
-</tr>
-<tr class="even">
-<td align="left">Worley, Darryl</td>
-<td align="left">When You Need My Lov…</td>
-<td align="right">2000</td>
-<td align="left">3:35</td>
-<td align="right">311</td>
-</tr>
-<tr class="odd">
-<td align="left">Wright, Chely</td>
-<td align="left">It Was</td>
-<td align="right">2000</td>
-<td align="left">3:51</td>
-<td align="right">312</td>
-</tr>
-<tr class="even">
-<td align="left">Yankee Grey</td>
-<td align="left">Another Nine Minutes</td>
-<td align="right">2000</td>
-<td align="left">3:10</td>
-<td align="right">313</td>
-</tr>
-<tr class="odd">
-<td align="left">Yearwood, Trisha</td>
-<td align="left">Real Live Woman</td>
-<td align="right">2000</td>
-<td align="left">3:55</td>
-<td align="right">314</td>
-</tr>
-<tr class="even">
-<td align="left">Ying Yang Twins</td>
-<td align="left">Whistle While You Tw…</td>
-<td align="right">2000</td>
-<td align="left">4:19</td>
-<td align="right">315</td>
-</tr>
-<tr class="odd">
-<td align="left">Zombie Nation</td>
-<td align="left">Kernkraft 400</td>
-<td align="right">2000</td>
-<td align="left">3:30</td>
-<td align="right">316</td>
-</tr>
-</tbody>
-</table>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">song_id =</span> <span class="kw">row_number</span>(artist))</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rank &lt;-<span class="st"> </span>billboard_tidy <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">left_join</span>(song, <span class="kw">c</span>(<span class="st">&quot;artist&quot;</span>, <span class="st">&quot;track&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;time&quot;</span>)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(song_id, date, week, rank) <span class="op">%&gt;%</span>
@@ -36019,167 +34134,311 @@ specdata &lt;-<span class="st"> </span>specdata_US <span class="op">%&gt;%</span
 </thead>
 <tbody>
 <tr class="odd">
-<td>176720</td>
-<td align="right">73</td>
-<td align="right">73</td>
-<td align="left">2000-11-13</td>
+<td>559505</td>
+<td align="right">240</td>
+<td align="right">240</td>
+<td align="left">2010-12-13</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>266268</td>
-<td align="right">113</td>
-<td align="right">113</td>
-<td align="left">2004-01-22</td>
-<td align="right">3.08</td>
-<td align="right">1.58</td>
+<td>570564</td>
+<td align="right">244</td>
+<td align="right">244</td>
+<td align="left">2006-03-25</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>533034</td>
-<td align="right">228</td>
-<td align="right">228</td>
-<td align="left">2001-06-19</td>
+<td>372356</td>
+<td align="right">160</td>
+<td align="right">160</td>
+<td align="left">2009-07-10</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>582851</td>
-<td align="right">248</td>
-<td align="right">248</td>
-<td align="left">2006-11-14</td>
+<td>141985</td>
+<td align="right">59</td>
+<td align="right">59</td>
+<td align="left">2004-10-05</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>53536</td>
-<td align="right">25</td>
-<td align="right">25</td>
-<td align="left">2007-07-31</td>
+<td>241219</td>
+<td align="right">100</td>
+<td align="right">100</td>
+<td align="left">2010-06-20</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>225138</td>
-<td align="right">94</td>
-<td align="right">94</td>
-<td align="left">2009-06-08</td>
+<td>203334</td>
+<td align="right">86</td>
+<td align="right">86</td>
+<td align="left">2004-09-27</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>641650</td>
-<td align="right">272</td>
-<td align="right">272</td>
-<td align="left">2003-11-15</td>
+<td>372795</td>
+<td align="right">160</td>
+<td align="right">160</td>
+<td align="left">2010-09-22</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>252420</td>
-<td align="right">106</td>
-<td align="right">106</td>
-<td align="left">2010-02-20</td>
+<td>395056</td>
+<td align="right">171</td>
+<td align="right">171</td>
+<td align="left">2009-09-05</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>662374</td>
-<td align="right">280</td>
-<td align="right">280</td>
-<td align="left">2003-08-13</td>
-<td align="right">2.60</td>
+<td>698555</td>
+<td align="right">299</td>
+<td align="right">299</td>
+<td align="left">2004-09-01</td>
+<td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>511812</td>
-<td align="right">219</td>
-<td align="right">219</td>
-<td align="left">2003-05-12</td>
+<td>14119</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="left">2002-08-29</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>337235</td>
+<td>639855</td>
+<td align="right">271</td>
+<td align="right">271</td>
+<td align="left">2004-12-15</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td>335253</td>
 <td align="right">144</td>
 <td align="right">144</td>
-<td align="left">2007-05-13</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td>504549</td>
-<td align="right">215</td>
-<td align="right">215</td>
-<td align="left">2008-06-21</td>
+<td align="left">2001-12-08</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>467917</td>
-<td align="right">199</td>
-<td align="right">199</td>
-<td align="left">2006-03-05</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<td>602550</td>
+<td align="right">256</td>
+<td align="right">256</td>
+<td align="left">2002-10-23</td>
+<td align="right">2.310</td>
+<td align="right">0.7460</td>
 </tr>
 <tr class="even">
-<td>405687</td>
-<td align="right">176</td>
-<td align="right">176</td>
-<td align="left">2005-10-14</td>
+<td>39595</td>
+<td align="right">21</td>
+<td align="right">21</td>
+<td align="left">2002-05-30</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
-<td>386784</td>
-<td align="right">168</td>
-<td align="right">168</td>
-<td align="left">2006-01-11</td>
-<td align="right">5.98</td>
-<td align="right">4.54</td>
-</tr>
-<tr class="even">
-<td>83236</td>
-<td align="right">34</td>
-<td align="right">34</td>
-<td align="left">2000-11-24</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td>248504</td>
-<td align="right">104</td>
-<td align="right">104</td>
-<td align="left">2005-06-01</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td>653299</td>
+<td>655752</td>
 <td align="right">277</td>
 <td align="right">277</td>
-<td align="left">2003-10-08</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td>265532</td>
-<td align="right">112</td>
-<td align="right">112</td>
-<td align="left">2006-01-16</td>
+<td align="left">2010-06-26</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>660508</td>
-<td align="right">279</td>
-<td align="right">279</td>
-<td align="left">2009-07-04</td>
+<td>674581</td>
+<td align="right">286</td>
+<td align="right">286</td>
+<td align="left">2005-01-11</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td>364252</td>
+<td align="right">156</td>
+<td align="right">156</td>
+<td align="left">2008-05-02</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td>413833</td>
+<td align="right">179</td>
+<td align="right">179</td>
+<td align="left">2004-02-03</td>
+<td align="right">0.212</td>
+<td align="right">0.0688</td>
+</tr>
+<tr class="odd">
+<td>712999</td>
+<td align="right">303</td>
+<td align="right">303</td>
+<td align="left">2006-03-20</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td>617232</td>
+<td align="right">262</td>
+<td align="right">262</td>
+<td align="left">2007-01-04</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div id="otras-consideraciones" class="section level4 unnumbered">
+<h4>6. Otras consideraciones</h4>
+<p>En las buenas prácticas es importante tomar en cuenta los siguientes puntos:</p>
+<ul>
+<li><p>Incluir un encabezado con el nombre de las variables.</p></li>
+<li><p>Los nombres de las variables deben ser entendibles (e.g. age_at_diagnosis es mejor que AgeDx).</p></li>
+<li><p>En general los datos se deben guardar en un archivo por tabla.</p></li>
+<li><p>Escribir un script con las modificaciones que se hicieron a los <em>datos crudos</em> (reproducibilidad).</p></li>
+<li><p>Otros aspectos importantes en la <em>limpieza</em> de datos son: selección del tipo de variables (por ejemplo fechas), datos faltantes, <em>typos</em> y detección de valores atípicos.</p></li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="split-apply-combine" class="section level2">
+<h2><span class="header-section-number">3.3</span> <em>Split-apply-combine</em></h2>
+<p><img src="figures/lib-dplyr.png" width="12%" style="display: block; margin: auto;" /></p>
+<p>Muchos problemas de análisis de datos involucran la aplicación de la estrategia <strong><em>split-apply-combine</em></strong> de <a href="http://www.jstatsoft.org/v40/i01/paper">Hadley Whickam, 2011</a>. Esto se traduce en realizar filtros, cálculos y agregación de datos.</p>
+
+<div class="nota">
+<p><strong><em>Split-apply-combine</em></strong></p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Separa</strong> la base de datos original.</p></li>
+<li><p><strong>Aplica</strong> funciones a cada subconjunto.</p></li>
+<li><p><strong>Combina</strong> los resultados en una nueva base de datos.</p></li>
+</ol>
+Consiste en romper un problema en pedazos (de acuerdo a una variable de interés), operar sobre cada subconjunto de manera independiente (calcular la media de cada grupo) y después unir los pedazos nuevamente.
+</div>
+
+<p><img src="figuras/divide-aplica-combina.png" width="277" style="display: block; margin: auto;" /></p>
+<p>Cuando pensamos como implementar la estrategia divide-aplica-combina es natural pensar en iteraciones para recorrer cada grupo de interés y aplicar las funciones.</p>
+
+<div class="comentario">
+Para esto usaremos la librería <code>dplyr</code> que contiene funciones que facilitan la implementación de la estrategia.
+</div>
+
+<p>En este taller se estudiarán las siguientes funciones de la librería <code>dplyr</code>:</p>
+<ul>
+<li><strong>filter</strong>: obtiene un subconjunto de las filas de acuerdo a una condición.</li>
+<li><strong>select</strong>: selecciona columnas de acuerdo al nombre.</li>
+<li><strong>arrange</strong>: re ordena las filas.</li>
+<li><strong>mutate</strong>: agrega nuevas variables.</li>
+<li><strong>summarise</strong>: reduce variables a valores (crear nuevas bases de datos).</li>
+</ul>
+<p>Para mostrar las funciones se usará el siguiente dataframe.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_ej &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">genero =</span> <span class="kw">c</span>(<span class="st">&quot;mujer&quot;</span>, <span class="st">&quot;hombre&quot;</span>, <span class="st">&quot;mujer&quot;</span>, <span class="st">&quot;mujer&quot;</span>, <span class="st">&quot;hombre&quot;</span>), 
+                    <span class="dt">estatura =</span> <span class="kw">c</span>(<span class="fl">1.65</span>, <span class="fl">1.80</span>, <span class="fl">1.70</span>, <span class="fl">1.60</span>, <span class="fl">1.67</span>))
+df_ej</code></pre></div>
+<pre><code>##   genero estatura
+## 1  mujer     1.65
+## 2 hombre     1.80
+## 3  mujer     1.70
+## 4  mujer     1.60
+## 5 hombre     1.67</code></pre>
+<div id="filtrar" class="section level4 unnumbered">
+<h4>Filtrar</h4>
+<p>Filtrar una base de datos dependiendo de una condición requiere la función <code>filter()</code> que tiene los siguientes argumentos <code>dplyr::filter(data, condition)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_ej <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(genero <span class="op">==</span><span class="st"> &quot;mujer&quot;</span>)</code></pre></div>
+<pre><code>##   genero estatura
+## 1  mujer     1.65
+## 2  mujer     1.70
+## 3  mujer     1.60</code></pre>
+</div>
+<div id="seleccionar" class="section level4 unnumbered">
+<h4>Seleccionar</h4>
+<p>Elegir columnas de un conjunto de datos se puede hacer con la función <code>select()</code> que tiene los siguientes argumentos <code>dplyr::select(data, seq_variables)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_ej <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(genero)</code></pre></div>
+<pre><code>##   genero
+## 1  mujer
+## 2 hombre
+## 3  mujer
+## 4  mujer
+## 5 hombre</code></pre>
+<p>También, existen funciones que se usan exclusivamente en <code>select()</code>:</p>
+<ul>
+<li><p><code>starts_with(x, ignore.case = TRUE)</code>: los nombres empiezan con <em>x</em>.</p></li>
+<li><p><code>ends_with(x, ignore.case = TRUE)</code>: los nombres terminan con <em>x</em>.</p></li>
+<li><p><code>contains(x, ignore.case = TRUE)</code>: selecciona las variable que contengan <em>x</em>.</p></li>
+<li><p><code>matches(x, ignore.case = TRUE)</code>: selecciona las variable que igualen la expresión regular <em>x</em>.</p></li>
+<li><p><code>num_range(&quot;x&quot;, 1:5, width = 2)</code>: selecciona las variables (numéricamente) de x01 a x05.</p></li>
+<li><p><code>one_of(&quot;x&quot;, &quot;y&quot;, &quot;z&quot;)</code>: selecciona las variables que estén en un vector de caracteres.</p></li>
+<li><p><code>everything()</code>: selecciona todas las variables.</p></li>
+</ul>
+<p>Por ejemplo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_ej <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&quot;g&quot;</span>))</code></pre></div>
+<pre><code>##   genero
+## 1  mujer
+## 2 hombre
+## 3  mujer
+## 4  mujer
+## 5 hombre</code></pre>
+</div>
+<div id="arreglar" class="section level4 unnumbered">
+<h4>Arreglar</h4>
+<p>Arreglar u ordenar de acuerdo al valor de una o más variables es posible con la función <code>arrange()</code> que tiene los siguientes argumentos <code>dplyr::arrange(data, variables_por_las_que_ordenar)</code>. La función <code>desc()</code> permite que se ordene de forma descendiente.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_ej <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(estatura))</code></pre></div>
+<pre><code>##   genero estatura
+## 1 hombre     1.80
+## 2  mujer     1.70
+## 3 hombre     1.67
+## 4  mujer     1.65
+## 5  mujer     1.60</code></pre>
+</div>
+<div id="mutar" class="section level4 unnumbered">
+<h4>Mutar</h4>
+<p>Mutar consiste en crear nuevas variables con la función <code>mutate()</code> que tiene los siguientes argumentos <code>dplyr::mutate(data, nuevas_variables = operaciones)</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_ej <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">estatura_cm =</span> estatura <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) </code></pre></div>
+<pre><code>##   genero estatura estatura_cm
+## 1  mujer     1.65         165
+## 2 hombre     1.80         180
+## 3  mujer     1.70         170
+## 4  mujer     1.60         160
+## 5 hombre     1.67         167</code></pre>
+</div>
+<div id="resumir" class="section level4 unnumbered">
+<h4>Resumir</h4>
+<p>Los resúmenes permiten crear nuevas bases de datos que son agregaciones de los datos originales.</p>
+<p>La función <code>summarise()</code> permite realizar este resumen<code>dplyr::summarise(data, nuevas_variables = operaciones)</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_ej <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(<span class="dt">promedio =</span> <span class="kw">mean</span>(estatura))</code></pre></div>
+<pre><code>##   promedio
+## 1    1.684</code></pre>
+<p>También es posible hacer resúmenes agrupando por variables determinadas de la base de datos. Pero, primero es necesario crear una base agrupada con la función <code>group_by()</code> con argumentos <code>dplyr::group_by(data, add = variables_por_agrupar)</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_ej <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(genero)</code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+## # Groups:   genero [2]
+##   genero estatura
+##   &lt;fct&gt;     &lt;dbl&gt;
+## 1 mujer      1.65
+## 2 hombre     1.80
+## 3 mujer      1.70
+## 4 mujer      1.60
+## 5 hombre     1.67</code></pre>
+<p>Después se opera sobre cada grupo, creando un resumen a nivel grupo y uniendo los subconjuntos en una base nueva:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_ej <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(genero) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(<span class="dt">promedio =</span> <span class="kw">mean</span>(estatura))</code></pre></div>
+<pre><code>## # A tibble: 2 x 2
+##   genero promedio
+##   &lt;fct&gt;     &lt;dbl&gt;
+## 1 hombre     1.74
+## 2 mujer      1.65</code></pre>
+<p><br></p>
+<hr />
 
 </div>
 </div>

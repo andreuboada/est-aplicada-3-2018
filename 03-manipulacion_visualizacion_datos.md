@@ -216,6 +216,10 @@ La mayor parte de estos problemas se pueden arreglar con pocas herramientas, a c
 
 Repasaremos los problemas más comunes que se encuentran en conjuntos de datos sucios y mostraremos cómo se puede manipular la tabla de datos (usando las funciones *gather* y *spread*) con el fin de estructurarla para que cumpla los principios de datos limpios.
 
+<br>
+<br>
+---
+
 #### 1. Los encabezados de las columnas son valores  {-}
 
 Analicemos los datos que provienen de una encuesta de [Pew Research](http://www.pewforum.org/2009/01/30/income-distribution-within-us-religious-groups/) que investiga la relación entre ingreso y afiliación religiosa. ¿Cuáles son las variables en estos datos?
@@ -344,43 +348,23 @@ ggplot(pew_tidy_2, aes(x = income, y = percent, group = religion)) +
 
 En el código de arriba utilizamos las funciones `group_by`, `filter` y `mutate` que estudiaremos más adelante.
 
-Otro ejemplo, 
+Otro ejemplo,
+
 
 ```r
 billboard <- tbl_df(read.csv("datos/billboard.csv", stringsAsFactors = FALSE))
-billboard
+billboard %>% sample_n(5) %>% knitr::kable()
 ```
 
-```
-## # A tibble: 317 x 81
-##     year artist   track   time  date.entered   wk1   wk2   wk3   wk4   wk5
-##    <int> <chr>    <chr>   <chr> <chr>        <int> <int> <int> <int> <int>
-##  1  2000 2 Pac    Baby D… 4:22  2000-02-26      87    82    72    77    87
-##  2  2000 2Ge+her  The Ha… 3:15  2000-09-02      91    87    92    NA    NA
-##  3  2000 3 Doors… Krypto… 3:53  2000-04-08      81    70    68    67    66
-##  4  2000 3 Doors… Loser   4:24  2000-10-21      76    76    72    69    67
-##  5  2000 504 Boyz Wobble… 3:35  2000-04-15      57    34    25    17    17
-##  6  2000 98^0     Give M… 3:24  2000-08-19      51    39    34    26    26
-##  7  2000 A*Teens  Dancin… 3:44  2000-07-08      97    97    96    95   100
-##  8  2000 Aaliyah  I Don'… 4:15  2000-01-29      84    62    51    41    38
-##  9  2000 Aaliyah  Try Ag… 4:03  2000-03-18      59    53    38    28    21
-## 10  2000 Adams, … Open M… 5:30  2000-08-26      76    76    74    69    68
-## # ... with 307 more rows, and 71 more variables: wk6 <int>, wk7 <int>,
-## #   wk8 <int>, wk9 <int>, wk10 <int>, wk11 <int>, wk12 <int>, wk13 <int>,
-## #   wk14 <int>, wk15 <int>, wk16 <int>, wk17 <int>, wk18 <int>,
-## #   wk19 <int>, wk20 <int>, wk21 <int>, wk22 <int>, wk23 <int>,
-## #   wk24 <int>, wk25 <int>, wk26 <int>, wk27 <int>, wk28 <int>,
-## #   wk29 <int>, wk30 <int>, wk31 <int>, wk32 <int>, wk33 <int>,
-## #   wk34 <int>, wk35 <int>, wk36 <int>, wk37 <int>, wk38 <int>,
-## #   wk39 <int>, wk40 <int>, wk41 <int>, wk42 <int>, wk43 <int>,
-## #   wk44 <int>, wk45 <int>, wk46 <int>, wk47 <int>, wk48 <int>,
-## #   wk49 <int>, wk50 <int>, wk51 <int>, wk52 <int>, wk53 <int>,
-## #   wk54 <int>, wk55 <int>, wk56 <int>, wk57 <int>, wk58 <int>,
-## #   wk59 <int>, wk60 <int>, wk61 <int>, wk62 <int>, wk63 <int>,
-## #   wk64 <int>, wk65 <int>, wk66 <lgl>, wk67 <lgl>, wk68 <lgl>,
-## #   wk69 <lgl>, wk70 <lgl>, wk71 <lgl>, wk72 <lgl>, wk73 <lgl>,
-## #   wk74 <lgl>, wk75 <lgl>, wk76 <lgl>
-```
+
+
+ year  artist              track              time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
+-----  ------------------  -----------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+ 2000  Dixie Chicks, The   Cold Day In July   5:12   2000-06-24       80    79    76    72    68    68    65    70    84     91     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Third Eye Blind     Never Let You Go   3:57   2000-01-22       65    32    25    24    23    22    22    21    19     16     14     16     16     17     18     21     22     25     27     33     45     46     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Aaliyah             I Don't Wanna      4:15   2000-01-29       84    62    51    41    38    35    35    38    38     36     37     37     38     49     61     63     62     67     83     86     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Hill, Faith         Let's Make Love    4:11   2000-08-12       83    83    73    73    67    60    60    60    57     55     54     69     88     91     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  DMX                 What's My Name     3:50   2000-01-15       98    76    69    69    67    73    76    90    90     94    100     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
 
 Queremos apilar las semanas de manera que sea una sola columna (nuevamente alargamos los datos):
   
@@ -426,25 +410,23 @@ billboard_tidy <- billboard_long %>%
 ```
 
 ```r
-billboard_tidy
+billboard_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
-```
-## # A tibble: 5,307 x 7
-##     year artist         track                 time   week  rank date      
-##    <int> <chr>          <chr>                 <chr> <dbl> <int> <date>    
-##  1  2000 2 Pac          Baby Don't Cry (Keep… 4:22   1.00    87 2000-02-26
-##  2  2000 2Ge+her        The Hardest Part Of … 3:15   1.00    91 2000-09-02
-##  3  2000 3 Doors Down   Kryptonite            3:53   1.00    81 2000-04-08
-##  4  2000 3 Doors Down   Loser                 4:24   1.00    76 2000-10-21
-##  5  2000 504 Boyz       Wobble Wobble         3:35   1.00    57 2000-04-15
-##  6  2000 98^0           Give Me Just One Nig… 3:24   1.00    51 2000-08-19
-##  7  2000 A*Teens        Dancing Queen         3:44   1.00    97 2000-07-08
-##  8  2000 Aaliyah        I Don't Wanna         4:15   1.00    84 2000-01-29
-##  9  2000 Aaliyah        Try Again             4:03   1.00    59 2000-03-18
-## 10  2000 Adams, Yolanda Open My Heart         5:30   1.00    76 2000-08-26
-## # ... with 5,297 more rows
-```
+
+
+ year  artist                 track                     time    week   rank  date       
+-----  ---------------------  ------------------------  -----  -----  -----  -----------
+ 2000  Rimes, LeAnn           Can't Fight The Moon...   3:33      13     79  2000-12-02 
+ 2000  Mya                    Case Of The Ex (What...   3:50      18      2  2000-12-16 
+ 2000  De La Soul             All Good?                 5:02       3    100  2001-01-06 
+ 2000  98^0                   Give Me Just One Nig...   3:24      10      6  2000-10-21 
+ 2000  Blige, Mary J.         Deep Inside               5:26       6     73  1999-12-18 
+ 2000  Backstreet Boys, The   Shape Of My Heart         3:49       4     15  2000-11-04 
+ 2000  TLC                    Dear Lie                  4:36       5     56  2000-03-11 
+ 2000  Davidson, Clay         Unconditional             3:56      17     51  2000-07-15 
+ 2000  Sisqo                  Got To Get It             3:52      16     64  2000-03-04 
+ 2000  Gill, Vince            Feels Like Love           4:13       5     73  2000-09-30 
 
 
 Nuevamente, podemos hacer gráficas facilmente.
@@ -452,7 +434,7 @@ Nuevamente, podemos hacer gráficas facilmente.
 
 ```r
 tracks <- billboard_tidy %>%
-  filter(track %in% c("Higher", "Amazed", "Kryptonite", "Breathe", "With Arms Wide Open"))
+  filter(track %in% c("Come On Over Baby (A...", "What A Girl Wants", "Say My Name", "Jumpin' Jumpin'", "Bye Bye Bye"))
 
 ggplot(tracks, aes(x = date, y = rank)) +
   geom_line() + 
@@ -462,13 +444,13 @@ ggplot(tracks, aes(x = date, y = rank)) +
 
 <img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-15-1.png" width="739.2" />
 
+<br>
+<br>
+---
 
 #### 2. Una columna asociada a más de una variable {-}
 
-La siguiente base de datos proviene de la Organización Mundial de la Salud y
-contiene el número de casos confirmados de tuberculosis por país y año, la
-información esta por grupo demográfico de acuerdo a sexo (m, f), y
-edad (0-4, 5-14, etc).
+La siguiente base de datos proviene de la Organización Mundial de la Salud y contiene el número de casos confirmados de tuberculosis por país y año, la información esta por grupo demográfico de acuerdo a sexo (m, f), y edad (0-4, 5-14, etc).
 
 
 ```r
@@ -480,13 +462,13 @@ tb %>% sample_n(5) %>% knitr::kable()
 
 
 
-iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name 
------  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -------------
-PA      1981           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Panama       
-IQ      1995           NA            NA          1125            862           1409           1085            863            900          271          NA           NA            NA           725            304           1208            915            800            886          200          NA  Iraq         
-NP      1989           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Nepal        
-TH      1987           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Thailand     
-GR      2006            0             0             0             11             32             22             24             22           27           3            0             0             0             13             12              8              5              6           24           1  Greece       
+iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name                     
+-----  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  ---------------------------------
+DE      1983           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Germany                          
+BO      1995           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Bolivia (Plurinational State of) 
+TO      1980           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Tonga                            
+CG      1994           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Congo                            
+MO      1997           NA            NA             1             15             38             47             37             34           55          NA           NA            NA             4             10             16             21              5              6           15          NA  Macao                            
 
 De manera similar, utilizando la función `gather()` se busca apilar las columnas correspondientes a sexo-edad.
 
@@ -496,33 +478,23 @@ De manera similar, utilizando la función `gather()` se busca apilar las columna
 ```r
 tb_long <- tb %>%
   gather(demog, casos, new_sp_m04:new_sp_fu, na.rm=TRUE)
-knitr::kable(tb_long %>% head(20))
+tb_long %>% sample_n(10) %>% knitr::kable()
 ```
 
 
 
-iso2    year  country_name           demog         casos
------  -----  ---------------------  -----------  ------
-AD      2005  Andorra                new_sp_m04        0
-AD      2006  Andorra                new_sp_m04        0
-AD      2008  Andorra                new_sp_m04        0
-AE      2006  United Arab Emirates   new_sp_m04        0
-AE      2007  United Arab Emirates   new_sp_m04        0
-AE      2008  United Arab Emirates   new_sp_m04        0
-AG      2007  Antigua and Barbuda    new_sp_m04        0
-AL      2005  Albania                new_sp_m04        0
-AL      2006  Albania                new_sp_m04        1
-AL      2007  Albania                new_sp_m04        0
-AL      2008  Albania                new_sp_m04        1
-AM      2005  Armenia                new_sp_m04        1
-AM      2006  Armenia                new_sp_m04        0
-AM      2007  Armenia                new_sp_m04        0
-AM      2008  Armenia                new_sp_m04        0
-AN      2006  Netherlands Antilles   new_sp_m04        0
-AR      2006  Argentina              new_sp_m04       19
-AR      2007  Argentina              new_sp_m04       14
-AR      2008  Argentina              new_sp_m04       11
-AT      2005  Austria                new_sp_m04        1
+iso2    year  country_name                                demog           casos
+-----  -----  ------------------------------------------  -------------  ------
+KH      2005  Cambodia                                    new_sp_m4554     2043
+IE      2001  Ireland                                     new_sp_f2534        6
+LC      2005  Saint Lucia                                 new_sp_f65          2
+MK      1998  The former Yugoslav Republic of Macedonia   new_sp_m65         13
+LC      2005  Saint Lucia                                 new_sp_f1524        1
+HR      2006  Croatia                                     new_sp_m4554       69
+IT      2007  Italy                                       new_sp_m3544      113
+PR      2003  Puerto Rico                                 new_sp_m5564       12
+KH      2006  Cambodia                                    new_sp_m3544     2205
+TN      2008  Tunisia                                     new_sp_f014         7
 
 
 Las variables sexo y edad se obtienen separando la columna **demog**, para esto se usa la función `separate()`con los siguientes argumentos: `tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
@@ -614,20 +586,22 @@ tb_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name                       sex        age     casos
------  -----  ---------------------------------  ---------  -----  ------
-BW      1999  Botswana                           new_sp_f   2534      434
-SI      2008  Slovenia                           new_sp_m   4554       17
-MW      2004  Malawi                             new_sp_m   4554      508
-CM      1995  Cameroon                           new_sp_f   5564      106
-AT      2000  Austria                            new_sp_m   4554       42
-HN      2003  Honduras                           new_sp_m   4554      227
-CU      1996  Cuba                               new_sp_m   1524       54
-PK      2008  Pakistan                           new_sp_f   3544     8146
-JO      2008  Jordan                             new_sp_m   3544        3
-GM      1999  Gambia (Islamic Republic of the)   new_sp_f   65         13
+iso2    year  country_name        sex        age     casos
+-----  -----  ------------------  ---------  -----  ------
+FR      1995  France              new_sp_m   5564      297
+PA      2003  Panama              new_sp_m   65         67
+LR      2002  Liberia             new_sp_f   5564       41
+BW      2000  Botswana            new_sp_f   5564       57
+SI      2008  Slovenia            new_sp_m   1524        3
+GQ      1998  Equatorial Guinea   new_sp_f   2534       31
+MY      2006  Malaysia            new_sp_m   3544      734
+EE      2007  Estonia             new_sp_f   u           0
+SR      2006  Suriname            new_sp_f   4554        8
+SG      2004  Singapore           new_sp_f   65         48
 
-
+<br>
+<br>
+---
 
 #### 3. Variables almacenadas en filas y columnas {-}
 
@@ -779,34 +753,18 @@ En ocasiones las bases de datos involucran valores en diferentes niveles, endife
 
 
 ```r
-billboard_tidy %>% sample_n(20) %>% knitr::kable()
+billboard_tidy %>% sample_n(5) %>% select(artist, track, year, time) %>% knitr::kable()
 ```
 
 
 
- year  artist              track                     time    week   rank  date       
------  ------------------  ------------------------  -----  -----  -----  -----------
- 2000  Blaque              Bring It All To Me        3:46      15      5  2000-01-29 
- 2000  DMX                 Party Up (Up In Here...   3:45      19     44  2000-07-01 
- 2000  Smash Mouth         Then The Morning Com...   3:04      22     31  2000-03-25 
- 2000  Anthony, Marc       My Baby You               3:59       5     82  2000-10-14 
- 2000  Joe                 I Wanna Know              4:57      44     45  2000-10-28 
- 2000  Keith, Toby         Country Comes To Tow...   3:39      11     54  2000-10-14 
- 2000  McEntire, Reba      I'll Be                   4:23      11     52  2000-07-22 
- 2000  Lonestar            Smile                     3:33       9     39  2000-02-12 
- 2000  Limp Bizkit         Rollin'                   4:04       6     65  2000-12-16 
- 2000  Rimes, LeAnn        Big Deal                  3:03       8     37  1999-12-04 
- 2000  Carter, Aaron       Aaron's Party (Come ...   3:23      11     67  2000-11-04 
- 2000  Keith, Toby         Country Comes To Tow...   3:39       4     69  2000-08-26 
- 2000  Rimes, LeAnn        I Need You                3:42       5     59  2000-06-24 
- 2000  Rimes, LeAnn        Can't Fight The Moon...   3:33       2     71  2000-09-16 
- 2000  Dixie Chicks, The   Cowboy Take Me Away       4:51       3     70  1999-12-11 
- 2000  Hanson              This Time Around          4:14       3     20  2000-05-06 
- 2000  Blige, Mary J.      Deep Inside               5:26       4     75  1999-12-04 
- 2000  Loveless, Patty     That's The Kind Of M...   3:27      11     71  2000-11-25 
- 2000  Chesney, Kenny      What I Need To Do         4:05       6     69  2000-05-06 
- 2000  Aaliyah             I Don't Wanna             4:15       7     35  2000-03-11 
-
+artist            track           year  time 
+----------------  -------------  -----  -----
+Santana           Maria, Maria    2000  4:18 
+Metallica         I Disappear     2000  4:26 
+matchbox twenty   Bent            2000  4:12 
+Pink              There U Go      2000  3:23 
+Common            The Light       2000  3:55 
 
 Separemos esta base de datos en dos: la tabla canción que almacena artista, nombre de la canción y duración; la tabla rank que almacena el ranking de la canción en cada semana.
 
@@ -817,330 +775,8 @@ song <- billboard_tidy %>%
   unique() %>%
   arrange(artist) %>%
   mutate(song_id = row_number(artist))
-song %>% knitr::kable()
 ```
 
-
-
-artist                         track                      year  time    song_id
------------------------------  ------------------------  -----  -----  --------
-2 Pac                          Baby Don't Cry (Keep...    2000  4:22          1
-2Ge+her                        The Hardest Part Of ...    2000  3:15          2
-3 Doors Down                   Kryptonite                 2000  3:53          3
-3 Doors Down                   Loser                      2000  4:24          4
-504 Boyz                       Wobble Wobble              2000  3:35          5
-98^0                           Give Me Just One Nig...    2000  3:24          6
-A*Teens                        Dancing Queen              2000  3:44          7
-Aaliyah                        I Don't Wanna              2000  4:15          8
-Aaliyah                        Try Again                  2000  4:03          9
-Adams, Yolanda                 Open My Heart              2000  5:30         10
-Adkins, Trace                  More                       2000  3:05         11
-Aguilera, Christina            Come On Over Baby (A...    2000  3:38         12
-Aguilera, Christina            I Turn To You              2000  4:00         13
-Aguilera, Christina            What A Girl Wants          2000  3:18         14
-Alice Deejay                   Better Off Alone           2000  6:50         15
-Allan, Gary                    Smoke Rings In The D...    2000  4:18         16
-Amber                          Sexual                     2000  4:38         17
-Anastacia                      I'm Outta Love             2000  4:01         18
-Anthony, Marc                  My Baby You                2000  3:59         19
-Anthony, Marc                  You Sang To Me             2000  3:50         20
-Avant                          My First Love              2000  4:28         21
-Avant                          Separated                  2000  4:13         22
-Backstreet Boys, The           Shape Of My Heart          2000  3:49         24
-Backstreet Boys, The           Show Me The Meaning ...    2000  3:54         25
-Backstreet Boys, The           The One                    2000  3:46         26
-Badu, Erkyah                   Bag Lady                   2000  5:03         27
-Baha Men                       Who Let The Dogs Out       2000  3:17         28
-Barenaked Ladies               Pinch Me                   2000  3:46         29
-BBMak                          Back Here                  2000  3:35         23
-Beenie Man                     Girls Dem Sugar            2000  4:17         30
-Before Dark                    Monica                     2000  4:04         31
-Bega, Lou                      Tricky Tricky              2000  3:23         32
-Big Punisher                   It's So Hard               2000  3:25         33
-Black Rob                      Whoa!                      2000  4:04         34
-Black, Clint                   Been There                 2000  5:28         35
-Blaque                         Bring It All To Me         2000  3:46         36
-Blige, Mary J.                 Deep Inside                2000  5:26         37
-Blige, Mary J.                 Give Me You                2000  5:00         38
-Blink-182                      All The Small Things       2000  2:52         39
-Bloodhound Gang                The Bad Touch              2000  4:20         40
-Bon Jovi                       It's My Life               2000  3:44         41
-Braxton, Toni                  He Wasn't Man Enough       2000  4:21         42
-Braxton, Toni                  Just Be A Man About ...    2000  4:10         43
-Braxton, Toni                  Spanish Guitar             2000  4:24         44
-Brock, Chad                    A Country Boy Can Su...    2000  3:54         45
-Brock, Chad                    Yes!                       2000  3:22         46
-Brooks & Dunn                  You'll Always Be Lov...    2000  2:58         47
-Brooks, Garth                  Do What You Gotta Do       2000  2:56         48
-Byrd, Tracy                    Put Your Hand In Min...    2000  4:30         49
-Cagle, Chris                   My Love Goes On And ...    2000  3:02         50
-Cam'ron                        What Means The World...    2000  4:38         51
-Carey, Mariah                  Crybaby                    2000  5:19         52
-Carey, Mariah                  Thank God I Found Yo...    2000  4:14         53
-Carter, Aaron                  Aaron's Party (Come ...    2000  3:23         54
-Carter, Torrey                 Take That                  2000  3:43         55
-Changing Faces                 That Other Woman           2000  4:00         56
-Chesney, Kenny                 I Lost It                  2000  3:54         57
-Chesney, Kenny                 What I Need To Do          2000  4:05         58
-Clark Family Experience        Meanwhile Back At Th...    2000  2:56         59
-Clark, Terri                   A Little Gasoline          2000  3:07         60
-Common                         The Light                  2000  3:55         61
-Counting Crows                 Hanginaround               2000  4:07         62
-Creed                          Higher                     2000  5:16         63
-Creed                          With Arms Wide Open        2000  3:52         64
-Cyrus, Billy Ray               You Won't Be Lonely ...    2000  3:45         65
-D'Angelo                       Left & Right               2000  4:35         66
-D'Angelo                       Untitled (How Does I...    2000  7:10         67
-Da Brat                        That's What I'm Look...    2000  3:44         71
-Da Brat                        What'Chu Like              2000  3:57         72
-Davidson, Clay                 Unconditional              2000  3:56         73
-De La Soul                     All Good?                  2000  5:02         74
-Destiny's Child                Independent Women Pa...    2000  3:38         75
-Destiny's Child                Jumpin' Jumpin'            2000  3:48         76
-Destiny's Child                Say My Name                2000  4:31         77
-Diffie, Joe                    It's Always Somethin...    2000  2:55         78
-Diffie, Joe                    The Quittin' Kind          2000  3:23         79
-Dion, Celine                   That's The Way It Is       2000  4:03         80
-Dixie Chicks, The              Cold Day In July           2000  5:12         81
-Dixie Chicks, The              Cowboy Take Me Away        2000  4:51         82
-Dixie Chicks, The              Goodbye Earl               2000  4:19         83
-Dixie Chicks, The              Without You                2000  3:32         84
-DMX                            Party Up (Up In Here...    2000  3:45         68
-DMX                            What You Want              2000  4:05         69
-DMX                            What's My Name             2000  3:50         70
-Dr. Dre                        Forgot About Dre           2000  3:42         85
-Dr. Dre                        The Next Episode           2000  2:38         86
-Drama                          Left, Right, Left          2000  3:37         87
-Dream                          He Loves U Not             2000  3:43         88
-Eastsidaz, The                 G'D Up                     2000  4:27         89
-Eastsidaz, The                 Got Beef                   2000  3:58         90
-Eiffel 65                      Blue                       2000  3:29         91
-Elliott, Missy "Misdemeanor"   Hot Boyz                   2000  3:51         92
-Eminem                         Stan                       2000  5:26         93
-Eminem                         The Real Slim Shady        2000  4:42         94
-Eminem                         The Way I Am               2000  4:40         95
-En Vogue                       Riddle                     2000  5:10         96
-Estefan, Gloria                No Me Dejes De Quere...    2000  3:25         97
-Evans, Sara                    Born To Fly                2000  5:36         98
-Eve                            Got It All                 2000  3:48         99
-Eve                            Love Is Blind              2000  3:51        100
-Everclear                      Wonderful                  2000  4:30        101
-Fabian, Lara                   I Will Love Again          2000  3:43        102
-Fatboy Slim                    The Rockafeller Skan...    2000  4:00        103
-Filter                         Take A Picture             2000  4:23        104
-Foo Fighters                   Learn To Fly               2000  3:55        105
-Fragma                         Toca's Miracle             2000  3:22        106
-Funkmaster Flex                Do You                     2000  4:14        107
-Ghostface Killah               Cherchez LaGhost           2000  3:04        108
-Gill, Vince                    Feels Like Love            2000  4:13        109
-Gilman, Billy                  One Voice                  2000  4:07        110
-Ginuwine                       None Of Ur Friends B...    2000  4:12        111
-Ginuwine                       The Best Man I Can B...    2000  4:06        112
-Goo Goo Dolls                  Broadway                   2000  3:54        113
-Gray, Macy                     I Try                      2000  3:52        114
-Griggs, Andy                   She's More                 2000  3:19        115
-Guy                            Dancin'                    2000  4:08        116
-Hanson                         This Time Around           2000  4:14        117
-Hart, Beth                     L.A. Song                  2000  3:47        118
-Heatherly, Eric                Flowers On The Wall        2000  3:16        119
-Henley, Don                    Taking You Home            2000  4:08        120
-Herndon, Ty                    No Mercy                   2000  4:43        121
-Hill, Faith                    Breathe                    2000  4:04        122
-Hill, Faith                    Let's Make Love            2000  4:11        123
-Hoku                           Another Dumb Blonde        2000  3:47        124
-Hollister, Dave                Can't Stay                 2000  6:17        125
-Hot Boys                       I Need A Hot Girl          2000  4:16        126
-Houston, Whitney               Could I Have This Ki...    2000  3:54        127
-Houston, Whitney               I Learned From The B...    2000  4:18        128
-Houston, Whitney               My Love Is Your Love       2000  4:16        129
-Houston, Whitney               Same Script, Differe...    2000  4:45        130
-Ice Cube                       You Can Do It              2000  4:20        132
-Ideal                          Whatever                   2000  3:48        133
-Iglesias, Enrique              Be With You                2000  3:36        134
-Iglesias, Enrique              Rhythm Divine              2000  7:35        135
-IMx                            Stay The Night             2000  3:37        131
-J-Shin                         One Night Stand            2000  4:34        136
-Ja Rule                        Between Me And You         2000  4:05        137
-Jackson, Alan                  It Must Be Love            2000  2:53        138
-Jackson, Alan                  Pop A Top                  2000  3:04        139
-Jackson, Alan                  www.memory                 2000  2:36        140
-Jagged Edge                    He Can't Love U            2000  3:30        141
-Jagged Edge                    Let's Get Married          2000  4:23        142
-Janet                          Doesn't Really Matte...    2000  4:17        143
-Jay-Z                          Anything                   2000  3:41        144
-Jay-Z                          Big Pimpin'                2000  3:55        145
-Jay-Z                          Do It Again (Put Ya ...    2000  3:47        146
-Jay-Z                          Hey Papi                   2000  3:40        147
-Jay-Z                          I Just Wanna Love U ...    2000  3:50        148
-Jean, Wyclef                   911                        2000  4:00        149
-Joe                            I Wanna Know               2000  4:57        150
-Joe                            Treat Her Like A Lad...    2000  4:12        151
-John, Elton                    Someday Out Of The B...    2000  4:41        152
-Jones, Donell                  Where I Wanna Be           2000  6:22        153
-Jordan, Montell                Get It On.. Tonite         2000  4:34        154
-Juvenile                       U Understand               2000  3:51        155
-Kandi                          Don't Think I'm Not        2000  3:50        156
-Keith, Toby                    Country Comes To Tow...    2000  3:39        157
-Keith, Toby                    How Do You Like Me N...    2000  3:29        158
-Kelis                          Caught Out There           2000  4:09        159
-Kenny G                        Auld Lang Syne (The ...    2000  7:50        160
-Kid Rock                       Only God Knows Why         2000  5:27        161
-Kravitz, Lenny                 I Belong To You            2000  4:17        162
-Kumbia Kings                   U Don't Love Me            2000  3:50        163
-Larrieux, Amel                 Get Up                     2000  4:02        167
-Lawrence, Tracy                Lessons Learned            2000  2:55        168
-Levert, Gerald                 Baby U Are                 2000  4:10        169
-Levert, Gerald                 Mr. Too Damn Good          2000  4:06        170
-LFO                            I Don't Wanna Kiss Y...    2000  5:00        164
-LFO                            West Side Story            2000  3:27        165
-Lil Bow Wow                    Bounce With Me             2000  3:22        171
-Lil Wayne                      Tha Block Is Hot           2000  4:13        172
-Lil' Kim                       How Many Licks?            2000  3:50        173
-Lil' Kim                       No Matter What They ...    2000  4:12        174
-Lil' Mo                        Ta Da                      2000  4:17        175
-Lil' Zane                      Callin' Me                 2000  3:43        176
-Limp Bizkit                    N 2 Gether Now             2000  3:55        177
-Limp Bizkit                    Re-Arranged                2000  4:08        178
-Limp Bizkit                    Rollin'                    2000  4:04        179
-LL Cool J                      Imagine That               2000  4:00        166
-Lonestar                       Amazed                     2000  4:25        180
-Lonestar                       Smile                      2000  3:33        181
-Lonestar                       What About Now             2000  3:30        182
-Lopez, Jennifer                Feelin' Good               2000  4:28        183
-Loveless, Patty                That's The Kind Of M...    2000  3:27        184
-Lox                            Ryde or Die, Chick         2000  3:56        185
-Lucy Pearl                     Dance Tonight              2000  3:45        186
-Ludacris                       What's Your Fantasy        2000  4:16        187
-M2M                            Don't Say You Love M...    2000  3:41        188
-M2M                            Mirror Mirror              2000  3:19        189
-Madison Avenue                 Don't Call Me Baby         2000  3:44        190
-Madonna                        American Pie               2000  4:30        191
-Madonna                        Music                      2000  3:45        192
-Martin, Ricky                  Private Emotion            2000  4:02        193
-Martin, Ricky                  Shake Your Bon-Bon         2000  3:08        194
-Martin, Ricky                  She Bangs                  2000  4:02        195
-Mary Mary                      Shackles (Praise You...    2000  3:12        196
-Master P                       Souljas                    2000  3:33        197
-matchbox twenty                Bent                       2000  4:12        317
-McBride, Martina               Love's The Only Hous...    2000  5:13        198
-McBride, Martina               There You Are              2000  3:26        199
-McEntire, Reba                 I'll Be                    2000  4:23        200
-McEntire, Reba                 What Do You Say            2000  3:26        201
-McGraw, Tim                    My Best Friend             2000  4:33        202
-McGraw, Tim                    My Next Thirty Years       2000  3:37        203
-McGraw, Tim                    Some Things Never Ch...    2000  3:56        204
-McKnight, Brian                Stay Or Let It Go          2000  4:32        205
-Messina, Jo Dee                Because You Love Me        2000  3:50        206
-Messina, Jo Dee                That's The Way             2000  3:17        207
-Metallica                      I Disappear                2000  4:26        208
-Metallica                      No Leaf Clover (Live...    2000  5:43        209
-Montgomery Gentry              Daddy Won't Sell The...    2000  4:18        210
-Montgomery, John Michael       The Little Girl            2000  3:52        211
-Moore, Chante                  Straight Up                2000  3:40        212
-Moore, Mandy                   I Wanna Be With You        2000  4:12        213
-Mumba, Samantha                Gotta Tell You             2000  3:19        214
-Musiq                          Just Friends               2000  4:02        215
-Mya                            Case Of The Ex (What...    2000  3:50        216
-Mya                            The Best Of Me             2000  4:12        217
-Mystikal                       Shake Ya Ass               2000  4:46        218
-N'Sync                         Bye Bye Bye                2000  3:15        219
-N'Sync                         It's Gonna Be Me           2000  3:10        220
-N'Sync                         This I Promise You         2000  4:23        221
-Nas                            You Owe Me                 2000  3:51        222
-Nelly                          (Hot S**t) Country G...    2000  4:17        223
-Next                           Wifey                      2000  4:03        224
-Nine Days                      Absolutely (Story Of...    2000  3:09        225
-Nine Days                      If I Am                    2000  4:18        226
-No Doubt                       Simple Kind Of Life        2000  4:11        227
-Nu Flavor                      3 Little Words             2000  3:54        228
-Offspring, The                 Original Prankster         2000  3:42        229
-Paisley, Brad                  Me Neither                 2000  3:19        230
-Paisley, Brad                  We Danced                  2000  3:45        231
-Papa Roach                     Last Resort                2000  3:19        232
-Pearl Jam                      Nothing As It Seems        2000  5:20        233
-Pink                           Most Girls                 2000  4:06        234
-Pink                           There U Go                 2000  3:23        235
-Price, Kelly                   As We Lay                  2000  6:20        236
-Price, Kelly                   Love Sets You Free         2000  3:46        237
-Price, Kelly                   You Should've Told M...    2000  3:12        238
-Profyle                        Liar                       2000  3:57        239
-Puff Daddy                     Best Friend                2000  5:33        240
-Q-Tip                          Breathe And Stop           2000  4:06        241
-R.E.M.                         The Great Beyond           2000  4:10        242
-Rascal Flatts                  Prayin' For Daylight       2000  3:36        243
-Raye, Collin                   Couldn't Last A Mome...    2000  3:40        244
-Red Hot Chili Peppers          Californication            2000  5:21        245
-Red Hot Chili Peppers          Otherside                  2000  4:13        246
-Rimes, LeAnn                   Big Deal                   2000  3:03        247
-Rimes, LeAnn                   Can't Fight The Moon...    2000  3:33        248
-Rimes, LeAnn                   I Need You                 2000  3:42        249
-Rogers, Kenny                  Buy Me A Rose              2000  3:46        250
-Ruff Endz                      No More                    2000  3:56        251
-Sammie                         I Like It                  2000  4:09        252
-Santana                        Maria, Maria               2000  4:18        253
-Savage Garden                  Crash And Burn             2000  4:41        254
-Savage Garden                  I Knew I Loved You         2000  4:07        255
-SheDaisy                       Deck The Halls             2000  3:46        256
-SheDaisy                       I Will.. But               2000  3:40        257
-SheDaisy                       This Woman Needs           2000  3:20        258
-Sheist, Shade                  Where I Wanna Be           2000  4:16        259
-Shyne                          Bad Boyz                   2000  4:22        260
-Simpson, Jessica               I Think I'm In Love ...    2000  3:32        261
-Simpson, Jessica               Where You Are              2000  3:51        262
-Sisqo                          Got To Get It              2000  3:52        263
-Sisqo                          Incomplete                 2000  3:52        264
-Sisqo                          Thong Song                 2000  4:05        265
-Sister Hazel                   Change Your Mind           2000  4:02        266
-Smash Mouth                    Then The Morning Com...    2000  3:04        267
-Smith, Will                    Freakin' It                2000  3:58        268
-Son By Four                    A Puro Dolor (Purest...    2000  3:30        269
-Sonique                        It Feels So Good           2000  3:48        270
-SoulDecision                   Faded                      2000  3:25        271
-Spears, Britney                From The Bottom Of M...    2000  4:30        272
-Spears, Britney                Lucky                      2000  3:23        273
-Spears, Britney                Oops!.. I Did It Aga...    2000  3:30        274
-Spencer, Tracie                Still In My Heart          2000  4:11        275
-Splender                       I Think God Can Expl...    2000  3:55        276
-Sting                          Desert Rose                2000  3:52        277
-Stone Temple Pilots            Sour Girl                  2000  4:16        278
-Stone, Angie                   No More Rain (In Thi...    2000  4:42        279
-Strait, George                 Go On                      2000  3:48        280
-Strait, George                 The Best Day               2000  3:24        281
-Sugar Ray                      Falls Apart                2000  4:15        282
-Tamar                          If You Don't Wanna L...    2000  4:02        284
-Tamia                          Can't Go For That          2000  3:38        285
-Third Eye Blind                Deep Inside Of You         2000  4:10        286
-Third Eye Blind                Never Let You Go           2000  3:57        287
-Thomas, Carl                   Emotional                  2000  4:31        288
-Thomas, Carl                   I Wish                     2000  3:50        289
-Thomas, Carl                   Summer Rain                2000  4:57        290
-Tippin, Aaron                  Kiss This                  2000  2:53        291
-TLC                            Dear Lie                   2000  4:36        283
-Train                          Meet Virginia              2000  3:55        292
-Trick Daddy                    Shut Up                    2000  4:17        293
-Trina                          Pull Over                  2000  2:58        294
-Tritt, Travis                  Best Of Intentions         2000  4:15        295
-Tuesday                        I Know                     2000  4:06        296
-Urban, Keith                   Your Everything            2000  4:10        297
-Usher                          Pop Ya Collar              2000  3:36        298
-Vassar, Phil                   Carlene                    2000  4:07        299
-Vassar, Phil                   Just Another Day In ...    2000  3:54        300
-Vertical Horizon               Everything You Want        2000  4:01        301
-Vertical Horizon               You're A God               2000  3:45        302
-Vitamin C                      Graduation (Friends ...    2000  4:23        303
-Vitamin C                      The Itch                   2000  3:30        304
-Walker, Clay                   Live, Laugh, Love          2000  4:06        305
-Walker, Clay                   The Chain Of Love          2000  5:03        306
-Wallflowers, The               Sleepwalker                2000  3:29        307
-Westlife                       Swear It Again             2000  4:07        308
-Williams, Robbie               Angels                     2000  3:56        309
-Wills, Mark                    Back At One                2000  4:00        310
-Worley, Darryl                 When You Need My Lov...    2000  3:35        311
-Wright, Chely                  It Was                     2000  3:51        312
-Yankee Grey                    Another Nine Minutes       2000  3:10        313
-Yearwood, Trisha               Real Live Woman            2000  3:55        314
-Ying Yang Twins                Whistle While You Tw...    2000  4:19        315
-Zombie Nation                  Kernkraft 400              2000  3:30        316
 
 
 
@@ -6512,26 +6148,273 @@ specdata %>% sample_n(20) %>% knitr::kable()
 
            id   monitor  date          sulfate   nitrate
 -------  ----  --------  -----------  --------  --------
-176720     73        73  2000-11-13         NA        NA
-266268    113       113  2004-01-22       3.08      1.58
-533034    228       228  2001-06-19         NA        NA
-582851    248       248  2006-11-14         NA        NA
-53536      25        25  2007-07-31         NA        NA
-225138     94        94  2009-06-08         NA        NA
-641650    272       272  2003-11-15         NA        NA
-252420    106       106  2010-02-20         NA        NA
-662374    280       280  2003-08-13       2.60        NA
-511812    219       219  2003-05-12         NA        NA
-337235    144       144  2007-05-13         NA        NA
-504549    215       215  2008-06-21         NA        NA
-467917    199       199  2006-03-05         NA        NA
-405687    176       176  2005-10-14         NA        NA
-386784    168       168  2006-01-11       5.98      4.54
-83236      34        34  2000-11-24         NA        NA
-248504    104       104  2005-06-01         NA        NA
-653299    277       277  2003-10-08         NA        NA
-265532    112       112  2006-01-16         NA        NA
-660508    279       279  2009-07-04         NA        NA
+559505    240       240  2010-12-13         NA        NA
+570564    244       244  2006-03-25         NA        NA
+372356    160       160  2009-07-10         NA        NA
+141985     59        59  2004-10-05         NA        NA
+241219    100       100  2010-06-20         NA        NA
+203334     86        86  2004-09-27         NA        NA
+372795    160       160  2010-09-22         NA        NA
+395056    171       171  2009-09-05         NA        NA
+698555    299       299  2004-09-01         NA        NA
+14119       6         6  2002-08-29         NA        NA
+639855    271       271  2004-12-15         NA        NA
+335253    144       144  2001-12-08         NA        NA
+602550    256       256  2002-10-23      2.310    0.7460
+39595      21        21  2002-05-30         NA        NA
+655752    277       277  2010-06-26         NA        NA
+674581    286       286  2005-01-11         NA        NA
+364252    156       156  2008-05-02         NA        NA
+413833    179       179  2004-02-03      0.212    0.0688
+712999    303       303  2006-03-20         NA        NA
+617232    262       262  2007-01-04         NA        NA
+
+#### 6. Otras consideraciones {-}
+
+En las buenas prácticas es importante tomar en cuenta los siguientes puntos:
+
+* Incluir un encabezado con el nombre de las variables.
+
+* Los nombres de las variables deben ser entendibles (e.g. age_at_diagnosis es mejor que AgeDx).
+
+* En general los datos se deben guardar en un archivo por tabla.
+
+* Escribir un script con las modificaciones que se hicieron a los _datos crudos_ (reproducibilidad).
+
+* Otros aspectos importantes en la _limpieza_ de datos son: selección del tipo de variables (por ejemplo fechas), datos faltantes, _typos_ y detección de valores atípicos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+## *Split-apply-combine*
+
+<img src="figures/lib-dplyr.png" width="12%" style="display: block; margin: auto;" />
+
+Muchos problemas de análisis de datos involucran la aplicación de la estrategia **_split-apply-combine_** de [Hadley Whickam, 2011](http://www.jstatsoft.org/v40/i01/paper). Esto se traduce en realizar filtros, cálculos y agregación de datos.
+
+
+
+\BeginKnitrBlock{nota}<div class="nota">**_Split-apply-combine_**
+  
+1. **Separa** la base de datos original.
+
+2. **Aplica** funciones a cada subconjunto.
+
+3. **Combina** los resultados en una nueva base de datos.
+
+Consiste en romper un problema en pedazos (de acuerdo a una variable de interés), operar sobre cada subconjunto de manera independiente (calcular la media de cada grupo) y después unir los pedazos nuevamente. </div>\EndKnitrBlock{nota}
+
+<img src="figuras/divide-aplica-combina.png" width="277" style="display: block; margin: auto;" />
+
+
+Cuando pensamos como implementar la estrategia divide-aplica-combina es natural pensar en iteraciones para recorrer cada grupo de interés y aplicar las funciones. 
+
+
+\BeginKnitrBlock{comentario}<div class="comentario">Para esto usaremos la librería `dplyr` que 
+contiene funciones que facilitan la implementación de la 
+estrategia.</div>\EndKnitrBlock{comentario}
+
+En este taller se estudiarán las siguientes funciones de la librería `dplyr`:
+  
+* **filter**: obtiene un subconjunto de las filas de acuerdo a una condición.
+* **select**: selecciona columnas de acuerdo al nombre.
+* **arrange**: re ordena las filas.
+* **mutate**: agrega nuevas variables.
+* **summarise**: reduce variables a valores (crear nuevas bases de datos).
+
+Para mostrar las funciones se usará el siguiente dataframe.
+  
+
+```r
+df_ej <- data.frame(genero = c("mujer", "hombre", "mujer", "mujer", "hombre"), 
+                    estatura = c(1.65, 1.80, 1.70, 1.60, 1.67))
+df_ej
+```
+
+```
+##   genero estatura
+## 1  mujer     1.65
+## 2 hombre     1.80
+## 3  mujer     1.70
+## 4  mujer     1.60
+## 5 hombre     1.67
+```
+
+#### Filtrar {-}
+
+Filtrar una base de datos dependiendo de una condición requiere la función `filter()` que tiene los siguientes argumentos `dplyr::filter(data, condition)`. 
+
+
+```r
+df_ej %>% filter(genero == "mujer")
+```
+
+```
+##   genero estatura
+## 1  mujer     1.65
+## 2  mujer     1.70
+## 3  mujer     1.60
+```
+
+
+#### Seleccionar {-}
+
+Elegir columnas de un conjunto de datos se puede hacer con la función `select()` que tiene los siguientes argumentos `dplyr::select(data, seq_variables)`. 
+
+
+```r
+df_ej %>% select(genero)
+```
+
+```
+##   genero
+## 1  mujer
+## 2 hombre
+## 3  mujer
+## 4  mujer
+## 5 hombre
+```
+
+También, existen funciones que se usan exclusivamente en `select()`:
+
+- `starts_with(x, ignore.case = TRUE)`: los nombres empiezan con _x_.
+
+- `ends_with(x, ignore.case = TRUE)`: los nombres terminan con _x_.
+
+- `contains(x, ignore.case = TRUE)`: selecciona las variable que contengan _x_.
+
+- `matches(x, ignore.case = TRUE)`: selecciona las variable que igualen la expresión regular _x_.
+
+- `num_range("x", 1:5, width = 2)`: selecciona las variables (numéricamente) de x01 a x05.
+
+- `one_of("x", "y", "z")`: selecciona las variables que estén en un vector de caracteres.
+
+- `everything()`: selecciona todas las variables.
+
+Por ejemplo:
+
+
+```r
+df_ej %>% select(starts_with("g"))
+```
+
+```
+##   genero
+## 1  mujer
+## 2 hombre
+## 3  mujer
+## 4  mujer
+## 5 hombre
+```
+
+#### Arreglar {-}
+
+Arreglar u ordenar de acuerdo al valor de una o más variables es posible con la función `arrange()` que tiene los siguientes argumentos `dplyr::arrange(data, variables_por_las_que_ordenar)`. La función `desc()` permite que se ordene de forma descendiente. 
+  
+
+```r
+df_ej %>% arrange(desc(estatura))
+```
+
+```
+##   genero estatura
+## 1 hombre     1.80
+## 2  mujer     1.70
+## 3 hombre     1.67
+## 4  mujer     1.65
+## 5  mujer     1.60
+```
+
+
+#### Mutar {-}
+
+Mutar consiste en crear nuevas variables  con la función `mutate()` que tiene los siguientes argumentos `dplyr::mutate(data, nuevas_variables = operaciones)`:
+
+
+```r
+df_ej %>% mutate(estatura_cm = estatura * 100) 
+```
+
+```
+##   genero estatura estatura_cm
+## 1  mujer     1.65         165
+## 2 hombre     1.80         180
+## 3  mujer     1.70         170
+## 4  mujer     1.60         160
+## 5 hombre     1.67         167
+```
+
+#### Resumir {-}
+
+Los resúmenes permiten crear nuevas bases de datos que son agregaciones de los datos originales. 
+
+La función `summarise()` permite realizar este resumen`dplyr::summarise(data, nuevas_variables = operaciones)`:
+
+
+```r
+df_ej %>% dplyr::summarise(promedio = mean(estatura))
+```
+
+```
+##   promedio
+## 1    1.684
+```
+
+
+También es posible hacer resúmenes agrupando por variables determinadas de la base de datos. Pero,  primero es necesario crear una base agrupada con la función `group_by()` con argumentos `dplyr::group_by(data, add = variables_por_agrupar)`:
+  
+
+```r
+df_ej %>% 
+  group_by(genero)
+```
+
+```
+## # A tibble: 5 x 2
+## # Groups:   genero [2]
+##   genero estatura
+##   <fct>     <dbl>
+## 1 mujer      1.65
+## 2 hombre     1.80
+## 3 mujer      1.70
+## 4 mujer      1.60
+## 5 hombre     1.67
+```
+
+Después se opera sobre cada grupo, creando un resumen a nivel grupo y uniendo los subconjuntos en una base nueva:
+
+
+```r
+df_ej %>% 
+  group_by(genero) %>% 
+  dplyr::summarise(promedio = mean(estatura))
+```
+
+```
+## # A tibble: 2 x 2
+##   genero promedio
+##   <fct>     <dbl>
+## 1 hombre     1.74
+## 2 mujer      1.65
+```
+
+<br>
+
+---
+
+
 
 
 
