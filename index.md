@@ -17,15 +17,15 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2018 
 **Todas las notas y material del curso estarán en este** [repositorio](https://github.com/andreuboada/est-aplicada-3-2018).
 
 - Análisis exploratorio de datos
-- Análisis de datos categórica
+- Análisis de datos categóricos
+- Regresión logística 
+- Regularización y selección de modelos
 - Análisis de conglomerados: clustering jerárquico, k-medias
 - Componentes principales
 - Análisis de factores
 - Análisis canónico
 - Análisis discriminante
-- Regresión logística 
-- Regularización y selección de modelos
-- Introducción a la estadística espacial
+- Introducción a estadística espacial
 
 
 ### Evaluación {-}
