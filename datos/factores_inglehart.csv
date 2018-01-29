@@ -1,0 +1,61 @@
+country_code,country,region,reg,traditional_secular,survival_selfexpression
+112,Belarus,Eastern Europe,Europe & Eurasia,0.9176578333104682,-0.3187198247956034
+12,Algeria,Northern Africa,Middle East & North Africa,-0.6800265818394402,-0.3300199515862166
+152,Chile,South America,Americas,0.14525131163057675,1.5768976054884547
+156,China,Eastern Asia,East Asia & Pacific,1.4530724986712504,-0.5487210985522132
+158,Taiwan,Eastern Asia,East Asia & Pacific,1.2719140300042238,0.9620111134185191
+170,Colombia,South America,Americas,-1.3532107596319514,0.4645781809383019
+196,Cyprus,Western Asia,Europe & Eurasia,-0.05496704552299268,0.6198576405632977
+218,Ecuador,South America,Americas,-0.9902819042513672,0.3019812210268332
+233,Estonia,Northern Europe,Europe & Eurasia,1.335184368213226,0.056593883906101636
+268,Georgia,Western Asia,Europe & Eurasia,-0.5764467960441959,-1.340113195062061
+276,Germany,Western Europe,Europe & Eurasia,1.3646885123946388,1.2722396751972544
+276,West Germany,Western Europe,Europe & Eurasia,1.3646885123946388,1.2722396751972544
+288,Ghana,Western Africa,Africa,-1.3704967862619686,-1.1569796422597742
+31,Azerbaijan,Western Asia,Europe & Eurasia,-0.40881324032215294,-1.6074360520446669
+32,Argentina,South America,Americas,0.3576137964214243,1.3586926032813555
+356,India,Southern Asia,South & Central Asia,-0.1732321830428849,-1.2233332220654995
+36,Australia,Australia and New Zealand,East Asia & Pacific,1.2307069844586718,1.4857077244939985
+368,Iraq,Western Asia,Middle East & North Africa,-0.9263909233528705,-0.6793093992550259
+392,Japan,Eastern Asia,East Asia & Pacific,1.8901385737547045,1.0824309699153114
+398,Kazakhstan,Central Asia,South & Central Asia,0.7555266188341556,-0.6879642369250492
+400,Jordan,Western Asia,Middle East & North Africa,-1.2175992186678635,-1.2627056335517175
+410,South Korea,Eastern Asia,East Asia & Pacific,1.2002423505772464,0.2938895064209097
+414,Kuwait,Western Asia,Middle East & North Africa,-0.4213718667130101,0.2631018679636495
+417,Kyrgyzstan,Central Asia,South & Central Asia,0.24603737906960363,-0.6939407817935109
+422,Lebanon,Western Asia,Middle East & North Africa,-0.006074740497121631,0.22765156863629715
+434,Libya,Northern Africa,Middle East & North Africa,-1.4573120328422515,-0.8943720952337532
+458,Malaysia,South-Eastern Asia,East Asia & Pacific,-0.4117609626804811,-0.2643411696261407
+48,Bahrain,Western Asia,Middle East & North Africa,0.026803785241900288,0.4399593829984168
+484,Mexico,Central America,Americas,-0.9138286635220346,0.6553081994435062
+504,Morocco,Northern Africa,Middle East & North Africa,-1.2750456482349755,-1.3950044403549144
+51,Armenia,Western Asia,Europe & Eurasia,-0.2311471460300738,-1.767259206905505
+528,Netherlands,Western Europe,Europe & Eurasia,1.3962106490837816,1.4838049647636344
+554,New Zealand,Australia and New Zealand,East Asia & Pacific,1.1128214743583307,1.1414903676591843
+566,Nigeria,Western Africa,Africa,-0.7010680035323474,-0.3656353543008313
+586,Pakistan,Southern Asia,South & Central Asia,-0.8124191026547983,-0.7510676536607064
+604,Peru,South America,Americas,-0.6237468965927365,0.897937859041064
+608,Philippines,South-Eastern Asia,East Asia & Pacific,-0.8733223374459249,1.0085655661648587
+616,Poland,Eastern Europe,Europe & Eurasia,0.11481562902719221,0.29276462155359423
+634,Qatar,Western Asia,Middle East & North Africa,-1.443137621227989,-1.4399635168355713
+642,Romania,Eastern Europe,Europe & Eurasia,-0.44777332388403085,-0.68243372132592806
+643,Russia,Eastern Europe,Europe & Eurasia,0.822647585635172,-0.3827368621000406
+643,Soviet Union,Eastern Europe,Europe & Eurasia,0.822647585635172,-0.3827368621000406
+646,Rwanda,Eastern Africa,Africa,0.22245535884375942,-0.4462433410493504
+702,Singapore,South-Eastern Asia,East Asia & Pacific,1.1487555588734542,0.7976780759961853
+705,Slovenia,Southern Europe,Europe & Eurasia,1.3527177141197104,0.6136822154199101
+710,South Africa,Southern Africa,Africa,0.3486228140406021,0.9426043610207899
+716,Zimbabwe,Eastern Africa,Africa,-0.9934108924944087,-0.705663452289717
+724,Spain,Southern Europe,Europe & Eurasia,0.8865798024329126,1.7384137917274132
+752,Sweden,Northern Europe,Europe & Eurasia,1.8069530804938185,1.6405334837086227
+76,Brazil,South America,Americas,-1.125208114829225,0.8298328503093124
+764,Thailand,South-Eastern Asia,East Asia & Pacific,0.673761391151486,0.15051824663621777
+780,Trinidad and Tobago,Caribbean,Americas,-1.2615968388885348,-0.9161188880460526
+788,Tunisia,Northern Africa,Middle East & North Africa,-1.0711041264028451,-1.6785590913073956
+792,Turkey,Western Asia,Europe & Eurasia,-0.49802078449286813,-1.0173942885882774
+804,Ukraine,Eastern Europe,Europe & Eurasia,0.6045193660838676,-0.07452540486909627
+818,Egypt,Northern Africa,Middle East & North Africa,-0.29894429723382204,0.01118179781704793
+840,United States,Northern America,Americas,0.4305035456498636,1.1248980659929755
+858,Uruguay,South America,Americas,0.26960982084659213,1.3688975380742217
+860,Uzbekistan,Central Asia,South & Central Asia,-0.08464227443773133,-0.9989282694785759
+887,Yemen,Western Asia,Middle East & North Africa,-1.1505069621234325,-1.2910382948547778

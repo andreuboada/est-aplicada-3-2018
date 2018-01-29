@@ -823,15 +823,15 @@ Los proyectos de RStudio son útiles para mantener juntos todos los archivos aso
 
 Hagamos un proyecto. Para esto debes presionar _File > New Project_, luego:
 
-```{r, echo = FALSE, out.width = "50%"}
+```{r, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics("figuras/rstudio-project-1.png")
 ```
 
-```{r, echo = FALSE, out.width = "50%"}
+```{r, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics("figuras/rstudio-project-2.png")
 ```
 
-```{r, echo = FALSE, out.width = "50%"}
+```{r, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics("figuras/rstudio-project-3.png")
 ```
 
