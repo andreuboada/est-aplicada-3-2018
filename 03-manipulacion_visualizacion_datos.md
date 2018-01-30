@@ -73,7 +73,7 @@ f(0)
 
 En resumen `%>%` funciona como se muestra en la siguiente figura:
 
-<img src="figuras/pipe-function.png" width="851" style="display: block; margin: auto;" />
+<img src="figuras/pipe-function.png" width="425" style="display: block; margin: auto;" />
 
 **Nota:** Se puede insertar el pipe `%>%` utilizando: Cmd/Ctrl + Shift + M.
 
@@ -358,13 +358,13 @@ billboard %>% sample_n(5) %>% knitr::kable()
 
 
 
- year  artist          track                     time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
------  --------------  ------------------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
- 2000  Goo Goo Dolls   Broadway                  3:54   2000-04-22       74    58    53    42    35    31    29    25    29     26     24     33     46     48     57     62     74     82     85     87     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Badu, Erkyah    Bag Lady                  5:03   2000-08-19       67    53    42    41    48    42    34     6     9      9      8     11     15     21     26     29     26     38     56     66     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Brock, Chad     A Country Boy Can Su...   3:54   2000-01-01       93    75    92    NA    NA    NA    NA    NA    NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Evans, Sara     Born To Fly               5:36   2000-10-21       77    71    64    57    55    51    46    44    36     39     34     46     44     36     42     53     58     74     81     86     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Sonique         It Feels So Good          3:48   2000-01-22       67    52    30    23    19    17    16    16    14     12     13     13     11      8     10     10     11     14     17     19     21     31     38     49     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ year  artist        track                     time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
+-----  ------------  ------------------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+ 2000  Janet         Doesn't Really Matte...   4:17   2000-06-17       59    52    43    30    29    22    15    10    10      5      1      1      1      2      2      3      3      7      8     20     25     37     40     41     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Madonna       Music                     3:45   2000-08-12       41    23    18    14     2     1     1     1     1      2      2      2      2      2      4      8     11     16     20     25     27     27     29     44     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Lil Bow Wow   Bounce With Me            3:22   2000-08-19       48    35    24    24    20    20    20    20    22     27     27     36     40     53     61     69     80     90     99     NA     NA    100     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Lil' Kim      How Many Licks?           3:50   2000-11-25       79    75    77    86    86    89    NA    NA    96     96     96     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  LFO           West Side Story           3:27   2000-08-05       96    84    88    96    NA    NA    NA    NA    NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
 
 Queremos apilar las semanas de manera que sea una sola columna (nuevamente alargamos los datos):
   
@@ -415,18 +415,18 @@ billboard_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
- year  artist                         track                time    week   rank  date       
------  -----------------------------  -------------------  -----  -----  -----  -----------
- 2000  Pink                           There U Go           3:23      30     41  2000-09-23 
- 2000  Tippin, Aaron                  Kiss This            2:53      16     94  2000-12-09 
- 2000  Jordan, Montell                Get It On.. Tonite   4:34       2     80  1999-10-30 
- 2000  Bloodhound Gang                The Bad Touch        4:20      12     98  2000-06-03 
- 2000  Elliott, Missy "Misdemeanor"   Hot Boyz             3:51       3     13  1999-12-11 
- 2000  Anthony, Marc                  You Sang To Me       3:50       7     21  2000-04-08 
- 2000  BBMak                          Back Here            3:35      22     17  2000-09-23 
- 2000  Stone Temple Pilots            Sour Girl            4:16       3     79  2000-07-22 
- 2000  3 Doors Down                   Kryptonite           3:53       1     81  2000-04-08 
- 2000  Backstreet Boys, The           The One              3:46      11     76  2000-08-05 
+ year  artist          track                     time    week   rank  date       
+-----  --------------  ------------------------  -----  -----  -----  -----------
+ 2000  Martin, Ricky   She Bangs                 4:02       3     21  2000-10-21 
+ 2000  Eminem          The Real Slim Shady       4:42       1     70  2000-05-06 
+ 2000  Fabian, Lara    I Will Love Again         3:43       2     80  2000-06-17 
+ 2000  Baha Men        Who Let The Dogs Out      3:17       9     54  2000-09-16 
+ 2000  Ice Cube        You Can Do It             4:20      11     73  2000-02-12 
+ 2000  Profyle         Liar                      3:57       2     32  2000-09-23 
+ 2000  D'Angelo        Untitled (How Does I...   7:10      13     51  2000-04-15 
+ 2000  504 Boyz        Wobble Wobble             3:35      14     76  2000-07-15 
+ 2000  Rogers, Kenny   Buy Me A Rose             3:46      14     66  2000-06-10 
+ 2000  Gray, Macy      I Try                     3:52      25     34  2000-08-05 
 
 
 Nuevamente, podemos hacer gráficas facilmente.
@@ -462,13 +462,13 @@ tb %>% sample_n(5) %>% knitr::kable()
 
 
 
-iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name 
------  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -------------
-NA      2006           NA            NA            86            347           1052            799            386            174          146          NA           NA            NA            74            485            875            521            239             92           80          NA  NA           
-BJ      1994           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Benin        
-ZM      2006           NA            NA           150            945           3496           1645            684            323          186          NA           NA            NA           224           1500           2834           1257            452            207          122          NA  Zambia       
-NA      2008           NA            NA            30            387           1033            757            346            149          132           0           NA            NA            73            466            702            437            226            110           80           0  NA           
-TG      1994           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Togo         
+iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name                              
+-----  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  ------------------------------------------
+TN      1989           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Tunisia                                   
+NO      1987           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Norway                                    
+JM      1980           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Jamaica                                   
+AM      2008            0             0             0             53            103             74             87             37           15           0            0             4             4             44             25             10             14             10           11           0  Armenia                                   
+MK      1994           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  The former Yugoslav Republic of Macedonia 
 
 De manera similar, utilizando la función `gather()` se busca apilar las columnas correspondientes a sexo-edad.
 
@@ -483,18 +483,18 @@ tb_long %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name                                           demog           casos
------  -----  -----------------------------------------------------  -------------  ------
-BA      2008  Bosnia and Herzegovina                                 new_sp_m014         0
-MN      2000  Mongolia                                               new_sp_f3544      113
-TV      2008  Tuvalu                                                 new_sp_f5564        0
-IT      2008  Italy                                                  new_sp_m65        104
-MD      2004  Republic of Moldova                                    new_sp_m5564       89
-BW      2006  Botswana                                               new_sp_m5564      122
-CR      1997  Costa Rica                                             new_sp_m65         45
-DE      1997  Germany                                                new_sp_f4554       93
-GW      2005  Guinea Bissau                                          new_sp_m4554      130
-GB      2002  United Kingdom of Great Britain and Northern Ireland   new_sp_f3544       66
+iso2    year  country_name               demog           casos
+-----  -----  -------------------------  -------------  ------
+VU      1995  Vanuatu                    new_sp_f4554        3
+MR      1999  Mauritania                 new_sp_f5564       43
+GD      1999  Grenada                    new_sp_m1524        0
+HT      1996  Haiti                      new_sp_m014       148
+TC      2003  Turks and Caicos Islands   new_sp_f5564        0
+HK      2003  Hong Kong                  new_sp_m3544      140
+FI      1997  Finland                    new_sp_f65         35
+BY      2004  Belarus                    new_sp_m65         56
+KE      2007  Kenya                      new_sp_f3544     2774
+BW      2000  Botswana                   new_sp_m2534      605
 
 
 Las variables sexo y edad se obtienen separando la columna **demog**, para esto se usa la función `separate()`con los siguientes argumentos: `tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
@@ -586,18 +586,18 @@ tb_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name               sex        age     casos
------  -----  -------------------------  ---------  -----  ------
-PA      1999  Panama                     new_sp_m   2534      209
-KG      2004  Kyrgyzstan                 new_sp_f   5564       34
-SE      2004  Sweden                     new_sp_m   3544        8
-MX      2000  Mexico                     new_sp_m   4554     1235
-SN      1996  Senegal                    new_sp_f   65         74
-DE      2001  Germany                    new_sp_m   65        119
-CN      2005  China                      new_sp_f   65      21244
-LK      1999  Sri Lanka                  new_sp_m   3544      621
-ER      2003  Eritrea                    new_sp_f   5564       36
-CF      2001  Central African Republic   new_sp_m   5564       45
+iso2    year  country_name          sex        age     casos
+-----  -----  --------------------  ---------  -----  ------
+MD      1998  Republic of Moldova   new_sp_m   65         16
+GT      2002  Guatemala             new_sp_f   4554      116
+DZ      2003  Algeria               new_sp_m   2534     1633
+MH      2002  Marshall Islands      new_sp_f   1524        2
+DZ      2004  Algeria               new_sp_m   4554      434
+LV      1998  Latvia                new_sp_m   014         0
+EE      2005  Estonia               new_sp_m   65          7
+CL      1999  Chile                 new_sp_f   5564       76
+ID      1997  Indonesia             new_sp_f   65        357
+SM      1997  San Marino            new_sp_f   2534        1
 
 <br>
 <br>
@@ -758,13 +758,13 @@ billboard_tidy %>% sample_n(5) %>% select(artist, track, year, time) %>% knitr::
 
 
 
-artist            track                      year  time 
-----------------  ------------------------  -----  -----
-Destiny's Child   Say My Name                2000  4:31 
-Davidson, Clay    Unconditional              2000  3:56 
-Wright, Chely     It Was                     2000  3:51 
-Jackson, Alan     www.memory                 2000  2:36 
-Jay-Z             I Just Wanna Love U ...    2000  3:50 
+artist          track              year  time 
+--------------  ----------------  -----  -----
+Sisqo           Got To Get It      2000  3:52 
+Joe             I Wanna Know       2000  4:57 
+Urban, Keith    Your Everything    2000  4:10 
+Ideal           Whatever           2000  3:48 
+Gilman, Billy   One Voice          2000  4:07 
 
 Separemos esta base de datos en dos: la tabla canción que almacena artista, nombre de la canción y duración; la tabla rank que almacena el ranking de la canción en cada semana.
 
@@ -6148,26 +6148,26 @@ specdata %>% sample_n(20) %>% knitr::kable()
 
            id   monitor  date          sulfate   nitrate
 -------  ----  --------  -----------  --------  --------
-356643    153       153  2003-07-03         NA        NA
-633891    268       268  2007-08-17         NA        NA
-502395    215       215  2002-07-29         NA        NA
-174447     72        72  2001-08-24         NA        NA
-227074     96        96  2002-09-27         NA        NA
-607326    258       258  2001-11-20         NA        NA
-678031    287       287  2008-06-22         NA        NA
-595783    254       254  2002-04-13         NA        NA
-222132     93        93  2009-03-16         NA        NA
-346185    148       148  2008-11-13         NA        NA
-300458    127       127  2004-08-31         NA      0.27
-252649    106       106  2010-10-07         NA        NA
-504900    215       215  2009-06-07         NA        NA
-332036    142       142  2003-02-16         NA        NA
-460438    197       197  2000-09-11         NA        NA
-114259     47        47  2006-11-06         NA        NA
-460836    197       197  2001-10-14         NA        NA
-331069    141       141  2004-06-24         NA        NA
-580259    247       247  2005-10-10         NA        NA
-682971    290       290  2000-01-01         NA        NA
+73178      31        31  2003-05-12         NA        NA
+640449    271       271  2006-08-01         NA        NA
+106760     44        44  2004-04-25         NA        NA
+510376    218       218  2008-06-05         NA        NA
+488375    207       207  2008-03-10         NA        NA
+445509    191       191  2007-10-27      2.530    0.7440
+131690     54        54  2005-07-29         NA        NA
+595344    253       253  2010-01-29         NA        NA
+401198    173       173  2009-06-30      0.645    0.0825
+427178    184       184  2009-08-18         NA        NA
+111042     45        45  2007-01-15         NA        NA
+612056    260       260  2002-11-02         NA        NA
+389210    170       170  2003-09-03      1.890    0.6810
+818         1         1  2005-03-28         NA        NA
+394898    171       171  2009-03-31         NA        NA
+399248    173       173  2004-02-27         NA        NA
+551700    237       237  2009-07-30      6.830    0.3550
+105910     43        43  2002-12-27         NA        NA
+273434    115       115  2003-09-06      2.270    0.2740
+135661     56        56  2009-06-12      3.080    0.4190
 
 #### 6. Otras consideraciones {-}
 
