@@ -483,7 +483,7 @@ specdata <- specdata_US %>%
   mutate(monitor = extract_numeric(ID), date = as.Date(Date)) %>%
   select(id = ID, monitor, date, sulfate, nitrate)
 
-specdata %>% sample_n(20) %>% knitr::kable()
+specdata %>% sample_n(10) %>% knitr::kable()
 ```
 
 <br>
@@ -506,30 +506,11 @@ En las buenas prácticas es importante tomar en cuenta los siguientes puntos:
 
 * Otros aspectos importantes en la _limpieza_ de datos son: selección del tipo de variables (por ejemplo fechas), datos faltantes, _typos_ y detección de valores atípicos.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 
-## *Split-apply-combine*
-
-```{r, echo = F, fig.align='center', out.width='12%'}
-knitr::include_graphics("figures/lib-dplyr.png")
-```
+## *Separa-aplica-combina*
 
 Muchos problemas de análisis de datos involucran la aplicación de la estrategia **_split-apply-combine_** de [Hadley Whickam, 2011](http://www.jstatsoft.org/v40/i01/paper). Esto se traduce en realizar filtros, cálculos y agregación de datos.
-
-
 
 ```{block2, type = "nota"}
 **_Split-apply-combine_**
@@ -552,17 +533,19 @@ Cuando pensamos como implementar la estrategia divide-aplica-combina es natural 
 
 
 ```{block2, type = "comentario"}
-Para esto usaremos la librería `dplyr` que 
-contiene funciones que facilitan la implementación de la 
-estrategia.
+Para esto usaremos la librería `dplyr` que contiene funciones que facilitan la implementación de la  estrategia.
 ```
 
-En este taller se estudiarán las siguientes funciones de la librería `dplyr`:
+Son importantes las siguientes funciones de la librería `dplyr`:
   
 * **filter**: obtiene un subconjunto de las filas de acuerdo a una condición.
+
 * **select**: selecciona columnas de acuerdo al nombre.
+
 * **arrange**: re ordena las filas.
+
 * **mutate**: agrega nuevas variables.
+
 * **summarise**: reduce variables a valores (crear nuevas bases de datos).
 
 Para mostrar las funciones se usará el siguiente dataframe.
@@ -781,7 +764,6 @@ En 1971 un estadístico llamado Frank Anscombe (fundador del departamento de Est
 ```{r, eval=FALSE}
 anscombe
 ```
-
 
 +------+-------+-------+-------+-------+-------+------+-------+
 |$x_1$ |$y_1$  |$x_2$  |$y_2$  |$x_3$  |$y_3$  |$x_4$ |$y_4$  |
