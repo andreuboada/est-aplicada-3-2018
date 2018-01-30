@@ -323,13 +323,13 @@ billboard %>% sample_n(5) %>% knitr::kable() %>%
 
 
 
- year  artist            track                     time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
------  ----------------  ------------------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
- 2000  Lonestar          Smile                     3:33   1999-12-18       89    80    80    80    65    47    44    42    39     39     43     41     43     45     50     58     67     78     85     91     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Bloodhound Gang   The Bad Touch             4:20   2000-03-18       70    62    55    55    52    57    72    80    82     92     96     98     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Strait, George    The Best Day              3:24   2000-01-29       73    64    54    45    44    44    44    41    39     34     33     33     31     33     36     39     43     49     53     62     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Ideal             Whatever                  3:48   2000-06-10       75    75    67    73    64    56    54    54    54     48     47     50     60     68     73     81     92     90     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Fatboy Slim       The Rockafeller Skan...   4:00   1999-11-13       94    94    94    87    77    77    83    82    82     92     76     95     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ year  artist             track                     time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
+-----  -----------------  ------------------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+ 2000  Spears, Britney    Oops!.. I Did It Aga...   3:30   2000-04-22       67    38    26    19    15    13    12     9     9     10     14     15     17     24     35     49     77     85     90     96     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Limp Bizkit        Re-Arranged               4:08   1999-12-04       91    91    90    95    95    99    96    96    92     88     89     93     91     91     89     90     93    100     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Lil' Zane          Callin' Me                3:43   2000-07-29       83    89    57    40    34    21    33    46    45     59     67     84     95     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Dr. Dre            Forgot About Dre          3:42   2000-01-22       75    55    47    36    36    30    30    31    26     25     25     26     26     28     34     47     58     68     80     82     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  McBride, Martina   Love's The Only Hous...   5:13   2000-02-05       79    69    65    58    53    52    52    48    45     43     42     42     50     60     64     75     91     93     92     90     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
 
 Queremos apilar las semanas de manera que sea una sola columna (nuevamente alargamos los datos):
   
@@ -342,18 +342,18 @@ billboard_long %>% sample_n(10) %>% knitr::kable()
 
 
 
- year  artist                 track                     time   date.entered   week    rank
------  ---------------------  ------------------------  -----  -------------  -----  -----
- 2000  Dr. Dre                The Next Episode          2:38   2000-05-27     wk18      50
- 2000  Anthony, Marc          You Sang To Me            3:50   2000-02-26     wk17       5
- 2000  Vertical Horizon       Everything You Want       4:01   2000-01-22     wk6       33
- 2000  Lopez, Jennifer        Feelin' Good              4:28   2000-02-19     wk17      79
- 2000  Dr. Dre                Forgot About Dre          3:42   2000-01-22     wk7       30
- 2000  Pearl Jam              Nothing As It Seems       5:20   2000-05-13     wk1       49
- 2000  Lonestar               Smile                     3:33   1999-12-18     wk3       80
- 2000  Jackson, Alan          It Must Be Love           2:53   2000-06-24     wk2       74
- 2000  Backstreet Boys, The   Shape Of My Heart         3:49   2000-10-14     wk10      12
- 2000  Cagle, Chris           My Love Goes On And ...   3:02   2000-10-21     wk9       79
+ year  artist            track                     time   date.entered   week    rank
+-----  ----------------  ------------------------  -----  -------------  -----  -----
+ 2000  Anthony, Marc     My Baby You               3:59   2000-09-16     wk14      83
+ 2000  Tippin, Aaron     Kiss This                 2:53   2000-08-26     wk16      94
+ 2000  Jagged Edge       He Can't Love U           3:30   1999-12-11     wk19      69
+ 2000  Gilman, Billy     One Voice                 4:07   2000-06-17     wk15      61
+ 2000  Destiny's Child   Independent Women Pa...   3:38   2000-09-23     wk21       3
+ 2000  Creed             With Arms Wide Open       3:52   2000-05-13     wk41      13
+ 2000  Adams, Yolanda    Open My Heart             5:30   2000-08-26     wk11      66
+ 2000  N'Sync            This I Promise You        4:23   2000-09-30     wk8        7
+ 2000  Creed             Higher                    5:16   1999-09-11     wk37      16
+ 2000  Spears, Britney   Lucky                     3:23   2000-08-12     wk11     100
 
 La instrucción `na.rm = TRUE` se utiliza para eliminar los valores faltantes en las columnas wk1 a wk76. Realizamos una limpieza adicional creando mejores variables de fecha.
 
@@ -369,18 +369,18 @@ billboard_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
- year  artist             track                     time    week   rank  date       
------  -----------------  ------------------------  -----  -----  -----  -----------
- 2000  Kid Rock           Only God Knows Why        5:27      11     21  2000-04-29 
- 2000  Santana            Maria, Maria              4:18      12      1  2000-04-29 
- 2000  Heatherly, Eric    Flowers On The Wall       3:16       4     82  2000-05-20 
- 2000  Thomas, Carl       Summer Rain               4:57       6     83  2000-10-28 
- 2000  McBride, Martina   There You Are             3:26       5     73  2000-10-07 
- 2000  Savage Garden      Crash And Burn            4:41      18     63  2000-08-05 
- 2000  Splender           I Think God Can Expl...   3:55      11     95  2000-08-19 
- 2000  Strait, George     Go On                     3:48      12     46  2000-11-11 
- 2000  Lil' Kim           How Many Licks?           3:50      10     96  2001-01-27 
- 2000  Hill, Faith        Let's Make Love           4:11       9     57  2000-10-07 
+ year  artist            track                     time    week   rank  date       
+-----  ----------------  ------------------------  -----  -----  -----  -----------
+ 2000  Filter            Take A Picture            4:23       6     38  2000-01-01 
+ 2000  Badu, Erkyah      Bag Lady                  5:03       1     67  2000-08-19 
+ 2000  Third Eye Blind   Deep Inside Of You        4:10       9     90  2000-10-28 
+ 2000  Blink-182         All The Small Things      2:52      20     23  2000-04-15 
+ 2000  Eminem            Stan                      5:26       6     51  2000-12-09 
+ 2000  Ying Yang Twins   Whistle While You Tw...   4:19       5     84  2000-04-15 
+ 2000  Lucy Pearl        Dance Tonight             3:45       1     80  2000-05-20 
+ 2000  Gray, Macy        I Try                     3:52      10      7  2000-04-22 
+ 2000  Brooks & Dunn     You'll Always Be Lov...   2:58       8     74  2000-07-29 
+ 2000  SoulDecision      Faded                     3:25      16     31  2000-10-21 
 
 
 Nuevamente, podemos hacer gráficas fácilmente.
@@ -418,13 +418,13 @@ tb %>% sample_n(5) %>% knitr::kable()
 
 
 
-iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name 
------  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -------------
-PL      1997           NA            NA             3            104            278            781            594            374          359          NA           NA            NA             7             91            155            205             96             94          345          NA  Poland       
-DJ      1999           NA            NA            25            348            371            159             87             67           22          NA           NA            NA            20            158            168             84             38             20            3          NA  Djibouti     
-GR      2003           NA            NA             2             20             28             25             23             25           36          NA           NA            NA             0              7              9              7              2              5           18          NA  Greece       
-HR      2007           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Croatia      
-SC      2003           NA            NA             0              1              0              0              1              2            0          NA           NA            NA             0              0              0              0              0              0            0          NA  Seychelles   
+iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name        
+-----  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  --------------------
+UY      1995           NA            NA             4             28             40             35             49             38           50          NA           NA            NA             2             21             26             18             12              9           17          NA  Uruguay             
+LB      1987           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Lebanon             
+TT      2008            0             2             2              9             15             19             34             29           14           0            1             0             1             11             12              4              8              4            7           0  Trinidad and Tobago 
+ZM      1995           NA            NA            91            659           1668           1124            487            231          130          NA           NA            NA           129           1125           1779            717            257            117           63          NA  Zambia              
+CA      1996           NA            NA             3             28             49             48             31             34           70          NA           NA            NA             2             23             34             28             14             16           50          NA  Canada              
 
 De manera similar, utilizando la función `gather()` se busca apilar las columnas correspondientes a sexo-edad.
 
@@ -439,18 +439,18 @@ tb_long %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name   demog           casos
------  -----  -------------  -------------  ------
-NG      1995  Nigeria        new_sp_m2534      921
-HN      1997  Honduras       new_sp_f014        38
-BH      2008  Bahrain        new_sp_m014         0
-AM      2000  Armenia        new_sp_m3544      131
-HN      1998  Honduras       new_sp_m3544      211
-SG      1998  Singapore      new_sp_f2534       18
-MN      2007  Mongolia       new_sp_f65         29
-BZ      1997  Belize         new_sp_f4554        0
-SK      2005  Slovakia       new_sp_m04          0
-VU      2004  Vanuatu        new_sp_m4554        6
+iso2    year  country_name             demog           casos
+-----  -----  -----------------------  -------------  ------
+LV      1995  Latvia                   new_sp_f014         0
+EE      2007  Estonia                  new_sp_m04          0
+TM      2001  Turkmenistan             new_sp_m2534      295
+VU      2000  Vanuatu                  new_sp_m3544        1
+AR      2006  Argentina                new_sp_f4554      197
+SG      2005  Singapore                new_sp_m3544       61
+VU      1999  Vanuatu                  new_sp_f1524        2
+JP      2000  Japan                    new_sp_f014         5
+BA      1998  Bosnia and Herzegovina   new_sp_m3544       85
+JO      2007  Jordan                   new_sp_m3544       14
 
 
 Las variables sexo y edad se obtienen separando la columna **demog**, para esto se usa la función `separate()`con los siguientes argumentos: `tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
@@ -464,18 +464,18 @@ tb_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name                  sex        age     casos
------  -----  ----------------------------  ---------  -----  ------
-NC      2008  New Caledonia                 new_sp_f   04          0
-MP      2008  Northern Mariana Islands      new_sp_m   2534        0
-OM      2000  Oman                          new_sp_m   4554       12
-MP      2003  Northern Mariana Islands      new_sp_f   4554        1
-SO      2000  Somalia                       new_sp_m   014       113
-TR      2005  Turkey                        new_sp_m   3544     1028
-TZ      1997  United Republic of Tanzania   new_sp_f   1524     2146
-VN      2000  Viet Nam                      new_sp_m   1524     2367
-IT      2007  Italy                         new_sp_f   014         7
-CI      1998  Côte D'Ivoire                 new_sp_f   2534     1087
+iso2    year  country_name             sex        age     casos
+-----  -----  -----------------------  ---------  -----  ------
+PS      2004  Palestine, State of      new_sp_m   1524        1
+FR      1999  France                   new_sp_f   4554       80
+BA      1995  Bosnia and Herzegovina   new_sp_f   5564       77
+MA      2006  Morocco                  new_sp_f   1524     1273
+CK      2002  Cook Islands             new_sp_m   2534        0
+SL      1997  Sierra Leone             new_sp_m   65         47
+KR      2002  Republic of Korea        new_sp_f   4554      334
+GH      2001  Ghana                    new_sp_f   2534      814
+CL      1996  Chile                    new_sp_f   1524       88
+LY      2000  Libya                    new_sp_m   4554       36
 
 Ahora para hacer mejor variable **sex** y **age** usaremos la función `mutate()` que permite crear nuevas variables sin modificar la dimensión del dataframe.
 
@@ -497,18 +497,18 @@ tb_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name                       sex   age        casos
------  -----  ---------------------------------  ----  --------  ------
-KG      1998  Kyrgyzstan                         m     55-64         43
-TT      2006  Trinidad and Tobago                m     15-24          7
-ID      1999  Indonesia                          f     35-44       3624
-UZ      2007  Uzbekistan                         f     unknown        0
-CU      1995  Cuba                               f     0-14           1
-BE      2006  Belgium                            f     35-44         18
-CD      2005  Democratic Republic of the Congo   m     65+         1499
-BH      2006  Bahrain                            f     0-14           0
-CA      2006  Canada                             m     15-24         34
-BG      2007  Bulgaria                           f     35-44         53
+iso2    year  country_name         sex   age      casos
+-----  -----  -------------------  ----  ------  ------
+PY      2003  Paraguay             f     0-14        28
+RU      1996  Russian Federation   f     45-54        9
+MG      2006  Madagascar           m     55-64      766
+DO      2005  Dominican Republic   f     65+         54
+BZ      2004  Belize               f     55-64        0
+PT      1997  Portugal             m     15-24      135
+GT      1999  Guatemala            m     35-44      235
+IN      2000  India                m     55-64    15308
+PY      2001  Paraguay             f     15-24       91
+PG      2001  Papua New Guinea     m     0-14         4
 
 <br>
 
@@ -522,18 +522,18 @@ tb_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name       sex        age     casos
------  -----  -----------------  ---------  -----  ------
-CL      2005  Chile              new_sp_m   1524       74
-ET      1996  Ethiopia           new_sp_f   2534     1147
-GA      2002  Gabon              new_sp_m   5564       27
-YU      1995  Yugoslavia         new_sp_m   2534      204
-PF      2007  French Polynesia   new_sp_f   3544        5
-FI      2007  Finland            new_sp_m   514         0
-SI      2006  Slovenia           new_sp_m   2534        5
-SK      2006  Slovakia           new_sp_m   2534       11
-DZ      1999  Algeria            new_sp_f   2534      621
-TR      2008  Turkey             new_sp_f   65        236
+iso2    year  country_name           sex        age     casos
+-----  -----  ---------------------  ---------  -----  ------
+SY      2008  Syrian Arab Republic   new_sp_m   4554       82
+BF      2007  Burkina Faso           new_sp_f   5564       88
+IT      2008  Italy                  new_sp_f   1524       65
+MH      2008  Marshall Islands       new_sp_m   4554        3
+AR      2007  Argentina              new_sp_m   5564      389
+WS      2000  Samoa                  new_sp_m   5564        2
+NO      1996  Norway                 new_sp_m   3544       14
+GU      2006  Guam                   new_sp_m   014         0
+PK      2008  Pakistan               new_sp_f   3544     8146
+AL      2008  Albania                new_sp_m   014         1
 
 <br>
 
@@ -555,16 +555,16 @@ clima %>% sample_n(10) %>% knitr::kable()
 
 id             year   month  element     d1    d2    d3    d4    d5    d6    d7    d8  d9    d10   d11  d12    d13   d14   d15   d16   d17  d18   d19   d20   d21   d22    d23  d24    d25   d26   d27   d28   d29   d30   d31
 ------------  -----  ------  --------  ----  ----  ----  ----  ----  ----  ----  ----  ---  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----
-MX000017004    2010       8  TMIN        NA    NA    NA    NA   158    NA    NA   173  NA     NA    NA  NA     165    NA    NA    NA    NA  NA    NA    NA    NA    NA     150  NA     156    NA    NA    NA   153    NA   154
-MX000017004    2010      10  TMIN        NA    NA    NA    NA   140    NA   129    NA  NA     NA    NA  NA      NA   130   105    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA    NA    NA   150    NA    NA    NA
 MX000017004    2010       3  TMAX        NA    NA    NA    NA   321    NA    NA    NA  NA    345    NA  NA      NA    NA    NA   311    NA  NA    NA    NA    NA    NA      NA  NA      NA    NA    NA    NA    NA    NA    NA
-MX000017004    2010       2  TMAX        NA   273   241    NA    NA    NA    NA    NA  NA     NA   297  NA      NA    NA    NA    NA    NA  NA    NA    NA    NA    NA     299  NA      NA    NA    NA    NA    NA    NA    NA
-MX000017004    2010       7  TMIN        NA    NA   175    NA    NA    NA    NA    NA  NA     NA    NA  NA      NA   165    NA    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA    NA    NA    NA    NA    NA    NA
-MX000017004    2010      10  TMAX        NA    NA    NA    NA   270    NA   281    NA  NA     NA    NA  NA      NA   295   287    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA    NA    NA   312    NA    NA    NA
+MX000017004    2010       7  TMAX        NA    NA   286    NA    NA    NA    NA    NA  NA     NA    NA  NA      NA   299    NA    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA    NA    NA    NA    NA    NA    NA
+MX000017004    2010       8  TMIN        NA    NA    NA    NA   158    NA    NA   173  NA     NA    NA  NA     165    NA    NA    NA    NA  NA    NA    NA    NA    NA     150  NA     156    NA    NA    NA   153    NA   154
+MX000017004    2010       5  TMIN        NA    NA    NA    NA    NA    NA    NA    NA  NA     NA    NA  NA      NA    NA    NA    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA    NA   182    NA    NA    NA    NA
 MX000017004    2010       8  TMAX        NA    NA    NA    NA   296    NA    NA   290  NA     NA    NA  NA     298    NA    NA    NA    NA  NA    NA    NA    NA    NA     264  NA     297    NA    NA    NA   280    NA   254
-MX000017004    2010       4  TMAX        NA    NA    NA    NA    NA    NA    NA    NA  NA     NA    NA  NA      NA    NA    NA    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA    NA   363    NA    NA    NA    NA
-MX000017004    2010      11  TMAX        NA   313    NA   272   263    NA    NA    NA  NA     NA    NA  NA      NA    NA    NA    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA   281   277    NA    NA    NA    NA
+MX000017004    2010      10  TMAX        NA    NA    NA    NA   270    NA   281    NA  NA     NA    NA  NA      NA   295   287    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA    NA    NA   312    NA    NA    NA
+MX000017004    2010       7  TMIN        NA    NA   175    NA    NA    NA    NA    NA  NA     NA    NA  NA      NA   165    NA    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA    NA    NA    NA    NA    NA    NA
 MX000017004    2010      12  TMIN       138    NA    NA    NA    NA   105    NA    NA  NA     NA    NA  NA      NA    NA    NA    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA    NA    NA    NA    NA    NA    NA
+MX000017004    2010      11  TMAX        NA   313    NA   272   263    NA    NA    NA  NA     NA    NA  NA      NA    NA    NA    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA   281   277    NA    NA    NA    NA
+MX000017004    2010      11  TMIN        NA   163    NA   120    79    NA    NA    NA  NA     NA    NA  NA      NA    NA    NA    NA    NA  NA    NA    NA    NA    NA      NA  NA      NA   121   142    NA    NA    NA    NA
 
 Estos datos tienen variables en columnas individuales (id, año, mes), en múltiples columnas (día, d1-d31) y en filas (tmin, tmax). Comencemos por apilar las columnas.
 
@@ -627,16 +627,16 @@ clima_tidy %>% sample_n(10) %>% knitr::kable()
 
 id             year   month   day   TMAX   TMIN
 ------------  -----  ------  ----  -----  -----
-MX000017004    2010       3    16   31.1   17.6
-MX000017004    2010      12     6   27.8   10.5
-MX000017004    2010       7     3   28.6   17.5
-MX000017004    2010       8    29   28.0   15.3
-MX000017004    2010      11    27   27.7   14.2
-MX000017004    2010       5    27   33.2   18.2
-MX000017004    2010       7    14   29.9   16.5
-MX000017004    2010       6    17   28.0   17.5
-MX000017004    2010       8     5   29.6   15.8
 MX000017004    2010       4    27   36.3   16.7
+MX000017004    2010      11     5   26.3    7.9
+MX000017004    2010      11     4   27.2   12.0
+MX000017004    2010      10    15   28.7   10.5
+MX000017004    2010       8    25   29.7   15.6
+MX000017004    2010       8    23   26.4   15.0
+MX000017004    2010       8    29   28.0   15.3
+MX000017004    2010       2    11   29.7   13.4
+MX000017004    2010       5    27   33.2   18.2
+MX000017004    2010       6    29   30.1   18.0
 
 Ahora es inmediato no solo hacer gráficas sino también ajustar un modelo.
 
@@ -697,13 +697,13 @@ billboard_tidy %>% sample_n(5) %>% select(artist, track, year, time) %>% knitr::
 
 
 
-artist                track                      year  time 
---------------------  ------------------------  -----  -----
-Aguilera, Christina   I Turn To You              2000  4:00 
-Common                The Light                  2000  3:55 
-Brooks & Dunn         You'll Always Be Lov...    2000  2:58 
-Thomas, Carl          Summer Rain                2000  4:57 
-Anthony, Marc         My Baby You                2000  3:59 
+artist             track                      year  time 
+-----------------  ------------------------  -----  -----
+Strait, George     Go On                      2000  3:48 
+Barenaked Ladies   Pinch Me                   2000  3:46 
+Vitamin C          The Itch                   2000  3:30 
+Lonestar           Amazed                     2000  4:25 
+Lil' Kim           No Matter What They ...    2000  4:12 
 
 Separemos esta base de datos en dos: la tabla canción que almacena artista, nombre de la canción y duración; la tabla rank que almacena el ranking de la canción en cada semana.
 
@@ -719,18 +719,18 @@ song %>% sample_n(10) %>% knitr::kable()
 
 
 
-artist                     track                      year  time    song_id
--------------------------  ------------------------  -----  -----  --------
-Savage Garden              I Knew I Loved You         2000  4:07        255
-Montgomery, John Michael   The Little Girl            2000  3:52        211
-Nine Days                  If I Am                    2000  4:18        226
-DMX                        What You Want              2000  4:05         69
-Madonna                    American Pie               2000  4:30        191
-Brooks & Dunn              You'll Always Be Lov...    2000  2:58         47
-Keith, Toby                Country Comes To Tow...    2000  3:39        157
-Diffie, Joe                The Quittin' Kind          2000  3:23         79
-Aguilera, Christina        I Turn To You              2000  4:00         13
-McGraw, Tim                Some Things Never Ch...    2000  3:56        204
+artist            track                      year  time    song_id
+----------------  ------------------------  -----  -----  --------
+Ying Yang Twins   Whistle While You Tw...    2000  4:19        315
+Lopez, Jennifer   Feelin' Good               2000  4:28        183
+Master P          Souljas                    2000  3:33        197
+Hill, Faith       Let's Make Love            2000  4:11        123
+Spears, Britney   From The Bottom Of M...    2000  4:30        272
+Thomas, Carl      I Wish                     2000  3:50        289
+Urban, Keith      Your Everything            2000  4:10        297
+Jagged Edge       Let's Get Married          2000  4:23        142
+Chesney, Kenny    I Lost It                  2000  3:54         57
+Carey, Mariah     Crybaby                    2000  5:19         52
 
 
 ```r
@@ -746,16 +746,16 @@ rank %>% sample_n(10) %>% knitr::kable()
 
  song_id  date          week   rank
 --------  -----------  -----  -----
-       4  2000-11-18       5     67
-     140  2001-01-27      13     77
-      13  2000-04-15       1     50
-     188  1999-11-27       2     53
-     115  2000-07-22      20     85
-     182  2000-07-22       7     47
-     231  2000-12-02       8     34
-      88  2001-03-24      26     28
-      77  2000-01-01       2     83
-      69  2000-08-05       6     79
+      73  2000-05-27      10     56
+     211  2001-01-13      19     74
+      59  2000-12-09       4     92
+     132  2000-01-01       5     42
+      10  2000-11-18      13     61
+     211  2000-12-02      13     45
+     214  2000-10-07       5     39
+      89  2000-03-11      10     69
+      14  1999-12-11       3     28
+      58  2000-04-15       3     68
 
 <br>
 
@@ -804,16 +804,16 @@ specdata %>% sample_n(10) %>% knitr::kable()
 
            id   monitor  date          sulfate   nitrate
 -------  ----  --------  -----------  --------  --------
-499889    214       214  2004-09-17         NA        NA
-596054    254       254  2003-01-09         NA        NA
-580247    247       247  2005-09-28         NA        NA
-232159     97        97  2008-08-29         NA        NA
-601018    255       255  2007-08-13         NA        NA
-495924    213       213  2002-11-09         NA        NA
-749476    322       322  2008-02-02         NA        NA
-726534    312       312  2004-04-10         NA        NA
-214620     89        89  2009-08-21         NA        NA
-697062    298       298  2001-07-31         NA        NA
+352402    151       151  2009-11-21       3.49      3.37
+433536    186       186  2008-01-15         NA        NA
+342797    147       147  2008-08-04         NA        NA
+51275      24        24  2010-05-22         NA        NA
+329246    140       140  2009-06-27         NA        NA
+608602    258       258  2005-05-19         NA        NA
+436476    188       188  2004-02-02         NA        NA
+139659     58        58  2001-05-24         NA        NA
+291499    123       123  2003-02-20       2.04      5.30
+221829     93        93  2008-05-17         NA        NA
 
 <br>
 
@@ -1379,7 +1379,7 @@ p <- ggplot(data = gapminder)
 p
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-58-1.png" width="672" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-58-1.png" width="50%" style="display: block; margin: auto;" />
 
 En este punto, ggplot sabe cuáles son nuestros datos, pero no cuál es el mapeo, es decir, qué variables de los datos deben correlacionarse con qué elementos visuales de la trama. Tampoco sabe qué tipo de trama queremos. En ggplot, las asignaciones se especifican utilizando la función `aes()`. Me gusta esta:
 
@@ -1401,7 +1401,7 @@ El argumento `mapping = aes(...)` _vincula variables a cosas que se van a ver en
 p
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-60-1.png" width="480" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-60-1.png" width="480" style="display: block; margin: auto;" />
 
 El objeto `p` ha sido creado por la función `ggplot()`, y ya tiene información sobre las asignaciones que queremos, junto con mucha otra información añadida por defecto. (Si quiere ver cuánta información hay en el objeto `p`, intente solicitar `str(p)`). Sin embargo, no le hemos dado ninguna instrucción acerca de qué tipo de diagrama dibujar. Necesitamos agregar una capa a la trama. Esto significa elegir una función `geom_*`. Usaremos `geom_point()`. Sabe cómo tomar valores xey y trazarlos en un diagrama de dispersión.
 
@@ -1412,7 +1412,7 @@ Se ha creado el objeto `p` utilizando la función `ggplot()` y este objeto ya ti
 p + geom_point()
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-61-1.png" width="480" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-61-1.png" width="480" style="display: block; margin: auto;" />
 
 El mapeo de las propiedades estéticas se denomina *escalamiento* y depende del tipo de variable, las variables discretas (por ejemplo, genero, escolaridad, país) se mapean a distintas escalas que las variables continuas (variables numéricas como edad, estatura, etc.), los *defaults* para algunos atributos son (estos se pueden modificar):
 
@@ -1430,7 +1430,7 @@ Los *_geoms_* controlan el tipo de gráfica:
 p + geom_smooth()
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-62-1.png" width="480" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-62-1.png" width="480" style="display: block; margin: auto;" />
 
 Podemos ver de inmediato que algunos de estos `geoms` hacen mucho más que simplemente poner puntos en una cuadrícula. Aquí `geom_smooth()` ha calculado una línea suavizada y la región sombreada representa el error estándar de la línea suavizada. Si queremos ver los puntos de datos y la línea juntos, simplemente agregamos `geom_point()` de nuevo como una capa adicional utilizando `+`:
 
@@ -1442,7 +1442,7 @@ p <- ggplot(data = gapminder,
 p + geom_point() + geom_smooth()
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-63-1.png" width="480" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-63-1.png" width="480" style="display: block; margin: auto;" />
 
 El mensaje de la consola de R nos dice que la función `geom_smooth()` está utilizando un método llamado gam, que en este caso significa que se ajusta a un modelo aditivo generalizado. Esto sugiere que tal vez haya otros métodos en `geom_smooth()`. Podemos intentar agregar `method = "lm"` (para "modelo lineal") como un argumento para `geom_smooth()`:
 
@@ -1454,7 +1454,7 @@ p <- ggplot(data = gapminder,
 p + geom_point() + geom_smooth(method="lm")
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-64-1.png" width="480" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-64-1.png" width="50%" style="display: block; margin: auto;" />
 
 Se puede agregar al mapeo del color de la línea el continente y del relleno de los puntos (fill) también el continente para obtener una gráfica que nos dé una idea más general de como se tiene esta relación por continente.
 
@@ -1470,7 +1470,7 @@ p + geom_point() +
     scale_x_log10()
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-65-1.png" width="960" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-65-1.png" width="50%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -1505,12 +1505,10 @@ glimpse(ibc)
 Primero filtramos los incidentes en los que hubo al menos cinco fatalidades:
 
 
-
 ```r
 ibc_fatalidades <- ibc %>%
   filter(Deaths_recorded >= 5)
 ```
-
 
 Una forma fácil de dibujar un histograma es utilizando la geometría `geom_histogram()`:
 
@@ -1521,7 +1519,7 @@ ggplot(ibc_fatalidades, aes(x=Deaths_recorded)) +
   scale_x_log10()
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-68-1.png" width="672" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-68-1.png" width="50%" style="display: block; margin: auto;" />
 
 ## Inglehart–Welzel: un mapa cultural del mundo
 
@@ -1603,7 +1601,7 @@ ggplot(data = factores_inglehart) +
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-71-1.png" width="672" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-71-1.png" width="50%" style="display: block; margin: auto;" />
 
 ### Mapeos: Aesthetics
 
@@ -1612,7 +1610,7 @@ ggplot(data = factores_inglehart) +
 
 En la gráfica de abajo, un grupo de puntos (en rojo) parece estar fuera de la tendencia lineal. Estos países tienen menores valores de supervivencia de lo que esperaríamos de acuerdo a sus mayores valores de tradicionalismo.
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-72-1.png" width="672" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-72-1.png" width="50%" style="display: block; margin: auto;" />
 
 Podemos formular la hipótesis de que se trata de países latinoamericanos. Una forma de probar esta hipótesis es con la variable `reg`. La variable `reg` del conjunto de datos `factores_inglehart` clasifica a los países de acuerdo a su región geográfica.
 
@@ -1622,7 +1620,7 @@ Un mapeo incluye cosas como el tamaño, la forma o el color de los puntos. Puede
 
 Aquí cambiamos los niveles de tamaño, forma y color de un punto para hacer que el punto sea pequeño, triangular o azul:
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-73-1.png" width="672" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-73-1.png" width="672" style="display: block; margin: auto;" />
 
 Podemos transmitir información sobre los datos mapeando los aesthetics en la gráfica a las variables del data frame. Por ejemplo, podemos asignar los colores de los puntos a la variable `reg` para revelar la región de cada país.
 
@@ -1632,7 +1630,7 @@ ggplot(data = factores_inglehart) +
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular, color=reg))
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-74-1.png" width="672" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-74-1.png" width="50%" style="display: block; margin: auto;" />
 
 Para asignar una característica a una variable, asociamos el nombre del mapeo al nombre de la variable dentro de `aes()`. ggplot2 asignará automáticamente un nivel único de dicha característica (o mapeo) a cada valor único de la variable, un proceso conocido como __escalamiento__. ggplot2 también agregará una leyenda que explique qué niveles corresponden a qué valores.
 
@@ -1673,13 +1671,13 @@ ggplot(data = factores_inglehart) +
   geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular, linetype = reg), method = "loess", se = F, span = 1)
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-79-1.png" width="672" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-79-1.png" width="672" style="display: block; margin: auto;" />
 
 Aquí `geom_smooth()` separa los países en líneas basándose en su valor de `reg` (región geográfica).
 
 Podemos superponer las líneas encima de los datos sin procesar y luego coloreándolo todo de acuerdo a `reg`.
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-80-1.png" width="672" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-80-1.png" width="50%" style="display: block; margin: auto;" />
 
 Para mostrar varios geoms en la misma gráfica, agregamos varias funciones geom a `ggplot()`:
 
@@ -1690,7 +1688,7 @@ ggplot(data = factores_inglehart) +
   geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular), method = "loess")
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-81-1.png" width="672" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-81-1.png" width="50%" style="display: block; margin: auto;" />
 
 Este código genera la misma gráfica que el código anterior:
 
@@ -1710,5 +1708,5 @@ ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y =
   geom_smooth(method = "loess")
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-83-1.png" width="672" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-83-1.png" width="50%" style="display: block; margin: auto;" />
 
