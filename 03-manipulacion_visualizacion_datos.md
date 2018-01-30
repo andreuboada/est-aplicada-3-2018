@@ -125,6 +125,9 @@ as.data.frame(ds)
 
 \BeginKnitrBlock{information}<div class="information">**Nota:** Para mayor información de este tipo de dataframes consulta la documentación de la libreria `tibble`.</div>\EndKnitrBlock{information}
 
+<br>
+
+<br>
 
 ## El principio de datos limpios
 
@@ -212,12 +215,10 @@ La mayor parte de estos problemas se pueden arreglar con pocas herramientas, a c
 
 * **spread**: recibe 2 columnas y las separa, haciendo los datos más anchos.
 
----
-
 Repasaremos los problemas más comunes que se encuentran en conjuntos de datos sucios y mostraremos cómo se puede manipular la tabla de datos (usando las funciones *gather* y *spread*) con el fin de estructurarla para que cumpla los principios de datos limpios.
 
 <br>
-<br>
+
 ---
 
 #### 1. Los encabezados de las columnas son valores  {-}
@@ -227,26 +228,6 @@ Analicemos los datos que provienen de una encuesta de [Pew Research](http://www.
 
 ```r
 pew <- read_csv("datos/pew.csv")
-```
-
-```
-## Parsed with column specification:
-## cols(
-##   religion = col_character(),
-##   `<$10k` = col_integer(),
-##   `$10-20k` = col_integer(),
-##   `$20-30k` = col_integer(),
-##   `$30-40k` = col_integer(),
-##   `$40-50k` = col_integer(),
-##   `$50-75k` = col_integer(),
-##   `$75-100k` = col_integer(),
-##   `$100-150k` = col_integer(),
-##   `>150k` = col_integer(),
-##   `Don't know/refused` = col_integer()
-## )
-```
-
-```r
 knitr::kable(pew)
 ```
 
@@ -299,20 +280,6 @@ La nueva estructura de la base de datos nos permite, por ejemplo, hacer fácilme
 
 
 ```r
-ggplot(pew_tidy, aes(x = income, y = frequency, color = religion, group = religion)) +
-  geom_line(size = 1) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  guides(color = guide_legend(ncol=2))
-```
-
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-10-1.png" width="816" />
-
-<br>
-
-Podemos hacer gráficas más interesantes si creamos nuevas variables:
-
-
-```r
 library(dplyr)
 by_religion <- group_by(pew_tidy, religion)
 pew_tidy_2 <- pew_tidy %>%
@@ -321,78 +288,66 @@ pew_tidy_2 <- pew_tidy %>%
   mutate(percent = frequency / sum(frequency)) %>% 
   filter(sum(frequency) > 1000)
 
-head(pew_tidy_2)
-```
-
-```
-## # A tibble: 6 x 4
-## # Groups:   religion [5]
-##   religion                income  frequency percent
-##   <chr>                   <chr>       <int>   <dbl>
-## 1 Catholic                <$10k         418  0.0637
-## 2 Evangelical Prot        <$10k         575  0.0724
-## 3 Historically Black Prot <$10k         228  0.138 
-## 4 Mainline Prot           <$10k         289  0.0471
-## 5 Unaffiliated            <$10k         217  0.0698
-## 6 Catholic                $10-20k       617  0.0940
-```
-
-```r
 ggplot(pew_tidy_2, aes(x = income, y = percent, group = religion)) +
   facet_wrap(~ religion, nrow = 1) +
   geom_bar(stat = "identity", fill = "darkgray") + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-11-1.png" width="739.2" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-10-1.png" width="739.2" />
 
 En el código de arriba utilizamos las funciones `group_by`, `filter` y `mutate` que estudiaremos más adelante.
+
+<br>
+
+<br>
+
+---
 
 Otro ejemplo,
 
 
 ```r
 billboard <- tbl_df(read.csv("datos/billboard.csv", stringsAsFactors = FALSE))
-billboard %>% sample_n(5) %>% knitr::kable()
+billboard %>% sample_n(5) %>% knitr::kable() %>%
+  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 7)
 ```
 
 
 
- year  artist        track                     time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
------  ------------  ------------------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
- 2000  Janet         Doesn't Really Matte...   4:17   2000-06-17       59    52    43    30    29    22    15    10    10      5      1      1      1      2      2      3      3      7      8     20     25     37     40     41     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Madonna       Music                     3:45   2000-08-12       41    23    18    14     2     1     1     1     1      2      2      2      2      2      4      8     11     16     20     25     27     27     29     44     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Lil Bow Wow   Bounce With Me            3:22   2000-08-19       48    35    24    24    20    20    20    20    22     27     27     36     40     53     61     69     80     90     99     NA     NA    100     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  Lil' Kim      How Many Licks?           3:50   2000-11-25       79    75    77    86    86    89    NA    NA    96     96     96     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
- 2000  LFO           West Side Story           3:27   2000-08-05       96    84    88    96    NA    NA    NA    NA    NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ year  artist          track                     time   date.entered    wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8   wk9   wk10   wk11   wk12   wk13   wk14   wk15   wk16   wk17   wk18   wk19   wk20   wk21   wk22   wk23   wk24   wk25   wk26   wk27   wk28   wk29   wk30   wk31   wk32   wk33   wk34   wk35   wk36   wk37   wk38   wk39   wk40   wk41   wk42   wk43   wk44   wk45   wk46   wk47   wk48   wk49   wk50   wk51   wk52   wk53   wk54   wk55   wk56   wk57   wk58   wk59   wk60   wk61   wk62   wk63   wk64   wk65  wk66   wk67   wk68   wk69   wk70   wk71   wk72   wk73   wk74   wk75   wk76 
+-----  --------------  ------------------------  -----  -------------  ----  ----  ----  ----  ----  ----  ----  ----  ----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----
+ 2000  Jagged Edge     Let's Get Married         4:23   2000-05-06       77    66    55    45    38    42    33    29    28     26     23     15     11     14     14     17     20     20     21     23     24     29     36     47     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Jay-Z           I Just Wanna Love U ...   3:50   2000-10-28       58    45    35    26    23    19    14    14    13     11     12     12     12     15     15     19     24     28     29     30     40     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Papa Roach      Last Resort               3:19   2000-07-29       75    71    69    69    66    64    61    61    66     64     63     60     65     66     62     66     64     64     57     72     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Trick Daddy     Shut Up                   4:17   2000-05-20       99    95    87    87    83    83    89    87    92     92     97     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+ 2000  Carey, Mariah   Thank God I Found Yo...   4:14   1999-12-11       82    68    50    50    41    37    26    22    22      2      1      2      4     13     21     28     43     57     82     89     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
 
 Queremos apilar las semanas de manera que sea una sola columna (nuevamente alargamos los datos):
   
 
 ```r
 library(tidyr)
-billboard_long <- gather(billboard, week, rank, wk1:wk76,na.rm=TRUE)
-billboard_long
+billboard_long <- gather(billboard, week, rank, wk1:wk76, na.rm=TRUE)
+billboard_long %>% sample_n(10) %>% knitr::kable()
 ```
 
-```
-## # A tibble: 5,307 x 7
-##     year artist         track               time  date.entered week   rank
-##  * <int> <chr>          <chr>               <chr> <chr>        <chr> <int>
-##  1  2000 2 Pac          Baby Don't Cry (Ke… 4:22  2000-02-26   wk1      87
-##  2  2000 2Ge+her        The Hardest Part O… 3:15  2000-09-02   wk1      91
-##  3  2000 3 Doors Down   Kryptonite          3:53  2000-04-08   wk1      81
-##  4  2000 3 Doors Down   Loser               4:24  2000-10-21   wk1      76
-##  5  2000 504 Boyz       Wobble Wobble       3:35  2000-04-15   wk1      57
-##  6  2000 98^0           Give Me Just One N… 3:24  2000-08-19   wk1      51
-##  7  2000 A*Teens        Dancing Queen       3:44  2000-07-08   wk1      97
-##  8  2000 Aaliyah        I Don't Wanna       4:15  2000-01-29   wk1      84
-##  9  2000 Aaliyah        Try Again           4:03  2000-03-18   wk1      59
-## 10  2000 Adams, Yolanda Open My Heart       5:30  2000-08-26   wk1      76
-## # ... with 5,297 more rows
-```
 
-La instrucción na.rm = TRUE se utiliza para eliminar los valores faltantes en 
+
+ year  artist                 track                     time   date.entered   week    rank
+-----  ---------------------  ------------------------  -----  -------------  -----  -----
+ 2000  Creed                  Higher                    5:16   1999-09-11     wk43      11
+ 2000  Baha Men               Who Let The Dogs Out      3:17   2000-07-22     wk9       54
+ 2000  Backstreet Boys, The   Show Me The Meaning ...   3:54   2000-01-01     wk18      19
+ 2000  Puff Daddy             Best Friend               5:33   2000-02-12     wk5       99
+ 2000  Wright, Chely          It Was                    3:51   2000-03-04     wk7       64
+ 2000  Tippin, Aaron          Kiss This                 2:53   2000-08-26     wk4       53
+ 2000  Lil' Kim               No Matter What They ...   4:12   2000-07-15     wk8       86
+ 2000  Rimes, LeAnn           Big Deal                  3:03   1999-10-16     wk6       48
+ 2000  Messina, Jo Dee        That's The Way            3:17   2000-06-24     wk17      48
+ 2000  Eminem                 The Real Slim Shady       4:42   2000-05-06     wk11       8
+
+La instrucción `na.rm = TRUE` se utiliza para eliminar los valores faltantes en 
 las columnas wk1 a wk76. Realizamos una limpieza adicional creando mejores 
 variables de fecha.
 
@@ -403,33 +358,26 @@ billboard_tidy <- billboard_long %>%
     week = extract_numeric(week),
     date = as.Date(date.entered) + 7 * (week - 1)) %>%
   select(-date.entered)
-```
-
-```
-## extract_numeric() is deprecated: please use readr::parse_number() instead
-```
-
-```r
 billboard_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
 
 
- year  artist          track                     time    week   rank  date       
------  --------------  ------------------------  -----  -----  -----  -----------
- 2000  Martin, Ricky   She Bangs                 4:02       3     21  2000-10-21 
- 2000  Eminem          The Real Slim Shady       4:42       1     70  2000-05-06 
- 2000  Fabian, Lara    I Will Love Again         3:43       2     80  2000-06-17 
- 2000  Baha Men        Who Let The Dogs Out      3:17       9     54  2000-09-16 
- 2000  Ice Cube        You Can Do It             4:20      11     73  2000-02-12 
- 2000  Profyle         Liar                      3:57       2     32  2000-09-23 
- 2000  D'Angelo        Untitled (How Does I...   7:10      13     51  2000-04-15 
- 2000  504 Boyz        Wobble Wobble             3:35      14     76  2000-07-15 
- 2000  Rogers, Kenny   Buy Me A Rose             3:46      14     66  2000-06-10 
- 2000  Gray, Macy      I Try                     3:52      25     34  2000-08-05 
+ year  artist              track                     time    week   rank  date       
+-----  ------------------  ------------------------  -----  -----  -----  -----------
+ 2000  Counting Crows      Hanginaround              4:07      12     29  2000-01-22 
+ 2000  Savage Garden       Crash And Burn            4:41       8     24  2000-05-27 
+ 2000  Dixie Chicks, The   Without You               3:32       9     41  2000-12-02 
+ 2000  Lil' Kim            How Many Licks?           3:50       2     75  2000-12-02 
+ 2000  SoulDecision        Faded                     3:25      10     22  2000-09-09 
+ 2000  Mya                 Case Of The Ex (What...   3:50      28     24  2001-02-24 
+ 2000  Jackson, Alan       www.memory                2:36       2     59  2000-11-11 
+ 2000  Counting Crows      Hanginaround              4:07       6     37  1999-12-11 
+ 2000  Chesney, Kenny      I Lost It                 3:54      12     45  2001-01-06 
+ 2000  Pink                There U Go                3:23       6      7  2000-04-08 
 
 
-Nuevamente, podemos hacer gráficas facilmente.
+Nuevamente, podemos hacer gráficas fácilmente.
 
 
 ```r
@@ -442,10 +390,12 @@ ggplot(tracks, aes(x = date, y = rank)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-15-1.png" width="739.2" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
+
 <br>
+
 ---
 
 #### 2. Una columna asociada a más de una variable {-}
@@ -462,13 +412,13 @@ tb %>% sample_n(5) %>% knitr::kable()
 
 
 
-iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name                              
------  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  ------------------------------------------
-TN      1989           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Tunisia                                   
-NO      1987           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Norway                                    
-JM      1980           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Jamaica                                   
-AM      2008            0             0             0             53            103             74             87             37           15           0            0             4             4             44             25             10             14             10           11           0  Armenia                                   
-MK      1994           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  The former Yugoslav Republic of Macedonia 
+iso2    year   new_sp_m04   new_sp_m514   new_sp_m014   new_sp_m1524   new_sp_m2534   new_sp_m3544   new_sp_m4554   new_sp_m5564   new_sp_m65   new_sp_mu   new_sp_f04   new_sp_f514   new_sp_f014   new_sp_f1524   new_sp_f2534   new_sp_f3544   new_sp_f4554   new_sp_f5564   new_sp_f65   new_sp_fu  country_name      
+-----  -----  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  -----------  ------------  ------------  -------------  -------------  -------------  -------------  -------------  -----------  ----------  ------------------
+MN      2006           NA            NA             7            317            335            241            157             64           41          NA           NA            NA            16            372            265            180             81             24           29          NA  Mongolia          
+BH      1997           NA            NA             1             11             32             19             10              4           10          NA           NA            NA             0              4             11              4              2              1            1          NA  Bahrain           
+IE      1982           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Ireland           
+KR      1984           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Republic of Korea 
+TD      1987           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA           NA            NA            NA             NA             NA             NA             NA             NA           NA          NA  Chad              
 
 De manera similar, utilizando la función `gather()` se busca apilar las columnas correspondientes a sexo-edad.
 
@@ -483,18 +433,18 @@ tb_long %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name               demog           casos
------  -----  -------------------------  -------------  ------
-VU      1995  Vanuatu                    new_sp_f4554        3
-MR      1999  Mauritania                 new_sp_f5564       43
-GD      1999  Grenada                    new_sp_m1524        0
-HT      1996  Haiti                      new_sp_m014       148
-TC      2003  Turks and Caicos Islands   new_sp_f5564        0
-HK      2003  Hong Kong                  new_sp_m3544      140
-FI      1997  Finland                    new_sp_f65         35
-BY      2004  Belarus                    new_sp_m65         56
-KE      2007  Kenya                      new_sp_f3544     2774
-BW      2000  Botswana                   new_sp_m2534      605
+iso2    year  country_name                        demog           casos
+-----  -----  ----------------------------------  -------------  ------
+HN      2004  Honduras                            new_sp_f2534      218
+PF      2005  French Polynesia                    new_sp_m014         0
+QA      2002  Qatar                               new_sp_f3544        1
+CK      1997  Cook Islands                        new_sp_m3544        0
+KW      2001  Kuwait                              new_sp_m2534       37
+ER      1997  Eritrea                             new_sp_m4554       12
+VE      1999  Venezuela, Bolivarian Republic of   new_sp_f014        28
+AG      2001  Antigua and Barbuda                 new_sp_f65          0
+PY      2002  Paraguay                            new_sp_f1524       88
+TO      2001  Tonga                               new_sp_m5564        2
 
 
 Las variables sexo y edad se obtienen separando la columna **demog**, para esto se usa la función `separate()`con los siguientes argumentos: `tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
@@ -503,33 +453,23 @@ Las variables sexo y edad se obtienen separando la columna **demog**, para esto 
 ```r
 tb_tidy <- tb_long %>%
   separate(col = demog, into = c("sex", "age"), sep = 8)
-knitr::kable(tb_tidy %>% head(20))
+tb_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
 
 
-iso2    year  country_name           sex        age    casos
------  -----  ---------------------  ---------  ----  ------
-AD      2005  Andorra                new_sp_m   04         0
-AD      2006  Andorra                new_sp_m   04         0
-AD      2008  Andorra                new_sp_m   04         0
-AE      2006  United Arab Emirates   new_sp_m   04         0
-AE      2007  United Arab Emirates   new_sp_m   04         0
-AE      2008  United Arab Emirates   new_sp_m   04         0
-AG      2007  Antigua and Barbuda    new_sp_m   04         0
-AL      2005  Albania                new_sp_m   04         0
-AL      2006  Albania                new_sp_m   04         1
-AL      2007  Albania                new_sp_m   04         0
-AL      2008  Albania                new_sp_m   04         1
-AM      2005  Armenia                new_sp_m   04         1
-AM      2006  Armenia                new_sp_m   04         0
-AM      2007  Armenia                new_sp_m   04         0
-AM      2008  Armenia                new_sp_m   04         0
-AN      2006  Netherlands Antilles   new_sp_m   04         0
-AR      2006  Argentina              new_sp_m   04        19
-AR      2007  Argentina              new_sp_m   04        14
-AR      2008  Argentina              new_sp_m   04        11
-AT      2005  Austria                new_sp_m   04         1
+iso2    year  country_name          sex        age     casos
+-----  -----  --------------------  ---------  -----  ------
+CA      2004  Canada                new_sp_m   014         2
+MD      2002  Republic of Moldova   new_sp_f   5564       23
+MU      2004  Mauritius             new_sp_m   014         1
+KM      2005  Comoros               new_sp_m   5564        2
+BH      1996  Bahrain               new_sp_f   1524       10
+ZA      1999  South Africa          new_sp_f   3544      779
+BN      2008  Brunei Darussalam     new_sp_f   4554        7
+KG      2003  Kyrgyzstan            new_sp_f   3544      109
+MG      2005  Madagascar            new_sp_f   014       150
+NZ      2007  New Zealand           new_sp_m   3544        7
 
 Ahora para hacer mejor variable **sex** y **age** usaremos la función `mutate()` que permite crear nuevas variables sin modificar la dimensión del dataframe.
 
@@ -546,33 +486,23 @@ tb_tidy <- tb_long %>%
                                   "45-54", "5-14",  "55-64", "65+","unknown")
                        )
           )
-knitr::kable(tb_tidy %>% head(20))
+tb_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
 
 
-iso2    year  country_name           sex   age    casos
------  -----  ---------------------  ----  ----  ------
-AD      2005  Andorra                m     0-4        0
-AD      2006  Andorra                m     0-4        0
-AD      2008  Andorra                m     0-4        0
-AE      2006  United Arab Emirates   m     0-4        0
-AE      2007  United Arab Emirates   m     0-4        0
-AE      2008  United Arab Emirates   m     0-4        0
-AG      2007  Antigua and Barbuda    m     0-4        0
-AL      2005  Albania                m     0-4        0
-AL      2006  Albania                m     0-4        1
-AL      2007  Albania                m     0-4        0
-AL      2008  Albania                m     0-4        1
-AM      2005  Armenia                m     0-4        1
-AM      2006  Armenia                m     0-4        0
-AM      2007  Armenia                m     0-4        0
-AM      2008  Armenia                m     0-4        0
-AN      2006  Netherlands Antilles   m     0-4        0
-AR      2006  Argentina              m     0-4       19
-AR      2007  Argentina              m     0-4       14
-AR      2008  Argentina              m     0-4       11
-AT      2005  Austria                m     0-4        1
+iso2    year  country_name                       sex   age      casos
+-----  -----  ---------------------------------  ----  ------  ------
+BJ      2004  Benin                              f     15-24      263
+CD      2002  Democratic Republic of the Congo   f     25-34     6230
+CV      2007  Cabo Verde                         m     35-44       26
+BF      1996  Burkina Faso                       m     35-44      148
+FI      1998  Finland                            f     55-64       12
+LA      2001  Lao People's Democratic Republic   f     35-44      121
+SI      2001  Slovenia                           f     55-64        5
+SG      2003  Singapore                          m     45-54       96
+BI      1999  Burundi                            f     0-14        66
+FR      2005  France                             f     0-4          5
 
 <br>
 
@@ -586,21 +516,23 @@ tb_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name          sex        age     casos
------  -----  --------------------  ---------  -----  ------
-MD      1998  Republic of Moldova   new_sp_m   65         16
-GT      2002  Guatemala             new_sp_f   4554      116
-DZ      2003  Algeria               new_sp_m   2534     1633
-MH      2002  Marshall Islands      new_sp_f   1524        2
-DZ      2004  Algeria               new_sp_m   4554      434
-LV      1998  Latvia                new_sp_m   014         0
-EE      2005  Estonia               new_sp_m   65          7
-CL      1999  Chile                 new_sp_f   5564       76
-ID      1997  Indonesia             new_sp_f   65        357
-SM      1997  San Marino            new_sp_f   2534        1
+iso2    year  country_name                 sex        age     casos
+-----  -----  ---------------------------  ---------  -----  ------
+CK      1997  Cook Islands                 new_sp_m   1524        0
+CM      2005  Cameroon                     new_sp_f   014       226
+SN      2005  Senegal                      new_sp_f   65         81
+IT      2005  Italy                        new_sp_m   3544      137
+MU      2007  Mauritius                    new_sp_f   3544        3
+IR      2005  Iran (Islamic Republic of)   new_sp_f   1524      394
+IQ      1998  Iraq                         new_sp_f   3544      542
+PK      2005  Pakistan                     new_sp_f   65       1338
+GQ      1995  Equatorial Guinea            new_sp_f   1524       18
+SZ      2006  Swaziland                    new_sp_m   4554      164
 
 <br>
+
 <br>
+
 ---
 
 #### 3. Variables almacenadas en filas y columnas {-}
@@ -690,20 +622,23 @@ Finalmente, la columna *element* no es una variable, sino que almacena el nombre
 ```r
 clima_tidy <- clima_vars %>%
   spread(element, value)
-head(clima_tidy)
+clima_tidy %>% sample_n(10) %>% knitr::kable()
 ```
 
-```
-## # A tibble: 6 x 6
-##   id           year month   day  TMAX  TMIN
-##   <chr>       <int> <int> <dbl> <dbl> <dbl>
-## 1 MX000017004  2010     1 30.0   27.8  14.5
-## 2 MX000017004  2010     2  2.00  27.3  14.4
-## 3 MX000017004  2010     2  3.00  24.1  14.4
-## 4 MX000017004  2010     2 11.0   29.7  13.4
-## 5 MX000017004  2010     2 23.0   29.9  10.7
-## 6 MX000017004  2010     3  5.00  32.1  14.2
-```
+
+
+id             year   month   day   TMAX   TMIN
+------------  -----  ------  ----  -----  -----
+MX000017004    2010       3    10   34.5   16.8
+MX000017004    2010      12     1   29.9   13.8
+MX000017004    2010      10    14   29.5   13.0
+MX000017004    2010       2     3   24.1   14.4
+MX000017004    2010      10    15   28.7   10.5
+MX000017004    2010       8    31   25.4   15.4
+MX000017004    2010       8    23   26.4   15.0
+MX000017004    2010      10    28   31.2   15.0
+MX000017004    2010      11     5   26.3    7.9
+MX000017004    2010       6    29   30.1   18.0
 
 Ahora es inmediato no solo hacer gráficas sino también ajustar un modelo.
 
@@ -745,6 +680,12 @@ summary(clima_lm)
 ## F-statistic: 3.563 on 10 and 22 DF,  p-value: 0.006196
 ```
 
+<br>
+
+<br>
+
+---
+
 #### 4. Mas de un tipo de observación en una misma tabla {-}
 
 En ocasiones las bases de datos involucran valores en diferentes niveles, endiferentes tipos de unidad observacional. En la limpieza de datos, cada unidad observacional debe estar almacenada en su propia tabla (esto esta ligado a normalización de una base de datos), es importante para evitar inconsistencias en los datos.
@@ -758,13 +699,13 @@ billboard_tidy %>% sample_n(5) %>% select(artist, track, year, time) %>% knitr::
 
 
 
-artist          track              year  time 
---------------  ----------------  -----  -----
-Sisqo           Got To Get It      2000  3:52 
-Joe             I Wanna Know       2000  4:57 
-Urban, Keith    Your Everything    2000  4:10 
-Ideal           Whatever           2000  3:48 
-Gilman, Billy   One Voice          2000  4:07 
+artist             track                      year  time 
+-----------------  ------------------------  -----  -----
+McBride, Martina   There You Are              2000  3:26 
+Son By Four        A Puro Dolor (Purest...    2000  3:30 
+Foo Fighters       Learn To Fly               2000  3:55 
+Black, Clint       Been There                 2000  5:28 
+Tritt, Travis      Best Of Intentions         2000  4:15 
 
 Separemos esta base de datos en dos: la tabla canción que almacena artista, nombre de la canción y duración; la tabla rank que almacena el ranking de la canción en cada semana.
 
@@ -776,8 +717,6 @@ song <- billboard_tidy %>%
   arrange(artist) %>%
   mutate(song_id = row_number(artist))
 ```
-
-
 
 
 ```r
@@ -6101,6 +6040,12 @@ rank %>% knitr::kable()
      317  2001-01-13      38     38
      317  2001-01-20      39     48
 
+<br>
+
+<br>
+
+---
+
 #### 5. Una misma unidad observacional está almacenada en múltiples tablas {-}
 
 También es común que los valores sobre una misma unidad observacional estén separados en muchas tablas o archivos, es común que estas tablas esten divididas de acuerdo a una variable, de tal manera que cada archivo representa a una persona, año o ubicación. Para juntar los archivos hacemos lo siguiente:
@@ -6136,38 +6081,38 @@ specdata_US <- map_df(paths, read.csv, stringsAsFactors = FALSE)
 specdata <- specdata_US %>%
   mutate(monitor = extract_numeric(ID), date = as.Date(Date)) %>%
   select(id = ID, monitor, date, sulfate, nitrate)
-```
 
-```
-## extract_numeric() is deprecated: please use readr::parse_number() instead
-```
-
-```r
 specdata %>% sample_n(20) %>% knitr::kable()
 ```
 
            id   monitor  date          sulfate   nitrate
 -------  ----  --------  -----------  --------  --------
-73178      31        31  2003-05-12         NA        NA
-640449    271       271  2006-08-01         NA        NA
-106760     44        44  2004-04-25         NA        NA
-510376    218       218  2008-06-05         NA        NA
-488375    207       207  2008-03-10         NA        NA
-445509    191       191  2007-10-27      2.530    0.7440
-131690     54        54  2005-07-29         NA        NA
-595344    253       253  2010-01-29         NA        NA
-401198    173       173  2009-06-30      0.645    0.0825
-427178    184       184  2009-08-18         NA        NA
-111042     45        45  2007-01-15         NA        NA
-612056    260       260  2002-11-02         NA        NA
-389210    170       170  2003-09-03      1.890    0.6810
-818         1         1  2005-03-28         NA        NA
-394898    171       171  2009-03-31         NA        NA
-399248    173       173  2004-02-27         NA        NA
-551700    237       237  2009-07-30      6.830    0.3550
-105910     43        43  2002-12-27         NA        NA
-273434    115       115  2003-09-06      2.270    0.2740
-135661     56        56  2009-06-12      3.080    0.4190
+770885    331       331  2005-09-16      2.060     0.397
+654489    277       277  2007-01-10         NA        NA
+42156      21        21  2009-06-03         NA        NA
+305442    128       128  2009-04-24         NA        NA
+102675     41        41  2004-02-16         NA        NA
+395924    172       172  2002-01-21         NA        NA
+173712     71        71  2009-08-19         NA        NA
+677286    287       287  2006-06-08         NA        NA
+79241      32        32  2009-12-17         NA        NA
+262719    111       111  2006-05-05         NA        NA
+70675      30        30  2005-07-04         NA        NA
+315929    134       134  2010-01-09         NA        NA
+21301       9         9  2007-04-29         NA        NA
+393919    171       171  2006-07-26         NA        NA
+92058      37        37  2006-01-20         NA        NA
+35737      19        19  2004-11-05      0.648     0.121
+435561    187       187  2004-08-01         NA        NA
+169414     69        69  2009-11-12         NA        NA
+538610    231       231  2001-09-25         NA        NA
+361908    155       155  2002-12-01         NA        NA
+
+<br>
+
+<br>
+
+---
 
 #### 6. Otras consideraciones {-}
 
@@ -6593,7 +6538,7 @@ ggplot(guns_sin_especificar, aes(x=as.factor(place), fill=as.factor(intent))) +
     ggtitle("Lugar de homicidios por intención")
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-54-1.png" width="576" style="display: block; margin: auto;" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-53-1.png" width="576" style="display: block; margin: auto;" />
 
 
 Dado que el homicidio ocurrió en una granja, lo más probable es que haya sido un suicidio.
@@ -6668,6 +6613,7 @@ Cuando analizamos los datos de manera gráfica en un histograma encontramos ráp
 
 <div style="text-align: center;">**“Una imagen dice más que mil palabras.”**</div>
 <img src="figuras/Anscombe.png" width="246" style="display: block; margin: auto;" />
+
 <p class="espacio">
 </p>
 
@@ -6697,12 +6643,14 @@ En general, según Leland Wilkinson, hay dos principios generales que se deben s
 
 Vamos a ver cómo visualizar los datos usando ggplot2. R tiene varios sistemas para hacer gráficas, pero ggplot2 es uno de los más elegantes y versátiles. ggplot2 implementa la __gramática de gráficas__,  un sistema consistente para describir y construir gráficas. Con ggplot2, pueden hacerse cosas más rápido, aprendiendo un único sistema consistente, y aplicándolo de muchas formas.
 
-Para mayor información sobre los fundamentos teóricos de ggplot2 se recomienda leer el artículo titulado "The Layered Grammar of Graphics", visitando la siguiente liga: <http://vita.had.co.nz/papers/layered-grammar.pdf>.
+Para mayor información sobre los fundamentos teóricos de `ggplot2` se recomienda leer el artículo titulado "The Layered Grammar of Graphics", visitando la siguiente liga: <http://vita.had.co.nz/papers/layered-grammar.pdf>.
 
 Lo más importante para entender ggplot es comprender la estructura y la lógica para hacer una gráfica. El código debe decir cuáles son las conexiones entre las variables en los datos y los elementos de la gráfica tal como los vamos a ver en la pantalla, los puntos, los colores y las formas. En ggplot, estas conexiones lógicas entre los datos y los elementos de la gráfica se denominan *asignaciones estéticas* o simplemente *estéticas*. Se comienza una gráfica indicando a ggplot cuáles son los datos, qué variables en los datos se van a usar y luego cómo las variables en estos datos se mapean lógicamente en la estética de la gráfica. Luego, toma el resultado y se indica qué tipo de gráfica se desea, por ejemplo, un diagrama de dispersión, una gráfica de barras, o una gráfica de línea. En ggplot este tipo general de gráficas se llama `geom`. Cada *geom* tiene una función que lo crea. Por ejemplo, `geom_point()` hace diagramas de dispersión, `geom_bar()` hace gráficas de barras, `geom_line()` hace gráficas de línea, y así sucesivamente. Para combinar estas dos piezas, el objeto `ggplot()` y el `geom` se suman literalmente en una expresión, utilizando el símbolo "`+`".
  
 <div style="text-align: center;">**¿Qué geometrías son más adecuadas para cada tipo de variable?**</div>
-<center><img src="figuras/visual-variables.png" width="600px" /></center>
+
+<img src="figuras/visual-variables.png" width="240" style="display: block; margin: auto;" />
+
 <p class="espacio">
 </p>
 
@@ -6846,24 +6794,6 @@ Los datos los leemos con la función `read_csv()` de la librería `readr`:
 
 ```r
 ibc <- read_csv("datos/ibc-incidents-2016-8-8.csv")
-```
-
-```
-## Parsed with column specification:
-## cols(
-##   IBC_code = col_character(),
-##   Start_Date = col_character(),
-##   End_Date = col_character(),
-##   Time = col_character(),
-##   Location = col_character(),
-##   Target = col_character(),
-##   Weapons = col_character(),
-##   Deaths_recorded = col_integer(),
-##   Sources = col_character()
-## )
-```
-
-```r
 glimpse(ibc)
 ```
 
@@ -6958,21 +6888,6 @@ La medida se basa entonces en la observación de que dos de las cuatro opciones,
 ```r
 library(tidyverse)
 factores_inglehart <- read_csv(file = "datos/factores_inglehart.csv")
-```
-
-```
-## Parsed with column specification:
-## cols(
-##   country_code = col_integer(),
-##   country = col_character(),
-##   region = col_character(),
-##   reg = col_character(),
-##   traditional_secular = col_double(),
-##   survival_selfexpression = col_double()
-## )
-```
-
-```r
 glimpse(factores_inglehart)
 ```
 

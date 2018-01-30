@@ -818,16 +818,16 @@ iris %>% sample_n(10) %>% knitr::kable()
 
        Sepal.Length   Sepal.Width   Petal.Length   Petal.Width  Species    
 ----  -------------  ------------  -------------  ------------  -----------
-110             7.2           3.6            6.1           2.5  virginica  
-118             7.7           3.8            6.7           2.2  virginica  
-96              5.7           3.0            4.2           1.2  versicolor 
-4               4.6           3.1            1.5           0.2  setosa     
-115             5.8           2.8            5.1           2.4  virginica  
+14              4.3           3.0            1.1           0.1  setosa     
+87              6.7           3.1            4.7           1.5  versicolor 
+132             7.9           3.8            6.4           2.0  virginica  
+116             6.4           3.2            5.3           2.3  virginica  
+8               5.0           3.4            1.5           0.2  setosa     
+27              5.0           3.4            1.6           0.4  setosa     
+40              5.1           3.4            1.5           0.2  setosa     
+43              4.4           3.2            1.3           0.2  setosa     
 39              4.4           3.0            1.3           0.2  setosa     
-64              6.1           2.9            4.7           1.4  versicolor 
-150             5.9           3.0            5.1           1.8  virginica  
-79              6.0           2.9            4.5           1.5  versicolor 
-91              5.5           2.6            4.4           1.2  versicolor 
+99              5.1           2.5            3.0           1.1  versicolor 
 
 Este conjunto de datos multivariados fue presentado por el estadístico y biólogo británico Ronald Fisher en su artículo de 1936 "El uso de mediciones múltiples en problemas taxonómicos como un ejemplo de análisis discriminante lineal". Edgar Anderson recopiló los datos para cuantificar la variación morfológica de las flores de iris de tres especies relacionadas. Los datos fueron recolectadas en la Península de Gaspé. [@fisher1936use]
 
@@ -1083,13 +1083,13 @@ tabla
 ```
 
 ```
-##   n    frutas      valor
-## 1 1     apple 0.35928943
-## 2 2    banana 0.78990703
-## 3 3    orange 0.72652653
-## 4 4 pineapple 0.32583425
-## 5 5     lemon 0.72138474
-## 6 6     apple 0.05654472
+##   n    frutas     valor
+## 1 1     apple 0.2676901
+## 2 2    banana 0.4257783
+## 3 3    orange 0.6028163
+## 4 4 pineapple 0.3508451
+## 5 5     lemon 0.1706373
+## 6 6     apple 0.5068461
 ```
 
 ```r
@@ -1102,12 +1102,12 @@ tabla.color
 
 ```
 ##         peso    color
-## 1 -0.2022155     rojo
-## 2  0.2536258 amarillo
-## 3 -0.5142782  naranje
-## 4 -0.4222447 amarillo
-## 5 -0.3670024 amarillo
-## 6 -1.1627436     rojo
+## 1 -1.0611469     rojo
+## 2 -1.4642907 amarillo
+## 3  1.5147437  naranje
+## 4 -0.6260972 amarillo
+## 5 -2.1740414 amarillo
+## 6 -0.5664443     rojo
 ```
 
 ```r
@@ -1115,13 +1115,13 @@ cbind(tabla, tabla.color)
 ```
 
 ```
-##   n    frutas      valor       peso    color
-## 1 1     apple 0.35928943 -0.2022155     rojo
-## 2 2    banana 0.78990703  0.2536258 amarillo
-## 3 3    orange 0.72652653 -0.5142782  naranje
-## 4 4 pineapple 0.32583425 -0.4222447 amarillo
-## 5 5     lemon 0.72138474 -0.3670024 amarillo
-## 6 6     apple 0.05654472 -1.1627436     rojo
+##   n    frutas     valor       peso    color
+## 1 1     apple 0.2676901 -1.0611469     rojo
+## 2 2    banana 0.4257783 -1.4642907 amarillo
+## 3 3    orange 0.6028163  1.5147437  naranje
+## 4 4 pineapple 0.3508451 -0.6260972 amarillo
+## 5 5     lemon 0.1706373 -2.1740414 amarillo
+## 6 6     apple 0.5068461 -0.5664443     rojo
 ```
 
 
@@ -1172,13 +1172,13 @@ lista
 ## [7] "kiwi"      "apple"    
 ## 
 ## $tabla
-##   n    frutas      valor
-## 1 1     apple 0.35928943
-## 2 2    banana 0.78990703
-## 3 3    orange 0.72652653
-## 4 4 pineapple 0.32583425
-## 5 5     lemon 0.72138474
-## 6 6     apple 0.05654472
+##   n    frutas     valor
+## 1 1     apple 0.2676901
+## 2 2    banana 0.4257783
+## 3 3    orange 0.6028163
+## 4 4 pineapple 0.3508451
+## 5 5     lemon 0.1706373
+## 6 6     apple 0.5068461
 ## 
 ## $ejemlista
 ## $ejemlista$a
@@ -1598,7 +1598,7 @@ lanza_dado()
 ```
 
 ```
-## [1] 6
+## [1] 2
 ```
 
 **Segundo lanzamiento:**
@@ -1944,7 +1944,7 @@ prom_col_m2
 
 Tercer método:
 
-<img src="figures/applycol.png" style="display: block; margin: auto;" />
+<img src="figuras/applycol.png" width="237" style="display: block; margin: auto;" />
 
 
 
@@ -2434,7 +2434,7 @@ system.time(lm(R ~ AB + teamID, Batting))
 
 ```
 ##    user  system elapsed 
-##   2.953   0.111   3.066
+##   2.940   0.116   3.068
 ```
 
 - __user time__: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.
@@ -2450,7 +2450,7 @@ system.time(readLines("http://www.jhsph.edu"))
 
 ```
 ##    user  system elapsed 
-##   0.029   0.000   1.285
+##   0.026   0.000   1.166
 ```
 
 
@@ -2465,7 +2465,7 @@ system.time(mclapply(2000:2006,
 
 ```
 ##    user  system elapsed 
-##   0.072   0.099   0.112
+##   0.045   0.055   0.092
 ```
 
 Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.
@@ -2513,7 +2513,7 @@ dplyr_st
 
 ```
 ##    user  system elapsed 
-##   0.134   0.041   0.174
+##   0.138   0.000   0.138
 ```
 
 
@@ -2523,7 +2523,7 @@ plyr_st
 
 ```
 ##    user  system elapsed 
-##   7.776   0.381   8.161
+##   7.351   0.004   7.356
 ```
 
 
@@ -2533,7 +2533,7 @@ est_l_st
 
 ```
 ##    user  system elapsed 
-##  72.226   0.115  72.345
+##  68.987   0.900  69.895
 ```
 
 
@@ -2543,7 +2543,7 @@ est_r_st
 
 ```
 ##    user  system elapsed 
-##   0.597   0.000   0.597
+##   0.714   0.032   0.746
 ```
 
 La función `system.time` supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es `Rprof()`.
@@ -2567,55 +2567,53 @@ summaryRprof("out/lm_rprof.out")
 ```
 ## $by.self
 ##                         self.time self.pct total.time total.pct
-## "lm.fit"                     2.94    89.50       2.96     89.95
-## ".External2"                 0.27     8.22       0.28      8.68
-## "as.character"               0.04     1.37       0.04      1.37
-## "anyDuplicated.default"      0.02     0.46       0.02      0.46
-## "c"                          0.02     0.46       0.02      0.46
+## "lm.fit"                     2.75    89.27       2.75     89.27
+## ".External2"                 0.24     7.80       0.26      8.29
+## "as.character"               0.08     2.44       0.08      2.44
+## "anyDuplicated.default"      0.02     0.49       0.02      0.49
 ## 
 ## $by.total
 ##                         total.time total.pct self.time self.pct
-## "<Anonymous>"                 3.28    100.00      0.00     0.00
-## "block_exec"                  3.28    100.00      0.00     0.00
-## "call_block"                  3.28    100.00      0.00     0.00
-## "do.call"                     3.28    100.00      0.00     0.00
-## "eval.parent"                 3.28    100.00      0.00     0.00
-## "eval"                        3.28    100.00      0.00     0.00
-## "evaluate_call"               3.28    100.00      0.00     0.00
-## "evaluate::evaluate"          3.28    100.00      0.00     0.00
-## "evaluate"                    3.28    100.00      0.00     0.00
-## "handle"                      3.28    100.00      0.00     0.00
-## "in_dir"                      3.28    100.00      0.00     0.00
-## "knitr::knit"                 3.28    100.00      0.00     0.00
-## "lm"                          3.28    100.00      0.00     0.00
-## "local"                       3.28    100.00      0.00     0.00
-## "process_file"                3.28    100.00      0.00     0.00
-## "process_group.block"         3.28    100.00      0.00     0.00
-## "process_group"               3.28    100.00      0.00     0.00
-## "timing_fn"                   3.28    100.00      0.00     0.00
-## "withCallingHandlers"         3.28    100.00      0.00     0.00
-## "withVisible"                 3.28    100.00      0.00     0.00
-## "lm.fit"                      2.96     89.95      2.94    89.50
-## ".External2"                  0.28      8.68      0.27     8.22
-## "model.matrix.default"        0.27      8.22      0.00     0.00
-## "model.matrix"                0.27      8.22      0.00     0.00
-## "as.character"                0.04      1.37      0.04     1.37
-## "model.response"              0.04      1.37      0.00     0.00
-## "anyDuplicated.default"       0.02      0.46      0.02     0.46
-## "c"                           0.02      0.46      0.02     0.46
-## "[.data.frame"                0.02      0.46      0.00     0.00
-## "["                           0.02      0.46      0.00     0.00
-## "anyDuplicated"               0.02      0.46      0.00     0.00
-## "model.frame.default"         0.02      0.46      0.00     0.00
-## "na.omit.data.frame"          0.02      0.46      0.00     0.00
-## "na.omit"                     0.02      0.46      0.00     0.00
-## "stats::model.frame"          0.02      0.46      0.00     0.00
+## "<Anonymous>"                 3.07    100.00      0.00     0.00
+## "block_exec"                  3.07    100.00      0.00     0.00
+## "call_block"                  3.07    100.00      0.00     0.00
+## "do.call"                     3.07    100.00      0.00     0.00
+## "eval.parent"                 3.07    100.00      0.00     0.00
+## "eval"                        3.07    100.00      0.00     0.00
+## "evaluate_call"               3.07    100.00      0.00     0.00
+## "evaluate::evaluate"          3.07    100.00      0.00     0.00
+## "evaluate"                    3.07    100.00      0.00     0.00
+## "handle"                      3.07    100.00      0.00     0.00
+## "in_dir"                      3.07    100.00      0.00     0.00
+## "knitr::knit"                 3.07    100.00      0.00     0.00
+## "lm"                          3.07    100.00      0.00     0.00
+## "local"                       3.07    100.00      0.00     0.00
+## "process_file"                3.07    100.00      0.00     0.00
+## "process_group.block"         3.07    100.00      0.00     0.00
+## "process_group"               3.07    100.00      0.00     0.00
+## "timing_fn"                   3.07    100.00      0.00     0.00
+## "withCallingHandlers"         3.07    100.00      0.00     0.00
+## "withVisible"                 3.07    100.00      0.00     0.00
+## "lm.fit"                      2.75     89.27      2.75    89.27
+## ".External2"                  0.26      8.29      0.24     7.80
+## "model.matrix.default"        0.24      7.80      0.00     0.00
+## "model.matrix"                0.24      7.80      0.00     0.00
+## "as.character"                0.08      2.44      0.08     2.44
+## "model.response"              0.08      2.44      0.00     0.00
+## "anyDuplicated.default"       0.02      0.49      0.02     0.49
+## "[.data.frame"                0.02      0.49      0.00     0.00
+## "["                           0.02      0.49      0.00     0.00
+## "anyDuplicated"               0.02      0.49      0.00     0.00
+## "model.frame.default"         0.02      0.49      0.00     0.00
+## "na.omit.data.frame"          0.02      0.49      0.00     0.00
+## "na.omit"                     0.02      0.49      0.00     0.00
+## "stats::model.frame"          0.02      0.49      0.00     0.00
 ## 
 ## $sample.interval
 ## [1] 0.015
 ## 
 ## $sampling.time
-## [1] 3.285
+## [1] 3.075
 ```
 
 Hay dos métodos para normalizar los datos de Rprof:
@@ -2650,16 +2648,16 @@ summaryRprof("out/plyr_rprof.out")$by.self[1:10, ]
 
 ```
 ##                self.time self.pct total.time total.pct
-## "FUN"               1.48    13.33       2.52     22.70
-## "lapply"            1.20    10.81       3.74     33.69
-## "eval"              0.68     6.13      11.10    100.00
-## ".fun"              0.46     4.14       3.84     34.59
-## "stopifnot"         0.46     4.14       0.92      8.29
-## "as.list"           0.38     3.42       0.50      4.50
-## "$"                 0.36     3.24       0.36      3.24
-## "extract_rows"      0.34     3.06       4.14     37.30
-## "[["                0.32     2.88       5.06     45.59
-## ".subset"           0.32     2.88       0.32      2.88
+## "FUN"               1.68    16.77       2.78     27.74
+## "lapply"            1.22    12.18       4.02     40.12
+## ".fun"              0.44     4.39       3.22     32.14
+## "as.list"           0.42     4.19       0.50      4.99
+## ".subset"           0.40     3.99       0.40      3.99
+## "$"                 0.40     3.99       0.40      3.99
+## "eval"              0.38     3.79      10.02    100.00
+## "extract_rows"      0.32     3.19       4.46     44.51
+## "stopifnot"         0.28     2.79       0.72      7.19
+## "length"            0.28     2.79       0.28      2.79
 ```
 
 
@@ -2759,7 +2757,7 @@ system.time(
 
 ```
 ##    user  system elapsed 
-##   0.288   0.048   0.335
+##   0.292   0.056   0.347
 ```
 
 
@@ -2774,7 +2772,7 @@ system.time(
 
 ```
 ##    user  system elapsed 
-##   0.279   0.000   0.280
+##   0.267   0.000   0.267
 ```
 
 Usando `rbind`:
@@ -2793,7 +2791,7 @@ system.time(mi.df.1 <- crecer_rbind())
 
 ```
 ##    user  system elapsed 
-##   0.873   0.004   0.876
+##   1.040   0.004   1.045
 ```
 
 Si definimos el tamaño del data.frame obtenemos mejoras:
@@ -2813,7 +2811,7 @@ system.time(mi.df.1 <- crecer_rbind_2())
 
 ```
 ##    user  system elapsed 
-##   0.095   0.000   0.094
+##   0.143   0.000   0.143
 ```
 
 Finalmente, veamos un enfoque totalmente vectorizado
