@@ -875,7 +875,7 @@ glimpse(gapminder)
 
 Supongamos que queremos graficar la esperanza de vida vs el PIB per cápita para todos los años y países en los datos. Haremos esto creando un objeto que contenga parte de la información necesario y a partir de ahí vamos a construir nuestra gráfica. Primero debemos indicarle a la función `ggplot()` qué datos estamos utilizando:
 
-```{r}
+```{r, out.width = "50%", fig.align="center"}
 p <- ggplot(data = gapminder)
 p
 ```
@@ -884,7 +884,7 @@ En este punto, ggplot sabe cuáles son nuestros datos, pero no cuál es el mapeo
 
 Hasta este punto ggplot conoce qué datos se van a utilizar para hacer la gráfico, pero no el *mapeo* o *asociación* de qué variables se van a relacionar con los elementos visuales de la gráfica. Tampoco se sabe qué tipo de gráfica se va a hacer. En ggplot, las asignaciones se especifican utilizando la función `aes()`:
 
-```{r}
+```{r, out.width = "50%", fig.align="center"}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp))
@@ -894,7 +894,7 @@ El argumento `mapping = aes(...)` _vincula variables a cosas que se van a ver en
 
 ¿Qué sucede si simplemente escribimos `p` en la consola y ejecutamos?
 
-```{r, fig.width = 5, fig.height = 4}
+```{r, fig.width = 5, fig.height = 4, fig.align="center"}
 p
 ```
 
@@ -902,7 +902,7 @@ El objeto `p` ha sido creado por la función `ggplot()`, y ya tiene información
 
 Se ha creado el objeto `p` utilizando la función `ggplot()` y este objeto ya tiene información de las asignacionesque queremos. Sin embargo, no se le ha dado ninguna instrucción sobre qué tipo de gráfica se quiere dibujar. Necesitamos agregar una capa a la gráfica. Esto se hace mediante el símbolo `+`. Esto significa elegir una función `geom_`. Utilizaremos `geom_point()` para hacer un diagrama de dispersión. 
 
-```{r, fig.width = 5, fig.height = 4}
+```{r, fig.width = 5, fig.height = 4, fig.align="center"}
 p + geom_point()
 ```
 
@@ -917,13 +917,13 @@ Transparencia (`alpha`) | No aplica | Mapeo lineal a la transparencia
 
 Los *_geoms_* controlan el tipo de gráfica:
 
-```{r, fig.height=4, fig.width=5, message=FALSE, warning=FALSE}
+```{r, fig.height=4, fig.width=5, message=FALSE, warning=FALSE, fig.align="center"}
 p + geom_smooth()
 ```
 
 Podemos ver de inmediato que algunos de estos `geoms` hacen mucho más que simplemente poner puntos en una cuadrícula. Aquí `geom_smooth()` ha calculado una línea suavizada y la región sombreada representa el error estándar de la línea suavizada. Si queremos ver los puntos de datos y la línea juntos, simplemente agregamos `geom_point()` de nuevo como una capa adicional utilizando `+`:
 
-```{r, fig.height=4, fig.width=5, message=FALSE, warning=FALSE}
+```{r, fig.height=4, fig.width=5, message=FALSE, warning=FALSE, fig.align="center"}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y=lifeExp))
@@ -932,7 +932,7 @@ p + geom_point() + geom_smooth()
 
 El mensaje de la consola de R nos dice que la función `geom_smooth()` está utilizando un método llamado gam, que en este caso significa que se ajusta a un modelo aditivo generalizado. Esto sugiere que tal vez haya otros métodos en `geom_smooth()`. Podemos intentar agregar `method = "lm"` (para "modelo lineal") como un argumento para `geom_smooth()`:
 
-```{r, fig.width = 5, fig.height = 4}
+```{r, fig.width = 5, fig.height = 4, out.width = "50%", fig.align="center"}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y=lifeExp))
@@ -941,7 +941,7 @@ p + geom_point() + geom_smooth(method="lm")
 
 Se puede agregar al mapeo del color de la línea el continente y del relleno de los puntos (fill) también el continente para obtener una gráfica que nos dé una idea más general de como se tiene esta relación por continente.
 
-```{r, fig.width = 10, fig.height = 6}
+```{r, fig.width = 10, fig.height = 6, out.width = "50%", fig.align="center"}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp,
@@ -969,16 +969,14 @@ glimpse(ibc)
 
 Primero filtramos los incidentes en los que hubo al menos cinco fatalidades:
 
-
 ```{r}
 ibc_fatalidades <- ibc %>%
   filter(Deaths_recorded >= 5)
 ```
 
-
 Una forma fácil de dibujar un histograma es utilizando la geometría `geom_histogram()`:
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, out.width = "50%", fig.align="center"}
 ggplot(ibc_fatalidades, aes(x=Deaths_recorded)) +
   geom_histogram() +
   scale_x_log10()
@@ -1048,7 +1046,7 @@ glimpse(factores_inglehart)
 
 Para graficar `factores_inglehart`, ejecuta este código para poner `survival_selfexpression` en el eje x (eje horizontal) y `traditional_secular` en el eje y (eje vertical):
 
-```{r}
+```{r, out.width = "50%", fig.align="center"}
 ggplot(data = factores_inglehart) + 
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
 ```
@@ -1060,7 +1058,7 @@ ggplot(data = factores_inglehart) +
 
 En la gráfica de abajo, un grupo de puntos (en rojo) parece estar fuera de la tendencia lineal. Estos países tienen menores valores de supervivencia de lo que esperaríamos de acuerdo a sus mayores valores de tradicionalismo.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width = "50%", fig.align="center"}
 ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular)) +
   geom_point() + 
   geom_point(data = dplyr::filter(factores_inglehart, survival_selfexpression > 0, traditional_secular < -0.5), colour = "red", size = 2.2)
@@ -1074,7 +1072,7 @@ Un mapeo incluye cosas como el tamaño, la forma o el color de los puntos. Puede
 
 Aquí cambiamos los niveles de tamaño, forma y color de un punto para hacer que el punto sea pequeño, triangular o azul:
 
-```{r, echo = FALSE, asp = 1/4}
+```{r, echo = FALSE, asp = 1/4, fig.align="center"}
 ggplot() +
   geom_point(aes(1, 1), size = 20) +
   geom_point(aes(2, 1), size = 10) + 
@@ -1087,7 +1085,7 @@ ggplot() +
 
 Podemos transmitir información sobre los datos mapeando los aesthetics en la gráfica a las variables del data frame. Por ejemplo, podemos asignar los colores de los puntos a la variable `reg` para revelar la región de cada país.
 
-```{r}
+```{r, out.width = "50%", fig.align="center"}
 ggplot(data = factores_inglehart) + 
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular, color=reg))
 ```
@@ -1142,7 +1140,7 @@ Un __geom__ es un objeto geométrico que una gráfica utiliza para representar a
 
 La gráfica de la izquierda utiliza el punto geom, y la gráfica de la derecha utiliza el geom de smooth, una línea ajustada a los datos. Para hacer las gráficas mostradas arriba se puede utilizar el siguiente código.
 
-```{r eval = FALSE}
+```{r, out.width = "50%", fig.align="center", eval = FALSE}
 #izquierda
 ggplot(data = factores_inglehart) + 
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
@@ -1154,7 +1152,7 @@ ggplot(data = factores_inglehart) +
 
 Cada función geom en ggplot2 toma un argumento `mapping`. Sin embargo, no todas las propiedades de __aesthetics__ funciona con cada geom. Podríamos cambiar la forma de un punto, pero no la "forma" de una línea. Por otro lado, podríamos establecer el tipo de línea de una línea. `geom_smooth()` dibujará una línea diferente, con un tipo de línea diferente, para cada valor único de la variable que se asigna al tipo de línea.
 
-```{r, message = FALSE, warning=FALSE, comment=NA}
+```{r, message = FALSE, warning=FALSE, comment=NA, fig.align="center"}
 ggplot(data = factores_inglehart) + 
   geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular, linetype = reg), method = "loess", se = F, span = 1)
 ```
@@ -1163,7 +1161,7 @@ Aquí `geom_smooth()` separa los países en líneas basándose en su valor de `r
 
 Podemos superponer las líneas encima de los datos sin procesar y luego coloreándolo todo de acuerdo a `reg`.
 
-```{r echo = FALSE, message = FALSE, warning=FALSE}
+```{r echo = FALSE, message = FALSE, warning=FALSE, out.width = "50%", fig.align="center"}
 ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular, color = reg)) + 
   geom_point() +
   geom_smooth(mapping = aes(linetype = reg), method = "loess", se = F)
@@ -1171,7 +1169,7 @@ ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y =
 
 Para mostrar varios geoms en la misma gráfica, agregamos varias funciones geom a `ggplot()`:
 
-```{r, message = FALSE}
+```{r, message = FALSE, out.width = "50%", fig.align="center"}
 ggplot(data = factores_inglehart) + 
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular)) +
   geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular), method = "loess")
@@ -1179,7 +1177,7 @@ ggplot(data = factores_inglehart) +
 
 Este código genera la misma gráfica que el código anterior:
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, out.width = "50%", fig.align="center"}
 ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular)) + 
   geom_point() + 
   geom_smooth(method = "loess")
@@ -1187,7 +1185,7 @@ ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y =
 
 Si colocan asignaciones en una función `geom`, `ggplot2` las tratará como asignaciones locales para cada capa, de tal forma que usará estas asignaciones para extender o sobrescribir las asignaciones globales _para esa capa solamente_. Esto hace posible visualizar elementos diferentes en diferentes capas.
 
-```{r, message = FALSE}
+```{r, message = FALSE, out.width = "50%", fig.align="center"}
 ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular)) + 
   geom_point(mapping = aes(color = reg)) + 
   geom_smooth(method = "loess")
