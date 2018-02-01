@@ -740,7 +740,7 @@ pew_tidy_<span class="dv">2</span> &lt;-<span class="st"> </span>pew_tidy <span 
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>religion, <span class="dt">nrow =</span> <span class="dv">1</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
-<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-11-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-11-1.png" width="85%" style="display: block; margin: auto;" /></p>
 <p>En el código de arriba utilizamos las funciones <code>group_by</code>, <code>filter</code> y <code>mutate</code> que estudiaremos más adelante.</p>
 <p><br></p>
 <p><br></p>
@@ -1482,10 +1482,9 @@ billboard_tidy <span class="op">%&gt;%</span><span class="st"> </span><span clas
 <span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>track, <span class="dt">nrow =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
-<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-15-1.png" width="40%" style="display: block; margin: auto;" /></p>
-<p><br></p>
-<p><br></p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-15-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <hr />
+<p><br></p>
 </div>
 <div id="una-columna-asociada-a-mas-de-una-variable" class="section level4 unnumbered">
 <h4>2. Una columna asociada a más de una variable</h4>
@@ -3327,10 +3326,9 @@ guns_<span class="dv">14</span> &lt;-<span class="st"> </span><span class="kw">r
 <span class="st">    </span><span class="kw">ylab</span>(<span class="st">&#39;Proporción&#39;) + xlab(&quot;Lugar&quot;) +</span>
 <span class="st">    ggtitle(&quot;Lugar de homicidios por intención&quot;)</span></code></pre></div>
 <p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-53-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<p>Dado que el homicidio ocurrió en una granja, lo más probable es que haya sido un suicidio.</p>
+<p>Se podría concluir, por ejemplo, que si un homicidio ocurrió en una granja, entonces lo más probable es que haya sido un suicidio.</p>
 <hr />
-<p><br> <br></p>
-<hr />
+<p><br></p>
 </div>
 <div id="el-cuarteto-de-anscombe" class="section level2">
 <h2><span class="header-section-number">3.5</span> El Cuarteto de Anscombe</h2>
@@ -3571,7 +3569,7 @@ guns_<span class="dv">14</span> &lt;-<span class="st"> </span><span class="kw">r
 <p>Supongamos que queremos graficar la esperanza de vida vs el PIB per cápita para todos los años y países en los datos. Haremos esto creando un objeto que contenga parte de la información necesario y a partir de ahí vamos a construir nuestra gráfica. Primero debemos indicarle a la función <code>ggplot()</code> qué datos estamos utilizando:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder)
 p</code></pre></div>
-<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-59-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-59-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>En este punto, ggplot sabe cuáles son nuestros datos, pero no cuál es el mapeo, es decir, qué variables de los datos deben correlacionarse con qué elementos visuales de la trama. Tampoco sabe qué tipo de trama queremos. En ggplot, las asignaciones se especifican utilizando la función <code>aes()</code>. Me gusta esta:</p>
 <p>Hasta este punto ggplot conoce qué datos se van a utilizar para hacer la gráfico, pero no el <em>mapeo</em> o <em>asociación</em> de qué variables se van a relacionar con los elementos visuales de la gráfica. Tampoco se sabe qué tipo de gráfica se va a hacer. En ggplot, las asignaciones se especifican utilizando la función <code>aes()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gapminder,
@@ -3643,10 +3641,10 @@ p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point<
                           <span class="dt">y =</span> lifeExp,
                           <span class="dt">color =</span> continent,
                           <span class="dt">fill =</span> continent))
-p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
+p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&#39;loess&#39;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">scale_x_log10</span>()</code></pre></div>
-<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-66-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-66-1.png" width="95%" style="display: block; margin: auto;" /></p>
 <p class="espacio">
 </p>
 </div>
@@ -3866,7 +3864,7 @@ factores_inglehart &lt;-<span class="st"> </span><span class="kw">read_csv</span
 <div id="objetos-geometricos" class="section level4">
 <h4><span class="header-section-number">3.9.2.1</span> Objetos geométricos</h4>
 <p>¿En qué se parecen las siguiente dos gráficas?</p>
-<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-1.png" width="50%" style="display: block; margin: auto;" /><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-2.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-1.png" width="70%" style="display: block; margin: auto;" /><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-2.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Ambas gráficas contienen la misma variable x, la misma variable y, y ambas describen los mismos datos. Pero las gráficas no son idénticas. Cada una utiliza un objeto visual diferente para representar los datos. En la sintaxis de ggplot2, decimos que usan diferentes <strong>geoms</strong>.</p>
 <p>Un <strong>geom</strong> es un objeto geométrico que una gráfica utiliza para representar a los datos. La gente a menudo describe las gráficas por el tipo de geometría que usa la gráfica. Por ejemplo, las gráficas de barras usan geometrías de barras, los gráficos de línea utilizan geoms de línea, los boxplots usan geoms de boxplot, y así sucesivamente. Los diagramas de dispersión rompen la tendencia; Utilizan la geometría de punto.</p>
 <p>La gráfica de la izquierda utiliza el punto geom, y la gráfica de la derecha utiliza el geom de smooth, una línea ajustada a los datos. Para hacer las gráficas mostradas arriba se puede utilizar el siguiente código.</p>
@@ -4054,12 +4052,8 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 <li><p>La función <code>map_df</code> al final del fragmento de código lee todos los archivos correspondientes a las fechas utilizadas y como resultado junta todos los data frames en uno solo.</p></li>
 </ol>
 <p>Una muestra de los datos obtenidos se puede ver en la siguiente tabla:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">20</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">7</span>)
-<span class="co">#&gt; Warning in kableExtra::kable_styling(., bootstrap_options = &quot;striped&quot;,</span>
-<span class="co">#&gt; font_size = 7): Please specify format in kable. kableExtra can customize</span>
-<span class="co">#&gt; either HTML or LaTeX outputs. See https://haozhu233.github.io/kableExtra/</span>
-<span class="co">#&gt; for details.</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">7</span>)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -4080,304 +4074,154 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">1968-05-27</td>
-<td align="right">42</td>
-<td align="left">I’m Sorry</td>
-<td align="left">The Delfonics</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">43</td>
-<td align="right">42</td>
-<td align="right">6</td>
-</tr>
-<tr class="even">
-<td align="left">1965-04-12</td>
-<td align="right">49</td>
-<td align="left">Crazy Downtown</td>
-<td align="left">Allan Sherman</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">54</td>
-<td align="right">49</td>
-<td align="right">4</td>
-</tr>
-<tr class="odd">
-<td align="left">1986-08-25</td>
-<td align="right">70</td>
-<td align="left">Anotherloverholenyohead</td>
-<td align="left">Prince And The Revolution</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">68</td>
+<td align="left">1980-06-02</td>
 <td align="right">63</td>
-<td align="right">7</td>
-</tr>
-<tr class="even">
-<td align="left">1960-11-28</td>
-<td align="right">86</td>
-<td align="left">Doll House</td>
-<td align="left">Donnie Brooks</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">–</td>
-<td align="right">86</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">1974-12-09</td>
-<td align="right">71</td>
-<td align="left">Ready</td>
-<td align="left">Cat Stevens</td>
+<td align="left">Walks Like A Lady</td>
+<td align="left">Journey</td>
 <td align="left">TRUE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
-<td align="left">82</td>
-<td align="right">71</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">1999-10-04</td>
-<td align="right">57</td>
-<td align="left">Jigga My N****</td>
-<td align="left">JAY-Z</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">43</td>
-<td align="right">28</td>
-<td align="right">16</td>
-</tr>
-<tr class="odd">
-<td align="left">2004-08-09</td>
-<td align="right">60</td>
-<td align="left">Save A Horse (Ride A Cowboy)</td>
-<td align="left">Big &amp; Rich</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">64</td>
-<td align="right">60</td>
+<td align="left">73</td>
+<td align="right">63</td>
 <td align="right">3</td>
 </tr>
 <tr class="even">
-<td align="left">1970-12-14</td>
-<td align="right">60</td>
-<td align="left">Amos Moses</td>
-<td align="left">Jerry Reed</td>
+<td align="left">1963-02-18</td>
+<td align="right">78</td>
+<td align="left">Laughing Boy</td>
+<td align="left">Mary Wells</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">–</td>
+<td align="right">78</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">1976-11-01</td>
+<td align="right">40</td>
+<td align="left">Give It Up (turn It Loose)</td>
+<td align="left">Tyrone Davis</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">40</td>
+<td align="right">40</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="left">1962-05-14</td>
+<td align="right">42</td>
+<td align="left">Palisades Park</td>
+<td align="left">Freddy Cannon</td>
 <td align="left">TRUE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
-<td align="left">62</td>
-<td align="right">60</td>
-<td align="right">8</td>
+<td align="left">69</td>
+<td align="right">42</td>
+<td align="right">2</td>
 </tr>
 <tr class="odd">
-<td align="left">2010-09-27</td>
+<td align="left">2009-05-04</td>
+<td align="right">99</td>
+<td align="left">LoveGame</td>
+<td align="left">Lady Gaga</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">–</td>
+<td align="right">96</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">1996-11-18</td>
+<td align="right">46</td>
+<td align="left">Bohemian Rhapsody (From “High School High”)</td>
+<td align="left">The Braids</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">48</td>
+<td align="right">46</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">2013-01-28</td>
 <td align="right">15</td>
-<td align="left">Cooler Than Me</td>
-<td align="left">Mike Posner</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
+<td align="left">F**kin Problems</td>
+<td align="left">A$AP Rocky Featuring Drake, 2 Chainz &amp; Kendrick Lamar</td>
 <td align="left">TRUE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">13</td>
-<td align="right">6</td>
-<td align="right">21</td>
-</tr>
-<tr class="even">
-<td align="left">1994-10-24</td>
-<td align="right">46</td>
-<td align="left">I Belong To You/How Many Ways</td>
-<td align="left">Toni Braxton</td>
-<td align="left">FALSE</td>
+<td align="left">TRUE</td>
 <td align="left">TRUE</td>
 <td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">46</td>
-<td align="right">46</td>
-<td align="right">5</td>
-</tr>
-<tr class="odd">
-<td align="left">1975-04-14</td>
-<td align="right">68</td>
-<td align="left">Wildfire</td>
-<td align="left">Michael Murphey</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">84</td>
-<td align="right">68</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="left">1971-11-15</td>
-<td align="right">90</td>
-<td align="left">My Boy</td>
-<td align="left">Richard Harris</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">–</td>
-<td align="right">90</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">1958-11-10</td>
-<td align="right">100</td>
-<td align="left">White Bucks And Saddle Shoes</td>
-<td align="left">Bobby Pedrick, Jr.</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">–</td>
-<td align="right">100</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">1990-06-04</td>
-<td align="right">63</td>
-<td align="left">Whip Appeal</td>
-<td align="left">Babyface</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">47</td>
-<td align="right">6</td>
-<td align="right">16</td>
-</tr>
-<tr class="odd">
-<td align="left">1963-07-29</td>
-<td align="right">85</td>
-<td align="left">Surfer Girl</td>
-<td align="left">The Beach Boys</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">–</td>
-<td align="right">85</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">1978-01-02</td>
-<td align="right">36</td>
-<td align="left">Swingtown</td>
-<td align="left">The Steve Miller Band</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">17</td>
-<td align="right">17</td>
-<td align="right">13</td>
-</tr>
-<tr class="odd">
-<td align="left">1994-04-11</td>
-<td align="right">22</td>
-<td align="left">Rock And Roll Dreams Come Through</td>
-<td align="left">Meat Loaf</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">22</td>
-<td align="right">13</td>
+<td align="left">18</td>
+<td align="right">15</td>
 <td align="right">12</td>
 </tr>
 <tr class="even">
-<td align="left">2001-06-18</td>
-<td align="right">96</td>
-<td align="left">There She Goes</td>
-<td align="left">Babyface</td>
+<td align="left">2016-07-25</td>
+<td align="right">59</td>
+<td align="left">From The Ground Up</td>
+<td align="left">Dan + Shay</td>
+<td align="left">TRUE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
 <td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">65</td>
+<td align="right">59</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="left">1962-10-08</td>
+<td align="right">57</td>
+<td align="left">Sweet Sixteen Bars</td>
+<td align="left">Earl Grant</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
+<td align="left">61</td>
+<td align="right">57</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="left">1967-07-03</td>
+<td align="right">83</td>
+<td align="left">Give Me Time</td>
+<td align="left">Dusty Springfield</td>
+<td align="left">TRUE</td>
+<td align="left">FALSE</td>
+<td align="left">FALSE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
 <td align="left">89</td>
-<td align="right">89</td>
-<td align="right">7</td>
-</tr>
-<tr class="odd">
-<td align="left">2016-01-11</td>
-<td align="right">85</td>
-<td align="left">Watch Out</td>
-<td align="left">2 Chainz</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">TRUE</td>
-<td align="left">TRUE</td>
-<td align="left">–</td>
-<td align="right">85</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">1989-04-10</td>
-<td align="right">25</td>
-<td align="left">The Living Years</td>
-<td align="left">Mike + The Mechanics</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">14</td>
-<td align="right">1</td>
-<td align="right">15</td>
+<td align="right">83</td>
+<td align="right">2</td>
 </tr>
 </tbody>
 </table>
@@ -4414,7 +4258,7 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&#39;identity&#39;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">vjust =</span> <span class="dv">1</span>))
 ??fct_reorder</code></pre></div>
-<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-92-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-92-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="tarea-2" class="section level2">
 <h2><span class="header-section-number">3.11</span> Tarea</h2>

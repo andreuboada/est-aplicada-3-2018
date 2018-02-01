@@ -294,7 +294,7 @@ ggplot(pew_tidy_2, aes(x = income, y = percent, group = religion)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-11-1.png" width="50%" style="display: block; margin: auto;" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-11-1.png" width="85%" style="display: block; margin: auto;" />
 
 En el código de arriba utilizamos las funciones `group_by`, `filter` y `mutate` que estudiaremos más adelante.
 
@@ -388,13 +388,12 @@ ggplot(tracks, aes(x = date, y = rank)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-15-1.png" width="40%" style="display: block; margin: auto;" />
-
-<br>
-
-<br>
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-15-1.png" width="90%" style="display: block; margin: auto;" />
 
 ---
+
+<br>
+
 
 #### 2. Una columna asociada a más de una variable {-}
 
@@ -1180,14 +1179,12 @@ ggplot(guns_sin_especificar, aes(x=as.factor(place), fill=as.factor(intent))) +
 <img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-53-1.png" width="80%" style="display: block; margin: auto;" />
 
 
-Dado que el homicidio ocurrió en una granja, lo más probable es que haya sido un suicidio.
+Se podría concluir, por ejemplo, que si un homicidio ocurrió en una granja, entonces lo más probable es que haya sido un suicidio.
 
 ---
 
 <br>
-<br>
 
----
 
 ## El Cuarteto de Anscombe
 
@@ -1331,7 +1328,7 @@ p <- ggplot(data = gapminder)
 p
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-59-1.png" width="50%" style="display: block; margin: auto;" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-59-1.png" width="70%" style="display: block; margin: auto;" />
 
 En este punto, ggplot sabe cuáles son nuestros datos, pero no cuál es el mapeo, es decir, qué variables de los datos deben correlacionarse con qué elementos visuales de la trama. Tampoco sabe qué tipo de trama queremos. En ggplot, las asignaciones se especifican utilizando la función `aes()`. Me gusta esta:
 
@@ -1417,12 +1414,12 @@ p <- ggplot(data = gapminder,
                           y = lifeExp,
                           color = continent,
                           fill = continent))
-p + geom_point() +
+p + geom_point(size = 0.5) +
     geom_smooth(method='loess') +
     scale_x_log10()
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-66-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-66-1.png" width="95%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -1595,7 +1592,7 @@ También podríamos agregar etiquetas:
 
 ¿En qué se parecen las siguiente dos gráficas? 
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-1.png" width="50%" style="display: block; margin: auto;" /><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-2.png" width="50%" style="display: block; margin: auto;" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-1.png" width="70%" style="display: block; margin: auto;" /><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-78-2.png" width="70%" style="display: block; margin: auto;" />
 
 Ambas gráficas contienen la misma variable x, la misma variable y, y ambas describen los mismos datos. Pero las gráficas no son idénticas. Cada una utiliza un objeto visual diferente para representar los datos. En la sintaxis de ggplot2, decimos que usan diferentes __geoms__.
 
@@ -1831,38 +1828,24 @@ Una muestra de los datos obtenidos se puede ver en la siguiente tabla:
 
 
 ```r
-billboard %>% sample_n(20) %>% knitr::kable() %>%
+billboard %>% sample_n(10) %>% knitr::kable() %>%
   kableExtra::kable_styling(bootstrap_options = "striped", font_size = 7)
-#> Warning in kableExtra::kable_styling(., bootstrap_options = "striped",
-#> font_size = 7): Please specify format in kable. kableExtra can customize
-#> either HTML or LaTeX outputs. See https://haozhu233.github.io/kableExtra/
-#> for details.
 ```
 
 
 
-fecha         current_week_rank  name                                artist                      rising   steady   falling   gains_performance   award   hot_debut   last_week    peak_position   wks_on_chart
------------  ------------------  ----------------------------------  --------------------------  -------  -------  --------  ------------------  ------  ----------  ----------  --------------  -------------
-1968-05-27                   42  I'm Sorry                           The Delfonics               TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       43                      42              6
-1965-04-12                   49  Crazy Downtown                      Allan Sherman               TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       54                      49              4
-1986-08-25                   70  Anotherloverholenyohead             Prince And The Revolution   FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       68                      63              7
-1960-11-28                   86  Doll House                          Donnie Brooks               FALSE    FALSE    FALSE     FALSE               FALSE   FALSE       --                      86              1
-1974-12-09                   71  Ready                               Cat Stevens                 TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       82                      71              2
-1999-10-04                   57  Jigga My N****                      JAY-Z                       FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       43                      28             16
-2004-08-09                   60  Save A Horse (Ride A Cowboy)        Big & Rich                  TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       64                      60              3
-1970-12-14                   60  Amos Moses                          Jerry Reed                  TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       62                      60              8
-2010-09-27                   15  Cooler Than Me                      Mike Posner                 FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       13                       6             21
-1994-10-24                   46  I Belong To You/How Many Ways       Toni Braxton                FALSE    TRUE     FALSE     TRUE                FALSE   FALSE       46                      46              5
-1975-04-14                   68  Wildfire                            Michael Murphey             TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       84                      68              4
-1971-11-15                   90  My Boy                              Richard Harris              FALSE    FALSE    FALSE     FALSE               FALSE   FALSE       --                      90              1
-1958-11-10                  100  White Bucks And Saddle Shoes        Bobby Pedrick, Jr.          FALSE    FALSE    FALSE     FALSE               FALSE   FALSE       --                     100              1
-1990-06-04                   63  Whip Appeal                         Babyface                    FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       47                       6             16
-1963-07-29                   85  Surfer Girl                         The Beach Boys              FALSE    FALSE    FALSE     FALSE               FALSE   FALSE       --                      85              1
-1978-01-02                   36  Swingtown                           The Steve Miller Band       FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       17                      17             13
-1994-04-11                   22  Rock And Roll Dreams Come Through   Meat Loaf                   FALSE    TRUE     FALSE     FALSE               FALSE   FALSE       22                      13             12
-2001-06-18                   96  There She Goes                      Babyface                    FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       89                      89              7
-2016-01-11                   85  Watch Out                           2 Chainz                    FALSE    FALSE    FALSE     TRUE                TRUE    TRUE        --                      85              1
-1989-04-10                   25  The Living Years                    Mike + The Mechanics        FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       14                       1             15
+fecha         current_week_rank  name                                          artist                                                  rising   steady   falling   gains_performance   award   hot_debut   last_week    peak_position   wks_on_chart
+-----------  ------------------  --------------------------------------------  ------------------------------------------------------  -------  -------  --------  ------------------  ------  ----------  ----------  --------------  -------------
+1980-06-02                   63  Walks Like A Lady                             Journey                                                 TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       73                      63              3
+1963-02-18                   78  Laughing Boy                                  Mary Wells                                              FALSE    FALSE    FALSE     FALSE               FALSE   FALSE       --                      78              1
+1976-11-01                   40  Give It Up (turn It Loose)                    Tyrone Davis                                            FALSE    TRUE     FALSE     FALSE               FALSE   FALSE       40                      40              7
+1962-05-14                   42  Palisades Park                                Freddy Cannon                                           TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       69                      42              2
+2009-05-04                   99  LoveGame                                      Lady Gaga                                               FALSE    FALSE    FALSE     TRUE                FALSE   FALSE       --                      96              2
+1996-11-18                   46  Bohemian Rhapsody (From "High School High")   The Braids                                              TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       48                      46              6
+2013-01-28                   15  F**kin Problems                               A$AP Rocky Featuring Drake, 2 Chainz & Kendrick Lamar   TRUE     FALSE    FALSE     TRUE                TRUE    FALSE       18                      15             12
+2016-07-25                   59  From The Ground Up                            Dan + Shay                                              TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       65                      59              8
+1962-10-08                   57  Sweet Sixteen Bars                            Earl Grant                                              TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       61                      57              6
+1967-07-03                   83  Give Me Time                                  Dusty Springfield                                       TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       89                      83              2
 
 Veamos de qué tipos son cada una de las columnas en los datos. Podemos usar nuevamente la función `glimpse`:
 
@@ -1917,7 +1900,7 @@ ggplot(artistas_top10, aes(x = artist, y = num_semanas_top_10)) +
 ??fct_reorder
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-92-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-92-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 
