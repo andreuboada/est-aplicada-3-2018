@@ -62,7 +62,7 @@ f(0)
 
 En resumen `%>%` funciona como se muestra en la siguiente figura:
 
-```{r echo=FALSE, fig.align='center', dpi = 50}
+```{r echo=FALSE, fig.align='center', dpi = 70}
 knitr::include_graphics("figuras/pipe-function.png")
 ```
 
@@ -234,7 +234,7 @@ pew_tidy %>% head() %>% knitr::kable() %>%
 
 La nueva estructura de la base de datos nos permite, por ejemplo, hacer fácilmente una gráfica donde podemos comparar las diferencias en las frecuencias.
 
-```{r, out.width = "50%"}
+```{r, out.width = "85%"}
 library(dplyr)
 by_religion <- group_by(pew_tidy, religion)
 pew_tidy_2 <- pew_tidy %>%
@@ -287,7 +287,7 @@ billboard_tidy %>% sample_n(10) %>% knitr::kable()
 
 Nuevamente, podemos hacer gráficas fácilmente.
 
-```{r, out.width="40%"}
+```{r, out.width="90%"}
 tracks <- billboard_tidy %>%
   filter(track %in% c("Come On Over Baby (A...", "What A Girl Wants", "Say My Name", "Jumpin' Jumpin'", "Bye Bye Bye"))
 
@@ -297,11 +297,10 @@ ggplot(tracks, aes(x = date, y = rank)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-<br>
-
-<br>
-
 ---
+
+<br>
+
 
 #### 2. Una columna asociada a más de una variable {-}
 
@@ -745,14 +744,12 @@ ggplot(guns_sin_especificar, aes(x=as.factor(place), fill=as.factor(intent))) +
 ```
 
 
-Dado que el homicidio ocurrió en una granja, lo más probable es que haya sido un suicidio.
+Se podría concluir, por ejemplo, que si un homicidio ocurrió en una granja, entonces lo más probable es que haya sido un suicidio.
 
 ---
 
 <br>
-<br>
 
----
 
 ## El Cuarteto de Anscombe
 
@@ -861,7 +858,7 @@ Lo más importante para entender ggplot es comprender la estructura y la lógica
  
 <div style="text-align: center;">**¿Qué geometrías son más adecuadas para cada tipo de variable?**</div>
 
-```{r echo=FALSE, fig.align='center', dpi=175}
+```{r echo=FALSE, fig.align='center', dpi=200}
 knitr::include_graphics("figuras/visual-variables.png")
 ```
 
@@ -883,7 +880,7 @@ glimpse(gapminder)
 
 Supongamos que queremos graficar la esperanza de vida vs el PIB per cápita para todos los años y países en los datos. Haremos esto creando un objeto que contenga parte de la información necesario y a partir de ahí vamos a construir nuestra gráfica. Primero debemos indicarle a la función `ggplot()` qué datos estamos utilizando:
 
-```{r, out.width = "50%"}
+```{r}
 p <- ggplot(data = gapminder)
 p
 ```
@@ -949,13 +946,13 @@ p + geom_point() + geom_smooth(method="lm")
 
 Se puede agregar al mapeo del color de la línea el continente y del relleno de los puntos (fill) también el continente para obtener una gráfica que nos dé una idea más general de como se tiene esta relación por continente.
 
-```{r, out.width = "90%"}
+```{r, out.width = "95%"}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp,
                           color = continent,
                           fill = continent))
-p + geom_point() +
+p + geom_point(size = 0.5) +
     geom_smooth(method='loess') +
     scale_x_log10()
 ```
@@ -1116,14 +1113,14 @@ etiquetar <- function(df, x, y, etiq = "etiq", size = 3.5){
 }
 set.seed(720528)
 factores_inglehart_etiq <- etiquetar(factores_inglehart, "survival_selfexpression",
-                         "traditional_secular", etiq = "country", size = 2.1)
+                         "traditional_secular", etiq = "country", size = 1.5)
 ```
 
 ```{r, out.width="100%", message=FALSE, warning=FALSE, echo = FALSE}
 ggplot(data = factores_inglehart_etiq,
        aes(x=survival_selfexpression,y=traditional_secular,color=reg,group=reg)) +
   geom_point(size = 2) +
-  geom_text(aes(x = a, y = b, label = country), size = 4) +
+  geom_text(aes(x = a, y = b, label = country), size = 2) +
   theme(legend.position = "bottom") +
   scale_color_manual("Region", values = RColorBrewer::brewer.pal(6,"Dark2")) + 
   ylab("Traditional/secular values") + 
@@ -1134,7 +1131,7 @@ ggplot(data = factores_inglehart_etiq,
 
 ¿En qué se parecen las siguiente dos gráficas? 
 
-```{r echo = FALSE, out.width = "50%"}
+```{r echo = FALSE}
 ggplot(data = factores_inglehart) + 
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
 
@@ -1148,7 +1145,7 @@ Un __geom__ es un objeto geométrico que una gráfica utiliza para representar a
 
 La gráfica de la izquierda utiliza el punto geom, y la gráfica de la derecha utiliza el geom de smooth, una línea ajustada a los datos. Para hacer las gráficas mostradas arriba se puede utilizar el siguiente código.
 
-```{r, out.width = "50%", eval = FALSE}
+```{r, eval = FALSE}
 #izquierda
 ggplot(data = factores_inglehart) + 
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
@@ -1370,8 +1367,8 @@ No es necesario entender a profundidad el código utilizado para parsear el html
 
 Una muestra de los datos obtenidos se puede ver en la siguiente tabla:
 
-```{r}
-billboard %>% sample_n(20) %>% knitr::kable() %>%
+```{r message=FALSE, warning=FALSE}
+billboard %>% sample_n(10) %>% knitr::kable() %>%
   kableExtra::kable_styling(bootstrap_options = "striped", font_size = 7)
 ```
 
@@ -1402,7 +1399,7 @@ artistas_top10$artist <- forcats::fct_reorder(f = artistas_top10$artist,
 
 Por último, hacemos la gráfica indicando a `geom_bar` que la transformación estadística que debe usar es la de _identity_, es decir, la longitud de la barra corresponde al valor absoluto de la variable `num_semanas_top_10`:
 
-```{r}
+```{r, out.width='100%'}
 ggplot(artistas_top10, aes(x = artist, y = num_semanas_top_10)) + 
   geom_bar(stat = 'identity') +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
