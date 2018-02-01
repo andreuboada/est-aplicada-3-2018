@@ -1123,8 +1123,9 @@ ggplot(data = factores_inglehart_etiq,
        aes(x=survival_selfexpression,y=traditional_secular,color=reg,group=reg)) +
   geom_point(size = 1.5) +
   geom_text(aes(x = a, y = b, label = country), size = 3) +
-  theme(legend.position = "bottom", legend.text = element_text(size=1.5),
-        axis.text = element_text(size = 2)) +
+  theme(legend.position = "bottom", legend.text = element_text(size=5),
+        axis.text = element_text(size = 5), axis.title = element_text(size = 5),
+        legend.title = element_text(size = 5)) +
   scale_color_manual("Region", values = RColorBrewer::brewer.pal(6,"Dark2")) + 
   ylab("Traditional/secular values") + 
   xlab("Survival/Self expression values")
