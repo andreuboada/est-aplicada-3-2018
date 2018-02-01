@@ -1658,6 +1658,10 @@ ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y =
 
 <img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-84-1.png" width="70%" style="display: block; margin: auto;" />
 
+<br>
+
+---
+
 ## Poniendo todo junto
 
 El Billboard Hot 100 es un ranking semanal publicado en Estados Unidos y es utilizado en la industria de la música como una medida del rendimiento de las canciones en ventas y en streaming en el país.
@@ -1834,18 +1838,18 @@ billboard %>% sample_n(10) %>% knitr::kable() %>%
 
 
 
-fecha         current_week_rank  name                                          artist                                                  rising   steady   falling   gains_performance   award   hot_debut   last_week    peak_position   wks_on_chart
------------  ------------------  --------------------------------------------  ------------------------------------------------------  -------  -------  --------  ------------------  ------  ----------  ----------  --------------  -------------
-1980-06-02                   63  Walks Like A Lady                             Journey                                                 TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       73                      63              3
-1963-02-18                   78  Laughing Boy                                  Mary Wells                                              FALSE    FALSE    FALSE     FALSE               FALSE   FALSE       --                      78              1
-1976-11-01                   40  Give It Up (turn It Loose)                    Tyrone Davis                                            FALSE    TRUE     FALSE     FALSE               FALSE   FALSE       40                      40              7
-1962-05-14                   42  Palisades Park                                Freddy Cannon                                           TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       69                      42              2
-2009-05-04                   99  LoveGame                                      Lady Gaga                                               FALSE    FALSE    FALSE     TRUE                FALSE   FALSE       --                      96              2
-1996-11-18                   46  Bohemian Rhapsody (From "High School High")   The Braids                                              TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       48                      46              6
-2013-01-28                   15  F**kin Problems                               A$AP Rocky Featuring Drake, 2 Chainz & Kendrick Lamar   TRUE     FALSE    FALSE     TRUE                TRUE    FALSE       18                      15             12
-2016-07-25                   59  From The Ground Up                            Dan + Shay                                              TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       65                      59              8
-1962-10-08                   57  Sweet Sixteen Bars                            Earl Grant                                              TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       61                      57              6
-1967-07-03                   83  Give Me Time                                  Dusty Springfield                                       TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       89                      83              2
+fecha         current_week_rank  name                                  artist                                        rising   steady   falling   gains_performance   award   hot_debut   last_week    peak_position   wks_on_chart
+-----------  ------------------  ------------------------------------  --------------------------------------------  -------  -------  --------  ------------------  ------  ----------  ----------  --------------  -------------
+2003-10-27                   72  Perfect                               Simple Plan                                   FALSE    FALSE    FALSE     TRUE                FALSE   FALSE       --                      72              1
+1995-12-04                   78  The Riddler (From "Batman Forever")   Method Man                                    FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       67                      56              5
+1991-01-07                   29  On The Way Up                         Elisa Fiorillo                                FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       27                      27             16
+1960-11-07                   30  Peter Gunn                            Duane Eddy His Twangy Guitar And The Rebels   TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       32                      30              5
+1961-09-25                  100  Cinderella                            Paul Anka                                     FALSE    FALSE    FALSE     FALSE               FALSE   FALSE       --                      78              2
+1959-11-23                   37  If I Give My Heart To You             Kitty Kallen                                  FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       34                      34              8
+2012-03-26                   76  Some Nights                           fun.                                          TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       82                      62              4
+1980-08-18                   77  Treasure                              The Brothers Johnson                          TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       87                      77              2
+1984-03-19                   30  They Don't Know                       Tracey Ullman                                 TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       34                      30              5
+1988-11-28                   78  Cross My Heart                        Eighth Wonder                                 TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       86                      78              3
 
 Veamos de qué tipos son cada una de las columnas en los datos. Podemos usar nuevamente la función `glimpse`:
 
@@ -1908,7 +1912,7 @@ ggplot(artistas_top10, aes(x = artist, y = num_semanas_top_10)) +
 
 Utiliza los datos del Billboard Hot 100 para contestar las siguientes preguntas:
 
-1. ¿Cuáles son los 10 artistas que han tenido más #1's en la historia de Billboard? Puedes hacer una gráfica de barras para contestar esta preunta.
+1. ¿Cuáles son los 10 artistas que han tenido más #1's en la historia de Billboard? 
 
 3. ¿Cuáles son los 10 artistas que han tenido más #1's en los últimos 10 años? Realiza una gráfica de barras para responder a la pregunta.
 
