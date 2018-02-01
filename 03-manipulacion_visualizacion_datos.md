@@ -224,7 +224,7 @@ Analicemos los datos que provienen de una encuesta de [Pew Research](http://www.
 ```r
 pew <- read_csv("datos/pew.csv")
 knitr::kable(pew) %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 7)
+  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
 ```
 
 
@@ -258,9 +258,9 @@ pew_tidy <- pew %>%
   gather(income, frequency, -religion)
 # vemos las primeras líneas de nuestros datos alargados
 pew_tidy %>% head() %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 7)
+  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
 #> Warning in kableExtra::kable_styling(., bootstrap_options = "striped",
-#> font_size = 7): Please specify format in kable. kableExtra can customize
+#> font_size = 4): Please specify format in kable. kableExtra can customize
 #> either HTML or LaTeX outputs. See https://haozhu233.github.io/kableExtra/
 #> for details.
 ```
@@ -294,11 +294,9 @@ ggplot(pew_tidy_2, aes(x = income, y = percent, group = religion)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-11-1.png" width="85%" style="display: block; margin: auto;" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" />
 
 En el código de arriba utilizamos las funciones `group_by`, `filter` y `mutate` que estudiaremos más adelante.
-
-<br>
 
 <br>
 
@@ -310,7 +308,7 @@ Otro ejemplo,
 ```r
 billboard <- tbl_df(read.csv("datos/billboard.csv", stringsAsFactors = FALSE))
 billboard %>% sample_n(5) %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 7)
+  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
 ```
 
 
@@ -388,7 +386,7 @@ ggplot(tracks, aes(x = date, y = rank)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-15-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-15-1.png" width="100%" style="display: block; margin: auto;" />
 
 ---
 
@@ -662,8 +660,6 @@ summary(clima_lm)
 
 <br>
 
-<br>
-
 ---
 
 #### 4. Mas de un tipo de observación en una misma tabla {-}
@@ -674,18 +670,18 @@ En ocasiones las bases de datos involucran valores en diferentes niveles, endife
 
 
 ```r
-billboard_tidy %>% sample_n(5) %>% select(artist, track, year, time) %>% knitr::kable()
+billboard_tidy %>% arrange(artist, track, year, time) %>% head(20)
+#> # A tibble: 20 x 7
+#>    year artist track                   time   week  rank date      
+#>   <int> <chr>  <chr>                   <chr> <dbl> <int> <date>    
+#> 1  2000 2 Pac  Baby Don't Cry (Keep... 4:22   1.00    87 2000-02-26
+#> 2  2000 2 Pac  Baby Don't Cry (Keep... 4:22   2.00    82 2000-03-04
+#> 3  2000 2 Pac  Baby Don't Cry (Keep... 4:22   3.00    72 2000-03-11
+#> 4  2000 2 Pac  Baby Don't Cry (Keep... 4:22   4.00    77 2000-03-18
+#> 5  2000 2 Pac  Baby Don't Cry (Keep... 4:22   5.00    87 2000-03-25
+#> 6  2000 2 Pac  Baby Don't Cry (Keep... 4:22   6.00    94 2000-04-01
+#> # ... with 14 more rows
 ```
-
-
-
-artist            track                  year  time 
-----------------  --------------------  -----  -----
-Lonestar          Amazed                 2000  4:25 
-Lawrence, Tracy   Lessons Learned        2000  2:55 
-Messina, Jo Dee   Because You Love Me    2000  3:50 
-Heatherly, Eric   Flowers On The Wall    2000  3:16 
-Kandi             Don't Think I'm Not    2000  3:50 
 
 Separemos esta base de datos en dos: la tabla canción que almacena artista, nombre de la canción y duración; la tabla rank que almacena el ranking de la canción en cada semana.
 
@@ -701,18 +697,18 @@ song %>% sample_n(10) %>% knitr::kable()
 
 
 
-artist             track                      year  time    song_id
------------------  ------------------------  -----  -----  --------
-Dion, Celine       That's The Way It Is       2000  4:03         80
-Lil' Kim           No Matter What They ...    2000  4:12        174
-Simpson, Jessica   Where You Are              2000  3:51        262
-Aaliyah            Try Again                  2000  4:03          9
-Jay-Z              Hey Papi                   2000  3:40        147
-Ruff Endz          No More                    2000  3:56        251
-Santana            Maria, Maria               2000  4:18        253
-Hot Boys           I Need A Hot Girl          2000  4:16        126
-Da Brat            That's What I'm Look...    2000  3:44         71
-Houston, Whitney   My Love Is Your Love       2000  4:16        129
+artist           track                   year  time    song_id
+---------------  ---------------------  -----  -----  --------
+Zombie Nation    Kernkraft 400           2000  3:30        316
+Brooks, Garth    Do What You Gotta Do    2000  2:56         48
+Larrieux, Amel   Get Up                  2000  4:02        167
+Sisqo            Thong Song              2000  4:05        265
+Next             Wifey                   2000  4:03        224
+Diffie, Joe      The Quittin' Kind       2000  3:23         79
+Lil Wayne        Tha Block Is Hot        2000  4:13        172
+SheDaisy         This Woman Needs        2000  3:20        258
+Aaliyah          Try Again               2000  4:03          9
+Jay-Z            Big Pimpin'             2000  3:55        145
 
 
 ```r
@@ -728,16 +724,16 @@ rank %>% sample_n(10) %>% knitr::kable()
 
  song_id  date          week   rank
 --------  -----------  -----  -----
-     214  2000-11-18      11      6
-     156  2000-09-30       9     28
-     211  2000-12-30      17     62
-     157  2000-09-09       6     62
-     264  2000-07-29       6     55
-     223  2000-09-09      20     10
-     274  2000-04-22       1     67
-       3  2001-03-24      51     42
-     278  2000-09-23      12     94
-     317  2000-07-08      11      8
+     253  2000-07-15      23     26
+     255  2000-03-11      21      4
+     126  2000-04-08       8     77
+      65  2000-09-23       1     97
+     131  1999-10-30       4     43
+     214  2000-10-28       8     10
+     156  2000-09-16       7     36
+     211  2000-12-02      13     45
+     157  2000-08-19       3     75
+     264  2000-07-01       2     66
 
 <br>
 
@@ -781,23 +777,15 @@ specdata <- specdata_US %>%
   mutate(monitor = extract_numeric(ID), date = as.Date(Date)) %>%
   select(id = ID, monitor, date, sulfate, nitrate)
 
-specdata %>% sample_n(10) %>% knitr::kable()
+glimpse(specdata)
+#> Observations: 772,087
+#> Variables: 5
+#> $ id      <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+#> $ monitor <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+#> $ date    <date> 2003-01-01, 2003-01-02, 2003-01-03, 2003-01-04, 2003-...
+#> $ sulfate <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
+#> $ nitrate <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...
 ```
-
-           id   monitor  date          sulfate   nitrate
--------  ----  --------  -----------  --------  --------
-386192    168       168  2004-05-29         NA        NA
-277154    116       116  2008-11-11       3.15     2.160
-598299    254       254  2009-03-03         NA        NA
-451264    194       194  2001-07-30       4.26     0.446
-489483    208       208  2006-03-22         NA        NA
-662961    280       280  2005-03-22         NA        NA
-437689    188       188  2007-05-30       6.83     0.444
-195334     80        80  2005-11-01         NA        NA
-709389    302       302  2003-05-02         NA        NA
-669663    283       283  2003-07-27         NA        NA
-
-<br>
 
 <br>
 
@@ -816,6 +804,8 @@ En las buenas prácticas es importante tomar en cuenta los siguientes puntos:
 * Escribir un script con las modificaciones que se hicieron a los _datos crudos_ (reproducibilidad).
 
 * Otros aspectos importantes en la _limpieza_ de datos son: selección del tipo de variables (por ejemplo fechas), datos faltantes, _typos_ y detección de valores atípicos.
+
+<br>
 
 ---
 
@@ -859,14 +849,18 @@ Para mostrar las funciones se usará el siguiente dataframe.
 ```r
 df_ej <- data.frame(genero = c("mujer", "hombre", "mujer", "mujer", "hombre"), 
                     estatura = c(1.65, 1.80, 1.70, 1.60, 1.67))
-df_ej
-#>   genero estatura
-#> 1  mujer     1.65
-#> 2 hombre     1.80
-#> 3  mujer     1.70
-#> 4  mujer     1.60
-#> 5 hombre     1.67
+df_ej %>% knitr::kable()
 ```
+
+
+
+genero    estatura
+-------  ---------
+mujer         1.65
+hombre        1.80
+mujer         1.70
+mujer         1.60
+hombre        1.67
 
 #### Filtrar {-}
 
@@ -1181,10 +1175,9 @@ ggplot(guns_sin_especificar, aes(x=as.factor(place), fill=as.factor(intent))) +
 
 Se podría concluir, por ejemplo, que si un homicidio ocurrió en una granja, entonces lo más probable es que haya sido un suicidio.
 
----
-
 <br>
 
+---
 
 ## El Cuarteto de Anscombe
 
@@ -1280,6 +1273,8 @@ En general, según Leland Wilkinson, hay dos principios generales que se deben s
 
 - La geometría utilizada debe ser fácil de interpretar.
 
+<br>
+
 ---
 
 ## ggplot
@@ -1365,12 +1360,16 @@ p + geom_point()
 
 El mapeo de las propiedades estéticas se denomina *escalamiento* y depende del tipo de variable, las variables discretas (por ejemplo, genero, escolaridad, país) se mapean a distintas escalas que las variables continuas (variables numéricas como edad, estatura, etc.), los *defaults* para algunos atributos son (estos se pueden modificar):
 
+<center>
+
 aes       |Discreta      |Continua  
 ----------|--------------|---------
 Color (`color`)|Arcoiris de colores         |Gradiente de colores  
 Tamaño (`size`)  |Escala discreta de tamaños  |Mapeo lineal entre el área y el valor  
 Forma (`shape`)    |Distintas formas            |No aplica
-Transparencia (`alpha`) | No aplica | Mapeo lineal a la transparencia   
+Transparencia (`alpha`) | No aplica | Mapeo lineal a la transparencia 
+
+</center>
 
 Los *_geoms_* controlan el tipo de gráfica:
 
@@ -1434,23 +1433,24 @@ Los datos los leemos con la función `read_csv()` de la librería `readr`:
 
 ```r
 ibc <- read_csv("datos/ibc-incidents-2016-8-8.csv")
-ibc %>% sample_n(10) %>% knitr::kable()
+ibc %>% sample_n(10) %>% knitr::kable() %>%
+  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
 ```
 
 
 
-IBC_code   Start_Date   End_Date    Time      Location                                                      Target                                                                                               Weapons                  Deaths_recorded  Sources                                                    
----------  -----------  ----------  --------  ------------------------------------------------------------  ---------------------------------------------------------------------------------------------------  ----------------------  ----------------  -----------------------------------------------------------
-a1430      9-Jun-15     9-Jun-15    AM        Saidiya, southwest Baghdad                                    exploded near shops                                                                                  roadside bomb                          2  Al-Mada 09 Jun                                             
-k1339      17-May-05    17-May-05   AM        bodies found near Sharqat                                     Nazhan Khaled al-Sarrai and Omar Hashim, contractors working for US military                         -                                      2  AFP 17 May, MEO 17 May                                     
-d10607     2-Aug-08     2-Aug-08    8:45 PM   Route Nissan, Al Farouk neighborhood, Mosul                   Nam Salm Abdullah Sathi, shot in the head                                                            gunfire                                1  US DoD via WikiLeaks 22 Oct 2010                           
-k18046     24-Nov-11    24-Nov-11   PM        al-Haramiya market, Basra                                     market                                                                                               IEDs, motorcycle bomb                  4  AP 24 Nov, NINA 24 Nov, Al-Iraq 25 Nov, NYT 25 Nov         
-k6223      29-Apr-07    29-Apr-07   NA        northeast Kut                                                 clashes between police and gunmen                                                                    gunfire                                3  VOI 29 Apr, Al-Shar 29 Apr                                 
-d3065      14-May-07    14-May-07   NA        Baquba                                                        police patrol                                                                                        roadside bomb                          3  CNN 14 May, WP 05 Sep (MoH)                                
-k6859k     2-Jul-07     2-Jul-07    NA        Bab Al Muadham, Baghdad                                       bodies found shot dead                                                                               gunfire, executed                      1  McCla 02 Jul, NINA 02 Jul                                  
-d4150      8-Mar-05     8-Mar-05    NA        western Baghdad                                               Dr Adil Abd-al-Karim, director of Al-Furat Hospital, on his way to work                              gunfire                                1  AP 08 Mar, BBC 09 Mar                                      
-s0204      13-May-14    13-May-14   AM        near Sabah al-Khayat Square, Ur district, northeast Baghdad   civilians near Sabah al-Khayat Square                                                                car bomb                               1  KUNA 13 May, Al-Masalah 13 May, XIN 13 May, Al-Mada 13 May 
-a2995      3-Dec-15     3-Dec-15    NA        Samarra, south of Tikrit                                      landed near Samarra hospital, Al-Malwiah and Al-Mo'almeen neighborhood, casualties include a child   mortar shells                          1  ITL 03 Dec , Al-Mada 03 Dec                                
+IBC_code   Start_Date   End_Date    Time           Location                                 Target                                                                             Weapons                        Deaths_recorded  Sources                                         
+---------  -----------  ----------  -------------  ---------------------------------------  ---------------------------------------------------------------------------------  ----------------------------  ----------------  ------------------------------------------------
+m2046      2-Sep-13     2-Sep-13    PM             13 Street, Al-Bayaa, southwest Baghdad   employee at the Ministry of Education in front of his home                         gunfire                                      1  AIN 2 Sep, Sotaliraq 2 Sep                      
+d2329      9-Feb-07     9-Feb-07    NA             near Al-Shimal Garage, Mosul             NA                                                                                 explosive device                             1  MO 09 Feb, WP 04 Apr (MoH)                      
+k7919      29-Oct-07    29-Oct-07   8:00-9:00 AM   Ishbilliyah Square, central Baquba       police recruits awaiting training                                                  suicide bomber                              28  AFP 31 Oct, NINA 29 Oct, REU 29 Oct, DPA 29 Oct 
+s1254      22-Apr-15    22-Apr-15   NA             Al-Mansour, west Baghdad                 civilian in Al-Mansour                                                             drive-by shooting                            1  NINA 22 Apr                                     
+h0379      25-Feb-14    25-Feb-14   NA             Saba' Abkar, north Baghdad               Mohamed Taha Mohamed, Iraqi Sports Channel Director                                car in hit-and-run                           0  AIN 25 Feb, INN 25 Feb                          
+k18626     13-Mar-12    14-Mar-12   NA             Hoswa, Karma, east of Falluja            civilian car                                                                       roadside bomb                                1  AKnews 14 Mar, Al-Shorfa 13 Mar                 
+k1708      1-Aug-05     1-Aug-05    PM             west Baghdad                             Shaikh Akil al-Ma'adhidi, a cleric from al-Muhajirin mosque, brother also killed   gunfire                                      2  Al-Jaz 02 Aug, AFP 02 Aug                       
+k10200     15-Apr-08    15-Apr-08   NA             al-Zahraa, east Mosul                    'operator for a private electricity generator'                                     gunfire                                      1  VOI 15 Apr                                      
+m3013      2-Dec-13     2-Dec-13    AM             Refaq, east Mosul                        civilian in his car                                                                magnetic bomb                                1  AIN 2 Dec, NINA 2 Dec                           
+k3289e     18-Jun-06    18-Jun-06   NA             Al-Sha'b, Baghdad                        bodies found shot, tortured                                                        gunfire, executed, tortured                  1  Al-Shar 18 Jun, DPA 18 Jun                      
 
 Primero filtramos los incidentes en los que hubo al menos cinco fatalidades:
 
@@ -1829,7 +1829,7 @@ Una muestra de los datos obtenidos se puede ver en la siguiente tabla:
 
 ```r
 billboard %>% sample_n(10) %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 7)
+  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
 ```
 
 

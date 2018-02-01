@@ -422,7 +422,7 @@ ds
 <p>Analicemos los datos que provienen de una encuesta de <a href="http://www.pewforum.org/2009/01/30/income-distribution-within-us-religious-groups/">Pew Research</a> que investiga la relación entre ingreso y afiliación religiosa. ¿Cuáles son las variables en estos datos?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pew &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/pew.csv&quot;</span>)
 knitr<span class="op">::</span><span class="kw">kable</span>(pew) <span class="op">%&gt;%</span>
-<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">7</span>)</code></pre></div>
+<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">4</span>)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -681,9 +681,9 @@ knitr<span class="op">::</span><span class="kw">kable</span>(pew) <span class="o
 <span class="st">  </span><span class="kw">gather</span>(income, frequency, <span class="op">-</span>religion)
 <span class="co"># vemos las primeras líneas de nuestros datos alargados</span>
 pew_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>() <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">7</span>)
+<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">4</span>)
 <span class="co">#&gt; Warning in kableExtra::kable_styling(., bootstrap_options = &quot;striped&quot;,</span>
-<span class="co">#&gt; font_size = 7): Please specify format in kable. kableExtra can customize</span>
+<span class="co">#&gt; font_size = 4): Please specify format in kable. kableExtra can customize</span>
 <span class="co">#&gt; either HTML or LaTeX outputs. See https://haozhu233.github.io/kableExtra/</span>
 <span class="co">#&gt; for details.</span></code></pre></div>
 <table>
@@ -740,15 +740,14 @@ pew_tidy_<span class="dv">2</span> &lt;-<span class="st"> </span>pew_tidy <span 
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>religion, <span class="dt">nrow =</span> <span class="dv">1</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
-<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-11-1.png" width="85%" style="display: block; margin: auto;" /></p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>En el código de arriba utilizamos las funciones <code>group_by</code>, <code>filter</code> y <code>mutate</code> que estudiaremos más adelante.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p>Otro ejemplo,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(<span class="kw">read.csv</span>(<span class="st">&quot;datos/billboard.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>))
 billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">7</span>)</code></pre></div>
+<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">4</span>)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1482,7 +1481,7 @@ billboard_tidy <span class="op">%&gt;%</span><span class="st"> </span><span clas
 <span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>track, <span class="dt">nrow =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
-<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-15-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-15-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <hr />
 <p><br></p>
 </div>
@@ -2728,56 +2727,23 @@ clima_lm &lt;-<span class="st"> </span><span class="kw">lm</span>(TMAX <span cla
 <span class="co">#&gt; Multiple R-squared:  0.618,  Adjusted R-squared:  0.445 </span>
 <span class="co">#&gt; F-statistic: 3.56 on 10 and 22 DF,  p-value: 0.0062</span></code></pre></div>
 <p><br></p>
-<p><br></p>
 <hr />
 </div>
 <div id="mas-de-un-tipo-de-observacion-en-una-misma-tabla" class="section level4 unnumbered">
 <h4>4. Mas de un tipo de observación en una misma tabla</h4>
 <p>En ocasiones las bases de datos involucran valores en diferentes niveles, endiferentes tipos de unidad observacional. En la limpieza de datos, cada unidad observacional debe estar almacenada en su propia tabla (esto esta ligado a normalización de una base de datos), es importante para evitar inconsistencias en los datos.</p>
 <p>¿Cuáles son las unidades observacionales de los datos de billboard?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(artist, track, year, time) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">artist</th>
-<th align="left">track</th>
-<th align="right">year</th>
-<th align="left">time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Lonestar</td>
-<td align="left">Amazed</td>
-<td align="right">2000</td>
-<td align="left">4:25</td>
-</tr>
-<tr class="even">
-<td align="left">Lawrence, Tracy</td>
-<td align="left">Lessons Learned</td>
-<td align="right">2000</td>
-<td align="left">2:55</td>
-</tr>
-<tr class="odd">
-<td align="left">Messina, Jo Dee</td>
-<td align="left">Because You Love Me</td>
-<td align="right">2000</td>
-<td align="left">3:50</td>
-</tr>
-<tr class="even">
-<td align="left">Heatherly, Eric</td>
-<td align="left">Flowers On The Wall</td>
-<td align="right">2000</td>
-<td align="left">3:16</td>
-</tr>
-<tr class="odd">
-<td align="left">Kandi</td>
-<td align="left">Don’t Think I’m Not</td>
-<td align="right">2000</td>
-<td align="left">3:50</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(artist, track, year, time) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">20</span>)
+<span class="co">#&gt; # A tibble: 20 x 7</span>
+<span class="co">#&gt;    year artist track                   time   week  rank date      </span>
+<span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;                   &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;date&gt;    </span>
+<span class="co">#&gt; 1  2000 2 Pac  Baby Don&#39;t Cry (Keep... 4:22   1.00    87 2000-02-26</span>
+<span class="co">#&gt; 2  2000 2 Pac  Baby Don&#39;t Cry (Keep... 4:22   2.00    82 2000-03-04</span>
+<span class="co">#&gt; 3  2000 2 Pac  Baby Don&#39;t Cry (Keep... 4:22   3.00    72 2000-03-11</span>
+<span class="co">#&gt; 4  2000 2 Pac  Baby Don&#39;t Cry (Keep... 4:22   4.00    77 2000-03-18</span>
+<span class="co">#&gt; 5  2000 2 Pac  Baby Don&#39;t Cry (Keep... 4:22   5.00    87 2000-03-25</span>
+<span class="co">#&gt; 6  2000 2 Pac  Baby Don&#39;t Cry (Keep... 4:22   6.00    94 2000-04-01</span>
+<span class="co">#&gt; # ... with 14 more rows</span></code></pre></div>
 <p>Separemos esta base de datos en dos: la tabla canción que almacena artista, nombre de la canción y duración; la tabla rank que almacena el ranking de la canción en cada semana.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">song &lt;-<span class="st"> </span>billboard_tidy <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">select</span>(artist, track, year, time) <span class="op">%&gt;%</span>
@@ -2797,74 +2763,74 @@ song <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Dion, Celine</td>
-<td align="left">That’s The Way It Is</td>
+<td align="left">Zombie Nation</td>
+<td align="left">Kernkraft 400</td>
 <td align="right">2000</td>
-<td align="left">4:03</td>
-<td align="right">80</td>
+<td align="left">3:30</td>
+<td align="right">316</td>
 </tr>
 <tr class="even">
-<td align="left">Lil’ Kim</td>
-<td align="left">No Matter What They …</td>
+<td align="left">Brooks, Garth</td>
+<td align="left">Do What You Gotta Do</td>
 <td align="right">2000</td>
-<td align="left">4:12</td>
-<td align="right">174</td>
+<td align="left">2:56</td>
+<td align="right">48</td>
 </tr>
 <tr class="odd">
-<td align="left">Simpson, Jessica</td>
-<td align="left">Where You Are</td>
+<td align="left">Larrieux, Amel</td>
+<td align="left">Get Up</td>
 <td align="right">2000</td>
-<td align="left">3:51</td>
-<td align="right">262</td>
+<td align="left">4:02</td>
+<td align="right">167</td>
 </tr>
 <tr class="even">
+<td align="left">Sisqo</td>
+<td align="left">Thong Song</td>
+<td align="right">2000</td>
+<td align="left">4:05</td>
+<td align="right">265</td>
+</tr>
+<tr class="odd">
+<td align="left">Next</td>
+<td align="left">Wifey</td>
+<td align="right">2000</td>
+<td align="left">4:03</td>
+<td align="right">224</td>
+</tr>
+<tr class="even">
+<td align="left">Diffie, Joe</td>
+<td align="left">The Quittin’ Kind</td>
+<td align="right">2000</td>
+<td align="left">3:23</td>
+<td align="right">79</td>
+</tr>
+<tr class="odd">
+<td align="left">Lil Wayne</td>
+<td align="left">Tha Block Is Hot</td>
+<td align="right">2000</td>
+<td align="left">4:13</td>
+<td align="right">172</td>
+</tr>
+<tr class="even">
+<td align="left">SheDaisy</td>
+<td align="left">This Woman Needs</td>
+<td align="right">2000</td>
+<td align="left">3:20</td>
+<td align="right">258</td>
+</tr>
+<tr class="odd">
 <td align="left">Aaliyah</td>
 <td align="left">Try Again</td>
 <td align="right">2000</td>
 <td align="left">4:03</td>
 <td align="right">9</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Jay-Z</td>
-<td align="left">Hey Papi</td>
+<td align="left">Big Pimpin’</td>
 <td align="right">2000</td>
-<td align="left">3:40</td>
-<td align="right">147</td>
-</tr>
-<tr class="even">
-<td align="left">Ruff Endz</td>
-<td align="left">No More</td>
-<td align="right">2000</td>
-<td align="left">3:56</td>
-<td align="right">251</td>
-</tr>
-<tr class="odd">
-<td align="left">Santana</td>
-<td align="left">Maria, Maria</td>
-<td align="right">2000</td>
-<td align="left">4:18</td>
-<td align="right">253</td>
-</tr>
-<tr class="even">
-<td align="left">Hot Boys</td>
-<td align="left">I Need A Hot Girl</td>
-<td align="right">2000</td>
-<td align="left">4:16</td>
-<td align="right">126</td>
-</tr>
-<tr class="odd">
-<td align="left">Da Brat</td>
-<td align="left">That’s What I’m Look…</td>
-<td align="right">2000</td>
-<td align="left">3:44</td>
-<td align="right">71</td>
-</tr>
-<tr class="even">
-<td align="left">Houston, Whitney</td>
-<td align="left">My Love Is Your Love</td>
-<td align="right">2000</td>
-<td align="left">4:16</td>
-<td align="right">129</td>
+<td align="left">3:55</td>
+<td align="right">145</td>
 </tr>
 </tbody>
 </table>
@@ -2885,64 +2851,64 @@ rank <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 </thead>
 <tbody>
 <tr class="odd">
+<td align="right">253</td>
+<td align="left">2000-07-15</td>
+<td align="right">23</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="right">255</td>
+<td align="left">2000-03-11</td>
+<td align="right">21</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="right">126</td>
+<td align="left">2000-04-08</td>
+<td align="right">8</td>
+<td align="right">77</td>
+</tr>
+<tr class="even">
+<td align="right">65</td>
+<td align="left">2000-09-23</td>
+<td align="right">1</td>
+<td align="right">97</td>
+</tr>
+<tr class="odd">
+<td align="right">131</td>
+<td align="left">1999-10-30</td>
+<td align="right">4</td>
+<td align="right">43</td>
+</tr>
+<tr class="even">
 <td align="right">214</td>
-<td align="left">2000-11-18</td>
-<td align="right">11</td>
-<td align="right">6</td>
-</tr>
-<tr class="even">
-<td align="right">156</td>
-<td align="left">2000-09-30</td>
-<td align="right">9</td>
-<td align="right">28</td>
-</tr>
-<tr class="odd">
-<td align="right">211</td>
-<td align="left">2000-12-30</td>
-<td align="right">17</td>
-<td align="right">62</td>
-</tr>
-<tr class="even">
-<td align="right">157</td>
-<td align="left">2000-09-09</td>
-<td align="right">6</td>
-<td align="right">62</td>
-</tr>
-<tr class="odd">
-<td align="right">264</td>
-<td align="left">2000-07-29</td>
-<td align="right">6</td>
-<td align="right">55</td>
-</tr>
-<tr class="even">
-<td align="right">223</td>
-<td align="left">2000-09-09</td>
-<td align="right">20</td>
+<td align="left">2000-10-28</td>
+<td align="right">8</td>
 <td align="right">10</td>
 </tr>
 <tr class="odd">
-<td align="right">274</td>
-<td align="left">2000-04-22</td>
-<td align="right">1</td>
-<td align="right">67</td>
+<td align="right">156</td>
+<td align="left">2000-09-16</td>
+<td align="right">7</td>
+<td align="right">36</td>
 </tr>
 <tr class="even">
-<td align="right">3</td>
-<td align="left">2001-03-24</td>
-<td align="right">51</td>
-<td align="right">42</td>
+<td align="right">211</td>
+<td align="left">2000-12-02</td>
+<td align="right">13</td>
+<td align="right">45</td>
 </tr>
 <tr class="odd">
-<td align="right">278</td>
-<td align="left">2000-09-23</td>
-<td align="right">12</td>
-<td align="right">94</td>
+<td align="right">157</td>
+<td align="left">2000-08-19</td>
+<td align="right">3</td>
+<td align="right">75</td>
 </tr>
 <tr class="even">
-<td align="right">317</td>
-<td align="left">2000-07-08</td>
-<td align="right">11</td>
-<td align="right">8</td>
+<td align="right">264</td>
+<td align="left">2000-07-01</td>
+<td align="right">2</td>
+<td align="right">66</td>
 </tr>
 </tbody>
 </table>
@@ -2970,102 +2936,14 @@ specdata &lt;-<span class="st"> </span>specdata_US <span class="op">%&gt;%</span
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">monitor =</span> <span class="kw">extract_numeric</span>(ID), <span class="dt">date =</span> <span class="kw">as.Date</span>(Date)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(<span class="dt">id =</span> ID, monitor, date, sulfate, nitrate)
 
-specdata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th align="right">id</th>
-<th align="right">monitor</th>
-<th align="left">date</th>
-<th align="right">sulfate</th>
-<th align="right">nitrate</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>386192</td>
-<td align="right">168</td>
-<td align="right">168</td>
-<td align="left">2004-05-29</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td>277154</td>
-<td align="right">116</td>
-<td align="right">116</td>
-<td align="left">2008-11-11</td>
-<td align="right">3.15</td>
-<td align="right">2.160</td>
-</tr>
-<tr class="odd">
-<td>598299</td>
-<td align="right">254</td>
-<td align="right">254</td>
-<td align="left">2009-03-03</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td>451264</td>
-<td align="right">194</td>
-<td align="right">194</td>
-<td align="left">2001-07-30</td>
-<td align="right">4.26</td>
-<td align="right">0.446</td>
-</tr>
-<tr class="odd">
-<td>489483</td>
-<td align="right">208</td>
-<td align="right">208</td>
-<td align="left">2006-03-22</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td>662961</td>
-<td align="right">280</td>
-<td align="right">280</td>
-<td align="left">2005-03-22</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td>437689</td>
-<td align="right">188</td>
-<td align="right">188</td>
-<td align="left">2007-05-30</td>
-<td align="right">6.83</td>
-<td align="right">0.444</td>
-</tr>
-<tr class="even">
-<td>195334</td>
-<td align="right">80</td>
-<td align="right">80</td>
-<td align="left">2005-11-01</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td>709389</td>
-<td align="right">302</td>
-<td align="right">302</td>
-<td align="left">2003-05-02</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td>669663</td>
-<td align="right">283</td>
-<td align="right">283</td>
-<td align="left">2003-07-27</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
+<span class="kw">glimpse</span>(specdata)
+<span class="co">#&gt; Observations: 772,087</span>
+<span class="co">#&gt; Variables: 5</span>
+<span class="co">#&gt; $ id      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...</span>
+<span class="co">#&gt; $ monitor &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...</span>
+<span class="co">#&gt; $ date    &lt;date&gt; 2003-01-01, 2003-01-02, 2003-01-03, 2003-01-04, 2003-...</span>
+<span class="co">#&gt; $ sulfate &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...</span>
+<span class="co">#&gt; $ nitrate &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA...</span></code></pre></div>
 <p><br></p>
 <hr />
 </div>
@@ -3079,6 +2957,7 @@ specdata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"
 <li><p>Escribir un script con las modificaciones que se hicieron a los <em>datos crudos</em> (reproducibilidad).</p></li>
 <li><p>Otros aspectos importantes en la <em>limpieza</em> de datos son: selección del tipo de variables (por ejemplo fechas), datos faltantes, <em>typos</em> y detección de valores atípicos.</p></li>
 </ul>
+<p><br></p>
 <hr />
 </div>
 </div>
@@ -3114,13 +2993,37 @@ Para esto usaremos la librería <code>dplyr</code> que contiene funciones que fa
 <p>Para mostrar las funciones se usará el siguiente dataframe.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_ej &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">genero =</span> <span class="kw">c</span>(<span class="st">&quot;mujer&quot;</span>, <span class="st">&quot;hombre&quot;</span>, <span class="st">&quot;mujer&quot;</span>, <span class="st">&quot;mujer&quot;</span>, <span class="st">&quot;hombre&quot;</span>), 
                     <span class="dt">estatura =</span> <span class="kw">c</span>(<span class="fl">1.65</span>, <span class="fl">1.80</span>, <span class="fl">1.70</span>, <span class="fl">1.60</span>, <span class="fl">1.67</span>))
-df_ej
-<span class="co">#&gt;   genero estatura</span>
-<span class="co">#&gt; 1  mujer     1.65</span>
-<span class="co">#&gt; 2 hombre     1.80</span>
-<span class="co">#&gt; 3  mujer     1.70</span>
-<span class="co">#&gt; 4  mujer     1.60</span>
-<span class="co">#&gt; 5 hombre     1.67</span></code></pre></div>
+df_ej <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">genero</th>
+<th align="right">estatura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">mujer</td>
+<td align="right">1.65</td>
+</tr>
+<tr class="even">
+<td align="left">hombre</td>
+<td align="right">1.80</td>
+</tr>
+<tr class="odd">
+<td align="left">mujer</td>
+<td align="right">1.70</td>
+</tr>
+<tr class="even">
+<td align="left">mujer</td>
+<td align="right">1.60</td>
+</tr>
+<tr class="odd">
+<td align="left">hombre</td>
+<td align="right">1.67</td>
+</tr>
+</tbody>
+</table>
 <div id="filtrar" class="section level4 unnumbered">
 <h4>Filtrar</h4>
 <p>Filtrar una base de datos dependiendo de una condición requiere la función <code>filter()</code> que tiene los siguientes argumentos <code>dplyr::filter(data, condition)</code>.</p>
@@ -3327,8 +3230,8 @@ guns_<span class="dv">14</span> &lt;-<span class="st"> </span><span class="kw">r
 <span class="st">    ggtitle(&quot;Lugar de homicidios por intención&quot;)</span></code></pre></div>
 <p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-53-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Se podría concluir, por ejemplo, que si un homicidio ocurrió en una granja, entonces lo más probable es que haya sido un suicidio.</p>
-<hr />
 <p><br></p>
+<hr />
 </div>
 <div id="el-cuarteto-de-anscombe" class="section level2">
 <h2><span class="header-section-number">3.5</span> El Cuarteto de Anscombe</h2>
@@ -3540,6 +3443,7 @@ guns_<span class="dv">14</span> &lt;-<span class="st"> </span><span class="kw">r
 <li><p>La geometría utilizada debe coincidir con los datos que se están visualizando.</p></li>
 <li><p>La geometría utilizada debe ser fácil de interpretar.</p></li>
 </ul>
+<p><br></p>
 <hr />
 </div>
 <div id="ggplot" class="section level2">
@@ -3584,6 +3488,7 @@ p</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-62-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>El mapeo de las propiedades estéticas se denomina <em>escalamiento</em> y depende del tipo de variable, las variables discretas (por ejemplo, genero, escolaridad, país) se mapean a distintas escalas que las variables continuas (variables numéricas como edad, estatura, etc.), los <em>defaults</em> para algunos atributos son (estos se pueden modificar):</p>
+<center>
 <table style="width:50%;">
 <colgroup>
 <col width="15%" />
@@ -3620,6 +3525,7 @@ p</code></pre></div>
 </tr>
 </tbody>
 </table>
+</center>
 <p>Los <em><em>geoms</em></em> controlan el tipo de gráfica:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>()</code></pre></div>
 <p><img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-63-1.png" width="70%" style="display: block; margin: auto;" /></p>
@@ -3654,7 +3560,8 @@ p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point<
 <p>Para mayor información puedes visitar <a href="https://www.iraqbodycount.org/" class="uri">https://www.iraqbodycount.org/</a>.</p>
 <p>Los datos los leemos con la función <code>read_csv()</code> de la librería <code>readr</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ibc &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/ibc-incidents-2016-8-8.csv&quot;</span>)
-ibc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+ibc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">4</span>)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -3671,114 +3578,114 @@ ibc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">samp
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">a1430</td>
-<td align="left">9-Jun-15</td>
-<td align="left">9-Jun-15</td>
-<td align="left">AM</td>
-<td align="left">Saidiya, southwest Baghdad</td>
-<td align="left">exploded near shops</td>
-<td align="left">roadside bomb</td>
-<td align="right">2</td>
-<td align="left">Al-Mada 09 Jun</td>
-</tr>
-<tr class="even">
-<td align="left">k1339</td>
-<td align="left">17-May-05</td>
-<td align="left">17-May-05</td>
-<td align="left">AM</td>
-<td align="left">bodies found near Sharqat</td>
-<td align="left">Nazhan Khaled al-Sarrai and Omar Hashim, contractors working for US military</td>
-<td align="left">-</td>
-<td align="right">2</td>
-<td align="left">AFP 17 May, MEO 17 May</td>
-</tr>
-<tr class="odd">
-<td align="left">d10607</td>
-<td align="left">2-Aug-08</td>
-<td align="left">2-Aug-08</td>
-<td align="left">8:45 PM</td>
-<td align="left">Route Nissan, Al Farouk neighborhood, Mosul</td>
-<td align="left">Nam Salm Abdullah Sathi, shot in the head</td>
-<td align="left">gunfire</td>
-<td align="right">1</td>
-<td align="left">US DoD via WikiLeaks 22 Oct 2010</td>
-</tr>
-<tr class="even">
-<td align="left">k18046</td>
-<td align="left">24-Nov-11</td>
-<td align="left">24-Nov-11</td>
+<td align="left">m2046</td>
+<td align="left">2-Sep-13</td>
+<td align="left">2-Sep-13</td>
 <td align="left">PM</td>
-<td align="left">al-Haramiya market, Basra</td>
-<td align="left">market</td>
-<td align="left">IEDs, motorcycle bomb</td>
-<td align="right">4</td>
-<td align="left">AP 24 Nov, NINA 24 Nov, Al-Iraq 25 Nov, NYT 25 Nov</td>
-</tr>
-<tr class="odd">
-<td align="left">k6223</td>
-<td align="left">29-Apr-07</td>
-<td align="left">29-Apr-07</td>
-<td align="left">NA</td>
-<td align="left">northeast Kut</td>
-<td align="left">clashes between police and gunmen</td>
+<td align="left">13 Street, Al-Bayaa, southwest Baghdad</td>
+<td align="left">employee at the Ministry of Education in front of his home</td>
 <td align="left">gunfire</td>
-<td align="right">3</td>
-<td align="left">VOI 29 Apr, Al-Shar 29 Apr</td>
+<td align="right">1</td>
+<td align="left">AIN 2 Sep, Sotaliraq 2 Sep</td>
 </tr>
 <tr class="even">
-<td align="left">d3065</td>
-<td align="left">14-May-07</td>
-<td align="left">14-May-07</td>
+<td align="left">d2329</td>
+<td align="left">9-Feb-07</td>
+<td align="left">9-Feb-07</td>
 <td align="left">NA</td>
-<td align="left">Baquba</td>
-<td align="left">police patrol</td>
+<td align="left">near Al-Shimal Garage, Mosul</td>
+<td align="left">NA</td>
+<td align="left">explosive device</td>
+<td align="right">1</td>
+<td align="left">MO 09 Feb, WP 04 Apr (MoH)</td>
+</tr>
+<tr class="odd">
+<td align="left">k7919</td>
+<td align="left">29-Oct-07</td>
+<td align="left">29-Oct-07</td>
+<td align="left">8:00-9:00 AM</td>
+<td align="left">Ishbilliyah Square, central Baquba</td>
+<td align="left">police recruits awaiting training</td>
+<td align="left">suicide bomber</td>
+<td align="right">28</td>
+<td align="left">AFP 31 Oct, NINA 29 Oct, REU 29 Oct, DPA 29 Oct</td>
+</tr>
+<tr class="even">
+<td align="left">s1254</td>
+<td align="left">22-Apr-15</td>
+<td align="left">22-Apr-15</td>
+<td align="left">NA</td>
+<td align="left">Al-Mansour, west Baghdad</td>
+<td align="left">civilian in Al-Mansour</td>
+<td align="left">drive-by shooting</td>
+<td align="right">1</td>
+<td align="left">NINA 22 Apr</td>
+</tr>
+<tr class="odd">
+<td align="left">h0379</td>
+<td align="left">25-Feb-14</td>
+<td align="left">25-Feb-14</td>
+<td align="left">NA</td>
+<td align="left">Saba’ Abkar, north Baghdad</td>
+<td align="left">Mohamed Taha Mohamed, Iraqi Sports Channel Director</td>
+<td align="left">car in hit-and-run</td>
+<td align="right">0</td>
+<td align="left">AIN 25 Feb, INN 25 Feb</td>
+</tr>
+<tr class="even">
+<td align="left">k18626</td>
+<td align="left">13-Mar-12</td>
+<td align="left">14-Mar-12</td>
+<td align="left">NA</td>
+<td align="left">Hoswa, Karma, east of Falluja</td>
+<td align="left">civilian car</td>
 <td align="left">roadside bomb</td>
-<td align="right">3</td>
-<td align="left">CNN 14 May, WP 05 Sep (MoH)</td>
+<td align="right">1</td>
+<td align="left">AKnews 14 Mar, Al-Shorfa 13 Mar</td>
 </tr>
 <tr class="odd">
-<td align="left">k6859k</td>
-<td align="left">2-Jul-07</td>
-<td align="left">2-Jul-07</td>
-<td align="left">NA</td>
-<td align="left">Bab Al Muadham, Baghdad</td>
-<td align="left">bodies found shot dead</td>
-<td align="left">gunfire, executed</td>
-<td align="right">1</td>
-<td align="left">McCla 02 Jul, NINA 02 Jul</td>
+<td align="left">k1708</td>
+<td align="left">1-Aug-05</td>
+<td align="left">1-Aug-05</td>
+<td align="left">PM</td>
+<td align="left">west Baghdad</td>
+<td align="left">Shaikh Akil al-Ma’adhidi, a cleric from al-Muhajirin mosque, brother also killed</td>
+<td align="left">gunfire</td>
+<td align="right">2</td>
+<td align="left">Al-Jaz 02 Aug, AFP 02 Aug</td>
 </tr>
 <tr class="even">
-<td align="left">d4150</td>
-<td align="left">8-Mar-05</td>
-<td align="left">8-Mar-05</td>
+<td align="left">k10200</td>
+<td align="left">15-Apr-08</td>
+<td align="left">15-Apr-08</td>
 <td align="left">NA</td>
-<td align="left">western Baghdad</td>
-<td align="left">Dr Adil Abd-al-Karim, director of Al-Furat Hospital, on his way to work</td>
+<td align="left">al-Zahraa, east Mosul</td>
+<td align="left">‘operator for a private electricity generator’</td>
 <td align="left">gunfire</td>
 <td align="right">1</td>
-<td align="left">AP 08 Mar, BBC 09 Mar</td>
+<td align="left">VOI 15 Apr</td>
 </tr>
 <tr class="odd">
-<td align="left">s0204</td>
-<td align="left">13-May-14</td>
-<td align="left">13-May-14</td>
+<td align="left">m3013</td>
+<td align="left">2-Dec-13</td>
+<td align="left">2-Dec-13</td>
 <td align="left">AM</td>
-<td align="left">near Sabah al-Khayat Square, Ur district, northeast Baghdad</td>
-<td align="left">civilians near Sabah al-Khayat Square</td>
-<td align="left">car bomb</td>
+<td align="left">Refaq, east Mosul</td>
+<td align="left">civilian in his car</td>
+<td align="left">magnetic bomb</td>
 <td align="right">1</td>
-<td align="left">KUNA 13 May, Al-Masalah 13 May, XIN 13 May, Al-Mada 13 May</td>
+<td align="left">AIN 2 Dec, NINA 2 Dec</td>
 </tr>
 <tr class="even">
-<td align="left">a2995</td>
-<td align="left">3-Dec-15</td>
-<td align="left">3-Dec-15</td>
+<td align="left">k3289e</td>
+<td align="left">18-Jun-06</td>
+<td align="left">18-Jun-06</td>
 <td align="left">NA</td>
-<td align="left">Samarra, south of Tikrit</td>
-<td align="left">landed near Samarra hospital, Al-Malwiah and Al-Mo’almeen neighborhood, casualties include a child</td>
-<td align="left">mortar shells</td>
+<td align="left">Al-Sha’b, Baghdad</td>
+<td align="left">bodies found shot, tortured</td>
+<td align="left">gunfire, executed, tortured</td>
 <td align="right">1</td>
-<td align="left">ITL 03 Dec , Al-Mada 03 Dec</td>
+<td align="left">Al-Shar 18 Jun, DPA 18 Jun</td>
 </tr>
 </tbody>
 </table>
@@ -4053,7 +3960,7 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </ol>
 <p>Una muestra de los datos obtenidos se puede ver en la siguiente tabla:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">7</span>)</code></pre></div>
+<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">4</span>)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
