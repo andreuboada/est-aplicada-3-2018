@@ -1115,17 +1115,17 @@ etiquetar <- function(df, x, y, etiq = "etiq", size = 3.5){
 }
 set.seed(720528)
 factores_inglehart_etiq <- etiquetar(factores_inglehart, "survival_selfexpression",
-                                     "traditional_secular", etiq = "country", size = 1)
+                                     "traditional_secular", etiq = "country", size = 0.8)
 ```
 
 ```{r, out.width="100%", message=FALSE, warning=FALSE, echo = FALSE}
 ggplot(data = factores_inglehart_etiq,
        aes(x=survival_selfexpression,y=traditional_secular,color=reg,group=reg)) +
-  geom_point(size = 1.2) +
-  geom_text(aes(x = a, y = b, label = country), size = 1.7) +
-  theme(legend.position = "bottom", legend.text = element_text(size=5),
-        axis.text = element_text(size = 5), axis.title = element_text(size = 5),
-        legend.title = element_text(size = 5)) +
+  geom_point(size = 1) +
+  geom_text(aes(x = a, y = b, label = country), size = 1) +
+  theme(legend.position = "bottom", legend.text = element_text(size = 6),
+        axis.text = element_text(size = 6), axis.title = element_text(size = 6),
+        legend.title = element_text(size = 6)) +
   scale_color_manual("Region", values = RColorBrewer::brewer.pal(6,"Dark2")) + 
   ylab("Traditional/secular values") + 
   xlab("Survival/Self expression values")
