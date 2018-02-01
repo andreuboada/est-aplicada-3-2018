@@ -1666,13 +1666,16 @@ ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y =
 
 El Billboard Hot 100 es un ranking semanal publicado en Estados Unidos y es utilizado en la industria de la música como una medida del rendimiento de las canciones en ventas y en streaming en el país.
 
-<img src="figuras/billboard.png" width="70%" style="display: block; margin: auto;" />
-
 <p class="espacio">
 </p>
 
+Por ejemplo, en la página [https://www.billboard.com/charts/hot-100/2000-03-18](https://www.billboard.com/charts/hot-100/2000-03-18) se puede consultar el chart en la semana del 18 de marzo del año 2000.
 
-Con el siguiente código podemos descargar los datos del Billboard semana a semana y obtener un conjunto de datos como el que se presenta a continuación:
+<img src="figuras/billboard.png" width="70%" style="display: block; margin: auto;" />
+
+<br>
+
+Con el siguiente código podemos descargar los datos del Billboard Hot 100 para cada semana para obtener un conjunto de datos que vamos a utilizar más adelante.
 
 
 ```r
@@ -1833,7 +1836,7 @@ Una muestra de los datos obtenidos se puede ver en la siguiente tabla:
 
 ```r
 billboard %>% sample_n(10) %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
+  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 'x-small')
 ```
 
 
