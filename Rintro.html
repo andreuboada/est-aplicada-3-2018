@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Aplicada III</title>
   <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
-  <meta name="generator" content="bookdown 0.6.1 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.6.2 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Aplicada III" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-01-30">
+<meta name="date" content="2018-02-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -168,6 +168,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.9.1" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#creando-un-ggplot"><i class="fa fa-check"></i><b>3.9.1</b> Creando un ggplot</a></li>
 <li class="chapter" data-level="3.9.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#mapeos-aesthetics"><i class="fa fa-check"></i><b>3.9.2</b> Mapeos: Aesthetics</a></li>
 </ul></li>
+<li class="chapter" data-level="3.10" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#poniendo-todo-junto"><i class="fa fa-check"></i><b>3.10</b> Poniendo todo junto</a></li>
+<li class="chapter" data-level="3.11" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#tarea-2"><i class="fa fa-check"></i><b>3.11</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -223,7 +225,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="flujo-basico-de-trabajo-para-el-analisis-de-datos-en-r." class="section level2">
 <h2><span class="header-section-number">2.2</span> Flujo básico de trabajo para el análisis de datos en R.</h2>
 <p>En el análisis de datos nos interesan técnicas cuantitativas cómo: recolectar, organizar, entender, interpretar y extraer información de colecciones de datos predominantemente numéricos. Estas tareas se resumen en el proceso de análisis del siguiente diagrama:</p>
-<p><img src="figuras/data-science.png" width="451" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/data-science.png" width="70%" style="display: block; margin: auto;" /></p>
 <p class="espacio">
 </p>
 <p>Primero debe <strong>importar</strong> los datos en R. Esto generalmente significa llevar los datos almacenados en un archivo, una base de datos, o uan Web API, a un <strong>data frame</strong> de R.</p>
@@ -271,7 +273,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>Windows: <a href="https://download1.rstudio.org/RStudio-1.1.414.exe" class="uri">https://download1.rstudio.org/RStudio-1.1.414.exe</a></p></li>
 </ul>
 <p>RStudio es libre y gratis. Es un ambiente de desarrollo integrado para R: incluye una consola, un editor de texto y un conjunto de herramientas para administrar el espacio de trabajo cuando se utiliza R.</p>
-<p><img src="figuras/rstudio-console-descr.png" width="1139" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/rstudio-console-descr.png" width="70%" style="display: block; margin: auto;" /></p>
 <p class="espacio">
 </p>
 <p>Algunos <em>shortcuts</em> útiles en RStudio son:</p>
@@ -296,7 +298,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p class="espacio">
 </p>
 <p>Para que el código sea <strong>reproducible</strong> es importante que RStudio únicamente guarde lo relevante para hacer los cálculos, es decir, los scripts y <em>no los cálculos en sí</em>. Con tus scripts de R (y los datos), siempre podemos volver a crear las variables de ambiente. Sin embargo, es casi imposible recuperar un script únicamente a partir de tus variables de ambiente. Por lo tanto, se recomienda ampliamente configurar RStudio para que jamás guarde el ambiente en memoria.</p>
-<p><img src="figuras/rstudio-workspace.png" width="482" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/rstudio-workspace.png" width="70%" style="display: block; margin: auto;" /></p>
 <p class="espacio">
 </p>
 </div>
@@ -307,7 +309,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li>Desde RStudio:</li>
 </ul>
-<p><img src="figuras/install_packages.png" width="690" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/install_packages.png" width="70%" style="display: block; margin: auto;" /></p>
 <p class="espacio">
 </p>
 <ul>
@@ -316,19 +318,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</code></pre></div>
 <p>Una vez instalados los paquetes, se cargan a la sesión de R mediante <code>library</code>. Por ejemplo, para cargar el paquete <code>readr</code> que instalamos anteriormente, hacemos:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;tidyverse&#39;</span>)
-<span class="kw">print</span>(read_csv)</code></pre></div>
-<pre><code>## function (file, col_names = TRUE, col_types = NULL, locale = default_locale(), 
-##     na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE, quote = &quot;\&quot;&quot;, comment = &quot;&quot;, 
-##     trim_ws = TRUE, skip = 0, n_max = Inf, guess_max = min(1000, 
-##         n_max), progress = show_progress()) 
-## {
-##     tokenizer &lt;- tokenizer_csv(na = na, quoted_na = TRUE, quote = quote, 
-##         comment = comment, trim_ws = trim_ws)
-##     read_delimited(file, tokenizer, col_names = col_names, col_types = col_types, 
-##         locale = locale, skip = skip, comment = comment, n_max = n_max, 
-##         guess_max = guess_max, progress = progress)
-## }
-## &lt;environment: namespace:readr&gt;</code></pre>
+<span class="kw">print</span>(read_csv)
+<span class="co">#&gt; function (file, col_names = TRUE, col_types = NULL, locale = default_locale(), </span>
+<span class="co">#&gt;     na = c(&quot;&quot;, &quot;NA&quot;), quoted_na = TRUE, quote = &quot;\&quot;&quot;, comment = &quot;&quot;, </span>
+<span class="co">#&gt;     trim_ws = TRUE, skip = 0, n_max = Inf, guess_max = min(1000, </span>
+<span class="co">#&gt;         n_max), progress = show_progress()) </span>
+<span class="co">#&gt; {</span>
+<span class="co">#&gt;     tokenizer &lt;- tokenizer_csv(na = na, quoted_na = TRUE, quote = quote, </span>
+<span class="co">#&gt;         comment = comment, trim_ws = trim_ws)</span>
+<span class="co">#&gt;     read_delimited(file, tokenizer, col_names = col_names, col_types = col_types, </span>
+<span class="co">#&gt;         locale = locale, skip = skip, comment = comment, n_max = n_max, </span>
+<span class="co">#&gt;         guess_max = guess_max, progress = progress)</span>
+<span class="co">#&gt; }</span>
+<span class="co">#&gt; &lt;environment: namespace:readr&gt;</span></code></pre></div>
 <p>Como el paquete <code>readr</code> está cargado en la sesión podemos llamar a la función <code>read_csv</code> que se usará más adelante.</p>
 <p><strong>Importante</strong>: Los paquetes se instalan una vez únicamente después de descargar una nueva versión de R. Las librerías se cargan en cada sesión de R nueva.</p>
 <p><br></p>
@@ -356,7 +358,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Todo lo que existe en R es un objeto.</p>
 </blockquote>
 <p>En R se puede trabajar con distintas estructuras de datos, algunas son de una sola dimensión y otras permiten más, como indica el siguiente diagrama:</p>
-<p><img src="figuras/data-estructure.png" width="313" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/data-estructure.png" width="70%" style="display: block; margin: auto;" /></p>
 <p class="espacio">
 </p>
 <div id="vectores" class="section level3">
@@ -369,62 +371,62 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><strong>Vectores numéricos</strong>:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="fl">2.5</span>,<span class="dv">3</span>,<span class="fl">4.5</span>,<span class="dv">5</span>,<span class="fl">6.9</span>)
-a</code></pre></div>
-<pre><code>## [1] 1.0 2.5 3.0 4.5 5.0 6.9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># clase del vector</span>
-<span class="kw">class</span>(a)</code></pre></div>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
+a
+<span class="co">#&gt; [1] 1.0 2.5 3.0 4.5 5.0 6.9</span>
+<span class="co"># clase del vector</span>
+<span class="kw">class</span>(a)
+<span class="co">#&gt; [1] &quot;numeric&quot;</span></code></pre></div>
 <ul>
 <li><strong>Vectores lógicos</strong>:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bool &lt;-<span class="st"> </span><span class="kw">c</span>(T, F, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)
-bool</code></pre></div>
-<pre><code>## [1]  TRUE FALSE  TRUE FALSE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># clase del vector</span>
-<span class="kw">class</span>(bool)</code></pre></div>
-<pre><code>## [1] &quot;logical&quot;</code></pre>
+bool
+<span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE</span>
+<span class="co"># clase del vector</span>
+<span class="kw">class</span>(bool)
+<span class="co">#&gt; [1] &quot;logical&quot;</span></code></pre></div>
 <ul>
 <li><strong>Vectores de caracteres</strong>:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fruits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;pineapple&quot;</span>, <span class="st">&quot;lemon&quot;</span>, <span class="st">&quot;kiwi&quot;</span>)
-fruits</code></pre></div>
-<pre><code>## [1] &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(fruits)</code></pre></div>
-<pre><code>## [1] &quot;character&quot;</code></pre>
+fruits
+<span class="co">#&gt; [1] &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</span>
+<span class="kw">class</span>(fruits)
+<span class="co">#&gt; [1] &quot;character&quot;</span></code></pre></div>
 <p>Para la manipulación de caracteres es recomendable el paquete <strong>stringr</strong> que permite realizar operaciones sobre este tipo de elementos. Más adelante se presenta un ejemplo.</p>
 <p><br></p>
 <p>La <strong>selección de elementos</strong> de un vector se realiza con <strong><code>[ ]</code></strong> para indicar la posición. A diferencia de otros lenguajes de programación las posiciones en R incian en 1.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># elemento en la posición 1</span>
-fruits[<span class="dv">1</span>]</code></pre></div>
-<pre><code>## [1] &quot;apple&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># elemento en la posición 1 y 5</span>
-fruits[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>)]</code></pre></div>
-<pre><code>## [1] &quot;apple&quot; &quot;lemon&quot;</code></pre>
+fruits[<span class="dv">1</span>]
+<span class="co">#&gt; [1] &quot;apple&quot;</span>
+<span class="co"># elemento en la posición 1 y 5</span>
+fruits[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>)]
+<span class="co">#&gt; [1] &quot;apple&quot; &quot;lemon&quot;</span></code></pre></div>
 <p><br></p>
 <p>En R es posible extraer un valor del vector indexándolo con posiciones negativas:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># omitir el elemento en la primera posición</span>
-fruits[<span class="op">-</span><span class="dv">1</span>]</code></pre></div>
-<pre><code>## [1] &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
+fruits[<span class="op">-</span><span class="dv">1</span>]
+<span class="co">#&gt; [1] &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</span></code></pre></div>
 <p><br></p>
 <p>Una característica particular de vectores en R, es que cada elemento puede ser nombrado. Para hacer esto se usa la función <code>names()</code>. Por ejemplo, al vector <em>fruits</em> agregemos el nombre en español de la fruta para como el nombre de cada elemento.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(fruits) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;manzana&#39;</span>, <span class="st">&#39;platano&#39;</span>, <span class="st">&#39;naranja&#39;</span>, <span class="st">&#39;piña&#39;</span>, <span class="st">&#39;limón&#39;, &#39;</span>kiwi<span class="st">&#39;)</span>
-<span class="st">fruits</span></code></pre></div>
-<pre><code>##     manzana     platano     naranja        piña       limón        kiwi 
-##     &quot;apple&quot;    &quot;banana&quot;    &quot;orange&quot; &quot;pineapple&quot;     &quot;lemon&quot;      &quot;kiwi&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># cada elemento tiene un nombre asignado</span>
-fruits[<span class="dv">5</span>]</code></pre></div>
-<pre><code>##   limón 
-## &quot;lemon&quot;</code></pre>
+<span class="st">fruits</span>
+<span class="st">#&gt;     manzana     platano     naranja        piña       limón        kiwi </span>
+<span class="st">#&gt;     &quot;apple&quot;    &quot;banana&quot;    &quot;orange&quot; &quot;pineapple&quot;     &quot;lemon&quot;      &quot;kiwi&quot;</span>
+<span class="st"># cada elemento tiene un nombre asignado</span>
+<span class="st">fruits[5]</span>
+<span class="st">#&gt;   limón </span>
+<span class="st">#&gt; &quot;lemon&quot;</span></code></pre></div>
 <p><br></p>
 <p>Para eliminar los nombres asignados a cada elemento, se asigna <code>NULL</code> a los nombres del vector:</p>
-<pre><code>## NULL</code></pre>
-<pre><code>## [1] &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
+<pre><code>#&gt; NULL
+#&gt; [1] &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
 <p><br></p>
 <p><br></p>
 <p>Los tipos que pueden tener los vectores se muestran en la siguiente figura.</p>
 <p class="espacio">
 </p>
-<p><img src="figuras/data-structures-overview.png" width="406" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/data-structures-overview.png" width="70%" style="display: block; margin: auto;" /></p>
 <p class="espacio">
 </p>
 <p>Veamos que regresan los siguientes comandos:</p>
@@ -437,21 +439,21 @@ fruits[<span class="dv">5</span>]</code></pre></div>
 <ul>
 <li>Tipo</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(x)</code></pre></div>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(x)
+<span class="co">#&gt; [1] &quot;integer&quot;</span></code></pre></div>
 <ul>
 <li>Longitud</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(x)</code></pre></div>
-<pre><code>## [1] 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(x)
+<span class="co">#&gt; [1] 5</span></code></pre></div>
 <ul>
 <li>Atributos</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(x)</code></pre></div>
-<pre><code>## NULL</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(x)
+<span class="co">#&gt; NULL</span></code></pre></div>
 <p>Existe la función <code>is.vector(x)</code> para determinar si un objeto es un vector:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.vector</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.vector</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
 <p><br></p>
 <img src="figuras/manicule2.jpg" />
 <div class="centered">
@@ -474,15 +476,15 @@ fruits[<span class="dv">5</span>]</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Cargamos la librería</span>
 <span class="kw">library</span>(stringr)
 fruits &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;pineapple&quot;</span>, <span class="st">&quot;lemon&quot;</span>, <span class="st">&quot;kiwi&quot;</span>)
-fruits</code></pre></div>
-<pre><code>## [1] &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
+fruits
+<span class="co">#&gt; [1] &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</span></code></pre></div>
 <p>Esto es posible con la función <code>str_detect()</code>, que regresa un vector booleano para cada elemento del vector donde encontró el patron <strong>w</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_detect</span>(fruits, <span class="dt">pattern =</span> <span class="st">&#39;w&#39;</span>)</code></pre></div>
-<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE  TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_detect</span>(fruits, <span class="dt">pattern =</span> <span class="st">&#39;w&#39;</span>)
+<span class="co">#&gt; [1] FALSE FALSE FALSE FALSE FALSE  TRUE</span></code></pre></div>
 <p>Ahora, seleccionamos únicamente los elementos del vector que tienen la letra <strong>w</strong>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Selecciona el elemento con valor TRUE: kiwi</span>
-fruits[<span class="kw">str_detect</span>(fruits, <span class="dt">pattern =</span> <span class="st">&#39;w&#39;</span>)]</code></pre></div>
-<pre><code>## [1] &quot;kiwi&quot;</code></pre>
+fruits[<span class="kw">str_detect</span>(fruits, <span class="dt">pattern =</span> <span class="st">&#39;w&#39;</span>)]
+<span class="co">#&gt; [1] &quot;kiwi&quot;</span></code></pre></div>
 <p><br></p>
 <div id="operaciones-de-vectores" class="section level4">
 <h4><span class="header-section-number">2.4.1.1</span> Operaciones de vectores</h4>
@@ -493,36 +495,36 @@ fruits[<span class="kw">str_detect</span>(fruits, <span class="dt">pattern =</sp
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Suma del vector longitud 6 y un vector longitud 1</span>
 a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">3</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">6.9</span>)
 b &lt;-<span class="st"> </span><span class="dv">1</span>
-a <span class="op">+</span><span class="st"> </span>b </code></pre></div>
-<pre><code>## [1] 2.0 3.5 4.0 5.5 6.0 7.9</code></pre>
+a <span class="op">+</span><span class="st"> </span>b 
+<span class="co">#&gt; [1] 2.0 3.5 4.0 5.5 6.0 7.9</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Multiplicaciones componente a componente misma longitud</span>
 a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">3</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">6.9</span>)
-a<span class="op">*</span>a</code></pre></div>
-<pre><code>## [1]  1.00  6.25  9.00 20.25 25.00 47.61</code></pre>
+a<span class="op">*</span>a
+<span class="co">#&gt; [1]  1.00  6.25  9.00 20.25 25.00 47.61</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Multiplicaciones y potencias</span>
 a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">3</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">6.9</span>)
 c &lt;-<span class="st"> </span>(a<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>)<span class="op">*</span><span class="dv">3</span>
-c</code></pre></div>
-<pre><code>## [1]  18.00  33.75  42.00  75.75  90.00 157.83</code></pre>
+c
+<span class="co">#&gt; [1]  18.0  33.8  42.0  75.8  90.0 157.8</span></code></pre></div>
 <p><br></p>
 <ul>
 <li>Comparaciones: En este tipo de operación se obtiene un vector lógico dependiendo si la condición se cumple o no.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Comparar el vector dado un valor específico</span>
-a <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span> </code></pre></div>
-<pre><code>## [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[a <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>] <span class="co"># únicamente elementos que cumple la condicion de ser mayores a 3</span></code></pre></div>
-<pre><code>## [1] 4.5 5.0 6.9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fruits <span class="op">!=</span><span class="st"> &#39;apple&#39;</span></code></pre></div>
-<pre><code>## [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fruits[fruits <span class="op">!=</span><span class="st"> &#39;apple&#39;</span>] <span class="co"># únicamente elementos que no son apple</span></code></pre></div>
-<pre><code>## [1] &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
+a <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span> 
+<span class="co">#&gt; [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE</span>
+a[a <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>] <span class="co"># únicamente elementos que cumple la condicion de ser mayores a 3</span>
+<span class="co">#&gt; [1] 4.5 5.0 6.9</span>
+fruits <span class="op">!=</span><span class="st"> &#39;apple&#39;</span>
+<span class="co">#&gt; [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</span>
+fruits[fruits <span class="op">!=</span><span class="st"> &#39;apple&#39;</span>] <span class="co"># únicamente elementos que no son apple</span>
+<span class="co">#&gt; [1] &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Comparar el vector dado otro vector de la misma dimensión</span>
 x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)
-a <span class="op">==</span><span class="st"> </span>x</code></pre></div>
-<pre><code>## [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[a <span class="op">==</span><span class="st"> </span>x] <span class="co"># unicamente los elementos iguales y en la misma posición entre a y x</span></code></pre></div>
-<pre><code>## [1] 1 3 5</code></pre>
+a <span class="op">==</span><span class="st"> </span>x
+<span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE</span>
+a[a <span class="op">==</span><span class="st"> </span>x] <span class="co"># unicamente los elementos iguales y en la misma posición entre a y x</span>
+<span class="co">#&gt; [1] 1 3 5</span></code></pre></div>
 <p><br></p>
 <ul>
 <li>Funciones predeterminadas:</li>
@@ -552,11 +554,11 @@ a <span class="op">==</span><span class="st"> </span>x</code></pre></div>
 <li><strong>Secuencias</strong>: los vectores de secuencias se pueden crear con la función <code>seq()</code> o con <code>:</code>, de la siguiente forma:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># secuecia de 1 al 10 </span>
-<span class="dv">1</span><span class="op">:</span><span class="dv">10</span></code></pre></div>
-<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># secuecia de pares de 0 al 10 </span>
-<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1]  0  2  4  6  8 10</code></pre>
+<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
+<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span>
+<span class="co"># secuecia de pares de 0 al 10 </span>
+<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>)
+<span class="co">#&gt; [1]  0  2  4  6  8 10</span></code></pre></div>
 <p><br></p>
 <ul>
 <li><strong>Vectores de fechas</strong>: se pueden hacer operaciones y algunas funciones definidas de fechas. El paquete <em>lubridate</em> permite manejar fechas con mayor facilidad.</li>
@@ -564,23 +566,23 @@ a <span class="op">==</span><span class="st"> </span>x</code></pre></div>
 <p>Se incia la secuencia el 08 de agosto de 2016 y se asigna la clase de fecha con la función <code>as.Date()</code>. Se generan en total 10 fechas <code>length.out = 10</code> y con una distancua semanal <code>by=&quot;1 week&quot;</code>, es decir, se tiene la fecha de 10 semanas consecutivas:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lubridate)
 tenweeks &lt;-<span class="st"> </span><span class="kw">seq</span>( <span class="kw">as.Date</span>(<span class="st">&quot;2016-08-08&quot;</span>), <span class="dt">length.out =</span> <span class="dv">10</span>,  <span class="dt">by=</span><span class="st">&quot;1 week&quot;</span>)
-tenweeks</code></pre></div>
-<pre><code>##  [1] &quot;2016-08-08&quot; &quot;2016-08-15&quot; &quot;2016-08-22&quot; &quot;2016-08-29&quot; &quot;2016-09-05&quot;
-##  [6] &quot;2016-09-12&quot; &quot;2016-09-19&quot; &quot;2016-09-26&quot; &quot;2016-10-03&quot; &quot;2016-10-10&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(tenweeks)</code></pre></div>
-<pre><code>## [1] &quot;Date&quot;</code></pre>
+tenweeks
+<span class="co">#&gt;  [1] &quot;2016-08-08&quot; &quot;2016-08-15&quot; &quot;2016-08-22&quot; &quot;2016-08-29&quot; &quot;2016-09-05&quot;</span>
+<span class="co">#&gt;  [6] &quot;2016-09-12&quot; &quot;2016-09-19&quot; &quot;2016-09-26&quot; &quot;2016-10-03&quot; &quot;2016-10-10&quot;</span>
+<span class="kw">class</span>(tenweeks)
+<span class="co">#&gt; [1] &quot;Date&quot;</span></code></pre></div>
 <p>Se pueden hacer algunas operaciones como se ejemplifica en el siguiente código.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Aumenta un día a cada fecha</span>
-tenweeks <span class="op">+</span><span class="st"> </span><span class="dv">1</span></code></pre></div>
-<pre><code>##  [1] &quot;2016-08-09&quot; &quot;2016-08-16&quot; &quot;2016-08-23&quot; &quot;2016-08-30&quot; &quot;2016-09-06&quot;
-##  [6] &quot;2016-09-13&quot; &quot;2016-09-20&quot; &quot;2016-09-27&quot; &quot;2016-10-04&quot; &quot;2016-10-11&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Aumenta un día a cada fecha</span>
-tenweeks </code></pre></div>
-<pre><code>##  [1] &quot;2016-08-08&quot; &quot;2016-08-15&quot; &quot;2016-08-22&quot; &quot;2016-08-29&quot; &quot;2016-09-05&quot;
-##  [6] &quot;2016-09-12&quot; &quot;2016-09-19&quot; &quot;2016-09-26&quot; &quot;2016-10-03&quot; &quot;2016-10-10&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">weekdays</span>(tenweeks) <span class="co"># Día de la semana de cada fecha</span></code></pre></div>
-<pre><code>##  [1] &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot;
-##  [8] &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot;</code></pre>
+tenweeks <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+<span class="co">#&gt;  [1] &quot;2016-08-09&quot; &quot;2016-08-16&quot; &quot;2016-08-23&quot; &quot;2016-08-30&quot; &quot;2016-09-06&quot;</span>
+<span class="co">#&gt;  [6] &quot;2016-09-13&quot; &quot;2016-09-20&quot; &quot;2016-09-27&quot; &quot;2016-10-04&quot; &quot;2016-10-11&quot;</span>
+<span class="co"># Aumenta un día a cada fecha</span>
+tenweeks 
+<span class="co">#&gt;  [1] &quot;2016-08-08&quot; &quot;2016-08-15&quot; &quot;2016-08-22&quot; &quot;2016-08-29&quot; &quot;2016-09-05&quot;</span>
+<span class="co">#&gt;  [6] &quot;2016-09-12&quot; &quot;2016-09-19&quot; &quot;2016-09-26&quot; &quot;2016-10-03&quot; &quot;2016-10-10&quot;</span>
+<span class="kw">weekdays</span>(tenweeks) <span class="co"># Día de la semana de cada fecha</span>
+<span class="co">#&gt;  [1] &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot;</span>
+<span class="co">#&gt;  [8] &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot;</span></code></pre></div>
 <p><br></p>
 <ul>
 <li><strong>Vectores de factores</strong>: este tipo de vector es usado comúnmente para variables categóricas. En R existe la clase <strong>factor</strong> que se asigna con la función homónima <code>factor()</code> o <code>as.factor()</code>.</li>
@@ -593,25 +595,25 @@ fruits.fac &lt;-<span class="st"> </span><span class="kw">factor</span>(fruits,
                    <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;pineapple&quot;</span>, <span class="st">&quot;lemon&quot;</span>, <span class="st">&quot;kiwi&quot;</span>),
                    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;manzana&#39;</span>, <span class="st">&#39;platano&#39;</span>, <span class="st">&#39;naranja&#39;</span>, <span class="st">&#39;piña&#39;</span>, <span class="st">&#39;limón&#39;, &#39;</span>kiwi<span class="st">&#39;)</span>
 <span class="st">)</span>
-<span class="st">fruits.fac</span></code></pre></div>
-<pre><code>## [1] platano manzana platano naranja piña    limón   kiwi    manzana
-## Levels: manzana platano naranja piña limón kiwi</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Clase</span>
-<span class="kw">class</span>(fruits.fac)</code></pre></div>
-<pre><code>## [1] &quot;factor&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Niveles etiquetados</span>
-<span class="kw">levels</span>(fruits.fac)</code></pre></div>
-<pre><code>## [1] &quot;manzana&quot; &quot;platano&quot; &quot;naranja&quot; &quot;piña&quot;    &quot;limón&quot;   &quot;kiwi&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Niveles únicos</span>
-<span class="kw">as.numeric</span>(fruits.fac)</code></pre></div>
-<pre><code>## [1] 2 1 2 3 4 5 6 1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Agregar un nuevo valor</span>
-fruits.fac[<span class="dv">7</span>] &lt;-<span class="st"> &#39;melon&#39;</span></code></pre></div>
-<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7, value = &quot;melon&quot;): invalid factor level,
-## NA generated</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fruits.fac</code></pre></div>
-<pre><code>## [1] platano manzana platano naranja piña    limón   &lt;NA&gt;    manzana
-## Levels: manzana platano naranja piña limón kiwi</code></pre>
+<span class="st">fruits.fac</span>
+<span class="st">#&gt; [1] platano manzana platano naranja piña    limón   kiwi    manzana</span>
+<span class="st">#&gt; Levels: manzana platano naranja piña limón kiwi</span>
+<span class="st"># Clase</span>
+<span class="st">class(fruits.fac)</span>
+<span class="st">#&gt; [1] &quot;factor&quot;</span>
+<span class="st"># Niveles etiquetados</span>
+<span class="st">levels(fruits.fac)</span>
+<span class="st">#&gt; [1] &quot;manzana&quot; &quot;platano&quot; &quot;naranja&quot; &quot;piña&quot;    &quot;limón&quot;   &quot;kiwi&quot;</span>
+<span class="st"># Niveles únicos</span>
+<span class="st">as.numeric(fruits.fac)</span>
+<span class="st">#&gt; [1] 2 1 2 3 4 5 6 1</span>
+<span class="st"># Agregar un nuevo valor</span>
+<span class="st">fruits.fac[7] &lt;- &#39;</span>melon<span class="st">&#39;</span>
+<span class="st">#&gt; Warning in `[&lt;-.factor`(`*tmp*`, 7, value = &quot;melon&quot;): invalid factor level,</span>
+<span class="st">#&gt; NA generated</span>
+<span class="st">fruits.fac</span>
+<span class="st">#&gt; [1] platano manzana platano naranja piña    limón   &lt;NA&gt;    manzana</span>
+<span class="st">#&gt; Levels: manzana platano naranja piña limón kiwi</span></code></pre></div>
 <p><br></p>
 <p><strong>Importante:</strong> En R los vectores no pueden combinar diferentes tipos de elementos. El tipo de elementos es lo que define la clase del vector. Es por esto que en el ejemplo, al sustituir la posición 7 por <em>melon</em> se obtiene un <code>NA</code>, melón no está incluído en los niveles definidos del vector.</p>
 <p>Existen también los <strong>factores ordenados</strong>. Por ejemplo, consideremos los datos de flores de iris de Fisher:</p>
@@ -630,105 +632,105 @@ iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 </thead>
 <tbody>
 <tr class="odd">
-<td>127</td>
-<td align="right">6.2</td>
-<td align="right">2.8</td>
+<td>13</td>
 <td align="right">4.8</td>
-<td align="right">1.8</td>
-<td align="left">virginica</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
 </tr>
 <tr class="even">
-<td>20</td>
+<td>125</td>
+<td align="right">6.7</td>
+<td align="right">3.3</td>
+<td align="right">5.7</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="odd">
+<td>89</td>
+<td align="right">5.6</td>
+<td align="right">3.0</td>
+<td align="right">4.1</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td>24</td>
 <td align="right">5.1</td>
-<td align="right">3.8</td>
-<td align="right">1.5</td>
+<td align="right">3.3</td>
+<td align="right">1.7</td>
+<td align="right">0.5</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td>68</td>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">4.1</td>
+<td align="right">1.0</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="odd">
+<td>72</td>
+<td align="right">6.1</td>
+<td align="right">2.8</td>
+<td align="right">4.0</td>
+<td align="right">1.3</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td>42</td>
+<td align="right">4.5</td>
+<td align="right">2.3</td>
+<td align="right">1.3</td>
 <td align="right">0.3</td>
 <td align="left">setosa</td>
 </tr>
 <tr class="odd">
-<td>84</td>
-<td align="right">6.0</td>
-<td align="right">2.7</td>
-<td align="right">5.1</td>
-<td align="right">1.6</td>
-<td align="left">versicolor</td>
-</tr>
-<tr class="even">
-<td>140</td>
-<td align="right">6.9</td>
-<td align="right">3.1</td>
-<td align="right">5.4</td>
-<td align="right">2.1</td>
-<td align="left">virginica</td>
-</tr>
-<tr class="odd">
-<td>111</td>
+<td>105</td>
 <td align="right">6.5</td>
-<td align="right">3.2</td>
-<td align="right">5.1</td>
-<td align="right">2.0</td>
+<td align="right">3.0</td>
+<td align="right">5.8</td>
+<td align="right">2.2</td>
 <td align="left">virginica</td>
 </tr>
 <tr class="even">
-<td>103</td>
-<td align="right">7.1</td>
-<td align="right">3.0</td>
-<td align="right">5.9</td>
-<td align="right">2.1</td>
-<td align="left">virginica</td>
-</tr>
-<tr class="odd">
-<td>147</td>
-<td align="right">6.3</td>
+<td>109</td>
+<td align="right">6.7</td>
 <td align="right">2.5</td>
-<td align="right">5.0</td>
-<td align="right">1.9</td>
+<td align="right">5.8</td>
+<td align="right">1.8</td>
 <td align="left">virginica</td>
-</tr>
-<tr class="even">
-<td>85</td>
-<td align="right">5.4</td>
-<td align="right">3.0</td>
-<td align="right">4.5</td>
-<td align="right">1.5</td>
-<td align="left">versicolor</td>
-</tr>
-<tr class="odd">
-<td>61</td>
-<td align="right">5.0</td>
-<td align="right">2.0</td>
-<td align="right">3.5</td>
-<td align="right">1.0</td>
-<td align="left">versicolor</td>
-</tr>
-<tr class="even">
-<td>65</td>
-<td align="right">5.6</td>
-<td align="right">2.9</td>
-<td align="right">3.6</td>
-<td align="right">1.3</td>
-<td align="left">versicolor</td>
 </tr>
 </tbody>
 </table>
 <p>Este conjunto de datos multivariados fue presentado por el estadístico y biólogo británico Ronald Fisher en su artículo de 1936 “El uso de mediciones múltiples en problemas taxonómicos como un ejemplo de análisis discriminante lineal”. Edgar Anderson recopiló los datos para cuantificar la variación morfológica de las flores de iris de tres especies relacionadas. Los datos fueron recolectadas en la Península de Gaspé. <span class="citation">(Fisher <a href="#ref-fisher1936use">1936</a>)</span></p>
 <p class="espacio">
 </p>
-<p><img src="figuras/iris_flowers.jpg" width="288" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/iris_flowers.jpg" width="70%" style="display: block; margin: auto;" /></p>
 <p class="espacio">
 </p>
 <p>El conjunto de datos consiste de 50 observaciones de <em>cada</em> una de las tres especies de Iris (Iris setosa, Iris virginica e Iris versicolor). Se midieron cuatro características de cada muestra: la longitud y el ancho de los sépalos y pétalos, en centímetros. Con base en la combinación de estas cuatro características, Fisher desarrolló un modelo discriminante lineal para distinguir las especies entre sí.</p>
 <p>Supongamos que queremos analizar la distribución del ancho del sépalo por especie de flor de iris:</p>
-<p><img src="02-temas_selectos_R_files/figure-html/unnamed-chunk-17-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="02-temas_selectos_R_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Esto ocurre porque los factores están ordenados alfabéticamente:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(iris<span class="op">$</span>Species)</code></pre></div>
-<pre><code>## [1] &quot;setosa&quot;     &quot;versicolor&quot; &quot;virginica&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(iris<span class="op">$</span>Species)
+<span class="co">#&gt; [1] &quot;setosa&quot;     &quot;versicolor&quot; &quot;virginica&quot;</span></code></pre></div>
 <p>Sería mejor que las especies estuvieran <em>ordenadas</em> por la mediana de la distribución para poder hacer mejores comparaciones. Notemos el uso de la función <code>fct_reorder</code> del paquete <code>forcats</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(forcats)
 iris<span class="op">$</span>Species_ord &lt;-<span class="st"> </span><span class="kw">fct_reorder</span>(iris<span class="op">$</span>Species, iris<span class="op">$</span>Sepal.Width, <span class="dt">fun =</span> median)
-<span class="kw">levels</span>(iris<span class="op">$</span>Species_ord)</code></pre></div>
-<pre><code>## [1] &quot;versicolor&quot; &quot;virginica&quot;  &quot;setosa&quot;</code></pre>
-<p><img src="02-temas_selectos_R_files/figure-html/unnamed-chunk-20-1.png" width="768" style="display: block; margin: auto;" /></p>
+<span class="kw">levels</span>(iris<span class="op">$</span>Species_ord)
+<span class="co">#&gt; [1] &quot;versicolor&quot; &quot;virginica&quot;  &quot;setosa&quot;</span></code></pre></div>
+<p><img src="02-temas_selectos_R_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="data-frames" class="section level3">
@@ -740,116 +742,116 @@ iris<span class="op">$</span>Species_ord &lt;-<span class="st"> </span><span cla
 <span class="dt">frutas =</span> fruits[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>], 
 <span class="dt">valor =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">3</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">6.9</span>)
 )
-tabla</code></pre></div>
-<pre><code>##   n    frutas valor
-## 1 1    banana   1.0
-## 2 2     apple   2.5
-## 3 3    banana   3.0
-## 4 4    orange   4.5
-## 5 5 pineapple   5.0
-## 6 6     lemon   6.9</code></pre>
+tabla
+<span class="co">#&gt;   n    frutas valor</span>
+<span class="co">#&gt; 1 1    banana   1.0</span>
+<span class="co">#&gt; 2 2     apple   2.5</span>
+<span class="co">#&gt; 3 3    banana   3.0</span>
+<span class="co">#&gt; 4 4    orange   4.5</span>
+<span class="co">#&gt; 5 5 pineapple   5.0</span>
+<span class="co">#&gt; 6 6     lemon   6.9</span></code></pre></div>
 <p>Similar a las funciones de vectores, en <em>data.frames</em> existen funciones predeterminadas que ayudan a su manipulación.</p>
 <ul>
 <li><code>head</code> permite ver los primeros 6 elemento del data.frame:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mtcars)</code></pre></div>
-<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mtcars)
+<span class="co">#&gt;                    mpg cyl disp  hp drat   wt qsec vs am gear carb</span>
+<span class="co">#&gt; Mazda RX4         21.0   6  160 110 3.90 2.62 16.5  0  1    4    4</span>
+<span class="co">#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.88 17.0  0  1    4    4</span>
+<span class="co">#&gt; Datsun 710        22.8   4  108  93 3.85 2.32 18.6  1  1    4    1</span>
+<span class="co">#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.21 19.4  1  0    3    1</span>
+<span class="co">#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2</span>
+<span class="co">#&gt; Valiant           18.1   6  225 105 2.76 3.46 20.2  1  0    3    1</span></code></pre></div>
 <ul>
 <li><code>str</code> describe el tipo de variables en el data.frame:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(mtcars)</code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
-##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
-##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
-##  $ disp: num  160 160 108 258 360 ...
-##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
-##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
-##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
-##  $ qsec: num  16.5 17 18.6 19.4 17 ...
-##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
-##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
-##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
-##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(mtcars)
+<span class="co">#&gt; &#39;data.frame&#39;:    32 obs. of  11 variables:</span>
+<span class="co">#&gt;  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...</span>
+<span class="co">#&gt;  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...</span>
+<span class="co">#&gt;  $ disp: num  160 160 108 258 360 ...</span>
+<span class="co">#&gt;  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...</span>
+<span class="co">#&gt;  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...</span>
+<span class="co">#&gt;  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...</span>
+<span class="co">#&gt;  $ qsec: num  16.5 17 18.6 19.4 17 ...</span>
+<span class="co">#&gt;  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...</span>
+<span class="co">#&gt;  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...</span>
+<span class="co">#&gt;  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...</span>
+<span class="co">#&gt;  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</span></code></pre></div>
 <ul>
 <li><code>dim</code> muestra la dimensión (renglones, columnas) del data.frame:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(mtcars)</code></pre></div>
-<pre><code>## [1] 32 11</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(mtcars)
+<span class="co">#&gt; [1] 32 11</span></code></pre></div>
 <ul>
 <li><code>colnames</code> y <code>names</code> muestran los nombres de las columnas del data.frame:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(mtcars)</code></pre></div>
-<pre><code>##  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;
-## [11] &quot;carb&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(mtcars)
+<span class="co">#&gt;  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;</span>
+<span class="co">#&gt; [11] &quot;carb&quot;</span></code></pre></div>
 <ul>
 <li><code>rownames</code> muestra el nombre de los renglones del data.frame:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(mtcars)</code></pre></div>
-<pre><code>##  [1] &quot;Mazda RX4&quot;           &quot;Mazda RX4 Wag&quot;       &quot;Datsun 710&quot;         
-##  [4] &quot;Hornet 4 Drive&quot;      &quot;Hornet Sportabout&quot;   &quot;Valiant&quot;            
-##  [7] &quot;Duster 360&quot;          &quot;Merc 240D&quot;           &quot;Merc 230&quot;           
-## [10] &quot;Merc 280&quot;            &quot;Merc 280C&quot;           &quot;Merc 450SE&quot;         
-## [13] &quot;Merc 450SL&quot;          &quot;Merc 450SLC&quot;         &quot;Cadillac Fleetwood&quot; 
-## [16] &quot;Lincoln Continental&quot; &quot;Chrysler Imperial&quot;   &quot;Fiat 128&quot;           
-## [19] &quot;Honda Civic&quot;         &quot;Toyota Corolla&quot;      &quot;Toyota Corona&quot;      
-## [22] &quot;Dodge Challenger&quot;    &quot;AMC Javelin&quot;         &quot;Camaro Z28&quot;         
-## [25] &quot;Pontiac Firebird&quot;    &quot;Fiat X1-9&quot;           &quot;Porsche 914-2&quot;      
-## [28] &quot;Lotus Europa&quot;        &quot;Ford Pantera L&quot;      &quot;Ferrari Dino&quot;       
-## [31] &quot;Maserati Bora&quot;       &quot;Volvo 142E&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(mtcars)
+<span class="co">#&gt;  [1] &quot;Mazda RX4&quot;           &quot;Mazda RX4 Wag&quot;       &quot;Datsun 710&quot;         </span>
+<span class="co">#&gt;  [4] &quot;Hornet 4 Drive&quot;      &quot;Hornet Sportabout&quot;   &quot;Valiant&quot;            </span>
+<span class="co">#&gt;  [7] &quot;Duster 360&quot;          &quot;Merc 240D&quot;           &quot;Merc 230&quot;           </span>
+<span class="co">#&gt; [10] &quot;Merc 280&quot;            &quot;Merc 280C&quot;           &quot;Merc 450SE&quot;         </span>
+<span class="co">#&gt; [13] &quot;Merc 450SL&quot;          &quot;Merc 450SLC&quot;         &quot;Cadillac Fleetwood&quot; </span>
+<span class="co">#&gt; [16] &quot;Lincoln Continental&quot; &quot;Chrysler Imperial&quot;   &quot;Fiat 128&quot;           </span>
+<span class="co">#&gt; [19] &quot;Honda Civic&quot;         &quot;Toyota Corolla&quot;      &quot;Toyota Corona&quot;      </span>
+<span class="co">#&gt; [22] &quot;Dodge Challenger&quot;    &quot;AMC Javelin&quot;         &quot;Camaro Z28&quot;         </span>
+<span class="co">#&gt; [25] &quot;Pontiac Firebird&quot;    &quot;Fiat X1-9&quot;           &quot;Porsche 914-2&quot;      </span>
+<span class="co">#&gt; [28] &quot;Lotus Europa&quot;        &quot;Ford Pantera L&quot;      &quot;Ferrari Dino&quot;       </span>
+<span class="co">#&gt; [31] &quot;Maserati Bora&quot;       &quot;Volvo 142E&quot;</span></code></pre></div>
 <ul>
 <li>La forma de indexar data.frames es similar a la de un vector <strong><code>[ ]</code></strong>, pero en este caso es posible indexar renglones y columnas:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># por posiciones de renglones</span>
-mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, ]</code></pre></div>
-<pre><code>##                 mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4      21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag  21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-## Datsun 710     22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># por posiciones de columnas</span>
-mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>)]</code></pre></div>
-<pre><code>##                 mpg  hp    wt
-## Mazda RX4      21.0 110 2.620
-## Mazda RX4 Wag  21.0 110 2.875
-## Datsun 710     22.8  93 2.320
-## Hornet 4 Drive 21.4 110 3.215</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># por nombre de renglones específico</span>
-mtcars[<span class="kw">c</span>(<span class="st">&#39;Mazda RX4&#39;</span>, <span class="st">&#39;Mazda RX4 Wag&#39;</span>), ]</code></pre></div>
-<pre><code>##               mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[<span class="kw">str_detect</span>(<span class="kw">rownames</span>(mtcars), <span class="st">&quot;Mazda&quot;</span> ), ]</code></pre></div>
-<pre><code>##               mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4</code></pre>
+mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, ]
+<span class="co">#&gt;                 mpg cyl disp  hp drat   wt qsec vs am gear carb</span>
+<span class="co">#&gt; Mazda RX4      21.0   6  160 110 3.90 2.62 16.5  0  1    4    4</span>
+<span class="co">#&gt; Mazda RX4 Wag  21.0   6  160 110 3.90 2.88 17.0  0  1    4    4</span>
+<span class="co">#&gt; Datsun 710     22.8   4  108  93 3.85 2.32 18.6  1  1    4    1</span>
+<span class="co">#&gt; Hornet 4 Drive 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1</span>
+<span class="co"># por posiciones de columnas</span>
+mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>)]
+<span class="co">#&gt;                 mpg  hp   wt</span>
+<span class="co">#&gt; Mazda RX4      21.0 110 2.62</span>
+<span class="co">#&gt; Mazda RX4 Wag  21.0 110 2.88</span>
+<span class="co">#&gt; Datsun 710     22.8  93 2.32</span>
+<span class="co">#&gt; Hornet 4 Drive 21.4 110 3.21</span>
+<span class="co"># por nombre de renglones específico</span>
+mtcars[<span class="kw">c</span>(<span class="st">&#39;Mazda RX4&#39;</span>, <span class="st">&#39;Mazda RX4 Wag&#39;</span>), ]
+<span class="co">#&gt;               mpg cyl disp  hp drat   wt qsec vs am gear carb</span>
+<span class="co">#&gt; Mazda RX4      21   6  160 110  3.9 2.62 16.5  0  1    4    4</span>
+<span class="co">#&gt; Mazda RX4 Wag  21   6  160 110  3.9 2.88 17.0  0  1    4    4</span>
+mtcars[<span class="kw">str_detect</span>(<span class="kw">rownames</span>(mtcars), <span class="st">&quot;Mazda&quot;</span> ), ]
+<span class="co">#&gt;               mpg cyl disp  hp drat   wt qsec vs am gear carb</span>
+<span class="co">#&gt; Mazda RX4      21   6  160 110  3.9 2.62 16.5  0  1    4    4</span>
+<span class="co">#&gt; Mazda RX4 Wag  21   6  160 110  3.9 2.88 17.0  0  1    4    4</span></code></pre></div>
 <ul>
 <li>También se puede seleccionar o filtrar el data.frame dado una condición:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[mtcars<span class="op">$</span>cyl <span class="op">==</span><span class="st"> </span><span class="dv">6</span>, ] <span class="co"># Selecciona los carros con número de cilindros mayor a 6</span></code></pre></div>
-<pre><code>##                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-## Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-## Valiant        18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-## Merc 280       19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
-## Merc 280C      17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
-## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars[mtcars<span class="op">$</span>cyl <span class="op">==</span><span class="st"> </span><span class="dv">6</span>, ] <span class="co"># Selecciona los carros con número de cilindros mayor a 6</span>
+<span class="co">#&gt;                 mpg cyl disp  hp drat   wt qsec vs am gear carb</span>
+<span class="co">#&gt; Mazda RX4      21.0   6  160 110 3.90 2.62 16.5  0  1    4    4</span>
+<span class="co">#&gt; Mazda RX4 Wag  21.0   6  160 110 3.90 2.88 17.0  0  1    4    4</span>
+<span class="co">#&gt; Hornet 4 Drive 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1</span>
+<span class="co">#&gt; Valiant        18.1   6  225 105 2.76 3.46 20.2  1  0    3    1</span>
+<span class="co">#&gt; Merc 280       19.2   6  168 123 3.92 3.44 18.3  1  0    4    4</span>
+<span class="co">#&gt; Merc 280C      17.8   6  168 123 3.92 3.44 18.9  1  0    4    4</span>
+<span class="co">#&gt; Ferrari Dino   19.7   6  145 175 3.62 2.77 15.5  0  1    5    6</span></code></pre></div>
 <ul>
 <li><code>rbind</code> permite unir dos data.frames por renglones, si y solo si, tiene el mismo número de columnas:</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(mtcars[<span class="kw">str_detect</span>(<span class="kw">rownames</span>(mtcars), <span class="st">&quot;Mazda&quot;</span> ), ],
-      mtcars[<span class="kw">str_detect</span>(<span class="kw">rownames</span>(mtcars), <span class="st">&quot;Hornet&quot;</span>), ])</code></pre></div>
-<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</code></pre>
+      mtcars[<span class="kw">str_detect</span>(<span class="kw">rownames</span>(mtcars), <span class="st">&quot;Hornet&quot;</span>), ])
+<span class="co">#&gt;                    mpg cyl disp  hp drat   wt qsec vs am gear carb</span>
+<span class="co">#&gt; Mazda RX4         21.0   6  160 110 3.90 2.62 16.5  0  1    4    4</span>
+<span class="co">#&gt; Mazda RX4 Wag     21.0   6  160 110 3.90 2.88 17.0  0  1    4    4</span>
+<span class="co">#&gt; Hornet 4 Drive    21.4   6  258 110 3.08 3.21 19.4  1  0    3    1</span>
+<span class="co">#&gt; Hornet Sportabout 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2</span></code></pre></div>
 <ul>
 <li><code>cbind</code> permite unir dos data.frames por columna, si y solo si, tiene el mismo número de renglones:</li>
 </ul>
@@ -858,34 +860,34 @@ mtcars[<span class="kw">c</span>(<span class="st">&#39;Mazda RX4&#39;</span>, <s
 <span class="dt">frutas =</span> <span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;pineapple&quot;</span>, <span class="st">&quot;lemon&quot;</span>, <span class="st">&quot;apple&quot;</span>), 
 <span class="dt">valor =</span> <span class="kw">runif</span>(<span class="dv">6</span>)
 )
-tabla</code></pre></div>
-<pre><code>##   n    frutas      valor
-## 1 1     apple 0.09817804
-## 2 2    banana 0.11950755
-## 3 3    orange 0.06049880
-## 4 4 pineapple 0.90166198
-## 5 5     lemon 0.94389677
-## 6 6     apple 0.74872976</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tabla.color &lt;-<span class="st">  </span><span class="kw">data.frame</span>(
+tabla
+<span class="co">#&gt;   n    frutas  valor</span>
+<span class="co">#&gt; 1 1     apple 0.8746</span>
+<span class="co">#&gt; 2 2    banana 0.1749</span>
+<span class="co">#&gt; 3 3    orange 0.0342</span>
+<span class="co">#&gt; 4 4 pineapple 0.3204</span>
+<span class="co">#&gt; 5 5     lemon 0.4023</span>
+<span class="co">#&gt; 6 6     apple 0.1957</span>
+tabla.color &lt;-<span class="st">  </span><span class="kw">data.frame</span>(
 <span class="dt">peso =</span> <span class="kw">rnorm</span>(<span class="dv">6</span>),
 <span class="dt">color =</span>   <span class="kw">c</span>(<span class="st">&#39;rojo&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;naranje&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;amarillo&#39;</span>, <span class="st">&#39;rojo&#39;</span>)
 )
-tabla.color</code></pre></div>
-<pre><code>##         peso    color
-## 1  1.1745650     rojo
-## 2  0.5903879 amarillo
-## 3 -0.3269992  naranje
-## 4 -1.4702022 amarillo
-## 5  1.6279476 amarillo
-## 6  0.5666423     rojo</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cbind</span>(tabla, tabla.color)</code></pre></div>
-<pre><code>##   n    frutas      valor       peso    color
-## 1 1     apple 0.09817804  1.1745650     rojo
-## 2 2    banana 0.11950755  0.5903879 amarillo
-## 3 3    orange 0.06049880 -0.3269992  naranje
-## 4 4 pineapple 0.90166198 -1.4702022 amarillo
-## 5 5     lemon 0.94389677  1.6279476 amarillo
-## 6 6     apple 0.74872976  0.5666423     rojo</code></pre>
+tabla.color
+<span class="co">#&gt;     peso    color</span>
+<span class="co">#&gt; 1 -0.244     rojo</span>
+<span class="co">#&gt; 2 -0.283 amarillo</span>
+<span class="co">#&gt; 3 -0.554  naranje</span>
+<span class="co">#&gt; 4  0.629 amarillo</span>
+<span class="co">#&gt; 5  2.065 amarillo</span>
+<span class="co">#&gt; 6 -1.631     rojo</span>
+<span class="kw">cbind</span>(tabla, tabla.color)
+<span class="co">#&gt;   n    frutas  valor   peso    color</span>
+<span class="co">#&gt; 1 1     apple 0.8746 -0.244     rojo</span>
+<span class="co">#&gt; 2 2    banana 0.1749 -0.283 amarillo</span>
+<span class="co">#&gt; 3 3    orange 0.0342 -0.554  naranje</span>
+<span class="co">#&gt; 4 4 pineapple 0.3204  0.629 amarillo</span>
+<span class="co">#&gt; 5 5     lemon 0.4023  2.065 amarillo</span>
+<span class="co">#&gt; 6 6     apple 0.1957 -1.631     rojo</span></code></pre></div>
 <p><strong>Nota:</strong> Una forma de seleccionar una columna es con el símbolo <strong>$</strong> (pesitos) y el nombre de la columna.</p>
 <p><br></p>
 <p><br></p>
@@ -905,50 +907,50 @@ tabla.color</code></pre></div>
              <span class="dt">frutas =</span> fruits, <span class="dt">tabla =</span> tabla, 
              <span class="dt">ejemlista =</span> <span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">15</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">b =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)
 )
-lista</code></pre></div>
-<pre><code>## $n
-## [1] 100
-## 
-## $x
-## [1] &quot;hello&quot;
-## 
-## $frutas
-## [1] &quot;banana&quot;    &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;    
-## [7] &quot;kiwi&quot;      &quot;apple&quot;    
-## 
-## $tabla
-##   n    frutas      valor
-## 1 1     apple 0.09817804
-## 2 2    banana 0.11950755
-## 3 3    orange 0.06049880
-## 4 4 pineapple 0.90166198
-## 5 5     lemon 0.94389677
-## 6 6     apple 0.74872976
-## 
-## $ejemlista
-## $ejemlista$a
-## [1] 15 16 17 18 19 20
-## 
-## $ejemlista$b
-## [1] 1 2 3 4 5</code></pre>
+lista
+<span class="co">#&gt; $n</span>
+<span class="co">#&gt; [1] 100</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $x</span>
+<span class="co">#&gt; [1] &quot;hello&quot;</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $frutas</span>
+<span class="co">#&gt; [1] &quot;banana&quot;    &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;    </span>
+<span class="co">#&gt; [7] &quot;kiwi&quot;      &quot;apple&quot;    </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $tabla</span>
+<span class="co">#&gt;   n    frutas  valor</span>
+<span class="co">#&gt; 1 1     apple 0.8746</span>
+<span class="co">#&gt; 2 2    banana 0.1749</span>
+<span class="co">#&gt; 3 3    orange 0.0342</span>
+<span class="co">#&gt; 4 4 pineapple 0.3204</span>
+<span class="co">#&gt; 5 5     lemon 0.4023</span>
+<span class="co">#&gt; 6 6     apple 0.1957</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $ejemlista</span>
+<span class="co">#&gt; $ejemlista$a</span>
+<span class="co">#&gt; [1] 15 16 17 18 19 20</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $ejemlista$b</span>
+<span class="co">#&gt; [1] 1 2 3 4 5</span></code></pre></div>
 <p>La lista anterior contiene numeros, caracteres, vectores, data.frames e incluso otra lista con distintas secuencias.</p>
 <p>Se puede indexar una lista de varias formas:</p>
 <ul>
 <li>Usando <strong><code>[ ]</code></strong>: extrae el objeto como una lista, incluyendo el nombre asignado:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista[<span class="dv">1</span>]</code></pre></div>
-<pre><code>## $n
-## [1] 100</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista[<span class="dv">1</span>]
+<span class="co">#&gt; $n</span>
+<span class="co">#&gt; [1] 100</span></code></pre></div>
 <ul>
 <li>Usando <strong><code>[[ ]]</code></strong>: extrae únicamente el objeto respetando la clase de éste y sin incluir nombres:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista[[<span class="dv">1</span>]]</code></pre></div>
-<pre><code>## [1] 100</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista[[<span class="dv">1</span>]]
+<span class="co">#&gt; [1] 100</span></code></pre></div>
 <ul>
 <li>Usando <strong>$</strong> mas el nombre: extrae únicamente el objeto:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista<span class="op">$</span>ejemlista<span class="op">$</span>a</code></pre></div>
-<pre><code>## [1] 15 16 17 18 19 20</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lista<span class="op">$</span>ejemlista<span class="op">$</span>a
+<span class="co">#&gt; [1] 15 16 17 18 19 20</span></code></pre></div>
 <p><br></p>
 </div>
 </div>
@@ -965,50 +967,50 @@ lista</code></pre></div>
 <div id="que-es-r-markdown" class="section level3">
 <h3><span class="header-section-number">2.5.1</span> ¿Qué es R Markdown?</h3>
 <p>R Markdown integra código de R, comandos de TeX y muchas herramientas externas. Cuando construyes el documento, R Markdown envía un archivo con formato .Rmd a otro paquete llamado <strong>knitr</strong>, <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>, que ejecuta el código de todos los chunks y crea un nuevo archivo de <strong>markdown</strong> con formato <em>md</em> que ya incluye el código y los resultados. Este archivo de markdown generado por knitr después es procesado por <strong>pandoc</strong>, <a href="http://pandoc.org/" class="uri">http://pandoc.org/</a>, que es el que crea el archivo final. La ventaja de este flujo de trabajo de dos pasos es que te permite crear una amplia gama de formatos de salida.</p>
-<p><img src="figuras/RMarkdownFlow.png" width="567" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/RMarkdownFlow.png" width="70%" style="display: block; margin: auto;" /></p>
 <p class="espacio">
 </p>
 </div>
 <div id="estructura-basica-de-r-markdown" class="section level3">
 <h3><span class="header-section-number">2.5.2</span> Estructura básica de R Markdown</h3>
 <p>Éste es un R Markdown, un archivo de texto sin formato que tiene la extensión <code>.Rmd</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(htmltools<span class="op">::</span><span class="kw">includeText</span>(<span class="st">&quot;rmarkdown/ejemplo.Rmd&quot;</span>))</code></pre></div>
-<pre><code>## ---
-## title: &quot;Ejemplo de R Markdown&quot;
-## date: 2018-01-22
-## output: html_document
-## ---
-## 
-## Veamos unos datos de diamantes para analizar la distribución
-## del quilataje de aquellos diamantes que tiene quilataje 
-## menor a 2.5: 
-## 
-## ```{r setup, include = FALSE}
-## library(ggplot2)
-## library(dplyr)
-## 
-## smaller &lt;- diamonds %&gt;% 
-##   filter(carat &lt;= 2.5)
-## ```
-## 
-## En el __chunk__ de arriba se hizo el filtro adecuado, ahora
-## veamos una muestra de tamaño 10 de los datos:
-## 
-## ```{r, echo = FALSE}
-## smaller %&gt;%
-##   sample_n(10) %&gt;%
-##   knitr::kable()
-## ```
-## 
-## Los datos corresponde a `r nrow(diamonds)` diamantes. Solamente
-## `r nrow(diamonds) - nrow(smaller)` son de más de 2.5 quilates.
-## La distribución de los diamantes de menor quilataje se muestra abajo:
-## 
-## ```{r, echo = FALSE}
-## smaller %&gt;% 
-##   ggplot(aes(carat)) + 
-##   geom_freqpoly(binwidth = 0.01)
-## ```</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(htmltools<span class="op">::</span><span class="kw">includeText</span>(<span class="st">&quot;rmarkdown/ejemplo.Rmd&quot;</span>))
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; title: &quot;Ejemplo de R Markdown&quot;</span>
+<span class="co">#&gt; date: 2018-01-22</span>
+<span class="co">#&gt; output: html_document</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Veamos unos datos de diamantes para analizar la distribución</span>
+<span class="co">#&gt; del quilataje de aquellos diamantes que tiene quilataje </span>
+<span class="co">#&gt; menor a 2.5: </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; ```{r setup, include = FALSE}</span>
+<span class="co">#&gt; library(ggplot2)</span>
+<span class="co">#&gt; library(dplyr)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; smaller &lt;- diamonds %&gt;% </span>
+<span class="co">#&gt;   filter(carat &lt;= 2.5)</span>
+<span class="co">#&gt; ```</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; En el __chunk__ de arriba se hizo el filtro adecuado, ahora</span>
+<span class="co">#&gt; veamos una muestra de tamaño 10 de los datos:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; ```{r, echo = FALSE}</span>
+<span class="co">#&gt; smaller %&gt;%</span>
+<span class="co">#&gt;   sample_n(10) %&gt;%</span>
+<span class="co">#&gt;   knitr::kable()</span>
+<span class="co">#&gt; ```</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Los datos corresponde a `r nrow(diamonds)` diamantes. Solamente</span>
+<span class="co">#&gt; `r nrow(diamonds) - nrow(smaller)` son de más de 2.5 quilates.</span>
+<span class="co">#&gt; La distribución de los diamantes de menor quilataje se muestra abajo:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; ```{r, echo = FALSE}</span>
+<span class="co">#&gt; smaller %&gt;% </span>
+<span class="co">#&gt;   ggplot(aes(carat)) + </span>
+<span class="co">#&gt;   geom_freqpoly(binwidth = 0.01)</span>
+<span class="co">#&gt; ```</span></code></pre></div>
 <p>Contiene tres tipos importantes de contenido:</p>
 <p>1 Un encabezado en formato <strong>YAML</strong> rodeado por <code>---</code>s..</p>
 <ol start="2" style="list-style-type: decimal">
@@ -1017,7 +1019,7 @@ lista</code></pre></div>
 </ol>
 <p>Cuando abres un <code>.Rmd</code>, RStudio muestra una interfaz de tipo <em>notebook</em> en la cual tanto el código como la salida están intercalados. Puedes ejecutars cada <em>chunk</em> de código presionando el botón de “Run” (en la parte superior derecha de la ventana de script), o bien, Cmd/Ctrl + Shift + Enter. RStudio ejecuta el código y muestra los resultados junto con el código.</p>
 <p>Para generar un informe completo que contenga todo el texto, el código y los resultados, presiona el botón “Knit”, o bien, Cmd/Ctrl + Shift + K. Esto generará un reporte en una nueva ventana y creará un archivo HTML independiente que podrás compartir con los demás.</p>
-<p><img src="rmarkdown/ejemplo.png" width="3456" style="display: block; margin: auto;" /></p>
+<p><img src="rmarkdown/ejemplo.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Para comenzar con tu propio archivo <code>.Rmd</code>, selecciona <em>File &gt; New File &gt; R Markdown…</em> en la barra superior. RStudio te mostrará un asistente que puedes usar para crear un archivo de R Markdown con ejemplos básicos.</p>
 <p>Como R Markdown integara varias herramientas, entonces no es posible que la ayuda esté autocontenida en RStudio. Esto significa que gran parte de la ayuda no la podrás encontrar a través de <code>?</code>. Hay mucha documentación en línea y un recurso es particularmente útil son los <em>cheatsheets</em> de RStudio, que están disponibles en <a href="http://rstudio.com/cheatsheets">http://rstudio.com/cheatsheets.</a></p>
 </div>
@@ -1046,26 +1048,26 @@ lista</code></pre></div>
 <div id="valores-faltantes" class="section level3">
 <h3><span class="header-section-number">2.7.1</span> Valores faltantes</h3>
 <p>En R los datos faltantes se expresan como <code>NA</code>. La función <code>is.na()</code> regresa un vector lógico sobre los valores que son o no <code>NA</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="ot">NA</span>))</code></pre></div>
-<pre><code>## [1] FALSE FALSE  TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="ot">NA</span>))
+<span class="co">#&gt; [1] FALSE FALSE  TRUE</span></code></pre></div>
 
 <div class="comentario">
 El default de R es propagar los valores faltantes, esto es, si se desconoce el valor de una de las componentes de un vector, también se desconoce la suma del mismo, en general, cualquier operación.
 </div>
 
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="ot">NA</span>))</code></pre></div>
-<pre><code>## [1] NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="ot">NA</span>))</code></pre></div>
-<pre><code>## [1] NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> <span class="op">&gt;</span><span class="st"> </span><span class="ot">NA</span></code></pre></div>
-<pre><code>## [1] NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="ot">NA</span> <span class="op">==</span><span class="st"> </span><span class="ot">NA</span>)</code></pre></div>
-<pre><code>## [1] NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="ot">NA</span>))
+<span class="co">#&gt; [1] NA</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="ot">NA</span>))
+<span class="co">#&gt; [1] NA</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> <span class="op">&gt;</span><span class="st"> </span><span class="ot">NA</span>
+<span class="co">#&gt; [1] NA</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="ot">NA</span> <span class="op">==</span><span class="st"> </span><span class="ot">NA</span>)
+<span class="co">#&gt; [1] NA</span></code></pre></div>
 <p>Sin embargo, muchas funciones tienen un argumento <code>na.rm</code> para removerlos.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">na.rm =</span> T)</code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">na.rm =</span> T)</code></pre></div>
-<pre><code>## [1] 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">na.rm =</span> T)
+<span class="co">#&gt; [1] 6</span>
+<span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">na.rm =</span> T)
+<span class="co">#&gt; [1] 3</span></code></pre></div>
 <p><br></p>
 <hr />
 </div>
@@ -1086,8 +1088,8 @@ Una función puede verse como una caja negra que realiza un proceso o serie de i
 <p>En R existen algunas funciones pre cargadas que ya hemos usado, por ejemplo, .la función <code>mean()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">input &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)
 output &lt;-<span class="st"> </span><span class="kw">mean</span>( input )
-output</code></pre></div>
-<pre><code>## [1] 3</code></pre>
+output
+<span class="co">#&gt; [1] 3</span></code></pre></div>
 <p>Sin embargo, también es posible escribir nuestras propias funciones.</p>
 <p><br></p>
 </div>
@@ -1118,14 +1120,14 @@ En general, esta estructura se respeta en las funciones predeterminadas de R.
    <span class="kw">return</span>(y)
 }</code></pre></div>
 <p>Aplicamos la función:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">suma_uno_fun</span>(<span class="dv">5</span>)</code></pre></div>
-<pre><code>## [1] 6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">suma_uno_fun</span>(<span class="dv">5</span>)
+<span class="co">#&gt; [1] 6</span></code></pre></div>
 <p>Podemos ver que en nuestra sesión ya existe la función con la función <code>ls()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre></div>
-<pre><code>##  [1] &quot;a&quot;            &quot;b&quot;            &quot;bool&quot;         &quot;c&quot;           
-##  [5] &quot;fruits&quot;       &quot;fruits.fac&quot;   &quot;input&quot;        &quot;iris&quot;        
-##  [9] &quot;lista&quot;        &quot;output&quot;       &quot;suma_uno_fun&quot; &quot;tabla&quot;       
-## [13] &quot;tabla.color&quot;  &quot;tenweeks&quot;     &quot;x&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()
+<span class="co">#&gt;  [1] &quot;a&quot;            &quot;b&quot;            &quot;bool&quot;         &quot;c&quot;           </span>
+<span class="co">#&gt;  [5] &quot;fruits&quot;       &quot;fruits.fac&quot;   &quot;input&quot;        &quot;iris&quot;        </span>
+<span class="co">#&gt;  [9] &quot;lista&quot;        &quot;output&quot;       &quot;suma_uno_fun&quot; &quot;tabla&quot;       </span>
+<span class="co">#&gt; [13] &quot;tabla.color&quot;  &quot;tenweeks&quot;     &quot;x&quot;</span></code></pre></div>
 <p>Esta función en lista los objetos existente en la sesión actual.</p>
 <p><br></p>
 </div>
@@ -1136,11 +1138,11 @@ En general, esta estructura se respeta en las funciones predeterminadas de R.
   base<span class="op">^</span>exponente
 }</code></pre></div>
 <p>Los argumentos pueden indicarse por posición:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">potencia_fun</span>(<span class="dv">2</span>, <span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">potencia_fun</span>(<span class="dv">2</span>, <span class="dv">3</span>)
+<span class="co">#&gt; [1] 8</span></code></pre></div>
 <p>O bien por nombre:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">potencia_fun</span>(<span class="dt">exponente =</span> <span class="dv">2</span>, <span class="dt">base =</span> <span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">potencia_fun</span>(<span class="dt">exponente =</span> <span class="dv">2</span>, <span class="dt">base =</span> <span class="dv">3</span>)
+<span class="co">#&gt; [1] 9</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="argumentos-predeterminados" class="section level4 unnumbered">
@@ -1151,8 +1153,8 @@ En general, esta estructura se respeta en las funciones predeterminadas de R.
   base<span class="op">^</span>exponente
 }</code></pre></div>
 <p>Al llamar la función, no es necesario definir un valor para el exponente y en automático tomará el valor <code>exponente = 2</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">potencia_default_fun</span>(<span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">potencia_default_fun</span>(<span class="dv">2</span>)
+<span class="co">#&gt; [1] 4</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="argumentos-nulos" class="section level4 unnumbered">
@@ -1165,11 +1167,11 @@ En general, esta estructura se respeta en las funciones predeterminadas de R.
 }</code></pre></div>
 <p>Ahora tiraremos dos veces los dados.</p>
 <p><strong>Primer lanzamiento:</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lanza_dado</span>()</code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lanza_dado</span>()
+<span class="co">#&gt; [1] 5</span></code></pre></div>
 <p><strong>Segundo lanzamiento:</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lanza_dado</span>()</code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lanza_dado</span>()
+<span class="co">#&gt; [1] 5</span></code></pre></div>
 <hr />
 <p><br></p>
 </div>
@@ -1181,17 +1183,17 @@ En general, esta estructura se respeta en las funciones predeterminadas de R.
   x &lt;-<span class="st"> </span><span class="dv">2</span>
   a<span class="op">*</span>x
 }
-<span class="kw">xs_fun</span>(<span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print(x)</span></code></pre></div>
+<span class="kw">xs_fun</span>(<span class="dv">2</span>)
+<span class="co">#&gt; [1] 4</span>
+<span class="co"># print(x)</span></code></pre></div>
 <p>La función crea un ambiente nuevo dentro de la misma, en caso de no encontrar el valor de la variable en el ambiente local, <strong>sube un nivel</strong>.</p>
 <p>Este nuevo nivel puede ser el ambiente global. Por ejemplo:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="dv">10</span>
 ys_fun &lt;-<span class="st"> </span><span class="cf">function</span>(a){
   a<span class="op">*</span>y
 }
-<span class="kw">ys_fun</span>(<span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 20</code></pre>
+<span class="kw">ys_fun</span>(<span class="dv">2</span>)
+<span class="co">#&gt; [1] 20</span></code></pre></div>
 <p>Si la función está contenida en otra función, primero buscará en el ambiente local, después en el ambiente local de la función superior y luego en el ambiente global.</p>
 <p>Por ejemplo:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="dv">10</span>
@@ -1204,8 +1206,8 @@ mas_uno_fun &lt;-<span class="st"> </span><span class="cf">function</span>(a){
   <span class="kw">ys_add_fun</span>(a)
 }</code></pre></div>
 <p>Si llamamos la función con un valor <code>a = 2</code> al igual que en el ejemplo anterior, ¿por qué da el siguiente resultado y no 21 o 20?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mas_uno_fun</span>(<span class="dt">a =</span> <span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mas_uno_fun</span>(<span class="dt">a =</span> <span class="dv">2</span>)
+<span class="co">#&gt; [1] 3</span></code></pre></div>
 <p><br></p>
 <hr />
 </div>
@@ -1215,17 +1217,17 @@ mas_uno_fun &lt;-<span class="st"> </span><span class="cf">function</span>(a){
 <ul>
 <li><code>body()</code></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">body</span>(suma_uno_fun)</code></pre></div>
-<pre><code>## {
-##     y = x + 1
-##     return(y)
-## }</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">body</span>(suma_uno_fun)
+<span class="co">#&gt; {</span>
+<span class="co">#&gt;     y = x + 1</span>
+<span class="co">#&gt;     return(y)</span>
+<span class="co">#&gt; }</span></code></pre></div>
 <ul>
 <li><code>args()</code></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">args</span>(mean.default)</code></pre></div>
-<pre><code>## function (x, trim = 0, na.rm = FALSE, ...) 
-## NULL</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">args</span>(mean.default)
+<span class="co">#&gt; function (x, trim = 0, na.rm = FALSE, ...) </span>
+<span class="co">#&gt; NULL</span></code></pre></div>
 <ul>
 <li><code>if()</code> Una función que se usa al programar funciones es <code>if()</code> que permite agregar una condición.</li>
 </ul>
@@ -1237,55 +1239,55 @@ mas_uno_fun &lt;-<span class="st"> </span><span class="cf">function</span>(a){
   }
 }</code></pre></div>
 <p>Al ejecutar la función y tener cero en el denominador imprime el string.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">divide_fun</span>(<span class="dv">10</span>, <span class="dv">0</span>)</code></pre></div>
-<pre><code>## [1] &quot;Denominador es cero&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">divide_fun</span>(<span class="dv">10</span>, <span class="dv">0</span>)
+<span class="co">#&gt; [1] &quot;Denominador es cero&quot;</span></code></pre></div>
 <p>Al no tener cero en el denominador la operación se ejecuta.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">divide_fun</span>(<span class="dv">10</span>, <span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">divide_fun</span>(<span class="dv">10</span>, <span class="dv">2</span>)
+<span class="co">#&gt; [1] 5</span></code></pre></div>
 <p><br></p>
 <hr />
 <p><br></p>
 <p>Todas las operaciones en R son producto de la llamada a una función, esto incluye operaciones como +, operadores que controlan flujo como for, if y while, e incluso operadores para obtener subconjuntos como <code>[ ]</code> y <code>$</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span>
 y &lt;-<span class="st"> </span><span class="dv">4</span>
-<span class="st">`</span><span class="dt">+</span><span class="st">`</span>(x, y)</code></pre></div>
-<pre><code>## [1] 7</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="kw">print</span>(i)</code></pre></div>
-<pre><code>## [1] 1
-## [1] 2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">for</span><span class="st">`</span>(i, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="kw">print</span>(i))</code></pre></div>
-<pre><code>## [1] 1
-## [1] 2</code></pre>
+<span class="st">`</span><span class="dt">+</span><span class="st">`</span>(x, y)
+<span class="co">#&gt; [1] 7</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="kw">print</span>(i)
+<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; [1] 2</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">for</span><span class="st">`</span>(i, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="kw">print</span>(i))
+<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; [1] 2</span></code></pre></div>
 <p><br></p>
 <p>Cuando llamamos a una función podemos especificar los argumentos con base en la posición, el nombre completo o el nombre parcial:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="cf">function</span>(abcdef, bcde1, bcde2) {
   <span class="kw">list</span>(<span class="dt">a =</span> abcdef, <span class="dt">b1 =</span> bcde1, <span class="dt">b2 =</span> bcde2)
 }
-<span class="kw">str</span>(<span class="kw">f</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</code></pre></div>
-<pre><code>## List of 3
-##  $ a : num 1
-##  $ b1: num 2
-##  $ b2: num 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(<span class="kw">f</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dt">abcdef =</span> <span class="dv">1</span>))</code></pre></div>
-<pre><code>## List of 3
-##  $ a : num 1
-##  $ b1: num 2
-##  $ b2: num 3</code></pre>
+<span class="kw">str</span>(<span class="kw">f</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))
+<span class="co">#&gt; List of 3</span>
+<span class="co">#&gt;  $ a : num 1</span>
+<span class="co">#&gt;  $ b1: num 2</span>
+<span class="co">#&gt;  $ b2: num 3</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(<span class="kw">f</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dt">abcdef =</span> <span class="dv">1</span>))
+<span class="co">#&gt; List of 3</span>
+<span class="co">#&gt;  $ a : num 1</span>
+<span class="co">#&gt;  $ b1: num 2</span>
+<span class="co">#&gt;  $ b2: num 3</span></code></pre></div>
 <p><br></p>
 <p>Podemos abreviar el nombre de los argumentos:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(<span class="kw">f</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dt">a =</span> <span class="dv">1</span>))</code></pre></div>
-<pre><code>## List of 3
-##  $ a : num 1
-##  $ b1: num 2
-##  $ b2: num 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(<span class="kw">f</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dt">a =</span> <span class="dv">1</span>))
+<span class="co">#&gt; List of 3</span>
+<span class="co">#&gt;  $ a : num 1</span>
+<span class="co">#&gt;  $ b1: num 2</span>
+<span class="co">#&gt;  $ b2: num 3</span></code></pre></div>
 <p>Siempre y cuando la abreviación no sea ambigua:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#f(1, 3, b = 1)</span></code></pre></div>
 <p>Los argumentos de las funciones en R se evaluan conforme se necesitan:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="cf">function</span>(a, b){
   a <span class="op">^</span><span class="st"> </span><span class="dv">2</span>
 }
-<span class="kw">f</span>(<span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 4</code></pre>
+<span class="kw">f</span>(<span class="dv">2</span>)
+<span class="co">#&gt; [1] 4</span></code></pre></div>
 <p>La función anterior nunca utiliza el argumento b, de tal manera que f(2) no produce ningún error.</p>
 <p><br></p>
 </div>
@@ -1313,12 +1315,12 @@ La estructura de los datos de entrada y el formato del resultado o salida determ
 <p>Tomemos la siguiente matriz de simulaciones:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)
 mat_norm &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">24</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>), <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">6</span>)
-mat_norm</code></pre></div>
-<pre><code>##            [,1]       [,2]       [,3]        [,4]        [,5]        [,6]
-## [1,] -0.6264538  0.3295078  0.5757814 -0.62124058 -0.01619026  0.91897737
-## [2,]  0.1836433 -0.8204684 -0.3053884 -2.21469989  0.94383621  0.78213630
-## [3,] -0.8356286  0.4874291  1.5117812  1.12493092  0.82122120  0.07456498
-## [4,]  1.5952808  0.7383247  0.3898432 -0.04493361  0.59390132 -1.98935170</code></pre>
+mat_norm
+<span class="co">#&gt;        [,1]   [,2]   [,3]    [,4]    [,5]    [,6]</span>
+<span class="co">#&gt; [1,] -0.626  0.330  0.576 -0.6212 -0.0162  0.9190</span>
+<span class="co">#&gt; [2,]  0.184 -0.820 -0.305 -2.2147  0.9438  0.7821</span>
+<span class="co">#&gt; [3,] -0.836  0.487  1.512  1.1249  0.8212  0.0746</span>
+<span class="co">#&gt; [4,]  1.595  0.738  0.390 -0.0449  0.5939 -1.9894</span></code></pre></div>
 <p><br></p>
 <p><strong>Deseamos obtener la suma de cada columna de la matriz.</strong></p>
 <p><br></p>
@@ -1329,46 +1331,46 @@ mat_norm</code></pre></div>
                  <span class="kw">sum</span>(mat_norm[, <span class="dv">4</span>]),
                  <span class="kw">sum</span>(mat_norm[, <span class="dv">5</span>]),
                  <span class="kw">sum</span>(mat_norm[, <span class="dv">6</span>]))
-prom_col_m1</code></pre></div>
-<pre><code>## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730</code></pre>
+prom_col_m1
+<span class="co">#&gt; [1]  0.317  0.735  2.172 -1.756  2.343 -0.214</span></code></pre></div>
 <p>Segundo método:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prom_col_m2 &lt;-<span class="st"> </span><span class="kw">vector</span>( <span class="dt">length =</span> <span class="kw">ncol</span>(mat_norm))
 <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(mat_norm)){
   prom_col_m2[j] &lt;-<span class="st"> </span><span class="kw">sum</span>(mat_norm[, j])
 }
-prom_col_m2</code></pre></div>
-<pre><code>## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730</code></pre>
+prom_col_m2
+<span class="co">#&gt; [1]  0.317  0.735  2.172 -1.756  2.343 -0.214</span></code></pre></div>
 <p>Tercer método:</p>
-<p><img src="figuras/applycol.png" width="237" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/applycol.png" width="70%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prom_col_m3 &lt;-<span class="st"> </span><span class="kw">apply</span>(<span class="dt">X =</span> mat_norm, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> sum)
-prom_col_m3</code></pre></div>
-<pre><code>## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730</code></pre>
+prom_col_m3
+<span class="co">#&gt; [1]  0.317  0.735  2.172 -1.756  2.343 -0.214</span></code></pre></div>
 <p>Cuarto método:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prom_col_m4 &lt;-<span class="st"> </span><span class="kw">colSums</span>(mat_norm)
-prom_col_m4</code></pre></div>
-<pre><code>## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730</code></pre>
+prom_col_m4
+<span class="co">#&gt; [1]  0.317  0.735  2.172 -1.756  2.343 -0.214</span></code></pre></div>
 <p><br></p>
 <p>Ahora, para obtener la suma por renglón usando el tercer método de la función <code>apply()</code>, únicamente es necesario cambiar la dimensión sobre la que voy a resumir con el argumento <code>MARGIN = 1</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prom_row_m3 &lt;-<span class="st"> </span><span class="kw">apply</span>(mat_norm, <span class="dv">1</span>, sum)
-prom_row_m3</code></pre></div>
-<pre><code>## [1]  0.5603818 -1.4309408  3.1842987  1.2830648</code></pre>
+prom_row_m3
+<span class="co">#&gt; [1]  0.56 -1.43  3.18  1.28</span></code></pre></div>
 <p>Esto es equivalente al primer método que usamos:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prom_row_m1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">sum</span>(mat_norm[<span class="dv">1</span>, ]), 
                  <span class="kw">sum</span>(mat_norm[<span class="dv">2</span>, ]), 
                  <span class="kw">sum</span>(mat_norm[<span class="dv">3</span>, ]), 
                  <span class="kw">sum</span>(mat_norm[<span class="dv">4</span>, ]))
-prom_row_m1</code></pre></div>
-<pre><code>## [1]  0.5603818 -1.4309408  3.1842987  1.2830648</code></pre>
+prom_row_m1
+<span class="co">#&gt; [1]  0.56 -1.43  3.18  1.28</span></code></pre></div>
 <p>La ventaja de usar la función <code>apply()</code> es que se puede usar cualquier función. Por ejemplo, obtener la desviación estándar.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(mat_norm, <span class="dv">1</span>, sd)</code></pre></div>
-<pre><code>## [1] 0.6341809 1.1718660 0.8338847 1.2066403</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(mat_norm, <span class="dv">1</span>, sd)
+<span class="co">#&gt; [1] 0.634 1.172 0.834 1.207</span></code></pre></div>
 <p>O bien, una crear una función propia (definida por el usuario) con la función <code>function()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cv_vec_m3 &lt;-<span class="st"> </span><span class="kw">apply</span>(mat_norm, <span class="dv">1</span>, <span class="cf">function</span>(reng){
   cv &lt;-<span class="st"> </span><span class="kw">mean</span>(reng)<span class="op">/</span><span class="kw">sd</span>(reng)
   <span class="kw">return</span>(cv)
 })
-cv_vec_m3</code></pre></div>
-<pre><code>## [1]  0.1472718 -0.2035131  0.6364386  0.1772228</code></pre>
+cv_vec_m3
+<span class="co">#&gt; [1]  0.147 -0.204  0.636  0.177</span></code></pre></div>
 
 <div class="nota">
 <p><strong>Funciones Anónimas:</strong></p>
@@ -1382,21 +1384,21 @@ A este tipo de funciones se les llama <strong>funciones anónimas</strong> porqu
 <p>La función <code>lapply()</code> aplica una función sobre una lista o un vector y regresa el resultado en otra lista.</p>
 <p>Vector de ciudades:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ciudades_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Aguascalientes&quot;</span>, <span class="st">&quot;Monterrey&quot;</span>, <span class="st">&quot;Guadalajara&quot;</span>, <span class="st">&quot;México&quot;</span>)
-ciudades_vec</code></pre></div>
-<pre><code>## [1] &quot;Aguascalientes&quot; &quot;Monterrey&quot;      &quot;Guadalajara&quot;    &quot;México&quot;</code></pre>
+ciudades_vec
+<span class="co">#&gt; [1] &quot;Aguascalientes&quot; &quot;Monterrey&quot;      &quot;Guadalajara&quot;    &quot;México&quot;</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res_nchar_l &lt;-<span class="st"> </span><span class="kw">lapply</span>(ciudades_vec, nchar)
-res_nchar_l</code></pre></div>
-<pre><code>## [[1]]
-## [1] 14
-## 
-## [[2]]
-## [1] 9
-## 
-## [[3]]
-## [1] 11
-## 
-## [[4]]
-## [1] 6</code></pre>
+res_nchar_l
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] 14</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] 9</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] 11</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[4]]</span>
+<span class="co">#&gt; [1] 6</span></code></pre></div>
 
 <div class="comentario">
 Esta función permite implementar funciones que regresen objetos de diferentes tipos, porque la listas permiten almacenar contenido heterogéneo.
@@ -1410,29 +1412,29 @@ Esta función permite implementar funciones que regresen objetos de diferentes t
 }</code></pre></div>
 <p>El objetivo es aplicar a cada elemento de la siguiente lista la función potencia y elevarlo al cubo.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nums_lista &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)
-nums_lista</code></pre></div>
-<pre><code>## [[1]]
-## [1] 1
-## 
-## [[2]]
-## [1] 3
-## 
-## [[3]]
-## [1] 4</code></pre>
+nums_lista
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] 3</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] 4</span></code></pre></div>
 <p>En la función <code>lapply()</code> se agrega el argumento <code>exponente = 3</code> como último argumento.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">potencia_lista &lt;-<span class="st"> </span><span class="kw">lapply</span>(nums_lista, potencia_fun, <span class="dt">exponente =</span> <span class="dv">3</span>)
-potencia_lista</code></pre></div>
-<pre><code>## [[1]]
-## [1] 1
-## 
-## [[2]]
-## [1] 27
-## 
-## [[3]]
-## [1] 64</code></pre>
+potencia_lista
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] 27</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] 64</span></code></pre></div>
 <p>Una forma de reducir la lista obtenida a un vector es con la función <code>unlist()</code> que vimos antes.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unlist</span>(potencia_lista)</code></pre></div>
-<pre><code>## [1]  1 27 64</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unlist</span>(potencia_lista)
+<span class="co">#&gt; [1]  1 27 64</span></code></pre></div>
 <p><br></p>
 <hr />
 </div>
@@ -1441,9 +1443,9 @@ potencia_lista</code></pre></div>
 <p>La función <code>sapply()</code> es muy similar a <code>lapply()</code>. La única diferencia es la <strong>s</strong> que surge de <strong>simplified apply</strong>.</p>
 <p>Al igual que <code>lapply()</code> aplica una función sobre una lista o un vector pero simplifica el resultado en un arreglo.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res_nchar_s &lt;-<span class="st"> </span><span class="kw">sapply</span>(ciudades_vec, nchar)
-res_nchar_s</code></pre></div>
-<pre><code>## Aguascalientes      Monterrey    Guadalajara         México 
-##             14              9             11              6</code></pre>
+res_nchar_s
+<span class="co">#&gt; Aguascalientes      Monterrey    Guadalajara         México </span>
+<span class="co">#&gt;             14              9             11              6</span></code></pre></div>
 
 <div class="warning">
 Esta función es <em>peligrosa</em> ya que únicamente simplifica la estructura del resultado cuando es posible, de lo contrario, regresará una lista igual que <code>lapply()</code>.
@@ -1465,13 +1467,13 @@ x2 &lt;-<span class="st"> </span><span class="kw">list</span>(
 )
 
 threshold &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">cutoff =</span> <span class="fl">0.8</span>) x[x <span class="op">&gt;</span><span class="st"> </span>cutoff]
-x1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sapply</span>(threshold) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</code></pre></div>
-<pre><code>## List of 3
-##  $ : num 0.91
-##  $ : num [1:2] 0.9 0.94
-##  $ : num(0)</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sapply</span>(threshold) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</code></pre></div>
-<pre><code>##  num [1:3] 0.99 0.93 0.87</code></pre>
+x1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sapply</span>(threshold) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()
+<span class="co">#&gt; List of 3</span>
+<span class="co">#&gt;  $ : num 0.91</span>
+<span class="co">#&gt;  $ : num [1:2] 0.9 0.94</span>
+<span class="co">#&gt;  $ : num(0)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sapply</span>(threshold) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()
+<span class="co">#&gt;  num [1:3] 0.99 0.93 0.87</span></code></pre></div>
 <p>Las funciones del paquete <code>purrr</code> son útiles porque hacen que los <em>loops</em> sobre vectores sean sencillos:</p>
 <ul>
 <li><p>tienen nombres similares, y</p></li>
@@ -1488,34 +1490,34 @@ x1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sappl
 <p>Cada función toma un vector como entrada, aplica una función a cada elemento y luego devuelve un nuevo vector que tiene la misma longitud (y tiene los mismos nombres) que la entrada, y el tipo de vector está determinado por el sufijo de la función.</p>
 <p>Por ejemplo, supongamos que deseamos calcular el número de valores únicos en cada columna de <code>iris</code>. Utilizamos, entonces, la función <code>map_int</code> porque deseamos obtener como resultado un vector de enteros donde cada entero represente el número de valores únicos en cada columna:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">map_int</span>(<span class="dt">.x =</span> iris, <span class="dt">.f =</span> <span class="cf">function</span>(x){<span class="kw">length</span>(<span class="kw">unique</span>(x))
-})</code></pre></div>
-<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
-##           35           23           43           22            3 
-##  Species_ord 
-##            3</code></pre>
+})
+<span class="co">#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species </span>
+<span class="co">#&gt;           35           23           43           22            3 </span>
+<span class="co">#&gt;  Species_ord </span>
+<span class="co">#&gt;            3</span></code></pre></div>
 <p>Para generar cuatro vectores cada uno de tamaño 5 de valores que provienen de una distribución normal con medias <span class="math inline">\(\mu=-10, 0, 10, 100\)</span> podemos utilizar la función <code>map</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)
 mu <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">map</span>(rnorm, <span class="dt">n =</span> <span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">str</span>()</code></pre></div>
-<pre><code>## List of 4
-##  $ : num [1:5] -9.38 -10.06 -10.16 -11.47 -10.48
-##  $ : num [1:5] 0.4179 1.3587 -0.1028 0.3877 -0.0538
-##  $ : num [1:5] 8.62 9.59 9.61 9.94 11.1
-##  $ : num [1:5] 100.8 99.8 99.7 100.7 100.6</code></pre>
+<span class="st">  </span><span class="kw">str</span>()
+<span class="co">#&gt; List of 4</span>
+<span class="co">#&gt;  $ : num [1:5] -9.38 -10.06 -10.16 -11.47 -10.48</span>
+<span class="co">#&gt;  $ : num [1:5] 0.4179 1.3587 -0.1028 0.3877 -0.0538</span>
+<span class="co">#&gt;  $ : num [1:5] 8.62 9.59 9.61 9.94 11.1</span>
+<span class="co">#&gt;  $ : num [1:5] 100.8 99.8 99.7 100.7 100.6</span></code></pre></div>
 <p>Podemos usar <code>map2()</code> para iterar sobre dos vectores en paralelo:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sigma &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">100</span>)
-<span class="kw">map2</span>(mu, sigma, rnorm, <span class="dt">n =</span> <span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</code></pre></div>
-<pre><code>## List of 4
-##  $ : num [1:5] -10.69 -10.71 -9.64 -9.23 -10.11
-##  $ : num [1:5] 4.41 1.99 -3.06 1.71 -5.65
-##  $ : num [1:5] 24.33 29.804 6.328 -0.441 15.697
-##  $ : num [1:5] 86.5 340.2 96.1 169 102.8</code></pre>
+<span class="kw">map2</span>(mu, sigma, rnorm, <span class="dt">n =</span> <span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()
+<span class="co">#&gt; List of 4</span>
+<span class="co">#&gt;  $ : num [1:5] -10.69 -10.71 -9.64 -9.23 -10.11</span>
+<span class="co">#&gt;  $ : num [1:5] 4.41 1.99 -3.06 1.71 -5.65</span>
+<span class="co">#&gt;  $ : num [1:5] 24.33 29.804 6.328 -0.441 15.697</span>
+<span class="co">#&gt;  $ : num [1:5] 86.5 340.2 96.1 169 102.8</span></code></pre></div>
 <p>Las funciones de <code>map</code> también preservan nombres:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">y =</span> <span class="dv">4</span><span class="op">:</span><span class="dv">5</span>)
-<span class="kw">map_int</span>(z, length)</code></pre></div>
-<pre><code>## x y 
-## 3 2</code></pre>
+<span class="kw">map_int</span>(z, length)
+<span class="co">#&gt; x y </span>
+<span class="co">#&gt; 3 2</span></code></pre></div>
 <p>Hay algunos <em>shortcuts</em> que podemos usar con <code>.f</code> para guardar un poco de tipeo. Supongamos que queremos ajustar un modelo lineal a cada subconjunto en un conjunto de datos. Pensemos en los datos de <code>mtcars</code> divididos en tres subconjuntos (uno para cada valor de cilindro) y se ajusta el mismo modelo lineal en cada subconjunto (millas por galón <code>mpg</code> vs peso <code>wt</code>):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">models &lt;-<span class="st"> </span>mtcars <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">split</span>(.<span class="op">$</span>cyl) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -1524,19 +1526,19 @@ mu <span class="op">%&gt;%</span><span class="st"> </span>
 <p>Cuando vemos muchos modelos, generalmente deseamos extraer un resumen estadístico como la <span class="math inline">\(R^2\)</span>. Para hacer eso necesitamos ejecutar primero <code>summary()</code> y luego extraer el componente llamado <code>r.squared</code>. Podríamos hacer eso usando la abreviatura de funciones anónimas:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">models <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">map</span>(summary) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">map_dbl</span>(<span class="op">~</span>.<span class="op">$</span>r.squared)</code></pre></div>
-<pre><code>##         4         6         8 
-## 0.5086326 0.4645102 0.4229655</code></pre>
+<span class="st">  </span><span class="kw">map_dbl</span>(<span class="op">~</span>.<span class="op">$</span>r.squared)
+<span class="co">#&gt;     4     6     8 </span>
+<span class="co">#&gt; 0.509 0.465 0.423</span></code></pre></div>
 <p>Pero <code>purrr</code> tiene un shortcut para extraer estos componentes en una cadena:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">models <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">map</span>(summary) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">map_dbl</span>(<span class="st">&quot;r.squared&quot;</span>)</code></pre></div>
-<pre><code>##         4         6         8 
-## 0.5086326 0.4645102 0.4229655</code></pre>
+<span class="st">  </span><span class="kw">map_dbl</span>(<span class="st">&quot;r.squared&quot;</span>)
+<span class="co">#&gt;     4     6     8 </span>
+<span class="co">#&gt; 0.509 0.465 0.423</span></code></pre></div>
 <p>También se puede usar un número entero para seleccionar elementos por posición:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="kw">list</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="kw">list</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>))
-x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map_dbl</span>(<span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 2 5 8</code></pre>
+x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map_dbl</span>(<span class="dv">2</span>)
+<span class="co">#&gt; [1] 2 5 8</span></code></pre></div>
 <p>La función <code>pmap()</code> recibe una lista de argumentos para aplicarlos a una función:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">params &lt;-<span class="st"> </span><span class="kw">tribble</span>(
   <span class="op">~</span>mean, <span class="op">~</span>sd, <span class="op">~</span>n,
@@ -1545,15 +1547,15 @@ x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map_db
    <span class="op">-</span><span class="dv">3</span>,    <span class="dv">10</span>,  <span class="dv">5</span>
 )
 params <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">pmap</span>(rnorm)</code></pre></div>
-<pre><code>## [[1]]
-## [1] 4.256727
-## 
-## [[2]]
-## [1] 10.9439615  0.9752069 17.3277743
-## 
-## [[3]]
-## [1]  -1.467467  18.726117   1.755095 -10.099464   3.107264</code></pre>
+<span class="st">  </span><span class="kw">pmap</span>(rnorm)
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] 4.26</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] 10.944  0.975 17.328</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1]  -1.47  18.73   1.76 -10.10   3.11</span></code></pre></div>
 <p>Hay un paso más en la complejidad: además de variar los argumentos para una función, también puedes variar la función misma y para esto se usa la función <code>invoke_map()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sim &lt;-<span class="st"> </span><span class="kw">tribble</span>(
   <span class="op">~</span>f,      <span class="op">~</span>params,
@@ -1563,21 +1565,21 @@ params <span class="op">%&gt;%</span><span class="st"> </span>
 )
 sim <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sim =</span> <span class="kw">invoke_map</span>(f, params, <span class="dt">n =</span> <span class="dv">10</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">str</span>()</code></pre></div>
-<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    3 obs. of  3 variables:
-##  $ f     : chr  &quot;runif&quot; &quot;rnorm&quot; &quot;rpois&quot;
-##  $ params:List of 3
-##   ..$ :List of 2
-##   .. ..$ min: num -1
-##   .. ..$ max: num 1
-##   ..$ :List of 1
-##   .. ..$ sd: num 5
-##   ..$ :List of 1
-##   .. ..$ lambda: num 10
-##  $ sim   :List of 3
-##   ..$ : num  -0.65 0.493 -0.79 0.729 0.229 ...
-##   ..$ : num  0.372 -2.948 -2.843 -0.676 5.89 ...
-##   ..$ : int  11 10 8 13 13 12 15 11 5 10</code></pre>
+<span class="st">  </span><span class="kw">str</span>()
+<span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    3 obs. of  3 variables:</span>
+<span class="co">#&gt;  $ f     : chr  &quot;runif&quot; &quot;rnorm&quot; &quot;rpois&quot;</span>
+<span class="co">#&gt;  $ params:List of 3</span>
+<span class="co">#&gt;   ..$ :List of 2</span>
+<span class="co">#&gt;   .. ..$ min: num -1</span>
+<span class="co">#&gt;   .. ..$ max: num 1</span>
+<span class="co">#&gt;   ..$ :List of 1</span>
+<span class="co">#&gt;   .. ..$ sd: num 5</span>
+<span class="co">#&gt;   ..$ :List of 1</span>
+<span class="co">#&gt;   .. ..$ lambda: num 10</span>
+<span class="co">#&gt;  $ sim   :List of 3</span>
+<span class="co">#&gt;   ..$ : num  -0.65 0.493 -0.79 0.729 0.229 ...</span>
+<span class="co">#&gt;   ..$ : num  0.372 -2.948 -2.843 -0.676 5.89 ...</span>
+<span class="co">#&gt;   ..$ : int  11 10 8 13 13 12 15 11 5 10</span></code></pre></div>
 </div>
 </div>
 <div id="rendimiento-en-r" class="section level3">
@@ -1878,25 +1880,25 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB <span class="op">+</span><span class="st"> </span>teamID, Batting))</code></pre></div>
-<pre><code>##    user  system elapsed 
-##   3.033   0.096   3.129</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB <span class="op">+</span><span class="st"> </span>teamID, Batting))
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   2.918   0.124   3.042</span></code></pre></div>
 <ul>
 <li><p><strong>user time</strong>: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.</p></li>
 <li><p><strong>elapsed time</strong>: tiempo en el reloj, tiempo que experimenta la persona.</p></li>
 </ul>
 <p>El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">readLines</span>(<span class="st">&quot;http://www.jhsph.edu&quot;</span>))</code></pre></div>
-<pre><code>##    user  system elapsed 
-##   0.032   0.001   0.364</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">readLines</span>(<span class="st">&quot;http://www.jhsph.edu&quot;</span>))
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   0.027   0.000   2.819</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(parallel)
 <span class="kw">system.time</span>(<span class="kw">mclapply</span>(<span class="dv">2000</span><span class="op">:</span><span class="dv">2006</span>, 
   <span class="cf">function</span>(x){
     sub &lt;-<span class="st"> </span><span class="kw">subset</span>(Batting, yearID <span class="op">==</span><span class="st"> </span>x)
     <span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB, sub)
-}, <span class="dt">mc.cores =</span> <span class="dv">5</span>))</code></pre></div>
-<pre><code>##    user  system elapsed 
-##   0.047   0.047   0.089</code></pre>
+}, <span class="dt">mc.cores =</span> <span class="dv">5</span>))
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   0.055   0.051   0.081</span></code></pre></div>
 <p>Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr</span>
 dplyr_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
@@ -1934,76 +1936,74 @@ est_r_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
   batting_ord &lt;-<span class="st"> </span>batting_<span class="dv">2</span>[<span class="kw">order</span>(batting_<span class="dv">2</span><span class="op">$</span>R, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>), ]
 })
 
-dplyr_st</code></pre></div>
-<pre><code>##    user  system elapsed 
-##   0.152   0.000   0.151</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plyr_st</code></pre></div>
-<pre><code>##    user  system elapsed 
-##   7.656   0.004   7.660</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_l_st</code></pre></div>
-<pre><code>##    user  system elapsed 
-##  65.037   1.580  66.618</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_r_st</code></pre></div>
-<pre><code>##    user  system elapsed 
-##   0.554   0.016   0.570</code></pre>
+dplyr_st
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   0.140   0.000   0.141</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plyr_st
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   7.448   0.003   7.452</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_l_st
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   72.14    1.76   73.91</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_r_st
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   0.619   0.012   0.631</span></code></pre></div>
 <p>La función <code>system.time</code> supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es <code>Rprof()</code>.</p>
 <p>Rprof es un perfilador de muestreo que registra cambios en la pila de funciones, funciona tomando muestras a intervalos regulares y tabula cuánto tiempo se lleva en cada función.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>, <span class="dt">interval =</span> <span class="fl">0.015</span>, <span class="dt">line.profiling =</span> <span class="ot">TRUE</span>)
 mod &lt;-<span class="st"> </span><span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB <span class="op">+</span><span class="st"> </span>teamID, Batting)
 <span class="kw">Rprof</span>(<span class="ot">NULL</span>)</code></pre></div>
 <p>Usamos la función `summaryRprof para tabular las salidas de Rprof y calcular cuánto tiempo se toma en cada función.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summaryRprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>)</code></pre></div>
-<pre><code>## $by.self
-##                         self.time self.pct total.time total.pct
-## &quot;lm.fit&quot;                     2.64    90.26       2.64     90.26
-## &quot;.External2&quot;                 0.21     7.18       0.22      7.69
-## &quot;as.character&quot;               0.04     1.54       0.04      1.54
-## &quot;anyDuplicated.default&quot;      0.02     0.51       0.02      0.51
-## &quot;handle_output&quot;              0.02     0.51       0.02      0.51
-## 
-## $by.total
-##                         total.time total.pct self.time self.pct
-## &quot;&lt;Anonymous&gt;&quot;                 2.92    100.00      0.00     0.00
-## &quot;block_exec&quot;                  2.92    100.00      0.00     0.00
-## &quot;call_block&quot;                  2.92    100.00      0.00     0.00
-## &quot;do.call&quot;                     2.92    100.00      0.00     0.00
-## &quot;eval.parent&quot;                 2.92    100.00      0.00     0.00
-## &quot;eval&quot;                        2.92    100.00      0.00     0.00
-## &quot;evaluate_call&quot;               2.92    100.00      0.00     0.00
-## &quot;evaluate::evaluate&quot;          2.92    100.00      0.00     0.00
-## &quot;evaluate&quot;                    2.92    100.00      0.00     0.00
-## &quot;in_dir&quot;                      2.92    100.00      0.00     0.00
-## &quot;knitr::knit&quot;                 2.92    100.00      0.00     0.00
-## &quot;local&quot;                       2.92    100.00      0.00     0.00
-## &quot;process_file&quot;                2.92    100.00      0.00     0.00
-## &quot;process_group.block&quot;         2.92    100.00      0.00     0.00
-## &quot;process_group&quot;               2.92    100.00      0.00     0.00
-## &quot;withCallingHandlers&quot;         2.92    100.00      0.00     0.00
-## &quot;handle&quot;                      2.91     99.49      0.00     0.00
-## &quot;lm&quot;                          2.91     99.49      0.00     0.00
-## &quot;timing_fn&quot;                   2.91     99.49      0.00     0.00
-## &quot;withVisible&quot;                 2.91     99.49      0.00     0.00
-## &quot;lm.fit&quot;                      2.64     90.26      2.64    90.26
-## &quot;.External2&quot;                  0.22      7.69      0.21     7.18
-## &quot;model.matrix.default&quot;        0.21      7.18      0.00     0.00
-## &quot;model.matrix&quot;                0.21      7.18      0.00     0.00
-## &quot;as.character&quot;                0.04      1.54      0.04     1.54
-## &quot;model.response&quot;              0.04      1.54      0.00     0.00
-## &quot;anyDuplicated.default&quot;       0.02      0.51      0.02     0.51
-## &quot;handle_output&quot;               0.02      0.51      0.02     0.51
-## &quot;[.data.frame&quot;                0.02      0.51      0.00     0.00
-## &quot;[&quot;                           0.02      0.51      0.00     0.00
-## &quot;anyDuplicated&quot;               0.02      0.51      0.00     0.00
-## &quot;model.frame.default&quot;         0.02      0.51      0.00     0.00
-## &quot;na.omit.data.frame&quot;          0.02      0.51      0.00     0.00
-## &quot;na.omit&quot;                     0.02      0.51      0.00     0.00
-## &quot;stats::model.frame&quot;          0.02      0.51      0.00     0.00
-## 
-## $sample.interval
-## [1] 0.015
-## 
-## $sampling.time
-## [1] 2.925</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summaryRprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>)
+<span class="co">#&gt; $by.self</span>
+<span class="co">#&gt;                         self.time self.pct total.time total.pct</span>
+<span class="co">#&gt; &quot;lm.fit&quot;                     2.88    90.57       2.88     90.57</span>
+<span class="co">#&gt; &quot;.External2&quot;                 0.22     7.08       0.24      7.55</span>
+<span class="co">#&gt; &quot;as.character&quot;               0.06     1.89       0.06      1.89</span>
+<span class="co">#&gt; &quot;anyDuplicated.default&quot;      0.02     0.47       0.02      0.47</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $by.total</span>
+<span class="co">#&gt;                         total.time total.pct self.time self.pct</span>
+<span class="co">#&gt; &quot;&lt;Anonymous&gt;&quot;                 3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;block_exec&quot;                  3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;call_block&quot;                  3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;do.call&quot;                     3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;eval.parent&quot;                 3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;eval&quot;                        3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;evaluate_call&quot;               3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;evaluate::evaluate&quot;          3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;evaluate&quot;                    3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;handle&quot;                      3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;in_dir&quot;                      3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;knitr::knit&quot;                 3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;lm&quot;                          3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;local&quot;                       3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;process_file&quot;                3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;process_group.block&quot;         3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;process_group&quot;               3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;timing_fn&quot;                   3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;withCallingHandlers&quot;         3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;withVisible&quot;                 3.18    100.00      0.00     0.00</span>
+<span class="co">#&gt; &quot;lm.fit&quot;                      2.88     90.57      2.88    90.57</span>
+<span class="co">#&gt; &quot;.External2&quot;                  0.24      7.55      0.22     7.08</span>
+<span class="co">#&gt; &quot;model.matrix.default&quot;        0.22      7.08      0.00     0.00</span>
+<span class="co">#&gt; &quot;model.matrix&quot;                0.22      7.08      0.00     0.00</span>
+<span class="co">#&gt; &quot;as.character&quot;                0.06      1.89      0.06     1.89</span>
+<span class="co">#&gt; &quot;model.response&quot;              0.06      1.89      0.00     0.00</span>
+<span class="co">#&gt; &quot;anyDuplicated.default&quot;       0.02      0.47      0.02     0.47</span>
+<span class="co">#&gt; &quot;[.data.frame&quot;                0.02      0.47      0.00     0.00</span>
+<span class="co">#&gt; &quot;[&quot;                           0.02      0.47      0.00     0.00</span>
+<span class="co">#&gt; &quot;anyDuplicated&quot;               0.02      0.47      0.00     0.00</span>
+<span class="co">#&gt; &quot;model.frame.default&quot;         0.02      0.47      0.00     0.00</span>
+<span class="co">#&gt; &quot;na.omit.data.frame&quot;          0.02      0.47      0.00     0.00</span>
+<span class="co">#&gt; &quot;na.omit&quot;                     0.02      0.47      0.00     0.00</span>
+<span class="co">#&gt; &quot;stats::model.frame&quot;          0.02      0.47      0.00     0.00</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $sample.interval</span>
+<span class="co">#&gt; [1] 0.015</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $sampling.time</span>
+<span class="co">#&gt; [1] 3.18</span></code></pre></div>
 <p>Hay dos métodos para normalizar los datos de Rprof:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>by.total</strong> divide el tiempo que se toma en cada función entre el tiempo total en correr.</p></li>
@@ -2013,27 +2013,27 @@ mod &lt;-<span class="st"> </span><span class="kw">lm</span>(R <span class="op">
 Batting <span class="op">%&gt;%</span>
 <span class="st">    </span>plyr<span class="op">::</span><span class="kw">ddply</span>(<span class="st">&quot;playerID&quot;</span>, plyr<span class="op">::</span>summarise, <span class="dt">total =</span> <span class="kw">sum</span>(R, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">n =</span> <span class="kw">length</span>(R)) <span class="op">%&gt;%</span>
 <span class="st">    </span>plyr<span class="op">::</span><span class="kw">arrange</span>(<span class="op">-</span>total) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">head</span>()</code></pre></div>
-<pre><code>##    playerID total  n
-## 1 henderi01  2295 29
-## 2  cobbty01  2246 24
-## 3 bondsba01  2227 22
-## 4 aaronha01  2174 23
-## 5  ruthba01  2174 22
-## 6  rosepe01  2165 25</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="ot">NULL</span>)
-<span class="kw">summaryRprof</span>(<span class="st">&quot;out/plyr_rprof.out&quot;</span>)<span class="op">$</span>by.self[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]</code></pre></div>
-<pre><code>##                 self.time self.pct total.time total.pct
-## &quot;FUN&quot;                0.94    12.74       1.96     26.56
-## &quot;lapply&quot;             0.80    10.84       2.76     37.40
-## &quot;.subset&quot;            0.42     5.69       0.42      5.69
-## &quot;eval&quot;               0.34     4.61       7.38    100.00
-## &quot;.fun&quot;               0.32     4.34       2.26     30.62
-## &quot;$&quot;                  0.32     4.34       0.32      4.34
-## &quot;[[.data.frame&quot;      0.28     3.79       0.58      7.86
-## &quot;[[&quot;                 0.24     3.25       3.96     53.66
-## &quot;as.list&quot;            0.24     3.25       0.38      5.15
-## &quot;extract_rows&quot;       0.22     2.98       3.18     43.09</code></pre>
+<span class="st">    </span><span class="kw">head</span>()
+<span class="co">#&gt;    playerID total  n</span>
+<span class="co">#&gt; 1 henderi01  2295 29</span>
+<span class="co">#&gt; 2  cobbty01  2246 24</span>
+<span class="co">#&gt; 3 bondsba01  2227 22</span>
+<span class="co">#&gt; 4 aaronha01  2174 23</span>
+<span class="co">#&gt; 5  ruthba01  2174 22</span>
+<span class="co">#&gt; 6  rosepe01  2165 25</span>
+<span class="kw">Rprof</span>(<span class="ot">NULL</span>)
+<span class="kw">summaryRprof</span>(<span class="st">&quot;out/plyr_rprof.out&quot;</span>)<span class="op">$</span>by.self[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]
+<span class="co">#&gt;                 self.time self.pct total.time total.pct</span>
+<span class="co">#&gt; &quot;FUN&quot;                1.38    16.87       2.20     26.89</span>
+<span class="co">#&gt; &quot;lapply&quot;             1.08    13.20       3.34     40.83</span>
+<span class="co">#&gt; &quot;eval&quot;               0.38     4.65       8.18    100.00</span>
+<span class="co">#&gt; &quot;$&quot;                  0.38     4.65       0.38      4.65</span>
+<span class="co">#&gt; &quot;.subset&quot;            0.26     3.18       0.26      3.18</span>
+<span class="co">#&gt; &quot;[[&quot;                 0.24     2.93       4.36     53.30</span>
+<span class="co">#&gt; &quot;[[.data.frame&quot;      0.24     2.93       0.48      5.87</span>
+<span class="co">#&gt; &quot;as.list&quot;            0.22     2.69       0.32      3.91</span>
+<span class="co">#&gt; &quot;names&quot;              0.22     2.69       0.22      2.69</span>
+<span class="co">#&gt; &quot;seq.default&quot;        0.20     2.44       0.24      2.93</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Rprof(&quot;out/slow_rprof.out&quot;)</span>
 <span class="co">#     players &lt;- unique(batting$playerID)</span>
 <span class="co">#     n_players &lt;- length(players)</span>
@@ -2048,18 +2048,18 @@ Batting <span class="op">%&gt;%</span>
 <span class="co">#     batting_2[order(batting_2$total, decreasing = TRUE), ]</span>
 <span class="co"># Rprof(NULL)</span>
 
-<span class="kw">summaryRprof</span>(<span class="st">&quot;out/slow_rprof.out&quot;</span>)<span class="op">$</span>by.self[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]</code></pre></div>
-<pre><code>##                 self.time self.pct total.time total.pct
-## &quot;[.data.frame&quot;      45.50    54.74      82.74     99.54
-## &quot;==&quot;                24.78    29.81      24.78     29.81
-## &quot;attr&quot;               6.70     8.06       6.70      8.06
-## &quot;NextMethod&quot;         3.42     4.11       3.44      4.14
-## &quot;[[&quot;                 1.32     1.59       2.12      2.55
-## &quot;[[.data.frame&quot;      0.22     0.26       0.80      0.96
-## &quot;&lt;Anonymous&gt;&quot;        0.20     0.24       0.46      0.55
-## &quot;all&quot;                0.10     0.12       0.10      0.12
-## &quot;sys.call&quot;           0.10     0.12       0.10      0.12
-## &quot;%in%&quot;               0.08     0.10       0.22      0.26</code></pre>
+<span class="kw">summaryRprof</span>(<span class="st">&quot;out/slow_rprof.out&quot;</span>)<span class="op">$</span>by.self[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ]
+<span class="co">#&gt;                 self.time self.pct total.time total.pct</span>
+<span class="co">#&gt; &quot;[.data.frame&quot;      45.50    54.74      82.74     99.54</span>
+<span class="co">#&gt; &quot;==&quot;                24.78    29.81      24.78     29.81</span>
+<span class="co">#&gt; &quot;attr&quot;               6.70     8.06       6.70      8.06</span>
+<span class="co">#&gt; &quot;NextMethod&quot;         3.42     4.11       3.44      4.14</span>
+<span class="co">#&gt; &quot;[[&quot;                 1.32     1.59       2.12      2.55</span>
+<span class="co">#&gt; &quot;[[.data.frame&quot;      0.22     0.26       0.80      0.96</span>
+<span class="co">#&gt; &quot;&lt;Anonymous&gt;&quot;        0.20     0.24       0.46      0.55</span>
+<span class="co">#&gt; &quot;all&quot;                0.10     0.12       0.10      0.12</span>
+<span class="co">#&gt; &quot;sys.call&quot;           0.10     0.12       0.10      0.12</span>
+<span class="co">#&gt; &quot;%in%&quot;               0.08     0.10       0.22      0.26</span></code></pre></div>
 </div>
 <div id="estrategias-para-mejorar-desempeno" class="section level4 unnumbered">
 <h4>Estrategias para mejorar desempeño</h4>
@@ -2099,17 +2099,17 @@ Batting <span class="op">%&gt;%</span>
   <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="fl">1e+05</span>) {
     <span class="cf">if</span> (<span class="kw">runif</span>(<span class="dv">1</span>) <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.3</span>)
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
-})</code></pre></div>
-<pre><code>##    user  system elapsed 
-##   0.262   0.061   0.322</code></pre>
+})
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   0.326   0.080   0.407</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aciertos &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">FALSE</span>, <span class="fl">1e+06</span>) 
 <span class="kw">system.time</span>(
   <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="fl">1e+05</span>) {
     <span class="cf">if</span> (<span class="kw">runif</span>(<span class="dv">1</span>) <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.3</span>)
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
-})</code></pre></div>
-<pre><code>##    user  system elapsed 
-##   0.225   0.000   0.224</code></pre>
+})
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   0.271   0.052   0.323</span></code></pre></div>
 <p>Usando <code>rbind</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind &lt;-<span class="st"> </span><span class="cf">function</span>(){
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">character</span>(<span class="dv">0</span>), <span class="dt">b =</span> <span class="kw">numeric</span>(<span class="dv">0</span>)) 
@@ -2118,9 +2118,9 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
   }
 mi.df
 }
-<span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind</span>())</code></pre></div>
-<pre><code>##    user  system elapsed 
-##   0.764   0.000   0.764</code></pre>
+<span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind</span>())
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   0.794   0.000   0.793</span></code></pre></div>
 <p>Si definimos el tamaño del data.frame obtenemos mejoras:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="cf">function</span>() {
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>), <span class="dt">b =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)) 
@@ -2130,9 +2130,9 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
   }
   mi.df
 }
-<span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind_2</span>())</code></pre></div>
-<pre><code>##    user  system elapsed 
-##   0.083   0.000   0.083</code></pre>
+<span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind_2</span>())
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   0.076   0.000   0.077</span></code></pre></div>
 <p>Finalmente, veamos un enfoque totalmente vectorizado</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">porcolumna_df &lt;-<span class="st"> </span><span class="cf">function</span>(){
   a &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>) 
@@ -2140,9 +2140,9 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
   mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> a, <span class="dt">b =</span> b)
   mi.df
 }
-<span class="kw">system.time</span>(mi.df.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">porcolumna_df</span>())</code></pre></div>
-<pre><code>##    user  system elapsed 
-##   0.000   0.000   0.001</code></pre>
+<span class="kw">system.time</span>(mi.df.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">porcolumna_df</span>())
+<span class="co">#&gt;    user  system elapsed </span>
+<span class="co">#&gt;   0.001   0.000   0.002</span></code></pre></div>
 <p>A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectorización, este incremento conlleva un costo en memoria. Si comparamos la versión mas lenta con la más rápida, en la última debemos asignar a, b y mi.df. Entonces, no siempre es mejor vectorizar, pues si consumimos la memoria, entonces la versión vectorizada puede enfrentarse al problema de uso de memoria en disco, que tiene aun más grandes penalizaciones en el desempeño que los ciclos que hemos visto.</p>
 <p><strong>4 Paralelizar</strong></p>
 <p>Paralelizar usa varios cores para trabajar de manera simultánea en varias secciones de un problema, no reduce el tiempo computacional pero incrementa el tiempo del usuario pues aprovecha los recursos. Como referencia está <a href="https://www.amazon.com/Parallel-Computing-Data-Science-Examples/dp/1466587016">Parallel Computing for Data Science</a> de Norm Matloff.</p>
@@ -2178,9 +2178,9 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
   <span class="kw">c</span>(<span class="dt">minimo =</span> <span class="kw">min</span>(letras), <span class="dt">maximo =</span> <span class="kw">max</span>(letras))
 }</code></pre></div>
 <p>Es decir, si incluimos las letras <code>abcz</code> la letra <em>mínima</em> es a y la <em>máxima</em> es z.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min_max_fun</span>(<span class="st">&quot;abcz&quot;</span>)</code></pre></div>
-<pre><code>## minimo maximo 
-##    &quot;a&quot;    &quot;z&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min_max_fun</span>(<span class="st">&quot;abcz&quot;</span>)
+<span class="co">#&gt; minimo maximo </span>
+<span class="co">#&gt;    &quot;a&quot;    &quot;z&quot;</span></code></pre></div>
 <p>El siguiente vector incluye el nombre de las 16 delegaciones de la Ciudad de México.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">delegaciones &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Alvaro Obregon&quot;</span>, <span class="st">&quot;Azcapotzalco&quot;</span> ,<span class="st">&quot;Benito Juarez&quot;</span> ,
                    <span class="st">&quot;Coyoacan&quot;</span> ,<span class="st">&quot;Cuajimalpa de Morelos&quot;</span> ,<span class="st">&quot;Cuauhtemoc&quot;</span> ,
@@ -2197,8 +2197,8 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 <li>El siguiente vector incluye el precio de la gasolina en diferentes estados del país en julio de 2017.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gas_cdmx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">15.82</span>, <span class="fl">15.77</span>, <span class="fl">15.83</span>, <span class="fl">15.23</span>, <span class="fl">14.95</span>, <span class="fl">15.42</span>, <span class="fl">15.55</span>)
-gas_cdmx</code></pre></div>
-<pre><code>## [1] 15.82 15.77 15.83 15.23 14.95 15.42 15.55</code></pre>
+gas_cdmx
+<span class="co">#&gt; [1] 15.8 15.8 15.8 15.2 14.9 15.4 15.6</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>Crea una función que convierta el precio a dolares suponiendo que un dolar equivale a 17.76 pesos.</li>
 </ol>
@@ -2222,18 +2222,18 @@ gas_cdmx</code></pre></div>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">estadisticos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GAUSS:1777&quot;</span>, <span class="st">&quot;BAYES:1702&quot;</span>, <span class="st">&quot;FISHER:1890&quot;</span>, <span class="st">&quot;PEARSON:1857&quot;</span>)
 split_estadisticos &lt;-<span class="st"> </span><span class="kw">strsplit</span>(estadisticos, <span class="dt">split =</span> <span class="st">&quot;:&quot;</span>)
-split_estadisticos</code></pre></div>
-<pre><code>## [[1]]
-## [1] &quot;GAUSS&quot; &quot;1777&quot; 
-## 
-## [[2]]
-## [1] &quot;BAYES&quot; &quot;1702&quot; 
-## 
-## [[3]]
-## [1] &quot;FISHER&quot; &quot;1890&quot;  
-## 
-## [[4]]
-## [1] &quot;PEARSON&quot; &quot;1857&quot;</code></pre>
+split_estadisticos
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] &quot;GAUSS&quot; &quot;1777&quot; </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1] &quot;BAYES&quot; &quot;1702&quot; </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt; [1] &quot;FISHER&quot; &quot;1890&quot;  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[4]]</span>
+<span class="co">#&gt; [1] &quot;PEARSON&quot; &quot;1857&quot;</span></code></pre></div>
 <p>Utiliza la función predefinida <code>tolower()</code> y <code>lapply()</code> para convertir a minúsculas cada letra de la lista <code>split_estadisticos</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">split_lower &lt;-<span class="st"> </span><span class="kw">lapply</span>( , )
 <span class="kw">print</span>(split_lower)</code></pre></div>
@@ -2242,12 +2242,12 @@ split_estadisticos</code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Usando el vector <code>split_estadísticos</code> del ejercicio anterior.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(split_estadisticos)</code></pre></div>
-<pre><code>## List of 4
-##  $ : chr [1:2] &quot;GAUSS&quot; &quot;1777&quot;
-##  $ : chr [1:2] &quot;BAYES&quot; &quot;1702&quot;
-##  $ : chr [1:2] &quot;FISHER&quot; &quot;1890&quot;
-##  $ : chr [1:2] &quot;PEARSON&quot; &quot;1857&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(split_estadisticos)
+<span class="co">#&gt; List of 4</span>
+<span class="co">#&gt;  $ : chr [1:2] &quot;GAUSS&quot; &quot;1777&quot;</span>
+<span class="co">#&gt;  $ : chr [1:2] &quot;BAYES&quot; &quot;1702&quot;</span>
+<span class="co">#&gt;  $ : chr [1:2] &quot;FISHER&quot; &quot;1890&quot;</span>
+<span class="co">#&gt;  $ : chr [1:2] &quot;PEARSON&quot; &quot;1857&quot;</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>Crea una función que regrese la primera posición.</li>
 </ol>
@@ -2285,11 +2285,11 @@ nombre_estadisticos</code></pre></div>
   <span class="dt">guadalajara =</span> <span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">26</span>, <span class="dv">27</span>),
   <span class="dt">tuxtla_gtz =</span> <span class="kw">c</span>(<span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">29</span>, <span class="dv">32</span>, <span class="dv">28</span>)
 )
-<span class="kw">str</span>(temp_lista)</code></pre></div>
-<pre><code>## List of 3
-##  $ cdmx       : num [1:5] 13 15 19 22 20
-##  $ guadalajara: num [1:5] 18 18 22 26 27
-##  $ tuxtla_gtz : num [1:5] 22 24 29 32 28</code></pre>
+<span class="kw">str</span>(temp_lista)
+<span class="co">#&gt; List of 3</span>
+<span class="co">#&gt;  $ cdmx       : num [1:5] 13 15 19 22 20</span>
+<span class="co">#&gt;  $ guadalajara: num [1:5] 18 18 22 26 27</span>
+<span class="co">#&gt;  $ tuxtla_gtz : num [1:5] 22 24 29 32 28</span></code></pre></div>
 <p>Completa la siguiente función que obtiene el promedio entre el valor mínimo y máximo registrados.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">promedio_extremos_fun &lt;-<span class="st">  </span><span class="cf">function</span>(x) {
   ( <span class="kw">min</span>() <span class="op">+</span><span class="st"> </span><span class="kw">max</span>() ) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>
@@ -2355,10 +2355,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",

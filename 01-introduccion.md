@@ -1,3 +1,4 @@
+
 # Introducción {#intro}
 
 <style>
@@ -39,7 +40,7 @@ ggplot(sat, aes(x = teacher_salary, y = total_score)) +
   ylab("Score total promedio de SAT")
 ```
 
-<img src="01-introduccion_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+<img src="01-introduccion_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;" />
 
 Podemos revisar el resultado de la regresión lineal (haciendo uso del paquete `stargazer`):
 
@@ -56,17 +57,17 @@ stargazer(out1, type = 'html', style = "all", single.row = T,
 <tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td><em>Dependent variable:</em></td></tr>
 <tr><td></td><td colspan="1" style="border-bottom: 1px solid black"></td></tr>
 <tr><td style="text-align:left"></td><td>total_score</td></tr>
-<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">teacher_salary</td><td>-5.540<sup>***</sup> (1.632)</td></tr>
-<tr><td style="text-align:left"></td><td>t = -3.394</td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">teacher_salary</td><td>-5.540<sup>***</sup> (1.630)</td></tr>
+<tr><td style="text-align:left"></td><td>t = -3.390</td></tr>
 <tr><td style="text-align:left"></td><td>p = 0.002</td></tr>
-<tr><td style="text-align:left">Constant</td><td>1,158.859<sup>***</sup> (57.659)</td></tr>
-<tr><td style="text-align:left"></td><td>t = 20.098</td></tr>
+<tr><td style="text-align:left">Constant</td><td>1,159.000<sup>***</sup> (57.700)</td></tr>
+<tr><td style="text-align:left"></td><td>t = 20.100</td></tr>
 <tr><td style="text-align:left"></td><td>p = 0.000</td></tr>
 <tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>50</td></tr>
 <tr><td style="text-align:left">R<sup>2</sup></td><td>0.193</td></tr>
 <tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.177</td></tr>
-<tr><td style="text-align:left">Residual Std. Error</td><td>67.889 (df = 48)</td></tr>
-<tr><td style="text-align:left">F Statistic</td><td>11.516<sup>***</sup> (df = 1; 48) (p = 0.002)</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>67.900 (df = 48)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>11.500<sup>***</sup> (df = 1; 48) (p = 0.002)</td></tr>
 <tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
 </table>
 
@@ -91,33 +92,33 @@ stargazer(out2, type = 'html', style = "all", single.row = T,
 <tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td><em>Dependent variable:</em></td></tr>
 <tr><td></td><td colspan="1" style="border-bottom: 1px solid black"></td></tr>
 <tr><td style="text-align:left"></td><td>total_score</td></tr>
-<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">teacher_salary</td><td>2.180<sup>**</sup> (1.029)</td></tr>
-<tr><td style="text-align:left"></td><td>t = 2.119</td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">teacher_salary</td><td>2.180<sup>**</sup> (1.030)</td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.120</td></tr>
 <tr><td style="text-align:left"></td><td>p = 0.040</td></tr>
-<tr><td style="text-align:left">perc_take_sat</td><td>-2.779<sup>***</sup> (0.228)</td></tr>
-<tr><td style="text-align:left"></td><td>t = -12.163</td></tr>
+<tr><td style="text-align:left">perc_take_sat</td><td>-2.780<sup>***</sup> (0.228)</td></tr>
+<tr><td style="text-align:left"></td><td>t = -12.200</td></tr>
 <tr><td style="text-align:left"></td><td>p = 0.000</td></tr>
-<tr><td style="text-align:left">Constant</td><td>987.900<sup>***</sup> (31.877)</td></tr>
-<tr><td style="text-align:left"></td><td>t = 30.991</td></tr>
+<tr><td style="text-align:left">Constant</td><td>988.000<sup>***</sup> (31.900)</td></tr>
+<tr><td style="text-align:left"></td><td>t = 31.000</td></tr>
 <tr><td style="text-align:left"></td><td>p = 0.000</td></tr>
 <tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>50</td></tr>
 <tr><td style="text-align:left">R<sup>2</sup></td><td>0.806</td></tr>
 <tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.797</td></tr>
-<tr><td style="text-align:left">Residual Std. Error</td><td>33.688 (df = 47)</td></tr>
-<tr><td style="text-align:left">F Statistic</td><td>97.355<sup>***</sup> (df = 2; 47) (p = 0.000)</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>33.700 (df = 47)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>97.400<sup>***</sup> (df = 2; 47) (p = 0.000)</td></tr>
 <tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
 </table>
 
 Podemos ver que el coeficiente de la regresión lineal correspondiente al salario de los maestros se invierte. Gráficamente podemos visualizar este efecto:
 
-<img src="01-introduccion_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="01-introduccion_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 Vemos que dentro de cada grupo, la pendiente es positiva (o al menos no negativa). También podríamos agregar etiquetas:
 
 
 
-<img src="01-introduccion_files/figure-html/unnamed-chunk-6-1.png" width="768" />
+<img src="01-introduccion_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
 
 Otro ejemplo de este fenómeno es cuando la Universidad de California, Berkeley fue demandada por discrimanción hacia mujeres que habían solicitado admisión a un posgrado en 1973. De acuerdo con las estadísticas de admisión, los hombres que presentaron la solicitud tenían mayor probabilidad de ser admitidos que las mujeres, y la diferencia era tan sustancial que uno podría concluir que efectivamente había existido dicha discriminación. Sin embargo, al examinar los datos individualmente por departamento, parecía que no había una diferencia significativa en contra de las mujeres.
 
@@ -179,29 +180,26 @@ tab %>%
 
 Gender    Admitted   Rejected
 -------  ---------  ---------
-Female       30.35      69.65
-Male         44.52      55.48
+Female        30.4       69.7
+Male          44.5       55.5
 
 Incluso podemos proporcionar una prueba estadística para apoyar la afirmación de que hubo sesgo en las admisiones. En R, se puede realizar una prueba de proporciones a través de la función `prop.test()`:
 
 
 ```r
 prop.test(tab %>% ungroup() %>% select(-Gender) %>% as.matrix())
-```
-
-```
-## 
-## 	2-sample test for equality of proportions with continuity
-## 	correction
-## 
-## data:  tab %>% ungroup() %>% select(-Gender) %>% as.matrix()
-## X-squared = 91.61, df = 1, p-value < 2.2e-16
-## alternative hypothesis: two.sided
-## 95 percent confidence interval:
-##  -0.1703022 -0.1129887
-## sample estimates:
-##    prop 1    prop 2 
-## 0.3035422 0.4451877
+#> 
+#> 	2-sample test for equality of proportions with continuity
+#> 	correction
+#> 
+#> data:  tab %>% ungroup() %>% select(-Gender) %>% as.matrix()
+#> X-squared = 90, df = 1, p-value <2e-16
+#> alternative hypothesis: two.sided
+#> 95 percent confidence interval:
+#>  -0.170 -0.113
+#> sample estimates:
+#> prop 1 prop 2 
+#>  0.304  0.445
 ```
 
 A partir de la prueba de hipótesis realizada anteriormente, se puede concluir que hay una diferencias significativa entre la proporción de hombres admitidos y la proporción de mujeres admitidas en los programas de posgrado.
@@ -221,14 +219,14 @@ ucb %>%
 
 
 
-Dept    Female    Male
------  -------  ------
-A        82.41   62.06
-B        68.00   63.04
-C        34.06   36.92
-D        34.93   33.09
-E        23.92   27.75
-F         7.04    5.90
+Dept    Female   Male
+-----  -------  -----
+A        82.41   62.1
+B        68.00   63.0
+C        34.06   36.9
+D        34.93   33.1
+E        23.92   27.8
+F         7.04    5.9
 
 
 Condicionando por departamento ahora vemos que las mujeres realmente tienen mayores tasas de admisión en cuatro de los seis departamentos (A, B, D, F). ¿Cómo puede ser esto? En realidad las diferencias tienen que ver con el porcentaje de solicitantes (hombres y mujeres) que son admitidos por departamentos, es decir, hay departamentos más competitivos que otros.
@@ -241,10 +239,7 @@ Consideremos un modelo log-lineal. Sea $p_{ijk}$ la proporción de la población
 ```r
 tab <- xtabs(n ~ ., ucb)
 llout <- loglin(tab, list(1:2,c(1,3),2:3),param=TRUE)
-```
-
-```
-## 9 iterations: deviation 0.04920393
+#> 9 iterations: deviation 0.0492
 ```
 
 Los efectos globales de la variable de admitidos son:
@@ -254,10 +249,10 @@ Los efectos globales de la variable de admitidos son:
 llout$param$Admit %>% knitr::kable()
 ```
 
-                     x
----------  -----------
-Admitted    -0.3212111
-Rejected     0.3212111
+                 x
+---------  -------
+Admitted    -0.321
+Rejected     0.321
 
 
 Los efectos globales de la variable Departamento, por ejemplo, nos dicen qué departamentos tienden a tener más solicitantes (el A, el C y el D), aunque en realidad esto no sea tan relevante:
@@ -267,14 +262,14 @@ Los efectos globales de la variable Departamento, por ejemplo, nos dicen qué de
 llout$param$Dept %>% knitr::kable()
 ```
 
-               x
----  -----------
-A      0.1537626
-B     -0.7651684
-C      0.5397205
-D      0.4302153
-E     -0.0288135
-F     -0.3297165
+           x
+---  -------
+A      0.154
+B     -0.765
+C      0.540
+D      0.430
+E     -0.029
+F     -0.330
 
 
 Los efectos globales de la variable género también nos dicen que el número de solicitantes hombres es mayor que el número de solicitantes que son mujeres:
@@ -284,10 +279,10 @@ Los efectos globales de la variable género también nos dicen que el número de
 llout$param$Gender %>% knitr::kable()
 ```
 
-                   x
--------  -----------
-Female    -0.3287569
-Male       0.3287569
+               x
+-------  -------
+Female    -0.329
+Male       0.329
 
 
 Analicemos ahora los términos de interacciones entre variables. Como la variable que nos interesa es la de admisión, veamos la interacción de Admit-Gender y Admit-Department:
@@ -297,20 +292,20 @@ Analicemos ahora los términos de interacciones entre variables. Como la variabl
 llout$param$Admit.Gender %>% knitr::kable()
 ```
 
-               Female        Male
----------  ----------  ----------
-Admitted     0.024937   -0.024937
-Rejected    -0.024937    0.024937
+            Female     Male
+---------  -------  -------
+Admitted     0.025   -0.025
+Rejected    -0.025    0.025
 
 
 ```r
 llout$param$Admit.Dept %>% knitr::kable()
 ```
 
-                     A            B            C         D            E           F
----------  -----------  -----------  -----------  --------  -----------  ----------
-Admitted     0.6371804    0.6154772    0.0059146   -0.0101   -0.2324371   -1.016035
-Rejected    -0.6371804   -0.6154772   -0.0059146    0.0101    0.2324371    1.016035
+                 A        B        C       D        E       F
+---------  -------  -------  -------  ------  -------  ------
+Admitted     0.637    0.615    0.006   -0.01   -0.232   -1.02
+Rejected    -0.637   -0.615   -0.006    0.01    0.232    1.02
 
 En términos de asociación con la variable de admisión, la relación con la variable de departamento es mucho más fuerte que con la de género, lo que significa que la mayoría de los parámetros estimados son mucho más grandes en el primer caso. En otras palabras, el departamento es la variable más importante, no el género. Más aún, los resultados anteriores también muestran que existe una interacción Admit-Female positiva, es decir, que a las mujeres les va un poco mejor que a los hombres en cuanto a la admisión.
 
@@ -555,17 +550,14 @@ También podemos utilizar la función `glimpse()` del paquete `tibble`:
 
 ```r
 glimpse(dds)
-```
-
-```
-## Observations: 1,000
-## Variables: 6
-## $ Id           <int> 10210, 10409, 10486, 10538, 10568, 10690, 10711, ...
-## $ `Age Cohort` <chr> "13-17", "22-50", "0-5", "18-21", "13-17", "13-17...
-## $ Age          <int> 17, 37, 3, 19, 13, 15, 13, 17, 14, 13, 13, 14, 15...
-## $ Gender       <chr> "Female", "Male", "Male", "Female", "Male", "Fema...
-## $ Expenditures <int> 2113, 41924, 1454, 6400, 4412, 4566, 3915, 3873, ...
-## $ Ethnicity    <chr> "White not Hispanic", "White not Hispanic", "Hisp...
+#> Observations: 1,000
+#> Variables: 6
+#> $ Id           <int> 10210, 10409, 10486, 10538, 10568, 10690, 10711, ...
+#> $ `Age Cohort` <chr> "13-17", "22-50", "0-5", "18-21", "13-17", "13-17...
+#> $ Age          <int> 17, 37, 3, 19, 13, 15, 13, 17, 14, 13, 13, 14, 15...
+#> $ Gender       <chr> "Female", "Male", "Male", "Female", "Male", "Fema...
+#> $ Expenditures <int> 2113, 41924, 1454, 6400, 4412, 4566, 3915, 3873, ...
+#> $ Ethnicity    <chr> "White not Hispanic", "White not Hispanic", "Hisp...
 ```
 
 Podemos ver que el conjunto de datos contiene una muestra de exactamente 1000 observaciones que fueron seleccionadas aleatoriamente.
@@ -599,10 +591,7 @@ Podemos comparar también con el promedio de todos los consumidores:
 
 ```r
 mean(dds$Expenditures)
-```
-
-```
-## [1] 18065.79
+#> [1] 18066
 ```
 
 Es común hacer gráficas de barras para representar _medias_, aunque en realidad, esto no es lo más recomendable:
@@ -617,7 +606,7 @@ ggplot(media_por_etnia, aes(x = Etnia, y = Media_etnia)) +
   theme(axis.text.x = element_text(angle=25))
 ```
 
-<img src="01-introduccion_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="01-introduccion_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
 
 ![](figuras/manicule2.jpg)
 <div class="centered">
@@ -715,8 +704,8 @@ dds_blancos_hispanos %>%
 
 Ethnicity             media_gasto   porc_consum
 -------------------  ------------  ------------
-Hispanic                 11065.57          37.6
-White not Hispanic       24697.55          40.1
+Hispanic                    11066          37.6
+White not Hispanic          24698          40.1
 
 
 Tiende a haber un consenso general de que hay una diferencia significativa en la cantidad promedio de gastos entre el grupo de blancos no hispanos y el de hispanos. ¿Por qué podría haber diferencias en los promedios? ¿Se puede determinar si realmente existe discriminación?
@@ -737,18 +726,15 @@ dds_blancos_hispanos %>%
   group_by(Ethnicity, Age_Cohort) %>%
   summarise(media_gasto = mean(Expenditures)) %>%
   spread(Ethnicity, media_gasto)
-```
-
-```
-## # A tibble: 6 x 3
-##   Age_Cohort Hispanic `White not Hispanic`
-##   <ord>         <dbl>                <dbl>
-## 1 0-5            1393                 1367
-## 2 6-12           2312                 2052
-## 3 13-17          3955                 3904
-## 4 18-21          9960                10133
-## 5 22-50         40924                40188
-## 6 51+           55585                52670
+#> # A tibble: 6 x 3
+#>   Age_Cohort Hispanic `White not Hispanic`
+#>   <ord>         <dbl>                <dbl>
+#> 1 0-5            1393                 1367
+#> 2 6-12           2312                 2052
+#> 3 13-17          3955                 3904
+#> 4 18-21          9960                10133
+#> 5 22-50         40924                40188
+#> 6 51+           55585                52670
 ```
 
 ¿Se puede concluir que el típico hispano recibe menos fondos (es decir, gastos) que el típico blanco?
@@ -766,18 +752,15 @@ dds_blancos_hispanos %>%
   group_by(Ethnicity, Age_Cohort) %>%
   summarise(porc_grupo_edad = round(n()/first(num_etnia)*100,2)) %>%
   spread(Ethnicity, porc_grupo_edad)
-```
-
-```
-## # A tibble: 6 x 3
-##   Age_Cohort Hispanic `White not Hispanic`
-##   <ord>         <dbl>                <dbl>
-## 1 0-5           11.7                  4.99
-## 2 6-12          24.2                 11.5 
-## 3 13-17         27.4                 16.7 
-## 4 18-21         20.7                 17.2 
-## 5 22-50         11.4                 33.2 
-## 6 51+            4.52                16.5
+#> # A tibble: 6 x 3
+#>   Age_Cohort Hispanic `White not Hispanic`
+#>   <ord>         <dbl>                <dbl>
+#> 1 0-5           11.7                  4.99
+#> 2 6-12          24.2                 11.5 
+#> 3 13-17         27.4                 16.7 
+#> 4 18-21         20.7                 17.2 
+#> 5 22-50         11.4                 33.2 
+#> 6 51+            4.52                16.5
 ```
 
 Veamos estas medias como un promedio ponderado por grupo de edad:
@@ -800,7 +783,7 @@ En el artículo está publicada esta gráfica:
 <p class="espacio3">
 </p>
 
-<img src="figuras/Messerli2012-ChocolateNobelCorrelation.png" width="566" style="display: block; margin: auto;" />
+<img src="figuras/Messerli2012-ChocolateNobelCorrelation.png" width="70%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -830,18 +813,18 @@ chocolate_nobel %>% sample_n(10) %>% knitr::kable()
 
 
 
-Country           Year   Cons_per_capita   Nobel_Laureates   Population_2017   Laureates_per_10_million
----------------  -----  ----------------  ----------------  ----------------  -------------------------
-Finland           2008              6.97                 3           5523231                      5.432
-Czech Republic    2009              2.08                 3          10618303                      2.825
-France            2009              6.41                37          64979548                      5.694
-Germany           2010             11.56                91          82114524                     11.082
-Japan             2006              2.23                22         127484450                      1.758
-Japan             2011              2.16                22         127484450                      1.758
-Denmark           2012              7.50                 9           5773551                     15.588
-Japan             2008              2.15                22         127484450                      1.758
-US                2007              5.18               335         324459463                     10.325
-Brazil            2008              2.57                 1         209288278                      0.048
+Country        Year   Cons_per_capita   Nobel_Laureates   Population_2017   Laureates_per_10_million
+------------  -----  ----------------  ----------------  ----------------  -------------------------
+US             2004              5.30               335          3.24e+08                     10.325
+Ireland        2006              7.64                 2          4.67e+06                      4.281
+Switzerland    2011             10.55                21          8.48e+06                     24.776
+Hungary        2009              3.58                 8          9.72e+06                      8.229
+Austria        2007              8.22                18          8.74e+06                     20.606
+Germany        2011             11.60                91          8.21e+07                     11.082
+Netherlands    2012              5.40                19          1.70e+07                     11.153
+Spain          2007              3.27                 2          4.64e+07                      0.431
+Finland        2009              6.87                 3          5.52e+06                      5.432
+US             2012              5.50               335          3.24e+08                     10.325
 
 
 Podemos ver una gráfica del consumo de chocolate vs el número de premios nobel:
@@ -853,7 +836,7 @@ ggplot(chocolate_nobel, aes(x=Cons_per_capita, y = Laureates_per_10_million)) +
   geom_smooth(method = 'lm', se = F)
 ```
 
-<img src="01-introduccion_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+<img src="01-introduccion_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" />
 
 El artículo original era más una nota sarcástica, que un artículo de investigación. Muchos artículos, blogs y medios mostraron que esta aparente correlación no tiene sentido. Estas críticas muestran que el número de Nobel para 10 millones de habitantes también está "correlacionado" con el PIB per cápita, el índice de desarrollo humano, el consumo de todo tipo de bienes de lujo, etc.
 

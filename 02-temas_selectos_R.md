@@ -1,3 +1,4 @@
+
 # Temas selectos de R {#Rintro}
 
 <style>
@@ -43,7 +44,7 @@ Muchas personas que usan R eventualmente comienzan a ayudar a los nuevos usuario
 
 En el análisis de datos nos interesan técnicas cuantitativas cómo: recolectar, organizar, entender, interpretar y extraer información de colecciones de datos predominantemente numéricos. Estas tareas se resumen en el proceso de análisis del siguiente diagrama:
 
-<img src="figuras/data-science.png" width="451" style="display: block; margin: auto;" />
+<img src="figuras/data-science.png" width="70%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -108,7 +109,7 @@ Sigue las instrucciones del instalador:
 RStudio es libre y gratis. Es un ambiente de desarrollo integrado para R: incluye una consola, un editor de texto y un conjunto de herramientas para administrar el espacio de 
 trabajo cuando se  utiliza R.
 
-<img src="figuras/rstudio-console-descr.png" width="1139" style="display: block; margin: auto;" />
+<img src="figuras/rstudio-console-descr.png" width="70%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -135,7 +136,7 @@ Algunos _shortcuts_ útiles en RStudio son:
 
 Para que el código sea __reproducible__ es importante que RStudio únicamente guarde lo relevante para hacer los cálculos, es decir, los scripts y _no los cálculos en sí_. Con tus scripts de R (y los datos), siempre podemos volver a crear las variables de ambiente. Sin embargo, es casi imposible recuperar un script únicamente a partir de tus variables de ambiente. Por lo tanto, se recomienda ampliamente configurar RStudio para que jamás guarde el ambiente en memoria.
 
-<img src="figuras/rstudio-workspace.png" width="482" style="display: block; margin: auto;" />
+<img src="figuras/rstudio-workspace.png" width="70%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -149,7 +150,7 @@ Existen dos formas de instalar paquetes:
   
 * Desde RStudio:
 
-<img src="figuras/install_packages.png" width="690" style="display: block; margin: auto;" />
+<img src="figuras/install_packages.png" width="70%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -167,21 +168,18 @@ Una vez instalados los paquetes, se cargan a la sesión de R mediante `library`.
 ```r
 library('tidyverse')
 print(read_csv)
-```
-
-```
-## function (file, col_names = TRUE, col_types = NULL, locale = default_locale(), 
-##     na = c("", "NA"), quoted_na = TRUE, quote = "\"", comment = "", 
-##     trim_ws = TRUE, skip = 0, n_max = Inf, guess_max = min(1000, 
-##         n_max), progress = show_progress()) 
-## {
-##     tokenizer <- tokenizer_csv(na = na, quoted_na = TRUE, quote = quote, 
-##         comment = comment, trim_ws = trim_ws)
-##     read_delimited(file, tokenizer, col_names = col_names, col_types = col_types, 
-##         locale = locale, skip = skip, comment = comment, n_max = n_max, 
-##         guess_max = guess_max, progress = progress)
-## }
-## <environment: namespace:readr>
+#> function (file, col_names = TRUE, col_types = NULL, locale = default_locale(), 
+#>     na = c("", "NA"), quoted_na = TRUE, quote = "\"", comment = "", 
+#>     trim_ws = TRUE, skip = 0, n_max = Inf, guess_max = min(1000, 
+#>         n_max), progress = show_progress()) 
+#> {
+#>     tokenizer <- tokenizer_csv(na = na, quoted_na = TRUE, quote = quote, 
+#>         comment = comment, trim_ws = trim_ws)
+#>     read_delimited(file, tokenizer, col_names = col_names, col_types = col_types, 
+#>         locale = locale, skip = skip, comment = comment, n_max = n_max, 
+#>         guess_max = guess_max, progress = progress)
+#> }
+#> <environment: namespace:readr>
 ```
 
 Como el paquete `readr` está cargado en la sesión podemos llamar a la función `read_csv` que se usará más adelante.
@@ -220,7 +218,7 @@ help(read_csv)
 
 En R se puede trabajar con distintas estructuras de datos, algunas son de una sola dimensión y otras permiten más, como indica el siguiente diagrama:
 
-<img src="figuras/data-estructure.png" width="313" style="display: block; margin: auto;" />
+<img src="figuras/data-estructure.png" width="70%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -242,19 +240,10 @@ Los vectores en R pueden ser de diferentes tipos o clases, a continuación se pr
 ```r
 a <- c(1,2.5,3,4.5,5,6.9)
 a
-```
-
-```
-## [1] 1.0 2.5 3.0 4.5 5.0 6.9
-```
-
-```r
+#> [1] 1.0 2.5 3.0 4.5 5.0 6.9
 # clase del vector
 class(a)
-```
-
-```
-## [1] "numeric"
+#> [1] "numeric"
 ```
 
 
@@ -264,19 +253,10 @@ class(a)
 ```r
 bool <- c(T, F, TRUE, FALSE)
 bool
-```
-
-```
-## [1]  TRUE FALSE  TRUE FALSE
-```
-
-```r
+#> [1]  TRUE FALSE  TRUE FALSE
 # clase del vector
 class(bool)
-```
-
-```
-## [1] "logical"
+#> [1] "logical"
 ```
 
 * __Vectores de caracteres__:
@@ -285,18 +265,9 @@ class(bool)
 ```r
 fruits <- c("apple", "banana", "orange", "pineapple", "lemon", "kiwi")
 fruits
-```
-
-```
-## [1] "apple"     "banana"    "orange"    "pineapple" "lemon"     "kiwi"
-```
-
-```r
+#> [1] "apple"     "banana"    "orange"    "pineapple" "lemon"     "kiwi"
 class(fruits)
-```
-
-```
-## [1] "character"
+#> [1] "character"
 ```
 
 Para la manipulación de caracteres es recomendable el paquete **stringr** que permite realizar operaciones sobre este tipo de elementos. Más adelante se presenta un ejemplo.
@@ -309,19 +280,10 @@ La **selección de elementos** de un vector se realiza con **`[ ]`** para indica
 ```r
 # elemento en la posición 1
 fruits[1]
-```
-
-```
-## [1] "apple"
-```
-
-```r
+#> [1] "apple"
 # elemento en la posición 1 y 5
 fruits[c(1,5)]
-```
-
-```
-## [1] "apple" "lemon"
+#> [1] "apple" "lemon"
 ```
 
 <br>
@@ -332,10 +294,7 @@ En R es posible extraer un valor del vector indexándolo con posiciones negativa
 ```r
 # omitir el elemento en la primera posición
 fruits[-1]
-```
-
-```
-## [1] "banana"    "orange"    "pineapple" "lemon"     "kiwi"
+#> [1] "banana"    "orange"    "pineapple" "lemon"     "kiwi"
 ```
 
 <br>
@@ -346,21 +305,12 @@ Una característica particular de vectores en R, es que cada elemento puede ser 
 ```r
 names(fruits) <- c('manzana', 'platano', 'naranja', 'piña', 'limón', 'kiwi')
 fruits
-```
-
-```
-##     manzana     platano     naranja        piña       limón        kiwi 
-##     "apple"    "banana"    "orange" "pineapple"     "lemon"      "kiwi"
-```
-
-```r
+#>     manzana     platano     naranja        piña       limón        kiwi 
+#>     "apple"    "banana"    "orange" "pineapple"     "lemon"      "kiwi"
 # cada elemento tiene un nombre asignado
 fruits[5]
-```
-
-```
-##   limón 
-## "lemon"
+#>   limón 
+#> "lemon"
 ```
 
 <br>
@@ -369,11 +319,8 @@ Para eliminar los nombres asignados a cada elemento, se asigna `NULL` a los nomb
 
 
 ```
-## NULL
-```
-
-```
-## [1] "apple"     "banana"    "orange"    "pineapple" "lemon"     "kiwi"
+#> NULL
+#> [1] "apple"     "banana"    "orange"    "pineapple" "lemon"     "kiwi"
 ```
 
 <br>
@@ -385,7 +332,7 @@ Los tipos que pueden tener los vectores se muestran en la siguiente figura.
 <p class="espacio">
 </p>
 
-<img src="figuras/data-structures-overview.png" width="406" style="display: block; margin: auto;" />
+<img src="figuras/data-structures-overview.png" width="70%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -413,10 +360,7 @@ x <- 1:5
 
 ```r
 typeof(x)
-```
-
-```
-## [1] "integer"
+#> [1] "integer"
 ```
 
 - Longitud
@@ -424,10 +368,7 @@ typeof(x)
 
 ```r
 length(x)
-```
-
-```
-## [1] 5
+#> [1] 5
 ```
 
 - Atributos
@@ -435,10 +376,7 @@ length(x)
 
 ```r
 attributes(x)
-```
-
-```
-## NULL
+#> NULL
 ```
 
 
@@ -447,10 +385,7 @@ Existe la función `is.vector(x)` para determinar si un objeto es un vector:
 
 ```r
 is.vector(1:3)
-```
-
-```
-## [1] TRUE
+#> [1] TRUE
 ```
 
 <br>
@@ -487,10 +422,7 @@ Del vector de seis frutas diferentes llamado *fruits*, localiza únicamente las 
 library(stringr)
 fruits <- c("apple", "banana", "orange", "pineapple", "lemon", "kiwi")
 fruits
-```
-
-```
-## [1] "apple"     "banana"    "orange"    "pineapple" "lemon"     "kiwi"
+#> [1] "apple"     "banana"    "orange"    "pineapple" "lemon"     "kiwi"
 ```
 
 Esto es posible con la función `str_detect()`, que regresa un vector booleano para cada elemento del vector donde encontró el patron **w**. 
@@ -498,10 +430,7 @@ Esto es posible con la función `str_detect()`, que regresa un vector booleano p
 
 ```r
 str_detect(fruits, pattern = 'w')
-```
-
-```
-## [1] FALSE FALSE FALSE FALSE FALSE  TRUE
+#> [1] FALSE FALSE FALSE FALSE FALSE  TRUE
 ```
 
 Ahora, seleccionamos únicamente los elementos del vector que tienen la letra **w**:
@@ -510,10 +439,7 @@ Ahora, seleccionamos únicamente los elementos del vector que tienen la letra **
 ```r
 # Selecciona el elemento con valor TRUE: kiwi
 fruits[str_detect(fruits, pattern = 'w')]
-```
-
-```
-## [1] "kiwi"
+#> [1] "kiwi"
 ```
 
 <br>
@@ -529,10 +455,7 @@ En R las **operaciones de vectores** son componente a componente.
 a <- c(1, 2.5, 3, 4.5, 5, 6.9)
 b <- 1
 a + b 
-```
-
-```
-## [1] 2.0 3.5 4.0 5.5 6.0 7.9
+#> [1] 2.0 3.5 4.0 5.5 6.0 7.9
 ```
 
 
@@ -540,10 +463,7 @@ a + b
 # Multiplicaciones componente a componente misma longitud
 a <- c(1, 2.5, 3, 4.5, 5, 6.9)
 a*a
-```
-
-```
-## [1]  1.00  6.25  9.00 20.25 25.00 47.61
+#> [1]  1.00  6.25  9.00 20.25 25.00 47.61
 ```
 
 
@@ -552,10 +472,7 @@ a*a
 a <- c(1, 2.5, 3, 4.5, 5, 6.9)
 c <- (a^2 + 5)*3
 c
-```
-
-```
-## [1]  18.00  33.75  42.00  75.75  90.00 157.83
+#> [1]  18.0  33.8  42.0  75.8  90.0 157.8
 ```
 
 <br>
@@ -567,34 +484,13 @@ c
 ```r
 # Comparar el vector dado un valor específico
 a > 3 
-```
-
-```
-## [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE
-```
-
-```r
+#> [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE
 a[a > 3] # únicamente elementos que cumple la condicion de ser mayores a 3
-```
-
-```
-## [1] 4.5 5.0 6.9
-```
-
-```r
+#> [1] 4.5 5.0 6.9
 fruits != 'apple'
-```
-
-```
-## [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
-```
-
-```r
+#> [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
 fruits[fruits != 'apple'] # únicamente elementos que no son apple
-```
-
-```
-## [1] "banana"    "orange"    "pineapple" "lemon"     "kiwi"
+#> [1] "banana"    "orange"    "pineapple" "lemon"     "kiwi"
 ```
 
 
@@ -602,18 +498,9 @@ fruits[fruits != 'apple'] # únicamente elementos que no son apple
 # Comparar el vector dado otro vector de la misma dimensión
 x <- c(1, 2, 3, 4, 5, 6)
 a == x
-```
-
-```
-## [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE
-```
-
-```r
+#> [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE
 a[a == x] # unicamente los elementos iguales y en la misma posición entre a y x
-```
-
-```
-## [1] 1 3 5
+#> [1] 1 3 5
 ```
 
 <br>
@@ -660,19 +547,10 @@ Existen tipos de vectores con características importantes:
 ```r
 # secuecia de 1 al 10 
 1:10
-```
-
-```
-##  [1]  1  2  3  4  5  6  7  8  9 10
-```
-
-```r
+#>  [1]  1  2  3  4  5  6  7  8  9 10
 # secuecia de pares de 0 al 10 
 seq(0, 10, by = 2)
-```
-
-```
-## [1]  0  2  4  6  8 10
+#> [1]  0  2  4  6  8 10
 ```
 
 <br>
@@ -687,19 +565,10 @@ Se incia la secuencia el 08 de agosto de 2016 y se asigna la clase de fecha con 
 library(lubridate)
 tenweeks <- seq( as.Date("2016-08-08"), length.out = 10,  by="1 week")
 tenweeks
-```
-
-```
-##  [1] "2016-08-08" "2016-08-15" "2016-08-22" "2016-08-29" "2016-09-05"
-##  [6] "2016-09-12" "2016-09-19" "2016-09-26" "2016-10-03" "2016-10-10"
-```
-
-```r
+#>  [1] "2016-08-08" "2016-08-15" "2016-08-22" "2016-08-29" "2016-09-05"
+#>  [6] "2016-09-12" "2016-09-19" "2016-09-26" "2016-10-03" "2016-10-10"
 class(tenweeks)
-```
-
-```
-## [1] "Date"
+#> [1] "Date"
 ```
 
 Se pueden hacer algunas operaciones como se ejemplifica en el siguiente código.
@@ -708,30 +577,15 @@ Se pueden hacer algunas operaciones como se ejemplifica en el siguiente código.
 ```r
 # Aumenta un día a cada fecha
 tenweeks + 1
-```
-
-```
-##  [1] "2016-08-09" "2016-08-16" "2016-08-23" "2016-08-30" "2016-09-06"
-##  [6] "2016-09-13" "2016-09-20" "2016-09-27" "2016-10-04" "2016-10-11"
-```
-
-```r
+#>  [1] "2016-08-09" "2016-08-16" "2016-08-23" "2016-08-30" "2016-09-06"
+#>  [6] "2016-09-13" "2016-09-20" "2016-09-27" "2016-10-04" "2016-10-11"
 # Aumenta un día a cada fecha
 tenweeks 
-```
-
-```
-##  [1] "2016-08-08" "2016-08-15" "2016-08-22" "2016-08-29" "2016-09-05"
-##  [6] "2016-09-12" "2016-09-19" "2016-09-26" "2016-10-03" "2016-10-10"
-```
-
-```r
+#>  [1] "2016-08-08" "2016-08-15" "2016-08-22" "2016-08-29" "2016-09-05"
+#>  [6] "2016-09-12" "2016-09-19" "2016-09-26" "2016-10-03" "2016-10-10"
 weekdays(tenweeks) # Día de la semana de cada fecha
-```
-
-```
-##  [1] "Monday" "Monday" "Monday" "Monday" "Monday" "Monday" "Monday"
-##  [8] "Monday" "Monday" "Monday"
+#>  [1] "Monday" "Monday" "Monday" "Monday" "Monday" "Monday" "Monday"
+#>  [8] "Monday" "Monday" "Monday"
 ```
 
 <br>
@@ -751,57 +605,24 @@ fruits.fac <- factor(fruits,
                    labels = c('manzana', 'platano', 'naranja', 'piña', 'limón', 'kiwi')
 )
 fruits.fac
-```
-
-```
-## [1] platano manzana platano naranja piña    limón   kiwi    manzana
-## Levels: manzana platano naranja piña limón kiwi
-```
-
-```r
+#> [1] platano manzana platano naranja piña    limón   kiwi    manzana
+#> Levels: manzana platano naranja piña limón kiwi
 # Clase
 class(fruits.fac)
-```
-
-```
-## [1] "factor"
-```
-
-```r
+#> [1] "factor"
 # Niveles etiquetados
 levels(fruits.fac)
-```
-
-```
-## [1] "manzana" "platano" "naranja" "piña"    "limón"   "kiwi"
-```
-
-```r
+#> [1] "manzana" "platano" "naranja" "piña"    "limón"   "kiwi"
 # Niveles únicos
 as.numeric(fruits.fac)
-```
-
-```
-## [1] 2 1 2 3 4 5 6 1
-```
-
-```r
+#> [1] 2 1 2 3 4 5 6 1
 # Agregar un nuevo valor
 fruits.fac[7] <- 'melon'
-```
-
-```
-## Warning in `[<-.factor`(`*tmp*`, 7, value = "melon"): invalid factor level,
-## NA generated
-```
-
-```r
+#> Warning in `[<-.factor`(`*tmp*`, 7, value = "melon"): invalid factor level,
+#> NA generated
 fruits.fac
-```
-
-```
-## [1] platano manzana platano naranja piña    limón   <NA>    manzana
-## Levels: manzana platano naranja piña limón kiwi
+#> [1] platano manzana platano naranja piña    limón   <NA>    manzana
+#> Levels: manzana platano naranja piña limón kiwi
 ```
 
 <br>
@@ -818,23 +639,23 @@ iris %>% sample_n(10) %>% knitr::kable()
 
        Sepal.Length   Sepal.Width   Petal.Length   Petal.Width  Species    
 ----  -------------  ------------  -------------  ------------  -----------
-127             6.2           2.8            4.8           1.8  virginica  
-20              5.1           3.8            1.5           0.3  setosa     
-84              6.0           2.7            5.1           1.6  versicolor 
-140             6.9           3.1            5.4           2.1  virginica  
-111             6.5           3.2            5.1           2.0  virginica  
-103             7.1           3.0            5.9           2.1  virginica  
-147             6.3           2.5            5.0           1.9  virginica  
-85              5.4           3.0            4.5           1.5  versicolor 
-61              5.0           2.0            3.5           1.0  versicolor 
-65              5.6           2.9            3.6           1.3  versicolor 
+13              4.8           3.0            1.4           0.1  setosa     
+125             6.7           3.3            5.7           2.1  virginica  
+89              5.6           3.0            4.1           1.3  versicolor 
+24              5.1           3.3            1.7           0.5  setosa     
+2               4.9           3.0            1.4           0.2  setosa     
+68              5.8           2.7            4.1           1.0  versicolor 
+72              6.1           2.8            4.0           1.3  versicolor 
+42              4.5           2.3            1.3           0.3  setosa     
+105             6.5           3.0            5.8           2.2  virginica  
+109             6.7           2.5            5.8           1.8  virginica  
 
 Este conjunto de datos multivariados fue presentado por el estadístico y biólogo británico Ronald Fisher en su artículo de 1936 "El uso de mediciones múltiples en problemas taxonómicos como un ejemplo de análisis discriminante lineal". Edgar Anderson recopiló los datos para cuantificar la variación morfológica de las flores de iris de tres especies relacionadas. Los datos fueron recolectadas en la Península de Gaspé. [@fisher1936use]
 
 <p class="espacio">
 </p>
 
-<img src="figuras/iris_flowers.jpg" width="288" style="display: block; margin: auto;" />
+<img src="figuras/iris_flowers.jpg" width="70%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -843,17 +664,14 @@ El conjunto de datos consiste de 50 observaciones de _cada_ una de las tres espe
 
 Supongamos que queremos analizar la distribución del ancho del sépalo por especie de flor de iris:
 
-<img src="02-temas_selectos_R_files/figure-html/unnamed-chunk-17-1.png" width="768" style="display: block; margin: auto;" />
+<img src="02-temas_selectos_R_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
 
 Esto ocurre porque los factores están ordenados alfabéticamente:
 
 
 ```r
 levels(iris$Species)
-```
-
-```
-## [1] "setosa"     "versicolor" "virginica"
+#> [1] "setosa"     "versicolor" "virginica"
 ```
 
 
@@ -864,13 +682,10 @@ Sería mejor que las especies estuvieran _ordenadas_ por la mediana de la distri
 library(forcats)
 iris$Species_ord <- fct_reorder(iris$Species, iris$Sepal.Width, fun = median)
 levels(iris$Species_ord)
+#> [1] "versicolor" "virginica"  "setosa"
 ```
 
-```
-## [1] "versicolor" "virginica"  "setosa"
-```
-
-<img src="02-temas_selectos_R_files/figure-html/unnamed-chunk-20-1.png" width="768" style="display: block; margin: auto;" />
+<img src="02-temas_selectos_R_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ### Data Frames
@@ -887,16 +702,13 @@ frutas = fruits[1:6],
 valor = c(1, 2.5, 3, 4.5, 5, 6.9)
 )
 tabla
-```
-
-```
-##   n    frutas valor
-## 1 1    banana   1.0
-## 2 2     apple   2.5
-## 3 3    banana   3.0
-## 4 4    orange   4.5
-## 5 5 pineapple   5.0
-## 6 6     lemon   6.9
+#>   n    frutas valor
+#> 1 1    banana   1.0
+#> 2 2     apple   2.5
+#> 3 3    banana   3.0
+#> 4 4    orange   4.5
+#> 5 5 pineapple   5.0
+#> 6 6     lemon   6.9
 ```
 
 Similar a las funciones de vectores, en _data.frames_ existen funciones predeterminadas que ayudan a su manipulación.
@@ -906,16 +718,13 @@ Similar a las funciones de vectores, en _data.frames_ existen funciones predeter
 
 ```r
 head(mtcars)
-```
-
-```
-##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+#>                    mpg cyl disp  hp drat   wt qsec vs am gear carb
+#> Mazda RX4         21.0   6  160 110 3.90 2.62 16.5  0  1    4    4
+#> Mazda RX4 Wag     21.0   6  160 110 3.90 2.88 17.0  0  1    4    4
+#> Datsun 710        22.8   4  108  93 3.85 2.32 18.6  1  1    4    1
+#> Hornet 4 Drive    21.4   6  258 110 3.08 3.21 19.4  1  0    3    1
+#> Hornet Sportabout 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2
+#> Valiant           18.1   6  225 105 2.76 3.46 20.2  1  0    3    1
 ```
 
 * `str` describe el tipo de variables en el data.frame:
@@ -923,21 +732,18 @@ head(mtcars)
 
 ```r
 str(mtcars)
-```
-
-```
-## 'data.frame':	32 obs. of  11 variables:
-##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
-##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
-##  $ disp: num  160 160 108 258 360 ...
-##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
-##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
-##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
-##  $ qsec: num  16.5 17 18.6 19.4 17 ...
-##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
-##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
-##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
-##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
+#> 'data.frame':	32 obs. of  11 variables:
+#>  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+#>  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+#>  $ disp: num  160 160 108 258 360 ...
+#>  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+#>  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+#>  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+#>  $ qsec: num  16.5 17 18.6 19.4 17 ...
+#>  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+#>  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+#>  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+#>  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
 ```
 
 * `dim` muestra la dimensión (renglones, columnas) del data.frame:
@@ -945,10 +751,7 @@ str(mtcars)
 
 ```r
 dim(mtcars)
-```
-
-```
-## [1] 32 11
+#> [1] 32 11
 ```
 
 * `colnames` y `names` muestran los nombres de las columnas del data.frame:
@@ -956,11 +759,8 @@ dim(mtcars)
 
 ```r
 names(mtcars)
-```
-
-```
-##  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
-## [11] "carb"
+#>  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
+#> [11] "carb"
 ```
 
 * `rownames` muestra el nombre de los renglones del data.frame:
@@ -968,20 +768,17 @@ names(mtcars)
 
 ```r
 rownames(mtcars)
-```
-
-```
-##  [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"         
-##  [4] "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            
-##  [7] "Duster 360"          "Merc 240D"           "Merc 230"           
-## [10] "Merc 280"            "Merc 280C"           "Merc 450SE"         
-## [13] "Merc 450SL"          "Merc 450SLC"         "Cadillac Fleetwood" 
-## [16] "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"           
-## [19] "Honda Civic"         "Toyota Corolla"      "Toyota Corona"      
-## [22] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         
-## [25] "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"      
-## [28] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       
-## [31] "Maserati Bora"       "Volvo 142E"
+#>  [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"         
+#>  [4] "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            
+#>  [7] "Duster 360"          "Merc 240D"           "Merc 230"           
+#> [10] "Merc 280"            "Merc 280C"           "Merc 450SE"         
+#> [13] "Merc 450SL"          "Merc 450SLC"         "Cadillac Fleetwood" 
+#> [16] "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"           
+#> [19] "Honda Civic"         "Toyota Corolla"      "Toyota Corona"      
+#> [22] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         
+#> [25] "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"      
+#> [28] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       
+#> [31] "Maserati Bora"       "Volvo 142E"
 ```
 
 
@@ -991,48 +788,27 @@ rownames(mtcars)
 ```r
 # por posiciones de renglones
 mtcars[1:4, ]
-```
-
-```
-##                 mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4      21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag  21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-## Datsun 710     22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-```
-
-```r
+#>                 mpg cyl disp  hp drat   wt qsec vs am gear carb
+#> Mazda RX4      21.0   6  160 110 3.90 2.62 16.5  0  1    4    4
+#> Mazda RX4 Wag  21.0   6  160 110 3.90 2.88 17.0  0  1    4    4
+#> Datsun 710     22.8   4  108  93 3.85 2.32 18.6  1  1    4    1
+#> Hornet 4 Drive 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1
 # por posiciones de columnas
 mtcars[1:4, c(1, 4, 6)]
-```
-
-```
-##                 mpg  hp    wt
-## Mazda RX4      21.0 110 2.620
-## Mazda RX4 Wag  21.0 110 2.875
-## Datsun 710     22.8  93 2.320
-## Hornet 4 Drive 21.4 110 3.215
-```
-
-```r
+#>                 mpg  hp   wt
+#> Mazda RX4      21.0 110 2.62
+#> Mazda RX4 Wag  21.0 110 2.88
+#> Datsun 710     22.8  93 2.32
+#> Hornet 4 Drive 21.4 110 3.21
 # por nombre de renglones específico
 mtcars[c('Mazda RX4', 'Mazda RX4 Wag'), ]
-```
-
-```
-##               mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4
-```
-
-```r
+#>               mpg cyl disp  hp drat   wt qsec vs am gear carb
+#> Mazda RX4      21   6  160 110  3.9 2.62 16.5  0  1    4    4
+#> Mazda RX4 Wag  21   6  160 110  3.9 2.88 17.0  0  1    4    4
 mtcars[str_detect(rownames(mtcars), "Mazda" ), ]
-```
-
-```
-##               mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4
+#>               mpg cyl disp  hp drat   wt qsec vs am gear carb
+#> Mazda RX4      21   6  160 110  3.9 2.62 16.5  0  1    4    4
+#> Mazda RX4 Wag  21   6  160 110  3.9 2.88 17.0  0  1    4    4
 ```
 
 * También se puede seleccionar o filtrar el data.frame dado una condición:
@@ -1040,17 +816,14 @@ mtcars[str_detect(rownames(mtcars), "Mazda" ), ]
 
 ```r
 mtcars[mtcars$cyl == 6, ] # Selecciona los carros con número de cilindros mayor a 6
-```
-
-```
-##                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-## Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-## Valiant        18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-## Merc 280       19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
-## Merc 280C      17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
-## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+#>                 mpg cyl disp  hp drat   wt qsec vs am gear carb
+#> Mazda RX4      21.0   6  160 110 3.90 2.62 16.5  0  1    4    4
+#> Mazda RX4 Wag  21.0   6  160 110 3.90 2.88 17.0  0  1    4    4
+#> Hornet 4 Drive 21.4   6  258 110 3.08 3.21 19.4  1  0    3    1
+#> Valiant        18.1   6  225 105 2.76 3.46 20.2  1  0    3    1
+#> Merc 280       19.2   6  168 123 3.92 3.44 18.3  1  0    4    4
+#> Merc 280C      17.8   6  168 123 3.92 3.44 18.9  1  0    4    4
+#> Ferrari Dino   19.7   6  145 175 3.62 2.77 15.5  0  1    5    6
 ```
 
 
@@ -1060,14 +833,11 @@ mtcars[mtcars$cyl == 6, ] # Selecciona los carros con número de cilindros mayor
 ```r
 rbind(mtcars[str_detect(rownames(mtcars), "Mazda" ), ],
       mtcars[str_detect(rownames(mtcars), "Hornet"), ])
-```
-
-```
-##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+#>                    mpg cyl disp  hp drat   wt qsec vs am gear carb
+#> Mazda RX4         21.0   6  160 110 3.90 2.62 16.5  0  1    4    4
+#> Mazda RX4 Wag     21.0   6  160 110 3.90 2.88 17.0  0  1    4    4
+#> Hornet 4 Drive    21.4   6  258 110 3.08 3.21 19.4  1  0    3    1
+#> Hornet Sportabout 18.7   8  360 175 3.15 3.44 17.0  0  0    3    2
 ```
 
 * `cbind` permite unir dos data.frames por columna, si y solo si, tiene el mismo número de renglones:
@@ -1080,48 +850,33 @@ frutas = c("apple", "banana", "orange", "pineapple", "lemon", "apple"),
 valor = runif(6)
 )
 tabla
-```
-
-```
-##   n    frutas      valor
-## 1 1     apple 0.09817804
-## 2 2    banana 0.11950755
-## 3 3    orange 0.06049880
-## 4 4 pineapple 0.90166198
-## 5 5     lemon 0.94389677
-## 6 6     apple 0.74872976
-```
-
-```r
+#>   n    frutas  valor
+#> 1 1     apple 0.8746
+#> 2 2    banana 0.1749
+#> 3 3    orange 0.0342
+#> 4 4 pineapple 0.3204
+#> 5 5     lemon 0.4023
+#> 6 6     apple 0.1957
 tabla.color <-  data.frame(
 peso = rnorm(6),
 color =   c('rojo', 'amarillo', 'naranje', 'amarillo', 'amarillo', 'rojo')
 )
 tabla.color
-```
-
-```
-##         peso    color
-## 1  1.1745650     rojo
-## 2  0.5903879 amarillo
-## 3 -0.3269992  naranje
-## 4 -1.4702022 amarillo
-## 5  1.6279476 amarillo
-## 6  0.5666423     rojo
-```
-
-```r
+#>     peso    color
+#> 1 -0.244     rojo
+#> 2 -0.283 amarillo
+#> 3 -0.554  naranje
+#> 4  0.629 amarillo
+#> 5  2.065 amarillo
+#> 6 -1.631     rojo
 cbind(tabla, tabla.color)
-```
-
-```
-##   n    frutas      valor       peso    color
-## 1 1     apple 0.09817804  1.1745650     rojo
-## 2 2    banana 0.11950755  0.5903879 amarillo
-## 3 3    orange 0.06049880 -0.3269992  naranje
-## 4 4 pineapple 0.90166198 -1.4702022 amarillo
-## 5 5     lemon 0.94389677  1.6279476 amarillo
-## 6 6     apple 0.74872976  0.5666423     rojo
+#>   n    frutas  valor   peso    color
+#> 1 1     apple 0.8746 -0.244     rojo
+#> 2 2    banana 0.1749 -0.283 amarillo
+#> 3 3    orange 0.0342 -0.554  naranje
+#> 4 4 pineapple 0.3204  0.629 amarillo
+#> 5 5     lemon 0.4023  2.065 amarillo
+#> 6 6     apple 0.1957 -1.631     rojo
 ```
 
 
@@ -1158,34 +913,31 @@ lista <- list( n = 100, x = 'hello',
              ejemlista = list(a = 15:20, b = 1:5)
 )
 lista
-```
-
-```
-## $n
-## [1] 100
-## 
-## $x
-## [1] "hello"
-## 
-## $frutas
-## [1] "banana"    "apple"     "banana"    "orange"    "pineapple" "lemon"    
-## [7] "kiwi"      "apple"    
-## 
-## $tabla
-##   n    frutas      valor
-## 1 1     apple 0.09817804
-## 2 2    banana 0.11950755
-## 3 3    orange 0.06049880
-## 4 4 pineapple 0.90166198
-## 5 5     lemon 0.94389677
-## 6 6     apple 0.74872976
-## 
-## $ejemlista
-## $ejemlista$a
-## [1] 15 16 17 18 19 20
-## 
-## $ejemlista$b
-## [1] 1 2 3 4 5
+#> $n
+#> [1] 100
+#> 
+#> $x
+#> [1] "hello"
+#> 
+#> $frutas
+#> [1] "banana"    "apple"     "banana"    "orange"    "pineapple" "lemon"    
+#> [7] "kiwi"      "apple"    
+#> 
+#> $tabla
+#>   n    frutas  valor
+#> 1 1     apple 0.8746
+#> 2 2    banana 0.1749
+#> 3 3    orange 0.0342
+#> 4 4 pineapple 0.3204
+#> 5 5     lemon 0.4023
+#> 6 6     apple 0.1957
+#> 
+#> $ejemlista
+#> $ejemlista$a
+#> [1] 15 16 17 18 19 20
+#> 
+#> $ejemlista$b
+#> [1] 1 2 3 4 5
 ```
 
 La lista anterior contiene numeros, caracteres, vectores, data.frames e incluso otra lista con distintas secuencias.
@@ -1197,11 +949,8 @@ Se puede indexar una lista de varias formas:
 
 ```r
 lista[1]
-```
-
-```
-## $n
-## [1] 100
+#> $n
+#> [1] 100
 ```
 
 - Usando **`[[ ]]`**: extrae únicamente el objeto respetando la clase de éste y sin incluir nombres:
@@ -1209,10 +958,7 @@ lista[1]
 
 ```r
 lista[[1]]
-```
-
-```
-## [1] 100
+#> [1] 100
 ```
 
 - Usando **$** mas el nombre: extrae únicamente el objeto:
@@ -1220,10 +966,7 @@ lista[[1]]
 
 ```r
 lista$ejemlista$a
-```
-
-```
-## [1] 15 16 17 18 19 20
+#> [1] 15 16 17 18 19 20
 ```
 
 <br>
@@ -1246,7 +989,7 @@ Algunas ventajas y características de R Markdown son:
 
 R Markdown integra código de R, comandos de TeX y muchas herramientas externas. Cuando construyes el documento, R Markdown envía un archivo con formato .Rmd a otro paquete llamado **knitr**, [http://yihui.name/knitr/](http://yihui.name/knitr/), que ejecuta el código de todos los chunks y crea un nuevo archivo de **markdown** con formato _md_ que ya incluye el código y los resultados. Este archivo de markdown generado por knitr después es procesado por **pandoc**, [http://pandoc.org/](http://pandoc.org/), que es el que crea el archivo final. La ventaja de este flujo de trabajo de dos pasos es que te permite crear una amplia gama de formatos de salida.
 
-<img src="figuras/RMarkdownFlow.png" width="567" style="display: block; margin: auto;" />
+<img src="figuras/RMarkdownFlow.png" width="70%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -1258,45 +1001,42 @@ R Markdown integra código de R, comandos de TeX y muchas herramientas externas.
 
 ```r
 cat(htmltools::includeText("rmarkdown/ejemplo.Rmd"))
-```
-
-```
-## ---
-## title: "Ejemplo de R Markdown"
-## date: 2018-01-22
-## output: html_document
-## ---
-## 
-## Veamos unos datos de diamantes para analizar la distribución
-## del quilataje de aquellos diamantes que tiene quilataje 
-## menor a 2.5: 
-## 
-## ```{r setup, include = FALSE}
-## library(ggplot2)
-## library(dplyr)
-## 
-## smaller <- diamonds %>% 
-##   filter(carat <= 2.5)
-## ```
-## 
-## En el __chunk__ de arriba se hizo el filtro adecuado, ahora
-## veamos una muestra de tamaño 10 de los datos:
-## 
-## ```{r, echo = FALSE}
-## smaller %>%
-##   sample_n(10) %>%
-##   knitr::kable()
-## ```
-## 
-## Los datos corresponde a `r nrow(diamonds)` diamantes. Solamente
-## `r nrow(diamonds) - nrow(smaller)` son de más de 2.5 quilates.
-## La distribución de los diamantes de menor quilataje se muestra abajo:
-## 
-## ```{r, echo = FALSE}
-## smaller %>% 
-##   ggplot(aes(carat)) + 
-##   geom_freqpoly(binwidth = 0.01)
-## ```
+#> ---
+#> title: "Ejemplo de R Markdown"
+#> date: 2018-01-22
+#> output: html_document
+#> ---
+#> 
+#> Veamos unos datos de diamantes para analizar la distribución
+#> del quilataje de aquellos diamantes que tiene quilataje 
+#> menor a 2.5: 
+#> 
+#> ```{r setup, include = FALSE}
+#> library(ggplot2)
+#> library(dplyr)
+#> 
+#> smaller <- diamonds %>% 
+#>   filter(carat <= 2.5)
+#> ```
+#> 
+#> En el __chunk__ de arriba se hizo el filtro adecuado, ahora
+#> veamos una muestra de tamaño 10 de los datos:
+#> 
+#> ```{r, echo = FALSE}
+#> smaller %>%
+#>   sample_n(10) %>%
+#>   knitr::kable()
+#> ```
+#> 
+#> Los datos corresponde a `r nrow(diamonds)` diamantes. Solamente
+#> `r nrow(diamonds) - nrow(smaller)` son de más de 2.5 quilates.
+#> La distribución de los diamantes de menor quilataje se muestra abajo:
+#> 
+#> ```{r, echo = FALSE}
+#> smaller %>% 
+#>   ggplot(aes(carat)) + 
+#>   geom_freqpoly(binwidth = 0.01)
+#> ```
 ```
 
 Contiene tres tipos importantes de contenido:
@@ -1311,7 +1051,7 @@ Cuando abres un `.Rmd`, RStudio muestra una interfaz de tipo _notebook_ en la cu
 
 Para generar un informe completo que contenga todo el texto, el código y los resultados, presiona el botón "Knit", o bien, Cmd/Ctrl + Shift + K. Esto generará un reporte en una nueva ventana y creará un archivo HTML independiente que podrás compartir con los demás.
 
-<img src="rmarkdown/ejemplo.png" width="3456" style="display: block; margin: auto;" />
+<img src="rmarkdown/ejemplo.png" width="70%" style="display: block; margin: auto;" />
 
 Para comenzar con tu propio archivo `.Rmd`, selecciona _File > New File > R Markdown..._ en la barra superior. RStudio te mostrará un asistente que puedes usar para crear un archivo de R Markdown con ejemplos básicos.
 
@@ -1358,10 +1098,7 @@ En R los datos faltantes se expresan como `NA`. La función `is.na()` regresa un
 
 ```r
 is.na(c(4, 2, NA))
-```
-
-```
-## [1] FALSE FALSE  TRUE
+#> [1] FALSE FALSE  TRUE
 ```
 
 \BeginKnitrBlock{comentario}<div class="comentario">El default de R es propagar los valores faltantes, esto es, si se desconoce el valor de una de las componentes de un vector, también se desconoce la suma del mismo, en general, cualquier operación.</div>\EndKnitrBlock{comentario}
@@ -1369,55 +1106,34 @@ is.na(c(4, 2, NA))
 
 ```r
 sum(c(4, 2, NA))
-```
-
-```
-## [1] NA
+#> [1] NA
 ```
 
 
 ```r
 mean(c(4, 2, NA))
-```
-
-```
-## [1] NA
+#> [1] NA
 ```
 
 
 ```r
 3 > NA
-```
-
-```
-## [1] NA
+#> [1] NA
 ```
 
 
 ```r
 (NA == NA)
-```
-
-```
-## [1] NA
+#> [1] NA
 ```
 
 Sin embargo, muchas funciones tienen un argumento `na.rm` para removerlos. 
 
 ```r
 sum(c(4, 2, NA), na.rm = T)
-```
-
-```
-## [1] 6
-```
-
-```r
+#> [1] 6
 mean(c(4, 2, NA), na.rm = T)
-```
-
-```
-## [1] 3
+#> [1] 3
 ```
 
 <br>
@@ -1444,10 +1160,7 @@ En R existen algunas funciones pre cargadas que ya hemos usado, por ejemplo, .la
 input <- c(1:5)
 output <- mean( input )
 output
-```
-
-```
-## [1] 3
+#> [1] 3
 ```
 
 
@@ -1494,23 +1207,17 @@ Aplicamos la función:
 
 ```r
 suma_uno_fun(5)
-```
-
-```
-## [1] 6
+#> [1] 6
 ```
 
 Podemos ver que en nuestra sesión ya existe la función con la función `ls()`. 
 
 ```r
 ls()
-```
-
-```
-##  [1] "a"            "b"            "bool"         "c"           
-##  [5] "fruits"       "fruits.fac"   "input"        "iris"        
-##  [9] "lista"        "output"       "suma_uno_fun" "tabla"       
-## [13] "tabla.color"  "tenweeks"     "x"
+#>  [1] "a"            "b"            "bool"         "c"           
+#>  [5] "fruits"       "fruits.fac"   "input"        "iris"        
+#>  [9] "lista"        "output"       "suma_uno_fun" "tabla"       
+#> [13] "tabla.color"  "tenweeks"     "x"
 ```
 
 Esta función en lista los objetos existente en la sesión actual.
@@ -1532,20 +1239,14 @@ Los argumentos pueden indicarse por posición:
 
 ```r
 potencia_fun(2, 3)
-```
-
-```
-## [1] 8
+#> [1] 8
 ```
 
 O bien por nombre:
 
 ```r
 potencia_fun(exponente = 2, base = 3)
-```
-
-```
-## [1] 9
+#> [1] 9
 ```
 
 <br> 
@@ -1567,10 +1268,7 @@ Al llamar la función, no es necesario definir un valor para el exponente y en a
 
 ```r
 potencia_default_fun(2)
-```
-
-```
-## [1] 4
+#> [1] 4
 ```
 
 <br>
@@ -1595,10 +1293,7 @@ Ahora tiraremos dos veces los dados.
 
 ```r
 lanza_dado()
-```
-
-```
-## [1] 2
+#> [1] 5
 ```
 
 **Segundo lanzamiento:**
@@ -1606,10 +1301,7 @@ lanza_dado()
 
 ```r
 lanza_dado()
-```
-
-```
-## [1] 2
+#> [1] 5
 ```
 
 ---
@@ -1629,13 +1321,7 @@ xs_fun <- function(a){
   a*x
 }
 xs_fun(2)
-```
-
-```
-## [1] 4
-```
-
-```r
+#> [1] 4
 # print(x)
 ```
 
@@ -1650,10 +1336,7 @@ ys_fun <- function(a){
   a*y
 }
 ys_fun(2)
-```
-
-```
-## [1] 20
+#> [1] 20
 ```
 
 Si la función está contenida en otra función, primero buscará en el ambiente local, después en el ambiente local de la función superior y luego en el ambiente global.
@@ -1678,10 +1361,7 @@ Si llamamos la función con un valor `a = 2` al igual que en el ejemplo anterior
 
 ```r
 mas_uno_fun(a = 2)
-```
-
-```
-## [1] 3
+#> [1] 3
 ```
 
 <br>
@@ -1696,24 +1376,18 @@ O bien funciones para entender las partes de la función.
 
 ```r
 body(suma_uno_fun)
-```
-
-```
-## {
-##     y = x + 1
-##     return(y)
-## }
+#> {
+#>     y = x + 1
+#>     return(y)
+#> }
 ```
 
 - `args()`
 
 ```r
 args(mean.default)
-```
-
-```
-## function (x, trim = 0, na.rm = FALSE, ...) 
-## NULL
+#> function (x, trim = 0, na.rm = FALSE, ...) 
+#> NULL
 ```
 
 - `if()`
@@ -1735,10 +1409,7 @@ Al ejecutar la función y tener cero en el denominador imprime el string.
 
 ```r
 divide_fun(10, 0)
-```
-
-```
-## [1] "Denominador es cero"
+#> [1] "Denominador es cero"
 ```
 
 Al no tener cero en el denominador la operación se ejecuta.
@@ -1746,10 +1417,7 @@ Al no tener cero en el denominador la operación se ejecuta.
 
 ```r
 divide_fun(10, 2)
-```
-
-```
-## [1] 5
+#> [1] 5
 ```
 
 <br>
@@ -1765,30 +1433,21 @@ Todas las operaciones en R son producto de la llamada a una función, esto inclu
 x <- 3
 y <- 4
 `+`(x, y)
-```
-
-```
-## [1] 7
+#> [1] 7
 ```
 
 
 ```r
 for (i in 1:2) print(i)
-```
-
-```
-## [1] 1
-## [1] 2
+#> [1] 1
+#> [1] 2
 ```
 
 
 ```r
 `for`(i, 1:2, print(i))
-```
-
-```
-## [1] 1
-## [1] 2
+#> [1] 1
+#> [1] 2
 ```
 
 <br>
@@ -1801,25 +1460,19 @@ f <- function(abcdef, bcde1, bcde2) {
   list(a = abcdef, b1 = bcde1, b2 = bcde2)
 }
 str(f(1, 2, 3))
-```
-
-```
-## List of 3
-##  $ a : num 1
-##  $ b1: num 2
-##  $ b2: num 3
+#> List of 3
+#>  $ a : num 1
+#>  $ b1: num 2
+#>  $ b2: num 3
 ```
 
 
 ```r
 str(f(2, 3, abcdef = 1))
-```
-
-```
-## List of 3
-##  $ a : num 1
-##  $ b1: num 2
-##  $ b2: num 3
+#> List of 3
+#>  $ a : num 1
+#>  $ b1: num 2
+#>  $ b2: num 3
 ```
 
 <br>
@@ -1829,13 +1482,10 @@ Podemos abreviar el nombre de los argumentos:
 
 ```r
 str(f(2, 3, a = 1))
-```
-
-```
-## List of 3
-##  $ a : num 1
-##  $ b1: num 2
-##  $ b2: num 3
+#> List of 3
+#>  $ a : num 1
+#>  $ b1: num 2
+#>  $ b2: num 3
 ```
 
 Siempre y cuando la abreviación no sea ambigua:
@@ -1853,10 +1503,7 @@ f <- function(a, b){
   a ^ 2
 }
 f(2)
-```
-
-```
-## [1] 4
+#> [1] 4
 ```
 
 La función anterior nunca utiliza el argumento b, de tal manera que f(2) no produce ningún error.
@@ -1894,14 +1541,11 @@ Tomemos la siguiente matriz de simulaciones:
 set.seed(1)
 mat_norm <- matrix(rnorm(24, mean = 0, sd = 1), nrow = 4, ncol = 6)
 mat_norm
-```
-
-```
-##            [,1]       [,2]       [,3]        [,4]        [,5]        [,6]
-## [1,] -0.6264538  0.3295078  0.5757814 -0.62124058 -0.01619026  0.91897737
-## [2,]  0.1836433 -0.8204684 -0.3053884 -2.21469989  0.94383621  0.78213630
-## [3,] -0.8356286  0.4874291  1.5117812  1.12493092  0.82122120  0.07456498
-## [4,]  1.5952808  0.7383247  0.3898432 -0.04493361  0.59390132 -1.98935170
+#>        [,1]   [,2]   [,3]    [,4]    [,5]    [,6]
+#> [1,] -0.626  0.330  0.576 -0.6212 -0.0162  0.9190
+#> [2,]  0.184 -0.820 -0.305 -2.2147  0.9438  0.7821
+#> [3,] -0.836  0.487  1.512  1.1249  0.8212  0.0746
+#> [4,]  1.595  0.738  0.390 -0.0449  0.5939 -1.9894
 ```
 
 <br>
@@ -1921,10 +1565,7 @@ prom_col_m1 <- c(sum(mat_norm[, 1]),
                  sum(mat_norm[, 5]),
                  sum(mat_norm[, 6]))
 prom_col_m1
-```
-
-```
-## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730
+#> [1]  0.317  0.735  2.172 -1.756  2.343 -0.214
 ```
 
 Segundo método:
@@ -1936,25 +1577,19 @@ for(j in 1:ncol(mat_norm)){
   prom_col_m2[j] <- sum(mat_norm[, j])
 }
 prom_col_m2
-```
-
-```
-## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730
+#> [1]  0.317  0.735  2.172 -1.756  2.343 -0.214
 ```
 
 Tercer método:
 
-<img src="figuras/applycol.png" width="237" style="display: block; margin: auto;" />
+<img src="figuras/applycol.png" width="70%" style="display: block; margin: auto;" />
 
 
 
 ```r
 prom_col_m3 <- apply(X = mat_norm, MARGIN = 2, FUN = sum)
 prom_col_m3
-```
-
-```
-## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730
+#> [1]  0.317  0.735  2.172 -1.756  2.343 -0.214
 ```
 
 Cuarto método:
@@ -1963,10 +1598,7 @@ Cuarto método:
 ```r
 prom_col_m4 <- colSums(mat_norm)
 prom_col_m4
-```
-
-```
-## [1]  0.3168417  0.7347931  2.1720174 -1.7559432  2.3427685 -0.2136730
+#> [1]  0.317  0.735  2.172 -1.756  2.343 -0.214
 ```
 
 <br>
@@ -1977,10 +1609,7 @@ Ahora, para obtener la suma por renglón usando el tercer método de la función
 ```r
 prom_row_m3 <- apply(mat_norm, 1, sum)
 prom_row_m3
-```
-
-```
-## [1]  0.5603818 -1.4309408  3.1842987  1.2830648
+#> [1]  0.56 -1.43  3.18  1.28
 ```
 
 Esto es equivalente al primer método que usamos:
@@ -1992,10 +1621,7 @@ prom_row_m1 <- c(sum(mat_norm[1, ]),
                  sum(mat_norm[3, ]), 
                  sum(mat_norm[4, ]))
 prom_row_m1
-```
-
-```
-## [1]  0.5603818 -1.4309408  3.1842987  1.2830648
+#> [1]  0.56 -1.43  3.18  1.28
 ```
 
 
@@ -2004,10 +1630,7 @@ La ventaja de usar la función `apply()` es que se puede usar cualquier función
 
 ```r
 apply(mat_norm, 1, sd)
-```
-
-```
-## [1] 0.6341809 1.1718660 0.8338847 1.2066403
+#> [1] 0.634 1.172 0.834 1.207
 ```
 
 
@@ -2020,10 +1643,7 @@ cv_vec_m3 <- apply(mat_norm, 1, function(reng){
   return(cv)
 })
 cv_vec_m3
-```
-
-```
-## [1]  0.1472718 -0.2035131  0.6364386  0.1772228
+#> [1]  0.147 -0.204  0.636  0.177
 ```
 
 \BeginKnitrBlock{nota}<div class="nota">**Funciones Anónimas:**
@@ -2045,10 +1665,7 @@ Vector de ciudades:
 ```r
 ciudades_vec <- c("Aguascalientes", "Monterrey", "Guadalajara", "México")
 ciudades_vec
-```
-
-```
-## [1] "Aguascalientes" "Monterrey"      "Guadalajara"    "México"
+#> [1] "Aguascalientes" "Monterrey"      "Guadalajara"    "México"
 ```
 
 
@@ -2056,20 +1673,17 @@ ciudades_vec
 ```r
 res_nchar_l <- lapply(ciudades_vec, nchar)
 res_nchar_l
-```
-
-```
-## [[1]]
-## [1] 14
-## 
-## [[2]]
-## [1] 9
-## 
-## [[3]]
-## [1] 11
-## 
-## [[4]]
-## [1] 6
+#> [[1]]
+#> [1] 14
+#> 
+#> [[2]]
+#> [1] 9
+#> 
+#> [[3]]
+#> [1] 11
+#> 
+#> [[4]]
+#> [1] 6
 ```
 
 
@@ -2094,17 +1708,14 @@ El objetivo es aplicar a cada elemento de la  siguiente lista la función potenc
 ```r
 nums_lista <- list(1, 3, 4)
 nums_lista
-```
-
-```
-## [[1]]
-## [1] 1
-## 
-## [[2]]
-## [1] 3
-## 
-## [[3]]
-## [1] 4
+#> [[1]]
+#> [1] 1
+#> 
+#> [[2]]
+#> [1] 3
+#> 
+#> [[3]]
+#> [1] 4
 ```
 
 En la función `lapply()` se agrega el argumento `exponente = 3` como último argumento.
@@ -2113,17 +1724,14 @@ En la función `lapply()` se agrega el argumento `exponente = 3` como último ar
 ```r
 potencia_lista <- lapply(nums_lista, potencia_fun, exponente = 3)
 potencia_lista
-```
-
-```
-## [[1]]
-## [1] 1
-## 
-## [[2]]
-## [1] 27
-## 
-## [[3]]
-## [1] 64
+#> [[1]]
+#> [1] 1
+#> 
+#> [[2]]
+#> [1] 27
+#> 
+#> [[3]]
+#> [1] 64
 ```
 
 
@@ -2132,10 +1740,7 @@ Una forma de reducir la lista obtenida a un vector es con la función `unlist()`
 
 ```r
 unlist(potencia_lista)
-```
-
-```
-## [1]  1 27 64
+#> [1]  1 27 64
 ```
 
 <br>
@@ -2152,11 +1757,8 @@ Al igual que `lapply()` aplica una función sobre una lista o un vector pero sim
 ```r
 res_nchar_s <- sapply(ciudades_vec, nchar)
 res_nchar_s
-```
-
-```
-## Aguascalientes      Monterrey    Guadalajara         México 
-##             14              9             11              6
+#> Aguascalientes      Monterrey    Guadalajara         México 
+#>             14              9             11              6
 ```
 
 \BeginKnitrBlock{warning}<div class="warning">Esta función es *peligrosa* ya que únicamente simplifica la estructura del resultado cuando es posible, de lo contrario, regresará una lista igual que `lapply()`.</div>\EndKnitrBlock{warning}
@@ -2180,22 +1782,16 @@ x2 <- list(
 
 threshold <- function(x, cutoff = 0.8) x[x > cutoff]
 x1 %>% sapply(threshold) %>% str()
-```
-
-```
-## List of 3
-##  $ : num 0.91
-##  $ : num [1:2] 0.9 0.94
-##  $ : num(0)
+#> List of 3
+#>  $ : num 0.91
+#>  $ : num [1:2] 0.9 0.94
+#>  $ : num(0)
 ```
 
 
 ```r
 x2 %>% sapply(threshold) %>% str()
-```
-
-```
-##  num [1:3] 0.99 0.93 0.87
+#>  num [1:3] 0.99 0.93 0.87
 ```
 
 Las funciones del paquete `purrr` son útiles porque hacen que los _loops_ sobre vectores sean sencillos:
@@ -2225,13 +1821,10 @@ Por ejemplo, supongamos que deseamos calcular el número de valores únicos en c
 ```r
 map_int(.x = iris, .f = function(x){length(unique(x))
 })
-```
-
-```
-## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
-##           35           23           43           22            3 
-##  Species_ord 
-##            3
+#> Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
+#>           35           23           43           22            3 
+#>  Species_ord 
+#>            3
 ```
 
 Para generar cuatro vectores cada uno de tamaño 5 de valores que provienen de una distribución normal con medias $\mu=-10, 0, 10, 100$ podemos utilizar la función `map`:
@@ -2242,14 +1835,11 @@ mu <- list(-10, 0, 10, 100)
 mu %>% 
   map(rnorm, n = 5) %>% 
   str()
-```
-
-```
-## List of 4
-##  $ : num [1:5] -9.38 -10.06 -10.16 -11.47 -10.48
-##  $ : num [1:5] 0.4179 1.3587 -0.1028 0.3877 -0.0538
-##  $ : num [1:5] 8.62 9.59 9.61 9.94 11.1
-##  $ : num [1:5] 100.8 99.8 99.7 100.7 100.6
+#> List of 4
+#>  $ : num [1:5] -9.38 -10.06 -10.16 -11.47 -10.48
+#>  $ : num [1:5] 0.4179 1.3587 -0.1028 0.3877 -0.0538
+#>  $ : num [1:5] 8.62 9.59 9.61 9.94 11.1
+#>  $ : num [1:5] 100.8 99.8 99.7 100.7 100.6
 ```
 
 Podemos usar `map2()` para iterar sobre dos vectores en paralelo:
@@ -2258,14 +1848,11 @@ Podemos usar `map2()` para iterar sobre dos vectores en paralelo:
 ```r
 sigma <- list(1, 5, 10, 100)
 map2(mu, sigma, rnorm, n = 5) %>% str()
-```
-
-```
-## List of 4
-##  $ : num [1:5] -10.69 -10.71 -9.64 -9.23 -10.11
-##  $ : num [1:5] 4.41 1.99 -3.06 1.71 -5.65
-##  $ : num [1:5] 24.33 29.804 6.328 -0.441 15.697
-##  $ : num [1:5] 86.5 340.2 96.1 169 102.8
+#> List of 4
+#>  $ : num [1:5] -10.69 -10.71 -9.64 -9.23 -10.11
+#>  $ : num [1:5] 4.41 1.99 -3.06 1.71 -5.65
+#>  $ : num [1:5] 24.33 29.804 6.328 -0.441 15.697
+#>  $ : num [1:5] 86.5 340.2 96.1 169 102.8
 ```
 
 Las funciones de `map` también preservan nombres:
@@ -2274,11 +1861,8 @@ Las funciones de `map` también preservan nombres:
 ```r
 z <- list(x = 1:3, y = 4:5)
 map_int(z, length)
-```
-
-```
-## x y 
-## 3 2
+#> x y 
+#> 3 2
 ```
 
 Hay algunos _shortcuts_ que podemos usar con `.f` para guardar un poco de tipeo. Supongamos que queremos ajustar un modelo lineal a cada subconjunto en un conjunto de datos. Pensemos en los datos de `mtcars` divididos en tres subconjuntos (uno para cada valor de cilindro) y se ajusta el mismo modelo lineal en cada subconjunto (millas por galón `mpg` vs peso `wt`):
@@ -2299,11 +1883,8 @@ Cuando vemos muchos modelos, generalmente deseamos extraer un resumen estadísti
 models %>% 
   map(summary) %>% 
   map_dbl(~.$r.squared)
-```
-
-```
-##         4         6         8 
-## 0.5086326 0.4645102 0.4229655
+#>     4     6     8 
+#> 0.509 0.465 0.423
 ```
 
 Pero `purrr` tiene un shortcut para extraer estos componentes en una cadena:
@@ -2313,11 +1894,8 @@ Pero `purrr` tiene un shortcut para extraer estos componentes en una cadena:
 models %>% 
   map(summary) %>% 
   map_dbl("r.squared")
-```
-
-```
-##         4         6         8 
-## 0.5086326 0.4645102 0.4229655
+#>     4     6     8 
+#> 0.509 0.465 0.423
 ```
 
 También se puede usar un número entero para seleccionar elementos por posición:
@@ -2326,10 +1904,7 @@ También se puede usar un número entero para seleccionar elementos por posició
 ```r
 x <- list(list(1, 2, 3), list(4, 5, 6), list(7, 8, 9))
 x %>% map_dbl(2)
-```
-
-```
-## [1] 2 5 8
+#> [1] 2 5 8
 ```
 
 La función `pmap()` recibe una lista de argumentos para aplicarlos a una función:
@@ -2344,17 +1919,14 @@ params <- tribble(
 )
 params %>% 
   pmap(rnorm)
-```
-
-```
-## [[1]]
-## [1] 4.256727
-## 
-## [[2]]
-## [1] 10.9439615  0.9752069 17.3277743
-## 
-## [[3]]
-## [1]  -1.467467  18.726117   1.755095 -10.099464   3.107264
+#> [[1]]
+#> [1] 4.26
+#> 
+#> [[2]]
+#> [1] 10.944  0.975 17.328
+#> 
+#> [[3]]
+#> [1]  -1.47  18.73   1.76 -10.10   3.11
 ```
 
 Hay un paso más en la complejidad: además de variar los argumentos para una función, también puedes variar la función misma y para esto se usa la función `invoke_map()`:
@@ -2370,23 +1942,20 @@ sim <- tribble(
 sim %>% 
   mutate(sim = invoke_map(f, params, n = 10)) %>% 
   str()
-```
-
-```
-## Classes 'tbl_df', 'tbl' and 'data.frame':	3 obs. of  3 variables:
-##  $ f     : chr  "runif" "rnorm" "rpois"
-##  $ params:List of 3
-##   ..$ :List of 2
-##   .. ..$ min: num -1
-##   .. ..$ max: num 1
-##   ..$ :List of 1
-##   .. ..$ sd: num 5
-##   ..$ :List of 1
-##   .. ..$ lambda: num 10
-##  $ sim   :List of 3
-##   ..$ : num  -0.65 0.493 -0.79 0.729 0.229 ...
-##   ..$ : num  0.372 -2.948 -2.843 -0.676 5.89 ...
-##   ..$ : int  11 10 8 13 13 12 15 11 5 10
+#> Classes 'tbl_df', 'tbl' and 'data.frame':	3 obs. of  3 variables:
+#>  $ f     : chr  "runif" "rnorm" "rpois"
+#>  $ params:List of 3
+#>   ..$ :List of 2
+#>   .. ..$ min: num -1
+#>   .. ..$ max: num 1
+#>   ..$ :List of 1
+#>   .. ..$ sd: num 5
+#>   ..$ :List of 1
+#>   .. ..$ lambda: num 10
+#>  $ sim   :List of 3
+#>   ..$ : num  -0.65 0.493 -0.79 0.729 0.229 ...
+#>   ..$ : num  0.372 -2.948 -2.843 -0.676 5.89 ...
+#>   ..$ : int  11 10 8 13 13 12 15 11 5 10
 ```
 
 ### Rendimiento en R
@@ -2430,11 +1999,8 @@ Batting %>% sample_n(10) %>% knitr::kable()
 
 ```r
 system.time(lm(R ~ AB + teamID, Batting))
-```
-
-```
-##    user  system elapsed 
-##   3.033   0.096   3.129
+#>    user  system elapsed 
+#>   2.918   0.124   3.042
 ```
 
 - __user time__: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.
@@ -2446,11 +2012,8 @@ El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:
 
 ```r
 system.time(readLines("http://www.jhsph.edu"))
-```
-
-```
-##    user  system elapsed 
-##   0.032   0.001   0.364
+#>    user  system elapsed 
+#>   0.027   0.000   2.819
 ```
 
 
@@ -2461,11 +2024,8 @@ system.time(mclapply(2000:2006,
     sub <- subset(Batting, yearID == x)
     lm(R ~ AB, sub)
 }, mc.cores = 5))
-```
-
-```
-##    user  system elapsed 
-##   0.047   0.047   0.089
+#>    user  system elapsed 
+#>   0.055   0.051   0.081
 ```
 
 Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.
@@ -2509,41 +2069,29 @@ est_r_st <- system.time({
 })
 
 dplyr_st
-```
-
-```
-##    user  system elapsed 
-##   0.152   0.000   0.151
+#>    user  system elapsed 
+#>   0.140   0.000   0.141
 ```
 
 
 ```r
 plyr_st
-```
-
-```
-##    user  system elapsed 
-##   7.656   0.004   7.660
+#>    user  system elapsed 
+#>   7.448   0.003   7.452
 ```
 
 
 ```r
 est_l_st
-```
-
-```
-##    user  system elapsed 
-##  65.037   1.580  66.618
+#>    user  system elapsed 
+#>   72.14    1.76   73.91
 ```
 
 
 ```r
 est_r_st
-```
-
-```
-##    user  system elapsed 
-##   0.554   0.016   0.570
+#>    user  system elapsed 
+#>   0.619   0.012   0.631
 ```
 
 La función `system.time` supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es `Rprof()`.
@@ -2562,60 +2110,55 @@ Usamos la función `summaryRprof para tabular las salidas de Rprof y calcular cu
 
 ```r
 summaryRprof("out/lm_rprof.out")
-```
-
-```
-## $by.self
-##                         self.time self.pct total.time total.pct
-## "lm.fit"                     2.64    90.26       2.64     90.26
-## ".External2"                 0.21     7.18       0.22      7.69
-## "as.character"               0.04     1.54       0.04      1.54
-## "anyDuplicated.default"      0.02     0.51       0.02      0.51
-## "handle_output"              0.02     0.51       0.02      0.51
-## 
-## $by.total
-##                         total.time total.pct self.time self.pct
-## "<Anonymous>"                 2.92    100.00      0.00     0.00
-## "block_exec"                  2.92    100.00      0.00     0.00
-## "call_block"                  2.92    100.00      0.00     0.00
-## "do.call"                     2.92    100.00      0.00     0.00
-## "eval.parent"                 2.92    100.00      0.00     0.00
-## "eval"                        2.92    100.00      0.00     0.00
-## "evaluate_call"               2.92    100.00      0.00     0.00
-## "evaluate::evaluate"          2.92    100.00      0.00     0.00
-## "evaluate"                    2.92    100.00      0.00     0.00
-## "in_dir"                      2.92    100.00      0.00     0.00
-## "knitr::knit"                 2.92    100.00      0.00     0.00
-## "local"                       2.92    100.00      0.00     0.00
-## "process_file"                2.92    100.00      0.00     0.00
-## "process_group.block"         2.92    100.00      0.00     0.00
-## "process_group"               2.92    100.00      0.00     0.00
-## "withCallingHandlers"         2.92    100.00      0.00     0.00
-## "handle"                      2.91     99.49      0.00     0.00
-## "lm"                          2.91     99.49      0.00     0.00
-## "timing_fn"                   2.91     99.49      0.00     0.00
-## "withVisible"                 2.91     99.49      0.00     0.00
-## "lm.fit"                      2.64     90.26      2.64    90.26
-## ".External2"                  0.22      7.69      0.21     7.18
-## "model.matrix.default"        0.21      7.18      0.00     0.00
-## "model.matrix"                0.21      7.18      0.00     0.00
-## "as.character"                0.04      1.54      0.04     1.54
-## "model.response"              0.04      1.54      0.00     0.00
-## "anyDuplicated.default"       0.02      0.51      0.02     0.51
-## "handle_output"               0.02      0.51      0.02     0.51
-## "[.data.frame"                0.02      0.51      0.00     0.00
-## "["                           0.02      0.51      0.00     0.00
-## "anyDuplicated"               0.02      0.51      0.00     0.00
-## "model.frame.default"         0.02      0.51      0.00     0.00
-## "na.omit.data.frame"          0.02      0.51      0.00     0.00
-## "na.omit"                     0.02      0.51      0.00     0.00
-## "stats::model.frame"          0.02      0.51      0.00     0.00
-## 
-## $sample.interval
-## [1] 0.015
-## 
-## $sampling.time
-## [1] 2.925
+#> $by.self
+#>                         self.time self.pct total.time total.pct
+#> "lm.fit"                     2.88    90.57       2.88     90.57
+#> ".External2"                 0.22     7.08       0.24      7.55
+#> "as.character"               0.06     1.89       0.06      1.89
+#> "anyDuplicated.default"      0.02     0.47       0.02      0.47
+#> 
+#> $by.total
+#>                         total.time total.pct self.time self.pct
+#> "<Anonymous>"                 3.18    100.00      0.00     0.00
+#> "block_exec"                  3.18    100.00      0.00     0.00
+#> "call_block"                  3.18    100.00      0.00     0.00
+#> "do.call"                     3.18    100.00      0.00     0.00
+#> "eval.parent"                 3.18    100.00      0.00     0.00
+#> "eval"                        3.18    100.00      0.00     0.00
+#> "evaluate_call"               3.18    100.00      0.00     0.00
+#> "evaluate::evaluate"          3.18    100.00      0.00     0.00
+#> "evaluate"                    3.18    100.00      0.00     0.00
+#> "handle"                      3.18    100.00      0.00     0.00
+#> "in_dir"                      3.18    100.00      0.00     0.00
+#> "knitr::knit"                 3.18    100.00      0.00     0.00
+#> "lm"                          3.18    100.00      0.00     0.00
+#> "local"                       3.18    100.00      0.00     0.00
+#> "process_file"                3.18    100.00      0.00     0.00
+#> "process_group.block"         3.18    100.00      0.00     0.00
+#> "process_group"               3.18    100.00      0.00     0.00
+#> "timing_fn"                   3.18    100.00      0.00     0.00
+#> "withCallingHandlers"         3.18    100.00      0.00     0.00
+#> "withVisible"                 3.18    100.00      0.00     0.00
+#> "lm.fit"                      2.88     90.57      2.88    90.57
+#> ".External2"                  0.24      7.55      0.22     7.08
+#> "model.matrix.default"        0.22      7.08      0.00     0.00
+#> "model.matrix"                0.22      7.08      0.00     0.00
+#> "as.character"                0.06      1.89      0.06     1.89
+#> "model.response"              0.06      1.89      0.00     0.00
+#> "anyDuplicated.default"       0.02      0.47      0.02     0.47
+#> "[.data.frame"                0.02      0.47      0.00     0.00
+#> "["                           0.02      0.47      0.00     0.00
+#> "anyDuplicated"               0.02      0.47      0.00     0.00
+#> "model.frame.default"         0.02      0.47      0.00     0.00
+#> "na.omit.data.frame"          0.02      0.47      0.00     0.00
+#> "na.omit"                     0.02      0.47      0.00     0.00
+#> "stats::model.frame"          0.02      0.47      0.00     0.00
+#> 
+#> $sample.interval
+#> [1] 0.015
+#> 
+#> $sampling.time
+#> [1] 3.18
 ```
 
 Hay dos métodos para normalizar los datos de Rprof:
@@ -2631,35 +2174,26 @@ Batting %>%
     plyr::ddply("playerID", plyr::summarise, total = sum(R, na.rm = TRUE), n = length(R)) %>%
     plyr::arrange(-total) %>%
     head()
-```
-
-```
-##    playerID total  n
-## 1 henderi01  2295 29
-## 2  cobbty01  2246 24
-## 3 bondsba01  2227 22
-## 4 aaronha01  2174 23
-## 5  ruthba01  2174 22
-## 6  rosepe01  2165 25
-```
-
-```r
+#>    playerID total  n
+#> 1 henderi01  2295 29
+#> 2  cobbty01  2246 24
+#> 3 bondsba01  2227 22
+#> 4 aaronha01  2174 23
+#> 5  ruthba01  2174 22
+#> 6  rosepe01  2165 25
 Rprof(NULL)
 summaryRprof("out/plyr_rprof.out")$by.self[1:10, ]
-```
-
-```
-##                 self.time self.pct total.time total.pct
-## "FUN"                0.94    12.74       1.96     26.56
-## "lapply"             0.80    10.84       2.76     37.40
-## ".subset"            0.42     5.69       0.42      5.69
-## "eval"               0.34     4.61       7.38    100.00
-## ".fun"               0.32     4.34       2.26     30.62
-## "$"                  0.32     4.34       0.32      4.34
-## "[[.data.frame"      0.28     3.79       0.58      7.86
-## "[["                 0.24     3.25       3.96     53.66
-## "as.list"            0.24     3.25       0.38      5.15
-## "extract_rows"       0.22     2.98       3.18     43.09
+#>                 self.time self.pct total.time total.pct
+#> "FUN"                1.38    16.87       2.20     26.89
+#> "lapply"             1.08    13.20       3.34     40.83
+#> "eval"               0.38     4.65       8.18    100.00
+#> "$"                  0.38     4.65       0.38      4.65
+#> ".subset"            0.26     3.18       0.26      3.18
+#> "[["                 0.24     2.93       4.36     53.30
+#> "[[.data.frame"      0.24     2.93       0.48      5.87
+#> "as.list"            0.22     2.69       0.32      3.91
+#> "names"              0.22     2.69       0.22      2.69
+#> "seq.default"        0.20     2.44       0.24      2.93
 ```
 
 
@@ -2680,20 +2214,17 @@ summaryRprof("out/plyr_rprof.out")$by.self[1:10, ]
 # Rprof(NULL)
 
 summaryRprof("out/slow_rprof.out")$by.self[1:10, ]
-```
-
-```
-##                 self.time self.pct total.time total.pct
-## "[.data.frame"      45.50    54.74      82.74     99.54
-## "=="                24.78    29.81      24.78     29.81
-## "attr"               6.70     8.06       6.70      8.06
-## "NextMethod"         3.42     4.11       3.44      4.14
-## "[["                 1.32     1.59       2.12      2.55
-## "[[.data.frame"      0.22     0.26       0.80      0.96
-## "<Anonymous>"        0.20     0.24       0.46      0.55
-## "all"                0.10     0.12       0.10      0.12
-## "sys.call"           0.10     0.12       0.10      0.12
-## "%in%"               0.08     0.10       0.22      0.26
+#>                 self.time self.pct total.time total.pct
+#> "[.data.frame"      45.50    54.74      82.74     99.54
+#> "=="                24.78    29.81      24.78     29.81
+#> "attr"               6.70     8.06       6.70      8.06
+#> "NextMethod"         3.42     4.11       3.44      4.14
+#> "[["                 1.32     1.59       2.12      2.55
+#> "[[.data.frame"      0.22     0.26       0.80      0.96
+#> "<Anonymous>"        0.20     0.24       0.46      0.55
+#> "all"                0.10     0.12       0.10      0.12
+#> "sys.call"           0.10     0.12       0.10      0.12
+#> "%in%"               0.08     0.10       0.22      0.26
 ```
 
 
@@ -2755,11 +2286,8 @@ system.time(
     if (runif(1) < 0.3)
         aciertos[i] <- TRUE
 })
-```
-
-```
-##    user  system elapsed 
-##   0.262   0.061   0.322
+#>    user  system elapsed 
+#>   0.326   0.080   0.407
 ```
 
 
@@ -2770,11 +2298,8 @@ system.time(
     if (runif(1) < 0.3)
         aciertos[i] <- TRUE
 })
-```
-
-```
-##    user  system elapsed 
-##   0.225   0.000   0.224
+#>    user  system elapsed 
+#>   0.271   0.052   0.323
 ```
 
 Usando `rbind`:
@@ -2789,11 +2314,8 @@ mi.df <- data.frame(a = character(0), b = numeric(0))
 mi.df
 }
 system.time(mi.df.1 <- crecer_rbind())
-```
-
-```
-##    user  system elapsed 
-##   0.764   0.000   0.764
+#>    user  system elapsed 
+#>   0.794   0.000   0.793
 ```
 
 Si definimos el tamaño del data.frame obtenemos mejoras:
@@ -2809,11 +2331,8 @@ mi.df <- data.frame(a = rep(NA, 1000), b = rep(NA, 1000))
   mi.df
 }
 system.time(mi.df.1 <- crecer_rbind_2())
-```
-
-```
-##    user  system elapsed 
-##   0.083   0.000   0.083
+#>    user  system elapsed 
+#>   0.076   0.000   0.077
 ```
 
 Finalmente, veamos un enfoque totalmente vectorizado
@@ -2827,11 +2346,8 @@ porcolumna_df <- function(){
   mi.df
 }
 system.time(mi.df.2 <- porcolumna_df())
-```
-
-```
-##    user  system elapsed 
-##   0.000   0.000   0.001
+#>    user  system elapsed 
+#>   0.001   0.000   0.002
 ```
 
 A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectorización, este incremento conlleva un costo en memoria. Si comparamos la versión mas lenta con la más rápida, en la última debemos asignar a, b y mi.df. Entonces, no siempre es mejor vectorizar, pues si consumimos la memoria, entonces la versión vectorizada puede enfrentarse al problema de uso de memoria en disco, que tiene aun más grandes penalizaciones en el desempeño que los ciclos que hemos visto.
@@ -2885,11 +2401,8 @@ Es decir, si incluimos las letras `abcz` la letra *mínima* es a y la *máxima* 
 
 ```r
 min_max_fun("abcz")
-```
-
-```
-## minimo maximo 
-##    "a"    "z"
+#> minimo maximo 
+#>    "a"    "z"
 ```
 
 El siguiente vector incluye el nombre de las 16 delegaciones de la Ciudad de México.
@@ -2924,10 +2437,7 @@ sapply(, )
 ```r
 gas_cdmx <- c(15.82, 15.77, 15.83, 15.23, 14.95, 15.42, 15.55)
 gas_cdmx
-```
-
-```
-## [1] 15.82 15.77 15.83 15.23 14.95 15.42 15.55
+#> [1] 15.8 15.8 15.8 15.2 14.9 15.4 15.6
 ```
 
 1. Crea una función que convierta el precio a dolares suponiendo que un dolar equivale a 17.76 pesos.
@@ -2973,20 +2483,17 @@ print(gas_cdmx_usd)
 estadisticos <- c("GAUSS:1777", "BAYES:1702", "FISHER:1890", "PEARSON:1857")
 split_estadisticos <- strsplit(estadisticos, split = ":")
 split_estadisticos
-```
-
-```
-## [[1]]
-## [1] "GAUSS" "1777" 
-## 
-## [[2]]
-## [1] "BAYES" "1702" 
-## 
-## [[3]]
-## [1] "FISHER" "1890"  
-## 
-## [[4]]
-## [1] "PEARSON" "1857"
+#> [[1]]
+#> [1] "GAUSS" "1777" 
+#> 
+#> [[2]]
+#> [1] "BAYES" "1702" 
+#> 
+#> [[3]]
+#> [1] "FISHER" "1890"  
+#> 
+#> [[4]]
+#> [1] "PEARSON" "1857"
 ```
 
 Utiliza la función predefinida `tolower()` y `lapply()` para convertir a minúsculas cada letra de la lista `split_estadisticos`.
@@ -3006,14 +2513,11 @@ print(split_lower)
 
 ```r
 str(split_estadisticos)
-```
-
-```
-## List of 4
-##  $ : chr [1:2] "GAUSS" "1777"
-##  $ : chr [1:2] "BAYES" "1702"
-##  $ : chr [1:2] "FISHER" "1890"
-##  $ : chr [1:2] "PEARSON" "1857"
+#> List of 4
+#>  $ : chr [1:2] "GAUSS" "1777"
+#>  $ : chr [1:2] "BAYES" "1702"
+#>  $ : chr [1:2] "FISHER" "1890"
+#>  $ : chr [1:2] "PEARSON" "1857"
 ```
 
 1. Crea una función que regrese la primera posición. 
@@ -3071,13 +2575,10 @@ temp_lista <- list(
   tuxtla_gtz = c(22, 24, 29, 32, 28)
 )
 str(temp_lista)
-```
-
-```
-## List of 3
-##  $ cdmx       : num [1:5] 13 15 19 22 20
-##  $ guadalajara: num [1:5] 18 18 22 26 27
-##  $ tuxtla_gtz : num [1:5] 22 24 29 32 28
+#> List of 3
+#>  $ cdmx       : num [1:5] 13 15 19 22 20
+#>  $ guadalajara: num [1:5] 18 18 22 26 27
+#>  $ tuxtla_gtz : num [1:5] 22 24 29 32 28
 ```
 
 Completa la siguiente función que obtiene el promedio entre el valor mínimo y máximo registrados.

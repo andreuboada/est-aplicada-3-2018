@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Aplicada III</title>
   <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
-  <meta name="generator" content="bookdown 0.6.1 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.6.2 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Aplicada III" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-01-30">
+<meta name="date" content="2018-02-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -168,6 +168,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.9.1" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#creando-un-ggplot"><i class="fa fa-check"></i><b>3.9.1</b> Creando un ggplot</a></li>
 <li class="chapter" data-level="3.9.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#mapeos-aesthetics"><i class="fa fa-check"></i><b>3.9.2</b> Mapeos: Aesthetics</a></li>
 </ul></li>
+<li class="chapter" data-level="3.10" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#poniendo-todo-junto"><i class="fa fa-check"></i><b>3.10</b> Poniendo todo junto</a></li>
+<li class="chapter" data-level="3.11" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#tarea-2"><i class="fa fa-check"></i><b>3.11</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -222,7 +224,7 @@ sat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="
 <span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> F) <span class="op">+</span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Salario anual promedio (en miles) de maestros&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Score total promedio de SAT&quot;</span>)</code></pre></div>
-<p><img src="01-introduccion_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="01-introduccion_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Podemos revisar el resultado de la regresión lineal (haciendo uso del paquete <code>stargazer</code>):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stargazer)
 out1 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> total_score <span class="op">~</span><span class="st"> </span>teacher_salary, <span class="dt">data =</span> sat)
@@ -265,14 +267,14 @@ total_score
 teacher_salary
 </td>
 <td>
--5.540<sup>***</sup> (1.632)
+-5.540<sup>***</sup> (1.630)
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 </td>
 <td>
-t = -3.394
+t = -3.390
 </td>
 </tr>
 <tr>
@@ -287,14 +289,14 @@ p = 0.002
 Constant
 </td>
 <td>
-1,158.859<sup>***</sup> (57.659)
+1,159.000<sup>***</sup> (57.700)
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 </td>
 <td>
-t = 20.098
+t = 20.100
 </td>
 </tr>
 <tr>
@@ -337,7 +339,7 @@ Adjusted R<sup>2</sup>
 Residual Std. Error
 </td>
 <td>
-67.889 (df = 48)
+67.900 (df = 48)
 </td>
 </tr>
 <tr>
@@ -345,7 +347,7 @@ Residual Std. Error
 F Statistic
 </td>
 <td>
-11.516<sup>***</sup> (df = 1; 48) (p = 0.002)
+11.500<sup>***</sup> (df = 1; 48) (p = 0.002)
 </td>
 </tr>
 <tr>
@@ -406,14 +408,14 @@ total_score
 teacher_salary
 </td>
 <td>
-2.180<sup>**</sup> (1.029)
+2.180<sup>**</sup> (1.030)
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 </td>
 <td>
-t = 2.119
+t = 2.120
 </td>
 </tr>
 <tr>
@@ -428,14 +430,14 @@ p = 0.040
 perc_take_sat
 </td>
 <td>
--2.779<sup>***</sup> (0.228)
+-2.780<sup>***</sup> (0.228)
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 </td>
 <td>
-t = -12.163
+t = -12.200
 </td>
 </tr>
 <tr>
@@ -450,14 +452,14 @@ p = 0.000
 Constant
 </td>
 <td>
-987.900<sup>***</sup> (31.877)
+988.000<sup>***</sup> (31.900)
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 </td>
 <td>
-t = 30.991
+t = 31.000
 </td>
 </tr>
 <tr>
@@ -500,7 +502,7 @@ Adjusted R<sup>2</sup>
 Residual Std. Error
 </td>
 <td>
-33.688 (df = 47)
+33.700 (df = 47)
 </td>
 </tr>
 <tr>
@@ -508,7 +510,7 @@ Residual Std. Error
 F Statistic
 </td>
 <td>
-97.355<sup>***</sup> (df = 2; 47) (p = 0.000)
+97.400<sup>***</sup> (df = 2; 47) (p = 0.000)
 </td>
 </tr>
 <tr>
@@ -525,9 +527,9 @@ F Statistic
 </tr>
 </table>
 <p>Podemos ver que el coeficiente de la regresión lineal correspondiente al salario de los maestros se invierte. Gráficamente podemos visualizar este efecto:</p>
-<p><img src="01-introduccion_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="01-introduccion_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Vemos que dentro de cada grupo, la pendiente es positiva (o al menos no negativa). También podríamos agregar etiquetas:</p>
-<p><img src="01-introduccion_files/figure-html/unnamed-chunk-6-1.png" width="768" /></p>
+<p><img src="01-introduccion_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Otro ejemplo de este fenómeno es cuando la Universidad de California, Berkeley fue demandada por discrimanción hacia mujeres que habían solicitado admisión a un posgrado en 1973. De acuerdo con las estadísticas de admisión, los hombres que presentaron la solicitud tenían mayor probabilidad de ser admitidos que las mujeres, y la diferencia era tan sustancial que uno podría concluir que efectivamente había existido dicha discriminación. Sin embargo, al examinar los datos individualmente por departamento, parecía que no había una diferencia significativa en contra de las mujeres.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ucb &lt;-<span class="st"> </span>UCBAdmissions <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.tibble</span>()
 ucb <span class="op">%&gt;%</span>
@@ -651,30 +653,30 @@ tab <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op"
 <tbody>
 <tr class="odd">
 <td align="left">Female</td>
-<td align="right">30.35</td>
-<td align="right">69.65</td>
+<td align="right">30.4</td>
+<td align="right">69.7</td>
 </tr>
 <tr class="even">
 <td align="left">Male</td>
-<td align="right">44.52</td>
-<td align="right">55.48</td>
+<td align="right">44.5</td>
+<td align="right">55.5</td>
 </tr>
 </tbody>
 </table>
 <p>Incluso podemos proporcionar una prueba estadística para apoyar la afirmación de que hubo sesgo en las admisiones. En R, se puede realizar una prueba de proporciones a través de la función <code>prop.test()</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prop.test</span>(tab <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>Gender) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.matrix</span>())</code></pre></div>
-<pre><code>## 
-##  2-sample test for equality of proportions with continuity
-##  correction
-## 
-## data:  tab %&gt;% ungroup() %&gt;% select(-Gender) %&gt;% as.matrix()
-## X-squared = 91.61, df = 1, p-value &lt; 2.2e-16
-## alternative hypothesis: two.sided
-## 95 percent confidence interval:
-##  -0.1703022 -0.1129887
-## sample estimates:
-##    prop 1    prop 2 
-## 0.3035422 0.4451877</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prop.test</span>(tab <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>Gender) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.matrix</span>())
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  2-sample test for equality of proportions with continuity</span>
+<span class="co">#&gt;  correction</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; data:  tab %&gt;% ungroup() %&gt;% select(-Gender) %&gt;% as.matrix()</span>
+<span class="co">#&gt; X-squared = 90, df = 1, p-value &lt;2e-16</span>
+<span class="co">#&gt; alternative hypothesis: two.sided</span>
+<span class="co">#&gt; 95 percent confidence interval:</span>
+<span class="co">#&gt;  -0.170 -0.113</span>
+<span class="co">#&gt; sample estimates:</span>
+<span class="co">#&gt; prop 1 prop 2 </span>
+<span class="co">#&gt;  0.304  0.445</span></code></pre></div>
 <p>A partir de la prueba de hipótesis realizada anteriormente, se puede concluir que hay una diferencias significativa entre la proporción de hombres admitidos y la proporción de mujeres admitidas en los programas de posgrado.</p>
 <p>Sin embargo, si hacemos el mismo análisis por departamento, veremos que las diferencias ya no son tan significativas:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ucb <span class="op">%&gt;%</span><span class="st"> </span>
@@ -696,40 +698,40 @@ tab <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op"
 <tr class="odd">
 <td align="left">A</td>
 <td align="right">82.41</td>
-<td align="right">62.06</td>
+<td align="right">62.1</td>
 </tr>
 <tr class="even">
 <td align="left">B</td>
 <td align="right">68.00</td>
-<td align="right">63.04</td>
+<td align="right">63.0</td>
 </tr>
 <tr class="odd">
 <td align="left">C</td>
 <td align="right">34.06</td>
-<td align="right">36.92</td>
+<td align="right">36.9</td>
 </tr>
 <tr class="even">
 <td align="left">D</td>
 <td align="right">34.93</td>
-<td align="right">33.09</td>
+<td align="right">33.1</td>
 </tr>
 <tr class="odd">
 <td align="left">E</td>
 <td align="right">23.92</td>
-<td align="right">27.75</td>
+<td align="right">27.8</td>
 </tr>
 <tr class="even">
 <td align="left">F</td>
 <td align="right">7.04</td>
-<td align="right">5.90</td>
+<td align="right">5.9</td>
 </tr>
 </tbody>
 </table>
 <p>Condicionando por departamento ahora vemos que las mujeres realmente tienen mayores tasas de admisión en cuatro de los seis departamentos (A, B, D, F). ¿Cómo puede ser esto? En realidad las diferencias tienen que ver con el porcentaje de solicitantes (hombres y mujeres) que son admitidos por departamentos, es decir, hay departamentos más competitivos que otros.</p>
 <p>Consideremos un modelo log-lineal. Sea <span class="math inline">\(p_{ijk}\)</span> la proporción de la población en la celda <span class="math inline">\((i,j,k)\)</span>. Por ejemplo, <span class="math inline">\(p_{112}\)</span> es la proporción de solicitantes que son admitidos, son hombres y se postulan para el Departamento B.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab &lt;-<span class="st"> </span><span class="kw">xtabs</span>(n <span class="op">~</span><span class="st"> </span>., ucb)
-llout &lt;-<span class="st"> </span><span class="kw">loglin</span>(tab, <span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>),<span class="dt">param=</span><span class="ot">TRUE</span>)</code></pre></div>
-<pre><code>## 9 iterations: deviation 0.04920393</code></pre>
+llout &lt;-<span class="st"> </span><span class="kw">loglin</span>(tab, <span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>),<span class="dt">param=</span><span class="ot">TRUE</span>)
+<span class="co">#&gt; 9 iterations: deviation 0.0492</span></code></pre></div>
 <p>Los efectos globales de la variable de admitidos son:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">llout<span class="op">$</span>param<span class="op">$</span>Admit <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
@@ -742,11 +744,11 @@ llout &lt;-<span class="st"> </span><span class="kw">loglin</span>(tab, <span cl
 <tbody>
 <tr class="odd">
 <td>Admitted</td>
-<td align="right">-0.3212111</td>
+<td align="right">-0.321</td>
 </tr>
 <tr class="even">
 <td>Rejected</td>
-<td align="right">0.3212111</td>
+<td align="right">0.321</td>
 </tr>
 </tbody>
 </table>
@@ -762,27 +764,27 @@ llout &lt;-<span class="st"> </span><span class="kw">loglin</span>(tab, <span cl
 <tbody>
 <tr class="odd">
 <td>A</td>
-<td align="right">0.1537626</td>
+<td align="right">0.154</td>
 </tr>
 <tr class="even">
 <td>B</td>
-<td align="right">-0.7651684</td>
+<td align="right">-0.765</td>
 </tr>
 <tr class="odd">
 <td>C</td>
-<td align="right">0.5397205</td>
+<td align="right">0.540</td>
 </tr>
 <tr class="even">
 <td>D</td>
-<td align="right">0.4302153</td>
+<td align="right">0.430</td>
 </tr>
 <tr class="odd">
 <td>E</td>
-<td align="right">-0.0288135</td>
+<td align="right">-0.029</td>
 </tr>
 <tr class="even">
 <td>F</td>
-<td align="right">-0.3297165</td>
+<td align="right">-0.330</td>
 </tr>
 </tbody>
 </table>
@@ -798,11 +800,11 @@ llout &lt;-<span class="st"> </span><span class="kw">loglin</span>(tab, <span cl
 <tbody>
 <tr class="odd">
 <td>Female</td>
-<td align="right">-0.3287569</td>
+<td align="right">-0.329</td>
 </tr>
 <tr class="even">
 <td>Male</td>
-<td align="right">0.3287569</td>
+<td align="right">0.329</td>
 </tr>
 </tbody>
 </table>
@@ -819,13 +821,13 @@ llout &lt;-<span class="st"> </span><span class="kw">loglin</span>(tab, <span cl
 <tbody>
 <tr class="odd">
 <td>Admitted</td>
-<td align="right">0.024937</td>
-<td align="right">-0.024937</td>
+<td align="right">0.025</td>
+<td align="right">-0.025</td>
 </tr>
 <tr class="even">
 <td>Rejected</td>
-<td align="right">-0.024937</td>
-<td align="right">0.024937</td>
+<td align="right">-0.025</td>
+<td align="right">0.025</td>
 </tr>
 </tbody>
 </table>
@@ -845,21 +847,21 @@ llout &lt;-<span class="st"> </span><span class="kw">loglin</span>(tab, <span cl
 <tbody>
 <tr class="odd">
 <td>Admitted</td>
-<td align="right">0.6371804</td>
-<td align="right">0.6154772</td>
-<td align="right">0.0059146</td>
-<td align="right">-0.0101</td>
-<td align="right">-0.2324371</td>
-<td align="right">-1.016035</td>
+<td align="right">0.637</td>
+<td align="right">0.615</td>
+<td align="right">0.006</td>
+<td align="right">-0.01</td>
+<td align="right">-0.232</td>
+<td align="right">-1.02</td>
 </tr>
 <tr class="even">
 <td>Rejected</td>
-<td align="right">-0.6371804</td>
-<td align="right">-0.6154772</td>
-<td align="right">-0.0059146</td>
-<td align="right">0.0101</td>
-<td align="right">0.2324371</td>
-<td align="right">1.016035</td>
+<td align="right">-0.637</td>
+<td align="right">-0.615</td>
+<td align="right">-0.006</td>
+<td align="right">0.01</td>
+<td align="right">0.232</td>
+<td align="right">1.02</td>
 </tr>
 </tbody>
 </table>
@@ -1107,15 +1109,15 @@ dds <span class="op">%&gt;%</span>
 </table>
 <p>Se puede ver que la columna “Age Cohort” tiene la categoría de edad a la cual correponde la observación.</p>
 <p>También podemos utilizar la función <code>glimpse()</code> del paquete <code>tibble</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(dds)</code></pre></div>
-<pre><code>## Observations: 1,000
-## Variables: 6
-## $ Id           &lt;int&gt; 10210, 10409, 10486, 10538, 10568, 10690, 10711, ...
-## $ `Age Cohort` &lt;chr&gt; &quot;13-17&quot;, &quot;22-50&quot;, &quot;0-5&quot;, &quot;18-21&quot;, &quot;13-17&quot;, &quot;13-17...
-## $ Age          &lt;int&gt; 17, 37, 3, 19, 13, 15, 13, 17, 14, 13, 13, 14, 15...
-## $ Gender       &lt;chr&gt; &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Fema...
-## $ Expenditures &lt;int&gt; 2113, 41924, 1454, 6400, 4412, 4566, 3915, 3873, ...
-## $ Ethnicity    &lt;chr&gt; &quot;White not Hispanic&quot;, &quot;White not Hispanic&quot;, &quot;Hisp...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(dds)
+<span class="co">#&gt; Observations: 1,000</span>
+<span class="co">#&gt; Variables: 6</span>
+<span class="co">#&gt; $ Id           &lt;int&gt; 10210, 10409, 10486, 10538, 10568, 10690, 10711, ...</span>
+<span class="co">#&gt; $ `Age Cohort` &lt;chr&gt; &quot;13-17&quot;, &quot;22-50&quot;, &quot;0-5&quot;, &quot;18-21&quot;, &quot;13-17&quot;, &quot;13-17...</span>
+<span class="co">#&gt; $ Age          &lt;int&gt; 17, 37, 3, 19, 13, 15, 13, 17, 14, 13, 13, 14, 15...</span>
+<span class="co">#&gt; $ Gender       &lt;chr&gt; &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Fema...</span>
+<span class="co">#&gt; $ Expenditures &lt;int&gt; 2113, 41924, 1454, 6400, 4412, 4566, 3915, 3873, ...</span>
+<span class="co">#&gt; $ Ethnicity    &lt;chr&gt; &quot;White not Hispanic&quot;, &quot;White not Hispanic&quot;, &quot;Hisp...</span></code></pre></div>
 <p>Podemos ver que el conjunto de datos contiene una muestra de exactamente 1000 observaciones que fueron seleccionadas aleatoriamente.</p>
 <p>Veamos una tabla del gasto promedio por etnicidad:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds <span class="op">%&gt;%</span>
@@ -1165,8 +1167,8 @@ dds <span class="op">%&gt;%</span>
 </tbody>
 </table>
 <p>Podemos comparar también con el promedio de todos los consumidores:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(dds<span class="op">$</span>Expenditures)</code></pre></div>
-<pre><code>## [1] 18065.79</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(dds<span class="op">$</span>Expenditures)
+<span class="co">#&gt; [1] 18066</span></code></pre></div>
 <p>Es común hacer gráficas de barras para representar <em>medias</em>, aunque en realidad, esto no es lo más recomendable:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">media_por_etnia &lt;-<span class="st"> </span>dds <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(Ethnicity) <span class="op">%&gt;%</span>
@@ -1175,7 +1177,7 @@ media_por_etnia<span class="op">$</span>Etnia &lt;-<span class="st"> </span><spa
 <span class="kw">ggplot</span>(media_por_etnia, <span class="kw">aes</span>(<span class="dt">x =</span> Etnia, <span class="dt">y =</span> Media_etnia)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&#39;identity&#39;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">25</span>))</code></pre></div>
-<p><img src="01-introduccion_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="01-introduccion_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <img src="figuras/manicule2.jpg" />
 <div class="centered">
 <p class="espacio">
@@ -1328,12 +1330,12 @@ dds_blancos_hispanos <span class="op">%&gt;%</span><span class="st">  </span>
 <tbody>
 <tr class="odd">
 <td align="left">Hispanic</td>
-<td align="right">11065.57</td>
+<td align="right">11066</td>
 <td align="right">37.6</td>
 </tr>
 <tr class="even">
 <td align="left">White not Hispanic</td>
-<td align="right">24697.55</td>
+<td align="right">24698</td>
 <td align="right">40.1</td>
 </tr>
 </tbody>
@@ -1349,16 +1351,16 @@ dds_blancos_hispanos <span class="op">%&gt;%</span><span class="st">  </span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dds_blancos_hispanos <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(Ethnicity, Age_Cohort) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">media_gasto =</span> <span class="kw">mean</span>(Expenditures)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">spread</span>(Ethnicity, media_gasto)</code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##   Age_Cohort Hispanic `White not Hispanic`
-##   &lt;ord&gt;         &lt;dbl&gt;                &lt;dbl&gt;
-## 1 0-5            1393                 1367
-## 2 6-12           2312                 2052
-## 3 13-17          3955                 3904
-## 4 18-21          9960                10133
-## 5 22-50         40924                40188
-## 6 51+           55585                52670</code></pre>
+<span class="st">  </span><span class="kw">spread</span>(Ethnicity, media_gasto)
+<span class="co">#&gt; # A tibble: 6 x 3</span>
+<span class="co">#&gt;   Age_Cohort Hispanic `White not Hispanic`</span>
+<span class="co">#&gt;   &lt;ord&gt;         &lt;dbl&gt;                &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 0-5            1393                 1367</span>
+<span class="co">#&gt; 2 6-12           2312                 2052</span>
+<span class="co">#&gt; 3 13-17          3955                 3904</span>
+<span class="co">#&gt; 4 18-21          9960                10133</span>
+<span class="co">#&gt; 5 22-50         40924                40188</span>
+<span class="co">#&gt; 6 51+           55585                52670</span></code></pre></div>
 <p>¿Se puede concluir que el típico hispano recibe menos fondos (es decir, gastos) que el típico blanco?</p>
 <p>Dado que la cantidad típica de gastos para los hispanos (en todos excepto un grupo de edad) es más alta que la cantidad típica de gastos para los blancos que no son hispanos en cada grupo de edad (excepto en uno), la hipótesis de discriminación sería refutada. Si un consumidor hispano fuera a reclamar discriminación porque es hispano (frente a blancos no hispanos), podría hacerlo con base en el promedio general de gastos para todos los consumidores de su grupo.</p>
 <p>Podemos entender mejor por qué esta aparente asociación desaparece cuando consideramos la variable de grupo de edad si analizamos el porcentaje de consumidores en cada categoría de edad para los grupos de hispanos y blancos:</p>
@@ -1368,16 +1370,16 @@ dds_blancos_hispanos <span class="op">%&gt;%</span><span class="st">  </span>
 <span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(Ethnicity, Age_Cohort) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">porc_grupo_edad =</span> <span class="kw">round</span>(<span class="kw">n</span>()<span class="op">/</span><span class="kw">first</span>(num_etnia)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">spread</span>(Ethnicity, porc_grupo_edad)</code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##   Age_Cohort Hispanic `White not Hispanic`
-##   &lt;ord&gt;         &lt;dbl&gt;                &lt;dbl&gt;
-## 1 0-5           11.7                  4.99
-## 2 6-12          24.2                 11.5 
-## 3 13-17         27.4                 16.7 
-## 4 18-21         20.7                 17.2 
-## 5 22-50         11.4                 33.2 
-## 6 51+            4.52                16.5</code></pre>
+<span class="st">  </span><span class="kw">spread</span>(Ethnicity, porc_grupo_edad)
+<span class="co">#&gt; # A tibble: 6 x 3</span>
+<span class="co">#&gt;   Age_Cohort Hispanic `White not Hispanic`</span>
+<span class="co">#&gt;   &lt;ord&gt;         &lt;dbl&gt;                &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 0-5           11.7                  4.99</span>
+<span class="co">#&gt; 2 6-12          24.2                 11.5 </span>
+<span class="co">#&gt; 3 13-17         27.4                 16.7 </span>
+<span class="co">#&gt; 4 18-21         20.7                 17.2 </span>
+<span class="co">#&gt; 5 22-50         11.4                 33.2 </span>
+<span class="co">#&gt; 6 51+            4.52                16.5</span></code></pre></div>
 <p>Veamos estas medias como un promedio ponderado por grupo de edad:</p>
 <p><span class="math display">\[
 \bar{X}_k = \displaystyle{\sum_{i=1}^{m}w_{ki}\bar{X}_{ki}},
@@ -1393,7 +1395,7 @@ dds_blancos_hispanos <span class="op">%&gt;%</span><span class="st">  </span>
 En el artículo está publicada esta gráfica:
 <p class="espacio3">
 </p>
-<p><img src="figuras/Messerli2012-ChocolateNobelCorrelation.png" width="566" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/Messerli2012-ChocolateNobelCorrelation.png" width="70%" style="display: block; margin: auto;" /></p>
 <p class="espacio">
 </p>
 <p>Los datos de consumo de chocolate per cápita provienen de fuentes de datos distintas: <a href="https://www.confectionerynews.com/Article/2013/07/30/Who-eats-the-most-chocolate">confectionerynews.com</a>, <a href="https://www.theobroma-cacao.de/wissen/wirtschaft/international/konsum/">theobroma-cacao.de</a>, y <a href="https://www.mah.se/PageFiles/55093/caobisco-statistical%20bulletin%202013.pdf">caobisco</a>.</p>
@@ -1419,84 +1421,84 @@ chocolate_nobel <span class="op">%&gt;%</span><span class="st"> </span><span cla
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Finland</td>
-<td align="right">2008</td>
-<td align="right">6.97</td>
-<td align="right">3</td>
-<td align="right">5523231</td>
-<td align="right">5.432</td>
-</tr>
-<tr class="even">
-<td align="left">Czech Republic</td>
-<td align="right">2009</td>
-<td align="right">2.08</td>
-<td align="right">3</td>
-<td align="right">10618303</td>
-<td align="right">2.825</td>
-</tr>
-<tr class="odd">
-<td align="left">France</td>
-<td align="right">2009</td>
-<td align="right">6.41</td>
-<td align="right">37</td>
-<td align="right">64979548</td>
-<td align="right">5.694</td>
-</tr>
-<tr class="even">
-<td align="left">Germany</td>
-<td align="right">2010</td>
-<td align="right">11.56</td>
-<td align="right">91</td>
-<td align="right">82114524</td>
-<td align="right">11.082</td>
-</tr>
-<tr class="odd">
-<td align="left">Japan</td>
-<td align="right">2006</td>
-<td align="right">2.23</td>
-<td align="right">22</td>
-<td align="right">127484450</td>
-<td align="right">1.758</td>
-</tr>
-<tr class="even">
-<td align="left">Japan</td>
-<td align="right">2011</td>
-<td align="right">2.16</td>
-<td align="right">22</td>
-<td align="right">127484450</td>
-<td align="right">1.758</td>
-</tr>
-<tr class="odd">
-<td align="left">Denmark</td>
-<td align="right">2012</td>
-<td align="right">7.50</td>
-<td align="right">9</td>
-<td align="right">5773551</td>
-<td align="right">15.588</td>
-</tr>
-<tr class="even">
-<td align="left">Japan</td>
-<td align="right">2008</td>
-<td align="right">2.15</td>
-<td align="right">22</td>
-<td align="right">127484450</td>
-<td align="right">1.758</td>
-</tr>
-<tr class="odd">
 <td align="left">US</td>
-<td align="right">2007</td>
-<td align="right">5.18</td>
+<td align="right">2004</td>
+<td align="right">5.30</td>
 <td align="right">335</td>
-<td align="right">324459463</td>
+<td align="right">3.24e+08</td>
 <td align="right">10.325</td>
 </tr>
 <tr class="even">
-<td align="left">Brazil</td>
-<td align="right">2008</td>
-<td align="right">2.57</td>
-<td align="right">1</td>
-<td align="right">209288278</td>
-<td align="right">0.048</td>
+<td align="left">Ireland</td>
+<td align="right">2006</td>
+<td align="right">7.64</td>
+<td align="right">2</td>
+<td align="right">4.67e+06</td>
+<td align="right">4.281</td>
+</tr>
+<tr class="odd">
+<td align="left">Switzerland</td>
+<td align="right">2011</td>
+<td align="right">10.55</td>
+<td align="right">21</td>
+<td align="right">8.48e+06</td>
+<td align="right">24.776</td>
+</tr>
+<tr class="even">
+<td align="left">Hungary</td>
+<td align="right">2009</td>
+<td align="right">3.58</td>
+<td align="right">8</td>
+<td align="right">9.72e+06</td>
+<td align="right">8.229</td>
+</tr>
+<tr class="odd">
+<td align="left">Austria</td>
+<td align="right">2007</td>
+<td align="right">8.22</td>
+<td align="right">18</td>
+<td align="right">8.74e+06</td>
+<td align="right">20.606</td>
+</tr>
+<tr class="even">
+<td align="left">Germany</td>
+<td align="right">2011</td>
+<td align="right">11.60</td>
+<td align="right">91</td>
+<td align="right">8.21e+07</td>
+<td align="right">11.082</td>
+</tr>
+<tr class="odd">
+<td align="left">Netherlands</td>
+<td align="right">2012</td>
+<td align="right">5.40</td>
+<td align="right">19</td>
+<td align="right">1.70e+07</td>
+<td align="right">11.153</td>
+</tr>
+<tr class="even">
+<td align="left">Spain</td>
+<td align="right">2007</td>
+<td align="right">3.27</td>
+<td align="right">2</td>
+<td align="right">4.64e+07</td>
+<td align="right">0.431</td>
+</tr>
+<tr class="odd">
+<td align="left">Finland</td>
+<td align="right">2009</td>
+<td align="right">6.87</td>
+<td align="right">3</td>
+<td align="right">5.52e+06</td>
+<td align="right">5.432</td>
+</tr>
+<tr class="even">
+<td align="left">US</td>
+<td align="right">2012</td>
+<td align="right">5.50</td>
+<td align="right">335</td>
+<td align="right">3.24e+08</td>
+<td align="right">10.325</td>
 </tr>
 </tbody>
 </table>
@@ -1504,7 +1506,7 @@ chocolate_nobel <span class="op">%&gt;%</span><span class="st"> </span><span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(chocolate_nobel, <span class="kw">aes</span>(<span class="dt">x=</span>Cons_per_capita, <span class="dt">y =</span> Laureates_per_10_million)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="dt">se =</span> F)</code></pre></div>
-<p><img src="01-introduccion_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p><img src="01-introduccion_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>El artículo original era más una nota sarcástica, que un artículo de investigación. Muchos artículos, blogs y medios mostraron que esta aparente correlación no tiene sentido. Estas críticas muestran que el número de Nobel para 10 millones de habitantes también está “correlacionado” con el PIB per cápita, el índice de desarrollo humano, el consumo de todo tipo de bienes de lujo, etc.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Factores de interacción. Incluso cuando las variables no están correlacionadas por completo, la importancia de cada una puede depender de la otra. Por ejemplo, las plantas se benefician tanto de la luz como del agua. Pero en ausencia de cualquiera, el otro no es en absoluto beneficioso. Tales interacciones ocurren en una gran cantidad de sistemas. Por lo tanto, la inferencia efectiva sobre una variable generalmente dependerá de la consideración de otras variables.</li>
@@ -1628,10 +1630,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
