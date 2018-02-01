@@ -73,7 +73,7 @@ knitr::include_graphics("figuras/pipe-function.png")
 
 ![](figuras/manicule.jpg)  ¿Qué hace el siguiente código? ¿Qué hace `.`?
 
-```{r, eval = F}
+```{r, eval = F, out.width="50%"}
 df <- data_frame(
   x = runif(5),
   y = rnorm(5)
@@ -234,7 +234,7 @@ pew_tidy %>% head() %>% knitr::kable() %>%
 
 La nueva estructura de la base de datos nos permite, por ejemplo, hacer fácilmente una gráfica donde podemos comparar las diferencias en las frecuencias.
 
-```{r, fig.height = 4, fig.width = 7.7}
+```{r, out.width = "50%"}
 library(dplyr)
 by_religion <- group_by(pew_tidy, religion)
 pew_tidy_2 <- pew_tidy %>%
@@ -287,7 +287,7 @@ billboard_tidy %>% sample_n(10) %>% knitr::kable()
 
 Nuevamente, podemos hacer gráficas fácilmente.
 
-```{r, fig.height = 3.4, fig.align='center'}
+```{r, out.width="40%"}
 tracks <- billboard_tidy %>%
   filter(track %in% c("Come On Over Baby (A...", "What A Girl Wants", "Say My Name", "Jumpin' Jumpin'", "Bye Bye Bye"))
 
@@ -729,7 +729,7 @@ guns_sin_especificar <- guns %>%
 
 Podemos analizar la siguiente gráfica de mosaico:
 
-```{r, fig.height=5, fig.width=6, message=FALSE, warning=FALSE, fig.align='center'}
+```{r, out.width='80%', message=FALSE, warning=FALSE}
 ggplot(guns_sin_especificar, aes(x=as.factor(place), fill=as.factor(intent))) +
     geom_bar(position='fill') +
     coord_flip() +
@@ -765,6 +765,8 @@ En 1971 un estadístico llamado Frank Anscombe (fundador del departamento de Est
 anscombe
 ```
 
+<center>
+
 +------+-------+-------+-------+-------+-------+------+-------+
 |$x_1$ |$y_1$  |$x_2$  |$y_2$  |$x_3$  |$y_3$  |$x_4$ |$y_4$  |
 +======+=======+=======+=======+=======+=======+======+=======+
@@ -791,7 +793,11 @@ anscombe
 |  5.0 |  5.68 |  5.0  |  4.74 |  5.0  |  5.73 |  8.0 |  6.89 |
 +------+-------+-------+-------+-------+-------+------+-------+
 
+</center>
+
 Por ejemplo, todos los conjuntos de datos I, II, III, y IV, tienen exactamente misma media de $x$, $\bar{x}_i = \bar{x}_j$, y misma media de $y$, $\bar{y}_i = \bar{y}_j$ para toda $i,j=1,2,3,4$. Además, se puede ver que todos tienen misma varianza muestral de $x$ y de $y$. En cada conjunto de datos la correlación entre $x$ y $y$ es la misma, y por consiguiente, los coeficientes de la regresión lineal $\beta_0$ y $\beta_1$ también son iguales. 
+
+<center>
 
 +-----------------------------+-------------------+
 |Propiedad                    |Valor              |
@@ -808,6 +814,8 @@ Por ejemplo, todos los conjuntos de datos I, II, III, y IV, tienen exactamente m
 +-----------------------------+-------------------+
 |Línea de regresión lineal    |$y = 3.00 + 0.500x$|
 +-----------------------------+-------------------+
+
+</center>
 
 ¿En qué son diferentes estos conjuntos de datos? ¿Es posible con la información anterior concluir que los cuatro conjuntos de datos deben ser similares? ¿Que tengan estadísticas similares asegura que provienen de un mismo modelo?
 
@@ -853,7 +861,7 @@ Lo más importante para entender ggplot es comprender la estructura y la lógica
  
 <div style="text-align: center;">**¿Qué geometrías son más adecuadas para cada tipo de variable?**</div>
 
-```{r echo=FALSE, fig.align='center', dpi=145}
+```{r echo=FALSE, fig.align='center', dpi=175}
 knitr::include_graphics("figuras/visual-variables.png")
 ```
 
@@ -875,7 +883,7 @@ glimpse(gapminder)
 
 Supongamos que queremos graficar la esperanza de vida vs el PIB per cápita para todos los años y países en los datos. Haremos esto creando un objeto que contenga parte de la información necesario y a partir de ahí vamos a construir nuestra gráfica. Primero debemos indicarle a la función `ggplot()` qué datos estamos utilizando:
 
-```{r, out.width = "50%", fig.align="center"}
+```{r, out.width = "50%"}
 p <- ggplot(data = gapminder)
 p
 ```
@@ -884,7 +892,7 @@ En este punto, ggplot sabe cuáles son nuestros datos, pero no cuál es el mapeo
 
 Hasta este punto ggplot conoce qué datos se van a utilizar para hacer la gráfico, pero no el *mapeo* o *asociación* de qué variables se van a relacionar con los elementos visuales de la gráfica. Tampoco se sabe qué tipo de gráfica se va a hacer. En ggplot, las asignaciones se especifican utilizando la función `aes()`:
 
-```{r, out.width = "50%", fig.align="center"}
+```{r}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp))
@@ -894,7 +902,7 @@ El argumento `mapping = aes(...)` _vincula variables a cosas que se van a ver en
 
 ¿Qué sucede si simplemente escribimos `p` en la consola y ejecutamos?
 
-```{r, fig.width = 5, fig.height = 4, fig.align="center"}
+```{r}
 p
 ```
 
@@ -902,7 +910,7 @@ El objeto `p` ha sido creado por la función `ggplot()`, y ya tiene información
 
 Se ha creado el objeto `p` utilizando la función `ggplot()` y este objeto ya tiene información de las asignacionesque queremos. Sin embargo, no se le ha dado ninguna instrucción sobre qué tipo de gráfica se quiere dibujar. Necesitamos agregar una capa a la gráfica. Esto se hace mediante el símbolo `+`. Esto significa elegir una función `geom_`. Utilizaremos `geom_point()` para hacer un diagrama de dispersión. 
 
-```{r, fig.width = 5, fig.height = 4, fig.align="center"}
+```{r}
 p + geom_point()
 ```
 
@@ -917,13 +925,13 @@ Transparencia (`alpha`) | No aplica | Mapeo lineal a la transparencia
 
 Los *_geoms_* controlan el tipo de gráfica:
 
-```{r, fig.height=4, fig.width=5, message=FALSE, warning=FALSE, fig.align="center"}
+```{r, message=FALSE, warning=FALSE}
 p + geom_smooth()
 ```
 
 Podemos ver de inmediato que algunos de estos `geoms` hacen mucho más que simplemente poner puntos en una cuadrícula. Aquí `geom_smooth()` ha calculado una línea suavizada y la región sombreada representa el error estándar de la línea suavizada. Si queremos ver los puntos de datos y la línea juntos, simplemente agregamos `geom_point()` de nuevo como una capa adicional utilizando `+`:
 
-```{r, fig.height=4, fig.width=5, message=FALSE, warning=FALSE, fig.align="center"}
+```{r, message=FALSE, warning=FALSE}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y=lifeExp))
@@ -932,7 +940,7 @@ p + geom_point() + geom_smooth()
 
 El mensaje de la consola de R nos dice que la función `geom_smooth()` está utilizando un método llamado gam, que en este caso significa que se ajusta a un modelo aditivo generalizado. Esto sugiere que tal vez haya otros métodos en `geom_smooth()`. Podemos intentar agregar `method = "lm"` (para "modelo lineal") como un argumento para `geom_smooth()`:
 
-```{r, fig.width = 5, fig.height = 4, out.width = "50%", fig.align="center"}
+```{r}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y=lifeExp))
@@ -941,7 +949,7 @@ p + geom_point() + geom_smooth(method="lm")
 
 Se puede agregar al mapeo del color de la línea el continente y del relleno de los puntos (fill) también el continente para obtener una gráfica que nos dé una idea más general de como se tiene esta relación por continente.
 
-```{r, fig.width = 10, fig.height = 6, out.width = "50%", fig.align="center"}
+```{r, out.width = "90%"}
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp,
@@ -964,7 +972,7 @@ Para mayor información puedes visitar <https://www.iraqbodycount.org/>.
 Los datos los leemos con la función `read_csv()` de la librería `readr`:
 ```{r message=FALSE, warning=FALSE}
 ibc <- read_csv("datos/ibc-incidents-2016-8-8.csv")
-glimpse(ibc)
+ibc %>% sample_n(10) %>% knitr::kable()
 ```
 
 Primero filtramos los incidentes en los que hubo al menos cinco fatalidades:
@@ -976,7 +984,7 @@ ibc_fatalidades <- ibc %>%
 
 Una forma fácil de dibujar un histograma es utilizando la geometría `geom_histogram()`:
 
-```{r, message=FALSE, warning=FALSE, out.width = "50%", fig.align="center"}
+```{r}
 ggplot(ibc_fatalidades, aes(x=Deaths_recorded)) +
   geom_histogram() +
   scale_x_log10()
@@ -1046,7 +1054,7 @@ glimpse(factores_inglehart)
 
 Para graficar `factores_inglehart`, ejecuta este código para poner `survival_selfexpression` en el eje x (eje horizontal) y `traditional_secular` en el eje y (eje vertical):
 
-```{r, out.width = "50%", fig.align="center"}
+```{r}
 ggplot(data = factores_inglehart) + 
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
 ```
@@ -1058,7 +1066,7 @@ ggplot(data = factores_inglehart) +
 
 En la gráfica de abajo, un grupo de puntos (en rojo) parece estar fuera de la tendencia lineal. Estos países tienen menores valores de supervivencia de lo que esperaríamos de acuerdo a sus mayores valores de tradicionalismo.
 
-```{r, echo = FALSE, out.width = "50%", fig.align="center"}
+```{r, echo = FALSE}
 ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular)) +
   geom_point() + 
   geom_point(data = dplyr::filter(factores_inglehart, survival_selfexpression > 0, traditional_secular < -0.5), colour = "red", size = 2.2)
@@ -1072,7 +1080,7 @@ Un mapeo incluye cosas como el tamaño, la forma o el color de los puntos. Puede
 
 Aquí cambiamos los niveles de tamaño, forma y color de un punto para hacer que el punto sea pequeño, triangular o azul:
 
-```{r, echo = FALSE, asp = 1/4, fig.align="center"}
+```{r, echo = FALSE, asp = 1/4}
 ggplot() +
   geom_point(aes(1, 1), size = 20) +
   geom_point(aes(2, 1), size = 10) + 
@@ -1085,12 +1093,12 @@ ggplot() +
 
 Podemos transmitir información sobre los datos mapeando los aesthetics en la gráfica a las variables del data frame. Por ejemplo, podemos asignar los colores de los puntos a la variable `reg` para revelar la región de cada país.
 
-```{r, out.width = "50%", fig.align="center"}
+```{r}
 ggplot(data = factores_inglehart) + 
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular, color=reg))
 ```
 
-Para asignar una característica a una variable, asociamos el nombre del mapeo al nombre de la variable dentro de `aes()`. ggplot2 asignará automáticamente un nivel único de dicha característica (o mapeo) a cada valor único de la variable, un proceso conocido como __escalamiento__. ggplot2 también agregará una leyenda que explique qué niveles corresponden a qué valores.
+Para asignar una característica a una variable, asociamos el nombre del mapeo al nombre de la variable dentro de `aes()`. `ggplot2` asignará automáticamente un nivel único de dicha característica (o mapeo) a cada valor único de la variable, un proceso conocido como __escalamiento__. ggplot2 también agregará una leyenda que explique qué niveles corresponden a qué valores.
 
 También podríamos agregar etiquetas:
 
@@ -1111,7 +1119,7 @@ factores_inglehart_etiq <- etiquetar(factores_inglehart, "survival_selfexpressio
                          "traditional_secular", etiq = "country", size = 2.1)
 ```
 
-```{r, fig.height=8, fig.width=10, message=FALSE, warning=FALSE, echo = FALSE}
+```{r, out.width="100%", message=FALSE, warning=FALSE, echo = FALSE}
 ggplot(data = factores_inglehart_etiq,
        aes(x=survival_selfexpression,y=traditional_secular,color=reg,group=reg)) +
   geom_point(size = 2) +
@@ -1126,7 +1134,7 @@ ggplot(data = factores_inglehart_etiq,
 
 ¿En qué se parecen las siguiente dos gráficas? 
 
-```{r echo = FALSE, out.width = "50%", fig.align="default", message = FALSE}
+```{r echo = FALSE, out.width = "50%"}
 ggplot(data = factores_inglehart) + 
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
 
@@ -1140,7 +1148,7 @@ Un __geom__ es un objeto geométrico que una gráfica utiliza para representar a
 
 La gráfica de la izquierda utiliza el punto geom, y la gráfica de la derecha utiliza el geom de smooth, una línea ajustada a los datos. Para hacer las gráficas mostradas arriba se puede utilizar el siguiente código.
 
-```{r, out.width = "50%", fig.align="center", eval = FALSE}
+```{r, out.width = "50%", eval = FALSE}
 #izquierda
 ggplot(data = factores_inglehart) + 
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular))
@@ -1152,7 +1160,7 @@ ggplot(data = factores_inglehart) +
 
 Cada función geom en ggplot2 toma un argumento `mapping`. Sin embargo, no todas las propiedades de __aesthetics__ funciona con cada geom. Podríamos cambiar la forma de un punto, pero no la "forma" de una línea. Por otro lado, podríamos establecer el tipo de línea de una línea. `geom_smooth()` dibujará una línea diferente, con un tipo de línea diferente, para cada valor único de la variable que se asigna al tipo de línea.
 
-```{r, message = FALSE, warning=FALSE, comment=NA, fig.align="center"}
+```{r, message = FALSE, warning=FALSE, comment=NA}
 ggplot(data = factores_inglehart) + 
   geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular, linetype = reg), method = "loess", se = F, span = 1)
 ```
@@ -1161,7 +1169,7 @@ Aquí `geom_smooth()` separa los países en líneas basándose en su valor de `r
 
 Podemos superponer las líneas encima de los datos sin procesar y luego coloreándolo todo de acuerdo a `reg`.
 
-```{r echo = FALSE, message = FALSE, warning=FALSE, out.width = "50%", fig.align="center"}
+```{r echo = FALSE, message = FALSE, warning=FALSE}
 ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular, color = reg)) + 
   geom_point() +
   geom_smooth(mapping = aes(linetype = reg), method = "loess", se = F)
@@ -1169,7 +1177,7 @@ ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y =
 
 Para mostrar varios geoms en la misma gráfica, agregamos varias funciones geom a `ggplot()`:
 
-```{r, message = FALSE, out.width = "50%", fig.align="center"}
+```{r, message = FALSE}
 ggplot(data = factores_inglehart) + 
   geom_point(mapping = aes(x = survival_selfexpression, y = traditional_secular)) +
   geom_smooth(mapping = aes(x = survival_selfexpression, y = traditional_secular), method = "loess")
@@ -1177,7 +1185,7 @@ ggplot(data = factores_inglehart) +
 
 Este código genera la misma gráfica que el código anterior:
 
-```{r, eval = FALSE, out.width = "50%", fig.align="center"}
+```{r, eval = FALSE}
 ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular)) + 
   geom_point() + 
   geom_smooth(method = "loess")
@@ -1185,9 +1193,234 @@ ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y =
 
 Si colocan asignaciones en una función `geom`, `ggplot2` las tratará como asignaciones locales para cada capa, de tal forma que usará estas asignaciones para extender o sobrescribir las asignaciones globales _para esa capa solamente_. Esto hace posible visualizar elementos diferentes en diferentes capas.
 
-```{r, message = FALSE, out.width = "50%", fig.align="center"}
+```{r message=FALSE, warning=FALSE}
 ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y = traditional_secular)) + 
   geom_point(mapping = aes(color = reg)) + 
   geom_smooth(method = "loess")
 ```
 
+## Poniendo todo junto
+
+El Billboard Hot 100 es un ranking semanal publicado en Estados Unidos y es utilizado en la industria de la música como una medida del rendimiento de las canciones en ventas y en streaming en el país.
+
+```{r echo=FALSE, fig.align='center', dpi=200}
+knitr::include_graphics("figuras/billboard.png")
+```
+
+<p class="espacio">
+</p>
+
+
+Con el siguiente código podemos descargar los datos del Billboard semana a semana y obtener un conjunto de datos como el que se presenta a continuación:
+
+```{r, eval = FALSE}
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(rvest)
+  library(lubridate)
+})
+
+
+extract_song_info <- function(html_row) {
+  
+  node_primary <- html_row %>% 
+    html_node(css = '.chart-row__primary')
+  
+  node_secondary <- html_row %>%
+    html_node(css = '.chart-row__secondary')
+  
+  song_features <- c(
+    '.chart-row__history--rising',
+    '.chart-row__bullet',
+    '.chart-row__history--falling',
+    '.chart-row__award-indicator',
+    '.chart-row__new-indicator',
+    '.chart-row__history--steady')
+  
+  feat_search <- map(.x = song_features, .f = function(y) {
+    node_primary %>%
+      html_nodes(css = y)
+  })
+  
+  song_node <- node_primary %>% 
+    html_node(css = '.chart-row__main-display')
+  
+  info_node <- song_node %>%
+    html_node(css = '.chart-row__container')
+  
+  song_name_node <- info_node %>%
+    html_node(css = '.chart-row__song')
+  
+  song_artist_node <- info_node %>%
+    html_node(css = '.chart-row__artist')
+  
+  song_stats <- node_secondary %>%
+    html_node(css = '.chart-row__stats')
+  
+  last_week <- song_stats %>%
+    html_node(css = '.chart-row__last-week .chart-row__value') %>%
+    html_text()
+  
+  peak_position <- song_stats %>%
+    html_node(css = '.chart-row__top-spot .chart-row__value') %>%
+    html_text()
+  
+  wks_on_chart <- song_stats %>%
+    html_node(css = '.chart-row__weeks-on-chart .chart-row__value') %>%
+    html_text()
+  
+  current_week_rank <- node_primary %>%
+    html_node(css = '.chart-row__current-week') %>%
+    html_text()
+  
+  artist <- song_artist_node %>% html_text() %>% str_replace_all('\n','')
+  name <- song_name_node %>% html_text() %>% str_replace_all('\n','')
+  
+  song <- tibble(current_week_rank = as.character(current_week_rank),
+                 name = str_trim(as.character(name)),
+                 artist = str_trim(as.character(artist)),
+                 rising = length(feat_search[[1]]) > 0,
+                 steady = length(feat_search[[6]]) > 0,
+                 falling = length(feat_search[[3]]) > 0,
+                 gains_performance = length(feat_search[[2]]) > 0,
+                 award = length(feat_search[[4]]) > 0,
+                 hot_debut = length(feat_search[[5]]) > 0,
+                 last_week = as.character(last_week),
+                 peak_position = as.character(peak_position),
+                 wks_on_chart = as.character(wks_on_chart)
+  )
+  cat(sprintf('%-3s\t %-40s\t%s\n', song$current_week_rank, song$artist, song$name))
+  
+  song
+}
+
+
+billboard_weekchart <- function(fecha){
+  cat(sprintf('\n\n Fecha: \t%s\n\n', toString(fecha)))
+  # url base del Billboard Hot 100
+  base_url <- "http://www.billboard.com/charts/hot-100/"
+  current_url <- paste0(base_url, fecha)
+  
+  webpage <- tryCatch(
+    {
+      Sys.sleep(5)
+      read_html(current_url);
+    },
+    error=function(cond) {
+      message("Error: Webpage did not respond succesfully.")
+      message(cond)
+      cat('\n\n')
+      return(NA)
+    },
+    finally={
+      cat('\n')
+    }
+  )
+  
+  if(length(webpage) > 1){
+    chart <- html_nodes(webpage, css='.chart-data')
+    rows <-html_nodes(chart, css='.chart-row')
+    week_songs <- map_df(.x = rows, .f = extract_song_info)
+    fecha_df <- data.frame(fecha=rep(fecha,nrow(week_songs)))
+    week_songs <- cbind(fecha_df, week_songs)
+  }else{
+    write(toString(fecha), file="/home/andreu/scripts/billboard/missing.txt", append = T)
+    Sys.sleep(60)
+    week_songs <- NULL
+  }
+  
+  if(length(week_songs) > 0){
+    write_csv(x = week_songs, path = paste0("/home/andreu/scripts/billboard/data/",fecha,".csv"))
+    val = T
+  }else{
+    val = F
+  }
+  
+  val
+}
+
+
+billboard_alltime <- function(start_date = ymd('1958-08-04'), current_date = ymd('2018-02-03')){
+  file.create("/home/andreu/scripts/billboard/missing.txt")
+  fechas <- seq(start_date, current_date, by = '1 week')
+  alltime_songs <- map_lgl(.x = fechas, .f = billboard_weekchart)
+  
+  alltime_songs
+}
+
+alltime_songs <- billboard_alltime(start_date = ymd('2018-02-03'))
+
+paths <- dir("/home/andreu/scripts/billboard/data/", pattern = "\\.csv$", full.names = TRUE)
+billboard <- map_df(paths, read_csv, col_types=paste(rep('c', 13), collapse=''))
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+billboard <- read_csv("datos/billboard_alltime.csv")
+```
+
+No es necesario entender a profundidad el código utilizado para parsear el html de cada página de Billboard, sin embargo, es interesante ver el uso de las funciones `map`, `map_lgl`, y `map_df` en el fragmento de código anteior.
+
+1. La función `map` se utiliza en la llamada a la primera función `extract_song_info`. Primero se definen tags del html que se necesitan parsear y posteriormente se utiliza `map` para buscar cada uno dentro del texto plano en html.
+
+2. La función `map_df` se utiliza para aplicar cada elemento (rengón) del html en una fecha dada la función `extract_song_info` y el resultado de aplicar esta función a cada renglón del html da como resultado un data frame con los datos de la información de cada canción para cada fecha. Posteriormente, este conjunto de datos se guarda en formato csv.
+
+3. La función `map_lgl` aplica la función `billboard_weekchart` a cada elemento de la lista de fecha y regresa un vector lógico que indica si el parseo del html tuvo éxito para cada una de las fechas.
+
+4. La función `map_df` al final del fragmento de código lee todos los archivos correspondientes a las fechas utilizadas y como resultado junta todos los data frames en uno solo.
+
+Una muestra de los datos obtenidos se puede ver en la siguiente tabla:
+
+```{r}
+billboard %>% sample_n(20) %>% knitr::kable() %>%
+  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 7)
+```
+
+Veamos de qué tipos son cada una de las columnas en los datos. Podemos usar nuevamente la función `glimpse`:
+
+```{r}
+glimpse(billboard)
+```
+
+Supongamos que deseamos hacer una gráfica de barras del número de semanas en el top 10 para los 20 artistas que más semanas han permanecido en el top 10.
+
+```{r}
+artistas_top10 <- billboard %>%
+  filter(current_week_rank >= 10) %>%
+  group_by(artist) %>%
+  summarise(num_semanas_top_10 = n()) %>%
+  arrange(desc(num_semanas_top_10)) %>%
+  top_n(20, wt = num_semanas_top_10)
+```
+
+Para hacer la gráfica con `ggplot` debemos primero ordenar los artistas de manera descendente por el número de semanas en el top 10. Para esto utilizamos la función de `fct_reorder` del paquete `forcats`.
+
+```{r}
+artistas_top10$artist <- forcats::fct_reorder(f = artistas_top10$artist,
+                                          x = artistas_top10$num_semanas_top_10,
+                                          .desc = T)
+```
+
+Por último, hacemos la gráfica indicando a `geom_bar` que la transformación estadística que debe usar es la de _identity_, es decir, la longitud de la barra corresponde al valor absoluto de la variable `num_semanas_top_10`:
+
+```{r}
+ggplot(artistas_top10, aes(x = artist, y = num_semanas_top_10)) + 
+  geom_bar(stat = 'identity') +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+??fct_reorder
+```
+
+
+
+## Tarea
+
+Utiliza los datos del Billboard Hot 100 para contestar las siguientes preguntas:
+
+1. ¿Cuáles son los 10 artistas que han tenido más #1's en la historia de Billboard? Puedes hacer una gráfica de barras para contestar esta preunta.
+
+3. ¿Cuáles son los 10 artistas que han tenido más #1's en los últimos 10 años? Realiza una gráfica de barras para responder a la pregunta.
+
+4. ¿Cómo se ha comportado el número promedio de semanas que una canción permanece en el #1 a través de la historia?
+
+4. ¿Existe alguna relación entre el número de presentaciones en vivo (`gains_performance`) y el número de semanas que permance una canción en #1?
+
+5. Para algunos _últimos_ singles que han permanecido más semanas en el Hot 100 en los últimos meses realiza una gráfica de su posición en el tiempo semana a semana.
