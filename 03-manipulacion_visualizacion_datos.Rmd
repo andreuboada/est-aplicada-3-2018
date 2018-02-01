@@ -1122,7 +1122,7 @@ factores_inglehart_etiq <- etiquetar(factores_inglehart, "survival_selfexpressio
 ggplot(data = factores_inglehart_etiq,
        aes(x=survival_selfexpression,y=traditional_secular,color=reg,group=reg)) +
   geom_point(size = 1) +
-  geom_text(aes(x = a, y = b, label = country), size = 1) +
+  geom_text(aes(x = a, y = b, label = country), size = 1.7) +
   theme(legend.position = "bottom", legend.text = element_text(size = 6),
         axis.text = element_text(size = 6), axis.title = element_text(size = 6),
         legend.title = element_text(size = 6)) +
