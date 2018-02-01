@@ -1838,18 +1838,18 @@ billboard %>% sample_n(10) %>% knitr::kable() %>%
 
 
 
-fecha         current_week_rank  name                                  artist                                        rising   steady   falling   gains_performance   award   hot_debut   last_week    peak_position   wks_on_chart
------------  ------------------  ------------------------------------  --------------------------------------------  -------  -------  --------  ------------------  ------  ----------  ----------  --------------  -------------
-2003-10-27                   72  Perfect                               Simple Plan                                   FALSE    FALSE    FALSE     TRUE                FALSE   FALSE       --                      72              1
-1995-12-04                   78  The Riddler (From "Batman Forever")   Method Man                                    FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       67                      56              5
-1991-01-07                   29  On The Way Up                         Elisa Fiorillo                                FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       27                      27             16
-1960-11-07                   30  Peter Gunn                            Duane Eddy His Twangy Guitar And The Rebels   TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       32                      30              5
-1961-09-25                  100  Cinderella                            Paul Anka                                     FALSE    FALSE    FALSE     FALSE               FALSE   FALSE       --                      78              2
-1959-11-23                   37  If I Give My Heart To You             Kitty Kallen                                  FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       34                      34              8
-2012-03-26                   76  Some Nights                           fun.                                          TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       82                      62              4
-1980-08-18                   77  Treasure                              The Brothers Johnson                          TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       87                      77              2
-1984-03-19                   30  They Don't Know                       Tracey Ullman                                 TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       34                      30              5
-1988-11-28                   78  Cross My Heart                        Eighth Wonder                                 TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       86                      78              3
+fecha         current_week_rank  name                      artist                              rising   steady   falling   gains_performance   award   hot_debut   last_week    peak_position   wks_on_chart
+-----------  ------------------  ------------------------  ----------------------------------  -------  -------  --------  ------------------  ------  ----------  ----------  --------------  -------------
+2010-06-21                   23  Undo It                   Carrie Underwood                    TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       25                      23              7
+1996-11-18                   59  Knocks Me Off My Feet     Donell Jones                        TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       67                      59              4
+2007-04-23                   19  Go Getta                  Young Jeezy Featuring R. Kelly      FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       18                      18             13
+1996-07-01                   13  Twisted                   Keith Sweat                         TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       21                      13              3
+1968-04-22                   41  She's Lookin' Good        Wilson Pickett                      TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       45                      41              3
+1980-04-21                   18  Hurt So Bad               Linda Ronstadt                      TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       23                      18              3
+1965-12-27                    3  I Got You (I Feel Good)   James Brown And The Famous Flames   FALSE    TRUE     FALSE     FALSE               FALSE   FALSE       3                        3              8
+2006-01-16                   45  Heard 'Em Say             Kanye West Featuring Adam Levine    FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       40                      26             13
+1967-04-24                    8  The Happening             The Supremes                        TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       11                       8              4
+1980-04-14                   75  Steal Away                Robbie Dupree                       TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       85                      75              2
 
 Veamos de qué tipos son cada una de las columnas en los datos. Podemos usar nuevamente la función `glimpse`:
 
