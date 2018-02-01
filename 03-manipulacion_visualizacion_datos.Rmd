@@ -1378,10 +1378,14 @@ No es necesario entender a profundidad el código utilizado para parsear el html
 
 Una muestra de los datos obtenidos se puede ver en la siguiente tabla:
 
+<div class="verysmall">
+
 ```{r message=FALSE, warning=FALSE}
 billboard %>% sample_n(10) %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 'x-small')
+  kableExtra::kable_styling(bootstrap_options = "striped")
 ```
+
+</div>
 
 Veamos de qué tipos son cada una de las columnas en los datos. Podemos usar nuevamente la función `glimpse`:
 
@@ -1414,7 +1418,6 @@ Por último, hacemos la gráfica indicando a `geom_bar` que la transformación e
 ggplot(artistas_top10, aes(x = artist, y = num_semanas_top_10)) + 
   geom_bar(stat = 'identity') +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
-??fct_reorder
 ```
 
 
