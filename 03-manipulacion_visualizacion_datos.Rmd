@@ -62,7 +62,7 @@ f(0)
 
 En resumen `%>%` funciona como se muestra en la siguiente figura:
 
-```{r echo=FALSE, fig.align='center', dpi = 80}
+```{r echo=FALSE, fig.align='center', dpi = 100}
 knitr::include_graphics("figuras/pipe-function.png")
 ```
 
@@ -1115,15 +1115,16 @@ etiquetar <- function(df, x, y, etiq = "etiq", size = 3.5){
 }
 set.seed(720528)
 factores_inglehart_etiq <- etiquetar(factores_inglehart, "survival_selfexpression",
-                         "traditional_secular", etiq = "country", size = 1.5)
+                                     "traditional_secular", etiq = "country", size = 1)
 ```
 
 ```{r, out.width="100%", message=FALSE, warning=FALSE, echo = FALSE}
 ggplot(data = factores_inglehart_etiq,
        aes(x=survival_selfexpression,y=traditional_secular,color=reg,group=reg)) +
-  geom_point(size = 2) +
-  geom_text(aes(x = a, y = b, label = country), size = 2) +
-  theme(legend.position = "bottom") +
+  geom_point(size = 1) +
+  geom_text(aes(x = a, y = b, label = country), size = 1) +
+  theme(legend.position = "bottom", legend.text = element_text(size=3),
+        axis.text = element_text(size = 4)) +
   scale_color_manual("Region", values = RColorBrewer::brewer.pal(6,"Dark2")) + 
   ylab("Traditional/secular values") + 
   xlab("Survival/Self expression values")
@@ -1197,6 +1198,10 @@ ggplot(data = factores_inglehart, mapping = aes(x = survival_selfexpression, y =
   geom_point(mapping = aes(color = reg)) + 
   geom_smooth(method = "loess")
 ```
+
+<br>
+
+---
 
 ## Poniendo todo junto
 
@@ -1414,7 +1419,7 @@ ggplot(artistas_top10, aes(x = artist, y = num_semanas_top_10)) +
 
 Utiliza los datos del Billboard Hot 100 para contestar las siguientes preguntas:
 
-1. ¿Cuáles son los 10 artistas que han tenido más #1's en la historia de Billboard? Puedes hacer una gráfica de barras para contestar esta preunta.
+1. ¿Cuáles son los 10 artistas que han tenido más #1's en la historia de Billboard? 
 
 3. ¿Cuáles son los 10 artistas que han tenido más #1's en los últimos 10 años? Realiza una gráfica de barras para responder a la pregunta.
 
