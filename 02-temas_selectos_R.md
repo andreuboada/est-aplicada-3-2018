@@ -2000,7 +2000,7 @@ Batting %>% sample_n(10) %>% knitr::kable()
 ```r
 system.time(lm(R ~ AB + teamID, Batting))
 #>    user  system elapsed 
-#>   2.855   0.092   2.947
+#>    2.94    0.12    3.06
 ```
 
 - __user time__: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.
@@ -2013,7 +2013,7 @@ El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:
 ```r
 system.time(readLines("http://www.jhsph.edu"))
 #>    user  system elapsed 
-#>   0.023   0.004   2.313
+#>   0.019   0.007   1.287
 ```
 
 
@@ -2025,7 +2025,7 @@ system.time(mclapply(2000:2006,
     lm(R ~ AB, sub)
 }, mc.cores = 5))
 #>    user  system elapsed 
-#>   0.057   0.090   0.098
+#>   0.045   0.064   0.091
 ```
 
 Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.
@@ -2070,28 +2070,28 @@ est_r_st <- system.time({
 
 dplyr_st
 #>    user  system elapsed 
-#>   0.132   0.000   0.131
+#>    0.13    0.00    0.13
 ```
 
 
 ```r
 plyr_st
 #>    user  system elapsed 
-#>   7.823   0.008   7.832
+#>  11.078   0.016  11.094
 ```
 
 
 ```r
 est_l_st
 #>    user  system elapsed 
-#>   70.19    1.75   71.94
+#>   68.18    1.85   70.04
 ```
 
 
 ```r
 est_r_st
 #>    user  system elapsed 
-#>   0.617   0.008   0.625
+#>   0.557   0.012   0.568
 ```
 
 La función `system.time` supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es `Rprof()`.
@@ -2112,67 +2112,53 @@ Usamos la función `summaryRprof para tabular las salidas de Rprof y calcular cu
 summaryRprof("out/lm_rprof.out")
 #> $by.self
 #>                         self.time self.pct total.time total.pct
-#> "lm.fit"                     2.65    89.39       2.65     89.39
-#> ".External2"                 0.22     7.58       0.26      8.59
-#> "as.character"               0.04     1.52       0.04      1.52
-#> ".deparseOpts"               0.02     0.51       0.02      0.51
-#> "anyDuplicated.default"      0.02     0.51       0.02      0.51
-#> "c"                          0.02     0.51       0.02      0.51
+#> "lm.fit"                     2.73     91.0       2.73      91.0
+#> ".External2"                 0.21      7.0       0.22       7.5
+#> "as.character"               0.04      1.5       0.04       1.5
+#> "anyDuplicated.default"      0.02      0.5       0.02       0.5
 #> 
 #> $by.total
 #>                         total.time total.pct self.time self.pct
-#> "<Anonymous>"                 2.97    100.00      0.00     0.00
-#> "block_exec"                  2.97    100.00      0.00     0.00
-#> "call_block"                  2.97    100.00      0.00     0.00
-#> "do.call"                     2.97    100.00      0.00     0.00
-#> "eval.parent"                 2.97    100.00      0.00     0.00
-#> "eval"                        2.97    100.00      0.00     0.00
-#> "evaluate_call"               2.97    100.00      0.00     0.00
-#> "evaluate::evaluate"          2.97    100.00      0.00     0.00
-#> "evaluate"                    2.97    100.00      0.00     0.00
-#> "handle"                      2.97    100.00      0.00     0.00
-#> "in_dir"                      2.97    100.00      0.00     0.00
-#> "knitr::knit"                 2.97    100.00      0.00     0.00
-#> "lm"                          2.97    100.00      0.00     0.00
-#> "local"                       2.97    100.00      0.00     0.00
-#> "process_file"                2.97    100.00      0.00     0.00
-#> "process_group.block"         2.97    100.00      0.00     0.00
-#> "process_group"               2.97    100.00      0.00     0.00
-#> "timing_fn"                   2.97    100.00      0.00     0.00
-#> "withCallingHandlers"         2.97    100.00      0.00     0.00
-#> "withVisible"                 2.97    100.00      0.00     0.00
-#> "lm.fit"                      2.65     89.39      2.65    89.39
-#> ".External2"                  0.26      8.59      0.22     7.58
-#> "model.matrix.default"        0.24      8.08      0.00     0.00
-#> "model.matrix"                0.24      8.08      0.00     0.00
-#> "as.character"                0.04      1.52      0.04     1.52
-#> "model.response"              0.04      1.52      0.00     0.00
-#> ".deparseOpts"                0.02      0.51      0.02     0.51
-#> "anyDuplicated.default"       0.02      0.51      0.02     0.51
-#> "c"                           0.02      0.51      0.02     0.51
-#> ".Diag"                       0.02      0.51      0.00     0.00
-#> ".getXlevels"                 0.02      0.51      0.00     0.00
-#> "[.data.frame"                0.02      0.51      0.00     0.00
-#> "["                           0.02      0.51      0.00     0.00
-#> "anyDuplicated"               0.02      0.51      0.00     0.00
-#> "array"                       0.02      0.51      0.00     0.00
-#> "contrasts"                   0.02      0.51      0.00     0.00
-#> "ctrfn"                       0.02      0.51      0.00     0.00
-#> "deparse"                     0.02      0.51      0.00     0.00
-#> "FUN"                         0.02      0.51      0.00     0.00
-#> "lapply"                      0.02      0.51      0.00     0.00
-#> "model.frame.default"         0.02      0.51      0.00     0.00
-#> "na.omit.data.frame"          0.02      0.51      0.00     0.00
-#> "na.omit"                     0.02      0.51      0.00     0.00
-#> "paste"                       0.02      0.51      0.00     0.00
-#> "sapply"                      0.02      0.51      0.00     0.00
-#> "stats::model.frame"          0.02      0.51      0.00     0.00
+#> "<Anonymous>"                 3.00     100.0      0.00      0.0
+#> "block_exec"                  3.00     100.0      0.00      0.0
+#> "call_block"                  3.00     100.0      0.00      0.0
+#> "do.call"                     3.00     100.0      0.00      0.0
+#> "eval.parent"                 3.00     100.0      0.00      0.0
+#> "eval"                        3.00     100.0      0.00      0.0
+#> "evaluate_call"               3.00     100.0      0.00      0.0
+#> "evaluate::evaluate"          3.00     100.0      0.00      0.0
+#> "evaluate"                    3.00     100.0      0.00      0.0
+#> "handle"                      3.00     100.0      0.00      0.0
+#> "in_dir"                      3.00     100.0      0.00      0.0
+#> "knitr::knit"                 3.00     100.0      0.00      0.0
+#> "lm"                          3.00     100.0      0.00      0.0
+#> "local"                       3.00     100.0      0.00      0.0
+#> "process_file"                3.00     100.0      0.00      0.0
+#> "process_group.block"         3.00     100.0      0.00      0.0
+#> "process_group"               3.00     100.0      0.00      0.0
+#> "timing_fn"                   3.00     100.0      0.00      0.0
+#> "withCallingHandlers"         3.00     100.0      0.00      0.0
+#> "withVisible"                 3.00     100.0      0.00      0.0
+#> "lm.fit"                      2.73      91.0      2.73     91.0
+#> ".External2"                  0.22       7.5      0.21      7.0
+#> "model.matrix.default"        0.21       7.0      0.00      0.0
+#> "model.matrix"                0.21       7.0      0.00      0.0
+#> "as.character"                0.04       1.5      0.04      1.5
+#> "model.response"              0.04       1.5      0.00      0.0
+#> "anyDuplicated.default"       0.02       0.5      0.02      0.5
+#> "[.data.frame"                0.02       0.5      0.00      0.0
+#> "["                           0.02       0.5      0.00      0.0
+#> "anyDuplicated"               0.02       0.5      0.00      0.0
+#> "model.frame.default"         0.02       0.5      0.00      0.0
+#> "na.omit.data.frame"          0.02       0.5      0.00      0.0
+#> "na.omit"                     0.02       0.5      0.00      0.0
+#> "stats::model.frame"          0.02       0.5      0.00      0.0
 #> 
 #> $sample.interval
 #> [1] 0.015
 #> 
 #> $sampling.time
-#> [1] 2.97
+#> [1] 3
 ```
 
 Hay dos métodos para normalizar los datos de Rprof:
@@ -2198,16 +2184,16 @@ Batting %>%
 Rprof(NULL)
 summaryRprof("out/plyr_rprof.out")$by.self[1:10, ]
 #>                 self.time self.pct total.time total.pct
-#> "FUN"                1.02    13.56       1.78     23.67
-#> "lapply"             0.82    10.90       2.64     35.11
-#> "eval"               0.42     5.59       7.52    100.00
-#> "stopifnot"          0.36     4.79       0.76     10.11
-#> "as.list"            0.36     4.79       0.42      5.59
-#> ".fun"               0.28     3.72       2.48     32.98
-#> "quickdf"            0.24     3.19       1.18     15.69
-#> "attr"               0.24     3.19       0.24      3.19
-#> "[["                 0.20     2.66       3.60     47.87
-#> "[[.data.frame"      0.20     2.66       0.46      6.12
+#> "lapply"             0.92    12.96       2.50     35.21
+#> "FUN"                0.90    12.68       1.56     21.97
+#> "eval"               0.46     6.48       7.10    100.00
+#> "$"                  0.30     4.23       0.30      4.23
+#> ".fun"               0.24     3.38       2.20     30.99
+#> "unique"             0.22     3.10       0.54      7.61
+#> "[["                 0.20     2.82       3.62     50.99
+#> "stopifnot"          0.20     2.82       0.60      8.45
+#> ".subset"            0.20     2.82       0.20      2.82
+#> "[[.data.frame"      0.18     2.54       0.44      6.20
 ```
 
 
@@ -2301,7 +2287,7 @@ system.time(
         aciertos[i] <- TRUE
 })
 #>    user  system elapsed 
-#>   0.294   0.061   0.354
+#>   0.270   0.052   0.322
 ```
 
 
@@ -2313,7 +2299,7 @@ system.time(
         aciertos[i] <- TRUE
 })
 #>    user  system elapsed 
-#>   0.258   0.047   0.306
+#>   0.218   0.060   0.278
 ```
 
 Usando `rbind`:
@@ -2329,7 +2315,7 @@ mi.df
 }
 system.time(mi.df.1 <- crecer_rbind())
 #>    user  system elapsed 
-#>   0.752   0.000   0.751
+#>   0.747   0.004   0.750
 ```
 
 Si definimos el tamaño del data.frame obtenemos mejoras:
@@ -2346,7 +2332,7 @@ mi.df <- data.frame(a = rep(NA, 1000), b = rep(NA, 1000))
 }
 system.time(mi.df.1 <- crecer_rbind_2())
 #>    user  system elapsed 
-#>   0.078   0.001   0.078
+#>   0.072   0.000   0.071
 ```
 
 Finalmente, veamos un enfoque totalmente vectorizado
@@ -2361,7 +2347,7 @@ porcolumna_df <- function(){
 }
 system.time(mi.df.2 <- porcolumna_df())
 #>    user  system elapsed 
-#>   0.001   0.000   0.001
+#>   0.001   0.000   0.000
 ```
 
 A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectorización, este incremento conlleva un costo en memoria. Si comparamos la versión mas lenta con la más rápida, en la última debemos asignar a, b y mi.df. Entonces, no siempre es mejor vectorizar, pues si consumimos la memoria, entonces la versión vectorizada puede enfrentarse al problema de uso de memoria en disco, que tiene aun más grandes penalizaciones en el desempeño que los ciclos que hemos visto.
