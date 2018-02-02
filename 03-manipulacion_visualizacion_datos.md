@@ -1837,24 +1837,23 @@ Una muestra de los datos obtenidos se puede ver en la siguiente tabla:
 
 
 ```r
-billboard %>% sample_n(10) %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped")
+billboard %>% select(-current_week_rank) %>% sample_n(10) %>% knitr::kable() 
 ```
 
 
 
-fecha         current_week_rank  name                      artist                              rising   steady   falling   gains_performance   award   hot_debut   last_week    peak_position   wks_on_chart
------------  ------------------  ------------------------  ----------------------------------  -------  -------  --------  ------------------  ------  ----------  ----------  --------------  -------------
-2010-06-21                   23  Undo It                   Carrie Underwood                    TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       25                      23              7
-1996-11-18                   59  Knocks Me Off My Feet     Donell Jones                        TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       67                      59              4
-2007-04-23                   19  Go Getta                  Young Jeezy Featuring R. Kelly      FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       18                      18             13
-1996-07-01                   13  Twisted                   Keith Sweat                         TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       21                      13              3
-1968-04-22                   41  She's Lookin' Good        Wilson Pickett                      TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       45                      41              3
-1980-04-21                   18  Hurt So Bad               Linda Ronstadt                      TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       23                      18              3
-1965-12-27                    3  I Got You (I Feel Good)   James Brown And The Famous Flames   FALSE    TRUE     FALSE     FALSE               FALSE   FALSE       3                        3              8
-2006-01-16                   45  Heard 'Em Say             Kanye West Featuring Adam Levine    FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       40                      26             13
-1967-04-24                    8  The Happening             The Supremes                        TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       11                       8              4
-1980-04-14                   75  Steal Away                Robbie Dupree                       TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       85                      75              2
+fecha        name                      artist                              rising   steady   falling   gains_performance   award   hot_debut   last_week    peak_position   wks_on_chart
+-----------  ------------------------  ----------------------------------  -------  -------  --------  ------------------  ------  ----------  ----------  --------------  -------------
+2010-06-21   Undo It                   Carrie Underwood                    TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       25                      23              7
+1996-11-18   Knocks Me Off My Feet     Donell Jones                        TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       67                      59              4
+2007-04-23   Go Getta                  Young Jeezy Featuring R. Kelly      FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       18                      18             13
+1996-07-01   Twisted                   Keith Sweat                         TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       21                      13              3
+1968-04-22   She's Lookin' Good        Wilson Pickett                      TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       45                      41              3
+1980-04-21   Hurt So Bad               Linda Ronstadt                      TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       23                      18              3
+1965-12-27   I Got You (I Feel Good)   James Brown And The Famous Flames   FALSE    TRUE     FALSE     FALSE               FALSE   FALSE       3                        3              8
+2006-01-16   Heard 'Em Say             Kanye West Featuring Adam Levine    FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       40                      26             13
+1967-04-24   The Happening             The Supremes                        TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       11                       8              4
+1980-04-14   Steal Away                Robbie Dupree                       TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       85                      75              2
 
 </div>
 

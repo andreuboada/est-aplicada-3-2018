@@ -3964,13 +3964,11 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </ol>
 <p>Una muestra de los datos obtenidos se puede ver en la siguiente tabla:</p>
 <div class="verysmall">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>current_week_rank) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() </code></pre></div>
 <table>
 <thead>
 <tr class="header">
 <th align="left">fecha</th>
-<th align="right">current_week_rank</th>
 <th align="left">name</th>
 <th align="left">artist</th>
 <th align="left">rising</th>
@@ -3987,7 +3985,6 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 <tbody>
 <tr class="odd">
 <td align="left">2010-06-21</td>
-<td align="right">23</td>
 <td align="left">Undo It</td>
 <td align="left">Carrie Underwood</td>
 <td align="left">TRUE</td>
@@ -4002,7 +3999,6 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </tr>
 <tr class="even">
 <td align="left">1996-11-18</td>
-<td align="right">59</td>
 <td align="left">Knocks Me Off My Feet</td>
 <td align="left">Donell Jones</td>
 <td align="left">TRUE</td>
@@ -4017,7 +4013,6 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </tr>
 <tr class="odd">
 <td align="left">2007-04-23</td>
-<td align="right">19</td>
 <td align="left">Go Getta</td>
 <td align="left">Young Jeezy Featuring R. Kelly</td>
 <td align="left">FALSE</td>
@@ -4032,7 +4027,6 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </tr>
 <tr class="even">
 <td align="left">1996-07-01</td>
-<td align="right">13</td>
 <td align="left">Twisted</td>
 <td align="left">Keith Sweat</td>
 <td align="left">TRUE</td>
@@ -4047,7 +4041,6 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </tr>
 <tr class="odd">
 <td align="left">1968-04-22</td>
-<td align="right">41</td>
 <td align="left">She’s Lookin’ Good</td>
 <td align="left">Wilson Pickett</td>
 <td align="left">TRUE</td>
@@ -4062,7 +4055,6 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </tr>
 <tr class="even">
 <td align="left">1980-04-21</td>
-<td align="right">18</td>
 <td align="left">Hurt So Bad</td>
 <td align="left">Linda Ronstadt</td>
 <td align="left">TRUE</td>
@@ -4077,7 +4069,6 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </tr>
 <tr class="odd">
 <td align="left">1965-12-27</td>
-<td align="right">3</td>
 <td align="left">I Got You (I Feel Good)</td>
 <td align="left">James Brown And The Famous Flames</td>
 <td align="left">FALSE</td>
@@ -4092,7 +4083,6 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </tr>
 <tr class="even">
 <td align="left">2006-01-16</td>
-<td align="right">45</td>
 <td align="left">Heard ’Em Say</td>
 <td align="left">Kanye West Featuring Adam Levine</td>
 <td align="left">FALSE</td>
@@ -4107,7 +4097,6 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </tr>
 <tr class="odd">
 <td align="left">1967-04-24</td>
-<td align="right">8</td>
 <td align="left">The Happening</td>
 <td align="left">The Supremes</td>
 <td align="left">TRUE</td>
@@ -4122,7 +4111,6 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 </tr>
 <tr class="even">
 <td align="left">1980-04-14</td>
-<td align="right">75</td>
 <td align="left">Steal Away</td>
 <td align="left">Robbie Dupree</td>
 <td align="left">TRUE</td>

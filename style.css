@@ -72,3 +72,10 @@ pre code {
     top:0px;
     font-size: 45px;
  }
+ .table{
+  width:auto;
+  font-size: 12px;
+}
+.verysmall .table{
+  font-size: 8px;
+}
