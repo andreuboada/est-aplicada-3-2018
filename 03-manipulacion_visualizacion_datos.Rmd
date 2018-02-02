@@ -1381,7 +1381,7 @@ Una muestra de los datos obtenidos se puede ver en la siguiente tabla:
 <div class="verysmall">
 
 ```{r message=FALSE, warning=FALSE}
-billboard %>% select(-current_week_chart) %>% sample_n(10) %>% knitr::kable() 
+billboard %>% select(-current_week_rank) %>% sample_n(10) %>% knitr::kable() 
 ```
 
 </div>
