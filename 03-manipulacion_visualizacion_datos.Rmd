@@ -1429,4 +1429,4 @@ Utiliza los datos del Billboard Hot 100 para contestar las siguientes preguntas:
 
 4. ¿Existe alguna relación entre el número de presentaciones en vivo (`gains_performance`) y el número de semanas que permance una canción en #1?
 
-5. Para algunos _últimos_ singles que han permanecido más semanas en el Hot 100 en los últimos meses realiza una gráfica de su posición en el tiempo semana a semana.
+5. Para algunos _últimos_ singles que han permanecido más semanas en el Hot 100 en algunos meses realiza una gráfica de su posición en el tiempo semana a semana. Puedes elegir alguna fecha que te interese, la fecha de tu cumpleaños o la fecha en que estuvo en #1 tu canción favorita.
