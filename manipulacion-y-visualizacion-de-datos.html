@@ -421,8 +421,7 @@ ds
 <h4>1. Los encabezados de las columnas son valores</h4>
 <p>Analicemos los datos que provienen de una encuesta de <a href="http://www.pewforum.org/2009/01/30/income-distribution-within-us-religious-groups/">Pew Research</a> que investiga la relación entre ingreso y afiliación religiosa. ¿Cuáles son las variables en estos datos?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pew &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/pew.csv&quot;</span>)
-knitr<span class="op">::</span><span class="kw">kable</span>(pew) <span class="op">%&gt;%</span>
-<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">4</span>)</code></pre></div>
+knitr<span class="op">::</span><span class="kw">kable</span>(pew)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -680,12 +679,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(pew) <span class="o
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pew_tidy &lt;-<span class="st"> </span>pew <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">gather</span>(income, frequency, <span class="op">-</span>religion)
 <span class="co"># vemos las primeras líneas de nuestros datos alargados</span>
-pew_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>() <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">4</span>)
-<span class="co">#&gt; Warning in kableExtra::kable_styling(., bootstrap_options = &quot;striped&quot;,</span>
-<span class="co">#&gt; font_size = 4): Please specify format in kable. kableExtra can customize</span>
-<span class="co">#&gt; either HTML or LaTeX outputs. See https://haozhu233.github.io/kableExtra/</span>
-<span class="co">#&gt; for details.</span></code></pre></div>
+pew_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>() <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -746,8 +740,7 @@ pew_tidy_<span class="dv">2</span> &lt;-<span class="st"> </span>pew_tidy <span 
 <hr />
 <p>Otro ejemplo,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(<span class="kw">read.csv</span>(<span class="st">&quot;datos/billboard.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>))
-billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">4</span>)</code></pre></div>
+billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -3560,132 +3553,331 @@ p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point<
 <p>Para mayor información puedes visitar <a href="https://www.iraqbodycount.org/" class="uri">https://www.iraqbodycount.org/</a>.</p>
 <p>Los datos los leemos con la función <code>read_csv()</code> de la librería <code>readr</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ibc &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/ibc-incidents-2016-8-8.csv&quot;</span>)
-ibc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">font_size =</span> <span class="dv">4</span>)</code></pre></div>
-<table>
+ibc <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="st">&quot;html&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">font_size =</span> <span class="dv">10</span>)</code></pre></div>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">IBC_code</th>
-<th align="left">Start_Date</th>
-<th align="left">End_Date</th>
-<th align="left">Time</th>
-<th align="left">Location</th>
-<th align="left">Target</th>
-<th align="left">Weapons</th>
-<th align="right">Deaths_recorded</th>
-<th align="left">Sources</th>
+<tr>
+<th style="text-align:left;">
+IBC_code
+</th>
+<th style="text-align:left;">
+Start_Date
+</th>
+<th style="text-align:left;">
+End_Date
+</th>
+<th style="text-align:left;">
+Time
+</th>
+<th style="text-align:left;">
+Location
+</th>
+<th style="text-align:left;">
+Target
+</th>
+<th style="text-align:left;">
+Weapons
+</th>
+<th style="text-align:right;">
+Deaths_recorded
+</th>
+<th style="text-align:left;">
+Sources
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">m2046</td>
-<td align="left">2-Sep-13</td>
-<td align="left">2-Sep-13</td>
-<td align="left">PM</td>
-<td align="left">13 Street, Al-Bayaa, southwest Baghdad</td>
-<td align="left">employee at the Ministry of Education in front of his home</td>
-<td align="left">gunfire</td>
-<td align="right">1</td>
-<td align="left">AIN 2 Sep, Sotaliraq 2 Sep</td>
+<tr>
+<td style="text-align:left;">
+m2046
+</td>
+<td style="text-align:left;">
+2-Sep-13
+</td>
+<td style="text-align:left;">
+2-Sep-13
+</td>
+<td style="text-align:left;">
+PM
+</td>
+<td style="text-align:left;">
+13 Street, Al-Bayaa, southwest Baghdad
+</td>
+<td style="text-align:left;">
+employee at the Ministry of Education in front of his home
+</td>
+<td style="text-align:left;">
+gunfire
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+AIN 2 Sep, Sotaliraq 2 Sep
+</td>
 </tr>
-<tr class="even">
-<td align="left">d2329</td>
-<td align="left">9-Feb-07</td>
-<td align="left">9-Feb-07</td>
-<td align="left">NA</td>
-<td align="left">near Al-Shimal Garage, Mosul</td>
-<td align="left">NA</td>
-<td align="left">explosive device</td>
-<td align="right">1</td>
-<td align="left">MO 09 Feb, WP 04 Apr (MoH)</td>
+<tr>
+<td style="text-align:left;">
+d2329
+</td>
+<td style="text-align:left;">
+9-Feb-07
+</td>
+<td style="text-align:left;">
+9-Feb-07
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+near Al-Shimal Garage, Mosul
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+explosive device
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+MO 09 Feb, WP 04 Apr (MoH)
+</td>
 </tr>
-<tr class="odd">
-<td align="left">k7919</td>
-<td align="left">29-Oct-07</td>
-<td align="left">29-Oct-07</td>
-<td align="left">8:00-9:00 AM</td>
-<td align="left">Ishbilliyah Square, central Baquba</td>
-<td align="left">police recruits awaiting training</td>
-<td align="left">suicide bomber</td>
-<td align="right">28</td>
-<td align="left">AFP 31 Oct, NINA 29 Oct, REU 29 Oct, DPA 29 Oct</td>
+<tr>
+<td style="text-align:left;">
+k7919
+</td>
+<td style="text-align:left;">
+29-Oct-07
+</td>
+<td style="text-align:left;">
+29-Oct-07
+</td>
+<td style="text-align:left;">
+8:00-9:00 AM
+</td>
+<td style="text-align:left;">
+Ishbilliyah Square, central Baquba
+</td>
+<td style="text-align:left;">
+police recruits awaiting training
+</td>
+<td style="text-align:left;">
+suicide bomber
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+AFP 31 Oct, NINA 29 Oct, REU 29 Oct, DPA 29 Oct
+</td>
 </tr>
-<tr class="even">
-<td align="left">s1254</td>
-<td align="left">22-Apr-15</td>
-<td align="left">22-Apr-15</td>
-<td align="left">NA</td>
-<td align="left">Al-Mansour, west Baghdad</td>
-<td align="left">civilian in Al-Mansour</td>
-<td align="left">drive-by shooting</td>
-<td align="right">1</td>
-<td align="left">NINA 22 Apr</td>
+<tr>
+<td style="text-align:left;">
+s1254
+</td>
+<td style="text-align:left;">
+22-Apr-15
+</td>
+<td style="text-align:left;">
+22-Apr-15
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Al-Mansour, west Baghdad
+</td>
+<td style="text-align:left;">
+civilian in Al-Mansour
+</td>
+<td style="text-align:left;">
+drive-by shooting
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NINA 22 Apr
+</td>
 </tr>
-<tr class="odd">
-<td align="left">h0379</td>
-<td align="left">25-Feb-14</td>
-<td align="left">25-Feb-14</td>
-<td align="left">NA</td>
-<td align="left">Saba’ Abkar, north Baghdad</td>
-<td align="left">Mohamed Taha Mohamed, Iraqi Sports Channel Director</td>
-<td align="left">car in hit-and-run</td>
-<td align="right">0</td>
-<td align="left">AIN 25 Feb, INN 25 Feb</td>
+<tr>
+<td style="text-align:left;">
+h0379
+</td>
+<td style="text-align:left;">
+25-Feb-14
+</td>
+<td style="text-align:left;">
+25-Feb-14
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Saba’ Abkar, north Baghdad
+</td>
+<td style="text-align:left;">
+Mohamed Taha Mohamed, Iraqi Sports Channel Director
+</td>
+<td style="text-align:left;">
+car in hit-and-run
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+AIN 25 Feb, INN 25 Feb
+</td>
 </tr>
-<tr class="even">
-<td align="left">k18626</td>
-<td align="left">13-Mar-12</td>
-<td align="left">14-Mar-12</td>
-<td align="left">NA</td>
-<td align="left">Hoswa, Karma, east of Falluja</td>
-<td align="left">civilian car</td>
-<td align="left">roadside bomb</td>
-<td align="right">1</td>
-<td align="left">AKnews 14 Mar, Al-Shorfa 13 Mar</td>
+<tr>
+<td style="text-align:left;">
+k18626
+</td>
+<td style="text-align:left;">
+13-Mar-12
+</td>
+<td style="text-align:left;">
+14-Mar-12
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Hoswa, Karma, east of Falluja
+</td>
+<td style="text-align:left;">
+civilian car
+</td>
+<td style="text-align:left;">
+roadside bomb
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+AKnews 14 Mar, Al-Shorfa 13 Mar
+</td>
 </tr>
-<tr class="odd">
-<td align="left">k1708</td>
-<td align="left">1-Aug-05</td>
-<td align="left">1-Aug-05</td>
-<td align="left">PM</td>
-<td align="left">west Baghdad</td>
-<td align="left">Shaikh Akil al-Ma’adhidi, a cleric from al-Muhajirin mosque, brother also killed</td>
-<td align="left">gunfire</td>
-<td align="right">2</td>
-<td align="left">Al-Jaz 02 Aug, AFP 02 Aug</td>
+<tr>
+<td style="text-align:left;">
+k1708
+</td>
+<td style="text-align:left;">
+1-Aug-05
+</td>
+<td style="text-align:left;">
+1-Aug-05
+</td>
+<td style="text-align:left;">
+PM
+</td>
+<td style="text-align:left;">
+west Baghdad
+</td>
+<td style="text-align:left;">
+Shaikh Akil al-Ma’adhidi, a cleric from al-Muhajirin mosque, brother also killed
+</td>
+<td style="text-align:left;">
+gunfire
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Al-Jaz 02 Aug, AFP 02 Aug
+</td>
 </tr>
-<tr class="even">
-<td align="left">k10200</td>
-<td align="left">15-Apr-08</td>
-<td align="left">15-Apr-08</td>
-<td align="left">NA</td>
-<td align="left">al-Zahraa, east Mosul</td>
-<td align="left">‘operator for a private electricity generator’</td>
-<td align="left">gunfire</td>
-<td align="right">1</td>
-<td align="left">VOI 15 Apr</td>
+<tr>
+<td style="text-align:left;">
+k10200
+</td>
+<td style="text-align:left;">
+15-Apr-08
+</td>
+<td style="text-align:left;">
+15-Apr-08
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+al-Zahraa, east Mosul
+</td>
+<td style="text-align:left;">
+‘operator for a private electricity generator’
+</td>
+<td style="text-align:left;">
+gunfire
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+VOI 15 Apr
+</td>
 </tr>
-<tr class="odd">
-<td align="left">m3013</td>
-<td align="left">2-Dec-13</td>
-<td align="left">2-Dec-13</td>
-<td align="left">AM</td>
-<td align="left">Refaq, east Mosul</td>
-<td align="left">civilian in his car</td>
-<td align="left">magnetic bomb</td>
-<td align="right">1</td>
-<td align="left">AIN 2 Dec, NINA 2 Dec</td>
+<tr>
+<td style="text-align:left;">
+m3013
+</td>
+<td style="text-align:left;">
+2-Dec-13
+</td>
+<td style="text-align:left;">
+2-Dec-13
+</td>
+<td style="text-align:left;">
+AM
+</td>
+<td style="text-align:left;">
+Refaq, east Mosul
+</td>
+<td style="text-align:left;">
+civilian in his car
+</td>
+<td style="text-align:left;">
+magnetic bomb
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+AIN 2 Dec, NINA 2 Dec
+</td>
 </tr>
-<tr class="even">
-<td align="left">k3289e</td>
-<td align="left">18-Jun-06</td>
-<td align="left">18-Jun-06</td>
-<td align="left">NA</td>
-<td align="left">Al-Sha’b, Baghdad</td>
-<td align="left">bodies found shot, tortured</td>
-<td align="left">gunfire, executed, tortured</td>
-<td align="right">1</td>
-<td align="left">Al-Shar 18 Jun, DPA 18 Jun</td>
+<tr>
+<td style="text-align:left;">
+k3289e
+</td>
+<td style="text-align:left;">
+18-Jun-06
+</td>
+<td style="text-align:left;">
+18-Jun-06
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Al-Sha’b, Baghdad
+</td>
+<td style="text-align:left;">
+bodies found shot, tortured
+</td>
+<td style="text-align:left;">
+gunfire, executed, tortured
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Al-Shar 18 Jun, DPA 18 Jun
+</td>
 </tr>
 </tbody>
 </table>
@@ -3963,169 +4155,466 @@ billboard &lt;-<span class="st"> </span><span class="kw">map_df</span>(paths, re
 <li><p>La función <code>map_df</code> al final del fragmento de código lee todos los archivos correspondientes a las fechas utilizadas y como resultado junta todos los data frames en uno solo.</p></li>
 </ol>
 <p>Una muestra de los datos obtenidos se puede ver en la siguiente tabla:</p>
-<div class="verysmall">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>current_week_rank) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>() </code></pre></div>
-<table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="st">&quot;html&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">font_size =</span> <span class="dv">10</span>)</code></pre></div>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">fecha</th>
-<th align="left">name</th>
-<th align="left">artist</th>
-<th align="left">rising</th>
-<th align="left">steady</th>
-<th align="left">falling</th>
-<th align="left">gains_performance</th>
-<th align="left">award</th>
-<th align="left">hot_debut</th>
-<th align="left">last_week</th>
-<th align="right">peak_position</th>
-<th align="right">wks_on_chart</th>
+<tr>
+<th style="text-align:left;">
+fecha
+</th>
+<th style="text-align:right;">
+current_week_rank
+</th>
+<th style="text-align:left;">
+name
+</th>
+<th style="text-align:left;">
+artist
+</th>
+<th style="text-align:left;">
+rising
+</th>
+<th style="text-align:left;">
+steady
+</th>
+<th style="text-align:left;">
+falling
+</th>
+<th style="text-align:left;">
+gains_performance
+</th>
+<th style="text-align:left;">
+award
+</th>
+<th style="text-align:left;">
+hot_debut
+</th>
+<th style="text-align:left;">
+last_week
+</th>
+<th style="text-align:right;">
+peak_position
+</th>
+<th style="text-align:right;">
+wks_on_chart
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">2010-06-21</td>
-<td align="left">Undo It</td>
-<td align="left">Carrie Underwood</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">25</td>
-<td align="right">23</td>
-<td align="right">7</td>
+<tr>
+<td style="text-align:left;">
+2010-06-21
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+Undo It
+</td>
+<td style="text-align:left;">
+Carrie Underwood
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+7
+</td>
 </tr>
-<tr class="even">
-<td align="left">1996-11-18</td>
-<td align="left">Knocks Me Off My Feet</td>
-<td align="left">Donell Jones</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">67</td>
-<td align="right">59</td>
-<td align="right">4</td>
+<tr>
+<td style="text-align:left;">
+1996-11-18
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:left;">
+Knocks Me Off My Feet
+</td>
+<td style="text-align:left;">
+Donell Jones
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+67
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+4
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2007-04-23</td>
-<td align="left">Go Getta</td>
-<td align="left">Young Jeezy Featuring R. Kelly</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">18</td>
-<td align="right">18</td>
-<td align="right">13</td>
+<tr>
+<td style="text-align:left;">
+2007-04-23
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+Go Getta
+</td>
+<td style="text-align:left;">
+Young Jeezy Featuring R. Kelly
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+13
+</td>
 </tr>
-<tr class="even">
-<td align="left">1996-07-01</td>
-<td align="left">Twisted</td>
-<td align="left">Keith Sweat</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">21</td>
-<td align="right">13</td>
-<td align="right">3</td>
+<tr>
+<td style="text-align:left;">
+1996-07-01
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Twisted
+</td>
+<td style="text-align:left;">
+Keith Sweat
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+3
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1968-04-22</td>
-<td align="left">She’s Lookin’ Good</td>
-<td align="left">Wilson Pickett</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">45</td>
-<td align="right">41</td>
-<td align="right">3</td>
+<tr>
+<td style="text-align:left;">
+1968-04-22
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:left;">
+She’s Lookin’ Good
+</td>
+<td style="text-align:left;">
+Wilson Pickett
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+3
+</td>
 </tr>
-<tr class="even">
-<td align="left">1980-04-21</td>
-<td align="left">Hurt So Bad</td>
-<td align="left">Linda Ronstadt</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">23</td>
-<td align="right">18</td>
-<td align="right">3</td>
+<tr>
+<td style="text-align:left;">
+1980-04-21
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Hurt So Bad
+</td>
+<td style="text-align:left;">
+Linda Ronstadt
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+3
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1965-12-27</td>
-<td align="left">I Got You (I Feel Good)</td>
-<td align="left">James Brown And The Famous Flames</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">3</td>
-<td align="right">3</td>
-<td align="right">8</td>
+<tr>
+<td style="text-align:left;">
+1965-12-27
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+I Got You (I Feel Good)
+</td>
+<td style="text-align:left;">
+James Brown And The Famous Flames
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+8
+</td>
 </tr>
-<tr class="even">
-<td align="left">2006-01-16</td>
-<td align="left">Heard ’Em Say</td>
-<td align="left">Kanye West Featuring Adam Levine</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">40</td>
-<td align="right">26</td>
-<td align="right">13</td>
+<tr>
+<td style="text-align:left;">
+2006-01-16
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+Heard ’Em Say
+</td>
+<td style="text-align:left;">
+Kanye West Featuring Adam Levine
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+40
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+13
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1967-04-24</td>
-<td align="left">The Happening</td>
-<td align="left">The Supremes</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">11</td>
-<td align="right">8</td>
-<td align="right">4</td>
+<tr>
+<td style="text-align:left;">
+1967-04-24
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+The Happening
+</td>
+<td style="text-align:left;">
+The Supremes
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+4
+</td>
 </tr>
-<tr class="even">
-<td align="left">1980-04-14</td>
-<td align="left">Steal Away</td>
-<td align="left">Robbie Dupree</td>
-<td align="left">TRUE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">FALSE</td>
-<td align="left">85</td>
-<td align="right">75</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:left;">
+1980-04-14
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:left;">
+Steal Away
+</td>
+<td style="text-align:left;">
+Robbie Dupree
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+85
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>Veamos de qué tipos son cada una de las columnas en los datos. Podemos usar nuevamente la función <code>glimpse</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(billboard)
 <span class="co">#&gt; Observations: 310,500</span>

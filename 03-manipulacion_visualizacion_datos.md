@@ -223,8 +223,7 @@ Analicemos los datos que provienen de una encuesta de [Pew Research](http://www.
 
 ```r
 pew <- read_csv("datos/pew.csv")
-knitr::kable(pew) %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
+knitr::kable(pew)
 ```
 
 
@@ -257,12 +256,7 @@ Para _limpiarla_ es necesario apilar las columnas, es decir, pasar los datos a _
 pew_tidy <- pew %>%
   gather(income, frequency, -religion)
 # vemos las primeras líneas de nuestros datos alargados
-pew_tidy %>% head() %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
-#> Warning in kableExtra::kable_styling(., bootstrap_options = "striped",
-#> font_size = 4): Please specify format in kable. kableExtra can customize
-#> either HTML or LaTeX outputs. See https://haozhu233.github.io/kableExtra/
-#> for details.
+pew_tidy %>% head() %>% knitr::kable()
 ```
 
 
@@ -307,8 +301,7 @@ Otro ejemplo,
 
 ```r
 billboard <- tbl_df(read.csv("datos/billboard.csv", stringsAsFactors = FALSE))
-billboard %>% sample_n(5) %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
+billboard %>% sample_n(5) %>% knitr::kable()
 ```
 
 
@@ -1433,24 +1426,138 @@ Los datos los leemos con la función `read_csv()` de la librería `readr`:
 
 ```r
 ibc <- read_csv("datos/ibc-incidents-2016-8-8.csv")
-ibc %>% sample_n(10) %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
+ibc %>% sample_n(10) %>% 
+  knitr::kable("html") %>%
+  kableExtra::kable_styling(font_size = 10)
 ```
 
-
-
-IBC_code   Start_Date   End_Date    Time           Location                                 Target                                                                             Weapons                        Deaths_recorded  Sources                                         
----------  -----------  ----------  -------------  ---------------------------------------  ---------------------------------------------------------------------------------  ----------------------------  ----------------  ------------------------------------------------
-m2046      2-Sep-13     2-Sep-13    PM             13 Street, Al-Bayaa, southwest Baghdad   employee at the Ministry of Education in front of his home                         gunfire                                      1  AIN 2 Sep, Sotaliraq 2 Sep                      
-d2329      9-Feb-07     9-Feb-07    NA             near Al-Shimal Garage, Mosul             NA                                                                                 explosive device                             1  MO 09 Feb, WP 04 Apr (MoH)                      
-k7919      29-Oct-07    29-Oct-07   8:00-9:00 AM   Ishbilliyah Square, central Baquba       police recruits awaiting training                                                  suicide bomber                              28  AFP 31 Oct, NINA 29 Oct, REU 29 Oct, DPA 29 Oct 
-s1254      22-Apr-15    22-Apr-15   NA             Al-Mansour, west Baghdad                 civilian in Al-Mansour                                                             drive-by shooting                            1  NINA 22 Apr                                     
-h0379      25-Feb-14    25-Feb-14   NA             Saba' Abkar, north Baghdad               Mohamed Taha Mohamed, Iraqi Sports Channel Director                                car in hit-and-run                           0  AIN 25 Feb, INN 25 Feb                          
-k18626     13-Mar-12    14-Mar-12   NA             Hoswa, Karma, east of Falluja            civilian car                                                                       roadside bomb                                1  AKnews 14 Mar, Al-Shorfa 13 Mar                 
-k1708      1-Aug-05     1-Aug-05    PM             west Baghdad                             Shaikh Akil al-Ma'adhidi, a cleric from al-Muhajirin mosque, brother also killed   gunfire                                      2  Al-Jaz 02 Aug, AFP 02 Aug                       
-k10200     15-Apr-08    15-Apr-08   NA             al-Zahraa, east Mosul                    'operator for a private electricity generator'                                     gunfire                                      1  VOI 15 Apr                                      
-m3013      2-Dec-13     2-Dec-13    AM             Refaq, east Mosul                        civilian in his car                                                                magnetic bomb                                1  AIN 2 Dec, NINA 2 Dec                           
-k3289e     18-Jun-06    18-Jun-06   NA             Al-Sha'b, Baghdad                        bodies found shot, tortured                                                        gunfire, executed, tortured                  1  Al-Shar 18 Jun, DPA 18 Jun                      
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> IBC_code </th>
+   <th style="text-align:left;"> Start_Date </th>
+   <th style="text-align:left;"> End_Date </th>
+   <th style="text-align:left;"> Time </th>
+   <th style="text-align:left;"> Location </th>
+   <th style="text-align:left;"> Target </th>
+   <th style="text-align:left;"> Weapons </th>
+   <th style="text-align:right;"> Deaths_recorded </th>
+   <th style="text-align:left;"> Sources </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> m2046 </td>
+   <td style="text-align:left;"> 2-Sep-13 </td>
+   <td style="text-align:left;"> 2-Sep-13 </td>
+   <td style="text-align:left;"> PM </td>
+   <td style="text-align:left;"> 13 Street, Al-Bayaa, southwest Baghdad </td>
+   <td style="text-align:left;"> employee at the Ministry of Education in front of his home </td>
+   <td style="text-align:left;"> gunfire </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> AIN 2 Sep, Sotaliraq 2 Sep </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> d2329 </td>
+   <td style="text-align:left;"> 9-Feb-07 </td>
+   <td style="text-align:left;"> 9-Feb-07 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> near Al-Shimal Garage, Mosul </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> explosive device </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> MO 09 Feb, WP 04 Apr (MoH) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> k7919 </td>
+   <td style="text-align:left;"> 29-Oct-07 </td>
+   <td style="text-align:left;"> 29-Oct-07 </td>
+   <td style="text-align:left;"> 8:00-9:00 AM </td>
+   <td style="text-align:left;"> Ishbilliyah Square, central Baquba </td>
+   <td style="text-align:left;"> police recruits awaiting training </td>
+   <td style="text-align:left;"> suicide bomber </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:left;"> AFP 31 Oct, NINA 29 Oct, REU 29 Oct, DPA 29 Oct </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> s1254 </td>
+   <td style="text-align:left;"> 22-Apr-15 </td>
+   <td style="text-align:left;"> 22-Apr-15 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Al-Mansour, west Baghdad </td>
+   <td style="text-align:left;"> civilian in Al-Mansour </td>
+   <td style="text-align:left;"> drive-by shooting </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NINA 22 Apr </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> h0379 </td>
+   <td style="text-align:left;"> 25-Feb-14 </td>
+   <td style="text-align:left;"> 25-Feb-14 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Saba' Abkar, north Baghdad </td>
+   <td style="text-align:left;"> Mohamed Taha Mohamed, Iraqi Sports Channel Director </td>
+   <td style="text-align:left;"> car in hit-and-run </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> AIN 25 Feb, INN 25 Feb </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> k18626 </td>
+   <td style="text-align:left;"> 13-Mar-12 </td>
+   <td style="text-align:left;"> 14-Mar-12 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Hoswa, Karma, east of Falluja </td>
+   <td style="text-align:left;"> civilian car </td>
+   <td style="text-align:left;"> roadside bomb </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> AKnews 14 Mar, Al-Shorfa 13 Mar </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> k1708 </td>
+   <td style="text-align:left;"> 1-Aug-05 </td>
+   <td style="text-align:left;"> 1-Aug-05 </td>
+   <td style="text-align:left;"> PM </td>
+   <td style="text-align:left;"> west Baghdad </td>
+   <td style="text-align:left;"> Shaikh Akil al-Ma'adhidi, a cleric from al-Muhajirin mosque, brother also killed </td>
+   <td style="text-align:left;"> gunfire </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> Al-Jaz 02 Aug, AFP 02 Aug </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> k10200 </td>
+   <td style="text-align:left;"> 15-Apr-08 </td>
+   <td style="text-align:left;"> 15-Apr-08 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> al-Zahraa, east Mosul </td>
+   <td style="text-align:left;"> 'operator for a private electricity generator' </td>
+   <td style="text-align:left;"> gunfire </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> VOI 15 Apr </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> m3013 </td>
+   <td style="text-align:left;"> 2-Dec-13 </td>
+   <td style="text-align:left;"> 2-Dec-13 </td>
+   <td style="text-align:left;"> AM </td>
+   <td style="text-align:left;"> Refaq, east Mosul </td>
+   <td style="text-align:left;"> civilian in his car </td>
+   <td style="text-align:left;"> magnetic bomb </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> AIN 2 Dec, NINA 2 Dec </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> k3289e </td>
+   <td style="text-align:left;"> 18-Jun-06 </td>
+   <td style="text-align:left;"> 18-Jun-06 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Al-Sha'b, Baghdad </td>
+   <td style="text-align:left;"> bodies found shot, tortured </td>
+   <td style="text-align:left;"> gunfire, executed, tortured </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> Al-Shar 18 Jun, DPA 18 Jun </td>
+  </tr>
+</tbody>
+</table>
 
 Primero filtramos los incidentes en los que hubo al menos cinco fatalidades:
 
@@ -1833,29 +1940,184 @@ No es necesario entender a profundidad el código utilizado para parsear el html
 
 Una muestra de los datos obtenidos se puede ver en la siguiente tabla:
 
-<div class="verysmall">
-
 
 ```r
-billboard %>% select(-current_week_rank) %>% sample_n(10) %>% knitr::kable() 
+billboard %>% sample_n(10) %>% 
+  knitr::kable("html") %>%
+  kableExtra::kable_styling(font_size = 10)
 ```
 
-
-
-fecha        name                      artist                              rising   steady   falling   gains_performance   award   hot_debut   last_week    peak_position   wks_on_chart
------------  ------------------------  ----------------------------------  -------  -------  --------  ------------------  ------  ----------  ----------  --------------  -------------
-2010-06-21   Undo It                   Carrie Underwood                    TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       25                      23              7
-1996-11-18   Knocks Me Off My Feet     Donell Jones                        TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       67                      59              4
-2007-04-23   Go Getta                  Young Jeezy Featuring R. Kelly      FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       18                      18             13
-1996-07-01   Twisted                   Keith Sweat                         TRUE     FALSE    FALSE     TRUE                FALSE   FALSE       21                      13              3
-1968-04-22   She's Lookin' Good        Wilson Pickett                      TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       45                      41              3
-1980-04-21   Hurt So Bad               Linda Ronstadt                      TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       23                      18              3
-1965-12-27   I Got You (I Feel Good)   James Brown And The Famous Flames   FALSE    TRUE     FALSE     FALSE               FALSE   FALSE       3                        3              8
-2006-01-16   Heard 'Em Say             Kanye West Featuring Adam Levine    FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       40                      26             13
-1967-04-24   The Happening             The Supremes                        TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       11                       8              4
-1980-04-14   Steal Away                Robbie Dupree                       TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       85                      75              2
-
-</div>
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> fecha </th>
+   <th style="text-align:right;"> current_week_rank </th>
+   <th style="text-align:left;"> name </th>
+   <th style="text-align:left;"> artist </th>
+   <th style="text-align:left;"> rising </th>
+   <th style="text-align:left;"> steady </th>
+   <th style="text-align:left;"> falling </th>
+   <th style="text-align:left;"> gains_performance </th>
+   <th style="text-align:left;"> award </th>
+   <th style="text-align:left;"> hot_debut </th>
+   <th style="text-align:left;"> last_week </th>
+   <th style="text-align:right;"> peak_position </th>
+   <th style="text-align:right;"> wks_on_chart </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 2010-06-21 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:left;"> Undo It </td>
+   <td style="text-align:left;"> Carrie Underwood </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 25 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1996-11-18 </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:left;"> Knocks Me Off My Feet </td>
+   <td style="text-align:left;"> Donell Jones </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 67 </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2007-04-23 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:left;"> Go Getta </td>
+   <td style="text-align:left;"> Young Jeezy Featuring R. Kelly </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 18 </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1996-07-01 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:left;"> Twisted </td>
+   <td style="text-align:left;"> Keith Sweat </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 21 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1968-04-22 </td>
+   <td style="text-align:right;"> 41 </td>
+   <td style="text-align:left;"> She's Lookin' Good </td>
+   <td style="text-align:left;"> Wilson Pickett </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 45 </td>
+   <td style="text-align:right;"> 41 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1980-04-21 </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:left;"> Hurt So Bad </td>
+   <td style="text-align:left;"> Linda Ronstadt </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 23 </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1965-12-27 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> I Got You (I Feel Good) </td>
+   <td style="text-align:left;"> James Brown And The Famous Flames </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2006-01-16 </td>
+   <td style="text-align:right;"> 45 </td>
+   <td style="text-align:left;"> Heard 'Em Say </td>
+   <td style="text-align:left;"> Kanye West Featuring Adam Levine </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 40 </td>
+   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1967-04-24 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:left;"> The Happening </td>
+   <td style="text-align:left;"> The Supremes </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1980-04-14 </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:left;"> Steal Away </td>
+   <td style="text-align:left;"> Robbie Dupree </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 85 </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+</tbody>
+</table>
 
 Veamos de qué tipos son cada una de las columnas en los datos. Podemos usar nuevamente la función `glimpse`:
 
