@@ -218,8 +218,7 @@ Analicemos los datos que provienen de una encuesta de [Pew Research](http://www.
 
 ```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 pew <- read_csv("datos/pew.csv")
-knitr::kable(pew) %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
+knitr::kable(pew)
 ```
 
 Para _limpiarla_ es necesario apilar las columnas, es decir, pasar los datos a _forma larga_. Esto lo realizaremos con la función `gather()`:
@@ -228,8 +227,7 @@ Para _limpiarla_ es necesario apilar las columnas, es decir, pasar los datos a _
 pew_tidy <- pew %>%
   gather(income, frequency, -religion)
 # vemos las primeras líneas de nuestros datos alargados
-pew_tidy %>% head() %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
+pew_tidy %>% head() %>% knitr::kable()
 ```
 
 La nueva estructura de la base de datos nos permite, por ejemplo, hacer fácilmente una gráfica donde podemos comparar las diferencias en las frecuencias.
@@ -259,8 +257,7 @@ Otro ejemplo,
 
 ```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 billboard <- tbl_df(read.csv("datos/billboard.csv", stringsAsFactors = FALSE))
-billboard %>% sample_n(5) %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
+billboard %>% sample_n(5) %>% knitr::kable()
 ```
 
 Queremos apilar las semanas de manera que sea una sola columna (nuevamente alargamos los datos):
@@ -970,8 +967,9 @@ Para mayor información puedes visitar <https://www.iraqbodycount.org/>.
 Los datos los leemos con la función `read_csv()` de la librería `readr`:
 ```{r message=FALSE, warning=FALSE}
 ibc <- read_csv("datos/ibc-incidents-2016-8-8.csv")
-ibc %>% sample_n(10) %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 4)
+ibc %>% sample_n(10) %>% 
+  knitr::kable("html") %>%
+  kableExtra::kable_styling(font_size = 10)
 ```
 
 Primero filtramos los incidentes en los que hubo al menos cinco fatalidades:
@@ -1378,13 +1376,11 @@ No es necesario entender a profundidad el código utilizado para parsear el html
 
 Una muestra de los datos obtenidos se puede ver en la siguiente tabla:
 
-<div class="verysmall">
-
 ```{r message=FALSE, warning=FALSE}
-billboard %>% select(-current_week_rank) %>% sample_n(10) %>% knitr::kable() 
+billboard %>% sample_n(10) %>% 
+  knitr::kable("html") %>%
+  kableExtra::kable_styling(font_size = 10)
 ```
-
-</div>
 
 Veamos de qué tipos son cada una de las columnas en los datos. Podemos usar nuevamente la función `glimpse`:
 
