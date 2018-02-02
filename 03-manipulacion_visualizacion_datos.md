@@ -1833,10 +1833,12 @@ No es necesario entender a profundidad el código utilizado para parsear el html
 
 Una muestra de los datos obtenidos se puede ver en la siguiente tabla:
 
+<div class="verysmall">
+
 
 ```r
 billboard %>% sample_n(10) %>% knitr::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", font_size = 'x-small')
+  kableExtra::kable_styling(bootstrap_options = "striped")
 ```
 
 
@@ -1853,6 +1855,8 @@ fecha         current_week_rank  name                      artist               
 2006-01-16                   45  Heard 'Em Say             Kanye West Featuring Adam Levine    FALSE    FALSE    TRUE      FALSE               FALSE   FALSE       40                      26             13
 1967-04-24                    8  The Happening             The Supremes                        TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       11                       8              4
 1980-04-14                   75  Steal Away                Robbie Dupree                       TRUE     FALSE    FALSE     FALSE               FALSE   FALSE       85                      75              2
+
+</div>
 
 Veamos de qué tipos son cada una de las columnas en los datos. Podemos usar nuevamente la función `glimpse`:
 
@@ -1904,7 +1908,6 @@ Por último, hacemos la gráfica indicando a `geom_bar` que la transformación e
 ggplot(artistas_top10, aes(x = artist, y = num_semanas_top_10)) + 
   geom_bar(stat = 'identity') +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
-??fct_reorder
 ```
 
 <img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-92-1.png" width="100%" style="display: block; margin: auto;" />
