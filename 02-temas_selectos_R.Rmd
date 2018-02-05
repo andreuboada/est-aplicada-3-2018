@@ -1642,7 +1642,7 @@ La función `system.time` supone que sabes donde buscar, es decir, que expresion
 
 Rprof es un perfilador de muestreo que registra cambios en la pila de funciones, funciona tomando muestras a intervalos regulares y tabula cuánto tiempo se lleva en cada función.
 
-```{r}
+```{r, eval=FALSE}
 Rprof("out/lm_rprof.out", interval = 0.015, line.profiling = TRUE)
 mod <- lm(R ~ AB + teamID, Batting)
 Rprof(NULL)
@@ -1660,7 +1660,7 @@ Hay dos métodos para normalizar los datos de Rprof:
 
 2. **by.self** similar a **by.total** pero primero resta el tiempo que se toman las funciones en la cima de la pila.
 
-```{r}
+```{r, eval=FALSE}
 Rprof("out/plyr_rprof.out")
 Batting %>%
     plyr::ddply("playerID", plyr::summarise, total = sum(R, na.rm = TRUE), n = length(R)) %>%
