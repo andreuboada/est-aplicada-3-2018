@@ -1,0 +1,450 @@
+# Teorema del Límite Central
+
+<style>
+  .espacio {
+     margin-bottom: 1cm;
+  }
+</style>
+
+<style>
+  .espacio3 {
+     margin-bottom: 3cm;
+  }
+</style>
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+```
+
+
+A continuación discutiremos el Teorema del Límite Central (CLT), el cual nos ayuda a realizar cálculos importantes relacionados con la probabilidad de las cosas. Se utiliza con frecuencia en la ciencia para probar hipótesis estadísticas. 
+
+Para utilizarlo, tenemos que hacer diferentes supuestos. Sin embargo, si los supuestos son verdaderos, entonces podemos calcular probabilidades exactas de eventos mediante el uso de una fórmula matemática muy sencilla.
+
+## ¿Qué es?
+
+```{block2, type = "nota"}
+**_El Teorema del Límite Central_**
+  
+El CLT es uno de los resultados matemáticos más utilizados en la ciencia. Nos dice que cuando el tamaño de la muestra es grande, la media $\bar{Y}$ de una muestra aleatoria sigue una distribución normal con centro en la media poblacional $\mu_Y$ y con desviación estándar igual a la desviación estándar de la población $\sigma_Y$ **dividida por la raíz cuadrada del tamaño de la muestra** $\sqrt{N}$. Nos referimos a la desviación estándar de la distribución de una variable aleatoria como el error estándar de la variable aleatoria.
+```
+
+<br>
+
+Si tomamos muchas muestras de tamaño $N$, entonces la cantidad:
+
+$$
+\frac{\bar{Y} - \mu}{\sigma_Y/\sqrt{N}}
+$$
+
+se aproxima con una distribución normal con centro en 0 y con desviación estándar 1.
+
+Ahora nos interesa la diferencia entre dos medias muestrales. Aquí, de nuevo, un resultado matemático ayuda. Si tenemos dos variables aleatorias $X$ y $Y$ con media $\mu_X$ y $\mu_Y$ y varianza $\sigma_X$ y $\sigma_Y$ respectivamente, entonces tenemos el siguiente resultado: la media de la suma $Y + X$ es la suma de las medias $\mu_Y + \mu_X$. 
+
+Esto implica que la media de $Y - X = Y + aX$ con $a = -1$, es $\mu_Y - \mu_X$. 
+
+Sin embargo, el siguiente resultado quizás no sea tan intuitivo. Si $X$ y $Y$ son independientes entre sí, entonces la varianza de $Y + X$ es la suma de las varianzas $\sigma_Y^2 + \sigma_X^2$. Esto implica que la varianza de la diferencia $Y - X$ es la varianza de $Y + aX$ con $a = -1$ que es $\sigma^2_Y + a^2\sigma_X^2 = \sigma ^ 2_Y + \sigma_X ^ 2$. Así que la varianza de la diferencia es también la suma de las varianzas. Si esto parece un resultado contraintuitivo, recordemos que si $X$ y $Y$ son independientes entre sí, el signo realmente no importa. Finalmente, otro resultado útil es que la suma de variables normales (mutuamente independientes) es otra vez normal.
+
+El cociente 
+
+$$
+\frac{(\bar{Y}-\bar{X}) - (\mu_Y - \mu_X)}{\sqrt{\frac{\sigma_X^2}{M} + \frac{\sigma_Y^2}{N}}}
+$$
+
+se aproxima por una distribución normal centrada en 0 y con desviación estándar 1. Usando esta aproximación, el cálculo de probabilidades es simples porque conocemos la proporción de la distribución bajo cualquier valor. Por ejemplo, sólo el 5% de estos valores son mayores que 2 (en valor absoluto):
+
+```{r}
+pnorm(-2) + (1 - pnorm(2))
+```
+
+---
+
+<br>
+
+## ¿De dónde proviene la distribución normal?
+
+En 1894, Francis Galton inventó lo que ahora conocemos como **tablero de Galton**, para ilustrar el Teorema del Límite Central, y en particular, que la distribución binomial es una aproximación a la distribución normal. El tablero consta de una tablero vertical con varias filas de clavos acomodados en forma de arreglo triangular. En la parte inferior hay varias cubetas para cada posible camino que forman los clavos en el tablero. Se deja caer canicas desde la parte superior, las cuales van botando, rebotando y saltando, aleatoriamente, y van depositándose, a medida que caen, en las cubetas de la parte inferior. 
+
+Las canicas chocarán con el primer clavo teniendo una probabilidad de $1/2$ de ir a la izquierda o la derecha. A medida que caen, cada canica tiene más caminos a donde ir, es decir más posibilidades para desviarse a la izquiera o a la derecha. A lo largo de esta estructura, las canicas toman caminos aleatorios hasta caer en alguna de las cubetas. Es consecuencia de las leyes del universo que está sostenido por una tela sobre la cual subyace lo aleatorio, que las canicas caen con mayor probabilidad en las cubetas que están al centro, mientras que la probabilidad de que caigan en cubetas más alejadas es cada vez menor cuando la canica se aleja más y más de la cubeta del centro.
+
+<p class="espacio">
+</p>
+
+```{r, echo = F, fig.align='center', dpi=100}
+knitr::include_graphics("figuras/galton.png")
+```
+
+<p class="espacio">
+</p>
+
+```{r, echo = F, fig.align='center', out.width="50%"}
+knitr::include_graphics("figuras/galton_70.gif")
+```
+
+<p class="espacio">
+</p>
+
+```{block2, type = "information"}
+**Nota:** Puedes ver el script para hacer la simulación del tablero de Galton [aquí](https://github.com/andreuboada/est-aplicada-3-2018/blob/master/recursos/tablero_galton.r).
+```
+
+<br>
+
+La primera versión de este teorema fue postulada por el matemático francés Abraham De Moivre que, en un notable artículo publicado en 1733, usó la distribución normal para aproximar la distribución del número de soles resultante de muchos lanzamientos de una moneda justa. Este hallazgo estaba muy por delante de su tiempo y permaneció en el olvido hasta que el famoso matemático francés Pierre-Simon Laplace lo rescató de la oscuridad en su monumental obra __Théorie analytique des probabilités__, publicada en 1812. Laplace extendió el hallazgo de De Moivre al aproximar la distribución binomial en general con la distribución normal. El teorema en su forma más general fue demostrado por primera vez por el príncipe de las matemáticas, Carl Friedrich Gauss, en 1813. Hoy en día es conocida en su honor como **distribución Gaussiana**, cuando en su tiempo no era más que la **ley del error**.
+
+Supongamos que $x$ y $y$ son errores **independientes** cometidos al azar cuando se han hecho dos mediciones __independientemente__ una de la otra.
+
+```{r, echo=FALSE, fig.height=7, fig.width=9, message=FALSE, warning=FALSE}
+df <- tibble::tibble(x=1,y=1)
+ggplot(df)+
+  geom_vline(xintercept = 1) + 
+  geom_vline(xintercept = 1.2) +
+  scale_x_continuous(limits = c(0.2,1.8)) +
+  geom_hline(yintercept = 1) + 
+  geom_hline(yintercept = 1.2) +
+  scale_y_continuous(limits = c(0.2,1.8)) +
+  geom_rect(NULL,NULL,xmin=1,xmax=1.2,ymin=1,ymax=1.2, fill = "grey50") + 
+  geom_point(aes(x=x,y=y), color = "black", size = 3) + 
+  annotate("text", x = 1.1, y = 1.25, size = 5, 
+           label = "italic('f(x)')~Delta~italic('x')", parse = T) +
+  annotate("text", x = 1.3, y = 1.1, size = 5,
+           label = "italic('f(y)')~Delta~italic('y')", parse = T) +
+  geom_segment(x = 0, y = 0, xend = 0.99, yend = 0.99, 
+               arrow = arrow(length = unit(0.2,"cm"))) + 
+  geom_curve(xend = 0.3, yend = 0.3, x = 0.25, y = 0) +
+  annotate("text", x = 0.36, y = 0.23, size = 7,
+           label = "theta", parse = T) +
+  annotate("text", x = 0.55, y = 0.63, size = 7,
+           label = "~italic(r)", parse = T) +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title.y = element_text(angle = 0, vjust = 0.5, size = 18),
+        axis.title.x = element_text(size = 18))
+```
+
+<br>
+
+\noindent
+De tal forma que se cumple que
+$$
+g(r) \Delta x \Delta y = f(x) \Delta x f(y) \Delta y,
+$$
+por lo cual
+$$
+g(r) = f(x)f(y).
+$$
+Esto significa nada más que la magnitud del error $g(r)$ es el producto de las magnitudes de los errores en $x$ y $y$ **de forma independiente**.
+\noindent
+Las coordenadas $x$,$y$ son tales que
+$$
+x = r \cos(\theta), \; \;\; y = \mbox{sen}(\theta).
+$$
+Sabemos que
+\begin{eqnarray*}
+\dfrac{dx}{d\theta} &=& -r\mbox{sen}(\theta)\\
+\dfrac{dy}{d\theta} &=& r \cos{(\theta)}
+\end{eqnarray*}
+
+Derivando con respecto a $\theta$:
+\noindent
+\begin{eqnarray*}
+0 &=& dfrac{d f(x)}{d \theta} f(y) + \dfrac{d f(y)}{d \theta} f(x)\\
+&=& \dfrac{df}{dx}\cdot \dfrac{d x}{d \theta}\cdot f(y) + \dfrac{d f}{d y}\cdot\dfrac{d y}{d\theta} \cdot f(x) \\
+&=& -r f^\prime(x) \mbox{sen}(\theta)f(y) + f^\prime(y)\cdot r \cos(\theta) f(x)\\
+&=& -y f^\prime(x)f(y) + xf^\prime(y)f(x).
+\end{eqnarray*}
+Por lo tanto, 
+$$
+yf^\prime(x)f(y) = x f^\prime(y)f(x).
+$$
+Se tiene que
+$$
+\dfrac{f^\prime(x)}{f(x)x} = \dfrac{f^\prime(y)}{f(y)y},
+$$
+para toda $x$ y $y$. Como $x$ y $y$ son mediciones arbitrarias, esto implica que
+$$
+\dfrac{f^\prime(x)}{f(x)x}
+$$
+debe ser constante. Por lo tanto,
+$$
+\displaystyle{\int{\dfrac{f^\prime(x)}{f(x)x}}\,dx = \int{c \,dx}}. 
+$$
+Multiplicando por $x$,
+$$
+\displaystyle{\int{\dfrac{f^\prime(x)}{f(x)}}\,dx = \int{cx\, dx}}. 
+$$
+Por lo cual,
+$$
+\mbox{ln}f(x) = c\cdot \dfrac{x^2}{2} + c^\prime.
+$$
+
+### ¿Qué signo tiene c?
+
+Vemos que
+$$
+f(x) = Ae^{c\frac{x^2}{2}},
+$$
+donde $A=e^{c^\prime}$. Como $f(x)$ es la función de densidad de este fenómeno de errores independientes entonces se debe cumplir que:
+$$
+1 = \displaystyle{\int f(x)\, dx},
+$$
+y podemos concluir que $c<0$, para que $f(x)$ pueda ser función de densidad.
+\noindent
+Integramos:
+$$
+A \displaystyle{\int{e^{c\cdot \frac{x^2}{2}}}\, dx}.
+$$
+Sea $u=\sqrt{-\dfrac{c}{2}}x$, entonces $du = \sqrt{-\dfrac{c}{2}}\,dx$. Por lo cual,
+$$
+1 = A\sqrt{-\dfrac{2}{c}} \displaystyle{\int_{-\infty}^{\infty}{e^{-u^2}}\,du = A \sqrt{-\dfrac{2}{c}} \cdot \sqrt{\pi}}.
+$$
+Para obtener lo anterior, se desea demostrar que 
+\noindent
+\[
+\boxed{\int_0^\infty{e^{-x^2}dx} = \dfrac{\sqrt{\pi}}{2}.}
+\]
+Sea 
+\[
+I = \int_{-\infty}^\infty{e^{-x^2}dx}, 
+\]
+entonces
+\[
+I^2=\left(\int_{-\infty}^\infty{e^{-x^2}dx}\right)\left(\int_{-\infty}^\infty{e^{-y^2}dy}\right)=\int_{-\infty}^\infty{\int_{-\infty}^{\infty}{e^{-(x^2+y^2)}dxdy}}.
+\]
+Si $x=r\mbox{cos}(\theta)$ y $y=r\mbox{sen}(\theta)$ entonces $x^2+y^2=r^2$ y se puede demostrar que $dxdy=rd\theta dr$. Por lo tanto,
+\begin{eqnarray*}
+I^2&=&\int_{-\infty}^\infty{\int_{-\infty}^{\infty}{e^{-(x^2+y^2)}dxdy}}\\
+&=&\int_{0}^\infty{\int_{0}^{2\pi}{re^{-r^2}d\theta dr}}\\
+&=&-\pi\int_{0}^{\infty}{-2re^{-r^2}dr}\\
+&=&-\pi e^{-r^2}{\biggr\rvert_{0}^{\infty}}\\
+&=&\pi.
+\end{eqnarray*}
+Por lo cual, $I=\sqrt{\pi}$. Como $e^{-x^2}$ es una función simétrica alrededor de $0$, entonces se tiene, finalmente, que
+\[
+\int_{0}^{\infty}{e^{-x^2}dx}=\dfrac{1}{2}\int_{-\infty}^{\infty}{e^{-x^2}dx}=\dfrac{\sqrt{\pi}}{2}.
+\]
+
+Finalmente,
+$$
+1 =A \sqrt{-\dfrac{2}{c}} \cdot \sqrt{\pi},
+$$
+y despejando $A$, obtenemos que
+$$
+A = \sqrt{-\dfrac{c}{2\pi}}.
+$$
+
+Sean $\mu$, el valor esperado de $X$, y $\sigma^2$ la varianza de $X$, $E(X)$ y $V(X)$, respectivamente. Vemos que
+\noindent
+\begin{eqnarray*}
+E(X) &=& \displaystyle{\int_{-\infty}^{\infty}{Ax e^{c\frac{x^2}{2}}}\, dx}\\
+&=& \sqrt{-\dfrac{c}{2\pi}}\displaystyle{\int_{-\infty}^\infty{xe^{c\frac{x^2}{2}}}\,dx}.
+\end{eqnarray*}
+Por lo tanto, 
+$$
+E(X) = -\dfrac{1}{c} \sqrt{-\dfrac{c}{2\pi}}\,e^{c\frac{x^2}{2}}{\biggr\rvert_{-\infty}^{\infty}}=0.
+$$
+Ahora bien,
+$$
+E(X^2) = V(X).
+$$
+Tenemos que
+$$
+E(X^2) = \sqrt{-\dfrac{c}{2\pi}} \displaystyle{\int_{-\infty}^\infty{x^2e^{c\frac{x^2}{2}}}\,dx}.
+$$
+Integrando por partes (con $u=x$ y $dv = xe^{c\frac{x^2}{2}}\,dx$) ahora obtenemos
+\begin{eqnarray*}
+\sigma^2 = V(X) &=& \sqrt{-\dfrac{c}{2\pi}} \left(\dfrac{1}{c}xe^{cx^2/2}{\biggr\rvert_{-\infty}^{\infty}} - \dfrac{1}{c}\displaystyle{\int_{-\infty}^{\infty}{e^{c{x^2/2}}\,dx}}\right) \\
+&=& \sqrt{-\dfrac{c}{2\pi}} \left(-\dfrac{1}{c}\displaystyle{\int_{-\infty}^{\infty}{e^{cx^2/2}}\,dx}\right) \\
+&=& \sqrt{-\dfrac{c}{2\pi}} \cdot \left(\dfrac{1}{c}\right) \cdot \sqrt{-\dfrac{2\pi}{c}}.
+\end{eqnarray*}
+Por lo cual,
+$$
+c = - \dfrac{1}{\sigma^2}.
+$$
+Finalmente, la distribución de $X$ con media $0$ y varianza $\sigma^2$ es
+$$
+f(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}}\,e^{-\frac{1}{2\sigma^2}x^2}.
+$$
+Si ahora la media es $\mu$, entonces
+$$
+f(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}}\,e^{-\frac{1}{2\sigma^2}(x-\mu)^2}.
+$$
+Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de $\bar{X}$:
+
+```{r, message=FALSE, warning=FALSE, comment=NA, results='hide', echo=F}
+library(shiny)
+library(ggplot2)
+library(gridExtra)
+```
+
+```{r, echo = FALSE}
+shinyApp(
+  ui = pageWithSidebar(
+    headerPanel("Teorema del límite central"),
+    sidebarPanel(
+      h4("Parámetros:"),
+      radioButtons("dist", "Parent distribution:",
+                 list("Exponencial" = "rexp","Cauchy" = "rcauchy",
+                      "F" = "rf","Gamma" = "rgamma",
+                      "Log-normal" = "rlnorm","Uniforme" = "runif",
+                      "Poisson" = "rpois","Geométrica" = "rgeom",
+                      "Binomial negativa" = "rnbinom","Weibull" = "rweibull")),
+      br(),
+      sliderInput("n", 
+                  "Número de observaciones de la distribución:",
+                  value = 500,
+                  min = 2, 
+                  max = 1000),
+      br(),
+      sliderInput("k", 
+                  "Número de muestras de la distribución:", 
+                  value = 10,
+                  min = 1,
+                  max = 1000),
+      br()),
+      mainPanel(
+        plotOutput("plot", height="900px")
+      )
+  ),
+  
+  server = function(input, output){
+    data <- reactive({
+      vals <- switch(input$dist,
+             rexp = do.call(input$dist, list(n=input$n, rate=3)),
+             rcauchy = do.call(input$dist, list(n=input$n, location=0, scale=1)),
+             rf = do.call(input$dist, list(n=input$n, df1 = 8, df2 = 6)),
+             rgamma = do.call(input$dist,list(n=input$n, shape=1, scale = 4)),
+             rlnorm = do.call(input$dist,list(n=input$n, meanlog=0, sdlog = 1)),
+             runif = do.call(input$dist,list(n=input$n, min=-10, max = 10)),
+             rpois = do.call(input$dist, list(n=input$n,lambda = 1)),
+             rgeom = do.call(input$dist, list(n=input$n, prob = 0.8)),
+             rnbinom = do.call(input$dist, list(n=input$n, size = 20, prob = 0.3)),
+             rweibull = do.call(input$dist, list(n=input$n, shape = 3, scale = 2))
+             )
+      return(list(fun=input$dist, vals=vals))
+    })
+    output$plot <- renderPlot({
+      distname <- switch(input$dist,
+                         rexp = "Exponencial",rcauchy = "Cauchy",rf = "F",
+                         rgamma = "Gamma",rlnorm = "Log-normal",runif = "Uniforme",
+                         rpois = "Poisson",rgeom = "Geométrica",
+                         rnbinom = "Binomial negativa",rweibull = "Weibull")
+      n <- input$n
+      k <- input$k
+      pdist <- data()$vals
+      x <- switch(input$dist,
+                       rexp = replicate(k, do.call(input$dist, list(n=n, rate=3))),
+                       rcauchy = replicate(k, do.call(input$dist, list(n=n, location=1, scale = 1))),
+                       rf = replicate(k, do.call(input$dist, list(n=n, df1=8, df2 = 6))),
+                       rgamma = replicate(k, do.call(input$dist, list(n=n, shape=1, scale = 4))),
+                       rlnorm = replicate(k, do.call(input$dist, list(n=n, meanlog=0, sdlog = 1))),
+                       runif = replicate(k, do.call(input$dist, list(n=n, min=-10, max = 10))),
+                       rpois = replicate(k, do.call(input$dist, list(n=n, lambda=1))),
+                       rgeom = replicate(k, do.call(input$dist, list(n=n, prob=0.8))),
+                       rnbinom = replicate(k, do.call(input$dist, list(n=n, size = 20, prob = 0.3))),
+                       rweibull = replicate(k, do.call(input$dist, list(n=n, shape = 3, scale = 2)))
+                       )
+      ndist <- rowMeans(x)
+      dobs <- data.frame(pdist = pdist)
+      nobs <- data.frame(ndist = ndist)
+      g1 <- ggplot(data = dobs, aes(x = pdist)) +
+        geom_histogram(bins = 30) +
+        xlab(label = "X") +
+        ylab(label = "Frecuencia") +
+        ggtitle(distname)
+      g2 <- ggplot(data = nobs, aes(x = ndist)) +
+        geom_histogram(aes(y = ..density..), bins = 30) + 
+        stat_function(fun=dnorm, args=list(mean=mean(nobs$ndist), sd=sd(nobs$ndist)),
+                      color = "red") +
+        ggtitle(paste0("Distribución de las medias de una distribución ",distname)) +
+        scale_x_continuous(name = expression(paste("Media muestral (", bar(X), ")"))) +
+        scale_y_continuous(name = "Densidad")
+      grid.arrange(g1,g2,ncol=1)
+  })
+  },
+  options = list(height = 500)
+)
+```
+
+## Otras observaciones
+
+Otras propiedades de esta distribución se pueden obtener buscando los puntos críticos de su función de densidad
+$$
+f(x) = Ae^{cx^2/2}.
+$$
+La primera derivada es
+$$
+f^\prime(x) = A e^{cx^2/2}\cdot cx.
+$$
+Por lo que $f^\prime(x)=0$ cuando $x=0$. La segunda derivada es 
+$$
+f^{\prime\prime}(x) = cA\left(e^{cx^2/2}+xe^{cx^2/2}\cdot cx\right).
+$$
+Por lo tanto,
+\begin{eqnarray*}
+f^{\prime\prime}(0) &=& cA \\
+&=& c\sqrt{-\dfrac{c}{2\pi}} \\
+&=& \sqrt{\dfrac{1}{2\pi\sigma^2}} > 0.
+\end{eqnarray*}
+
+Por lo tanto, si $\sigma^2 = 1$, entonces el máximo de $f(x)$ se alcanza en $x=0$, que coincide con la media, y el valor de $f$ en $x=0$ es
+$$
+\sqrt{\dfrac{1}{2\pi}} \approx 0.3989.
+$$
+Ahora bien, $f^{\prime\prime}(0) = 0$ si y sólo si
+$$
+e^{cx^2/2} = -cx^2 e^{cx^2/2},
+$$
+que ocurre si y sólo si
+$$
+x = \pm \sigma.
+$$
+Esto quiere decir que $f(x)$ tiene puntos de inflexión en $-\sigma$ y $\sigma$.
+
+```{r, echo=F, fig.height=3, fig.width=5, message=FALSE, warning=FALSE, fig.align='center'}
+library(ggplot2)
+ggplot(data.frame(x=c(-4,4)), aes(x)) +
+  stat_function(fun=dnorm, args=list(mean=0, sd=1)) +
+  scale_x_continuous(breaks = c(-3:3), 
+                     labels =c(expression(paste("-3",sigma)),
+                               expression(paste("-2",sigma)),
+                               expression(paste("-",sigma)),
+                               "0",
+                               expression(paste("",sigma)),
+                               expression(paste("2",sigma)),
+                               expression(paste("3",sigma)))) +
+  geom_segment(x = -1, y = 0, xend = -1, yend = dnorm(-1)) +
+  geom_segment(x = 1, y = 0, xend = 1, yend = dnorm(1)) +
+  xlab("") + ylab("")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
