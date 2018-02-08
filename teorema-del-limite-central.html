@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Estadística Aplicada III</title>
+  <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
+  <meta name="generator" content="bookdown 0.6.2 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Estadística Aplicada III" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)" />
+  <meta name="github-repo" content="andreuboada/est-aplicada-3-2018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Estadística Aplicada III" />
+  
+  <meta name="twitter:description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)" />
+  
+
+<meta name="author" content="Andreu Boada de Atela">
+
+
+<meta name="date" content="2018-02-08">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="manipulacion-y-visualizacion-de-datos.html">
+<link rel="next" href="referencias.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="toc.css" type="text/css" />
+<link rel="stylesheet" href="font-awesome.min.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística Aplicada III</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Temario y referencias</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#evaluacion"><i class="fa fa-check"></i>Evaluación</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-r-y-rstudio"><i class="fa fa-check"></i>Software: R y Rstudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#referencia-principal"><i class="fa fa-check"></i>Referencia principal</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#otras-referencias"><i class="fa fa-check"></i>Otras referencias</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tareas"><i class="fa fa-check"></i>Tareas</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#por-que-un-analisis-multivariado"><i class="fa fa-check"></i><b>1.1</b> ¿Por qué un análisis multivariado?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#la-paradoja-de-simpson"><i class="fa fa-check"></i><b>1.2</b> La paradoja de Simpson</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#modelos-log-lineales"><i class="fa fa-check"></i><b>1.3</b> Modelos log-lineales</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#interpretacion-de-parametros"><i class="fa fa-check"></i><b>1.4</b> Interpretación de parámetros</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#ejemplo-dos-monedas"><i class="fa fa-check"></i><b>1.4.1</b> Ejemplo: dos monedas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#otros-ejemplos"><i class="fa fa-check"></i><b>1.5</b> Otros ejemplos</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#discriminacion-de-residentes-hispanos-con-discapacidades"><i class="fa fa-check"></i><b>1.5.1</b> Discriminación de residentes hispanos con discapacidades</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#consumo-de-chocolate-y-premios-nobel"><i class="fa fa-check"></i><b>1.5.2</b> Consumo de chocolate y premios Nobel</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#tarea"><i class="fa fa-check"></i><b>1.6</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Rintro.html"><a href="Rintro.html"><i class="fa fa-check"></i><b>2</b> Temas selectos de R</a><ul>
+<li class="chapter" data-level="2.1" data-path="Rintro.html"><a href="Rintro.html#que-ventajas-tiene-r"><i class="fa fa-check"></i><b>2.1</b> ¿Qué ventajas tiene R?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="Rintro.html"><a href="Rintro.html#r-es-gratuito-y-de-codigo-abierto"><i class="fa fa-check"></i><b>2.1.1</b> R es gratuito y de código abierto</a></li>
+<li class="chapter" data-level="2.1.2" data-path="Rintro.html"><a href="Rintro.html#r-tiene-una-comunidad-comprometida"><i class="fa fa-check"></i><b>2.1.2</b> R tiene una comunidad comprometida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="Rintro.html"><a href="Rintro.html#flujo-basico-de-trabajo-para-el-analisis-de-datos-en-r."><i class="fa fa-check"></i><b>2.2</b> Flujo básico de trabajo para el análisis de datos en R.</a></li>
+<li class="chapter" data-level="2.3" data-path="Rintro.html"><a href="Rintro.html#introduccion-a-r-como-lenguaje-de-programacion-y-la-plataforma-interactiva-de-rstudio."><i class="fa fa-check"></i><b>2.3</b> Introducción a R como lenguaje de programación, y la plataforma interactiva de RStudio.</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="Rintro.html"><a href="Rintro.html#como-entender-r"><i class="fa fa-check"></i><b>2.3.1</b> ¿Cómo entender R?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="Rintro.html"><a href="Rintro.html#por-que-r"><i class="fa fa-check"></i><b>2.3.2</b> ¿Por qué R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="Rintro.html"><a href="Rintro.html#estructuras-de-datos"><i class="fa fa-check"></i><b>2.4</b> Estructuras de datos</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="Rintro.html"><a href="Rintro.html#vectores"><i class="fa fa-check"></i><b>2.4.1</b> Vectores</a></li>
+<li class="chapter" data-level="2.4.2" data-path="Rintro.html"><a href="Rintro.html#data-frames"><i class="fa fa-check"></i><b>2.4.2</b> Data Frames</a></li>
+<li class="chapter" data-level="2.4.3" data-path="Rintro.html"><a href="Rintro.html#listas"><i class="fa fa-check"></i><b>2.4.3</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="Rintro.html"><a href="Rintro.html#r-markdown"><i class="fa fa-check"></i><b>2.5</b> R Markdown</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="Rintro.html"><a href="Rintro.html#que-es-r-markdown"><i class="fa fa-check"></i><b>2.5.1</b> ¿Qué es R Markdown?</a></li>
+<li class="chapter" data-level="2.5.2" data-path="Rintro.html"><a href="Rintro.html#estructura-basica-de-r-markdown"><i class="fa fa-check"></i><b>2.5.2</b> Estructura básica de R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="Rintro.html"><a href="Rintro.html#proyectos-de-rstudio"><i class="fa fa-check"></i><b>2.6</b> Proyectos de RStudio</a></li>
+<li class="chapter" data-level="2.7" data-path="Rintro.html"><a href="Rintro.html#otros-aspectos-importantes-de-r"><i class="fa fa-check"></i><b>2.7</b> Otros aspectos importantes de R</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="Rintro.html"><a href="Rintro.html#valores-faltantes"><i class="fa fa-check"></i><b>2.7.1</b> Valores faltantes</a></li>
+<li class="chapter" data-level="2.7.2" data-path="Rintro.html"><a href="Rintro.html#funciones"><i class="fa fa-check"></i><b>2.7.2</b> Funciones</a></li>
+<li class="chapter" data-level="2.7.3" data-path="Rintro.html"><a href="Rintro.html#funcionales"><i class="fa fa-check"></i><b>2.7.3</b> Funcionales</a></li>
+<li class="chapter" data-level="2.7.4" data-path="Rintro.html"><a href="Rintro.html#rendimiento-en-r"><i class="fa fa-check"></i><b>2.7.4</b> Rendimiento en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="Rintro.html"><a href="Rintro.html#tarea-1"><i class="fa fa-check"></i><b>2.8</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html"><i class="fa fa-check"></i><b>3</b> Manipulación y visualización de datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#el-principio-de-datos-limpios"><i class="fa fa-check"></i><b>3.1</b> El principio de datos limpios</a><ul>
+<li class="chapter" data-level="" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#ejemplo"><i class="fa fa-check"></i>Ejemplo:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#limpieza-de-datos"><i class="fa fa-check"></i><b>3.2</b> Limpieza de datos</a></li>
+<li class="chapter" data-level="3.3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#separa-aplica-combina"><i class="fa fa-check"></i><b>3.3</b> <em>Separa-aplica-combina</em></a></li>
+<li class="chapter" data-level="3.4" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#muertes-por-armas-de-fuego-en-eua"><i class="fa fa-check"></i><b>3.4</b> Muertes por armas de fuego en EUA</a></li>
+<li class="chapter" data-level="3.5" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#el-cuarteto-de-anscombe"><i class="fa fa-check"></i><b>3.5</b> El Cuarteto de Anscombe</a></li>
+<li class="chapter" data-level="3.6" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#the-grammar-of-graphics-de-leland-wilkinson"><i class="fa fa-check"></i><b>3.6</b> The <em>Grammar of Graphics</em> de Leland Wilkinson</a></li>
+<li class="chapter" data-level="3.7" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#ggplot"><i class="fa fa-check"></i><b>3.7</b> ggplot</a></li>
+<li class="chapter" data-level="3.8" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#un-histograma-de-las-muertes-en-iraq"><i class="fa fa-check"></i><b>3.8</b> Un histograma de las muertes en Iraq</a></li>
+<li class="chapter" data-level="3.9" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#inglehartwelzel-un-mapa-cultural-del-mundo"><i class="fa fa-check"></i><b>3.9</b> Inglehart–Welzel: un mapa cultural del mundo</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#creando-un-ggplot"><i class="fa fa-check"></i><b>3.9.1</b> Creando un ggplot</a></li>
+<li class="chapter" data-level="3.9.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#mapeos-aesthetics"><i class="fa fa-check"></i><b>3.9.2</b> Mapeos: Aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#poniendo-todo-junto"><i class="fa fa-check"></i><b>3.10</b> Poniendo todo junto</a></li>
+<li class="chapter" data-level="3.11" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#tarea-2"><i class="fa fa-check"></i><b>3.11</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html"><i class="fa fa-check"></i><b>4</b> Teorema del Límite Central</a><ul>
+<li class="chapter" data-level="4.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#la-distribucion-de-y"><i class="fa fa-check"></i><b>4.1</b> La distribución de {Y}</a></li>
+<li class="chapter" data-level="4.2" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#de-donde-proviene-la-distribucion-normal"><i class="fa fa-check"></i><b>4.2</b> ¿De dónde proviene la distribución normal?</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#que-signo-tiene-c"><i class="fa fa-check"></i><b>4.2.1</b> ¿Qué signo tiene c?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#otras-observaciones"><i class="fa fa-check"></i><b>4.3</b> Otras observaciones</a></li>
+<li class="chapter" data-level="4.4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#cuantiles-de-un-conjunto-de-datos"><i class="fa fa-check"></i><b>4.4</b> Cuantiles de un conjunto de datos</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-de-cuantiles-teoricos"><i class="fa fa-check"></i><b>4.4.1</b> Gráficas de cuantiles teóricos</a></li>
+<li class="chapter" data-level="4.4.2" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-de-cuantiles-para-un-conjunto-de-datos"><i class="fa fa-check"></i><b>4.4.2</b> Gráficas de cuantiles para un conjunto de datos</a></li>
+<li class="chapter" data-level="4.4.3" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#diagramas-de-caja-y-brazos"><i class="fa fa-check"></i><b>4.4.3</b> Diagramas de caja y brazos</a></li>
+<li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-1"><i class="fa fa-check"></i>Ejemplo</a></li>
+<li class="chapter" data-level="4.4.4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-qq-normales"><i class="fa fa-check"></i><b>4.4.4</b> Gráficas qq-normales</a></li>
+<li class="chapter" data-level="4.4.5" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#el-tlc-y-errores-estandar"><i class="fa fa-check"></i><b>4.4.5</b> El TLC y errores estándar</a></li>
+<li class="chapter" data-level="4.4.6" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#tarea-3"><i class="fa fa-check"></i><b>4.4.6</b> Tarea</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estadística Aplicada III</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="teorema-del-limite-central" class="section level1">
+<h1><span class="header-section-number">Clase 4</span> Teorema del Límite Central</h1>
+<style>
+  .espacio {
+     margin-bottom: 1cm;
+  }
+</style>
+<style>
+  .espacio3 {
+     margin-bottom: 3cm;
+  }
+</style>
+<p>A continuación discutiremos el Teorema del Límite Central (CLT), el cual nos ayuda a realizar cálculos importantes relacionados con la probabilidad de las cosas. Se utiliza con frecuencia en la ciencia para probar hipótesis estadísticas.</p>
+<p>Para utilizarlo, tenemos que hacer diferentes supuestos. Sin embargo, si los supuestos son verdaderos, entonces podemos calcular probabilidades exactas de eventos mediante el uso de una fórmula matemática muy sencilla.</p>
+<div id="la-distribucion-de-y" class="section level2">
+<h2><span class="header-section-number">4.1</span> La distribución de {Y}</h2>
+
+<div class="nota">
+<p><strong><em>El Teorema del Límite Central</em></strong></p>
+El CLT es uno de los resultados matemáticos más utilizados en la ciencia. Nos dice que cuando el tamaño de la muestra es grande, la media <span class="math inline">\(\bar{Y}\)</span> de una muestra aleatoria sigue una distribución normal con centro en la media poblacional <span class="math inline">\(\mu_Y\)</span> y con desviación estándar igual a la desviación estándar de la población <span class="math inline">\(\sigma_Y\)</span> <strong>dividida por la raíz cuadrada del tamaño de la muestra</strong> <span class="math inline">\(\sqrt{N}\)</span>. Nos referimos a la desviación estándar de la distribución de una variable aleatoria como el error estándar de la variable aleatoria.
+</div>
+
+<p><br></p>
+<p>Si tomamos muchas muestras de tamaño <span class="math inline">\(N\)</span>, entonces la cantidad:</p>
+<p><span class="math display">\[
+\frac{\bar{Y} - \mu}{\sigma_Y/\sqrt{N}}
+\]</span></p>
+<p>se aproxima con una distribución normal con centro en 0 y con desviación estándar 1.</p>
+<p>Ahora nos interesa la diferencia entre dos medias muestrales. Aquí, de nuevo, un resultado matemático nos puede ayudar. Si tenemos dos variables aleatorias <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span> con medias <span class="math inline">\(\mu_X\)</span> y <span class="math inline">\(\mu_Y\)</span> y varianzas <span class="math inline">\(\sigma_X\)</span> y <span class="math inline">\(\sigma_Y\)</span> respectivamente, entonces tenemos el siguiente resultado: la media de la suma <span class="math inline">\(Y + X\)</span> es la suma de las medias <span class="math inline">\(\mu_Y + \mu_X\)</span>. Esto implica que la media de <span class="math inline">\(Y - X = Y + aX\)</span> con <span class="math inline">\(a = -1\)</span>, es <span class="math inline">\(\mu_Y - \mu_X\)</span>.</p>
+<p>Sin embargo, el siguiente resultado quizás no sea tan intuitivo. Si <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span> son independientes entre sí, entonces la varianza de <span class="math inline">\(Y + X\)</span> es la suma de las varianzas <span class="math inline">\(\sigma_Y^2 + \sigma_X^2\)</span>. Esto implica que la varianza de la diferencia <span class="math inline">\(Y - X\)</span> es la varianza de <span class="math inline">\(Y + aX\)</span> con <span class="math inline">\(a = -1\)</span> que es <span class="math inline">\(\sigma^2_Y + a^2\sigma_X^2 = \sigma ^ 2_Y + \sigma_X ^ 2\)</span>. Así que la varianza de la diferencia es también la suma de las varianzas. Si esto parece un resultado contraintuitivo, recordemos que si <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span> son independientes entre sí, el signo realmente no importa. Finalmente, otro resultado útil es que la suma de variables normales (mutuamente independientes) es otra vez normal.</p>
+<p>El cociente</p>
+<p><span class="math display">\[
+\frac{(\bar{Y}-\bar{X}) - (\mu_Y - \mu_X)}{\sqrt{\frac{\sigma_X^2}{M} + \frac{\sigma_Y^2}{N}}}
+\]</span></p>
+<p>se aproxima por una distribución normal centrada en 0 y con desviación estándar 1. Usando esta aproximación, el cálculo de probabilidades es simples porque conocemos la proporción de la distribución bajo cualquier valor. Por ejemplo, sólo el 5% de estos valores son mayores que 2 (en valor absoluto):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="op">-</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">2</span>))
+<span class="co">#&gt; [1] 0.0455</span></code></pre></div>
+<hr />
+<p><br></p>
+</div>
+<div id="de-donde-proviene-la-distribucion-normal" class="section level2">
+<h2><span class="header-section-number">4.2</span> ¿De dónde proviene la distribución normal?</h2>
+<p>En 1894, Francis Galton inventó lo que ahora conocemos como <strong>tablero de Galton</strong>, para ilustrar el Teorema del Límite Central, y en particular, que la distribución binomial es una aproximación a la distribución normal. El tablero consta de una tablero vertical con varias filas de clavos acomodados en forma de arreglo triangular. En la parte inferior hay varias cubetas para cada posible camino que forman los clavos en el tablero. Se deja caer canicas desde la parte superior, las cuales van botando, rebotando y saltando, aleatoriamente, y van depositándose, a medida que caen, en las cubetas de la parte inferior.</p>
+<p>Las canicas chocarán con el primer clavo teniendo una probabilidad de <span class="math inline">\(1/2\)</span> de ir a la izquierda o la derecha. A medida que caen, cada canica tiene más caminos a donde ir, es decir más posibilidades para desviarse a la izquiera o a la derecha. A lo largo de esta estructura, las canicas toman caminos aleatorios hasta caer en alguna de las cubetas. Es consecuencia de las leyes del universo que está sostenido por una tela sobre la cual subyace lo aleatorio, que las canicas caen con mayor probabilidad en las cubetas que están al centro, mientras que la probabilidad de que caigan en cubetas más alejadas es cada vez menor cuando la canica se aleja más y más de la cubeta del centro.</p>
+<p class="espacio">
+</p>
+<p><img src="figuras/galton.png" width="70%" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+<p><img src="figuras/galton_70.gif" width="40%" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+
+<div class="information">
+<strong>Nota:</strong> Puedes ver el script para hacer la simulación del tablero de Galton <a href="https://github.com/andreuboada/est-aplicada-3-2018/blob/master/recursos/tablero_galton.r">aquí</a>.
+</div>
+
+<p><br></p>
+<p>La primera versión de este teorema fue postulada por el matemático francés Abraham De Moivre que, en un notable artículo publicado en 1733, usó la distribución normal para aproximar la distribución del número de soles resultante de muchos lanzamientos de una moneda justa. Este hallazgo estaba muy por delante de su tiempo y permaneció en el olvido hasta que el famoso matemático francés Pierre-Simon Laplace lo rescató de la oscuridad en su monumental obra <strong>Théorie analytique des probabilités</strong>, publicada en 1812. Laplace extendió el hallazgo de De Moivre al aproximar la distribución binomial en general con la distribución normal. El teorema en su forma más general fue demostrado por primera vez por el príncipe de las matemáticas, Carl Friedrich Gauss, en 1813. Hoy en día es conocida en su honor como <strong>distribución Gaussiana</strong>, cuando en su tiempo no era más que la <strong>ley del error</strong>.</p>
+<p>Supongamos que <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> son errores <strong>independientes</strong> cometidos al azar cuando se han hecho dos mediciones <strong>independientemente</strong> una de la otra.</p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><br></p>
+De tal forma que se cumple que <span class="math display">\[
+g(r) \Delta x \Delta y = f(x) \Delta x f(y) \Delta y,
+\]</span> por lo cual <span class="math display">\[
+g(r) = f(x)f(y).
+\]</span> Esto significa nada más que la magnitud del error <span class="math inline">\(g(r)\)</span> es el producto de las magnitudes de los errores en <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> <strong>de forma independiente</strong>. Las coordenadas <span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span> son tales que <span class="math display">\[
+x = r \cos(\theta), \; \;\; y = \mbox{sen}(\theta).
+\]</span> Sabemos que
+<span class="math display">\[\begin{eqnarray*}
+\dfrac{dx}{d\theta} &amp;=&amp; -r\mbox{sen}(\theta)\\
+\dfrac{dy}{d\theta} &amp;=&amp; r \cos{(\theta)}
+\end{eqnarray*}\]</span>
+Derivando con respecto a <span class="math inline">\(\theta\)</span>: 
+<span class="math display">\[\begin{eqnarray*}
+0 &amp;=&amp; dfrac{d f(x)}{d \theta} f(y) + \dfrac{d f(y)}{d \theta} f(x)\\
+&amp;=&amp; \dfrac{df}{dx}\cdot \dfrac{d x}{d \theta}\cdot f(y) + \dfrac{d f}{d y}\cdot\dfrac{d y}{d\theta} \cdot f(x) \\
+&amp;=&amp; -r f^\prime(x) \mbox{sen}(\theta)f(y) + f^\prime(y)\cdot r \cos(\theta) f(x)\\
+&amp;=&amp; -y f^\prime(x)f(y) + xf^\prime(y)f(x).
+\end{eqnarray*}\]</span>
+<p>Por lo tanto, <span class="math display">\[
+yf^\prime(x)f(y) = x f^\prime(y)f(x).
+\]</span> Se tiene que <span class="math display">\[
+\dfrac{f^\prime(x)}{f(x)x} = \dfrac{f^\prime(y)}{f(y)y},
+\]</span> para toda <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span>. Como <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> son mediciones arbitrarias, esto implica que <span class="math display">\[
+\dfrac{f^\prime(x)}{f(x)x}
+\]</span> debe ser constante. Por lo tanto, <span class="math display">\[
+\displaystyle{\int{\dfrac{f^\prime(x)}{f(x)x}}\,dx = \int{c \,dx}}. 
+\]</span> Multiplicando por <span class="math inline">\(x\)</span>, <span class="math display">\[
+\displaystyle{\int{\dfrac{f^\prime(x)}{f(x)}}\,dx = \int{cx\, dx}}. 
+\]</span> Por lo cual, <span class="math display">\[
+\mbox{ln}f(x) = c\cdot \dfrac{x^2}{2} + c^\prime.
+\]</span></p>
+<div id="que-signo-tiene-c" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> ¿Qué signo tiene c?</h3>
+Vemos que <span class="math display">\[
+f(x) = Ae^{c\frac{x^2}{2}},
+\]</span> donde <span class="math inline">\(A=e^{c^\prime}\)</span>. Como <span class="math inline">\(f(x)\)</span> es la función de densidad de este fenómeno de errores independientes entonces se debe cumplir que: <span class="math display">\[
+1 = \displaystyle{\int f(x)\, dx},
+\]</span> y podemos concluir que <span class="math inline">\(c&lt;0\)</span>, para que <span class="math inline">\(f(x)\)</span> pueda ser función de densidad. Integramos: <span class="math display">\[
+A \displaystyle{\int{e^{c\cdot \frac{x^2}{2}}}\, dx}.
+\]</span> Sea <span class="math inline">\(u=\sqrt{-\dfrac{c}{2}}x\)</span>, entonces <span class="math inline">\(du = \sqrt{-\dfrac{c}{2}}\,dx\)</span>. Por lo cual, <span class="math display">\[
+1 = A\sqrt{-\dfrac{2}{c}} \displaystyle{\int_{-\infty}^{\infty}{e^{-u^2}}\,du = A \sqrt{-\dfrac{2}{c}} \cdot \sqrt{\pi}}.
+\]</span> Para obtener lo anterior, se desea demostrar que <span class="math display">\[
+\boxed{\int_0^\infty{e^{-x^2}dx} = \dfrac{\sqrt{\pi}}{2}.}
+\]</span> Sea <span class="math display">\[
+I = \int_{-\infty}^\infty{e^{-x^2}dx}, 
+\]</span> entonces <span class="math display">\[
+I^2=\left(\int_{-\infty}^\infty{e^{-x^2}dx}\right)\left(\int_{-\infty}^\infty{e^{-y^2}dy}\right)=\int_{-\infty}^\infty{\int_{-\infty}^{\infty}{e^{-(x^2+y^2)}dxdy}}.
+\]</span> Si <span class="math inline">\(x=r\mbox{cos}(\theta)\)</span> y <span class="math inline">\(y=r\mbox{sen}(\theta)\)</span> entonces <span class="math inline">\(x^2+y^2=r^2\)</span> y se puede demostrar que <span class="math inline">\(dxdy=rd\theta dr\)</span>. Por lo tanto,
+<span class="math display">\[\begin{eqnarray*}
+I^2&amp;=&amp;\int_{-\infty}^\infty{\int_{-\infty}^{\infty}{e^{-(x^2+y^2)}dxdy}}\\
+&amp;=&amp;\int_{0}^\infty{\int_{0}^{2\pi}{re^{-r^2}d\theta dr}}\\
+&amp;=&amp;-\pi\int_{0}^{\infty}{-2re^{-r^2}dr}\\
+&amp;=&amp;-\pi e^{-r^2}{\biggr\rvert_{0}^{\infty}}\\
+&amp;=&amp;\pi.
+\end{eqnarray*}\]</span>
+<p>Por lo cual, <span class="math inline">\(I=\sqrt{\pi}\)</span>. Como <span class="math inline">\(e^{-x^2}\)</span> es una función simétrica alrededor de <span class="math inline">\(0\)</span>, entonces se tiene, finalmente, que <span class="math display">\[
+\int_{0}^{\infty}{e^{-x^2}dx}=\dfrac{1}{2}\int_{-\infty}^{\infty}{e^{-x^2}dx}=\dfrac{\sqrt{\pi}}{2}.
+\]</span></p>
+<p>Finalmente, <span class="math display">\[
+1 =A \sqrt{-\dfrac{2}{c}} \cdot \sqrt{\pi},
+\]</span> y despejando <span class="math inline">\(A\)</span>, obtenemos que <span class="math display">\[
+A = \sqrt{-\dfrac{c}{2\pi}}.
+\]</span></p>
+Sean <span class="math inline">\(\mu\)</span>, el valor esperado de <span class="math inline">\(X\)</span>, y <span class="math inline">\(\sigma^2\)</span> la varianza de <span class="math inline">\(X\)</span>, <span class="math inline">\(E(X)\)</span> y <span class="math inline">\(V(X)\)</span>, respectivamente. Vemos que 
+<span class="math display">\[\begin{eqnarray*}
+E(X) &amp;=&amp; \displaystyle{\int_{-\infty}^{\infty}{Ax e^{c\frac{x^2}{2}}}\, dx}\\
+&amp;=&amp; \sqrt{-\dfrac{c}{2\pi}}\displaystyle{\int_{-\infty}^\infty{xe^{c\frac{x^2}{2}}}\,dx}.
+\end{eqnarray*}\]</span>
+Por lo tanto, <span class="math display">\[
+E(X) = -\dfrac{1}{c} \sqrt{-\dfrac{c}{2\pi}}\,e^{c\frac{x^2}{2}}{\biggr\rvert_{-\infty}^{\infty}}=0.
+\]</span> Ahora bien, <span class="math display">\[
+E(X^2) = V(X).
+\]</span> Tenemos que <span class="math display">\[
+E(X^2) = \sqrt{-\dfrac{c}{2\pi}} \displaystyle{\int_{-\infty}^\infty{x^2e^{c\frac{x^2}{2}}}\,dx}.
+\]</span> Integrando por partes (con <span class="math inline">\(u=x\)</span> y <span class="math inline">\(dv = xe^{c\frac{x^2}{2}}\,dx\)</span>) ahora obtenemos
+<span class="math display">\[\begin{eqnarray*}
+\sigma^2 = V(X) &amp;=&amp; \sqrt{-\dfrac{c}{2\pi}} \left(\dfrac{1}{c}xe^{cx^2/2}{\biggr\rvert_{-\infty}^{\infty}} - \dfrac{1}{c}\displaystyle{\int_{-\infty}^{\infty}{e^{c{x^2/2}}\,dx}}\right) \\
+&amp;=&amp; \sqrt{-\dfrac{c}{2\pi}} \left(-\dfrac{1}{c}\displaystyle{\int_{-\infty}^{\infty}{e^{cx^2/2}}\,dx}\right) \\
+&amp;=&amp; \sqrt{-\dfrac{c}{2\pi}} \cdot \left(\dfrac{1}{c}\right) \cdot \sqrt{-\dfrac{2\pi}{c}}.
+\end{eqnarray*}\]</span>
+<p>Por lo cual, <span class="math display">\[
+c = - \dfrac{1}{\sigma^2}.
+\]</span> Finalmente, la distribución de <span class="math inline">\(X\)</span> con media <span class="math inline">\(0\)</span> y varianza <span class="math inline">\(\sigma^2\)</span> es <span class="math display">\[
+f(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}}\,e^{-\frac{1}{2\sigma^2}x^2}.
+\]</span> Si ahora la media es <span class="math inline">\(\mu\)</span>, entonces <span class="math display">\[
+f(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}}\,e^{-\frac{1}{2\sigma^2}(x-\mu)^2}.
+\]</span> Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de <span class="math inline">\(\bar{X}\)</span>:</p>
+<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="70%" height="600px">
+</iframe>
+</div>
+</div>
+<div id="otras-observaciones" class="section level2">
+<h2><span class="header-section-number">4.3</span> Otras observaciones</h2>
+Otras propiedades de esta distribución se pueden obtener buscando los puntos críticos de su función de densidad <span class="math display">\[
+f(x) = Ae^{cx^2/2}.
+\]</span> La primera derivada es <span class="math display">\[
+f^\prime(x) = A e^{cx^2/2}\cdot cx.
+\]</span> Por lo que <span class="math inline">\(f^\prime(x)=0\)</span> cuando <span class="math inline">\(x=0\)</span>. La segunda derivada es <span class="math display">\[
+f^{\prime\prime}(x) = cA\left(e^{cx^2/2}+xe^{cx^2/2}\cdot cx\right).
+\]</span> Por lo tanto,
+<span class="math display">\[\begin{eqnarray*}
+f^{\prime\prime}(0) &amp;=&amp; cA \\
+&amp;=&amp; c\sqrt{-\dfrac{c}{2\pi}} \\
+&amp;=&amp; \sqrt{\dfrac{1}{2\pi\sigma^2}} &gt; 0.
+\end{eqnarray*}\]</span>
+<p>Por lo tanto, si <span class="math inline">\(\sigma^2 = 1\)</span>, entonces el máximo de <span class="math inline">\(f(x)\)</span> se alcanza en <span class="math inline">\(x=0\)</span>, que coincide con la media, y el valor de <span class="math inline">\(f\)</span> en <span class="math inline">\(x=0\)</span> es <span class="math display">\[
+\sqrt{\dfrac{1}{2\pi}} \approx 0.3989.
+\]</span> Ahora bien, <span class="math inline">\(f^{\prime\prime}(0) = 0\)</span> si y sólo si <span class="math display">\[
+e^{cx^2/2} = -cx^2 e^{cx^2/2},
+\]</span> que ocurre si y sólo si <span class="math display">\[
+x = \pm \sigma.
+\]</span> Esto quiere decir que <span class="math inline">\(f(x)\)</span> tiene puntos de inflexión en <span class="math inline">\(-\sigma\)</span> y <span class="math inline">\(\sigma\)</span>.</p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="cuantiles-de-un-conjunto-de-datos" class="section level2">
+<h2><span class="header-section-number">4.4</span> Cuantiles de un conjunto de datos</h2>
+<p>Los cuartos, octavos, etc. son útiles, fáciles de comprender y de calcular a mano (para conjuntos chicos de datos), sin embargo, necesitamos generalizar estos métodos para estudiar con más detalle la distribución de un conjunto de datos.</p>
+<p>Como primera definición tenemos:</p>
+<p>El <strong>cuantil</strong> <span class="math inline">\(f\)</span> de un conjunto de datos es el valor <span class="math inline">\(q(f)\)</span> en la escala de medición del conjunto tal que aproximadamente una fracción <span class="math inline">\(f\)</span> de los datos son menores o iguales a <span class="math inline">\(f\)</span>.</p>
+<p>Por ejemplo, si los datos son <span class="math inline">\(1,2,2,5,\)</span> entonces <span class="math inline">\(1\)</span> es el cuantil <span class="math inline">\(1/4\)</span>, <span class="math inline">\(2\)</span> es el cuantil <span class="math inline">\(1/2\)</span> y también el <span class="math inline">\(3/4\)</span>, y <span class="math inline">\(5\)</span> es el cuantil <span class="math inline">\(1\)</span>.</p>
+<p>Tenemos que resolver varios problemas con esta definición:</p>
+<ul>
+<li><p>¿Cuál es el cuantil <span class="math inline">\(1/3\)</span> en los datos anteriores?</p></li>
+<li><p>Asimetría: el dato más chico es el cuantil <span class="math inline">\(1/n\)</span>, donde <span class="math inline">\(n\)</span> es el tamaño del conjunto de datos, pero el más grande es el cuantil <span class="math inline">\(1\)</span> (en lugar del cuantil <span class="math inline">\(1-1/n\)</span>, si la definición fuera simétrica).</p></li>
+</ul>
+<p>Problemas adicionales surgen cuando queremos comparar los cuantiles de un conjunto de datos con los cuantiles teóricos de una distribución dada, esto para contestar preguntas como: ¿la distribución de datos es similar a una normal? Para comprender mejor los cuantiles y poder responder estas preguntas comencemos con la construcción de gráficas de cuantiles para densidades de probabilidad.</p>
+<div id="graficas-de-cuantiles-teoricos" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Gráficas de cuantiles teóricos</h3>
+<p>Supongamos que <span class="math inline">\(G\)</span> es la función de distribución de una variable aleatoria continua, tal que <span class="math inline">\(G\)</span> es diferenciable y tiene derivada positiva (por ejemplo, si la variable aleatoria tiene densidad positiva y continua en todos los reales). Entonces podemos construir la función <span class="math inline">\(q:(0,1) \to (\infty, \infty)\)</span> dada por: <span class="math display">\[q(f)=G^{-1}(f)\]</span> para cualquier <span class="math inline">\(f \in (0,1)\)</span>. Decimos que <span class="math inline">\(q\)</span> es la <strong>función de cuantiles</strong> de la variable aleatoria con distribución <span class="math inline">\(G\)</span>. Bajo esta definición, es claro que si <span class="math inline">\(X\)</span> tiene distribución <span class="math inline">\(G\)</span>, entonces <span class="math inline">\(P(X&lt;q(f))=G(q(f))=f\)</span>.</p>
+<div id="ejemplo-normal" class="section level4">
+<h4><span class="header-section-number">4.4.1.1</span> Ejemplo: normal</h4>
+<p>Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria normal estándar. A esta función la denotamos como <span class="math inline">\(q_{0,1}(f)\)</span>, y en general, a la función de cuantiles de una distribución <span class="math inline">\(Normal(\mu, \sigma^2)\)</span> la denotamos por <span class="math inline">\(q_{\mu, \sigma}(f)\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">curve</span>(qnorm, <span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to=</span><span class="dv">1</span>, <span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">xlab=</span><span class="st">&#39;Cuantil (f)&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;q&#39;</span>)</code></pre></div>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Notemos que <span class="math inline">\(q_{\mu, \sigma}(f) \to \infty\)</span> cunado <span class="math inline">\(f \to 1\)</span>, y el cuantil <span class="math inline">\(1\)</span> no esta definido. Análogamente el cuantil <span class="math inline">\(0\)</span> tampoco está definido.</p>
+<p class="espacio">
+</p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>¿Cómo se ve la gráfica de cuantiles de una variable aleatoria uniforme?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Similar al caso normal (una curva).</p></li>
+<li><p>Como una recta horizontal.</p></li>
+<li><p>Como una recta vertical.</p></li>
+<li><p>Como una diagonal.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+</div>
+</div>
+<div id="graficas-de-cuantiles-para-un-conjunto-de-datos" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> Gráficas de cuantiles para un conjunto de datos</h3>
+<p>Hay varias maneras razonables de definir los cuantiles de un conjunto de datos, (ver Hyndman y Fan 1996 para una resumen de lo que usan los paquetes estadísticos). Nosotros adoptamos la siguiente construcción:</p>
+<p class="espacio3">
+</p>
+
+<div class="nota">
+<strong>Cuantiles de un conjunto de datos.</strong> Si <span class="math inline">\(x_1,...,x_n\)</span> es el conjunto de datos, los ordenamos de manera creciente para obtener <span class="math inline">\(x_{(1)},...,x_{(n)}\)</span>, donde <span class="math inline">\(x_{(1)}\)</span> es la observación más chica y <span class="math inline">\(x_{(n)}\)</span> la más grande. Definimos <span class="math display">\[f_i=\frac{i-0.5}{n}\]</span> y decimos que <span class="math inline">\(x_{(i)}\)</span> es el cuantil <span class="math inline">\(f_i\)</span>. Si se deseara calcular otros cuantiles <span class="math inline">\(f\)</span>, se podría interpolar o extrapolar con los puntos <span class="math inline">\(x_{(1)},...,x_{(n)}\)</span> y <span class="math inline">\(f_1,...,f_n\)</span>, pero esto no tiene tanto sentido.
+</div>
+
+<p class="espacio3">
+</p>
+<p><strong>Ejemplo.</strong> Consideremos el conjunto de datos <span class="math inline">\(4,1,7,3,3,6,10\)</span>. Calcular <span class="math inline">\(f_1,f_2,...,f_7\)</span> según la definición de arriba.</p>
+<p class="espacio">
+</p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>La distribución de ozono (en cualquier estación) es…</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>3</p></li>
+<li><p>3.3</p></li>
+<li><p>3.6</p></li>
+<li><p>4</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+
+<div class="information">
+<strong>Acerca de nuestra definición de cuantiles.</strong> Un argumento posible para justificar la definición de arriba es (Cleveland, 1994): supongamos que <span class="math inline">\(x_i\)</span> es resultado de redondeo, y los datos <span class="math inline">\(x_1,...,x_n\)</span> son distintos. Cuando contamos cuántas observaciones son menores o iguales a <span class="math inline">\(x_i\)</span>, es igualmente probable que la observación <em>real</em> correspondiente está por arriba o por debajo de la medida <span class="math inline">\(x_i\)</span>. En el primer caso, <span class="math inline">\(x_i\)</span> está por arriba de <span class="math inline">\((i-1)/n\)</span> observaciones <em>reales</em>. En el segundo caso, <span class="math inline">\(x_i\)</span> está por arriba de <span class="math inline">\(f\le i/n\)</span> observaciones <em>reales</em>. Promediamos estos dos valores para obtener nuestra definición.
+</div>
+
+<p>Otro argumento en favor de nuestra elección es la simetría en los valores <span class="math inline">\(f\)</span> de los cuantiles: el dato más grande es el cuantil <span class="math inline">\(1-0.5/n\)</span> que es complemento de <span class="math inline">\(0.5/n\)</span>, que corresponde al cuantil del mínimo.</p>
+<p>Finalmente, notamos que bajo nuestra definición no hay cuantiles <span class="math inline">\(0\)</span> ni <span class="math inline">\(1\)</span>. Esto es deseable cuando queremos comparar con densidades cuyos cuantiles teóricos <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span> no están definidos.</p>
+<p>Podemos hacer gráficas de la función de cuantiles de manera fácil. Estas gráficas se hacen, aproximadamente, como sigue: se ordenan los datos del más chico al más grande, se enumeran como índice, y graficamos los pares resultantes con el índice en el eje horizontal.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(reshape2) <span class="co"># aquí están los datos de propinas</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: &#39;reshape2&#39;</span>
+<span class="co">#&gt; The following object is masked from &#39;package:tidyr&#39;:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     smiths</span>
+n &lt;-<span class="st"> </span><span class="kw">length</span>(tips<span class="op">$</span>total_bill)
+tips<span class="op">$</span>probs &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">:</span>n <span class="op">-</span><span class="st"> </span><span class="fl">0.5</span>) <span class="op">/</span><span class="st"> </span>n
+tips<span class="op">$</span>cuantiles &lt;-<span class="st"> </span><span class="kw">quantile</span>(tips<span class="op">$</span>total_bill, <span class="dt">probs =</span> tips<span class="op">$</span>probs, <span class="dt">type =</span> <span class="dv">5</span>) 
+<span class="kw">ggplot</span>(tips, <span class="kw">aes</span>(<span class="dt">x=</span>probs, <span class="dt">y =</span> cuantiles)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;Cuantil (f)&#39;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Dólares&#39;) + </span>
+<span class="st">  geom_point()</span></code></pre></div>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div id="que-buscar-en-una-grafica-de-cuantiles" class="section level4">
+<h4><span class="header-section-number">4.4.2.1</span> ¿Qué buscar en una gráfica de cuantiles?</h4>
+<p>Las gráficas de cuantiles son conceptualmente simples; sin embargo, su interpretación efectiva requiere práctica. Algunas guías son:</p>
+<ol style="list-style-type: decimal">
+<li><p>Podemos leer fácilmente la mediana y los cuartos.</p></li>
+<li><p>Regiones en la escala de medición de los datos (dimensión vertical) con densidades de datos más altas se ven como pendientes bajas en la gráfica. Mientras que pendientes altas indican densidades de datos relativamente más bajas.</p></li>
+<li><p>Una mayor pendiente en la forma general de la gráfica (por ejemplo, en la recta que une los cuartos) indica dispersiones más grandes.</p></li>
+<li><p>Si el conjunto de datos se distribuye aproximadamente uniforme, entonces la gráfica debe parecerse a una recta (diagonal).</p></li>
+<li><p>De manera más general: en las regiones donde el histograma crece conforme aumentan los valores en el conjunto de datos, la pendiente de la gráfica de cuantiles es decreciente (así que la gráfica de cuantiles es cóncava hacia abajo). Cuando el histograma decrece conforme aumentan los valores en el conjunto de datos, la pendiente de la gráfica de cuantiles es creciente (así que observamos concavidad hacia arriba).</p></li>
+<li><p>Si la distribución tiene más dispersión hacia la derecha, la figura general de la gráfica es cóncava hacia arriba. Si tiene más dispersión a la izquierda, es cóncava hacia abajo.</p></li>
+<li><p>¿Cómo se ve una distribución que parece tener grupos definidos donde se acumulan los datos?</p></li>
+</ol>
+</div>
+</div>
+<div id="diagramas-de-caja-y-brazos" class="section level3">
+<h3><span class="header-section-number">4.4.3</span> Diagramas de caja y brazos</h3>
+<p>Los diagramas de caja y brazos son muy populares, e intentan mostrar gráficamente algo similar al resumen de cinco números de Tukey:</p>
+</br> <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Boxplot.svg/457px-Boxplot.svg.png"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Boxplot.svg/457px-Boxplot.svg.png" width="300px">
+<p>
+Imagen de Wikipedia.
+</p>
+<p></a> </br></p>
+<!--
+Los diagramas de caja y brazos también se pueden ver como una alternativa a las gráficas de cuantiles, donde un número limitado de cuantiles se utiliza para describir cada distribución.
+-->
+<p>Como vemos en la imagen superior el método muestra la mediana como una línea horizontal (medida de tendencia central), los bordes de la caja indican los cuartiles inferior y superior (o cuantiles 0.25 y 0.75). La distancia entre estos dos se conoce como rango intercuartílico o <em>IQR</em> por sus siglas en inglés, el IQR es una medida de dispersión. Alrededor del 50% de los datos están entre los cuartiles inferior y superior, es así que si el rango intercuartílico es chico los datos de enmedio están muy cercanos alrededor de la mediana, si el rango intercunatílico es grande los datos de enmedio están dispersos alrededor de la mediana. Adicionalmente, las distancias relativas de los cuartiles a lamediana nos dan información de la forma de la distribución, si una es mayor a la otra la distribucción está sesgada.</p>
+<p>Las líneas punteadas del diagrama superior indican los <em>valores adyacentes</em>, el valor adyacente superior se calcula de la siguiente forma: se toma el dato más grande que está a no más de <span class="math inline">\(1.5IQR\)</span> del cuartil superior. Los valores adyacentes también nos dan un resumen de la forma y dispersión, pero lo hacen para los valores extremos, o colas de la distribución.</p>
+<p>Finalmente, los datos mayores (o menores) a los valores adyacentes se grafican de manera individual como puntos. Si hay datos atípicos suelen aparecer como estos puntos graficados individualmente.</p>
+</div>
+<div id="ejemplo-1" class="section level3 unnumbered">
+<h3>Ejemplo</h3>
+<p>En el caso de los cantantes obtenemos la siguiente gráfica:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lattice)
+<span class="co"># calculamos la estatura en centímetros</span>
+singer<span class="op">$</span>estatura.m &lt;-<span class="st"> </span>singer<span class="op">$</span>height <span class="op">*</span><span class="st"> </span><span class="fl">2.54</span></code></pre></div>
+<p>Veamos la estructura de los datos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">singer <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">height</th>
+<th align="left">voice.part</th>
+<th align="right">estatura.m</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>143</td>
+<td align="right">68</td>
+<td align="left">Tenor 1</td>
+<td align="right">173</td>
+</tr>
+<tr class="even">
+<td>198</td>
+<td align="right">72</td>
+<td align="left">Bass 1</td>
+<td align="right">183</td>
+</tr>
+<tr class="odd">
+<td>164</td>
+<td align="right">69</td>
+<td align="left">Tenor 2</td>
+<td align="right">175</td>
+</tr>
+<tr class="even">
+<td>150</td>
+<td align="right">68</td>
+<td align="left">Tenor 2</td>
+<td align="right">173</td>
+</tr>
+<tr class="odd">
+<td>65</td>
+<td align="right">67</td>
+<td align="left">Soprano 2</td>
+<td align="right">170</td>
+</tr>
+<tr class="even">
+<td>172</td>
+<td align="right">70</td>
+<td align="left">Bass 1</td>
+<td align="right">178</td>
+</tr>
+<tr class="odd">
+<td>190</td>
+<td align="right">68</td>
+<td align="left">Bass 1</td>
+<td align="right">173</td>
+</tr>
+<tr class="even">
+<td>161</td>
+<td align="right">71</td>
+<td align="left">Tenor 2</td>
+<td align="right">180</td>
+</tr>
+<tr class="odd">
+<td>55</td>
+<td align="right">63</td>
+<td align="left">Soprano 2</td>
+<td align="right">160</td>
+</tr>
+<tr class="even">
+<td>107</td>
+<td align="right">66</td>
+<td align="left">Alto 2</td>
+<td align="right">168</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">singer.medians &lt;-<span class="st"> </span>singer <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(voice.part) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mediana =</span> <span class="kw">median</span>(estatura.m))
+
+<span class="kw">ggplot</span>(singer.medians, <span class="kw">aes</span>(<span class="dt">x =</span> voice.part, <span class="dt">y =</span> estatura.m)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">height =</span> <span class="dv">0</span>, <span class="dt">width =</span> <span class="fl">0.2</span>), 
+    <span class="dt">color =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> mediana), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">coord_flip</span>()</code></pre></div>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<hr />
+<p><br></p>
+<p><br></p>
+<p>Consideramos las siguientes mediciones de ozono en el aire, producidas por la red automática de monitoreo ambiental (<a href="http://www.aire.df.gob.mx/default.php?opc=&#39;aKBhnmI=&#39;&amp;opcion=Zg==">SIMA</a>). Las mediciones son concentración de ozono (en ppb o partes por billón) para las estaciones de Tlalnepantla e Iztapalapa, tomadas a las 2 pm, durante 2014.</p>
+<p><strong>Una exposición de 110 ppb durante una hora se considera aguda.</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
+<span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ggplot2)
+
+<span class="co"># leemos la base de datos</span>
+contaminantes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;datos/contaminantes_2014.csv&quot;</span>, <span class="dt">comment.char =</span> <span class="st">&quot;#&quot;</span>, 
+  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+<span class="co"># creamos una variable hora</span>
+contaminantes &lt;-<span class="st"> </span><span class="kw">mutate</span>(contaminantes, 
+  <span class="dt">hora =</span> <span class="kw">substring</span>(contaminantes<span class="op">$</span>date, <span class="dv">12</span>, <span class="dv">13</span>))
+<span class="co"># filtramos para obtener las estaciones y contaminantes de interés</span>
+ozono &lt;-<span class="st"> </span><span class="kw">filter</span>(contaminantes, id_parameter <span class="op">==</span><span class="st"> &quot;O3&quot;</span>, hora <span class="op">==</span><span class="st"> </span><span class="dv">14</span>,
+  id_station <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;TLA&quot;</span>, <span class="st">&quot;UIZ&quot;</span>))
+
+ozono <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">date</th>
+<th align="left">id_station</th>
+<th align="left">id_parameter</th>
+<th align="right">value</th>
+<th align="right">unit</th>
+<th align="left">hora</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>690</td>
+<td align="left">11/12/2014 14:00</td>
+<td align="left">UIZ</td>
+<td align="left">O3</td>
+<td align="right">60</td>
+<td align="right">1</td>
+<td align="left">14</td>
+</tr>
+<tr class="even">
+<td>50</td>
+<td align="left">25/01/2014 14:00</td>
+<td align="left">UIZ</td>
+<td align="left">O3</td>
+<td align="right">77</td>
+<td align="right">1</td>
+<td align="left">14</td>
+</tr>
+<tr class="odd">
+<td>597</td>
+<td align="left">26/10/2014 14:00</td>
+<td align="left">TLA</td>
+<td align="left">O3</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="left">14</td>
+</tr>
+<tr class="even">
+<td>673</td>
+<td align="left">03/12/2014 14:00</td>
+<td align="left">TLA</td>
+<td align="left">O3</td>
+<td align="right">57</td>
+<td align="right">1</td>
+<td align="left">14</td>
+</tr>
+<tr class="odd">
+<td>231</td>
+<td align="left">26/04/2014 14:00</td>
+<td align="left">TLA</td>
+<td align="left">O3</td>
+<td align="right">96</td>
+<td align="right">1</td>
+<td align="left">14</td>
+</tr>
+<tr class="even">
+<td>265</td>
+<td align="left">13/05/2014 14:00</td>
+<td align="left">TLA</td>
+<td align="left">O3</td>
+<td align="right">83</td>
+<td align="right">1</td>
+<td align="left">14</td>
+</tr>
+<tr class="odd">
+<td>46</td>
+<td align="left">23/01/2014 14:00</td>
+<td align="left">UIZ</td>
+<td align="left">O3</td>
+<td align="right">101</td>
+<td align="right">1</td>
+<td align="left">14</td>
+</tr>
+<tr class="even">
+<td>350</td>
+<td align="left">24/06/2014 14:00</td>
+<td align="left">UIZ</td>
+<td align="left">O3</td>
+<td align="right">78</td>
+<td align="right">1</td>
+<td align="left">14</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td align="left">15/01/2014 14:00</td>
+<td align="left">UIZ</td>
+<td align="left">O3</td>
+<td align="right">44</td>
+<td align="right">1</td>
+<td align="left">14</td>
+</tr>
+<tr class="even">
+<td>645</td>
+<td align="left">19/11/2014 14:00</td>
+<td align="left">TLA</td>
+<td align="left">O3</td>
+<td align="right">68</td>
+<td align="right">1</td>
+<td align="left">14</td>
+</tr>
+</tbody>
+</table>
+<p><br> <br></p>
+<p><img src="figuras/manicule.jpg" /> ¿Qué se necesita hacer para limpar este conjuntos de datos?</p>
+<p class="espacio">
+</p>
+<p><br></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>La distribución de ozono (en cualquier estación) es…</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Simétrica.</p></li>
+<li><p>Tiene sesgo a la derecha.</p></li>
+<li><p>Tiene sesgo a la izquierda.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+</div>
+<div id="graficas-qq-normales" class="section level3">
+<h3><span class="header-section-number">4.4.4</span> Gráficas qq-normales</h3>
+<p>En las secciones anteriores hemos usado gráficas de cuantiles para graficar cuantiles de un conjunto de datos y cuantiles teóricos dada una función de distribución. También es posible hacer gráficas de conjuntos de datos contra cuantiles teóricos de una distribución, de manera que podamos visualizar el grado de concordancia entre estas dos.</p>
+<p>La más popular de estas gráficas son las <em>cuantil-cuantil normales</em> (<em>q-q normales</em>). Una manera de hacer estas gráficas para el conjunto de datos <span class="math inline">\(x_1,...,x_n\)</span> es calcular:</p>
+<p><span class="math display">\[\bar{x}=\frac{1}{n}\sum_{i=1}^n x_i, s=\sqrt{\frac{1}{n-1}\sum_{i=1}^n(x_i-\mu)^2}\]</span></p>
+<p>y calcular los cuantiles <span class="math inline">\(q_{\bar{x},s}(f)\)</span> de la distribución <span class="math inline">\(Normal(\bar{x},s)\)</span>. Entonces calculamos <span class="math inline">\(q_{\bar{x},s}(f)\)</span> donde <span class="math inline">\(f_1,f_2,...,f_n\)</span> son los cuantiles de los datos y graficamos <span class="math inline">\((x_{i},q_{\bar{x},s}(f_i))\)</span>. Si los puntos no se desvían mucho de la recta <span class="math inline">\(x=y\)</span>, entonces el conjunto de datos se distribuye, aproximadamente, de manera normal. Las desviaciones de la recta se interpretan como arriba hicimos con la gráfica cuantil cuantil.</p>
+<p>Cuando queremos evaluar si la forma de la distribución de los datos es cercana a la normal, no es necesario calcular <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(s\)</span>, pues para cualquier <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma\)</span> tenemos que:</p>
+<p><span class="math display">\[q_{\mu, \sigma}(f) = \sigma q_{0,1}(f)+\mu,\]</span></p>
+<p>lo que implica que si graficamos los cuantiles <span class="math inline">\(q_{0,1}(f_i)\)</span> contra los del conjunto de datos, los datos se distribuyen aproximadamente normal cuando están dispuestos cerca de una recta.</p>
+<p class="espacio3">
+</p>
+
+<div class="nota">
+<strong>Construcción de una gráfica normal de cuantiles.</strong> Si los datos ordenados están dados por <span class="math inline">\(x_{1},x_{2},...,x_{n}\)</span>, con valores <span class="math inline">\(f\)</span> correspondientes <span class="math inline">\(f_1,f_2,...,f_n\)</span>, entonces graficamos los puntos <span class="math inline">\((q_{0,1},x_{i})\)</span>.
+</div>
+
+<p class="espacio3">
+</p>
+<div id="ejemplo-cantantes" class="section level4">
+<h4><span class="header-section-number">4.4.4.1</span> Ejemplo: cantantes</h4>
+<p>En estas gráficas podemos ver:</p>
+<ol style="list-style-type: decimal">
+<li><p>Cada conjunto de datos es razonablemente bien aproximado por una distribución normal. Muchas de las desviaciones que observamos se deben a redondeo.</p></li>
+<li><p>Aunque las medianas varían de grupo a grupo, las pendientes no varían mucho, esto quiere decir que las dispersiones (por ejemplo, desviaciones estándar) son similares a lo largo de todos los grupos.</p></li>
+<li><p>La variación en la dispersión de cada conjunto de datos no está asociado a la mediana de cada uno.</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(lattice)
+<span class="kw">library</span>(dplyr)
+<span class="co"># calculamos la estatura en centímetros</span>
+singer<span class="op">$</span>estatura.m &lt;-<span class="st"> </span>singer<span class="op">$</span>height <span class="op">*</span><span class="st"> </span><span class="fl">2.54</span>
+
+<span class="co"># calculamos el valor f dentro de cada grupo</span>
+singer_ord &lt;-<span class="st"> </span><span class="kw">arrange</span>(<span class="kw">group_by</span>(singer, voice.part), estatura.m)
+singer_cuant &lt;-<span class="st"> </span><span class="kw">mutate</span>(singer_ord, 
+  <span class="dt">n =</span> <span class="kw">n</span>(), 
+  <span class="dt">valor.f =</span> (<span class="dv">1</span><span class="op">:</span>n[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span><span class="fl">0.5</span>)<span class="op">/</span>n[<span class="dv">1</span>],
+  <span class="dt">q.norm =</span> <span class="kw">qnorm</span>(valor.f)
+  )
+
+<span class="kw">ggplot</span>(singer_cuant, <span class="kw">aes</span>(<span class="dt">x =</span> q.norm, <span class="dt">y =</span> estatura.m)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>voice.part, <span class="dt">nrow =</span> <span class="dv">2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<hr />
+<p><br></p>
+<p><br></p>
+</div>
+</div>
+<div id="el-tlc-y-errores-estandar" class="section level3">
+<h3><span class="header-section-number">4.4.5</span> El TLC y errores estándar</h3>
+<p>La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.</p>
+<p>Vale la pena observar que hay distribuciones que requieren un mayor tamaño de muestra <span class="math inline">\(n\)</span> para lograr una buena aproximación (por ejemplo la log-normal), ¿a qué se debe esto?</p>
+<p>¿Por qué tanto énfasis en el TLC? El <strong>error estándar</strong> es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que <span class="math inline">\(\bar{x}\)</span> este a una distancia de <span class="math inline">\(\mu_P\)</span> menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de <span class="math inline">\(P\)</span> la distribución de <span class="math inline">\(\bar{x}\)</span> se aproximará a una distribución normal: <span class="math display">\[\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)\]</span></p>
+<hr />
+<p><br></p>
+<div id="ley-de-los-grandes-numeros" class="section level4">
+<h4><span class="header-section-number">4.4.5.1</span> Ley de los Grandes Números</h4>
+<p>En Noviembre del 2017 El Financiero <a href="http://www.elfinanciero.com.mx/nacional/reprueban-entidades-estados-en-atencion-a-diabetes-ssa.html">publicó</a> una noticia que afirmab que los estados de Oaxaca, Michoacán, Morelos y Tamaulipas tenían la peor atención a pacientes diabéticos.</p>
+<p>El índice <a href="http://oment.uanl.mx/tablero-de-control-de-enfermedades/">ICAD</a> mide el cuidado que se les da a los pacientes en las unidades de primer nivel, en todas sus jurisdicciones sanitarias. Además toma en cuenta tres aspectos principales: que se pueda retener al paciente, que se tenga acceso a pruebas diagnósticas y si tiene su diabetes controlada.</p>
+<p>Se cuenta con datos del ICAD de Noviembre del 2016:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">icad &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/icad.csv&quot;</span>)
+icad <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">fecha</th>
+<th align="right">cve_edo</th>
+<th align="left">cve_clues</th>
+<th align="left">nombre</th>
+<th align="right">calificacion</th>
+<th align="right">pac_act</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">20161125</td>
+<td align="right">18</td>
+<td align="left">NTSSA000083</td>
+<td align="left">EL RECODO</td>
+<td align="right">54.2</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">20161125</td>
+<td align="right">7</td>
+<td align="left">CSSSA007330</td>
+<td align="left">JUNCANÁ</td>
+<td align="right">39.3</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">20161125</td>
+<td align="right">28</td>
+<td align="left">TSSSA002863</td>
+<td align="left">U02 COL S MARCOS</td>
+<td align="right">65.1</td>
+<td align="right">107</td>
+</tr>
+<tr class="even">
+<td align="right">20161125</td>
+<td align="right">12</td>
+<td align="left">GRSSA004420</td>
+<td align="left">CSR QUETZALAPA</td>
+<td align="right">45.0</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="right">20161125</td>
+<td align="right">15</td>
+<td align="left">MCSSA004856</td>
+<td align="left">VILLA CUAUHTÉMOC</td>
+<td align="right">74.5</td>
+<td align="right">160</td>
+</tr>
+<tr class="even">
+<td align="right">20161125</td>
+<td align="right">12</td>
+<td align="left">GRSSA007512</td>
+<td align="left">CSR TEHUIXTLA</td>
+<td align="right">57.6</td>
+<td align="right">46</td>
+</tr>
+<tr class="odd">
+<td align="right">20161125</td>
+<td align="right">7</td>
+<td align="left">CSSSA005551</td>
+<td align="left">S ANTONIO EL PARAJE</td>
+<td align="right">56.5</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="right">20161125</td>
+<td align="right">4</td>
+<td align="left">CCSSA001075</td>
+<td align="left">CS LA VICTORIA</td>
+<td align="right">64.0</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">20161125</td>
+<td align="right">20</td>
+<td align="left">OCSSA000886</td>
+<td align="left">MONJAS</td>
+<td align="right">56.9</td>
+<td align="right">63</td>
+</tr>
+<tr class="even">
+<td align="right">20161125</td>
+<td align="right">14</td>
+<td align="left">JCSSA001010</td>
+<td align="left">CS S JOSÉ CASAS CAIDAS</td>
+<td align="right">55.1</td>
+<td align="right">34</td>
+</tr>
+</tbody>
+</table>
+<p>Cada unidad de salud o <em>CLUES</em> recibe una calificación <strong>promedio</strong> y tiene cierto número de pacientes diabéticos activos.</p>
+<p>Un efecto interesante es que si vemos el promedio de calificación contra el número de pacientes activos vemos el siguiente fenómeno:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(icad, <span class="kw">aes</span>(<span class="dt">x=</span>pac_act, <span class="dt">y=</span>calificacion)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">400</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(icad<span class="op">$</span>calificacion), <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>La línea roja representa la media nacional de la calificación promedio de todas las unidades del país. Podemos ver que conforme aumenta el número de pacientes en el hospital las observaciones tienden a acercarse más a la media poblacional.</p>
+<p>Podemos simular la media para diferentes tamaños de muestra y ver cómo se comporta la media para varios tamaños de muestra. En los datos del ICAD la media nacional es de 58.867:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123456</span>)
+sim_media_normal &lt;-<span class="st"> </span><span class="cf">function</span>(n){
+  media &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> n, <span class="dt">mean =</span> <span class="fl">58.86661</span>, <span class="dt">sd =</span> <span class="fl">11.12385</span>))
+  <span class="kw">tibble</span>(<span class="dt">n=</span>n, <span class="dt">media=</span>media)
+}
+sim_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">map_df</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">500</span>, <span class="dv">1000</span>, <span class="dt">replace =</span> T), sim_media_normal)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim_<span class="dv">1</span>, <span class="kw">aes</span>(<span class="dt">x =</span> n, <span class="dt">y =</span> media)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(icad<span class="op">$</span>calificacion), <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Nuevamente se observa un fenómeno similar. Este fenómeno del error estándar generalmente se observa en la práctica y una buena estrategia para el modelado sería considerar el número de observaciones (pacientes, alumnos, escuelas) utilizados para calcular la media.</p>
+<p class="espacio">
+</p>
+
+<div class="comentario">
+Alguien nos podría preguntar: ¿por qué debería el promedio acercarse a la media cuando aumentamos el tamaño de la muestra?“.
+</div>
+
+<p class="espacio">
+</p>
+<p>Debemos interpretar esta pregunta como preguntando por qué el error estándar de la media se reduce a medida que <span class="math inline">\(n\)</span> aumenta. El teorema del límite central muestra que (bajo ciertas condiciones, por supuesto) el error estándar debe hacer esto, y que la media se aproxima a una distribución normal. Pero la pregunta es ¿por qué?</p>
+<p>La mejor justificación simple puede ser que hay más formas de obtener valores <em>medios</em> que valores extremos; por ejemplo, la media de un lanzamiento de un dado (distribución discreta uniforme en <span class="math inline">\(1, 2, ..., 6\)</span>) es <span class="math inline">\(3.5\)</span>.</p>
+<ul>
+<li><p>Con un dado, es igualmente probable que obtengas un “promedio” de 3 o de 1.</p></li>
+<li><p>Pero con dos dados hay cinco formas de obtener un promedio de 3, y solo una forma de obtener un promedio de 1.</p></li>
+</ul>
+<p>*Hay 5 veces más probabilidades de obtener el valor que está más cerca de la media que el que está más lejos.</p>
+<p>Veamos esto con un ejercicio de simulación:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">110265</span>)
+tira_dado &lt;-<span class="st"> </span><span class="cf">function</span>(i){
+  res &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size =</span> <span class="dv">1</span>)
+  <span class="kw">tibble</span>(<span class="dt">lanzamiento=</span>i, <span class="dt">resultado=</span>res)
+}</code></pre></div>
+<p>Lanzamos el dado mil veces y calculamos el promedio en cada lanzamiento.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sim_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">map_df</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>, tira_dado) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">media =</span> <span class="kw">cummean</span>(resultado))
+sim_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">lanzamiento</th>
+<th align="right">resultado</th>
+<th align="right">media</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">3.00</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">2.50</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">3.33</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">2.75</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">3.20</td>
+</tr>
+</tbody>
+</table>
+<p>Esto ocurre debido a la <strong>Ley de los Grandes Números</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim_<span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">x =</span> lanzamiento, <span class="dt">y =</span> media)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="fl">3.5</span>, <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1000</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="fl">3.3</span>,<span class="fl">4.5</span>))
+<span class="co">#&gt; Warning: Removed 2 rows containing missing values (geom_path).</span></code></pre></div>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="tarea-3" class="section level3">
+<h3><span class="header-section-number">4.4.6</span> Tarea</h3>
+<p>La Evaluación Nacional de Logros Académicos en Centros Escolares (ENLACE), es un examen que se pretende realizar cada año en México por la Secretaria de Educación Pública (SEP) a todas las escuelas públicas y privadas de nivel básico; para conocer el nivel de desempeño en las materias de español y matemáticas. Han existido importantes resistencias a la aplicación de este examen y opiniones de intelectuales respecto de las fallas que esta tiene.</p>
+<p>En este enlace la SEP publicó los resultados de la prueba ENLACE para todas las escuelas de los 32 estados de México: <a href="http://www.enlace.sep.gob.mx/content/ba/pages/base_de_datos_completa_2013/" class="uri">http://www.enlace.sep.gob.mx/content/ba/pages/base_de_datos_completa_2013/</a></p>
+<ol style="list-style-type: decimal">
+<li><p>Descarga los datos para todas las localidades y cárgalos en R utilizando la función <code>map_df</code> del paquete <code>purrr</code>.</p></li>
+<li><p>Explica si los datos cumplen los principios de datos limpios.</p></li>
+<li><p>Haz la limpieza necesaria que requieran los datos.</p></li>
+<li><p>Agrega los datos a nivel municipio para calcular el número de alumnos en cada grado y su promedio de puntos en español y matemáticas.</p></li>
+<li><p>Haz una gráfica en la cual cada punto represente un municipio y en el eje x se muestre el número de alumnos que presentaron el examen y en el eje y el promedio de puntos en matemáticas.</p></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="manipulacion-y-visualizacion-de-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

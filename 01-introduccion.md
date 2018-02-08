@@ -1,4 +1,5 @@
 
+
 # Introducción {#intro}
 
 <style>
@@ -40,7 +41,7 @@ ggplot(sat, aes(x = teacher_salary, y = total_score)) +
   ylab("Score total promedio de SAT")
 ```
 
-<img src="01-introduccion_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="01-introduccion_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" />
 
 Podemos revisar el resultado de la regresión lineal (haciendo uso del paquete `stargazer`):
 
@@ -111,14 +112,14 @@ stargazer(out2, type = 'html', style = "all", single.row = T,
 
 Podemos ver que el coeficiente de la regresión lineal correspondiente al salario de los maestros se invierte. Gráficamente podemos visualizar este efecto:
 
-<img src="01-introduccion_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="01-introduccion_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 Vemos que dentro de cada grupo, la pendiente es positiva (o al menos no negativa). También podríamos agregar etiquetas:
 
 
 
-<img src="01-introduccion_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="01-introduccion_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
 
 Otro ejemplo de este fenómeno es cuando la Universidad de California, Berkeley fue demandada por discrimanción hacia mujeres que habían solicitado admisión a un posgrado en 1973. De acuerdo con las estadísticas de admisión, los hombres que presentaron la solicitud tenían mayor probabilidad de ser admitidos que las mujeres, y la diferencia era tan sustancial que uno podría concluir que efectivamente había existido dicha discriminación. Sin embargo, al examinar los datos individualmente por departamento, parecía que no había una diferencia significativa en contra de las mujeres.
 
@@ -606,7 +607,7 @@ ggplot(media_por_etnia, aes(x = Etnia, y = Media_etnia)) +
   theme(axis.text.x = element_text(angle=25))
 ```
 
-<img src="01-introduccion_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="01-introduccion_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
 
 ![](figuras/manicule2.jpg)
 <div class="centered">
@@ -836,7 +837,7 @@ ggplot(chocolate_nobel, aes(x=Cons_per_capita, y = Laureates_per_10_million)) +
   geom_smooth(method = 'lm', se = F)
 ```
 
-<img src="01-introduccion_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="01-introduccion_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" />
 
 El artículo original era más una nota sarcástica, que un artículo de investigación. Muchos artículos, blogs y medios mostraron que esta aparente correlación no tiene sentido. Estas críticas muestran que el número de Nobel para 10 millones de habitantes también está "correlacionado" con el PIB per cápita, el índice de desarrollo humano, el consumo de todo tipo de bienes de lujo, etc.
 
