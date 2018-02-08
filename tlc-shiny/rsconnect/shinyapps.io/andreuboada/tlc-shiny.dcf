@@ -1,0 +1,10 @@
+name: tlc-shiny
+title:
+username:
+account: andreuboada
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 275107
+bundleId: 1212554
+url: https://andreuboada.shinyapps.io/tlc-shiny/
+when: 1518038417.93819
