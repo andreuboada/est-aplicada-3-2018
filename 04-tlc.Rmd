@@ -1,3 +1,20 @@
+```{r include=FALSE, cache=FALSE}
+set.seed(1014)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  cache = TRUE,
+  out.width = "70%",
+  fig.align = 'center',
+  fig.width = 6,
+  fig.asp = 0.618,  # 1 / phi
+  fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+```
 # Teorema del Límite Central
 
 <style>
@@ -146,7 +163,7 @@ Sabemos que
 Derivando con respecto a $\theta$:
 \noindent
 \begin{eqnarray*}
-0 &=& dfrac{d f(x)}{d \theta} f(y) + \dfrac{d f(y)}{d \theta} f(x)\\
+0 &=& \dfrac{d f(x)}{d \theta} f(y) + \dfrac{d f(y)}{d \theta} f(x)\\
 &=& \dfrac{df}{dx}\cdot \dfrac{d x}{d \theta}\cdot f(y) + \dfrac{d f}{d y}\cdot\dfrac{d y}{d\theta} \cdot f(x) \\
 &=& -r f^\prime(x) \mbox{sen}(\theta)f(y) + f^\prime(y)\cdot r \cos(\theta) f(x)\\
 &=& -y f^\prime(x)f(y) + xf^\prime(y)f(x).
@@ -342,11 +359,11 @@ Tenemos que resolver varios problemas con esta definición:
 
 Problemas adicionales surgen cuando queremos comparar los cuantiles de un conjunto de datos con los cuantiles teóricos de una distribución dada, esto para contestar preguntas como: ¿la distribución de datos es similar a una normal? Para comprender mejor los cuantiles y poder responder estas preguntas comencemos con la construcción de gráficas de cuantiles para densidades de probabilidad.
 
-### Gráficas de cuantiles teóricos
+## Gráficas de cuantiles teóricos
 
 Supongamos que $G$ es la función de distribución de una variable aleatoria continua, tal que $G$ es diferenciable y tiene derivada positiva (por ejemplo, si la variable aleatoria tiene densidad positiva y continua en todos los reales). Entonces podemos construir la función $q:(0,1) \to (\infty, \infty)$ dada por: $$q(f)=G^{-1}(f)$$ para cualquier $f \in (0,1)$. Decimos que $q$ es la **función de cuantiles** de la variable aleatoria con distribución $G$. Bajo esta definición, es claro que si $X$ tiene distribución $G$, entonces $P(X<q(f))=G(q(f))=f$.
 
-#### Ejemplo: normal
+### Ejemplo: normal {-}
 Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria normal estándar. A esta función la denotamos como $q_{0,1}(f)$, y en general, a la función de cuantiles de una distribución $Normal(\mu, \sigma^2)$ la denotamos por $q_{\mu, \sigma}(f)$.
 
 ```{r, fig.width=3.8, fig.height=4}
@@ -378,7 +395,7 @@ Notemos que $q_{\mu, \sigma}(f) \to \infty$ cunado $f \to 1$, y el cuantil $1$ n
 <br>
 
 
-### Gráficas de cuantiles para un conjunto de datos
+## Gráficas de cuantiles para un conjunto de datos
 Hay varias maneras razonables de definir los cuantiles de un conjunto de datos, (ver Hyndman y Fan 1996 para una resumen de lo que usan los paquetes estadísticos). Nosotros adoptamos la siguiente construcción:
 
 <p class="espacio3">
@@ -446,7 +463,7 @@ ggplot(tips, aes(x=probs, y = cuantiles)) +
   geom_point()
 ```
 
-#### ¿Qué buscar en una gráfica de cuantiles?
+### ¿Qué buscar en una gráfica de cuantiles?
 Las gráficas de cuantiles son conceptualmente simples; sin embargo, su interpretación efectiva requiere práctica. Algunas guías son:
 
 1. Podemos leer fácilmente la mediana y los cuartos.
@@ -480,7 +497,7 @@ ggplot(grupos, aes(x=probs, y = cuantiles)) +
   geom_point()
 ```
 
-### Diagramas de caja y brazos
+## Diagramas de caja y brazos
 Los diagramas de caja y brazos son muy populares, e intentan mostrar gráficamente algo similar al resumen de cinco números de Tukey:
 
 </br>
@@ -591,7 +608,7 @@ La distribución de ozono (en cualquier estación) es...
 </div>
 <br>
 
-### Gráficas qq-normales
+## Gráficas qq-normales
 
 En las secciones anteriores hemos usado gráficas de cuantiles para graficar cuantiles de un conjunto de datos y cuantiles teóricos dada una función de distribución. También es posible hacer gráficas de conjuntos de datos contra cuantiles teóricos de una distribución, de manera que podamos visualizar el grado de concordancia entre estas dos.
 
@@ -617,7 +634,7 @@ lo que implica que si graficamos los cuantiles $q_{0,1}(f_i)$ contra los del con
 <p class="espacio3">
 </p>
 
-#### Ejemplo: cantantes
+### Ejemplo: cantantes {-}
 
 En estas gráficas podemos ver:
 
@@ -667,7 +684,7 @@ $$\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)$$
 
 <br>
 
-#### Ley de los Grandes Números
+## Ley de los Grandes Números
 
 En Noviembre del 2017 El Financiero [publicó](http://www.elfinanciero.com.mx/nacional/reprueban-entidades-estados-en-atencion-a-diabetes-ssa.html) una noticia que afirmab que los estados de Oaxaca, Michoacán, Morelos y Tamaulipas tenían la peor atención a pacientes diabéticos. 
 
@@ -761,7 +778,7 @@ ggplot(sim_2, aes(x = lanzamiento, y = media)) +
   scale_y_continuous(limits = c(3.3,4.5))
 ```
 
-### Tarea
+## Tarea
 
 La Evaluación Nacional de Logros Académicos en Centros Escolares (ENLACE), es un examen que se pretende realizar cada año en México por la Secretaria de Educación Pública (SEP) a todas las escuelas públicas y privadas de nivel básico; para conocer el nivel de desempeño en las materias de español y matemáticas. Han existido importantes resistencias a la aplicación de este examen y opiniones de intelectuales respecto de las fallas que esta tiene.
 

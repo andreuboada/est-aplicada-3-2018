@@ -1425,8 +1425,8 @@ Utiliza los datos del Billboard Hot 100 para contestar las siguientes preguntas:
 
 3. ¿Cuáles son los 10 artistas que han tenido más #1's en los últimos 10 años? Realiza una gráfica de barras para responder a la pregunta.
 
-4. ¿Cómo se ha comportado el número promedio de semanas que una canción permanece en el #1 a través de la historia?
+4. ¿Cómo se ha comportado el número promedio de semanas que una canción ha estado en el #1 a través de la historia?
 
-4. ¿Existe alguna relación entre el número de presentaciones en vivo (`gains_performance`) y el número de semanas que permance una canción en #1?
+4. ¿Existe alguna relación entre el número de presentaciones en vivo (`gains_performance`) y el número de semanas que permance una canción en #1 desde 1980?
 
 5. Para algunos _últimos_ singles que han permanecido más semanas en el Hot 100 en algunos meses realiza una gráfica de su posición en el tiempo semana a semana. Puedes elegir alguna fecha que te interese, la fecha de tu cumpleaños o la fecha en que estuvo en #1 tu canción favorita.
