@@ -178,9 +178,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#que-signo-tiene-c"><i class="fa fa-check"></i><b>4.2.1</b> ¿Qué signo tiene c?</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#otras-observaciones"><i class="fa fa-check"></i><b>4.3</b> Otras observaciones</a></li>
-<li class="chapter" data-level="4.4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#el-tlc-y-errores-estandar"><i class="fa fa-check"></i><b>4.4</b> El TLC y errores estándar</a></li>
-<li class="chapter" data-level="4.5" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#diagramas-de-caja-y-brazos"><i class="fa fa-check"></i><b>4.5</b> Diagramas de caja y brazos</a><ul>
+<li class="chapter" data-level="4.4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#diagramas-de-caja-y-brazos"><i class="fa fa-check"></i><b>4.4</b> Diagramas de caja y brazos</a><ul>
 <li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-1"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-de-cuantiles-teoricos"><i class="fa fa-check"></i><b>4.5</b> Gráficas de cuantiles teóricos</a><ul>
+<li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-normal"><i class="fa fa-check"></i>Ejemplo: normal</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-de-cuantiles-para-un-conjunto-de-datos"><i class="fa fa-check"></i><b>4.6</b> Gráficas de cuantiles para un conjunto de datos</a><ul>
 <li class="chapter" data-level="4.6.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#que-buscar-en-una-grafica-de-cuantiles"><i class="fa fa-check"></i><b>4.6.1</b> ¿Qué buscar en una gráfica de cuantiles?</a></li>
@@ -188,10 +190,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.7" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-qq-normales"><i class="fa fa-check"></i><b>4.7</b> Gráficas qq-normales</a><ul>
 <li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-cantantes"><i class="fa fa-check"></i>Ejemplo: cantantes</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ley-de-los-grandes-numeros"><i class="fa fa-check"></i><b>4.8</b> Ley de los Grandes Números</a><ul>
-<li class="chapter" data-level="4.8.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-2"><i class="fa fa-check"></i><b>4.8.1</b> Ejemplo</a></li>
-</ul></li>
-<li class="chapter" data-level="4.9" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#tarea-3"><i class="fa fa-check"></i><b>4.9</b> Tarea</a></li>
+<li class="chapter" data-level="4.8" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#el-tlc-y-errores-estandar"><i class="fa fa-check"></i><b>4.8</b> El TLC y errores estándar</a></li>
+<li class="chapter" data-level="4.9" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-2"><i class="fa fa-check"></i><b>4.9</b> Ejemplo</a></li>
+<li class="chapter" data-level="4.10" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#tarea-3"><i class="fa fa-check"></i><b>4.10</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -388,20 +389,8 @@ x = \pm \sigma.
 \]</span> Esto quiere decir que <span class="math inline">\(f(x)\)</span> tiene puntos de inflexión en <span class="math inline">\(-\sigma\)</span> y <span class="math inline">\(\sigma\)</span>.</p>
 <p><img src="04-tlc_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="el-tlc-y-errores-estandar" class="section level2">
-<h2><span class="header-section-number">4.4</span> El TLC y errores estándar</h2>
-<p>La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.</p>
-<p>Vale la pena observar que hay distribuciones que requieren un mayor tamaño de muestra <span class="math inline">\(n\)</span> para lograr una buena aproximación (por ejemplo la log-normal), ¿a qué se debe esto?</p>
-<p>¿Por qué tanto énfasis en el TLC? El <strong>error estándar</strong> es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que <span class="math inline">\(\bar{x}\)</span> este a una distancia de <span class="math inline">\(\mu_P\)</span> menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de <span class="math inline">\(P\)</span> la distribución de <span class="math inline">\(\bar{x}\)</span> se aproximará a una distribución normal: <span class="math display">\[\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)\]</span></p>
-<hr />
-<p>Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de <span class="math inline">\(\bar{X}\)</span>:</p>
-<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="70%" height="800px">
-</iframe>
-<hr />
-<p><br></p>
-</div>
 <div id="diagramas-de-caja-y-brazos" class="section level2">
-<h2><span class="header-section-number">4.5</span> Diagramas de caja y brazos</h2>
+<h2><span class="header-section-number">4.4</span> Diagramas de caja y brazos</h2>
 <p>Los diagramas de caja y brazos son muy populares, e intentan mostrar gráficamente algo similar al resumen de cinco números de Tukey:</p>
 </br> <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Boxplot.svg/457px-Boxplot.svg.png"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Boxplot.svg/457px-Boxplot.svg.png" width="300px">
 <p>
@@ -502,9 +491,9 @@ singer<span class="op">$</span>estatura.m &lt;-<span class="st"> </span>singer<s
     <span class="dt">color =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> mediana), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">coord_flip</span>()</code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <hr />
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <img src="figuras/manicule2.jpg" />
 <div class="centered">
 <p class="espacio">
@@ -520,6 +509,34 @@ singer<span class="op">$</span>estatura.m &lt;-<span class="st"> </span>singer<s
 </div>
 <p><br></p>
 <hr />
+<p><br></p>
+</div>
+</div>
+<div id="graficas-de-cuantiles-teoricos" class="section level2">
+<h2><span class="header-section-number">4.5</span> Gráficas de cuantiles teóricos</h2>
+<p>Supongamos que <span class="math inline">\(G\)</span> es la función de distribución de una variable aleatoria continua, tal que <span class="math inline">\(G\)</span> es diferenciable y tiene derivada positiva (por ejemplo, si la variable aleatoria tiene densidad positiva y continua en todos los reales). Entonces podemos construir la función <span class="math inline">\(q:(0,1) \to (\infty, \infty)\)</span> dada por: <span class="math display">\[q(f)=G^{-1}(f)\]</span> para cualquier <span class="math inline">\(f \in (0,1)\)</span>. Decimos que <span class="math inline">\(q\)</span> es la <strong>función de cuantiles</strong> de la variable aleatoria con distribución <span class="math inline">\(G\)</span>. Bajo esta definición, es claro que si <span class="math inline">\(X\)</span> tiene distribución <span class="math inline">\(G\)</span>, entonces <span class="math inline">\(P(X&lt;q(f))=G(q(f))=f\)</span>.</p>
+<div id="ejemplo-normal" class="section level3 unnumbered">
+<h3>Ejemplo: normal</h3>
+<p>Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria normal estándar. A esta función la denotamos como <span class="math inline">\(q_{0,1}(f)\)</span>, y en general, a la función de cuantiles de una distribución <span class="math inline">\(Normal(\mu, \sigma^2)\)</span> la denotamos por <span class="math inline">\(q_{\mu, \sigma}(f)\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">curve</span>(qnorm, <span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to=</span><span class="dv">1</span>, <span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">xlab=</span><span class="st">&#39;Cuantil (f)&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;q&#39;</span>)</code></pre></div>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Notemos que <span class="math inline">\(q_{\mu, \sigma}(f) \to \infty\)</span> cunado <span class="math inline">\(f \to 1\)</span>, y el cuantil <span class="math inline">\(1\)</span> no esta definido. Análogamente el cuantil <span class="math inline">\(0\)</span> tampoco está definido.</p>
+<p class="espacio">
+</p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>¿Cómo se ve la gráfica de cuantiles de una variable aleatoria uniforme?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Similar al caso normal (una curva).</p></li>
+<li><p>Como una recta horizontal.</p></li>
+<li><p>Como una recta vertical.</p></li>
+<li><p>Como una diagonal.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
 <p><br></p>
 </div>
 </div>
@@ -628,8 +645,8 @@ singer_cuant &lt;-<span class="st"> </span><span class="kw">mutate</span>(singer
 <p><br></p>
 </div>
 </div>
-<div id="ley-de-los-grandes-numeros" class="section level2">
-<h2><span class="header-section-number">4.8</span> Ley de los Grandes Números</h2>
+<div id="el-tlc-y-errores-estandar" class="section level2">
+<h2><span class="header-section-number">4.8</span> El TLC y errores estándar</h2>
 <p>En Noviembre del 2017 El Financiero <a href="http://www.elfinanciero.com.mx/nacional/reprueban-entidades-estados-en-atencion-a-diabetes-ssa.html">publicó</a> una noticia que afirmab que los estados de Oaxaca, Michoacán, Morelos y Tamaulipas tenían la peor atención a pacientes diabéticos.</p>
 <p>El índice <a href="http://oment.uanl.mx/tablero-de-control-de-enfermedades/">ICAD</a> (Secretaría de Salud) mide el cuidado que se les da a los pacientes en las unidades de primer nivel, en todas sus jurisdicciones sanitarias. Además toma en cuenta tres aspectos principales: que se pueda retener al paciente, que se tenga acceso a pruebas diagnósticas y si tiene su diabetes controlada.</p>
 <p>Se cuenta con datos del ICAD de Noviembre del 2016:</p>
@@ -818,8 +835,18 @@ sim_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </
 <span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1000</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="fl">3.3</span>,<span class="fl">4.5</span>))</code></pre></div>
 <p><img src="04-tlc_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<div id="ejemplo-2" class="section level3">
-<h3><span class="header-section-number">4.8.1</span> Ejemplo</h3>
+<p>La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.</p>
+<p>Vale la pena observar que hay distribuciones que requieren un mayor tamaño de muestra <span class="math inline">\(n\)</span> para lograr una buena aproximación (por ejemplo la log-normal), ¿a qué se debe esto?</p>
+<p>¿Por qué tanto énfasis en el TLC? El <strong>error estándar</strong> es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que <span class="math inline">\(\bar{x}\)</span> este a una distancia de <span class="math inline">\(\mu_P\)</span> menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de <span class="math inline">\(P\)</span> la distribución de <span class="math inline">\(\bar{x}\)</span> se aproximará a una distribución normal: <span class="math display">\[\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)\]</span></p>
+<hr />
+<p>Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de <span class="math inline">\(\bar{X}\)</span>:</p>
+<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="100%" height="800px">
+</iframe>
+<hr />
+<p><br></p>
+</div>
+<div id="ejemplo-2" class="section level2">
+<h2><span class="header-section-number">4.9</span> Ejemplo</h2>
 <p>La corporación ALFA vende bicicletas. Basada en su experiencia siente que en los meses de verano es  probable que venda 0, 1, 2, 3 ó 4 bicicletas en un día (la firma nunca ha vendido más de 4 bicicletas por día).</p>
 <p>Sea <span class="math inline">\(X\)</span> el número de bicicletas vendidas en un día. <span class="math inline">\(X\)</span> sigue una distribución uniforme y toma los valores <span class="math inline">\(-2,-1,0,1,2\)</span>, es decir, <span class="math display">\[
 X=\left\{ \begin{array}{cl}
@@ -906,7 +933,7 @@ df_bicis <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"
 <span class="kw">ggplot</span>(df_bicis_frec, <span class="kw">aes</span>(<span class="dt">x =</span> x)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">y =</span> p_x), <span class="dt">stat =</span> <span class="st">&#39;identity&#39;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">stat=</span><span class="st">&#39;identity&#39;</span>,<span class="kw">aes</span>(<span class="dt">y=</span>p_x,<span class="dt">label=</span><span class="kw">round</span>(p_x,<span class="dv">4</span>)),<span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>,<span class="dt">size=</span><span class="fl">2.5</span>)</code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-32-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-33-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Si comparamos con los valores que toma una distribución normal con la misma media y la misma desviación estándar vemos que las probabilidades son muy similares. Es un resultado del Teorema del Límite Central que la suma de variables uniformes independientes sigue una distribución normal. De cualquier forma es interesante cómo la suma de sólo 5 uniformes independientes da como resultado una distribución que se asemeja a la de una normal.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">media_bicis &lt;-<span class="st"> </span><span class="kw">mean</span>(df_bicis<span class="op">$</span>x)
 sd_bicis &lt;-<span class="st"> </span><span class="kw">sd</span>(df_bicis<span class="op">$</span>x)
@@ -915,9 +942,8 @@ sd_bicis &lt;-<span class="st"> </span><span class="kw">sd</span>(df_bicis<span 
 <span class="co">#&gt;  [8] 0.076440 0.098302 0.115022 0.122455 0.118619 0.104546 0.083838</span>
 <span class="co">#&gt; [15] 0.061172 0.040611 0.024531 0.013482 0.006742 0.003068 0.001270</span></code></pre></div>
 </div>
-</div>
 <div id="tarea-3" class="section level2">
-<h2><span class="header-section-number">4.9</span> Tarea</h2>
+<h2><span class="header-section-number">4.10</span> Tarea</h2>
 <ol style="list-style-type: decimal">
 <li>La Evaluación Nacional de Logros Académicos en Centros Escolares (ENLACE), es un examen que se pretende realizar cada año en México por la Secretaria de Educación Pública (SEP) a todas las escuelas públicas y privadas de nivel básico; para conocer el nivel de desempeño en las materias de español y matemáticas. Han existido importantes resistencias a la aplicación de este examen y opiniones de intelectuales respecto de las fallas que esta tiene.</li>
 </ol>
@@ -950,7 +976,7 @@ sd_bicis &lt;-<span class="st"> </span><span class="kw">sd</span>(df_bicis<span 
 }</code></pre></div>
 <p>Por ejemplo, con <span class="math inline">\(p=1/3\)</span> y <span class="math inline">\(n=10\)</span> realizaciones, la gráfica se ve así:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">genera_binoms</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">10</span>)</code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Utiliza la función para determinar a partir de qué valor de <span class="math inline">\(n\)</span> la distribución de una variable Binomial con probabilidad de éxito <span class="math inline">\(p=1/100\)</span> se asemeja a la de una normal.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Regresando al ejemplo de la venta de bicicletas,</li>

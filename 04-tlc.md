@@ -273,25 +273,6 @@ Esto quiere decir que $f(x)$ tiene puntos de inflexión en $-\sigma$ y $\sigma$.
 
 <img src="04-tlc_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
 
-## El TLC y errores estándar
-
-La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.
-
-Vale la pena observar que hay distribuciones que requieren un mayor tamaño de muestra $n$ para lograr una buena aproximación (por ejemplo la log-normal), ¿a qué se debe esto?
-
-¿Por qué tanto énfasis en el TLC? El __error estándar__ es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que $\bar{x}$ este a una distancia de $\mu_P$ menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de $P$ la distribución de $\bar{x}$ se aproximará a una distribución normal:
-$$\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)$$
-
----
-
-Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de $\bar{X}$:
-
-<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="70%" height="800px"></iframe>
-
----
-
-<br>
-
 ## Diagramas de caja y brazos
 Los diagramas de caja y brazos son muy populares, e intentan mostrar gráficamente algo similar al resumen de cinco números de Tukey:
 
@@ -356,11 +337,11 @@ ggplot(singer.medians, aes(x = voice.part, y = estatura.m)) +
   coord_flip()
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
 
 ---
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
 
 ![](figuras/manicule2.jpg) 
 <div class="centered">
@@ -381,6 +362,44 @@ La distribución de ozono (en cualquier estación) es...
 
 ---
 
+<br>
+
+## Gráficas de cuantiles teóricos
+
+Supongamos que $G$ es la función de distribución de una variable aleatoria continua, tal que $G$ es diferenciable y tiene derivada positiva (por ejemplo, si la variable aleatoria tiene densidad positiva y continua en todos los reales). Entonces podemos construir la función $q:(0,1) \to (\infty, \infty)$ dada por: $$q(f)=G^{-1}(f)$$ para cualquier $f \in (0,1)$. Decimos que $q$ es la **función de cuantiles** de la variable aleatoria con distribución $G$. Bajo esta definición, es claro que si $X$ tiene distribución $G$, entonces $P(X<q(f))=G(q(f))=f$.
+
+### Ejemplo: normal {-}
+Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria normal estándar. A esta función la denotamos como $q_{0,1}(f)$, y en general, a la función de cuantiles de una distribución $Normal(\mu, \sigma^2)$ la denotamos por $q_{\mu, \sigma}(f)$.
+
+
+```r
+curve(qnorm, from = 0, to=1, n = 1000, xlab='Cuantil (f)', ylab='q')
+```
+
+<img src="04-tlc_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
+
+Notemos que $q_{\mu, \sigma}(f) \to \infty$ cunado $f \to 1$, y el cuantil $1$ no esta definido. Análogamente el cuantil $0$ tampoco está definido.
+
+<p class="espacio">
+</p>
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+¿Cómo se ve la gráfica de cuantiles de una variable aleatoria uniforme?
+
+(a) Similar al caso normal (una curva).
+
+(b) Como una recta horizontal.
+
+(c) Como una recta vertical.
+
+(d) Como una diagonal.
+
+<p class="espacio3">
+</p>
+</div>
 <br>
 
 ## Gráficas de cuantiles para un conjunto de datos
@@ -525,7 +544,7 @@ ggplot(singer_cuant, aes(x = q.norm, y = estatura.m)) +
 
 <br>
 
-## Ley de los Grandes Números
+## El TLC y errores estándar
 
 En Noviembre del 2017 El Financiero [publicó](http://www.elfinanciero.com.mx/nacional/reprueban-entidades-estados-en-atencion-a-diabetes-ssa.html) una noticia que afirmab que los estados de Oaxaca, Michoacán, Morelos y Tamaulipas tenían la peor atención a pacientes diabéticos. 
 
@@ -653,7 +672,24 @@ ggplot(sim_2, aes(x = lanzamiento, y = media)) +
 
 <img src="04-tlc_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" />
 
-### Ejemplo
+La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.
+
+Vale la pena observar que hay distribuciones que requieren un mayor tamaño de muestra $n$ para lograr una buena aproximación (por ejemplo la log-normal), ¿a qué se debe esto?
+
+¿Por qué tanto énfasis en el TLC? El __error estándar__ es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que $\bar{x}$ este a una distancia de $\mu_P$ menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de $P$ la distribución de $\bar{x}$ se aproximará a una distribución normal:
+$$\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)$$
+
+---
+
+Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de $\bar{X}$:
+
+<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="100%" height="800px"></iframe>
+
+---
+
+<br>
+
+## Ejemplo
 
 La corporación ALFA vende bicicletas. Basada en su experiencia siente que en los meses de verano es \textit{igualmente} probable que venda 0, 1, 2, 3 ó 4 bicicletas en un día (la firma nunca ha vendido más de 4 bicicletas por día).
 
@@ -733,7 +769,7 @@ ggplot(df_bicis_frec, aes(x = x)) +
   geom_text(stat='identity',aes(y=p_x,label=round(p_x,4)),vjust=-1,size=2.5)
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-32-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-33-1.png" width="100%" style="display: block; margin: auto;" />
 
 Si comparamos con los valores que toma una distribución normal con la misma media y la misma desviación estándar vemos que las probabilidades son muy similares. Es un resultado del Teorema del Límite Central que la suma de variables uniformes independientes sigue una distribución normal. De cualquier forma es interesante cómo la suma de sólo 5 uniformes independientes da como resultado una distribución que se asemeja a la de una normal.
 
@@ -791,7 +827,7 @@ Por ejemplo, con $p=1/3$ y $n=10$ realizaciones, la gráfica se ve así:
 genera_binoms(1/3, 10)
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 Utiliza la función para determinar a partir de qué valor de $n$ la distribución de una variable Binomial con probabilidad de éxito $p=1/100$ se asemeja a la de una normal.
