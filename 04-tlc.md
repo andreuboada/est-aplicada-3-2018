@@ -21,7 +21,7 @@ A continuación discutiremos el Teorema del Límite Central (CLT), el cual nos a
 
 Para utilizarlo, tenemos que hacer diferentes supuestos. Sin embargo, si los supuestos son verdaderos, entonces podemos calcular probabilidades exactas de eventos mediante el uso de una fórmula matemática muy sencilla.
 
-## La distribución de \bar{Y}
+## La distribución de $\bar{Y}$
 
 \BeginKnitrBlock{nota}<div class="nota">**_El Teorema del Límite Central_**
   
@@ -103,7 +103,7 @@ Esto significa nada más que la magnitud del error $g(r)$ es el producto de las 
 \noindent
 Las coordenadas $x$,$y$ son tales que
 $$
-x = r \cos(\theta), \; \;\; y = \mbox{sen}(\theta).
+x = r \cos(\theta), \; \;\; y = r\mbox{sen}(\theta).
 $$
 Sabemos que
 \begin{eqnarray*}
