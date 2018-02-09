@@ -1,4 +1,5 @@
 
+
 # Teorema del Límite Central
 
 <style>
@@ -85,7 +86,7 @@ La primera versión de este teorema fue postulada por el matemático francés Ab
 
 Supongamos que $x$ y $y$ son errores **independientes** cometidos al azar cuando se han hecho dos mediciones __independientemente__ una de la otra.
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
 <br>
 
@@ -113,7 +114,7 @@ Sabemos que
 Derivando con respecto a $\theta$:
 \noindent
 \begin{eqnarray*}
-0 &=& dfrac{d f(x)}{d \theta} f(y) + \dfrac{d f(y)}{d \theta} f(x)\\
+0 &=& \dfrac{d f(x)}{d \theta} f(y) + \dfrac{d f(y)}{d \theta} f(x)\\
 &=& \dfrac{df}{dx}\cdot \dfrac{d x}{d \theta}\cdot f(y) + \dfrac{d f}{d y}\cdot\dfrac{d y}{d\theta} \cdot f(x) \\
 &=& -r f^\prime(x) \mbox{sen}(\theta)f(y) + f^\prime(y)\cdot r \cos(\theta) f(x)\\
 &=& -y f^\prime(x)f(y) + xf^\prime(y)f(x).
@@ -234,9 +235,6 @@ Si ahora la media es $\mu$, entonces
 $$
 f(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}}\,e^{-\frac{1}{2\sigma^2}(x-\mu)^2}.
 $$
-Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de $\bar{X}$:
-
-<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="70%" height="600px"></iframe>
 
 ## Otras observaciones
 
@@ -275,155 +273,26 @@ Esto quiere decir que $f(x)$ tiene puntos de inflexión en $-\sigma$ y $\sigma$.
 
 <img src="04-tlc_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
 
-## Cuantiles de un conjunto de datos
+## El TLC y errores estándar
 
-Los cuartos, octavos, etc. son útiles, fáciles de comprender y de calcular a mano (para conjuntos chicos de datos), sin embargo, necesitamos generalizar estos métodos para estudiar con más detalle la distribución de un conjunto de datos.  
+La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.
 
-Como primera definición tenemos:
+Vale la pena observar que hay distribuciones que requieren un mayor tamaño de muestra $n$ para lograr una buena aproximación (por ejemplo la log-normal), ¿a qué se debe esto?
 
-El **cuantil** $f$ de un conjunto de datos es el valor $q(f)$ en la escala de medición del conjunto tal que aproximadamente una fracción $f$ de los datos son menores o iguales a $f$.
+¿Por qué tanto énfasis en el TLC? El __error estándar__ es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que $\bar{x}$ este a una distancia de $\mu_P$ menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de $P$ la distribución de $\bar{x}$ se aproximará a una distribución normal:
+$$\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)$$
 
-Por ejemplo, si los datos son $1,2,2,5,$  entonces $1$ es el cuantil $1/4$, $2$ es el cuantil $1/2$ y también el $3/4$, y $5$ es el cuantil $1$.
+---
 
-Tenemos que resolver varios problemas con esta definición:
+Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de $\bar{X}$:
 
-* ¿Cuál es el cuantil $1/3$ en los datos anteriores?
+<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="70%" height="800px"></iframe>
 
-* Asimetría: el dato más chico es el cuantil $1/n$, donde $n$ es el tamaño del conjunto de datos, pero el más grande es el cuantil $1$ (en lugar del cuantil $1-1/n$, si la definición fuera simétrica).
+---
 
-Problemas adicionales surgen cuando queremos comparar los cuantiles de un conjunto de datos con los cuantiles teóricos de una distribución dada, esto para contestar preguntas como: ¿la distribución de datos es similar a una normal? Para comprender mejor los cuantiles y poder responder estas preguntas comencemos con la construcción de gráficas de cuantiles para densidades de probabilidad.
-
-### Gráficas de cuantiles teóricos
-
-Supongamos que $G$ es la función de distribución de una variable aleatoria continua, tal que $G$ es diferenciable y tiene derivada positiva (por ejemplo, si la variable aleatoria tiene densidad positiva y continua en todos los reales). Entonces podemos construir la función $q:(0,1) \to (\infty, \infty)$ dada por: $$q(f)=G^{-1}(f)$$ para cualquier $f \in (0,1)$. Decimos que $q$ es la **función de cuantiles** de la variable aleatoria con distribución $G$. Bajo esta definición, es claro que si $X$ tiene distribución $G$, entonces $P(X<q(f))=G(q(f))=f$.
-
-#### Ejemplo: normal
-Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria normal estándar. A esta función la denotamos como $q_{0,1}(f)$, y en general, a la función de cuantiles de una distribución $Normal(\mu, \sigma^2)$ la denotamos por $q_{\mu, \sigma}(f)$.
-
-
-```r
-curve(qnorm, from = 0, to=1, n = 1000, xlab='Cuantil (f)', ylab='q')
-```
-
-<img src="04-tlc_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
-
-Notemos que $q_{\mu, \sigma}(f) \to \infty$ cunado $f \to 1$, y el cuantil $1$ no esta definido. Análogamente el cuantil $0$ tampoco está definido.
-
-<p class="espacio">
-</p>
-
-![](figuras/manicule2.jpg) 
-<div class="centered">
-<p class="espacio">
-</p>
-¿Cómo se ve la gráfica de cuantiles de una variable aleatoria uniforme?
-
-(a) Similar al caso normal (una curva).
-
-(b) Como una recta horizontal.
-
-(c) Como una recta vertical.
-
-(d) Como una diagonal.
-
-<p class="espacio3">
-</p>
-</div>
 <br>
 
-
-### Gráficas de cuantiles para un conjunto de datos
-Hay varias maneras razonables de definir los cuantiles de un conjunto de datos, (ver Hyndman y Fan 1996 para una resumen de lo que usan los paquetes estadísticos). Nosotros adoptamos la siguiente construcción:
-
-<p class="espacio3">
-</p>
-
-\BeginKnitrBlock{nota}<div class="nota">**Cuantiles de un conjunto de datos.** Si $x_1,...,x_n$ es el conjunto de datos, 
-los ordenamos de manera creciente para obtener $x_{(1)},...,x_{(n)}$, donde
-$x_{(1)}$ es la observación más chica y $x_{(n)}$ la más grande.
-Definimos
-$$f_i=\frac{i-0.5}{n}$$
-y decimos que $x_{(i)}$ es el cuantil $f_i$.
-Si se deseara calcular otros cuantiles $f$, se podría interpolar o 
-extrapolar con los puntos $x_{(1)},...,x_{(n)}$ y $f_1,...,f_n$, pero esto no tiene tanto sentido.</div>\EndKnitrBlock{nota}
-
-<p class="espacio3">
-</p>
-
-**Ejemplo.** Consideremos el conjunto de datos $4,1,7,3,3,6,10$. Calcular 
-$f_1,f_2,...,f_7$ según la definición de arriba.
-
-<p class="espacio">
-</p>
-
-![](figuras/manicule2.jpg) 
-<div class="centered">
-<p class="espacio">
-</p>
-La distribución de ozono (en cualquier estación) es...
-
-(a) 3
-
-(b) 3.3  
-
-(c) 3.6
-
-(d) 4
-
-<p class="espacio3">
-</p>
-</div>
-<br>
-
-
-\BeginKnitrBlock{information}<div class="information">**Acerca de nuestra definición de cuantiles.** Un argumento posible para justificar la definición de arriba es (Cleveland, 1994): supongamos que $x_i$ es resultado de redondeo, y los datos $x_1,...,x_n$ son distintos. Cuando contamos cuántas observaciones son menores o iguales a $x_i$, es igualmente probable que la observación *real* correspondiente está por arriba o por debajo de la medida $x_i$. En el primer caso, $x_i$ está por arriba de $(i-1)/n$ observaciones *reales*. En el segundo caso, $x_i$ está por arriba de $f\le i/n$ observaciones *reales*. Promediamos estos dos valores para obtener nuestra definición.</div>\EndKnitrBlock{information}
-
-Otro argumento en favor de nuestra elección es la simetría en los valores $f$ de los cuantiles: el dato más grande es el cuantil $1-0.5/n$ que es complemento de $0.5/n$, que corresponde al cuantil del mínimo. 
-
-Finalmente, notamos que bajo nuestra definición no hay cuantiles $0$ ni $1$. Esto es deseable cuando queremos comparar con densidades cuyos cuantiles teóricos $0$ y $1$ no están definidos.
-
-Podemos hacer gráficas de la función de cuantiles de manera fácil. Estas gráficas se hacen, aproximadamente, como sigue: se ordenan los datos del más chico al más grande, se enumeran como índice, y graficamos los pares resultantes con el índice en el eje horizontal.
-
-
-```r
-library(ggplot2)
-library(reshape2) # aquí están los datos de propinas
-#> 
-#> Attaching package: 'reshape2'
-#> The following object is masked from 'package:tidyr':
-#> 
-#>     smiths
-n <- length(tips$total_bill)
-tips$probs <- (1:n - 0.5) / n
-tips$cuantiles <- quantile(tips$total_bill, probs = tips$probs, type = 5) 
-ggplot(tips, aes(x=probs, y = cuantiles)) + 
-  xlab('Cuantil (f)') + 
-  ylab('Dólares') + 
-  geom_point()
-```
-
-<img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
-
-#### ¿Qué buscar en una gráfica de cuantiles?
-Las gráficas de cuantiles son conceptualmente simples; sin embargo, su interpretación efectiva requiere práctica. Algunas guías son:
-
-1. Podemos leer fácilmente la mediana y los cuartos.
-
-2. Regiones en la escala de medición de los datos (dimensión vertical) con densidades de datos más altas se ven como pendientes bajas en la gráfica. Mientras que pendientes altas indican densidades de datos relativamente más bajas.
-
-3. Una mayor pendiente en la forma general de la gráfica (por ejemplo, en la recta que une los cuartos) indica dispersiones más grandes.
-
-4. Si el conjunto de datos se distribuye aproximadamente uniforme, entonces la gráfica debe parecerse a una recta (diagonal).
-
-5. De manera más general: en las regiones donde el histograma crece conforme aumentan los valores en el conjunto de datos, la pendiente de la gráfica de cuantiles es decreciente (así que la gráfica de cuantiles es cóncava hacia abajo). Cuando el histograma decrece conforme aumentan los valores en el conjunto de datos, la pendiente de la gráfica de cuantiles es creciente (así que observamos concavidad hacia arriba).
-
-6. Si la distribución tiene más dispersión hacia la derecha, la figura general de la gráfica es cóncava hacia arriba. Si tiene más dispersión a la izquierda, es cóncava hacia abajo.
-
-7. ¿Cómo se ve una distribución que parece tener grupos definidos donde se acumulan los datos?
-
-
-
-### Diagramas de caja y brazos
+## Diagramas de caja y brazos
 Los diagramas de caja y brazos son muy populares, e intentan mostrar gráficamente algo similar al resumen de cinco números de Tukey:
 
 </br>
@@ -434,10 +303,6 @@ Imagen de Wikipedia.
 </p>
 </a>
 </br>
-
-<!--
-Los diagramas de caja y brazos también se pueden ver como una alternativa a las gráficas de cuantiles, donde un número limitado de cuantiles se utiliza para describir cada distribución.
--->
 
 Como vemos en la imagen superior el método muestra la mediana como una línea horizontal (medida de tendencia central), los bordes de la caja indican los cuartiles inferior y superior (o cuantiles 0.25 y 0.75). La distancia entre estos dos se conoce como rango intercuartílico o *IQR* por sus siglas en inglés, el IQR es una medida de dispersión. Alrededor del 50\% de los datos están entre los cuartiles inferior y superior, es así que si el rango intercuartílico es chico los datos de enmedio están muy cercanos alrededor de la mediana, si el rango intercunatílico es grande los datos de enmedio están dispersos alrededor de la mediana. Adicionalmente, las distancias relativas de los cuartiles a lamediana nos dan información de la forma de la distribución, si una es mayor a la otra la distribucción está sesgada.
 
@@ -452,6 +317,7 @@ En el caso de los cantantes obtenemos la siguiente gráfica:
 
 ```r
 library(lattice)
+library(tidyverse)
 # calculamos la estatura en centímetros
 singer$estatura.m <- singer$height * 2.54
 ```
@@ -465,16 +331,16 @@ singer %>% sample_n(10) %>% knitr::kable()
 
        height  voice.part    estatura.m
 ----  -------  -----------  -----------
-143        68  Tenor 1              173
-198        72  Bass 1               183
-164        69  Tenor 2              175
-150        68  Tenor 2              173
-65         67  Soprano 2            170
-172        70  Bass 1               178
-190        68  Bass 1               173
-161        71  Tenor 2              180
-55         63  Soprano 2            160
-107        66  Alto 2               168
+19         62  Soprano 1            157
+196        75  Bass 1               190
+140        65  Tenor 1              165
+37         63  Soprano 2            160
+2          62  Soprano 1            157
+108        64  Alto 2               163
+114        67  Alto 2               170
+67         65  Alto 1               165
+167        68  Tenor 2              173
+175        73  Bass 1               185
 
 
 ```r
@@ -490,60 +356,11 @@ ggplot(singer.medians, aes(x = voice.part, y = estatura.m)) +
   coord_flip()
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
 
 ---
 
-<br>
-
-<br>
-
-Consideramos las siguientes mediciones de ozono en el aire, producidas por la red automática de monitoreo ambiental ([SIMA](http://www.aire.df.gob.mx/default.php?opc='aKBhnmI='&opcion=Zg==)). Las mediciones son concentración de ozono (en ppb o partes por billón) para las estaciones de Tlalnepantla e Iztapalapa, tomadas a las 2 pm, durante 2014. 
-
-**Una exposición de 110 ppb durante una hora se considera aguda.**
-
-
-```r
-library(tidyr)
-library(dplyr)
-library(ggplot2)
-
-# leemos la base de datos
-contaminantes <- read.csv("datos/contaminantes_2014.csv", comment.char = "#", 
-  stringsAsFactors = FALSE)
-# creamos una variable hora
-contaminantes <- mutate(contaminantes, 
-  hora = substring(contaminantes$date, 12, 13))
-# filtramos para obtener las estaciones y contaminantes de interés
-ozono <- filter(contaminantes, id_parameter == "O3", hora == 14,
-  id_station %in% c("TLA", "UIZ"))
-
-ozono %>% sample_n(10) %>% knitr::kable()
-```
-
-      date               id_station   id_parameter    value   unit  hora 
-----  -----------------  -----------  -------------  ------  -----  -----
-690   11/12/2014 14:00   UIZ          O3                 60      1  14   
-50    25/01/2014 14:00   UIZ          O3                 77      1  14   
-597   26/10/2014 14:00   TLA          O3                 NA      1  14   
-673   03/12/2014 14:00   TLA          O3                 57      1  14   
-231   26/04/2014 14:00   TLA          O3                 96      1  14   
-265   13/05/2014 14:00   TLA          O3                 83      1  14   
-46    23/01/2014 14:00   UIZ          O3                101      1  14   
-350   24/06/2014 14:00   UIZ          O3                 78      1  14   
-30    15/01/2014 14:00   UIZ          O3                 44      1  14   
-645   19/11/2014 14:00   TLA          O3                 68      1  14   
-
-<br>
-<br>
-
-![](figuras/manicule.jpg)  ¿Qué se necesita hacer para limpar este conjuntos de datos?
-
-<p class="espacio">
-</p>
-<br>
-
-<img src="04-tlc_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
 
 ![](figuras/manicule2.jpg) 
 <div class="centered">
@@ -562,7 +379,89 @@ La distribución de ozono (en cualquier estación) es...
 </div>
 <br>
 
-### Gráficas qq-normales
+---
+
+<br>
+
+## Gráficas de cuantiles para un conjunto de datos
+
+Hay varias maneras razonables de definir los cuantiles de un conjunto de datos, (ver Hyndman y Fan 1996 para una resumen de lo que usan los paquetes estadísticos). Nosotros adoptamos la siguiente construcción:
+
+<p class="espacio3">
+</p>
+
+\BeginKnitrBlock{nota}<div class="nota">**Cuantiles de un conjunto de datos.** Si $x_1,...,x_n$ es el conjunto de datos, 
+los ordenamos de manera creciente para obtener $x_{(1)},...,x_{(n)}$, donde
+$x_{(1)}$ es la observación más chica y $x_{(n)}$ la más grande.
+Definimos
+$$f_i=\frac{i-0.5}{n}$$
+y decimos que $x_{(i)}$ es el cuantil $f_i$.
+Si se deseara calcular otros cuantiles $f$, se podría interpolar o 
+extrapolar con los puntos $x_{(1)},...,x_{(n)}$ y $f_1,...,f_n$, pero esto no tiene tanto sentido.</div>\EndKnitrBlock{nota}
+
+<p class="espacio">
+</p>
+
+Podemos hacer gráficas de la función de cuantiles de manera fácil. Estas gráficas se hacen, aproximadamente, como sigue: se ordenan los datos del más chico al más grande, se enumeran como índice, y graficamos los pares resultantes con el índice en el eje horizontal.
+
+
+```r
+library(ggplot2)
+library(reshape2) # aquí están los datos de propinas
+n <- length(tips$total_bill)
+tips$probs <- (1:n - 0.5) / n
+tips$cuantiles <- quantile(tips$total_bill, probs = tips$probs, type = 5) 
+ggplot(tips, aes(x=probs, y = cuantiles)) + 
+  xlab('Cuantil (f)') + 
+  ylab('Dólares') + 
+  geom_point()
+```
+
+<img src="04-tlc_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+
+### ¿Qué buscar en una gráfica de cuantiles?
+Las gráficas de cuantiles son conceptualmente simples; sin embargo, su interpretación efectiva requiere práctica. Algunas guías son:
+
+1. Podemos leer fácilmente la mediana y los cuartos.
+
+2. Regiones en la escala de medición de los datos (dimensión vertical) con densidades de datos más altas se ven como pendientes bajas en la gráfica. Mientras que pendientes altas indican densidades de datos relativamente más bajas.
+
+3. Una mayor pendiente en la forma general de la gráfica (por ejemplo, en la recta que une los cuartos) indica dispersiones más grandes.
+
+4. Si el conjunto de datos se distribuye aproximadamente uniforme, entonces la gráfica debe parecerse a una recta (diagonal).
+
+5. De manera más general: en las regiones donde el histograma crece conforme aumentan los valores en el conjunto de datos, la pendiente de la gráfica de cuantiles es decreciente (así que la gráfica de cuantiles es cóncava hacia abajo). Cuando el histograma decrece conforme aumentan los valores en el conjunto de datos, la pendiente de la gráfica de cuantiles es creciente (así que observamos concavidad hacia arriba).
+
+6. Si la distribución tiene más dispersión hacia la derecha, la figura general de la gráfica es cóncava hacia arriba. Si tiene más dispersión a la izquierda, es cóncava hacia abajo.
+
+7. ¿Cómo se ve una distribución que parece tener grupos definidos donde se acumulan los datos?
+
+
+```r
+library(ggplot2)
+num_sim <- 300
+grupos <- data.frame(
+  gpo = sample(1:3, size = 300, replace = TRUE, prob = c(0.25, 0.25, 0.5)))
+grupos$x <- ifelse(grupos$gpo == 1, rnorm(num_sim, mean = 0), 
+  ifelse(grupos$gpo == 2, rnorm(num_sim, 10, 2), rnorm(num_sim, mean = 20, 2)))
+hist(grupos$x)
+n <- length(grupos$x)
+grupos$probs <- (1:n - 0.5) / n
+grupos$cuantiles <- quantile(grupos$x, probs = grupos$probs, type = 5) 
+ggplot(grupos, aes(x=probs, y = cuantiles)) + 
+  xlab('Cuantil (f)') + 
+  ylab('Dólares') + 
+  geom_point()
+```
+
+<p class="espacio">
+</p>
+
+---
+
+<br>
+
+## Gráficas qq-normales
 
 En las secciones anteriores hemos usado gráficas de cuantiles para graficar cuantiles de un conjunto de datos y cuantiles teóricos dada una función de distribución. También es posible hacer gráficas de conjuntos de datos contra cuantiles teóricos de una distribución, de manera que podamos visualizar el grado de concordancia entre estas dos.
 
@@ -586,7 +485,7 @@ lo que implica que si graficamos los cuantiles $q_{0,1}(f_i)$ contra los del con
 <p class="espacio3">
 </p>
 
-#### Ejemplo: cantantes
+### Ejemplo: cantantes {-}
 
 En estas gráficas podemos ver:
 
@@ -618,7 +517,7 @@ ggplot(singer_cuant, aes(x = q.norm, y = estatura.m)) +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
 
 ---
 
@@ -626,24 +525,11 @@ ggplot(singer_cuant, aes(x = q.norm, y = estatura.m)) +
 
 <br>
 
-### El TLC y errores estándar
-
-La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.
-
-Vale la pena observar que hay distribuciones que requieren un mayor tamaño de muestra $n$ para lograr una buena aproximación (por ejemplo la log-normal), ¿a qué se debe esto?
-
-¿Por qué tanto énfasis en el TLC? El __error estándar__ es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que $\bar{x}$ este a una distancia de $\mu_P$ menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de $P$ la distribución de $\bar{x}$ se aproximará a una distribución normal:
-$$\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)$$
-
----
-
-<br>
-
-#### Ley de los Grandes Números
+## Ley de los Grandes Números
 
 En Noviembre del 2017 El Financiero [publicó](http://www.elfinanciero.com.mx/nacional/reprueban-entidades-estados-en-atencion-a-diabetes-ssa.html) una noticia que afirmab que los estados de Oaxaca, Michoacán, Morelos y Tamaulipas tenían la peor atención a pacientes diabéticos. 
 
-El índice [ICAD](http://oment.uanl.mx/tablero-de-control-de-enfermedades/) mide el cuidado que se les da a los pacientes en las unidades de primer nivel, en todas sus jurisdicciones sanitarias. Además toma en cuenta tres aspectos principales: que se pueda retener al paciente, que se tenga acceso a pruebas diagnósticas y si tiene su diabetes controlada. 
+El índice [ICAD](http://oment.uanl.mx/tablero-de-control-de-enfermedades/) (Secretaría de Salud) mide el cuidado que se les da a los pacientes en las unidades de primer nivel, en todas sus jurisdicciones sanitarias. Además toma en cuenta tres aspectos principales: que se pueda retener al paciente, que se tenga acceso a pruebas diagnósticas y si tiene su diabetes controlada. 
 
 Se cuenta con datos del ICAD de Noviembre del 2016:
 
@@ -653,18 +539,18 @@ icad <- read_csv("datos/icad.csv")
 icad %>% sample_n(10) %>% knitr::kable()
 ```
 
-    fecha   cve_edo  cve_clues     nombre                    calificacion   pac_act
----------  --------  ------------  -----------------------  -------------  --------
- 20161125        18  NTSSA000083   EL RECODO                         54.2        11
- 20161125         7  CSSSA007330   JUNCANÁ                           39.3         3
- 20161125        28  TSSSA002863   U02 COL S MARCOS                  65.1       107
- 20161125        12  GRSSA004420   CSR QUETZALAPA                    45.0        12
- 20161125        15  MCSSA004856   VILLA CUAUHTÉMOC                  74.5       160
- 20161125        12  GRSSA007512   CSR TEHUIXTLA                     57.6        46
- 20161125         7  CSSSA005551   S ANTONIO EL PARAJE               56.5        22
- 20161125         4  CCSSA001075   CS LA VICTORIA                    64.0         9
- 20161125        20  OCSSA000886   MONJAS                            56.9        63
- 20161125        14  JCSSA001010   CS S JOSÉ CASAS CAIDAS            55.1        34
+    fecha   cve_edo  cve_clues     nombre                      calificacion   pac_act
+---------  --------  ------------  -------------------------  -------------  --------
+ 20161125        20  OCSSA006532   RAYMUNDO MELENDEZ,COL               27.8         1
+ 20161125        20  OCSSA002315   JALTEPEC DE CANDOYOC                46.6        90
+ 20161125        22  QTSSA000685   COLON                               60.1        80
+ 20161125        17  MSSSA001270   LOMAS DEL CARRIL                    63.0       107
+ 20161125        12  GRSSA001970   CSR TONALÁ                          57.8        34
+ 20161125        16  MNSSA016854   CRV OJO ZARCO                       70.3        18
+ 20161125        15  MCSSA001851   S FELIPE COAMANGO                   76.4        58
+ 20161125        21  PLSSA004556   CS VILLA LÁZARO CÁRDENAS            62.9       219
+ 20161125        20  OCSSA020561   CSR EL PORTEZUELO                   59.6         8
+ 20161125        14  JCSSA000800   CS LA RIBERA                        59.0        49
 
 Cada unidad de salud o _CLUES_ recibe una calificación __promedio__ y tiene cierto número de pacientes diabéticos activos.
 
@@ -678,7 +564,7 @@ ggplot(icad, aes(x=pac_act, y=calificacion)) +
   geom_hline(yintercept = mean(icad$calificacion), color = 'red')
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
 
 La línea roja representa la media nacional de la calificación promedio de todas las unidades del país. Podemos ver que conforme aumenta el número de pacientes en el hospital las observaciones tienden a acercarse más a la media poblacional.
 
@@ -701,14 +587,14 @@ ggplot(sim_1, aes(x = n, y = media)) +
   geom_hline(yintercept = mean(icad$calificacion), color = 'red')
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
 
 Nuevamente se observa un fenómeno similar. Este fenómeno del error estándar generalmente se observa en la práctica y una buena estrategia para el modelado sería considerar el número de observaciones (pacientes, alumnos, escuelas) utilizados para calcular la media. 
 
 <p class="espacio">
 </p>
 
-\BeginKnitrBlock{comentario}<div class="comentario">Alguien nos podría preguntar: ¿por qué debería el promedio acercarse a la media cuando aumentamos el tamaño de la muestra?". </div>\EndKnitrBlock{comentario}
+\BeginKnitrBlock{comentario}<div class="comentario">Alguien nos podría preguntar: ¿por qué debería el promedio acercarse a la media general cuando aumentamos el tamaño de la muestra?". </div>\EndKnitrBlock{comentario}
 
 <p class="espacio">
 </p>
@@ -763,30 +649,159 @@ ggplot(sim_2, aes(x = lanzamiento, y = media)) +
   geom_hline(yintercept = 3.5, color = 'red') + 
   scale_x_continuous(limits = c(2,1000)) +
   scale_y_continuous(limits = c(3.3,4.5))
-#> Warning: Removed 2 rows containing missing values (geom_path).
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" />
 
-### Tarea
+### Ejemplo
 
-La Evaluación Nacional de Logros Académicos en Centros Escolares (ENLACE), es un examen que se pretende realizar cada año en México por la Secretaria de Educación Pública (SEP) a todas las escuelas públicas y privadas de nivel básico; para conocer el nivel de desempeño en las materias de español y matemáticas. Han existido importantes resistencias a la aplicación de este examen y opiniones de intelectuales respecto de las fallas que esta tiene.
+La corporación ALFA vende bicicletas. Basada en su experiencia siente que en los meses de verano es \textit{igualmente} probable que venda 0, 1, 2, 3 ó 4 bicicletas en un día (la firma nunca ha vendido más de 4 bicicletas por día).
+
+Sea $X$ el número de bicicletas vendidas en un día. $X$ sigue una distribución uniforme y toma los valores $-2,-1,0,1,2$, es decir,
+\noindent
+\[
+X=\left\{ \begin{array}{cl}
+0 & \text{con probabilidad \ensuremath{1/5}}\\
+1 & \text{con probabilidad \ensuremath{1/5}}\\
+2 & \text{con probabilidad \ensuremath{1/5}}\\
+3 & \text{con probabilidad \ensuremath{1/5}}\\
+4 & \text{con probabilidad \ensuremath{1/5}.}
+\end{array}\right.
+\]
+
+Suponga que el número de bicicletas vendidas el siguiente día es independiente del número vendido el día anterior. Sea $S$ el número de bicicletas vendidas en un periodo de \textit{cinco días}.
+
+Si $X_1,X_2,\ldots,X_{5}$ son variables aleatorias independientes con la misma distribución, entonces
+\[
+S = X_1 + X_2 + \cdots + X_{5}.
+\]
+
+Primero podemos definir el experimento como una función que reciba el número de realización del experimento y regrese el número de bicicletas vendidas en los 5 días: 
+
+
+```r
+set.seed(100888)
+experimento <- function(k){
+  tibble(k = k, x = as.integer(sum(sample.int(5,5,replace=T) - 1)))
+}
+```
+
+Podemos ver qué regresa la función en una realización del experimento:
+
+
+```r
+experimento(1)
+#> # A tibble: 1 x 2
+#>       k     x
+#>   <dbl> <int>
+#> 1  1.00    12
+```
+
+Ahora utilizamos la fución `map_df` del paquete `purrr` para obtener 1000 realizaciones del experimento en un data frame:
+
+
+```r
+m <- 1000
+df_bicis <- map_df(.x = 1:m, .f = experimento)
+df_bicis %>% head(10) %>% knitr::kable()
+```
+
+
+
+  k    x
+---  ---
+  1   16
+  2   11
+  3   14
+  4    5
+  5    6
+  6    9
+  7   11
+  8    7
+  9   12
+ 10   13
+
+Calculamos la tabla y gráfica de frecuencias:
+
+
+```r
+df_bicis_frec <- df_bicis %>%
+  group_by(x) %>%
+  summarise(p_x = n()/m)
+ggplot(df_bicis_frec, aes(x = x)) +
+  geom_bar(aes(y = p_x), stat = 'identity') +
+  geom_text(stat='identity',aes(y=p_x,label=round(p_x,4)),vjust=-1,size=2.5)
+```
+
+<img src="04-tlc_files/figure-html/unnamed-chunk-32-1.png" width="100%" style="display: block; margin: auto;" />
+
+Si comparamos con los valores que toma una distribución normal con la misma media y la misma desviación estándar vemos que las probabilidades son muy similares. Es un resultado del Teorema del Límite Central que la suma de variables uniformes independientes sigue una distribución normal. De cualquier forma es interesante cómo la suma de sólo 5 uniformes independientes da como resultado una distribución que se asemeja a la de una normal.
+
+
+```r
+media_bicis <- mean(df_bicis$x)
+sd_bicis <- sd(df_bicis$x)
+dnorm(0:20, mean = media_bicis, sd = sd_bicis)
+#>  [1] 0.000933 0.002325 0.005270 0.010868 0.020393 0.034816 0.054083
+#>  [8] 0.076440 0.098302 0.115022 0.122455 0.118619 0.104546 0.083838
+#> [15] 0.061172 0.040611 0.024531 0.013482 0.006742 0.003068 0.001270
+```
+## Tarea
+
+1. La Evaluación Nacional de Logros Académicos en Centros Escolares (ENLACE), es un examen que se pretende realizar cada año en México por la Secretaria de Educación Pública (SEP) a todas las escuelas públicas y privadas de nivel básico; para conocer el nivel de desempeño en las materias de español y matemáticas. Han existido importantes resistencias a la aplicación de este examen y opiniones de intelectuales respecto de las fallas que esta tiene.
 
 En este enlace la SEP publicó los resultados de la prueba ENLACE para todas las escuelas de los 32 estados de México: [http://www.enlace.sep.gob.mx/content/ba/pages/base_de_datos_completa_2013/](http://www.enlace.sep.gob.mx/content/ba/pages/base_de_datos_completa_2013/)
 
-1. Descarga los datos para todas las localidades y cárgalos en R utilizando la función `map_df` del paquete `purrr`.
+a. Descarga los datos para todas las localidades y cárgalos en R utilizando la función `map_df` del paquete `purrr`.
 
-2. Explica si los datos cumplen los principios de datos limpios.
+b. Explica si los datos cumplen los principios de datos limpios.
 
-3. Haz la limpieza necesaria que requieran los datos.
+c. Haz la limpieza necesaria que requieran los datos.
 
-4. Agrega los datos a nivel municipio para calcular el número de alumnos en cada grado y su promedio de puntos en español y matemáticas.
+d. Agrega los datos a nivel municipio para calcular el número de alumnos en cada grado y su promedio de puntos en español y matemáticas.
 
-5. Haz una gráfica en la cual cada punto represente un municipio y en el eje x se muestre el número de alumnos que presentaron el examen y en el eje y el promedio de puntos en matemáticas.
+e. Haz una gráfica en la cual cada punto represente un municipio y en el eje $x$ se muestre el número de alumnos que presentaron el examen y en el eje $y$ el promedio de puntos en matemáticas.
 
-
-
-
+2. La siguiente función sirve para generar una gráfica de la función de masa de probabilidad de una variable aleatoria $\mbox{Binomial}(n,p)$. 
 
 
+```r
+genera_binoms <- function(p, n) {
+  datos <- tibble(x = 0:n, y = dbinom(x, n, p))
+  media <- n*p
+  sd <- sqrt(n*p*(1-p))
+  ls <- media + 4*sd
+  li <- media - 4*sd
+  lse <- as.integer(ls)
+  lie <- as.integer(li) + 1
+  datos %>%
+    filter(x < ls & x > li) %>%
+    ggplot(aes(x, y)) +
+    geom_point(size = 0.6) +
+    geom_segment(aes(x=x,y=0,xend=x,yend=y), color = 'red') +
+    scale_x_continuous('k',breaks=lie:lse) + scale_y_continuous('p(k)') +
+    geom_text(aes(y=y,label=round(y,3)),stat = 'identity',vjust=-1,size=3)
+}
+```
 
+Por ejemplo, con $p=1/3$ y $n=10$ realizaciones, la gráfica se ve así:
+
+
+```r
+genera_binoms(1/3, 10)
+```
+
+<img src="04-tlc_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+Utiliza la función para determinar a partir de qué valor de $n$ la distribución de una variable Binomial con probabilidad de éxito $p=1/100$ se asemeja a la de una normal.
+
+3. Regresando al ejemplo de la venta de bicicletas, 
+
+a. utiliza la función de `experimento` y la función `map_df` para obtener una simulación de 100 realizaciones del experimento. Haz una gráfica de cuantiles vs cuantiles normales y decide si el conjunto de datos está bien aproximado por una distribución normal.
+
+b. calcula la distribución de probabilidades del número de bicicletas vendidas en un periodo de \textit{cinco días}. Para calcular $p(k) = P(S=k)$ considera que deberás contar el número de soluciones de la ecuación
+$$
+x_1 + x_2 + \cdots + x_5 = k,
+$$
+donde $0 \leq x_i \leq 4$. El número de soluciones enteras es equivalente al coeficiente del término $y^k$ del polinomio $(1+y+\cdots+y^4)^5$ porque cada factor del producto representa el número de bicicletas vendidas por día. Compara las probabilidades calculadas con los valores de la distribución normal obtenidos anteriormente. 

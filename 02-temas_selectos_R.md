@@ -2000,7 +2000,7 @@ Batting %>% sample_n(10) %>% knitr::kable()
 ```r
 system.time(lm(R ~ AB + teamID, Batting))
 #>    user  system elapsed 
-#>   3.143   0.115   3.284
+#>   2.904   0.104   3.008
 ```
 
 - __user time__: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.
@@ -2013,7 +2013,7 @@ El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:
 ```r
 system.time(readLines("http://www.jhsph.edu"))
 #>    user  system elapsed 
-#>   0.024   0.005   0.650
+#>   0.021   0.004   1.060
 ```
 
 
@@ -2025,7 +2025,7 @@ system.time(mclapply(2000:2006,
     lm(R ~ AB, sub)
 }, mc.cores = 5))
 #>    user  system elapsed 
-#>   0.054   0.029   0.123
+#>   0.050   0.093   0.093
 ```
 
 Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.
@@ -2070,28 +2070,28 @@ est_r_st <- system.time({
 
 dplyr_st
 #>    user  system elapsed 
-#>   0.131   0.000   0.131
+#>   0.140   0.000   0.141
 ```
 
 
 ```r
 plyr_st
 #>    user  system elapsed 
-#>   7.624   0.004   7.638
+#>   7.302   0.016   7.321
 ```
 
 
 ```r
 est_l_st
 #>    user  system elapsed 
-#>   66.10    1.49   67.64
+#>   67.21    1.67   68.89
 ```
 
 
 ```r
 est_r_st
 #>    user  system elapsed 
-#>   0.585   0.016   0.601
+#>   0.617   0.008   0.624
 ```
 
 La función `system.time` supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es `Rprof()`.
@@ -2270,7 +2270,7 @@ system.time(
         aciertos[i] <- TRUE
 })
 #>    user  system elapsed 
-#>   0.241   0.000   0.241
+#>   0.245   0.000   0.245
 ```
 
 
@@ -2282,7 +2282,7 @@ system.time(
         aciertos[i] <- TRUE
 })
 #>    user  system elapsed 
-#>   0.309   0.000   0.310
+#>   0.314   0.000   0.314
 ```
 
 Usando `rbind`:
@@ -2298,7 +2298,7 @@ mi.df
 }
 system.time(mi.df.1 <- crecer_rbind())
 #>    user  system elapsed 
-#>   0.748   0.000   0.748
+#>   0.738   0.000   0.738
 ```
 
 Si definimos el tamaño del data.frame obtenemos mejoras:
