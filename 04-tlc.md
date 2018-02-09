@@ -683,7 +683,7 @@ $$\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)$$
 
 Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de $\bar{X}$:
 
-<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="100%" height="800px"></iframe>
+<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="105%" height="800px"></iframe>
 
 ---
 
@@ -697,11 +697,11 @@ Sea $X$ el número de bicicletas vendidas en un día. $X$ sigue una distribució
 \noindent
 \[
 X=\left\{ \begin{array}{cl}
-0 & \text{con probabilidad \ensuremath{1/5}}\\
-1 & \text{con probabilidad \ensuremath{1/5}}\\
-2 & \text{con probabilidad \ensuremath{1/5}}\\
-3 & \text{con probabilidad \ensuremath{1/5}}\\
-4 & \text{con probabilidad \ensuremath{1/5}.}
+-2 & \text{con probabilidad 1/5}\\
+-1 & \text{con probabilidad 1/5}\\
+0 & \text{con probabilidad 1/5}\\
+1 & \text{con probabilidad 1/5}\\
+2 & \text{con probabilidad 1/5.}
 \end{array}\right.
 \]
 

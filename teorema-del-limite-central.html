@@ -840,7 +840,7 @@ sim_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </
 <p>¿Por qué tanto énfasis en el TLC? El <strong>error estándar</strong> es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que <span class="math inline">\(\bar{x}\)</span> este a una distancia de <span class="math inline">\(\mu_P\)</span> menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de <span class="math inline">\(P\)</span> la distribución de <span class="math inline">\(\bar{x}\)</span> se aproximará a una distribución normal: <span class="math display">\[\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)\]</span></p>
 <hr />
 <p>Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de <span class="math inline">\(\bar{X}\)</span>:</p>
-<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="100%" height="800px">
+<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="105%" height="800px">
 </iframe>
 <hr />
 <p><br></p>
@@ -850,11 +850,11 @@ sim_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </
 <p>La corporación ALFA vende bicicletas. Basada en su experiencia siente que en los meses de verano es  probable que venda 0, 1, 2, 3 ó 4 bicicletas en un día (la firma nunca ha vendido más de 4 bicicletas por día).</p>
 <p>Sea <span class="math inline">\(X\)</span> el número de bicicletas vendidas en un día. <span class="math inline">\(X\)</span> sigue una distribución uniforme y toma los valores <span class="math inline">\(-2,-1,0,1,2\)</span>, es decir, <span class="math display">\[
 X=\left\{ \begin{array}{cl}
-0 &amp; \text{con probabilidad \ensuremath{1/5}}\\
-1 &amp; \text{con probabilidad \ensuremath{1/5}}\\
-2 &amp; \text{con probabilidad \ensuremath{1/5}}\\
-3 &amp; \text{con probabilidad \ensuremath{1/5}}\\
-4 &amp; \text{con probabilidad \ensuremath{1/5}.}
+-2 &amp; \text{con probabilidad 1/5}\\
+-1 &amp; \text{con probabilidad 1/5}\\
+0 &amp; \text{con probabilidad 1/5}\\
+1 &amp; \text{con probabilidad 1/5}\\
+2 &amp; \text{con probabilidad 1/5.}
 \end{array}\right.
 \]</span></p>
 <p>Suponga que el número de bicicletas vendidas el siguiente día es independiente del número vendido el día anterior. Sea <span class="math inline">\(S\)</span> el número de bicicletas vendidas en un periodo de .</p>
