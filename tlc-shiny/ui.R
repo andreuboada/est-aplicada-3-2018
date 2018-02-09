@@ -1,7 +1,12 @@
 library(tidyverse)
 pageWithSidebar(
-  headerPanel("Teorema del límite central"),
+  headerPanel(""),
   sidebarPanel(
+    tags$head(
+      tags$style(type="text/css", "select { max-width: 140px; }"),
+      tags$style(type="text/css", ".span4 { max-width: 190px; }"),
+      tags$style(type="text/css", ".well { max-width: 180px; }")
+    ),
     h4("Parámetros:"),
     radioButtons("dist", "Parent distribution:",
                  list("Exponencial" = "rexp","Cauchy" = "rcauchy",
@@ -12,17 +17,19 @@ pageWithSidebar(
     br(),
     sliderInput("n", 
                 "Número de observaciones de la distribución:",
-                value = 500,
+                value = 30,
                 min = 2, 
-                max = 1000),
+                max = 500),
     br(),
     sliderInput("k", 
                 "Número de muestras de la distribución:", 
-                value = 10,
+                value = 100,
                 min = 1,
                 max = 1000),
-    br()),
+    br()
+    ),
   mainPanel(
-    plotOutput("plot", height="900px")
+    plotOutput("plot", height="600px", width = "300px"), 
+    style='width: 300px; height: 100px'
   )
 )
