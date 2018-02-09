@@ -29,7 +29,7 @@ pageWithSidebar(
     br()
     ),
   mainPanel(
-    plotOutput("plot", height="600px", width = "300px"), 
-    style='width: 300px; height: 600px'
+    plotOutput("plot", height="800px", width = "400px"), 
+    style='width: 400px; height: 800px'
   )
 )
