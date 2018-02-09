@@ -1,6 +1,6 @@
 library(tidyverse)
 pageWithSidebar(
-  headerPanel("Teorema del límite central"),
+  headerPanel(""),
   sidebarPanel(
     h4("Parámetros:"),
     radioButtons("dist", "Parent distribution:",
@@ -12,17 +12,18 @@ pageWithSidebar(
     br(),
     sliderInput("n", 
                 "Número de observaciones de la distribución:",
-                value = 500,
+                value = 30,
                 min = 2, 
-                max = 1000),
+                max = 500),
     br(),
     sliderInput("k", 
                 "Número de muestras de la distribución:", 
-                value = 10,
+                value = 100,
                 min = 1,
                 max = 1000),
-    br()),
+    br(), width = 3),
   mainPanel(
-    plotOutput("plot", height="900px")
+    br(), br(), br(),
+    plotOutput("plot", height="600px", width = "400px")
   )
 )

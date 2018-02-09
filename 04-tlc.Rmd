@@ -336,27 +336,6 @@ ggplot(data.frame(x=c(-4,4)), aes(x)) +
   xlab("") + ylab("")
 ```
 
-## El TLC y errores estándar
-
-La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.
-
-Vale la pena observar que hay distribuciones que requieren un mayor tamaño de muestra $n$ para lograr una buena aproximación (por ejemplo la log-normal), ¿a qué se debe esto?
-
-¿Por qué tanto énfasis en el TLC? El __error estándar__ es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que $\bar{x}$ este a una distancia de $\mu_P$ menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de $P$ la distribución de $\bar{x}$ se aproximará a una distribución normal:
-$$\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)$$
-
----
-
-Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de $\bar{X}$:
-
-```{r, echo = FALSE, cache=TRUE, fig.align='center', fig.width=8, fig.height=6}
-knitr::include_app("https://andreuboada.shinyapps.io/tlc-shiny/", height = "800px")
-```
-
----
-
-<br>
-
 ## Diagramas de caja y brazos
 Los diagramas de caja y brazos son muy populares, e intentan mostrar gráficamente algo similar al resumen de cinco números de Tukey:
 
@@ -432,6 +411,41 @@ La distribución de ozono (en cualquier estación) es...
 
 ---
 
+<br>
+
+## Gráficas de cuantiles teóricos
+
+Supongamos que $G$ es la función de distribución de una variable aleatoria continua, tal que $G$ es diferenciable y tiene derivada positiva (por ejemplo, si la variable aleatoria tiene densidad positiva y continua en todos los reales). Entonces podemos construir la función $q:(0,1) \to (\infty, \infty)$ dada por: $$q(f)=G^{-1}(f)$$ para cualquier $f \in (0,1)$. Decimos que $q$ es la **función de cuantiles** de la variable aleatoria con distribución $G$. Bajo esta definición, es claro que si $X$ tiene distribución $G$, entonces $P(X<q(f))=G(q(f))=f$.
+
+### Ejemplo: normal {-}
+Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria normal estándar. A esta función la denotamos como $q_{0,1}(f)$, y en general, a la función de cuantiles de una distribución $Normal(\mu, \sigma^2)$ la denotamos por $q_{\mu, \sigma}(f)$.
+
+```{r, fig.width=3.8, fig.height=4}
+curve(qnorm, from = 0, to=1, n = 1000, xlab='Cuantil (f)', ylab='q')
+```
+
+Notemos que $q_{\mu, \sigma}(f) \to \infty$ cunado $f \to 1$, y el cuantil $1$ no esta definido. Análogamente el cuantil $0$ tampoco está definido.
+
+<p class="espacio">
+</p>
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+¿Cómo se ve la gráfica de cuantiles de una variable aleatoria uniforme?
+
+(a) Similar al caso normal (una curva).
+
+(b) Como una recta horizontal.
+
+(c) Como una recta vertical.
+
+(d) Como una diagonal.
+
+<p class="espacio3">
+</p>
+</div>
 <br>
 
 ## Gráficas de cuantiles para un conjunto de datos
@@ -573,7 +587,7 @@ ggplot(singer_cuant, aes(x = q.norm, y = estatura.m)) +
 
 <br>
 
-## Ley de los Grandes Números
+## El TLC y errores estándar
 
 En Noviembre del 2017 El Financiero [publicó](http://www.elfinanciero.com.mx/nacional/reprueban-entidades-estados-en-atencion-a-diabetes-ssa.html) una noticia que afirmab que los estados de Oaxaca, Michoacán, Morelos y Tamaulipas tenían la peor atención a pacientes diabéticos. 
 
@@ -667,7 +681,26 @@ ggplot(sim_2, aes(x = lanzamiento, y = media)) +
   scale_y_continuous(limits = c(3.3,4.5))
 ```
 
-### Ejemplo
+La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.
+
+Vale la pena observar que hay distribuciones que requieren un mayor tamaño de muestra $n$ para lograr una buena aproximación (por ejemplo la log-normal), ¿a qué se debe esto?
+
+¿Por qué tanto énfasis en el TLC? El __error estándar__ es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que $\bar{x}$ este a una distancia de $\mu_P$ menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de $P$ la distribución de $\bar{x}$ se aproximará a una distribución normal:
+$$\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)$$
+
+---
+
+Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de $\bar{X}$:
+
+```{r, echo = FALSE, out.width='100%'}
+knitr::include_app("https://andreuboada.shinyapps.io/tlc-shiny/", height = "800px")
+```
+
+---
+
+<br>
+
+## Ejemplo
 
 La corporación ALFA vende bicicletas. Basada en su experiencia siente que en los meses de verano es \textit{igualmente} probable que venda 0, 1, 2, 3 ó 4 bicicletas en un día (la firma nunca ha vendido más de 4 bicicletas por día).
 
