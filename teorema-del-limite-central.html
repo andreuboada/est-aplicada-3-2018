@@ -840,7 +840,7 @@ sim_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </
 <p>¿Por qué tanto énfasis en el TLC? El <strong>error estándar</strong> es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que <span class="math inline">\(\bar{x}\)</span> este a una distancia de <span class="math inline">\(\mu_P\)</span> menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de <span class="math inline">\(P\)</span> la distribución de <span class="math inline">\(\bar{x}\)</span> se aproximará a una distribución normal: <span class="math display">\[\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)\]</span></p>
 <hr />
 <p>Con la siguiente aplicación podemos simular muestras de cualquier distribución y visualizar la distribución de <span class="math inline">\(\bar{X}\)</span>:</p>
-<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="105%" height="800px">
+<iframe src="https://andreuboada.shinyapps.io/tlc-shiny/?showcase=0" width="103%" height="800px">
 </iframe>
 <hr />
 <p><br></p>
@@ -979,11 +979,11 @@ sd_bicis &lt;-<span class="st"> </span><span class="kw">sd</span>(df_bicis<span 
 <p><img src="04-tlc_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Utiliza la función para determinar a partir de qué valor de <span class="math inline">\(n\)</span> la distribución de una variable Binomial con probabilidad de éxito <span class="math inline">\(p=1/100\)</span> se asemeja a la de una normal.</p>
 <ol start="3" style="list-style-type: decimal">
-<li>Regresando al ejemplo de la venta de bicicletas,</li>
+<li>Regresando al ejemplo de la venta de bicicletas:</li>
 </ol>
 <ol style="list-style-type: lower-alpha">
-<li><p>utiliza la función de <code>experimento</code> y la función <code>map_df</code> para obtener una simulación de 100 realizaciones del experimento. Haz una gráfica de cuantiles vs cuantiles normales y decide si el conjunto de datos está bien aproximado por una distribución normal.</p></li>
-<li><p>calcula la distribución de probabilidades del número de bicicletas vendidas en un periodo de . Para calcular <span class="math inline">\(p(k) = P(S=k)\)</span> considera que deberás contar el número de soluciones de la ecuación <span class="math display">\[
+<li><p>Utiliza la función de <code>experimento</code> y la función <code>map_df</code> para obtener una simulación de 100 realizaciones del experimento. Haz una gráfica de cuantiles vs cuantiles normales y decide si el conjunto de datos está bien aproximado por una distribución normal.</p></li>
+<li><p>Calcula la distribución de probabilidades del número de bicicletas vendidas en un periodo de <em>cinco días</em>. Para calcular <span class="math inline">\(p(k) = P(S=k)\)</span> considera que deberás contar el número de soluciones de la ecuación <span class="math display">\[
 x_1 + x_2 + \cdots + x_5 = k,
 \]</span> donde <span class="math inline">\(0 \leq x_i \leq 4\)</span>. El número de soluciones enteras es equivalente al coeficiente del término <span class="math inline">\(y^k\)</span> del polinomio <span class="math inline">\((1+y+\cdots+y^4)^5\)</span> porque cada factor del producto representa el número de bicicletas vendidas por día. Compara las probabilidades calculadas con los valores de la distribución normal obtenidos anteriormente.</p></li>
 </ol>
