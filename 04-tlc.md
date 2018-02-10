@@ -705,7 +705,7 @@ X=\left\{ \begin{array}{cl}
 \end{array}\right.
 \]
 
-Suponga que el número de bicicletas vendidas el siguiente día es independiente del número vendido el día anterior. Sea $S$ el número de bicicletas vendidas en un periodo de \textit{cinco días}.
+Suponga que el número de bicicletas vendidas el siguiente día es independiente del número vendido el día anterior. Sea $S$ el número de bicicletas vendidas en un periodo de _cinco días_.
 
 Si $X_1,X_2,\ldots,X_{5}$ son variables aleatorias independientes con la misma distribución, entonces
 \[
