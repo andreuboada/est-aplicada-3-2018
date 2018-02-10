@@ -51,7 +51,7 @@ function(input, output){
       geom_histogram(aes(y = ..density..), bins = 30) + 
       stat_function(fun=dnorm, args=list(mean=mean(nobs$ndist), sd=sd(nobs$ndist)),
                     color = "red") +
-      ggtitle(paste0("Distribución de las medias de una distribución ",distname)) +
+      ggtitle(paste0("Distribución de las medias de una ",distname)) +
       scale_x_continuous(name = expression(paste("Media muestral (", bar(X), ")"))) +
       scale_y_continuous(name = "Densidad")
     grid.arrange(g1,g2,ncol=1)
