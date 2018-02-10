@@ -275,7 +275,7 @@ El CLT es uno de los resultados matemáticos más utilizados en la ciencia. Nos 
 <p><br></p>
 <p>La primera versión de este teorema fue postulada por el matemático francés Abraham De Moivre que, en un notable artículo publicado en 1733, usó la distribución normal para aproximar la distribución del número de soles resultante de muchos lanzamientos de una moneda justa. Este hallazgo estaba muy por delante de su tiempo y permaneció en el olvido hasta que el famoso matemático francés Pierre-Simon Laplace lo rescató de la oscuridad en su monumental obra <strong>Théorie analytique des probabilités</strong>, publicada en 1812. Laplace extendió el hallazgo de De Moivre al aproximar la distribución binomial en general con la distribución normal. El teorema en su forma más general fue demostrado por primera vez por el príncipe de las matemáticas, Carl Friedrich Gauss, en 1813. Hoy en día es conocida en su honor como <strong>distribución Gaussiana</strong>, cuando en su tiempo no era más que la <strong>ley del error</strong>.</p>
 <p>Supongamos que <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> son errores <strong>independientes</strong> cometidos al azar cuando se han hecho dos mediciones <strong>independientemente</strong> una de la otra.</p>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p><br></p>
 De tal forma que se cumple que <span class="math display">\[
 g(r) \Delta x \Delta y = f(x) \Delta x f(y) \Delta y,
@@ -387,7 +387,7 @@ e^{cx^2/2} = -cx^2 e^{cx^2/2},
 \]</span> que ocurre si y sólo si <span class="math display">\[
 x = \pm \sigma.
 \]</span> Esto quiere decir que <span class="math inline">\(f(x)\)</span> tiene puntos de inflexión en <span class="math inline">\(-\sigma\)</span> y <span class="math inline">\(\sigma\)</span>.</p>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="diagramas-de-caja-y-brazos" class="section level2">
 <h2><span class="header-section-number">4.4</span> Diagramas de caja y brazos</h2>
@@ -491,9 +491,9 @@ singer<span class="op">$</span>estatura.m &lt;-<span class="st"> </span>singer<s
     <span class="dt">color =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> mediana), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">coord_flip</span>()</code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <hr />
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <img src="figuras/manicule2.jpg" />
 <div class="centered">
 <p class="espacio">
@@ -519,7 +519,7 @@ singer<span class="op">$</span>estatura.m &lt;-<span class="st"> </span>singer<s
 <h3>Ejemplo: normal</h3>
 <p>Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria normal estándar. A esta función la denotamos como <span class="math inline">\(q_{0,1}(f)\)</span>, y en general, a la función de cuantiles de una distribución <span class="math inline">\(Normal(\mu, \sigma^2)\)</span> la denotamos por <span class="math inline">\(q_{\mu, \sigma}(f)\)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">curve</span>(qnorm, <span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to=</span><span class="dv">1</span>, <span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">xlab=</span><span class="st">&#39;Cuantil (f)&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;q&#39;</span>)</code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Notemos que <span class="math inline">\(q_{\mu, \sigma}(f) \to \infty\)</span> cunado <span class="math inline">\(f \to 1\)</span>, y el cuantil <span class="math inline">\(1\)</span> no esta definido. Análogamente el cuantil <span class="math inline">\(0\)</span> tampoco está definido.</p>
 <p class="espacio">
 </p>
@@ -562,7 +562,7 @@ tips<span class="op">$</span>cuantiles &lt;-<span class="st"> </span><span class
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;Cuantil (f)&#39;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Dólares&#39;) + </span>
 <span class="st">  geom_point()</span></code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <div id="que-buscar-en-una-grafica-de-cuantiles" class="section level3">
 <h3><span class="header-section-number">4.6.1</span> ¿Qué buscar en una gráfica de cuantiles?</h3>
 <p>Las gráficas de cuantiles son conceptualmente simples; sin embargo, su interpretación efectiva requiere práctica. Algunas guías son:</p>
@@ -639,7 +639,7 @@ singer_cuant &lt;-<span class="st"> </span><span class="kw">mutate</span>(singer
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>voice.part, <span class="dt">nrow =</span> <span class="dv">2</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <hr />
 <p><br></p>
 <p><br></p>
@@ -752,7 +752,7 @@ icad <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="fl">0.1</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">400</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(icad<span class="op">$</span>calificacion), <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>La línea roja representa la media nacional de la calificación promedio de todas las unidades del país. Podemos ver que conforme aumenta el número de pacientes en el hospital las observaciones tienden a acercarse más a la media poblacional.</p>
 <p>Podemos simular la media para diferentes tamaños de muestra y ver cómo se comporta la media para varios tamaños de muestra. En los datos del ICAD la media nacional es de 58.867:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123456</span>)
@@ -764,7 +764,7 @@ sim_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">map
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sim_<span class="dv">1</span>, <span class="kw">aes</span>(<span class="dt">x =</span> n, <span class="dt">y =</span> media)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(icad<span class="op">$</span>calificacion), <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Nuevamente se observa un fenómeno similar. Este fenómeno del error estándar generalmente se observa en la práctica y una buena estrategia para el modelado sería considerar el número de observaciones (pacientes, alumnos, escuelas) utilizados para calcular la media.</p>
 <p class="espacio">
 </p>
@@ -834,7 +834,7 @@ sim_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </
 <span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="fl">3.5</span>, <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1000</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="fl">3.3</span>,<span class="fl">4.5</span>))</code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-27-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.</p>
 <p>Vale la pena observar que hay distribuciones que requieren un mayor tamaño de muestra <span class="math inline">\(n\)</span> para lograr una buena aproximación (por ejemplo la log-normal), ¿a qué se debe esto?</p>
 <p>¿Por qué tanto énfasis en el TLC? El <strong>error estándar</strong> es la manera más común para describir la precisión de una estadística. En términos generales, esperamos que <span class="math inline">\(\bar{x}\)</span> este a una distancia de <span class="math inline">\(\mu_P\)</span> menor a un error estándar el 68% del tiempo, y a menos de 2 errores estándar el 95% del tiempo. Estos porcentajes están basados el teorema central del límite que nos dice que bajo ciertas condiciones (bastante generales) de <span class="math inline">\(P\)</span> la distribución de <span class="math inline">\(\bar{x}\)</span> se aproximará a una distribución normal: <span class="math display">\[\bar{x} \overset{\cdot}{\sim} N(\mu_P,\sigma_P^2/n)\]</span></p>
@@ -933,7 +933,7 @@ df_bicis <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"
 <span class="kw">ggplot</span>(df_bicis_frec, <span class="kw">aes</span>(<span class="dt">x =</span> x)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">y =</span> p_x), <span class="dt">stat =</span> <span class="st">&#39;identity&#39;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">stat=</span><span class="st">&#39;identity&#39;</span>,<span class="kw">aes</span>(<span class="dt">y=</span>p_x,<span class="dt">label=</span><span class="kw">round</span>(p_x,<span class="dv">4</span>)),<span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>,<span class="dt">size=</span><span class="fl">2.5</span>)</code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-33-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-32-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Si comparamos con los valores que toma una distribución normal con la misma media y la misma desviación estándar vemos que las probabilidades son muy similares. Es un resultado del Teorema del Límite Central que la suma de variables uniformes independientes sigue una distribución normal. De cualquier forma es interesante cómo la suma de sólo 5 uniformes independientes da como resultado una distribución que se asemeja a la de una normal.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">media_bicis &lt;-<span class="st"> </span><span class="kw">mean</span>(df_bicis<span class="op">$</span>x)
 sd_bicis &lt;-<span class="st"> </span><span class="kw">sd</span>(df_bicis<span class="op">$</span>x)
@@ -976,7 +976,7 @@ sd_bicis &lt;-<span class="st"> </span><span class="kw">sd</span>(df_bicis<span 
 }</code></pre></div>
 <p>Por ejemplo, con <span class="math inline">\(p=1/3\)</span> y <span class="math inline">\(n=10\)</span> realizaciones, la gráfica se ve así:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">genera_binoms</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">10</span>)</code></pre></div>
-<p><img src="04-tlc_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="04-tlc_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Utiliza la función para determinar a partir de qué valor de <span class="math inline">\(n\)</span> la distribución de una variable Binomial con probabilidad de éxito <span class="math inline">\(p=1/100\)</span> se asemeja a la de una normal.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Regresando al ejemplo de la venta de bicicletas:</li>

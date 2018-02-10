@@ -1,5 +1,4 @@
 
-
 # Teorema del Límite Central
 
 <style>
@@ -86,7 +85,7 @@ La primera versión de este teorema fue postulada por el matemático francés Ab
 
 Supongamos que $x$ y $y$ son errores **independientes** cometidos al azar cuando se han hecho dos mediciones __independientemente__ una de la otra.
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
 
 <br>
 
@@ -271,7 +270,7 @@ x = \pm \sigma.
 $$
 Esto quiere decir que $f(x)$ tiene puntos de inflexión en $-\sigma$ y $\sigma$.
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
 ## Diagramas de caja y brazos
 Los diagramas de caja y brazos son muy populares, e intentan mostrar gráficamente algo similar al resumen de cinco números de Tukey:
@@ -337,11 +336,11 @@ ggplot(singer.medians, aes(x = voice.part, y = estatura.m)) +
   coord_flip()
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
 
 ---
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
 
 ![](figuras/manicule2.jpg) 
 <div class="centered">
@@ -376,7 +375,7 @@ Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria norma
 curve(qnorm, from = 0, to=1, n = 1000, xlab='Cuantil (f)', ylab='q')
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
 
 Notemos que $q_{\mu, \sigma}(f) \to \infty$ cunado $f \to 1$, y el cuantil $1$ no esta definido. Análogamente el cuantil $0$ tampoco está definido.
 
@@ -436,7 +435,7 @@ ggplot(tips, aes(x=probs, y = cuantiles)) +
   geom_point()
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
 
 ### ¿Qué buscar en una gráfica de cuantiles?
 Las gráficas de cuantiles son conceptualmente simples; sin embargo, su interpretación efectiva requiere práctica. Algunas guías son:
@@ -536,7 +535,7 @@ ggplot(singer_cuant, aes(x = q.norm, y = estatura.m)) +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
 
 ---
 
@@ -583,7 +582,7 @@ ggplot(icad, aes(x=pac_act, y=calificacion)) +
   geom_hline(yintercept = mean(icad$calificacion), color = 'red')
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
 
 La línea roja representa la media nacional de la calificación promedio de todas las unidades del país. Podemos ver que conforme aumenta el número de pacientes en el hospital las observaciones tienden a acercarse más a la media poblacional.
 
@@ -606,7 +605,7 @@ ggplot(sim_1, aes(x = n, y = media)) +
   geom_hline(yintercept = mean(icad$calificacion), color = 'red')
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
 
 Nuevamente se observa un fenómeno similar. Este fenómeno del error estándar generalmente se observa en la práctica y una buena estrategia para el modelado sería considerar el número de observaciones (pacientes, alumnos, escuelas) utilizados para calcular la media. 
 
@@ -670,7 +669,7 @@ ggplot(sim_2, aes(x = lanzamiento, y = media)) +
   scale_y_continuous(limits = c(3.3,4.5))
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-27-1.png" width="70%" style="display: block; margin: auto;" />
 
 La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.
 
@@ -769,7 +768,7 @@ ggplot(df_bicis_frec, aes(x = x)) +
   geom_text(stat='identity',aes(y=p_x,label=round(p_x,4)),vjust=-1,size=2.5)
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-33-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-32-1.png" width="100%" style="display: block; margin: auto;" />
 
 Si comparamos con los valores que toma una distribución normal con la misma media y la misma desviación estándar vemos que las probabilidades son muy similares. Es un resultado del Teorema del Límite Central que la suma de variables uniformes independientes sigue una distribución normal. De cualquier forma es interesante cómo la suma de sólo 5 uniformes independientes da como resultado una distribución que se asemeja a la de una normal.
 
@@ -828,7 +827,7 @@ Por ejemplo, con $p=1/3$ y $n=10$ realizaciones, la gráfica se ve así:
 genera_binoms(1/3, 10)
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 Utiliza la función para determinar a partir de qué valor de $n$ la distribución de una variable Binomial con probabilidad de éxito $p=1/100$ se asemeja a la de una normal.
