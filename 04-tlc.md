@@ -340,6 +340,12 @@ ggplot(singer.medians, aes(x = voice.part, y = estatura.m)) +
 
 ---
 
+<br>
+
+Consideramos las siguientes mediciones de ozono en el aire, producidas por la red automática de monitoreo ambiental ([SIMA](http://www.aire.df.gob.mx/default.php?opc='aKBhnmI='&opcion=Zg==)). Las mediciones son concentración de ozono (en ppb o partes por billón) para las estaciones de Tlalnepantla e Iztapalapa, tomadas a las 2 pm, durante 2014. 
+
+**Una exposición de 110 ppb durante una hora se considera aguda.**
+
 <img src="04-tlc_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
 
 ![](figuras/manicule2.jpg) 
