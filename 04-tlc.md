@@ -371,7 +371,7 @@ La distribución de ozono (en cualquier estación) es...
 
 ## Gráficas de cuantiles teóricos
 
-Supongamos que $G$ es la función de distribución de una variable aleatoria continua, tal que $G$ es diferenciable y tiene derivada positiva (por ejemplo, si la variable aleatoria tiene densidad positiva y continua en todos los reales). Entonces podemos construir la función $q:(0,1) \to (\infty, \infty)$ dada por: $$q(f)=G^{-1}(f)$$ para cualquier $f \in (0,1)$. Decimos que $q$ es la **función de cuantiles** de la variable aleatoria con distribución $G$. Bajo esta definición, es claro que si $X$ tiene distribución $G$, entonces $P(X<q(f))=G(q(f))=f$.
+\BeginKnitrBlock{nota}<div class="nota">Supongamos que $G$ es la función de distribución de una variable aleatoria continua, tal que $G$ es diferenciable y tiene derivada positiva (por ejemplo, si la variable aleatoria tiene densidad positiva y continua en todos los reales). Entonces podemos construir la función $q:(0,1) \to (\infty, \infty)$ dada por: $$q(f)=G^{-1}(f)$$ para cualquier $f \in (0,1)$. Decimos que $q$ es la **función de cuantiles** de la variable aleatoria con distribución $G$. Bajo esta definición, es claro que si $X$ tiene distribución $G$, entonces $P(X<q(f))=G(q(f))=f$.</div>\EndKnitrBlock{nota}
 
 ### Ejemplo: normal {-}
 Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria normal estándar. A esta función la denotamos como $q_{0,1}(f)$, y en general, a la función de cuantiles de una distribución $Normal(\mu, \sigma^2)$ la denotamos por $q_{\mu, \sigma}(f)$.
@@ -381,7 +381,7 @@ Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria norma
 curve(qnorm, from = 0, to=1, n = 1000, xlab='Cuantil (f)', ylab='q')
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
 
 Notemos que $q_{\mu, \sigma}(f) \to \infty$ cunado $f \to 1$, y el cuantil $1$ no esta definido. Análogamente el cuantil $0$ tampoco está definido.
 
@@ -441,7 +441,7 @@ ggplot(tips, aes(x=probs, y = cuantiles)) +
   geom_point()
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
 
 ### ¿Qué buscar en una gráfica de cuantiles?
 Las gráficas de cuantiles son conceptualmente simples; sin embargo, su interpretación efectiva requiere práctica. Algunas guías son:
@@ -462,7 +462,6 @@ Las gráficas de cuantiles son conceptualmente simples; sin embargo, su interpre
 
 
 ```r
-library(ggplot2)
 num_sim <- 300
 grupos <- data.frame(
   gpo = sample(1:3, size = 300, replace = TRUE, prob = c(0.25, 0.25, 0.5)))
@@ -477,6 +476,8 @@ ggplot(grupos, aes(x=probs, y = cuantiles)) +
   ylab('Dólares') + 
   geom_point()
 ```
+
+<img src="04-tlc_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /><img src="04-tlc_files/figure-html/unnamed-chunk-18-2.png" width="70%" style="display: block; margin: auto;" />
 
 <p class="espacio">
 </p>
@@ -541,7 +542,7 @@ ggplot(singer_cuant, aes(x = q.norm, y = estatura.m)) +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
 
 ---
 
@@ -563,18 +564,18 @@ icad <- read_csv("datos/icad.csv")
 icad %>% sample_n(10) %>% knitr::kable()
 ```
 
-    fecha   cve_edo  cve_clues     nombre                      calificacion   pac_act
----------  --------  ------------  -------------------------  -------------  --------
- 20161125        20  OCSSA006532   RAYMUNDO MELENDEZ,COL               27.8         1
- 20161125        20  OCSSA002315   JALTEPEC DE CANDOYOC                46.6        90
- 20161125        22  QTSSA000685   COLON                               60.1        80
- 20161125        17  MSSSA001270   LOMAS DEL CARRIL                    63.0       107
- 20161125        12  GRSSA001970   CSR TONALÁ                          57.8        34
- 20161125        16  MNSSA016854   CRV OJO ZARCO                       70.3        18
- 20161125        15  MCSSA001851   S FELIPE COAMANGO                   76.4        58
- 20161125        21  PLSSA004556   CS VILLA LÁZARO CÁRDENAS            62.9       219
- 20161125        20  OCSSA020561   CSR EL PORTEZUELO                   59.6         8
- 20161125        14  JCSSA000800   CS LA RIBERA                        59.0        49
+    fecha   cve_edo  cve_clues     nombre             calificacion   pac_act
+---------  --------  ------------  ----------------  -------------  --------
+ 20161125        30  VZSSA002422   TLAVICTEPAN                54.5        39
+ 20161125         7  CSSSA005645   SALTO DE AGUA              52.2       110
+ 20161125        25  SLSSA002404   BUENOS AIRES               57.9        20
+ 20161125        30  VZSSA000544   HUAPANGO                   62.2        16
+ 20161125        13  HGSSA003731   XILOCUATITLA               67.0        22
+ 20161125        14  JCSSA012596   CS LA MORA                 72.3        49
+ 20161125         7  CSSSA020123   CS MICRO JOLXIC            54.8         1
+ 20161125        15  MCSSA003193   CALPULALPAN                53.4        60
+ 20161125         4  CCSSA000701   CS PIXOYAL                 49.1        15
+ 20161125        28  TSSSA001685   U04 COL HIDALGO            58.6        74
 
 Cada unidad de salud o _CLUES_ recibe una calificación __promedio__ y tiene cierto número de pacientes diabéticos activos.
 
@@ -588,7 +589,7 @@ ggplot(icad, aes(x=pac_act, y=calificacion)) +
   geom_hline(yintercept = mean(icad$calificacion), color = 'red')
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
 
 La línea roja representa la media nacional de la calificación promedio de todas las unidades del país. Podemos ver que conforme aumenta el número de pacientes en el hospital las observaciones tienden a acercarse más a la media poblacional.
 
@@ -611,14 +612,14 @@ ggplot(sim_1, aes(x = n, y = media)) +
   geom_hline(yintercept = mean(icad$calificacion), color = 'red')
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
 
 Nuevamente se observa un fenómeno similar. Este fenómeno del error estándar generalmente se observa en la práctica y una buena estrategia para el modelado sería considerar el número de observaciones (pacientes, alumnos, escuelas) utilizados para calcular la media. 
 
 <p class="espacio">
 </p>
 
-\BeginKnitrBlock{comentario}<div class="comentario">Alguien nos podría preguntar: ¿por qué debería el promedio acercarse a la media general cuando aumentamos el tamaño de la muestra?". </div>\EndKnitrBlock{comentario}
+\BeginKnitrBlock{comentario}<div class="comentario">Alguien nos podría preguntar: ¿por qué debería el promedio acercarse a la media general cuando aumentamos el tamaño de la muestra?. </div>\EndKnitrBlock{comentario}
 
 <p class="espacio">
 </p>
@@ -672,10 +673,10 @@ ggplot(sim_2, aes(x = lanzamiento, y = media)) +
   geom_line() +
   geom_hline(yintercept = 3.5, color = 'red') + 
   scale_x_continuous(limits = c(2,1000)) +
-  scale_y_continuous(limits = c(3.3,4.5))
+  scale_y_continuous(limits = c(3.3,3.8))
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-27-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" />
 
 La idea es ver como se aproxima la distribución muestral de la media (cuando las observaciones provienen de distintas distribuciones) a una Normal conforme aumenta el tamaño de muestra. Para esto, aproximamos la distribución muestral de la media usando simulación.
 
@@ -774,7 +775,7 @@ ggplot(df_bicis_frec, aes(x = x)) +
   geom_text(stat='identity',aes(y=p_x,label=round(p_x,4)),vjust=-1,size=2.5)
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-32-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-33-1.png" width="100%" style="display: block; margin: auto;" />
 
 Si comparamos con los valores que toma una distribución normal con la misma media y la misma desviación estándar vemos que las probabilidades son muy similares. Es un resultado del Teorema del Límite Central que la suma de variables uniformes independientes sigue una distribución normal. De cualquier forma es interesante cómo la suma de sólo 5 uniformes independientes da como resultado una distribución que se asemeja a la de una normal.
 
@@ -833,7 +834,7 @@ Por ejemplo, con $p=1/3$ y $n=10$ realizaciones, la gráfica se ve así:
 genera_binoms(1/3, 10)
 ```
 
-<img src="04-tlc_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="04-tlc_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 Utiliza la función para determinar a partir de qué valor de $n$ la distribución de una variable Binomial con probabilidad de éxito $p=1/100$ se asemeja a la de una normal.
