@@ -782,6 +782,7 @@ dnorm(0:20, mean = media_bicis, sd = sd_bicis)
 #>  [8] 0.076440 0.098302 0.115022 0.122455 0.118619 0.104546 0.083838
 #> [15] 0.061172 0.040611 0.024531 0.013482 0.006742 0.003068 0.001270
 ```
+
 ## Tarea
 
 1. La Evaluación Nacional de Logros Académicos en Centros Escolares (ENLACE), es un examen que se pretende realizar cada año en México por la Secretaria de Educación Pública (SEP) a todas las escuelas públicas y privadas de nivel básico; para conocer el nivel de desempeño en las materias de español y matemáticas. Han existido importantes resistencias a la aplicación de este examen y opiniones de intelectuales respecto de las fallas que esta tiene.
@@ -798,7 +799,7 @@ d. Agrega los datos a nivel municipio para calcular el número de alumnos en cad
 
 e. Haz una gráfica en la cual cada punto represente un municipio y en el eje $x$ se muestre el número de alumnos que presentaron el examen y en el eje $y$ el promedio de puntos en matemáticas.
 
-2. La siguiente función sirve para generar una gráfica de la función de masa de probabilidad de una variable aleatoria $\mbox{Binomial}(n,p)$. 
+2. La siguiente función de R sirve para generar una gráfica de la función de masa de probabilidad de una variable aleatoria $\mbox{Binomial}(n,p)$. 
 
 
 ```r

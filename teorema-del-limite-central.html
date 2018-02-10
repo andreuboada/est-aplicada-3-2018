@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-02-09">
+<meta name="date" content="2018-02-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -956,7 +956,7 @@ sd_bicis &lt;-<span class="st"> </span><span class="kw">sd</span>(df_bicis<span 
 <li><p>Haz una gráfica en la cual cada punto represente un municipio y en el eje <span class="math inline">\(x\)</span> se muestre el número de alumnos que presentaron el examen y en el eje <span class="math inline">\(y\)</span> el promedio de puntos en matemáticas.</p></li>
 </ol>
 <ol start="2" style="list-style-type: decimal">
-<li>La siguiente función sirve para generar una gráfica de la función de masa de probabilidad de una variable aleatoria <span class="math inline">\(\mbox{Binomial}(n,p)\)</span>.</li>
+<li>La siguiente función de R sirve para generar una gráfica de la función de masa de probabilidad de una variable aleatoria <span class="math inline">\(\mbox{Binomial}(n,p)\)</span>.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genera_binoms &lt;-<span class="st"> </span><span class="cf">function</span>(p, n) {
   datos &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span>n, <span class="dt">y =</span> <span class="kw">dbinom</span>(x, n, p))
