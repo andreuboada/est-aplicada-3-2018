@@ -421,18 +421,18 @@ tb_long %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name           demog           casos
------  -----  ---------------------  -------------  ------
-BZ      2001  Belize                 new_sp_m014         0
-AN      2004  Netherlands Antilles   new_sp_m3544        4
-CA      1991  Canada                 new_sp_m4554       37
-NP      2002  Nepal                  new_sp_f1524     1203
-RO      2006  Romania                new_sp_m65        580
-BH      1995  Bahrain                new_sp_m65          3
-PH      1998  Philippines            new_sp_f2534      109
-GN      2004  Guinea                 new_sp_f65         63
-GU      2001  Guam                   new_sp_m2534        4
-TM      1999  Turkmenistan           new_sp_m2534      225
+iso2    year  country_name   demog           casos
+-----  -----  -------------  -------------  ------
+BZ      2001  Belize         new_sp_m014         0
+AN      2004  NA             new_sp_m3544        4
+CA      1991  Canada         new_sp_m4554       37
+NP      2002  Nepal          new_sp_f1524     1203
+RO      2006  Romania        new_sp_m65        580
+BH      1995  Bahrain        new_sp_m65          3
+PH      1998  Philippines    new_sp_f2534      109
+GN      2004  Guinea         new_sp_f65         63
+GU      2001  Guam           new_sp_m2534        4
+TM      1999  Turkmenistan   new_sp_m2534      225
 
 
 Las variables sexo y edad se obtienen separando la columna **demog**, para esto se usa la función `separate()`con los siguientes argumentos: `tidyr::separate(data, col = name_variabletoseparate, into = c(vector with names using ""), sep)`
@@ -446,18 +446,18 @@ tb_tidy %>% sample_n(10) %>% knitr::kable()
 
 
 
-iso2    year  country_name                       sex        age     casos
------  -----  ---------------------------------  ---------  -----  ------
-GN      2004  Guinea                             new_sp_f   2534      521
-NG      2008  Nigeria                            new_sp_m   u           0
-PY      2006  Paraguay                           new_sp_f   1524      130
-AT      2007  Austria                            new_sp_f   2534       14
-BO      1997  Bolivia (Plurinational State of)   new_sp_m   1524     1214
-MR      1999  Mauritania                         new_sp_f   3544      110
-NI      2007  Nicaragua                          new_sp_f   3544      100
-VU      2005  Vanuatu                            new_sp_f   65          2
-NG      2005  Nigeria                            new_sp_f   65        415
-JO      2006  Jordan                             new_sp_m   5564        4
+iso2    year  country_name   sex        age     casos
+-----  -----  -------------  ---------  -----  ------
+GN      2004  Guinea         new_sp_f   2534      521
+NG      2008  Nigeria        new_sp_m   u           0
+PY      2006  Paraguay       new_sp_f   1524      130
+AT      2007  Austria        new_sp_f   2534       14
+BO      1997  Bolivia        new_sp_m   1524     1214
+MR      1999  Mauritania     new_sp_f   3544      110
+NI      2007  Nicaragua      new_sp_f   3544      100
+VU      2005  Vanuatu        new_sp_f   65          2
+NG      2005  Nigeria        new_sp_f   65        415
+JO      2006  Jordan         new_sp_m   5564        4
 
 Ahora para hacer mejor variable **sex** y **age** usaremos la función `mutate()` que permite crear nuevas variables sin modificar la dimensión del dataframe.
 

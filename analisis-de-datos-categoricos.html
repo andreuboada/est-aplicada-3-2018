@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="analisis-de-datos-categoricos.html">
-
+<link rel="prev" href="teorema-del-limite-central.html">
+<link rel="next" href="referencias.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -228,21 +228,278 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="referencias" class="section level1 unnumbered">
-<h1>Referencias</h1>
+<div id="analisis-de-datos-categoricos" class="section level1">
+<h1><span class="header-section-number">Clase 5</span> Análisis de datos categóricos</h1>
+<style>
+  .espacio {
+     margin-bottom: 1cm;
+  }
+</style>
+<style>
+  .espacio3 {
+     margin-bottom: 3cm;
+  }
+</style>
+<p>Sólo necesitas instalar un paquete una vez, pero debes volver a cargarlo cada vez que inicies una nueva sesión.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>Las variables categóricas están por doquier. Desde ayudar a decidir cuándo un tratamiento médico es mejor hasta evaluar los factores que afectan nuestras opiniones y conductas, hoy en día los analistas encuentran innumerables usos para los métodos de datos categóricos. Primero vamos a repasar algunos conceptos de probabilidad.</p>
+<div id="repaso-y-algunos-conceptos" class="section level2">
+<h2><span class="header-section-number">5.1</span> Repaso y algunos conceptos</h2>
+<p>Recordemos la <strong>distribución multinomial</strong>. Supongamos que cada uno de <span class="math inline">\(n\)</span> ensayos independientes e idénticos tiene realizaciones en <span class="math inline">\(c\)</span> categorías. Definimos <span class="math inline">\(y_{ij}\)</span> como <span class="math display">\[
+y_{ij} = \left\{ \begin{array}{cl}
+1 &amp; \text{si el }\; i\text{-ésimo ensayo cae en la categoría }j,\\
+0 &amp; \text{en otro caso.}
+\end{array}\right.
+\]</span></p>
+<p>Entonces <span class="math inline">\(y_i=(y_{i1},y_{i2},\ldots,y_{ic})\)</span> representa <em>un</em> ensayo multinomial, done <span class="math display">\[
+\displaystyle{\sum_j{y_{ij}}}=1.
+\]</span></p>
+<p>Notemos que <span class="math inline">\(y_{ic}=1-(y_{i1}+\cdots+y_{i,c-1})\)</span> es redundante. Sea <span class="math inline">\(n_j=\displaystyle{\sum_i{y_{ij}}}\)</span> el número de ensayos que caen en la categoría <span class="math inline">\(j\)</span>. Los conteos <span class="math inline">\((n_1,n_2,\ldots,n_c)\)</span> tienen una distribución multinomial.</p>
+<p>Sea <span class="math inline">\(\pi_{j}=P(Y_{ij}=1)\)</span>, la probabilidad de éxito en la categoría <span class="math inline">\(j\)</span>. La función de masa de probabilidad de <span class="math inline">\((n_1,n_2,\ldots,n_c)\)</span> es <span class="math display">\[
+p(n_1,n_2,\ldots,n_c) = \dfrac{n!}{n_1!n_2!\cdots n_c!}\pi_1^{n_1}\pi_2^{n_2}\cdots \pi_c^{n_c}.
+\]</span></p>
+<p>Sea <span class="math inline">\(n=\displaystyle{\sum_j{n_j}}\)</span>. Recordemos que esta ecuación es de dimensión <span class="math inline">\(c-1\)</span> porque <span class="math display">\[
+n_c = n - (n_1 + n_2 + \cdots + n_{c-1}).
+\]</span></p>
+<p>Se puede ver que <span class="math display">\[
+\begin{eqnarray*}
+E(n_j) =n\pi_j, \quad &amp;&amp; V(n_j)=n\pi_j(1-\pi_j),\\
+C(n_i,n_j)=-n\pi_i \pi_j&amp;\quad&amp;\mbox{si } i\neq j
+\end{eqnarray*}
+\]</span></p>
+<p><strong>Modelo Poisson</strong></p>
+<p>Sean <span class="math inline">\((Y_1,Y_2,\ldots,Y_c)\)</span> variables aleatorias Poisson independientes con parámetros <span class="math inline">\((\mu_1,\mu_2,\ldots,\mu_c)\)</span>. La función de masa de probabilidad conjunta es <span class="math display">\[
+P(Y_1=n_1, Y_2=n_2, \ldots, Y_c=n_c) = \prod_i{\mbox{exp}(-\mu_i)\dfrac{\mu_i^{n_i}}{n_i!}}.
+\]</span></p>
+<p>El total <span class="math inline">\(n=\displaystyle{\sum_i{Y_i}}\)</span> también tiene una distribución Poisson con media <span class="math inline">\(\displaystyle{\sum_i{\mu_i}}\)</span>. Como <span class="math inline">\(n\)</span> también es una variable aleatoria, al condicionar en <span class="math inline">\(n\)</span>, <span class="math inline">\(\{Y_i\}\)</span> ya no tienen una distribución Poisson, pues cada <span class="math inline">\(Y_i\)</span> no puede exceder <span class="math inline">\(n\)</span>.</p>
+<p>La distribución condicional es <span class="math display">\[
+\begin{eqnarray*}
+P\left(Y_1=n_1,\ldots,Y_c=n_c \,\middle|\,  \sum_j{Y_j}=n\right) &amp;=&amp; \dfrac{P(Y_1=n_1,\ldots,Y_c=n_c)}{P\left(\sum_j{Y_j}\right)} \\
+&amp;=&amp; \dfrac{\prod_i \mbox{exp}(-\mu_i)\mu_i^{n_i}/n_i!}{\mbox{exp}\left(-\sum_j{\mu_j}\right)\left(\sum_j {\mu_j}\right)^n/n!} \\
+&amp;=&amp; \dfrac{n!}{\prod_i n_i!} \prod_i{\pi_i^{n_i}}
+\end{eqnarray*}
+\]</span> con <span class="math inline">\(\pi_i = \dfrac{\mu_i}{\sum_i \mu_i}\)</span>, es decir, se trata de una distribución multinomial con parámetros <span class="math inline">\((n, \{\pi_i\})\)</span>.</p>
+<p>Muchos análisis de datos categóricos suponen una distribución multinomial. Tales análisis usualmente tineen resultados similres a aquellos análisis que suponen una distribución Poisson, por las similitudes en sus funciones de verosimilitud.</p>
+<hr />
+<p><br></p>
+<p>En la estimación de parámetros a menudo se utilizan dos métodos para obtener intervalos de confianza:</p>
+<ol style="list-style-type: decimal">
+<li>Método de Wald</li>
+</ol>
+<p>En el caso univariado se utiliza como estimador de la varianza <span class="math inline">\(-E\left(\dfrac{d^2 L(\theta)}{d\theta^2}\right)\)</span> y el estadístico es <span class="math display">\[z=(\hat{\theta} - \theta_0)/\mbox{SE} \sim N(0,1)\]</span> o en el caso multivariado, <span class="math display">\[
+W = \left(\hat{\theta}- \theta_0\right)^T\left[\mbox{Cov}\left(\hat{\theta}\right)\right]^{-1}\left(\hat{\theta}- \theta_0\right),
+\]</span> y como <span class="math inline">\(\hat{\theta}\)</span> se distribuye normal asintóticamente, entonces la distribución de <span class="math inline">\(W\)</span> es <span class="math inline">\(\chi^2\)</span> con grados de libertad igual al rango de <span class="math inline">\(\mbox{Cov}\left(\hat{\theta}\right)\)</span>, el número de parámetros no redundantes.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Método de cociente de verosimilitud</li>
+</ol>
+<p>Si <span class="math inline">\(l_0\)</span> es el máximo valor de la función de verosimilitud bajo <span class="math inline">\(H_0\)</span> y <span class="math inline">\(l_1\)</span> es el valor máximo sobre el espacio de parámetros (que contiene también el valor bajo <span class="math inline">\(H_0\)</span>), entonces <span class="math inline">\(l_0 \leq l_1\)</span> y el estadístico es</p>
+<p><span class="math display">\[-2\,  \mbox{log}(\Lambda) = -2\,  \mbox{log}(l_0/l_1)=-2(L_0-L_1) \sim \chi^2_n\]</span> donde los grados de libertad equivalen a la diferencia de dimensiones de los espacios de parámetros.</p>
+<div id="caso-binomial" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Caso binomial</h3>
+<p>Definimos la función de verosimilitud de una variable aleatoria binomial con <span class="math inline">\(n\)</span> realizaciones y <span class="math inline">\(x\)</span> éxitos:</p>
+<p><span class="math display">\[
+L(\theta) = \mbox{log}(\theta^x(1-\theta)^{n-x}) = x\mbox{log}(\theta) + (n-x)\mbox{log}(1-\theta)
+\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">likelihood &lt;-<span class="st"> </span><span class="cf">function</span>(x, n){
+  <span class="cf">function</span>(theta){x<span class="op">*</span><span class="kw">log</span>(theta) <span class="op">+</span><span class="st"> </span>(n<span class="op">-</span>x)<span class="op">*</span><span class="kw">log</span>(<span class="dv">1</span><span class="op">-</span>theta)}
+}</code></pre></div>
+<p>Creamos nuestra función de verosimilitud para <span class="math inline">\(x=3\)</span> y <span class="math inline">\(n=10\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mi_likelihood &lt;-<span class="st"> </span><span class="kw">likelihood</span>(<span class="dv">3</span>, <span class="dv">10</span>)</code></pre></div>
+<p>Graficamos la función:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">0</span>), <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> x)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> mi_likelihood) <span class="op">+</span><span class="st"> </span><span class="kw">xlim</span>(<span class="fl">0.001</span>,<span class="fl">0.999</span>)</code></pre></div>
+<p><img src="05-datos_categoricos_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>El estadístico de Wald da como resultado el invervalo</p>
+<p><span class="math display">\[
+\hat{\theta} \pm z_{\alpha/2}\sqrt{\dfrac{\hat{\theta}(1-\hat{\theta})}{n}}
+\]</span></p>
+<p>El estadístico del cociente de verosimilitud es:</p>
+<p><span class="math display">\[
+2x\left[x\mbox{log}\left(\dfrac{\hat{\theta}}{\theta_0}\right)+(n-x)\mbox{log}\left(\dfrac{1-\hat{\theta}}{1-\theta_0}\right)\right] = \chi^2_{1,\alpha}
+\]</span></p>
+<p>Se puede expresar como</p>
+<p><span class="math display">\[
+2\sum{\mbox{observado} \,\left[\,\mbox{log}\left(\dfrac{\mbox{observado}}{\mbox{ajustado}}\right)\right]}
+\]</span></p>
+<p>Existen varios métodos para obtener intervalos de confianza. Utilizando la función <code>ciAllx</code> del paquete <code>proportion</code> podemos obtener intervalos de confianza para <span class="math inline">\(\hat{\theta}\)</span> a partir de 6 métodos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(proportion)
+intervalos &lt;-<span class="st"> </span><span class="kw">ciAllx</span>(<span class="dt">x =</span> <span class="dv">3</span>, <span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">alp =</span> <span class="fl">0.05</span>) 
+intervalos <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">method</th>
+<th align="right">x</th>
+<th align="right">LowerLimit</th>
+<th align="right">UpperLimit</th>
+<th align="left">LowerAbb</th>
+<th align="left">UpperAbb</th>
+<th align="left">ZWI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Wald</td>
+<td align="right">3</td>
+<td align="right">0.016</td>
+<td align="right">0.584</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+</tr>
+<tr class="even">
+<td align="left">ArcSine</td>
+<td align="right">3</td>
+<td align="right">0.071</td>
+<td align="right">0.603</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+</tr>
+<tr class="odd">
+<td align="left">Likelihood</td>
+<td align="right">3</td>
+<td align="right">0.085</td>
+<td align="right">0.607</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+</tr>
+<tr class="even">
+<td align="left">Score</td>
+<td align="right">3</td>
+<td align="right">0.108</td>
+<td align="right">0.603</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+</tr>
+<tr class="odd">
+<td align="left">Logit-Wald</td>
+<td align="right">3</td>
+<td align="right">0.100</td>
+<td align="right">0.624</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+</tr>
+<tr class="even">
+<td align="left">Wald-T</td>
+<td align="right">3</td>
+<td align="right">0.002</td>
+<td align="right">0.598</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+</tr>
+</tbody>
+</table>
+<p>Los intervalos de confianza para todos los métodos son realmente muy similares. Si el tamaño de muestra <span class="math inline">\(n\)</span> es grande, los 6 métodos dan como resultado intervalos de confianza prácticamente idénticos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(intervalos, <span class="kw">aes</span>(<span class="dt">y =</span> method)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> LowerLimit, <span class="dt">xend =</span> UpperLimit, <span class="dt">y =</span> method, <span class="dt">yend =</span> method)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="fl">0.3</span>, <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;Intervalo de confianza para cada método&#39;</span>)</code></pre></div>
+<p><img src="05-datos_categoricos_files/figure-html/unnamed-chunk-7-1.png" width="60%" style="display: block; margin: auto;" /></p>
+<hr />
+<p><br></p>
+</div>
+<div id="estimacion-de-parametros-multinomiales" class="section level3 unnumbered">
+<h3>Estimación de parámetros multinomiales</h3>
+<p>Definimos la función de verosimilitud <span class="math display">\[
+l(n_1,n_2,\ldots,n_c | \pi_1, \pi_2, \ldots, \pi_c) = c \prod_j \pi_j^{n_j}
+\]</span> donde <span class="math inline">\(\pi_j \geq 0\)</span> y <span class="math inline">\(\sum_j{\pi_j}=1\)</span>.</p>
+<p>Para estimar <span class="math inline">\(\{\pi_j\}\)</span> maximizamos la log-verosimilitud <span class="math display">\[
+L(\pi) = \sum_j{n_j \mbox{log}(\pi_j)}.
+\]</span></p>
+<p>Para no tener redundancias vemos <span class="math inline">\(L\)</span> como función de <span class="math inline">\(\pi_1,\pi_2,\ldots,\pi_{c-1}\)</span> pues <span class="math inline">\(\pi_c=1-(\pi_1+ \pi_2+\cdots+\pi_{c-1})\)</span>. Por lo tanto, <span class="math display">\[
+\dfrac{d \pi_c}{d \pi_j} = -1 \qquad \mbox{para }\; j=1,2,\ldots,c-1.
+\]</span> Por la regla de la cadena, <span class="math display">\[
+\dfrac{d\,\mbox{log}(\pi_c)}{d\,\pi_j}=\dfrac{1}{\pi_c} \cdot \dfrac{d\, \pi_c}{d\, \pi_j}=-\dfrac{1}{\pi_c}.
+\]</span> Ahora diferenciamos <span class="math inline">\(L\)</span> con respecto a <span class="math inline">\(\pi_j\)</span> <span class="math display">\[
+\dfrac{d\, L(\pi)}{d\, \pi_j}=\dfrac{n_j}{\pi_j} - \dfrac{n_c}{\pi_c} = 0.
+\]</span> Por lo que los estimadores de máxima verosimilitud satisfacen que <span class="math display">\[
+\dfrac{\hat{\pi}_j}{\hat{\pi}_c} = \dfrac{n_j}{n_c}.
+\]</span> Ahora bien, <span class="math display">\[
+1 = \sum_j{\pi_j}= \dfrac{\hat{\pi}_c\left(\sum_j n_j\right)}{n_c}=\dfrac{\hat{\pi}_c n}{n_c},
+\]</span> y se tiene que <span class="math inline">\(\hat{\pi_c}=n_c/n\)</span> y <span class="math inline">\(\hat{\pi_j}=n_j/n\)</span> para <span class="math inline">\(j=1,2,\ldots,c-1\)</span>.</p>
+<p>Se puede verificar que estos estimadores efectivamente maximizan la verosimilitud. Notemos que <span class="math inline">\(\hat{\pi_j}=n_j/n\)</span> son las proporciones muestrales.</p>
+</div>
+</div>
+<div id="la-chi2-de-pearson-de-una-multinomial" class="section level2">
+<h2><span class="header-section-number">5.2</span> La <span class="math inline">\(\chi^2\)</span> de Pearson de una multinomial</h2>
+<p>En 1900 el estadístico Karl Pearson definió una prueba de hipótesis para la multinomial. Su motivación inicial fue analizar las probabilidades de ocurrencias de varias realizaciones en el juego de la ruleta. Consideramos para <span class="math inline">\(j=1,2,\ldots,c\)</span> <span class="math display">\[
+H_0:\pi_j =\pi_{j0} \qquad H_1:\pi_j \neq \pi_{j0}.
+\]</span></p>
+<p>Bajo <span class="math inline">\(H_0\)</span>, los valores esperados de <span class="math inline">\(\{n_j\}\)</span>, llamadas <em>frecuencias esperadas</em> son <span class="math inline">\(\mu_j=n\pi_{j0}\)</span>, <span class="math inline">\(j=1,\ldots,c\)</span>. El estadístico propueto es <span class="math display">\[
+X^2 = \sum_j{\dfrac{(n_j - \mu_j)^2}{\mu_j}} \sim \chi^2_{(c-1)}.
+\]</span></p>
+<p>Si las diferencias <span class="math inline">\(\{n_j - \mu_j\}\)</span> son más grandes, esto produce valores <span class="math inline">\(X^2\)</span> más grandes para una <span class="math inline">\(n\)</span> fija. Si <span class="math inline">\(X_o^2\)</span> es el valor observado de <span class="math inline">\(X^2\)</span> entonces el valor p es <span class="math inline">\(P(X^2 \geq X_o^2)\)</span>. Si <span class="math inline">\(n\)</span> es grande, <span class="math inline">\(X^2\)</span> tiene una distribución <span class="math inline">\(\chi^2_{c-1}\)</span>.</p>
+<div id="cociente-de-verosimilitud-de-una-multinomial" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Cociente de verosimilitud de una multinomial</h3>
+<p>Bajo <span class="math inline">\(H_0\)</span> la verosimilitud se maximiza cuando <span class="math inline">\(\hat{\pi}_j=\pi_{j0}\)</span> y en el caso general cuando <span class="math inline">\(\hat{pi}_j=\frac{n_j}{n}\)</span>. El cociente de verosimilitud es</p>
+<p><span class="math display">\[
+\Lambda = \dfrac{\prod_j{\pi_{j0}^{n_j}}}{\prod_j{(n_j/n)^{n_j}}}.
+\]</span> Por lo tanto, el estadístico del cociente de verosimilitud es</p>
+<p><span class="math display">\[
+G^2 = -2\,\mbox{log}(\Lambda) = 2\, \sum_j{n_j \mbox{log}\left(\dfrac{n_j}{n}\pi_{j0}\right)}.
+\]</span></p>
+<p>A este estadístico se le llama <em>estadístico <span class="math inline">\(\chi^2\)</span> de verosimilitud</em>. Entre más grande sea el valor de <span class="math inline">\(G^2\)</span> hay mayor evidencia en contra de <span class="math inline">\(H_0\)</span>. En el caso general, el espacio de parámetros consiste de <span class="math inline">\(\{\pi_j\}\)</span> sujeto a que <span class="math inline">\(\sum_j{\pi_j}=1\)</span>, por lo que la dimensión es <span class="math inline">\(c-1\)</span>. Bajo <span class="math inline">\(H_0\)</span>, se especifica por completo <span class="math inline">\(\{\pi_j\}\)</span>, por lo que la dimensión es <span class="math inline">\(0\)</span>. La diferencia entre estas dimensiones es <span class="math inline">\((c-1)\)</span>. Si <span class="math inline">\(n\)</span> es grande, entonces <span class="math inline">\(G^2\)</span> tiene una distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\((c-1)\)</span> grados de libertad.</p>
+</div>
+</div>
+<div id="definiciones" class="section level2">
+<h2><span class="header-section-number">5.3</span> Definiciones</h2>
+<p>Supongamos que se tiene una tabla de contingencias. A continuación introduciremos una notación y algunas definiciones.</p>
+<div id="notacion" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Notación</h3>
+<p>Sea <span class="math inline">\(\pi_{ij}\)</span> la probabilidad de que una observación <span class="math inline">\((X,Y)\)</span> esté en la celdilla (<span class="math inline">\(i\)</span>,<span class="math inline">\(j\)</span>). Las densidades marginales las denotamos por: <span class="math display">\[
+\pi_{i+}=\sum_j{\pi_{ij}},\qquad \pi_{+j}  = \sum_i{\pi_{ij}}
+\]</span> Cuando ambas variables son aleatorias, se pueden definir las densidades marginales: <span class="math display">\[
+\pi_{j|i} = \pi_{ij}/\pi_{i+}, \qquad \mbox{para toda }i\mbox{ y }j
+\]</span></p>
+<p>Se dice que las variables son <strong>independientes</strong> si <span class="math display">\[
+\pi_{ij} = \pi_{i+}\pi_{+j} \quad \mbox{para }\; i=1,\ldots,I\; \mbox{ y para }\; j=1,\ldots,J.
+\]</span> Cuando son independientes se cumple que <span class="math display">\[
+\pi_{j|i}=\pi_{ij}/\pi_{i+}=(\pi_{i+}\pi_{+j})/\pi_{i+}=\pi_{+j} \quad \mbox{para }i=1,\ldots,I.
+\]</span></p>
+</div>
+<div id="razon-de-momios" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> Razón de momios</h3>
 
-<div id="refs" class="references">
-<div>
-<p>Fisher, Ronald A. 1936. “The Use of Multiple Measurements in Taxonomic Problems.” <em>Annals of Human Genetics</em> 7 (2). Wiley Online Library: 179–88.</p>
+<div class="nota">
+Para una probabilidad de éxito <span class="math inline">\(\pi\)</span> se definen los <em>momios</em> (o <em>chances</em>) como <span class="math display">\[
+\Omega = \dfrac{\pi}{1-\pi}
+\]</span> Los momios siempre son no negativos.
 </div>
-<div>
-<p>Johnson, Richard Arnold, Dean W Wichern, and others. 2014. <em>Applied Multivariate Statistical Analysis</em>. Vol. 4. Prentice-Hall New Jersey.</p>
+
+<p><strong>Ejemplo</strong></p>
+<p>Un sitio de apuestas escribe: &gt; Momio 7/1: Ganas $7 por cada $1 apostado. Si apuestas $10, cobras $70 más tu apuesta, es decir, $80. &gt; Momio 5/2: Ganas $5 por cada $2 apostados. Si apuestas $10, cobras $25 más tu apuesta, es decir, $35. &gt; Momio 3/5: Ganas $3 por cada $5 apostados. Si apuestas $10, cobras $6 más tu apuesta, es decir, $16.</p>
+<p class="espacio">
+</p>
+<p><img src="figuras/apuesta.png" width="70%" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>Si el momio es menor que 1 entonces…</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>La probabilidad de éxito es cero.</p></li>
+<li><p>La probabilidad de éxito es menor que <span class="math inline">\(1/2\)</span>.</p></li>
+<li><p>El éxito es más probable que el fracaso.</p></li>
+<li><p>Todas la anteriores.</p></li>
+</ol>
+<p class="espacio3">
+</p>
 </div>
-<div>
-<p>Tufte, Edward, and P Graves-Morris. 2014. “The Visual Display of Quantitative Information.; 1983.”</p>
+<p><br></p>
+
+<div class="information">
+Si <span class="math inline">\(\Omega &gt; 1\)</span>, entonces es más probable el éxito que el fracaso. Por ejemplo, cuando <span class="math inline">\(\pi=0.75\)</span> entonces <span class="math inline">\(\Omega = 0.75/0.25 =3\)</span>, un éxito es 3 veces más probable que un fracaso, y esperaríamos 3 éxitos por cada fracaso. Cuando <span class="math inline">\(\Omega = \frac{1}{3}\)</span> un fracaso es tres veces más verosímil que un éxito.
 </div>
-<div>
-<p>Wickham, Hadley, and Garrett Grolemund. 2016. “R for Data Science.” Sebastopol, CA: O’Reilly. ‘http://r4ds.had.co.nz‘.</p>
+
+<p><br></p>
+
 </div>
 </div>
 </div>
@@ -251,8 +508,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="analisis-de-datos-categoricos.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="teorema-del-limite-central.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
