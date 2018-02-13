@@ -357,13 +357,17 @@ singer %>% sample_n(10) %>% knitr::kable()
 ```{r}
 singer.medians <- singer %>%
   group_by(voice.part) %>%
-  mutate(mediana = median(estatura.m))
+  mutate(mediana = median(estatura.m),
+         media = mean(estatura.m))
 
-ggplot(singer.medians, aes(x = voice.part, y = estatura.m)) + 
+library(forcats)
+singer.medians$voice.part.2 <- fct_reorder(singer.medians$voice.part, x = singer.medians$mediana, fun = median)
+
+ggplot(singer.medians, aes(x = voice.part.2, y = estatura.m)) + 
   geom_boxplot() +
-  geom_jitter(position = position_jitter(height = 0, width = 0.2), 
-    color = "darkgray") +
-  geom_point(aes(y = mediana), colour = "red", size = 4) + 
+  geom_jitter(position = position_jitter(height = 0.8, width = 0.3), 
+    color = "darkgray", alpha = 0.5) +
+  geom_point(aes(y = media), colour = "red", size = 2) + 
   coord_flip()
 ```
 
@@ -378,7 +382,9 @@ Consideramos las siguientes mediciones de ozono en el aire, producidas por la re
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 ozono <- read_csv("datos/ozono.csv")
 ggplot(ozono, aes(x= id_station, y = o3)) + 
-  geom_boxplot()
+  geom_boxplot() +
+  geom_jitter(alpha=0.01, color="navyblue") +
+  coord_flip()
 ```
 
 ![](figuras/manicule2.jpg) 
@@ -412,7 +418,9 @@ Supongamos que $G$ es la función de distribución de una variable aleatoria con
 Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria normal estándar. A esta función la denotamos como $q_{0,1}(f)$, y en general, a la función de cuantiles de una distribución $Normal(\mu, \sigma^2)$ la denotamos por $q_{\mu, \sigma}(f)$.
 
 ```{r}
-curve(qnorm, from = 0, to=1, n = 1000, xlab='Cuantil (f)', ylab='q')
+ggplot(data = data.frame(x = 0), mapping = aes(x = x)) +
+  stat_function(fun = qnorm) + xlim(0.001,0.999) +
+  xlab('Cuantil (f)') + ylab('q')
 ```
 
 Notemos que $q_{\mu, \sigma}(f) \to \infty$ cunado $f \to 1$, y el cuantil $1$ no esta definido. Análogamente el cuantil $0$ tampoco está definido.
