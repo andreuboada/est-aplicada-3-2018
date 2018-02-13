@@ -326,13 +326,17 @@ singer %>% sample_n(10) %>% knitr::kable()
 ```r
 singer.medians <- singer %>%
   group_by(voice.part) %>%
-  mutate(mediana = median(estatura.m))
+  mutate(mediana = median(estatura.m),
+         media = mean(estatura.m))
 
-ggplot(singer.medians, aes(x = voice.part, y = estatura.m)) + 
+library(forcats)
+singer.medians$voice.part.2 <- fct_reorder(singer.medians$voice.part, x = singer.medians$mediana, fun = median)
+
+ggplot(singer.medians, aes(x = voice.part.2, y = estatura.m)) + 
   geom_boxplot() +
-  geom_jitter(position = position_jitter(height = 0, width = 0.2), 
-    color = "darkgray") +
-  geom_point(aes(y = mediana), colour = "red", size = 4) + 
+  geom_jitter(position = position_jitter(height = 0.8, width = 0.3), 
+    color = "darkgray", alpha = 0.5) +
+  geom_point(aes(y = media), colour = "red", size = 2) + 
   coord_flip()
 ```
 
@@ -378,7 +382,9 @@ Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria norma
 
 
 ```r
-curve(qnorm, from = 0, to=1, n = 1000, xlab='Cuantil (f)', ylab='q')
+ggplot(data = data.frame(x = 0), mapping = aes(x = x)) +
+  stat_function(fun = qnorm) + xlim(0.001,0.999) +
+  xlab('Cuantil (f)') + ylab('q')
 ```
 
 <img src="04-tlc_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
@@ -564,18 +570,18 @@ icad <- read_csv("datos/icad.csv")
 icad %>% sample_n(10) %>% knitr::kable()
 ```
 
-    fecha   cve_edo  cve_clues     nombre             calificacion   pac_act
----------  --------  ------------  ----------------  -------------  --------
- 20161125        30  VZSSA002422   TLAVICTEPAN                54.5        39
- 20161125         7  CSSSA005645   SALTO DE AGUA              52.2       110
- 20161125        25  SLSSA002404   BUENOS AIRES               57.9        20
- 20161125        30  VZSSA000544   HUAPANGO                   62.2        16
- 20161125        13  HGSSA003731   XILOCUATITLA               67.0        22
- 20161125        14  JCSSA012596   CS LA MORA                 72.3        49
- 20161125         7  CSSSA020123   CS MICRO JOLXIC            54.8         1
- 20161125        15  MCSSA003193   CALPULALPAN                53.4        60
- 20161125         4  CCSSA000701   CS PIXOYAL                 49.1        15
- 20161125        28  TSSSA001685   U04 COL HIDALGO            58.6        74
+    fecha   cve_edo  cve_clues     nombre                   calificacion   pac_act
+---------  --------  ------------  ----------------------  -------------  --------
+ 20161125        12  GRSSA012004   CSR EL POTRERILLO                53.5        33
+ 20161125        28  TSSSA000034   CSR GUÍA DEL PORVENIR            68.6        21
+ 20161125        25  SLSSA000806   CULIACÁNCITO                     60.2        35
+ 20161125         8  CHSSA002356   CS BENITO JUÁREZ                 45.3        39
+ 20161125        21  PLSSA008563   PLSSA008563                      68.4       224
+ 20161125        30  VZSSA016081   FCO I MADERO                     51.4        19
+ 20161125         4  CCSSA000346   CS TIKINMUL                      57.8        13
+ 20161125        15  MCSSA000813   S MARTÍN                         68.4        24
+ 20161125        15  MCSSA009954   S AGUSTÍN ATLAPULCO              62.0        63
+ 20161125        28  TSSSA000256   CSR FORTINES                     66.9        34
 
 Cada unidad de salud o _CLUES_ recibe una calificación __promedio__ y tiene cierto número de pacientes diabéticos activos.
 

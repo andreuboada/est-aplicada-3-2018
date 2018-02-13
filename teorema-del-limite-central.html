@@ -111,7 +111,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#referencia-principal"><i class="fa fa-check"></i>Referencia principal</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#otras-referencias"><i class="fa fa-check"></i>Otras referencias</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#tareas"><i class="fa fa-check"></i>Tareas</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#datos"><i class="fa fa-check"></i>Datos</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#por-que-un-analisis-multivariado"><i class="fa fa-check"></i><b>1.1</b> ¿Por qué un análisis multivariado?</a></li>
@@ -496,13 +495,17 @@ singer<span class="op">$</span>estatura.m &lt;-<span class="st"> </span>singer<s
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">singer.medians &lt;-<span class="st"> </span>singer <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(voice.part) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mediana =</span> <span class="kw">median</span>(estatura.m))
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">mediana =</span> <span class="kw">median</span>(estatura.m),
+         <span class="dt">media =</span> <span class="kw">mean</span>(estatura.m))
 
-<span class="kw">ggplot</span>(singer.medians, <span class="kw">aes</span>(<span class="dt">x =</span> voice.part, <span class="dt">y =</span> estatura.m)) <span class="op">+</span><span class="st"> </span>
+<span class="kw">library</span>(forcats)
+singer.medians<span class="op">$</span>voice.part.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">fct_reorder</span>(singer.medians<span class="op">$</span>voice.part, <span class="dt">x =</span> singer.medians<span class="op">$</span>mediana, <span class="dt">fun =</span> median)
+
+<span class="kw">ggplot</span>(singer.medians, <span class="kw">aes</span>(<span class="dt">x =</span> voice.part.<span class="dv">2</span>, <span class="dt">y =</span> estatura.m)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">height =</span> <span class="dv">0</span>, <span class="dt">width =</span> <span class="fl">0.2</span>), 
-    <span class="dt">color =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> mediana), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">height =</span> <span class="fl">0.8</span>, <span class="dt">width =</span> <span class="fl">0.3</span>), 
+    <span class="dt">color =</span> <span class="st">&quot;darkgray&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> media), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">coord_flip</span>()</code></pre></div>
 <p><img src="04-tlc_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <hr />
@@ -538,7 +541,9 @@ Supongamos que <span class="math inline">\(G\)</span> es la función de distribu
 <div id="ejemplo-normal" class="section level3 unnumbered">
 <h3>Ejemplo: normal</h3>
 <p>Abajo vemos cómo se ve la gráfica de cuantiles de una variable aleatoria normal estándar. A esta función la denotamos como <span class="math inline">\(q_{0,1}(f)\)</span>, y en general, a la función de cuantiles de una distribución <span class="math inline">\(Normal(\mu, \sigma^2)\)</span> la denotamos por <span class="math inline">\(q_{\mu, \sigma}(f)\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">curve</span>(qnorm, <span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to=</span><span class="dv">1</span>, <span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">xlab=</span><span class="st">&#39;Cuantil (f)&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;q&#39;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">0</span>), <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> x)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> qnorm) <span class="op">+</span><span class="st"> </span><span class="kw">xlim</span>(<span class="fl">0.001</span>,<span class="fl">0.999</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;Cuantil (f)&#39;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&#39;q&#39;</span>)</code></pre></div>
 <p><img src="04-tlc_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Notemos que <span class="math inline">\(q_{\mu, \sigma}(f) \to \infty\)</span> cunado <span class="math inline">\(f \to 1\)</span>, y el cuantil <span class="math inline">\(1\)</span> no esta definido. Análogamente el cuantil <span class="math inline">\(0\)</span> tampoco está definido.</p>
 <p class="espacio">
@@ -686,83 +691,83 @@ icad <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 <tbody>
 <tr class="odd">
 <td align="right">20161125</td>
-<td align="right">30</td>
-<td align="left">VZSSA002422</td>
-<td align="left">TLAVICTEPAN</td>
-<td align="right">54.5</td>
-<td align="right">39</td>
-</tr>
-<tr class="even">
-<td align="right">20161125</td>
-<td align="right">7</td>
-<td align="left">CSSSA005645</td>
-<td align="left">SALTO DE AGUA</td>
-<td align="right">52.2</td>
-<td align="right">110</td>
-</tr>
-<tr class="odd">
-<td align="right">20161125</td>
-<td align="right">25</td>
-<td align="left">SLSSA002404</td>
-<td align="left">BUENOS AIRES</td>
-<td align="right">57.9</td>
-<td align="right">20</td>
-</tr>
-<tr class="even">
-<td align="right">20161125</td>
-<td align="right">30</td>
-<td align="left">VZSSA000544</td>
-<td align="left">HUAPANGO</td>
-<td align="right">62.2</td>
-<td align="right">16</td>
-</tr>
-<tr class="odd">
-<td align="right">20161125</td>
-<td align="right">13</td>
-<td align="left">HGSSA003731</td>
-<td align="left">XILOCUATITLA</td>
-<td align="right">67.0</td>
-<td align="right">22</td>
-</tr>
-<tr class="even">
-<td align="right">20161125</td>
-<td align="right">14</td>
-<td align="left">JCSSA012596</td>
-<td align="left">CS LA MORA</td>
-<td align="right">72.3</td>
-<td align="right">49</td>
-</tr>
-<tr class="odd">
-<td align="right">20161125</td>
-<td align="right">7</td>
-<td align="left">CSSSA020123</td>
-<td align="left">CS MICRO JOLXIC</td>
-<td align="right">54.8</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="right">20161125</td>
-<td align="right">15</td>
-<td align="left">MCSSA003193</td>
-<td align="left">CALPULALPAN</td>
-<td align="right">53.4</td>
-<td align="right">60</td>
-</tr>
-<tr class="odd">
-<td align="right">20161125</td>
-<td align="right">4</td>
-<td align="left">CCSSA000701</td>
-<td align="left">CS PIXOYAL</td>
-<td align="right">49.1</td>
-<td align="right">15</td>
+<td align="right">12</td>
+<td align="left">GRSSA012004</td>
+<td align="left">CSR EL POTRERILLO</td>
+<td align="right">53.5</td>
+<td align="right">33</td>
 </tr>
 <tr class="even">
 <td align="right">20161125</td>
 <td align="right">28</td>
-<td align="left">TSSSA001685</td>
-<td align="left">U04 COL HIDALGO</td>
-<td align="right">58.6</td>
-<td align="right">74</td>
+<td align="left">TSSSA000034</td>
+<td align="left">CSR GUÍA DEL PORVENIR</td>
+<td align="right">68.6</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="right">20161125</td>
+<td align="right">25</td>
+<td align="left">SLSSA000806</td>
+<td align="left">CULIACÁNCITO</td>
+<td align="right">60.2</td>
+<td align="right">35</td>
+</tr>
+<tr class="even">
+<td align="right">20161125</td>
+<td align="right">8</td>
+<td align="left">CHSSA002356</td>
+<td align="left">CS BENITO JUÁREZ</td>
+<td align="right">45.3</td>
+<td align="right">39</td>
+</tr>
+<tr class="odd">
+<td align="right">20161125</td>
+<td align="right">21</td>
+<td align="left">PLSSA008563</td>
+<td align="left">PLSSA008563</td>
+<td align="right">68.4</td>
+<td align="right">224</td>
+</tr>
+<tr class="even">
+<td align="right">20161125</td>
+<td align="right">30</td>
+<td align="left">VZSSA016081</td>
+<td align="left">FCO I MADERO</td>
+<td align="right">51.4</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="right">20161125</td>
+<td align="right">4</td>
+<td align="left">CCSSA000346</td>
+<td align="left">CS TIKINMUL</td>
+<td align="right">57.8</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="right">20161125</td>
+<td align="right">15</td>
+<td align="left">MCSSA000813</td>
+<td align="left">S MARTÍN</td>
+<td align="right">68.4</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="right">20161125</td>
+<td align="right">15</td>
+<td align="left">MCSSA009954</td>
+<td align="left">S AGUSTÍN ATLAPULCO</td>
+<td align="right">62.0</td>
+<td align="right">63</td>
+</tr>
+<tr class="even">
+<td align="right">20161125</td>
+<td align="right">28</td>
+<td align="left">TSSSA000256</td>
+<td align="left">CSR FORTINES</td>
+<td align="right">66.9</td>
+<td align="right">34</td>
 </tr>
 </tbody>
 </table>
