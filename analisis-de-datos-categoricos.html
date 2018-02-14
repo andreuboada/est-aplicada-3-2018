@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-02-13">
+<meta name="date" content="2018-02-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -205,6 +205,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.3.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#notacion"><i class="fa fa-check"></i><b>5.3.1</b> Notación</a></li>
 <li class="chapter" data-level="5.3.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#razon-de-momios"><i class="fa fa-check"></i><b>5.3.2</b> Razón de momios</a></li>
 </ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#asociacion-en-tablas-de-tamano-itimes-j"><i class="fa fa-check"></i><b>5.4</b> Asociación en tablas de tamaño <span class="math inline">\(I\times J\)</span></a><ul>
+<li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#razones-de-momios-en-tablas-itimes-j"><i class="fa fa-check"></i><b>5.4.1</b> Razones de momios en tablas <span class="math inline">\(I\times J\)</span></a></li>
+<li class="chapter" data-level="5.4.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-mushrooms"><i class="fa fa-check"></i><b>5.4.2</b> Ejemplo: mushrooms</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#intervalos-de-confianza-para-los-parametros-de-asociacion"><i class="fa fa-check"></i><b>5.5</b> Intervalos de confianza para los parámetros de asociación</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -471,7 +476,10 @@ Para una probabilidad de éxito <span class="math inline">\(\pi\)</span> se defi
 </div>
 
 <p><strong>Ejemplo</strong></p>
-<p>Un sitio de apuestas escribe: &gt; Momio 7/1: Ganas $7 por cada $1 apostado. Si apuestas $10, cobras $70 más tu apuesta, es decir, $80. &gt; Momio 5/2: Ganas $5 por cada $2 apostados. Si apuestas $10, cobras $25 más tu apuesta, es decir, $35. &gt; Momio 3/5: Ganas $3 por cada $5 apostados. Si apuestas $10, cobras $6 más tu apuesta, es decir, $16.</p>
+<p>Un <strong>sitio de apuestas</strong> escribe:</p>
+<blockquote>
+<p>Momio 7/1: Ganas $7 por cada $1 apostado. Si apuestas $10, cobras $70 más tu apuesta, es decir, $80. Momio 5/2: Ganas $5 por cada $2 apostados. Si apuestas $10, cobras $25 más tu apuesta, es decir, $35. Momio 3/5: Ganas $3 por cada $5 apostados. Si apuestas $10, cobras $6 más tu apuesta, es decir, $16.</p>
+</blockquote>
 <p class="espacio">
 </p>
 <p><img src="figuras/apuesta.png" width="70%" style="display: block; margin: auto;" /></p>
@@ -498,8 +506,270 @@ Si <span class="math inline">\(\Omega &gt; 1\)</span>, entonces es más probable
 </div>
 
 <p><br></p>
+<p>Inversamente,</p>
+<p><span class="math display">\[
+\pi = \dfrac{\Omega}{\Omega + 1}.
+\]</span></p>
+<p>Pensemos nuevamente en una tabla de contingencias de <span class="math inline">\(2\times 2\)</span>, en la <span class="math inline">\(i\)</span>-ésima fila los momios de éxito en vez de fracaso son <span class="math inline">\(\Omega_i=\pi_i/(1-\pi_i)\)</span>. La <strong>razón de momios</strong> de <span class="math inline">\(\Omega_1\)</span> y <span class="math inline">\(\Omega_2\)</span> en ambas filas es:</p>
+<p><span class="math display">\[
+\theta = \dfrac{\Omega_1}{\Omega_2}=\dfrac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}
+\]</span></p>
+<p>Si se tiene una tabla con probabilidades conjuntas <span class="math inline">\(\{\pi_{ij}\}\)</span> la definición equivalente de momio para cada fila es <span class="math inline">\(\Omega_i=\pi_{i1}/\pi_{i2}\)</span>, <span class="math inline">\(i=1,2\)</span>. Entonces la razón de momios es:</p>
+<p><span class="math display">\[
+\theta = \dfrac{\pi_{11}/\pi_{12}}{\pi_{21}/\pi_{22}}=\dfrac{\pi_{11}\pi_{22}}{\pi_{12}\pi_{21}}
+\]</span></p>
+<p>A <span class="math inline">\(\theta\)</span> se le conoce también como la <em>razón del producto cruzado</em>.</p>
 
+<div class="nota">
+<p>¿Cómo interpretamos este número?</p>
+<ul>
+<li><p>Si <span class="math inline">\(\theta=1\)</span> (o <span class="math inline">\(\Omega_1=\Omega_2\)</span>), entonces las variables son independientes.</p></li>
+<li><p>Si <span class="math inline">\(\theta &gt; 1\)</span>, entonces las observaciones en el renglón 1 tienen más probabilidad de éxito que observaciones en en renglón 2, es decir, <span class="math inline">\(\pi_1 &gt; \pi_2\)</span>.</p></li>
+<li>Si <span class="math inline">\(\theta &lt; 1\)</span>, entonces <span class="math inline">\(\pi_1 &lt; \pi_2\)</span>.
 </div>
+</li>
+</ul>
+<p>Para conteos en una tabla de contingencia, la <em>razón de momios muestral</em> es:</p>
+<p><span class="math display">\[
+\hat{\theta} = \dfrac{n_{11}n_{22}}{n_{12}n_{21}}
+\]</span></p>
+<p>Regresemos a los datos de billboard:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/billboard_alltime.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">OR &lt;-<span class="st"> </span><span class="cf">function</span>(var1, var2){
+  n &lt;-<span class="st"> </span><span class="kw">table</span>(var1, var2)
+  
+  (n[<span class="dv">1</span>,<span class="dv">1</span>] <span class="op">/</span><span class="st"> </span>n[<span class="dv">1</span>,<span class="dv">2</span>])<span class="op">*</span>(n[<span class="dv">2</span>,<span class="dv">2</span>] <span class="op">/</span><span class="st"> </span>n[<span class="dv">2</span>,<span class="dv">1</span>])
+}
+<span class="kw">OR</span>(billboard<span class="op">$</span>gains_performance, billboard<span class="op">$</span>rising)
+<span class="co">#&gt; [1] 2.75</span></code></pre></div>
+<p>Los chances de éxito (subir una o más posiciones en el chart) cuando no hubo una presentación en vivo (rengón 1) son equivalentes a 4 veces los chances de éxito (incremento en el chart) que cuando no hubo presentación en vivo (renglón 2).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ORWald &lt;-<span class="st"> </span><span class="cf">function</span>(var1, var2, <span class="dt">alpha =</span> <span class="fl">0.05</span>){
+  tab &lt;-<span class="st"> </span><span class="kw">table</span>(var1, var2)
+  siglog &lt;-<span class="st"> </span><span class="kw">sqrt</span>((<span class="dv">1</span><span class="op">/</span>tab[<span class="dv">1</span>,<span class="dv">1</span>]) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>tab[<span class="dv">1</span>,<span class="dv">2</span>]) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>tab[<span class="dv">2</span>,<span class="dv">1</span>]) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>tab[<span class="dv">2</span>,<span class="dv">2</span>]))
+  zalph &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>)
+  logOR &lt;-<span class="st"> </span><span class="kw">log</span>(<span class="kw">OR</span>(var1, var2))
+  loglo &lt;-<span class="st"> </span>logOR <span class="op">-</span><span class="st"> </span>zalph <span class="op">*</span><span class="st"> </span>siglog
+  loghi &lt;-<span class="st"> </span>logOR <span class="op">+</span><span class="st"> </span>zalph <span class="op">*</span><span class="st"> </span>siglog
+  
+  ORlo &lt;-<span class="st"> </span><span class="kw">exp</span>(loglo)
+  ORhi &lt;-<span class="st"> </span><span class="kw">exp</span>(loghi)
+  
+  <span class="kw">tibble</span>(<span class="dt">LowerCI =</span> ORlo, <span class="dt">OR =</span> <span class="kw">OR</span>(var1, var2), <span class="dt">UpperCI =</span> ORhi, <span class="dt">alpha =</span> alpha)
+}
+
+<span class="kw">ORWald</span>(billboard<span class="op">$</span>gains_performance, billboard<span class="op">$</span>rising)</code></pre></div>
+<p>Con la función <code>odds.ratio</code> del paquete <code>questionr</code> se puede calcular la razón de momios y el paquete hace una prueba de hipótesis conocida como <strong>prueba exacta de Fisher</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(questionr)
+<span class="kw">odds.ratio</span>(<span class="kw">table</span>(billboard<span class="op">$</span>gains_performance, billboard<span class="op">$</span>rising))
+<span class="co">#&gt;                 OR 2.5 % 97.5 %      p    </span>
+<span class="co">#&gt; Fisher&#39;s test 2.75  2.70    2.8 &lt;2e-16 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></code></pre></div>
+
+<div class="comentario">
+<ul>
+<li><p>Valores de <span class="math inline">\(\theta\)</span> más alejados de <span class="math inline">\(1\)</span> reflejan un mayor grado de asociación entre las variables.</p></li>
+<li><p>Dos valores representan la misma asociación pero en direcciones opuestas, cuando uno es el recíproco del otro.</p></li>
+<li>Por ejemplo, cuando <span class="math inline">\(\theta=0.25\)</span> los chances de éxito en el renglón 1 son 0.25 veces los chances en el renglón 2, o equivalentemente, los chances de éxito en el renglón 2 son 1/0.25 = 4 veces los chances en el renglón 1.
+</div>
+</li>
+</ul>
+<p class="espacio">
+</p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>Si se invierte el orden de los renglones o de las columnas, entonces <span class="math inline">\(\theta\)</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>no cambia.</p></li>
+<li><p>debe ser necesariamente <span class="math inline">\(1\)</span>.</p></li>
+<li><p>es el recíproco de su valor original.</p></li>
+<li><p>puede tomar cualquier valor.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<p>Para hacer inferencia es conveniente usar <span class="math inline">\(\mbox{log}(\theta)\)</span>. Este tiene las siguientes propiedades:</p>
+<ol style="list-style-type: decimal">
+<li><p>El caso de independencia corresponde a <span class="math inline">\(\mbox{log}(\theta) = 0\)</span>.</p></li>
+<li><p>El logaritmo de la razón de momios es simétrico alrededor de <span class="math inline">\(0\)</span>.</p></li>
+<li><p>Si se invierten los renglones o las columnas, entonces <span class="math inline">\(\mbox{log}(\theta)\)</span> cambia de signo pero tiene la misma magnitud. Por ejemplo, dos valores de <span class="math inline">\(\mbox{log}(\theta)\)</span> que tienen misma magnitud pero signos contrarios, como <span class="math inline">\(\mbox{log}(4)=1.39\)</span> y <span class="math inline">\(\mbox{log}(0.25)=-1.39\)</span>, representan el mismo grado de asociación.</p></li>
+</ol>
+</div>
+</div>
+<div id="asociacion-en-tablas-de-tamano-itimes-j" class="section level2">
+<h2><span class="header-section-number">5.4</span> Asociación en tablas de tamaño <span class="math inline">\(I\times J\)</span></h2>
+<p>En tablas de <span class="math inline">\(2\times 2\)</span> un sólo número como la razón de momios puede ser suficiente para resumir la asociación. En tablas <span class="math inline">\(I\times J\)</span> usualmente no es posible resumir la asociación entre las dos variables con un sólo número sin alguna pérdida de información. Sin embargo, un conjunto de razones de momios, o bien, algun otro estadístico de resumen pueden ser útil para describir la asociación entre las variables.</p>
+<div id="razones-de-momios-en-tablas-itimes-j" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Razones de momios en tablas <span class="math inline">\(I\times J\)</span></h3>
+<p>Se puede utiliar los <span class="math inline">\(\dbinom{I}{2}\)</span> pares de renglones en combinación con los <span class="math inline">\(\dbinom{J}{2}\)</span> pares de columnas. Para renglones <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> y columnas <span class="math inline">\(c\)</span> y <span class="math inline">\(d\)</span> la razón de momios utiliza 4 valores en casillas en un patrón rectangular:</p>
+<p><span class="math display">\[
+\dfrac{\pi_{ab}\pi_{bd}}{\pi_{bc}\pi_{ad}}
+\]</span></p>
+<p>Consideremos el subconjunto de <span class="math inline">\((I-1)(J-1)\)</span> <em>razones de momios locales</em>:</p>
+<p><span class="math display">\[
+\theta_{ij} = \dfrac{\pi_{ij}\pi_{i+1,j+1}}{\pi_{i,j+1}\pi_{i+1,j}},  \qquad i=1,\ldots, I-1,\;\;\; j=1,\ldots,J-1.
+\]</span></p>
+<p>Estos <span class="math inline">\((I-1)(J-1)\)</span> razones de momios determinan las razones de momios entre pares de renglones y pares de columnas.</p>
+</div>
+<div id="ejemplo-mushrooms" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Ejemplo: mushrooms</h3>
+<p>Este conjunto de datos incluye descripciones de muestras correspondientes a 23 especies de setas de las familias Agaricus y Lepiota.</p>
+<p>Cada especie está identificada como definitivamente comestible, definitivamente venenosa, o de comestibilidad desconocida y no recomendada su ingesta.</p>
+<p>Las otras variables se presentan en la siguiente tabla:</p>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Categorías</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cap-shape</td>
+<td>bell=b,conical=c,convex=x,flat=f,knobbed=k,sunken=s</td>
+</tr>
+<tr class="even">
+<td>cap-surface</td>
+<td>fibrous=f,grooves=g,scaly=y,smooth=s</td>
+</tr>
+<tr class="odd">
+<td>cap-color</td>
+<td>brown=n,buff=b,cinnamon=c,gray=g,green=r,pink=p,purple=u,red=e,white=w,yellow=y</td>
+</tr>
+<tr class="even">
+<td>bruises</td>
+<td>bruises=t,no=f</td>
+</tr>
+<tr class="odd">
+<td>odor</td>
+<td>almond=a,anise=l,creosote=c,fishy=y,foul=f,musty=m,none=n,pungent=p,spicy=s</td>
+</tr>
+<tr class="even">
+<td>gill-attachment</td>
+<td>attached=a,descending=d,free=f,notched=n</td>
+</tr>
+<tr class="odd">
+<td>gill-spacing</td>
+<td>close=c,crowded=w,distant=d</td>
+</tr>
+<tr class="even">
+<td>gill-size</td>
+<td>broad=b,narrow=n</td>
+</tr>
+<tr class="odd">
+<td>gill-color</td>
+<td>black=k,brown=n,buff=b,chocolate=h,gray=g,green=r,orange=o,pink=p,purple=u,red=e,white=w,yellow=y</td>
+</tr>
+<tr class="even">
+<td>stalk-shape</td>
+<td>enlarging=e,tapering=t</td>
+</tr>
+<tr class="odd">
+<td>stalk-root</td>
+<td>bulbous=b,club=c,cup=u,equal=e,rhizomorphs=z,rooted=r,missing=?</td>
+</tr>
+<tr class="even">
+<td>stalk-surface-above-ring</td>
+<td>fibrous=f,scaly=y,silky=k,smooth=s</td>
+</tr>
+<tr class="odd">
+<td>stalk-surface-below-ring</td>
+<td>fibrous=f,scaly=y,silky=k,smooth=s</td>
+</tr>
+<tr class="even">
+<td>stalk-color-above-ring</td>
+<td>brown=n,buff=b,cinnamon=c,gray=g,orange=o,pink=p,red=e,white=w,yellow=y</td>
+</tr>
+<tr class="odd">
+<td>stalk-color-below-ring</td>
+<td>brown=n,buff=b,cinnamon=c,gray=g,orange=o,pink=p,red=e,white=w,yellow=y</td>
+</tr>
+<tr class="even">
+<td>veil-type</td>
+<td>partial=p,universal=u</td>
+</tr>
+<tr class="odd">
+<td>veil-color</td>
+<td>brown=n,orange=o,white=w,yellow=y</td>
+</tr>
+<tr class="even">
+<td>ring-number</td>
+<td>none=n,one=o,two=t</td>
+</tr>
+<tr class="odd">
+<td>ring-type</td>
+<td>cobwebby=c,evanescent=e,flaring=f,large=l,none=n,pendant=p,sheathing=s,zone=z</td>
+</tr>
+<tr class="even">
+<td>spore-print-color</td>
+<td>black=k,brown=n,buff=b,chocolate=h,green=r,orange=o,purple=u,white=w,yellow=y</td>
+</tr>
+<tr class="odd">
+<td>population</td>
+<td>abundant=a,clustered=c,numerous=n,scattered=s,several=v,solitary=y</td>
+</tr>
+<tr class="even">
+<td>habitat</td>
+<td>grasses=g,leaves=l,meadows=m,paths=p,urban=u,waste=w,woods=d</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mushrooms &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/mushrooms.csv&quot;</span>)
+<span class="kw">glimpse</span>(mushrooms)
+<span class="co">#&gt; Observations: 8,124</span>
+<span class="co">#&gt; Variables: 23</span>
+<span class="co">#&gt; $ edibility                  &lt;chr&gt; &quot;p&quot;, &quot;e&quot;, &quot;e&quot;, &quot;p&quot;, &quot;e&quot;, &quot;e&quot;, &quot;e&quot;, ...</span>
+<span class="co">#&gt; $ `cap-shape`                &lt;chr&gt; &quot;x&quot;, &quot;x&quot;, &quot;b&quot;, &quot;x&quot;, &quot;x&quot;, &quot;x&quot;, &quot;b&quot;, ...</span>
+<span class="co">#&gt; $ `cap-surface`              &lt;chr&gt; &quot;s&quot;, &quot;s&quot;, &quot;s&quot;, &quot;y&quot;, &quot;s&quot;, &quot;y&quot;, &quot;s&quot;, ...</span>
+<span class="co">#&gt; $ `cap-color`                &lt;chr&gt; &quot;n&quot;, &quot;y&quot;, &quot;w&quot;, &quot;w&quot;, &quot;g&quot;, &quot;y&quot;, &quot;w&quot;, ...</span>
+<span class="co">#&gt; $ bruises                    &lt;chr&gt; &quot;t&quot;, &quot;t&quot;, &quot;t&quot;, &quot;t&quot;, &quot;f&quot;, &quot;t&quot;, &quot;t&quot;, ...</span>
+<span class="co">#&gt; $ odor                       &lt;chr&gt; &quot;p&quot;, &quot;a&quot;, &quot;l&quot;, &quot;p&quot;, &quot;n&quot;, &quot;a&quot;, &quot;a&quot;, ...</span>
+<span class="co">#&gt; $ `gill-attachment`          &lt;chr&gt; &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, ...</span>
+<span class="co">#&gt; $ `gill-spacing`             &lt;chr&gt; &quot;c&quot;, &quot;c&quot;, &quot;c&quot;, &quot;c&quot;, &quot;w&quot;, &quot;c&quot;, &quot;c&quot;, ...</span>
+<span class="co">#&gt; $ `gill-size`                &lt;chr&gt; &quot;n&quot;, &quot;b&quot;, &quot;b&quot;, &quot;n&quot;, &quot;b&quot;, &quot;b&quot;, &quot;b&quot;, ...</span>
+<span class="co">#&gt; $ `gill-color`               &lt;chr&gt; &quot;k&quot;, &quot;k&quot;, &quot;n&quot;, &quot;n&quot;, &quot;k&quot;, &quot;n&quot;, &quot;g&quot;, ...</span>
+<span class="co">#&gt; $ `stalk-shape`              &lt;chr&gt; &quot;e&quot;, &quot;e&quot;, &quot;e&quot;, &quot;e&quot;, &quot;t&quot;, &quot;e&quot;, &quot;e&quot;, ...</span>
+<span class="co">#&gt; $ `stalk-root`               &lt;chr&gt; &quot;e&quot;, &quot;c&quot;, &quot;c&quot;, &quot;e&quot;, &quot;e&quot;, &quot;c&quot;, &quot;c&quot;, ...</span>
+<span class="co">#&gt; $ `stalk-surface-above-ring` &lt;chr&gt; &quot;s&quot;, &quot;s&quot;, &quot;s&quot;, &quot;s&quot;, &quot;s&quot;, &quot;s&quot;, &quot;s&quot;, ...</span>
+<span class="co">#&gt; $ `stalk-surface-below-ring` &lt;chr&gt; &quot;s&quot;, &quot;s&quot;, &quot;s&quot;, &quot;s&quot;, &quot;s&quot;, &quot;s&quot;, &quot;s&quot;, ...</span>
+<span class="co">#&gt; $ `stalk-color-above-ring`   &lt;chr&gt; &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, ...</span>
+<span class="co">#&gt; $ `stalk-color-below-ring`   &lt;chr&gt; &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, ...</span>
+<span class="co">#&gt; $ `veil-type`                &lt;chr&gt; &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, ...</span>
+<span class="co">#&gt; $ `veil-color`               &lt;chr&gt; &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, &quot;w&quot;, ...</span>
+<span class="co">#&gt; $ `ring-number`              &lt;chr&gt; &quot;o&quot;, &quot;o&quot;, &quot;o&quot;, &quot;o&quot;, &quot;o&quot;, &quot;o&quot;, &quot;o&quot;, ...</span>
+<span class="co">#&gt; $ `ring-type`                &lt;chr&gt; &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;e&quot;, &quot;p&quot;, &quot;p&quot;, ...</span>
+<span class="co">#&gt; $ `spore-print-color`        &lt;chr&gt; &quot;k&quot;, &quot;n&quot;, &quot;n&quot;, &quot;k&quot;, &quot;n&quot;, &quot;k&quot;, &quot;k&quot;, ...</span>
+<span class="co">#&gt; $ population                 &lt;chr&gt; &quot;s&quot;, &quot;n&quot;, &quot;n&quot;, &quot;s&quot;, &quot;a&quot;, &quot;n&quot;, &quot;n&quot;, ...</span>
+<span class="co">#&gt; $ habitat                    &lt;chr&gt; &quot;u&quot;, &quot;g&quot;, &quot;m&quot;, &quot;u&quot;, &quot;g&quot;, &quot;g&quot;, &quot;m&quot;, ...</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(oddsratio)
+mushrooms_<span class="dv">1</span> &lt;-<span class="st"> </span>mushrooms <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">edibility =</span> <span class="dv">1</span><span class="op">*</span>(edibility <span class="op">==</span><span class="st"> &#39;e&#39;</span>))
+fit_glm &lt;-<span class="st"> </span><span class="kw">glm</span>(edibility <span class="op">~</span><span class="st"> `</span><span class="dt">cap-color</span><span class="st">`</span>, <span class="dt">data=</span>mushrooms_<span class="dv">1</span>, <span class="dt">family=</span><span class="st">&#39;binomial&#39;</span>)
+<span class="kw">or_glm</span>(<span class="dt">data =</span> mushrooms_<span class="dv">1</span>, <span class="dt">model =</span> fit_glm)</code></pre></div>
+<p>En esta tabla se tienen dos columnas donde “e” siginifica que la seta es comestible y “p” que la seta es venenosa. En los renglones están los colores de las setas codificados de acuerdo con la tabla anterior. En las columnas están las razones de momio para cada color para aquellas setas que son comestibles.</p>
+<p>Veamos la tabla de color y comestibilidad:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(mushrooms<span class="op">$</span>edibility, mushrooms<span class="op">$</span><span class="st">`</span><span class="dt">cap-color</span><span class="st">`</span>)
+<span class="co">#&gt;    </span>
+<span class="co">#&gt;        b    c    e    g    n    p    r    u    w    y</span>
+<span class="co">#&gt;   e   48   32  624 1032 1264   56   16   16  720  400</span>
+<span class="co">#&gt;   p  120   12  876  808 1020   88    0    0  320  672</span></code></pre></div>
+<p>Podemos ver que la razón de momios para p=pink y u=purple es “infinita” porque hay muy pocas observaciones para setas de esos colores. De cualquier forma, con los momios podemos concluir que aquellas setas de colores c=cinnamon y w=white aumentan los chances de que sean comestibles en 6.7 y 5.6, respectivamente.</p>
+</div>
+</div>
+<div id="intervalos-de-confianza-para-los-parametros-de-asociacion" class="section level2">
+<h2><span class="header-section-number">5.5</span> Intervalos de confianza para los parámetros de asociación</h2>
+<p>La precisión de los esitmadores de asociación está caracterizada por las distribuciones muestrales de los errores estándar. Para tablas de <span class="math inline">\(2\times 2\)</span> recordemos que <span class="math display">\[
+\hat{\theta} = \dfrac{n_{11}n_{22}}{n_{12}n_{21}}
+\]</span></p>
+<p>Se puede demostrar que <span class="math inline">\(\hat{\theta}\)</span> tiene una distribución normal asinotóticamente alrededor de <span class="math inline">\(\theta\)</span>. A menos que <span class="math inline">\(n\)</span> sea grande, la distribución muestral generalmente es sesgada.</p>
+
 </div>
 </div>
             </section>

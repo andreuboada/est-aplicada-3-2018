@@ -289,7 +289,8 @@ Los momios siempre son no negativos.</div>\EndKnitrBlock{nota}
 
 **Ejemplo**
 
-Un sitio de apuestas escribe:
+Un **sitio de apuestas** escribe:
+
 > Momio 7/1: Ganas $7 por cada $1 apostado. Si apuestas $10, cobras $70 más tu apuesta, es decir, $80.
 > Momio 5/2: Ganas $5 por cada $2 apostados. Si apuestas $10, cobras $25 más tu apuesta, es decir, $35.
 > Momio 3/5: Ganas $3 por cada $5 apostados. Si apuestas $10, cobras $6 más tu apuesta, es decir, $16.
@@ -326,5 +327,309 @@ Si el momio es menor que 1 entonces...
 \BeginKnitrBlock{information}<div class="information">Si $\Omega > 1$, entonces es más probable el éxito que el fracaso. Por ejemplo, cuando $\pi=0.75$ entonces $\Omega = 0.75/0.25 =3$, un éxito es 3 veces más probable que un fracaso, y esperaríamos 3 éxitos por cada fracaso. Cuando $\Omega = \frac{1}{3}$ un fracaso es tres veces más verosímil que un éxito.</div>\EndKnitrBlock{information}
 
 <br>
+
+
+Inversamente, 
+
+$$
+\pi = \dfrac{\Omega}{\Omega + 1}.
+$$
+
+Pensemos nuevamente en una tabla de contingencias de $2\times 2$, en la $i$-ésima fila los momios de éxito en vez de fracaso son $\Omega_i=\pi_i/(1-\pi_i)$. La **razón de momios** de $\Omega_1$ y $\Omega_2$ en ambas filas es:
+
+$$
+\theta = \dfrac{\Omega_1}{\Omega_2}=\dfrac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}
+$$
+
+Si se tiene una tabla con probabilidades conjuntas $\{\pi_{ij}\}$ la definición equivalente de momio para cada fila es $\Omega_i=\pi_{i1}/\pi_{i2}$, $i=1,2$. Entonces la razón de momios es:
+
+$$
+\theta = \dfrac{\pi_{11}/\pi_{12}}{\pi_{21}/\pi_{22}}=\dfrac{\pi_{11}\pi_{22}}{\pi_{12}\pi_{21}}
+$$
+
+A $\theta$ se le conoce también como la _razón del producto cruzado_.
+
+\BeginKnitrBlock{nota}<div class="nota">¿Cómo interpretamos este número?
+
+* Si $\theta=1$ (o $\Omega_1=\Omega_2$), entonces las variables son independientes.
+
+* Si $\theta > 1$, entonces las observaciones en el renglón 1 tienen más probabilidad de éxito que observaciones en en renglón 2, es decir, $\pi_1 > \pi_2$.
+  
+* Si $\theta < 1$, entonces $\pi_1 < \pi_2$.</div>\EndKnitrBlock{nota}
+
+Para conteos en una tabla de contingencia, la _razón de momios muestral_ es:
+
+$$
+\hat{\theta} = \dfrac{n_{11}n_{22}}{n_{12}n_{21}}
+$$
+
+Regresemos a los datos de billboard:
+
+
+```r
+billboard <- read_csv("datos/billboard_alltime.csv")
+```
+
+
+```r
+OR <- function(var1, var2){
+  n <- table(var1, var2)
+  
+  (n[1,1] / n[1,2])*(n[2,2] / n[2,1])
+}
+OR(billboard$gains_performance, billboard$rising)
+#> [1] 2.75
+```
+
+Los chances de éxito (subir una o más posiciones en el chart) cuando no hubo una presentación en vivo (rengón 1) son equivalentes a 4 veces los chances de éxito (incremento en el chart) que cuando no hubo presentación en vivo (renglón 2).
+
+
+```r
+ORWald <- function(var1, var2, alpha = 0.05){
+  tab <- table(var1, var2)
+  siglog <- sqrt((1/tab[1,1]) + (1/tab[1,2]) + (1/tab[2,1]) + (1/tab[2,2]))
+  zalph <- qnorm(1 - alpha/2)
+  logOR <- log(OR(var1, var2))
+  loglo <- logOR - zalph * siglog
+  loghi <- logOR + zalph * siglog
+  
+  ORlo <- exp(loglo)
+  ORhi <- exp(loghi)
+  
+  tibble(LowerCI = ORlo, OR = OR(var1, var2), UpperCI = ORhi, alpha = alpha)
+}
+
+ORWald(billboard$gains_performance, billboard$rising)
+```
+
+
+Con la función `odds.ratio` del paquete `questionr` se puede calcular la razón de momios y el paquete hace una prueba de hipótesis conocida como **prueba exacta de Fisher**:
+
+
+```r
+library(questionr)
+odds.ratio(table(billboard$gains_performance, billboard$rising))
+#>                 OR 2.5 % 97.5 %      p    
+#> Fisher's test 2.75  2.70    2.8 <2e-16 ***
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+
+\BeginKnitrBlock{comentario}<div class="comentario">* Valores de $\theta$ más alejados de $1$ reflejan un mayor grado de asociación entre las variables.
+
+* Dos valores representan la misma asociación pero en direcciones opuestas, cuando uno es el recíproco del otro.
+
+  - Por ejemplo, cuando $\theta=0.25$ los chances de éxito en el renglón 1 son 0.25 veces los chances en el renglón 2, o equivalentemente, los chances de éxito en el renglón 2 son 1/0.25 = 4 veces los chances en el renglón 1.</div>\EndKnitrBlock{comentario}
+
+<p class="espacio">
+</p>
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+Si se invierte el orden de los renglones o de las columnas, entonces $\theta$
+
+(a) no cambia.
+
+(b) debe ser necesariamente $1$.
+
+(c) es el recíproco de su valor original.
+
+(d) puede tomar cualquier valor.
+
+<p class="espacio3">
+</p>
+</div>
+<br>
+
+Para hacer inferencia es conveniente usar $\mbox{log}(\theta)$. Este tiene las siguientes propiedades:
+
+1. El caso de independencia corresponde a $\mbox{log}(\theta) = 0$.
+
+2. El logaritmo de la razón de momios es simétrico alrededor de $0$. 
+
+3. Si se invierten los renglones o las columnas, entonces $\mbox{log}(\theta)$ cambia de signo pero tiene la misma magnitud. Por ejemplo, dos valores de $\mbox{log}(\theta)$ que tienen misma magnitud pero signos contrarios, como $\mbox{log}(4)=1.39$ y $\mbox{log}(0.25)=-1.39$, representan el mismo grado de asociación.
+
+
+## Asociación en tablas de tamaño $I\times J$
+
+En tablas de $2\times 2$ un sólo número como la razón de momios puede ser suficiente para resumir la asociación. En tablas $I\times J$ usualmente no es posible resumir la asociación entre las dos variables con un sólo número sin alguna pérdida de información. Sin embargo, un conjunto de razones de momios, o bien, algun otro estadístico de resumen pueden ser útil para describir la asociación entre las variables.
+
+### Razones de momios en tablas $I\times J$
+
+Se puede utiliar los $\dbinom{I}{2}$ pares de renglones en combinación con los $\dbinom{J}{2}$ pares de columnas. Para renglones $a$ y $b$ y columnas $c$ y $d$ la razón de momios utiliza 4 valores en casillas en un patrón rectangular:
+
+$$
+\dfrac{\pi_{ab}\pi_{bd}}{\pi_{bc}\pi_{ad}}
+$$
+
+Consideremos el subconjunto de $(I-1)(J-1)$ _razones de momios locales_:
+
+$$
+\theta_{ij} = \dfrac{\pi_{ij}\pi_{i+1,j+1}}{\pi_{i,j+1}\pi_{i+1,j}},  \qquad i=1,\ldots, I-1,\;\;\; j=1,\ldots,J-1.
+$$
+
+Estos $(I-1)(J-1)$ razones de momios determinan las razones de momios entre pares de renglones y pares de columnas. 
+
+### Ejemplo: mushrooms  
+
+Este conjunto de datos incluye descripciones de muestras correspondientes a 23 especies de setas de las familias Agaricus y Lepiota. 
+
+Cada especie está identificada como definitivamente comestible, definitivamente venenosa, o de comestibilidad desconocida y no recomendada su ingesta.
+
+Las otras variables se presentan en la siguiente tabla:
+
+| Variable                 | Categorías
+|--------------------------|----------------------------------------------------------------------------------------------------|
+| cap-shape                | bell=b,conical=c,convex=x,flat=f,knobbed=k,sunken=s                                                |
+| cap-surface              | fibrous=f,grooves=g,scaly=y,smooth=s                                                               |
+| cap-color                | brown=n,buff=b,cinnamon=c,gray=g,green=r,pink=p,purple=u,red=e,white=w,yellow=y                    |
+| bruises                  | bruises=t,no=f                                                                                     |
+| odor                     | almond=a,anise=l,creosote=c,fishy=y,foul=f,musty=m,none=n,pungent=p,spicy=s                        |
+| gill-attachment          | attached=a,descending=d,free=f,notched=n                                                           |
+| gill-spacing             | close=c,crowded=w,distant=d                                                                        |
+| gill-size                | broad=b,narrow=n                                                                                   |
+| gill-color               | black=k,brown=n,buff=b,chocolate=h,gray=g,green=r,orange=o,pink=p,purple=u,red=e,white=w,yellow=y  |
+| stalk-shape              | enlarging=e,tapering=t                                                                             |
+| stalk-root               | bulbous=b,club=c,cup=u,equal=e,rhizomorphs=z,rooted=r,missing=?                                    |
+| stalk-surface-above-ring | fibrous=f,scaly=y,silky=k,smooth=s                                                                 |
+| stalk-surface-below-ring | fibrous=f,scaly=y,silky=k,smooth=s                                                                 |
+| stalk-color-above-ring   | brown=n,buff=b,cinnamon=c,gray=g,orange=o,pink=p,red=e,white=w,yellow=y                            |
+| stalk-color-below-ring   | brown=n,buff=b,cinnamon=c,gray=g,orange=o,pink=p,red=e,white=w,yellow=y                            |
+| veil-type                | partial=p,universal=u                                                                              |
+| veil-color               | brown=n,orange=o,white=w,yellow=y                                                                  |
+| ring-number              | none=n,one=o,two=t                                                                                 |
+| ring-type                | cobwebby=c,evanescent=e,flaring=f,large=l,none=n,pendant=p,sheathing=s,zone=z                      |
+| spore-print-color        | black=k,brown=n,buff=b,chocolate=h,green=r,orange=o,purple=u,white=w,yellow=y                      |
+| population               | abundant=a,clustered=c,numerous=n,scattered=s,several=v,solitary=y                                 |
+| habitat                  | grasses=g,leaves=l,meadows=m,paths=p,urban=u,waste=w,woods=d                                       |
+
+
+```r
+mushrooms <- read_csv("datos/mushrooms.csv")
+glimpse(mushrooms)
+#> Observations: 8,124
+#> Variables: 23
+#> $ edibility                  <chr> "p", "e", "e", "p", "e", "e", "e", ...
+#> $ `cap-shape`                <chr> "x", "x", "b", "x", "x", "x", "b", ...
+#> $ `cap-surface`              <chr> "s", "s", "s", "y", "s", "y", "s", ...
+#> $ `cap-color`                <chr> "n", "y", "w", "w", "g", "y", "w", ...
+#> $ bruises                    <chr> "t", "t", "t", "t", "f", "t", "t", ...
+#> $ odor                       <chr> "p", "a", "l", "p", "n", "a", "a", ...
+#> $ `gill-attachment`          <chr> "f", "f", "f", "f", "f", "f", "f", ...
+#> $ `gill-spacing`             <chr> "c", "c", "c", "c", "w", "c", "c", ...
+#> $ `gill-size`                <chr> "n", "b", "b", "n", "b", "b", "b", ...
+#> $ `gill-color`               <chr> "k", "k", "n", "n", "k", "n", "g", ...
+#> $ `stalk-shape`              <chr> "e", "e", "e", "e", "t", "e", "e", ...
+#> $ `stalk-root`               <chr> "e", "c", "c", "e", "e", "c", "c", ...
+#> $ `stalk-surface-above-ring` <chr> "s", "s", "s", "s", "s", "s", "s", ...
+#> $ `stalk-surface-below-ring` <chr> "s", "s", "s", "s", "s", "s", "s", ...
+#> $ `stalk-color-above-ring`   <chr> "w", "w", "w", "w", "w", "w", "w", ...
+#> $ `stalk-color-below-ring`   <chr> "w", "w", "w", "w", "w", "w", "w", ...
+#> $ `veil-type`                <chr> "p", "p", "p", "p", "p", "p", "p", ...
+#> $ `veil-color`               <chr> "w", "w", "w", "w", "w", "w", "w", ...
+#> $ `ring-number`              <chr> "o", "o", "o", "o", "o", "o", "o", ...
+#> $ `ring-type`                <chr> "p", "p", "p", "p", "e", "p", "p", ...
+#> $ `spore-print-color`        <chr> "k", "n", "n", "k", "n", "k", "k", ...
+#> $ population                 <chr> "s", "n", "n", "s", "a", "n", "n", ...
+#> $ habitat                    <chr> "u", "g", "m", "u", "g", "g", "m", ...
+```
+
+
+
+```r
+library(oddsratio)
+mushrooms_1 <- mushrooms %>%
+  mutate(edibility = 1*(edibility == 'e'))
+fit_glm <- glm(edibility ~ `cap-color`, data=mushrooms_1, family='binomial')
+or_glm(data = mushrooms_1, model = fit_glm)
+```
+
+
+En esta tabla se tienen dos columnas donde "e" siginifica que la seta es comestible y "p" que la seta es venenosa. En los renglones están los colores de las setas codificados de acuerdo con la tabla anterior. En las columnas están las razones de momio para cada color para aquellas setas que son comestibles.
+
+
+Veamos la tabla de color y comestibilidad:
+
+
+```r
+table(mushrooms$edibility, mushrooms$`cap-color`)
+#>    
+#>        b    c    e    g    n    p    r    u    w    y
+#>   e   48   32  624 1032 1264   56   16   16  720  400
+#>   p  120   12  876  808 1020   88    0    0  320  672
+```
+
+Podemos ver que la razón de momios para p=pink y u=purple es "infinita" porque hay muy pocas observaciones para setas de esos colores. De cualquier forma, con los momios podemos concluir que aquellas setas de colores c=cinnamon y w=white aumentan los chances de que sean comestibles en 6.7 y 5.6, respectivamente.
+
+
+## Intervalos de confianza para los parámetros de asociación
+
+La precisión de los esitmadores de asociación está caracterizada por las distribuciones muestrales de los errores estándar. Para tablas de $2\times 2$ recordemos que 
+$$
+\hat{\theta} = \dfrac{n_{11}n_{22}}{n_{12}n_{21}}
+$$
+
+Se puede demostrar que $\hat{\theta}$ tiene una distribución normal asinotóticamente alrededor de $\theta$. A menos que $n$ sea grande, la distribución muestral generalmente es sesgada.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
