@@ -522,6 +522,102 @@ $$
 Se puede demostrar que $\hat{\theta}$ tiene una distribución normal asinotóticamente alrededor de $\theta$. A menos que $n$ sea grande, la distribución muestral generalmente es sesgada.
 
 
+### Error estándar de la razón de momios
+
+Utilizando la transformación de logaritmo, la estructura multiplicativa converge muy rápidamente a la normalidad. Una aproximación del error estándar para $\mbox{log}(\hat{\theta})$ es
+
+$$
+\hat{\sigma}(\mbox{log}\hat{\theta}) = \sqrt{\dfrac{1}{n_{11}}+\dfrac{1}{n_{12}}+\dfrac{1}{n_{21}}+\dfrac{1}{n_{22}}}.
+$$
+
+Como consecuencia de la normalidad de la distribución de $\mbox{log}(\hat{\theta})$,
+
+$$
+\mbox{log}(\hat{\theta}) \pm z_{\alpha/2}\hat{\sigma}(\mbox{log}\hat{\theta})
+$$
+
+## Prueba de independencia 
+
+Suponemos que se tiene resultados obtenidos de una distribución multinomial y probabilidades conjuntas $\{\pi_{ij}\}$ en una tabla de contingencia de dimensiones $I\times J$.
+
+```{block2, type = "nota"}
+La hipótesis nula de independencia estadística es:
+$$
+H_0:\pi_{ij}=\pi_{i+}\pi_{+j},\qquad \text{ para toda }\;\; i \;\;\text{ y }\;\; j.
+$$
+```
+
+### La prueba $\chi^2$ de Pearson
+
+Ya estudiamos la prueba para valores específicos de probabilidades multinomiales. Una prueba de $H_0:\mbox{independencia}$ utiliza la $\chi^2$ con $n_{ij}$ en lugar de $n_i$ y con $\mu_{ij}=n\pi_{i+}\pi_{+j}$ en lugar de $\mu_i$. 
+
+```{block2, type = "information"}
+Bajo $H_0$:
+  
+$$E(n_{ij}) = \mu_{ij}$$
+  
+Usualmente $\{\pi_{i+}\}$ y $\{\pi_{+j}\}$ son _conocidas_. Sus estimadores de máxima verosimilitud son $\hat{\pi}_{i+}=n_{i+}/n$ y $\hat{\pi}_{+j}=n_{+j}/n$.
+
+Las frecuencias esperadas estimadas son
+$$
+\{\hat{\mu}_{ij} = n\hat{\pi}_{i+}\hat{\pi}_{+j}=n_{i+}n_{+j}/n^2\}
+$$
+  
+Por lo tanto, el estadístico de Pearson es:
+$$
+\chi^2 = \displaystyle{\sum_{i}\sum_{j}{\dfrac{(n_{ij}-\hat{\mu}_{ij})^2}{\hat{\mu}_{ij}}}}.
+$$
+```
+
+En 1900, el mismo Karl Pearson argumento que reemplazar las $\{\mu_{ij}\}$ por sus estimadores $\{\hat{\mu}_{ij}\}$ no afectaría la distribución muestral cuando se tiene una muestra grande. Como la tabla de contingencia tiene $IJ$ categorías, Pearson argumentó que la $\chi^2$ se distribuye como _chi cuadrada_ asintóticamente con grados de libertad $IJ-1$. 
+
+```{block2, type = "nota"}
+Sin embargo, años después (en 1922) Fisher publicó un artículo corrigiendo el error de Pearson. Lo que sucede es lo siguiente: estimar $\{\hat{\mu}_{ij}\}$ requiere de estimar $\{\pi_{i+}\}$ y $\{\pi_{+j}\}$, por lo que los grados de libertad son:
+
+$$
+(IJ - 1) - (I-1) - (J-1) = (I-1)(J-1).
+$$
+```
+
+**El estadístico de cociente de verosimilitud**
+
+Para una muestra multinomial, el kernel de la verosimilitud es
+
+$$
+\prod_i \prod_j{\pi_{ij}^{n_{ij}}},\qquad \;\text{donde todas }\;\; \pi_{ij}\geq0\;\; \mbox{y}\;\;\sum_i \sum_j{\pi_{ij}}=1.
+$$
+
+Bajo $H_0:\text{independencia}$, $\hat{\pi}_{ij}=\hat{\pi}_{i+}\hat{\pi}_{+j}=n_{i+}n_{+j}/n^2$. En el caso general, $\hat{\pi}_{ij}=n_{ij}/n$. El cociente de verosimilitud es igual a
+
+$$
+\Lambda = \dfrac{\prod_i \prod_j (n_{i+}n_{+j})^{n_{ij}}}{n^n\prod_i\prod_j{n_{ij}^{n_{ij}}}}.
+$$
+
+El estadístico del cociente de verosimilitud es $-2\mbox{log}(\Lambda)$. Denotado por $G^2$, es igual a:
+
+$$
+G^2 = -2\mbox{log}(\Lambda) = 2\sum_i\sum_j{n_{ij}\mbox{log}(n_{ij}/\hat{\mu}_{ij})}
+$$
+
+Entre más grandes sean los valores de $G^2$ y $X^2$, mayor evidencia de independencia. En el caso general el espacio consiste de $\{\pi_{ij}\}$ sujeto a la restricción lineal de que deben sumar $1$. El espacio de parámetros tiene dimensión $IJ-1$. Bajo $H_0$ el espacio está determinado por $\{\pi_{i+}\}$ y $\{\pi_{+j}\}$, por lo que su dimensión es de $(I-1) + (J-1)$. La diferencia entre estas dimensiones es $(I-1)(J-1)$. Para muestras grandes, $G^2$ tiene una distribución nula $\chi^2$ con grados de libertad $(I-1)(J-1)$. Por lo que $G^2$ y $X^2$ tienen la misma distribución límite. De hecho, son asintóticamente equivalentes: $X^2 - G^2$ converge en probabilidad a $0$.
+
+
+### Ejemplo: brecha de género
+
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+gendergap <- matrix(c(279,73,225,165,47,191), byrow = T, ncol = 3)
+dimnames(gendergap) <- list(Gender=c("Female","Male"), PartyID=c("Democrat","Independent","Republican"))
+gendergap %>% knitr::kable()
+```
+
+La prueba de $\chi^2$ de Pearson se puede obtener con la función `chisq.test` que ya está en R base:
+
+```{r}
+chisq.test(gendergap)
+```
+
+<!--
+## General Social Survey 1972 - 2016
 
 
 
@@ -533,42 +629,7 @@ Se puede demostrar que $\hat{\theta}$ tiene una distribución normal asinotótic
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-->
 
 
 
