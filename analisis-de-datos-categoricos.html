@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-02-14">
+<meta name="date" content="2018-02-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -209,7 +209,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#razones-de-momios-en-tablas-itimes-j"><i class="fa fa-check"></i><b>5.4.1</b> Razones de momios en tablas <span class="math inline">\(I\times J\)</span></a></li>
 <li class="chapter" data-level="5.4.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-mushrooms"><i class="fa fa-check"></i><b>5.4.2</b> Ejemplo: mushrooms</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#intervalos-de-confianza-para-los-parametros-de-asociacion"><i class="fa fa-check"></i><b>5.5</b> Intervalos de confianza para los parámetros de asociación</a></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#intervalos-de-confianza-para-los-parametros-de-asociacion"><i class="fa fa-check"></i><b>5.5</b> Intervalos de confianza para los parámetros de asociación</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#error-estandar-de-la-razon-de-momios"><i class="fa fa-check"></i><b>5.5.1</b> Error estándar de la razón de momios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-independencia"><i class="fa fa-check"></i><b>5.6</b> Prueba de independencia</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-prueba-chi2-de-pearson"><i class="fa fa-check"></i><b>5.6.1</b> La prueba <span class="math inline">\(\chi^2\)</span> de Pearson</a></li>
+<li class="chapter" data-level="5.6.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-brecha-de-genero"><i class="fa fa-check"></i><b>5.6.2</b> Ejemplo: brecha de género</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -769,7 +775,120 @@ fit_glm &lt;-<span class="st"> </span><span class="kw">glm</span>(edibility <spa
 \hat{\theta} = \dfrac{n_{11}n_{22}}{n_{12}n_{21}}
 \]</span></p>
 <p>Se puede demostrar que <span class="math inline">\(\hat{\theta}\)</span> tiene una distribución normal asinotóticamente alrededor de <span class="math inline">\(\theta\)</span>. A menos que <span class="math inline">\(n\)</span> sea grande, la distribución muestral generalmente es sesgada.</p>
+<div id="error-estandar-de-la-razon-de-momios" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> Error estándar de la razón de momios</h3>
+<p>Utilizando la transformación de logaritmo, la estructura multiplicativa converge muy rápidamente a la normalidad. Una aproximación del error estándar para <span class="math inline">\(\mbox{log}(\hat{\theta})\)</span> es</p>
+<p><span class="math display">\[
+\hat{\sigma}(\mbox{log}\hat{\theta}) = \sqrt{\dfrac{1}{n_{11}}+\dfrac{1}{n_{12}}+\dfrac{1}{n_{21}}+\dfrac{1}{n_{22}}}.
+\]</span></p>
+<p>Como consecuencia de la normalidad de la distribución de <span class="math inline">\(\mbox{log}(\hat{\theta})\)</span>,</p>
+<p><span class="math display">\[
+\mbox{log}(\hat{\theta}) \pm z_{\alpha/2}\hat{\sigma}(\mbox{log}\hat{\theta})
+\]</span></p>
+</div>
+</div>
+<div id="prueba-de-independencia" class="section level2">
+<h2><span class="header-section-number">5.6</span> Prueba de independencia</h2>
+<p>Suponemos que se tiene resultados obtenidos de una distribución multinomial y probabilidades conjuntas <span class="math inline">\(\{\pi_{ij}\}\)</span> en una tabla de contingencia de dimensiones <span class="math inline">\(I\times J\)</span>.</p>
 
+<div class="nota">
+La hipótesis nula de independencia estadística es: <span class="math display">\[
+H_0:\pi_{ij}=\pi_{i+}\pi_{+j},\qquad \text{ para toda }\;\; i \;\;\text{ y }\;\; j.
+\]</span>
+</div>
+
+<div id="la-prueba-chi2-de-pearson" class="section level3">
+<h3><span class="header-section-number">5.6.1</span> La prueba <span class="math inline">\(\chi^2\)</span> de Pearson</h3>
+<p>Ya estudiamos la prueba para valores específicos de probabilidades multinomiales. Una prueba de <span class="math inline">\(H_0:\mbox{independencia}\)</span> utiliza la <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n_{ij}\)</span> en lugar de <span class="math inline">\(n_i\)</span> y con <span class="math inline">\(\mu_{ij}=n\pi_{i+}\pi_{+j}\)</span> en lugar de <span class="math inline">\(\mu_i\)</span>.</p>
+
+<div class="information">
+<p>Bajo <span class="math inline">\(H_0\)</span>:</p>
+<p><span class="math display">\[E(n_{ij}) = \mu_{ij}\]</span></p>
+<p>Usualmente <span class="math inline">\(\{\pi_{i+}\}\)</span> y <span class="math inline">\(\{\pi_{+j}\}\)</span> son <em>conocidas</em>. Sus estimadores de máxima verosimilitud son <span class="math inline">\(\hat{\pi}_{i+}=n_{i+}/n\)</span> y <span class="math inline">\(\hat{\pi}_{+j}=n_{+j}/n\)</span>.</p>
+<p>Las frecuencias esperadas estimadas son <span class="math display">\[
+\{\hat{\mu}_{ij} = n\hat{\pi}_{i+}\hat{\pi}_{+j}=n_{i+}n_{+j}/n^2\}
+\]</span></p>
+Por lo tanto, el estadístico de Pearson es: <span class="math display">\[
+\chi^2 = \displaystyle{\sum_{i}\sum_{j}{\dfrac{(n_{ij}-\hat{\mu}_{ij})^2}{\hat{\mu}_{ij}}}}.
+\]</span>
+</div>
+
+<p>En 1900, el mismo Karl Pearson argumento que reemplazar las <span class="math inline">\(\{\mu_{ij}\}\)</span> por sus estimadores <span class="math inline">\(\{\hat{\mu}_{ij}\}\)</span> no afectaría la distribución muestral cuando se tiene una muestra grande. Como la tabla de contingencia tiene <span class="math inline">\(IJ\)</span> categorías, Pearson argumentó que la <span class="math inline">\(\chi^2\)</span> se distribuye como <em>chi cuadrada</em> asintóticamente con grados de libertad <span class="math inline">\(IJ-1\)</span>.</p>
+
+<div class="nota">
+<p>Sin embargo, años después (en 1922) Fisher publicó un artículo corrigiendo el error de Pearson. Lo que sucede es lo siguiente: estimar <span class="math inline">\(\{\hat{\mu}_{ij}\}\)</span> requiere de estimar <span class="math inline">\(\{\pi_{i+}\}\)</span> y <span class="math inline">\(\{\pi_{+j}\}\)</span>, por lo que los grados de libertad son:</p>
+<span class="math display">\[
+(IJ - 1) - (I-1) - (J-1) = (I-1)(J-1).
+\]</span>
+</div>
+
+<p><strong>El estadístico de cociente de verosimilitud</strong></p>
+<p>Para una muestra multinomial, el kernel de la verosimilitud es</p>
+<p><span class="math display">\[
+\prod_i \prod_j{\pi_{ij}^{n_{ij}}},\qquad \;\text{donde todas }\;\; \pi_{ij}\geq0\;\; \mbox{y}\;\;\sum_i \sum_j{\pi_{ij}}=1.
+\]</span></p>
+<p>Bajo <span class="math inline">\(H_0:\text{independencia}\)</span>, <span class="math inline">\(\hat{\pi}_{ij}=\hat{\pi}_{i+}\hat{\pi}_{+j}=n_{i+}n_{+j}/n^2\)</span>. En el caso general, <span class="math inline">\(\hat{\pi}_{ij}=n_{ij}/n\)</span>. El cociente de verosimilitud es igual a</p>
+<p><span class="math display">\[
+\Lambda = \dfrac{\prod_i \prod_j (n_{i+}n_{+j})^{n_{ij}}}{n^n\prod_i\prod_j{n_{ij}^{n_{ij}}}}.
+\]</span></p>
+<p>El estadístico del cociente de verosimilitud es <span class="math inline">\(-2\mbox{log}(\Lambda)\)</span>. Denotado por <span class="math inline">\(G^2\)</span>, es igual a:</p>
+<p><span class="math display">\[
+G^2 = -2\mbox{log}(\Lambda) = 2\sum_i\sum_j{n_{ij}\mbox{log}(n_{ij}/\hat{\mu}_{ij})}
+\]</span></p>
+<p>Entre más grandes sean los valores de <span class="math inline">\(G^2\)</span> y <span class="math inline">\(X^2\)</span>, mayor evidencia de independencia. En el caso general el espacio consiste de <span class="math inline">\(\{\pi_{ij}\}\)</span> sujeto a la restricción lineal de que deben sumar <span class="math inline">\(1\)</span>. El espacio de parámetros tiene dimensión <span class="math inline">\(IJ-1\)</span>. Bajo <span class="math inline">\(H_0\)</span> el espacio está determinado por <span class="math inline">\(\{\pi_{i+}\}\)</span> y <span class="math inline">\(\{\pi_{+j}\}\)</span>, por lo que su dimensión es de <span class="math inline">\((I-1) + (J-1)\)</span>. La diferencia entre estas dimensiones es <span class="math inline">\((I-1)(J-1)\)</span>. Para muestras grandes, <span class="math inline">\(G^2\)</span> tiene una distribución nula <span class="math inline">\(\chi^2\)</span> con grados de libertad <span class="math inline">\((I-1)(J-1)\)</span>. Por lo que <span class="math inline">\(G^2\)</span> y <span class="math inline">\(X^2\)</span> tienen la misma distribución límite. De hecho, son asintóticamente equivalentes: <span class="math inline">\(X^2 - G^2\)</span> converge en probabilidad a <span class="math inline">\(0\)</span>.</p>
+</div>
+<div id="ejemplo-brecha-de-genero" class="section level3">
+<h3><span class="header-section-number">5.6.2</span> Ejemplo: brecha de género</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gendergap &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">279</span>,<span class="dv">73</span>,<span class="dv">225</span>,<span class="dv">165</span>,<span class="dv">47</span>,<span class="dv">191</span>), <span class="dt">byrow =</span> T, <span class="dt">ncol =</span> <span class="dv">3</span>)
+<span class="kw">dimnames</span>(gendergap) &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Gender=</span><span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>,<span class="st">&quot;Male&quot;</span>), <span class="dt">PartyID=</span><span class="kw">c</span>(<span class="st">&quot;Democrat&quot;</span>,<span class="st">&quot;Independent&quot;</span>,<span class="st">&quot;Republican&quot;</span>))
+gendergap <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Democrat</th>
+<th align="right">Independent</th>
+<th align="right">Republican</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Female</td>
+<td align="right">279</td>
+<td align="right">73</td>
+<td align="right">225</td>
+</tr>
+<tr class="even">
+<td>Male</td>
+<td align="right">165</td>
+<td align="right">47</td>
+<td align="right">191</td>
+</tr>
+</tbody>
+</table>
+<p>La prueba de <span class="math inline">\(\chi^2\)</span> de Pearson se puede obtener con la función <code>chisq.test</code> que ya está en R base:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(gendergap)
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  Pearson&#39;s Chi-squared test</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; data:  gendergap</span>
+<span class="co">#&gt; X-squared = 7, df = 2, p-value = 0.03</span></code></pre></div>
+<!--
+## General Social Survey 1972 - 2016
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+</div>
 </div>
 </div>
             </section>
