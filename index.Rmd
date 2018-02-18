@@ -25,7 +25,7 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2018 
 - Componentes principales
 - Análisis de factores
 - Análisis de la correlación canónica
-- Análisis de conglomerados: clustering jerárquico, k-medias
+- Introducción a análisis de conglomerados
 - Introducción a estadística espacial
 
 
