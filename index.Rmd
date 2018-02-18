@@ -18,13 +18,14 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2018 
 
 - Análisis exploratorio de datos
 - Análisis de datos categóricos
+- Introducción a modelos lineales generalizados
 - Regresión logística 
 - Regularización y selección de modelos
-- Análisis de conglomerados: clustering jerárquico, k-medias
+- Análisis de discriminante lineal
 - Componentes principales
 - Análisis de factores
-- Análisis canónico
-- Análisis discriminante
+- Análisis de la correlación canónica
+- Análisis de conglomerados: clustering jerárquico, k-medias
 - Introducción a estadística espacial
 
 
@@ -40,7 +41,9 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2018 
 - [Rstudio](https://www.rstudio.com/products/RStudio/) Interfaz gráfica para trabajar en R.
 - [Recursos para aprender R](https://www.rstudio.com/online-learning/#R)
 
-### Referencia principal {-}
+### Referencias principales {-}
+
+- [Agresti, Alan. Categorical data analysis. 3rd ed.  Hoboken, N. J.: John Wiley & Sons, 2013.](https://www.wiley.com/en-us/Categorical+Data+Analysis%2C+3rd+Edition-p-9780470463635)
 
 - [Johnson, R., y Wichern, D. Applied multivariate statistical analysis. Upper Saddle River, N. J.: Pearson Prentice Hall, 2007.](https://www.pearson.com/us/higher-education/program/Johnson-Applied-Multivariate-Statistical-Analysis-6th-Edition/PGM274834.html)
 
@@ -49,8 +52,6 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2018 
 - [Pattern Recognition and Machine Learning](http://www.springer.com/us/book/9780387310732)
 
 - [The Elements of Statistical Learning, Hastie, Tibshirani y Friedman](https://web.stanford.edu/~hastie/ElemStatLearn/)
-
-- Agresti, Alan. Categorical data analysis. 3rd ed.  Hoboken, N. J.: John Wiley & Sons, 2013.
 
 - Greenacre, Michael J., ed. Multiple correspondence analysis and related methods. Boca Raton, Fla.: Chapman & Hall/CRC, 2006
  
