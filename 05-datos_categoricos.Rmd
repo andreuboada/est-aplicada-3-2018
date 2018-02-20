@@ -25,7 +25,7 @@ Las variables categóricas están por doquier. Desde ayudar a decidir cuándo un
 Recordemos la **distribución multinomial**. Supongamos que cada uno de $n$ ensayos independientes e idénticos tiene realizaciones en $c$ categorías. Definimos $y_{ij}$ como
 $$
 y_{ij} = \left\{ \begin{array}{cl}
-1 & \text{si el }\; i\,\,\text{-ésimo ensayo cae en la categoria }j,\\
+1 & \text{si el }\; i\text{-esimo ensayo cae en la categoria }j,\\
 0 & \text{en otro caso.}
 \end{array}\right.
 $$
@@ -1160,7 +1160,7 @@ horoscopo_final$param$Star_Sign.Believe
 1. Demuestra que si $(n_1,n_2,\ldots,n_c)$ sigue una distribución multinomial, entonces $\mbox{Cov}(n_i,n_j)=-n\pi_i \pi_j$ para toda $i\neq j$. Para esto, define $Y_{ij}$ como
 $$
 Y_{ij} = \left\{ \begin{array}{cl}
-1 & \text{si la }\; i\,\,\text{-ésima observacion es la categoria }j,\\
+1 & \text{si la }\; i\text{-esima observacion es la categoria }j,\\
 0 & \text{en otro caso.}
 \end{array}\right.
 $$
