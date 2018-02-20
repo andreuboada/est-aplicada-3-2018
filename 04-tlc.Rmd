@@ -649,7 +649,7 @@ La mejor justificación simple puede ser que hay más formas de obtener valores 
 
 * Pero con dos dados hay cinco formas de obtener un promedio de 3, y solo una forma de obtener un promedio de 1. 
 
-*Hay 5 veces más probabilidades de obtener el valor que está más cerca de la media que el que está más lejos.
+* Hay 5 veces más probabilidades de obtener el valor que está más cerca de la media que el que está más lejos.
 
 Veamos esto con un ejercicio de simulación:
 
