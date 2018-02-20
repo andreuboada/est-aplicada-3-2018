@@ -330,7 +330,7 @@ singer.medians <- singer %>%
          media = mean(estatura.m))
 
 library(forcats)
-singer.medians$voice.part.2 <- fct_reorder(singer.medians$voice.part, x = singer.medians$mediana, fun = median)
+singer.medians$voice.part.2 <- fct_reorder(.f = singer.medians$voice.part, .x = singer.medians$mediana, .fun = median)
 
 ggplot(singer.medians, aes(x = voice.part.2, y = estatura.m)) + 
   geom_boxplot() +
@@ -639,7 +639,7 @@ La mejor justificación simple puede ser que hay más formas de obtener valores 
 
 * Pero con dos dados hay cinco formas de obtener un promedio de 3, y solo una forma de obtener un promedio de 1. 
 
-*Hay 5 veces más probabilidades de obtener el valor que está más cerca de la media que el que está más lejos.
+* Hay 5 veces más probabilidades de obtener el valor que está más cerca de la media que el que está más lejos.
 
 Veamos esto con un ejercicio de simulación:
 

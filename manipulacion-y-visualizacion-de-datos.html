@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Aplicada III</title>
   <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
-  <meta name="generator" content="bookdown 0.6.2 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.1 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Aplicada III" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-02-18">
+<meta name="date" content="2018-02-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -216,6 +216,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-prueba-chi2-de-pearson"><i class="fa fa-check"></i><b>5.6.1</b> La prueba <span class="math inline">\(\chi^2\)</span> de Pearson</a></li>
 <li class="chapter" data-level="5.6.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-brecha-de-genero"><i class="fa fa-check"></i><b>5.6.2</b> Ejemplo: brecha de género</a></li>
 </ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#general-social-survey-1972---2016"><i class="fa fa-check"></i><b>5.7</b> General Social Survey 1972 - 2016</a></li>
+<li class="chapter" data-level="5.8" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-catadora-de-te"><i class="fa fa-check"></i><b>5.8</b> La catadora de té</a></li>
+<li class="chapter" data-level="5.9" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-multinomiales-para-conteos"><i class="fa fa-check"></i><b>5.9</b> Modelos multinomiales para conteos</a></li>
+<li class="chapter" data-level="5.10" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-log-lineales-con-tres-variables-categoricas"><i class="fa fa-check"></i><b>5.10</b> Modelos log lineales con tres variables categóricas</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tipos-de-independencia"><i class="fa fa-check"></i><b>5.10.1</b> Tipos de independencia</a></li>
+<li class="chapter" data-level="5.10.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#asociacion-homogenea-e-interacciones-de-3-factores"><i class="fa fa-check"></i><b>5.10.2</b> Asociación homogénea e interacciones de 3 factores</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-sensitividad-y-especificidad"><i class="fa fa-check"></i><b>5.11</b> Ejemplo: sensitividad y especificidad</a></li>
+<li class="chapter" data-level="5.12" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-horoscopos"><i class="fa fa-check"></i><b>5.12</b> Ejemplo: horóscopos</a></li>
+<li class="chapter" data-level="5.13" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tarea-opcional"><i class="fa fa-check"></i><b>5.13</b> Tarea (opcional)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -1403,7 +1413,7 @@ billboard_long <span class="op">%&gt;%</span><span class="st"> </span><span clas
 <p>La instrucción <code>na.rm = TRUE</code> se utiliza para eliminar los valores faltantes en las columnas wk1 a wk76. Realizamos una limpieza adicional creando mejores variables de fecha.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">billboard_tidy &lt;-<span class="st"> </span>billboard_long <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(
-    <span class="dt">week =</span> <span class="kw">extract_numeric</span>(week),
+    <span class="dt">week =</span> <span class="kw">parse_number</span>(week),
     <span class="dt">date =</span> <span class="kw">as.Date</span>(date.entered) <span class="op">+</span><span class="st"> </span><span class="dv">7</span> <span class="op">*</span><span class="st"> </span>(week <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>date.entered)
 billboard_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
@@ -4686,8 +4696,8 @@ FALSE
 <span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(num_semanas_top_<span class="dv">10</span>)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">top_n</span>(<span class="dv">20</span>, <span class="dt">wt =</span> num_semanas_top_<span class="dv">10</span>)</code></pre></div>
 <p>Para hacer la gráfica con <code>ggplot</code> debemos primero ordenar los artistas de manera descendente por el número de semanas en el top 10. Para esto utilizamos la función de <code>fct_reorder</code> del paquete <code>forcats</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">artistas_top10<span class="op">$</span>artist &lt;-<span class="st"> </span>forcats<span class="op">::</span><span class="kw">fct_reorder</span>(<span class="dt">f =</span> artistas_top10<span class="op">$</span>artist,
-                                          <span class="dt">x =</span> artistas_top10<span class="op">$</span>num_semanas_top_<span class="dv">10</span>,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">artistas_top10<span class="op">$</span>artist &lt;-<span class="st"> </span>forcats<span class="op">::</span><span class="kw">fct_reorder</span>(<span class="dt">.f =</span> artistas_top10<span class="op">$</span>artist,
+                                          <span class="dt">.x =</span> artistas_top10<span class="op">$</span>num_semanas_top_<span class="dv">10</span>,
                                           <span class="dt">.desc =</span> T)</code></pre></div>
 <p>Por último, hacemos la gráfica indicando a <code>geom_bar</code> que la transformación estadística que debe usar es la de <em>identity</em>, es decir, la longitud de la barra corresponde al valor absoluto de la variable <code>num_semanas_top_10</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(artistas_top10, <span class="kw">aes</span>(<span class="dt">x =</span> artist, <span class="dt">y =</span> num_semanas_top_<span class="dv">10</span>)) <span class="op">+</span><span class="st"> </span>

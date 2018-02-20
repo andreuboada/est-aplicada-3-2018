@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Aplicada III</title>
   <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
-  <meta name="generator" content="bookdown 0.6.2 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.1 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Aplicada III" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-02-18">
+<meta name="date" content="2018-02-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -216,6 +216,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-prueba-chi2-de-pearson"><i class="fa fa-check"></i><b>5.6.1</b> La prueba <span class="math inline">\(\chi^2\)</span> de Pearson</a></li>
 <li class="chapter" data-level="5.6.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-brecha-de-genero"><i class="fa fa-check"></i><b>5.6.2</b> Ejemplo: brecha de género</a></li>
 </ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#general-social-survey-1972---2016"><i class="fa fa-check"></i><b>5.7</b> General Social Survey 1972 - 2016</a></li>
+<li class="chapter" data-level="5.8" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-catadora-de-te"><i class="fa fa-check"></i><b>5.8</b> La catadora de té</a></li>
+<li class="chapter" data-level="5.9" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-multinomiales-para-conteos"><i class="fa fa-check"></i><b>5.9</b> Modelos multinomiales para conteos</a></li>
+<li class="chapter" data-level="5.10" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-log-lineales-con-tres-variables-categoricas"><i class="fa fa-check"></i><b>5.10</b> Modelos log lineales con tres variables categóricas</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tipos-de-independencia"><i class="fa fa-check"></i><b>5.10.1</b> Tipos de independencia</a></li>
+<li class="chapter" data-level="5.10.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#asociacion-homogenea-e-interacciones-de-3-factores"><i class="fa fa-check"></i><b>5.10.2</b> Asociación homogénea e interacciones de 3 factores</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-sensitividad-y-especificidad"><i class="fa fa-check"></i><b>5.11</b> Ejemplo: sensitividad y especificidad</a></li>
+<li class="chapter" data-level="5.12" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-horoscopos"><i class="fa fa-check"></i><b>5.12</b> Ejemplo: horóscopos</a></li>
+<li class="chapter" data-level="5.13" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tarea-opcional"><i class="fa fa-check"></i><b>5.13</b> Tarea (opcional)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -510,7 +520,7 @@ singer<span class="op">$</span>estatura.m &lt;-<span class="st"> </span>singer<s
          <span class="dt">media =</span> <span class="kw">mean</span>(estatura.m))
 
 <span class="kw">library</span>(forcats)
-singer.medians<span class="op">$</span>voice.part.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">fct_reorder</span>(singer.medians<span class="op">$</span>voice.part, <span class="dt">x =</span> singer.medians<span class="op">$</span>mediana, <span class="dt">fun =</span> median)
+singer.medians<span class="op">$</span>voice.part.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">fct_reorder</span>(<span class="dt">.f =</span> singer.medians<span class="op">$</span>voice.part, <span class="dt">.x =</span> singer.medians<span class="op">$</span>mediana, <span class="dt">.fun =</span> median)
 
 <span class="kw">ggplot</span>(singer.medians, <span class="kw">aes</span>(<span class="dt">x =</span> voice.part.<span class="dv">2</span>, <span class="dt">y =</span> estatura.m)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
@@ -816,8 +826,8 @@ Alguien nos podría preguntar: ¿por qué debería el promedio acercarse a la me
 <ul>
 <li><p>Con un dado, es igualmente probable que obtengas un “promedio” de 3 o de 1.</p></li>
 <li><p>Pero con dos dados hay cinco formas de obtener un promedio de 3, y solo una forma de obtener un promedio de 1.</p></li>
+<li><p>Hay 5 veces más probabilidades de obtener el valor que está más cerca de la media que el que está más lejos.</p></li>
 </ul>
-<p>*Hay 5 veces más probabilidades de obtener el valor que está más cerca de la media que el que está más lejos.</p>
 <p>Veamos esto con un ejercicio de simulación:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">110265</span>)
 tira_dado &lt;-<span class="st"> </span><span class="cf">function</span>(i){

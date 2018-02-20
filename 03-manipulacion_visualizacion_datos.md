@@ -344,7 +344,7 @@ La instrucción `na.rm = TRUE` se utiliza para eliminar los valores faltantes en
 ```r
 billboard_tidy <- billboard_long %>%
   mutate(
-    week = extract_numeric(week),
+    week = parse_number(week),
     date = as.Date(date.entered) + 7 * (week - 1)) %>%
   select(-date.entered)
 billboard_tidy %>% sample_n(10) %>% knitr::kable()
@@ -2157,8 +2157,8 @@ Para hacer la gráfica con `ggplot` debemos primero ordenar los artistas de mane
 
 
 ```r
-artistas_top10$artist <- forcats::fct_reorder(f = artistas_top10$artist,
-                                          x = artistas_top10$num_semanas_top_10,
+artistas_top10$artist <- forcats::fct_reorder(.f = artistas_top10$artist,
+                                          .x = artistas_top10$num_semanas_top_10,
                                           .desc = T)
 ```
 
@@ -2172,8 +2172,6 @@ ggplot(artistas_top10, aes(x = artist, y = num_semanas_top_10)) +
 ```
 
 <img src="03-manipulacion_visualizacion_datos_files/figure-html/unnamed-chunk-92-1.png" width="100%" style="display: block; margin: auto;" />
-
-
 
 ## Tarea
 
