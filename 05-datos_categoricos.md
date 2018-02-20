@@ -1259,35 +1259,9 @@ Comenzamos el análisis con el modelo saturado:
 
 ```r
 horoscopo_saturado <- loglm(Frequency ~ Star_Sign*Believe*True, data = tabla_horoscopos)
-summary(horoscopo_saturado)
-#> Formula:
-#> Frequency ~ Star_Sign * Believe * True
-#> attr(,"variables")
-#> list(Frequency, Star_Sign, Believe, True)
-#> attr(,"factors")
-#>           Star_Sign Believe True Star_Sign:Believe Star_Sign:True
-#> Frequency         0       0    0                 0              0
-#> Star_Sign         1       0    0                 1              1
-#> Believe           0       1    0                 1              0
-#> True              0       0    1                 0              1
-#>           Believe:True Star_Sign:Believe:True
-#> Frequency            0                      0
-#> Star_Sign            0                      1
-#> Believe              1                      1
-#> True                 1                      1
-#> attr(,"term.labels")
-#> [1] "Star_Sign"              "Believe"               
-#> [3] "True"                   "Star_Sign:Believe"     
-#> [5] "Star_Sign:True"         "Believe:True"          
-#> [7] "Star_Sign:Believe:True"
-#> attr(,"order")
-#> [1] 1 1 1 2 2 2 3
-#> attr(,"intercept")
-#> [1] 1
-#> attr(,"response")
-#> [1] 1
-#> attr(,".Environment")
-#> <environment: R_GlobalEnv>
+horoscopo_saturado
+#> Call:
+#> loglm(formula = Frequency ~ Star_Sign * Believe * True, data = tabla_horoscopos)
 #> 
 #> Statistics:
 #>                  X^2 df P(> X^2)
@@ -1297,50 +1271,11 @@ summary(horoscopo_saturado)
 
 Podemos ver que el número de grados de libertad es cero, esto es, el número de parámetros es igual al número de observaciones. 
 
-Quitamos la interacción de los 3 factores:
+Quitamos la interacción de los 3 factores y vemos la diferencia entre ambos modelos utilizando la función `anova()`:
 
 
 ```r
 horoscopo_homogeneo <- update(horoscopo_saturado, .~. -Star_Sign:Believe:True)
-summary(horoscopo_homogeneo)
-#> Formula:
-#> Frequency ~ Star_Sign + Believe + True + Star_Sign:Believe + 
-#>     Star_Sign:True + Believe:True
-#> attr(,"variables")
-#> list(Frequency, Star_Sign, Believe, True)
-#> attr(,"factors")
-#>           Star_Sign Believe True Star_Sign:Believe Star_Sign:True
-#> Frequency         0       0    0                 0              0
-#> Star_Sign         1       0    0                 1              1
-#> Believe           0       1    0                 1              0
-#> True              0       0    1                 0              1
-#>           Believe:True
-#> Frequency            0
-#> Star_Sign            0
-#> Believe              1
-#> True                 1
-#> attr(,"term.labels")
-#> [1] "Star_Sign"         "Believe"           "True"             
-#> [4] "Star_Sign:Believe" "Star_Sign:True"    "Believe:True"     
-#> attr(,"order")
-#> [1] 1 1 1 2 2 2
-#> attr(,"intercept")
-#> [1] 1
-#> attr(,"response")
-#> [1] 1
-#> attr(,".Environment")
-#> <environment: R_GlobalEnv>
-#> 
-#> Statistics:
-#>                   X^2 df P(> X^2)
-#> Likelihood Ratio 8.84 11    0.637
-#> Pearson          8.85 11    0.636
-```
-
-Podemos comparar la diferencia entre ambos modelos utilizando la función `anova()`:
-
-
-```r
 anova(horoscopo_saturado, horoscopo_homogeneo)
 #> LR tests for hierarchical log-linear models
 #> 
@@ -1416,103 +1351,13 @@ anova(horoscopo_homogeneo, Star_SignBelieve)
 #> Saturated     0.00  0       8.84        11          0.637
 ```
 
-Ahora generamos una tabla de contingencias para las variables Believe y True:
+
+
+El modelo que consideraríamos más apropiado sería el que no incluye la interacción de Star_Sign y True. Comparamos con todos los modelos:
 
 
 ```r
-(BelieveTrue_tabla <-xtabs(Frequency ~ Believe + True, data = horoscopos))
-#>             True
-#> Believe      Horoscope Came True Horoscope Didn't Come True
-#>   Believer                   598                        532
-#>   Unbeliever                 489                        582
-```
-
-Y hacemos una prueba de $\chi^2$:
-
-
-```r
-chisq.test(horoscopos$Believe, horoscopos$True)
-#> 
-#> 	Pearson's Chi-squared test
-#> 
-#> data:  horoscopos$Believe and horoscopos$True
-#> X-squared = 0, df = 1, p-value = 1
-```
-
-Ahora generamos una tabla de contingencias para las variables Believe y Star_Sign:
-
-
-```r
-(BelieveStar_Sign_tabla <-xtabs(Frequency ~ Believe + Star_Sign, data = horoscopos))
-#>             Star_Sign
-#> Believe      Aquarius Aries Cancer Capricorn Gemini Leo Libra Pisces
-#>   Believer         51   124    179       110     88  32    58    134
-#>   Unbeliever       46    78    160       102    118  37    53    106
-#>             Star_Sign
-#> Believe      Sagittarius Scorpio Taurus Virgo
-#>   Believer            92      56     91   115
-#>   Unbeliever          97      52     98   124
-```
-
-Y hacemos una prueba de $\chi^2$:
-
-
-```r
-chisq.test(horoscopos$Believe, horoscopos$Star_Sign)
-#> Warning in chisq.test(horoscopos$Believe, horoscopos$Star_Sign): Chi-
-#> squared approximation may be incorrect
-#> 
-#> 	Pearson's Chi-squared test
-#> 
-#> data:  horoscopos$Believe and horoscopos$Star_Sign
-#> X-squared = 0, df = 10, p-value = 1
-```
-
-Por lo tanto, el modelo final (que consideraríamos más apropiado sería aquel que no incluye la interacción de Star_Sign y True:
-
-
-```r
-horoscopo_final <- loglm(Frequency ~ Star_Sign + Believe + True + Believe:True + Star_Sign:Believe, data = tabla_horoscopos)
-```
-
-Veamos el resumen del modelo final:
-
-
-```r
-summary(horoscopo_final)
-#> Formula:
-#> Frequency ~ Star_Sign + Believe + True + Believe:True + Star_Sign:Believe
-#> attr(,"variables")
-#> list(Frequency, Star_Sign, Believe, True)
-#> attr(,"factors")
-#>           Star_Sign Believe True Believe:True Star_Sign:Believe
-#> Frequency         0       0    0            0                 0
-#> Star_Sign         1       0    0            0                 1
-#> Believe           0       1    0            1                 1
-#> True              0       0    1            1                 0
-#> attr(,"term.labels")
-#> [1] "Star_Sign"         "Believe"           "True"             
-#> [4] "Believe:True"      "Star_Sign:Believe"
-#> attr(,"order")
-#> [1] 1 1 1 2 2
-#> attr(,"intercept")
-#> [1] 1
-#> attr(,"response")
-#> [1] 1
-#> attr(,".Environment")
-#> <environment: R_GlobalEnv>
-#> 
-#> Statistics:
-#>                   X^2 df P(> X^2)
-#> Likelihood Ratio 19.6 22    0.609
-#> Pearson          19.5 22    0.612
-```
-
-Vemos la diferencia con todos los modelos:
-
-
-```r
-anova(horoscopo_saturado, horoscopo_homogeneo, BelieveTrue, Star_SignTrue, Star_SignBelieve, horoscopo_final)
+anova(horoscopo_homogeneo, BelieveTrue, Star_SignTrue, Star_SignBelieve)
 #> LR tests for hierarchical log-linear models
 #> 
 #> Model 1:
@@ -1520,31 +1365,25 @@ anova(horoscopo_saturado, horoscopo_homogeneo, BelieveTrue, Star_SignTrue, Star_
 #> Model 2:
 #>  Frequency ~ Star_Sign + Believe + True + Star_Sign:True + Believe:True 
 #> Model 3:
-#>  Frequency ~ Star_Sign + Believe + True + Believe:True + Star_Sign:Believe 
-#> Model 4:
 #>  Frequency ~ Star_Sign + Believe + True + Star_Sign:Believe + Star_Sign:True 
-#> Model 5:
+#> Model 4:
 #>  Frequency ~ Star_Sign + Believe + True + Star_Sign:Believe + Star_Sign:True + Believe:True 
-#> Model 6:
-#>  Frequency ~ Star_Sign * Believe * True 
 #> 
 #>           Deviance df Delta(Dev) Delta(df) P(> Delta(Dev)
 #> Model 1      19.58 22                                    
 #> Model 2      29.51 22      -9.93         0         1.0000
-#> Model 3      19.58 22       9.93         0         0.0000
-#> Model 4      21.38 12      -1.80        10         1.0000
-#> Model 5       8.84 11      12.54         1         0.0004
-#> Model 6       0.00  0       8.84        11         0.6365
-#> Saturated     0.00  0       0.00         0         1.0000
+#> Model 3      21.38 12       8.12        10         0.6166
+#> Model 4       8.84 11      12.54         1         0.0004
+#> Saturated     0.00  0       8.84        11         0.6365
 ```
 
-Elegimos el Modelo 1 (modelo final) que también es el Modelo 3 (Star_Sign:True) porque tiene menor devianza para un número de parámetros aceptable (el número de grados de libertad es mayor). Esto implica que no hay asociación entre si es verdad el horóscopo y su signo zodiacal, sin embargo sí existe una relación entre el signo zodiacal y si creen que el horóscopo es verdad. 
+Elegimos el modelo 1 (Star_Sign:True) porque tiene menor devianza para un número de parámetros aceptable (el número de grados de libertad es mayor). Esto implica que _no_ hay asociación entre "si es verdad el horóscopo" y signo zodiacal, sin embargo sí existe una relación entre el signo zodiacal y si creen que el horóscopo es verdad. 
 
 Por ejemplo, los Aries tienden a creer mucho en su horóscopo, pero los Géminis no.
 
 
 ```r
-horoscopo_final$param$Star_Sign.Believe
+Star_SignTrue$param$Star_Sign.Believe
 #>              Believe
 #> Star_Sign     Believer Unbeliever
 #>   Aquarius      0.0302    -0.0302
@@ -1596,7 +1435,7 @@ $$
 
 Demuestra que $G^2 \neq 0$ y que la igualdad se da si y sólo si $\hat{\pi}_j=\pi_{j0}$ para toda $j$. Para demostrar esto aplica la desigualdad de Jensen a $E(-2n\,\mbox{log}(X))$, donde $X$ es igual a $\pi_{j0}/\hat{\pi_j}$ con probabilidad $\hat{\pi}_j$.
 
-3. Para probar independencia, muestra que $X^2 \leq n \,\cdot\,\mbox{min}(I-1,J-1)$. Por lo cual, 
+3. Muestra que $X^2 \leq n \,\cdot\,\mbox{min}(I-1,J-1)$. Por lo cual, 
 $$
 V^2=\dfrac{X^2}{n \,\cdot\,\mbox{min}(I-1,J-1)}
 $$

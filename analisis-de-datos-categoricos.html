@@ -172,7 +172,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.11" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#tarea-2"><i class="fa fa-check"></i><b>3.11</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html"><i class="fa fa-check"></i><b>4</b> Teorema del Límite Central</a><ul>
-<li class="chapter" data-level="4.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#la-distribucion-de-bary"><i class="fa fa-check"></i><b>4.1</b> La distribución de <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="4.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#la-distribucion-de-la-media"><i class="fa fa-check"></i><b>4.1</b> La distribución de la media</a></li>
 <li class="chapter" data-level="4.2" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#de-donde-proviene-la-distribucion-normal"><i class="fa fa-check"></i><b>4.2</b> ¿De dónde proviene la distribución normal?</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#que-signo-tiene-c"><i class="fa fa-check"></i><b>4.2.1</b> ¿Qué signo tiene c?</a></li>
 </ul></li>
@@ -1813,78 +1813,18 @@ tabla_horoscopos
 <span class="co">#&gt;   Virgo             49         69</span></code></pre></div>
 <p>Comenzamos el análisis con el modelo saturado:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">horoscopo_saturado &lt;-<span class="st"> </span><span class="kw">loglm</span>(Frequency <span class="op">~</span><span class="st"> </span>Star_Sign<span class="op">*</span>Believe<span class="op">*</span>True, <span class="dt">data =</span> tabla_horoscopos)
-<span class="kw">summary</span>(horoscopo_saturado)
-<span class="co">#&gt; Formula:</span>
-<span class="co">#&gt; Frequency ~ Star_Sign * Believe * True</span>
-<span class="co">#&gt; attr(,&quot;variables&quot;)</span>
-<span class="co">#&gt; list(Frequency, Star_Sign, Believe, True)</span>
-<span class="co">#&gt; attr(,&quot;factors&quot;)</span>
-<span class="co">#&gt;           Star_Sign Believe True Star_Sign:Believe Star_Sign:True</span>
-<span class="co">#&gt; Frequency         0       0    0                 0              0</span>
-<span class="co">#&gt; Star_Sign         1       0    0                 1              1</span>
-<span class="co">#&gt; Believe           0       1    0                 1              0</span>
-<span class="co">#&gt; True              0       0    1                 0              1</span>
-<span class="co">#&gt;           Believe:True Star_Sign:Believe:True</span>
-<span class="co">#&gt; Frequency            0                      0</span>
-<span class="co">#&gt; Star_Sign            0                      1</span>
-<span class="co">#&gt; Believe              1                      1</span>
-<span class="co">#&gt; True                 1                      1</span>
-<span class="co">#&gt; attr(,&quot;term.labels&quot;)</span>
-<span class="co">#&gt; [1] &quot;Star_Sign&quot;              &quot;Believe&quot;               </span>
-<span class="co">#&gt; [3] &quot;True&quot;                   &quot;Star_Sign:Believe&quot;     </span>
-<span class="co">#&gt; [5] &quot;Star_Sign:True&quot;         &quot;Believe:True&quot;          </span>
-<span class="co">#&gt; [7] &quot;Star_Sign:Believe:True&quot;</span>
-<span class="co">#&gt; attr(,&quot;order&quot;)</span>
-<span class="co">#&gt; [1] 1 1 1 2 2 2 3</span>
-<span class="co">#&gt; attr(,&quot;intercept&quot;)</span>
-<span class="co">#&gt; [1] 1</span>
-<span class="co">#&gt; attr(,&quot;response&quot;)</span>
-<span class="co">#&gt; [1] 1</span>
-<span class="co">#&gt; attr(,&quot;.Environment&quot;)</span>
-<span class="co">#&gt; &lt;environment: R_GlobalEnv&gt;</span>
+horoscopo_saturado
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; loglm(formula = Frequency ~ Star_Sign * Believe * True, data = tabla_horoscopos)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Statistics:</span>
 <span class="co">#&gt;                  X^2 df P(&gt; X^2)</span>
 <span class="co">#&gt; Likelihood Ratio   0  0        1</span>
 <span class="co">#&gt; Pearson            0  0        1</span></code></pre></div>
 <p>Podemos ver que el número de grados de libertad es cero, esto es, el número de parámetros es igual al número de observaciones.</p>
-<p>Quitamos la interacción de los 3 factores:</p>
+<p>Quitamos la interacción de los 3 factores y vemos la diferencia entre ambos modelos utilizando la función <code>anova()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">horoscopo_homogeneo &lt;-<span class="st"> </span><span class="kw">update</span>(horoscopo_saturado, .<span class="op">~</span>. <span class="op">-</span>Star_Sign<span class="op">:</span>Believe<span class="op">:</span>True)
-<span class="kw">summary</span>(horoscopo_homogeneo)
-<span class="co">#&gt; Formula:</span>
-<span class="co">#&gt; Frequency ~ Star_Sign + Believe + True + Star_Sign:Believe + </span>
-<span class="co">#&gt;     Star_Sign:True + Believe:True</span>
-<span class="co">#&gt; attr(,&quot;variables&quot;)</span>
-<span class="co">#&gt; list(Frequency, Star_Sign, Believe, True)</span>
-<span class="co">#&gt; attr(,&quot;factors&quot;)</span>
-<span class="co">#&gt;           Star_Sign Believe True Star_Sign:Believe Star_Sign:True</span>
-<span class="co">#&gt; Frequency         0       0    0                 0              0</span>
-<span class="co">#&gt; Star_Sign         1       0    0                 1              1</span>
-<span class="co">#&gt; Believe           0       1    0                 1              0</span>
-<span class="co">#&gt; True              0       0    1                 0              1</span>
-<span class="co">#&gt;           Believe:True</span>
-<span class="co">#&gt; Frequency            0</span>
-<span class="co">#&gt; Star_Sign            0</span>
-<span class="co">#&gt; Believe              1</span>
-<span class="co">#&gt; True                 1</span>
-<span class="co">#&gt; attr(,&quot;term.labels&quot;)</span>
-<span class="co">#&gt; [1] &quot;Star_Sign&quot;         &quot;Believe&quot;           &quot;True&quot;             </span>
-<span class="co">#&gt; [4] &quot;Star_Sign:Believe&quot; &quot;Star_Sign:True&quot;    &quot;Believe:True&quot;     </span>
-<span class="co">#&gt; attr(,&quot;order&quot;)</span>
-<span class="co">#&gt; [1] 1 1 1 2 2 2</span>
-<span class="co">#&gt; attr(,&quot;intercept&quot;)</span>
-<span class="co">#&gt; [1] 1</span>
-<span class="co">#&gt; attr(,&quot;response&quot;)</span>
-<span class="co">#&gt; [1] 1</span>
-<span class="co">#&gt; attr(,&quot;.Environment&quot;)</span>
-<span class="co">#&gt; &lt;environment: R_GlobalEnv&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Statistics:</span>
-<span class="co">#&gt;                   X^2 df P(&gt; X^2)</span>
-<span class="co">#&gt; Likelihood Ratio 8.84 11    0.637</span>
-<span class="co">#&gt; Pearson          8.85 11    0.636</span></code></pre></div>
-<p>Podemos comparar la diferencia entre ambos modelos utilizando la función <code>anova()</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(horoscopo_saturado, horoscopo_homogeneo)
+<span class="kw">anova</span>(horoscopo_saturado, horoscopo_homogeneo)
 <span class="co">#&gt; LR tests for hierarchical log-linear models</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Model 1:</span>
@@ -1937,70 +1877,8 @@ Star_SignBelieve &lt;-<span class="st"> </span><span class="kw">update</span>(ho
 <span class="co">#&gt; Model 1      29.51 22                                    </span>
 <span class="co">#&gt; Model 2       8.84 11      20.67        11          0.037</span>
 <span class="co">#&gt; Saturated     0.00  0       8.84        11          0.637</span></code></pre></div>
-<p>Ahora generamos una tabla de contingencias para las variables Believe y True:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(BelieveTrue_tabla &lt;-<span class="kw">xtabs</span>(Frequency <span class="op">~</span><span class="st"> </span>Believe <span class="op">+</span><span class="st"> </span>True, <span class="dt">data =</span> horoscopos))
-<span class="co">#&gt;             True</span>
-<span class="co">#&gt; Believe      Horoscope Came True Horoscope Didn&#39;t Come True</span>
-<span class="co">#&gt;   Believer                   598                        532</span>
-<span class="co">#&gt;   Unbeliever                 489                        582</span></code></pre></div>
-<p>Y hacemos una prueba de <span class="math inline">\(\chi^2\)</span>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(horoscopos<span class="op">$</span>Believe, horoscopos<span class="op">$</span>True)
-<span class="co">#&gt; </span>
-<span class="co">#&gt;  Pearson&#39;s Chi-squared test</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; data:  horoscopos$Believe and horoscopos$True</span>
-<span class="co">#&gt; X-squared = 0, df = 1, p-value = 1</span></code></pre></div>
-<p>Ahora generamos una tabla de contingencias para las variables Believe y Star_Sign:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(BelieveStar_Sign_tabla &lt;-<span class="kw">xtabs</span>(Frequency <span class="op">~</span><span class="st"> </span>Believe <span class="op">+</span><span class="st"> </span>Star_Sign, <span class="dt">data =</span> horoscopos))
-<span class="co">#&gt;             Star_Sign</span>
-<span class="co">#&gt; Believe      Aquarius Aries Cancer Capricorn Gemini Leo Libra Pisces</span>
-<span class="co">#&gt;   Believer         51   124    179       110     88  32    58    134</span>
-<span class="co">#&gt;   Unbeliever       46    78    160       102    118  37    53    106</span>
-<span class="co">#&gt;             Star_Sign</span>
-<span class="co">#&gt; Believe      Sagittarius Scorpio Taurus Virgo</span>
-<span class="co">#&gt;   Believer            92      56     91   115</span>
-<span class="co">#&gt;   Unbeliever          97      52     98   124</span></code></pre></div>
-<p>Y hacemos una prueba de <span class="math inline">\(\chi^2\)</span>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(horoscopos<span class="op">$</span>Believe, horoscopos<span class="op">$</span>Star_Sign)
-<span class="co">#&gt; Warning in chisq.test(horoscopos$Believe, horoscopos$Star_Sign): Chi-</span>
-<span class="co">#&gt; squared approximation may be incorrect</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;  Pearson&#39;s Chi-squared test</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; data:  horoscopos$Believe and horoscopos$Star_Sign</span>
-<span class="co">#&gt; X-squared = 0, df = 10, p-value = 1</span></code></pre></div>
-<p>Por lo tanto, el modelo final (que consideraríamos más apropiado sería aquel que no incluye la interacción de Star_Sign y True:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">horoscopo_final &lt;-<span class="st"> </span><span class="kw">loglm</span>(Frequency <span class="op">~</span><span class="st"> </span>Star_Sign <span class="op">+</span><span class="st"> </span>Believe <span class="op">+</span><span class="st"> </span>True <span class="op">+</span><span class="st"> </span>Believe<span class="op">:</span>True <span class="op">+</span><span class="st"> </span>Star_Sign<span class="op">:</span>Believe, <span class="dt">data =</span> tabla_horoscopos)</code></pre></div>
-<p>Veamos el resumen del modelo final:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(horoscopo_final)
-<span class="co">#&gt; Formula:</span>
-<span class="co">#&gt; Frequency ~ Star_Sign + Believe + True + Believe:True + Star_Sign:Believe</span>
-<span class="co">#&gt; attr(,&quot;variables&quot;)</span>
-<span class="co">#&gt; list(Frequency, Star_Sign, Believe, True)</span>
-<span class="co">#&gt; attr(,&quot;factors&quot;)</span>
-<span class="co">#&gt;           Star_Sign Believe True Believe:True Star_Sign:Believe</span>
-<span class="co">#&gt; Frequency         0       0    0            0                 0</span>
-<span class="co">#&gt; Star_Sign         1       0    0            0                 1</span>
-<span class="co">#&gt; Believe           0       1    0            1                 1</span>
-<span class="co">#&gt; True              0       0    1            1                 0</span>
-<span class="co">#&gt; attr(,&quot;term.labels&quot;)</span>
-<span class="co">#&gt; [1] &quot;Star_Sign&quot;         &quot;Believe&quot;           &quot;True&quot;             </span>
-<span class="co">#&gt; [4] &quot;Believe:True&quot;      &quot;Star_Sign:Believe&quot;</span>
-<span class="co">#&gt; attr(,&quot;order&quot;)</span>
-<span class="co">#&gt; [1] 1 1 1 2 2</span>
-<span class="co">#&gt; attr(,&quot;intercept&quot;)</span>
-<span class="co">#&gt; [1] 1</span>
-<span class="co">#&gt; attr(,&quot;response&quot;)</span>
-<span class="co">#&gt; [1] 1</span>
-<span class="co">#&gt; attr(,&quot;.Environment&quot;)</span>
-<span class="co">#&gt; &lt;environment: R_GlobalEnv&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Statistics:</span>
-<span class="co">#&gt;                   X^2 df P(&gt; X^2)</span>
-<span class="co">#&gt; Likelihood Ratio 19.6 22    0.609</span>
-<span class="co">#&gt; Pearson          19.5 22    0.612</span></code></pre></div>
-<p>Vemos la diferencia con todos los modelos:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(horoscopo_saturado, horoscopo_homogeneo, BelieveTrue, Star_SignTrue, Star_SignBelieve, horoscopo_final)
+<p>El modelo que consideraríamos más apropiado sería el que no incluye la interacción de Star_Sign y True. Comparamos con todos los modelos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(horoscopo_homogeneo, BelieveTrue, Star_SignTrue, Star_SignBelieve)
 <span class="co">#&gt; LR tests for hierarchical log-linear models</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Model 1:</span>
@@ -2008,25 +1886,19 @@ Star_SignBelieve &lt;-<span class="st"> </span><span class="kw">update</span>(ho
 <span class="co">#&gt; Model 2:</span>
 <span class="co">#&gt;  Frequency ~ Star_Sign + Believe + True + Star_Sign:True + Believe:True </span>
 <span class="co">#&gt; Model 3:</span>
-<span class="co">#&gt;  Frequency ~ Star_Sign + Believe + True + Believe:True + Star_Sign:Believe </span>
-<span class="co">#&gt; Model 4:</span>
 <span class="co">#&gt;  Frequency ~ Star_Sign + Believe + True + Star_Sign:Believe + Star_Sign:True </span>
-<span class="co">#&gt; Model 5:</span>
+<span class="co">#&gt; Model 4:</span>
 <span class="co">#&gt;  Frequency ~ Star_Sign + Believe + True + Star_Sign:Believe + Star_Sign:True + Believe:True </span>
-<span class="co">#&gt; Model 6:</span>
-<span class="co">#&gt;  Frequency ~ Star_Sign * Believe * True </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;           Deviance df Delta(Dev) Delta(df) P(&gt; Delta(Dev)</span>
 <span class="co">#&gt; Model 1      19.58 22                                    </span>
 <span class="co">#&gt; Model 2      29.51 22      -9.93         0         1.0000</span>
-<span class="co">#&gt; Model 3      19.58 22       9.93         0         0.0000</span>
-<span class="co">#&gt; Model 4      21.38 12      -1.80        10         1.0000</span>
-<span class="co">#&gt; Model 5       8.84 11      12.54         1         0.0004</span>
-<span class="co">#&gt; Model 6       0.00  0       8.84        11         0.6365</span>
-<span class="co">#&gt; Saturated     0.00  0       0.00         0         1.0000</span></code></pre></div>
-<p>Elegimos el Modelo 1 (modelo final) que también es el Modelo 3 (Star_Sign:True) porque tiene menor devianza para un número de parámetros aceptable (el número de grados de libertad es mayor). Esto implica que no hay asociación entre si es verdad el horóscopo y su signo zodiacal, sin embargo sí existe una relación entre el signo zodiacal y si creen que el horóscopo es verdad.</p>
+<span class="co">#&gt; Model 3      21.38 12       8.12        10         0.6166</span>
+<span class="co">#&gt; Model 4       8.84 11      12.54         1         0.0004</span>
+<span class="co">#&gt; Saturated     0.00  0       8.84        11         0.6365</span></code></pre></div>
+<p>Elegimos el modelo 1 (Star_Sign:True) porque tiene menor devianza para un número de parámetros aceptable (el número de grados de libertad es mayor). Esto implica que <em>no</em> hay asociación entre “si es verdad el horóscopo” y signo zodiacal, sin embargo sí existe una relación entre el signo zodiacal y si creen que el horóscopo es verdad.</p>
 <p>Por ejemplo, los Aries tienden a creer mucho en su horóscopo, pero los Géminis no.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">horoscopo_final<span class="op">$</span>param<span class="op">$</span>Star_Sign.Believe
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Star_SignTrue<span class="op">$</span>param<span class="op">$</span>Star_Sign.Believe
 <span class="co">#&gt;              Believe</span>
 <span class="co">#&gt; Star_Sign     Believer Unbeliever</span>
 <span class="co">#&gt;   Aquarius      0.0302    -0.0302</span>
@@ -2070,7 +1942,7 @@ G^2 = -2n \sum_j{\hat{\pi}_j}\,\mbox{log}\left(\pi_{j0}/\hat{\pi}_j\right).
 </ol>
 <p>Demuestra que <span class="math inline">\(G^2 \neq 0\)</span> y que la igualdad se da si y sólo si <span class="math inline">\(\hat{\pi}_j=\pi_{j0}\)</span> para toda <span class="math inline">\(j\)</span>. Para demostrar esto aplica la desigualdad de Jensen a <span class="math inline">\(E(-2n\,\mbox{log}(X))\)</span>, donde <span class="math inline">\(X\)</span> es igual a <span class="math inline">\(\pi_{j0}/\hat{\pi_j}\)</span> con probabilidad <span class="math inline">\(\hat{\pi}_j\)</span>.</p>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Para probar independencia, muestra que <span class="math inline">\(X^2 \leq n \,\cdot\,\mbox{min}(I-1,J-1)\)</span>. Por lo cual, <span class="math display">\[
+<li><p>Muestra que <span class="math inline">\(X^2 \leq n \,\cdot\,\mbox{min}(I-1,J-1)\)</span>. Por lo cual, <span class="math display">\[
 V^2=\dfrac{X^2}{n \,\cdot\,\mbox{min}(I-1,J-1)}
 \]</span> está entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>. A <span class="math inline">\(V^2\)</span> se le llama la <em>V de Cramér</em>.</p></li>
 <li><p>Con los datos de la encuesta GSS realiza un análisis para responder las siguientes preguntas.</p></li>

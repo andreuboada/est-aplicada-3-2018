@@ -20,7 +20,7 @@ A continuación discutiremos el Teorema del Límite Central (CLT), el cual nos a
 
 Para utilizarlo, tenemos que hacer diferentes supuestos. Sin embargo, si los supuestos son verdaderos, entonces podemos calcular probabilidades exactas de eventos mediante el uso de una fórmula matemática muy sencilla.
 
-## La distribución de $\bar{Y}$
+## La distribución de la media
 
 \BeginKnitrBlock{nota}<div class="nota">**_El Teorema del Límite Central_**
   
