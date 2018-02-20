@@ -361,7 +361,7 @@ singer.medians <- singer %>%
          media = mean(estatura.m))
 
 library(forcats)
-singer.medians$voice.part.2 <- fct_reorder(singer.medians$voice.part, x = singer.medians$mediana, fun = median)
+singer.medians$voice.part.2 <- fct_reorder(.f = singer.medians$voice.part, .x = singer.medians$mediana, .fun = median)
 
 ggplot(singer.medians, aes(x = voice.part.2, y = estatura.m)) + 
   geom_boxplot() +
