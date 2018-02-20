@@ -1108,7 +1108,7 @@ Elegimos el modelo 1 (Star_Sign:True) porque tiene menor devianza para un númer
 Por ejemplo, los Aries tienden a creer mucho en su horóscopo, pero los Géminis no.
 
 ```{r}
-horoscopo_final$param$Star_Sign.Believe
+Star_SignTrue$param$Star_Sign.Believe
 ```
 
 ---
@@ -1146,7 +1146,7 @@ $$
 
 Demuestra que $G^2 \neq 0$ y que la igualdad se da si y sólo si $\hat{\pi}_j=\pi_{j0}$ para toda $j$. Para demostrar esto aplica la desigualdad de Jensen a $E(-2n\,\mbox{log}(X))$, donde $X$ es igual a $\pi_{j0}/\hat{\pi_j}$ con probabilidad $\hat{\pi}_j$.
 
-3. Para probar independencia, muestra que $X^2 \leq n \,\cdot\,\mbox{min}(I-1,J-1)$. Por lo cual, 
+3. Muestra que $X^2 \leq n \,\cdot\,\mbox{min}(I-1,J-1)$. Por lo cual, 
 $$
 V^2=\dfrac{X^2}{n \,\cdot\,\mbox{min}(I-1,J-1)}
 $$
