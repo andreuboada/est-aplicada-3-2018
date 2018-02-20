@@ -1059,21 +1059,15 @@ Comenzamos el análisis con el modelo saturado:
 
 ```{r}
 horoscopo_saturado <- loglm(Frequency ~ Star_Sign*Believe*True, data = tabla_horoscopos)
-summary(horoscopo_saturado)
+horoscopo_saturado
 ```
 
 Podemos ver que el número de grados de libertad es cero, esto es, el número de parámetros es igual al número de observaciones. 
 
-Quitamos la interacción de los 3 factores:
+Quitamos la interacción de los 3 factores y vemos la diferencia entre ambos modelos utilizando la función `anova()`:
 
 ```{r}
 horoscopo_homogeneo <- update(horoscopo_saturado, .~. -Star_Sign:Believe:True)
-summary(horoscopo_homogeneo)
-```
-
-Podemos comparar la diferencia entre ambos modelos utilizando la función `anova()`:
-
-```{r}
 anova(horoscopo_saturado, horoscopo_homogeneo)
 ```
 
@@ -1101,49 +1095,15 @@ anova(horoscopo_homogeneo, BelieveTrue)
 anova(horoscopo_homogeneo, Star_SignBelieve)
 ```
 
-Ahora generamos una tabla de contingencias para las variables Believe y True:
+
+
+El modelo que consideraríamos más apropiado sería el que no incluye la interacción de Star_Sign y True. Comparamos con todos los modelos:
 
 ```{r}
-(BelieveTrue_tabla <-xtabs(Frequency ~ Believe + True, data = horoscopos))
+anova(horoscopo_homogeneo, BelieveTrue, Star_SignTrue, Star_SignBelieve)
 ```
 
-Y hacemos una prueba de $\chi^2$:
-
-```{r}
-chisq.test(horoscopos$Believe, horoscopos$True)
-```
-
-Ahora generamos una tabla de contingencias para las variables Believe y Star_Sign:
-
-```{r}
-(BelieveStar_Sign_tabla <-xtabs(Frequency ~ Believe + Star_Sign, data = horoscopos))
-```
-
-Y hacemos una prueba de $\chi^2$:
-
-```{r}
-chisq.test(horoscopos$Believe, horoscopos$Star_Sign)
-```
-
-Por lo tanto, el modelo final (que consideraríamos más apropiado sería aquel que no incluye la interacción de Star_Sign y True:
-
-```{r}
-horoscopo_final <- loglm(Frequency ~ Star_Sign + Believe + True + Believe:True + Star_Sign:Believe, data = tabla_horoscopos)
-```
-
-Veamos el resumen del modelo final:
-
-```{r}
-summary(horoscopo_final)
-```
-
-Vemos la diferencia con todos los modelos:
-
-```{r}
-anova(horoscopo_saturado, horoscopo_homogeneo, BelieveTrue, Star_SignTrue, Star_SignBelieve, horoscopo_final)
-```
-
-Elegimos el Modelo 1 (modelo final) que también es el Modelo 3 (Star_Sign:True) porque tiene menor devianza para un número de parámetros aceptable (el número de grados de libertad es mayor). Esto implica que no hay asociación entre si es verdad el horóscopo y su signo zodiacal, sin embargo sí existe una relación entre el signo zodiacal y si creen que el horóscopo es verdad. 
+Elegimos el modelo 1 (Star_Sign:True) porque tiene menor devianza para un número de parámetros aceptable (el número de grados de libertad es mayor). Esto implica que _no_ hay asociación entre "si es verdad el horóscopo" y signo zodiacal, sin embargo sí existe una relación entre el signo zodiacal y si creen que el horóscopo es verdad. 
 
 Por ejemplo, los Aries tienden a creer mucho en su horóscopo, pero los Géminis no.
 
