@@ -2,7 +2,7 @@
 --- 
 title: "Estadística Aplicada III"
 author: "Andreu Boada de Atela"
-date: "2018-02-20"
+date: "2018-02-22"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -18,13 +18,13 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2018 
 **Todas las notas y material del curso estarán en este** [repositorio](https://github.com/andreuboada/est-aplicada-3-2018).
 
 - Análisis exploratorio de datos
+- Temas selectos de R
 - Análisis de datos categóricos
-- Introducción a modelos lineales generalizados
 - Regresión logística 
 - Regularización y selección de modelos
+- Introducción a modelos lineales generalizados
 - Análisis de discriminante lineal
-- Componentes principales
-- Análisis de factores
+- Componentes principales y análisis de factores
 - Análisis de la correlación canónica
 - Introducción a análisis de conglomerados
 - Introducción a estadística espacial

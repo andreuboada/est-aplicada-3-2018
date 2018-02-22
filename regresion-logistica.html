@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Estadística Aplicada III</title>
+  <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
+  <meta name="generator" content="bookdown 0.7.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Estadística Aplicada III" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)" />
+  <meta name="github-repo" content="andreuboada/est-aplicada-3-2018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Estadística Aplicada III" />
+  
+  <meta name="twitter:description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)" />
+  
+
+<meta name="author" content="Andreu Boada de Atela">
+
+
+<meta name="date" content="2018-02-22">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="analisis-de-datos-categoricos.html">
+<link rel="next" href="referencias.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="toc.css" type="text/css" />
+<link rel="stylesheet" href="font-awesome.min.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística Aplicada III</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Temario y referencias</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#evaluacion"><i class="fa fa-check"></i>Evaluación</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-r-y-rstudio"><i class="fa fa-check"></i>Software: R y Rstudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#referencias-principales"><i class="fa fa-check"></i>Referencias principales</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#otras-referencias"><i class="fa fa-check"></i>Otras referencias</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tareas"><i class="fa fa-check"></i>Tareas</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#por-que-un-analisis-multivariado"><i class="fa fa-check"></i><b>1.1</b> ¿Por qué un análisis multivariado?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#la-paradoja-de-simpson"><i class="fa fa-check"></i><b>1.2</b> La paradoja de Simpson</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#modelos-log-lineales"><i class="fa fa-check"></i><b>1.3</b> Modelos log-lineales</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#interpretacion-de-parametros"><i class="fa fa-check"></i><b>1.4</b> Interpretación de parámetros</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#ejemplo-dos-monedas"><i class="fa fa-check"></i><b>1.4.1</b> Ejemplo: dos monedas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#otros-ejemplos"><i class="fa fa-check"></i><b>1.5</b> Otros ejemplos</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#discriminacion-de-residentes-hispanos-con-discapacidades"><i class="fa fa-check"></i><b>1.5.1</b> Discriminación de residentes hispanos con discapacidades</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#consumo-de-chocolate-y-premios-nobel"><i class="fa fa-check"></i><b>1.5.2</b> Consumo de chocolate y premios Nobel</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#tarea"><i class="fa fa-check"></i><b>1.6</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Rintro.html"><a href="Rintro.html"><i class="fa fa-check"></i><b>2</b> Temas selectos de R</a><ul>
+<li class="chapter" data-level="2.1" data-path="Rintro.html"><a href="Rintro.html#que-ventajas-tiene-r"><i class="fa fa-check"></i><b>2.1</b> ¿Qué ventajas tiene R?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="Rintro.html"><a href="Rintro.html#r-es-gratuito-y-de-codigo-abierto"><i class="fa fa-check"></i><b>2.1.1</b> R es gratuito y de código abierto</a></li>
+<li class="chapter" data-level="2.1.2" data-path="Rintro.html"><a href="Rintro.html#r-tiene-una-comunidad-comprometida"><i class="fa fa-check"></i><b>2.1.2</b> R tiene una comunidad comprometida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="Rintro.html"><a href="Rintro.html#flujo-basico-de-trabajo-para-el-analisis-de-datos-en-r."><i class="fa fa-check"></i><b>2.2</b> Flujo básico de trabajo para el análisis de datos en R.</a></li>
+<li class="chapter" data-level="2.3" data-path="Rintro.html"><a href="Rintro.html#introduccion-a-r-como-lenguaje-de-programacion-y-la-plataforma-interactiva-de-rstudio."><i class="fa fa-check"></i><b>2.3</b> Introducción a R como lenguaje de programación, y la plataforma interactiva de RStudio.</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="Rintro.html"><a href="Rintro.html#como-entender-r"><i class="fa fa-check"></i><b>2.3.1</b> ¿Cómo entender R?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="Rintro.html"><a href="Rintro.html#por-que-r"><i class="fa fa-check"></i><b>2.3.2</b> ¿Por qué R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="Rintro.html"><a href="Rintro.html#estructuras-de-datos"><i class="fa fa-check"></i><b>2.4</b> Estructuras de datos</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="Rintro.html"><a href="Rintro.html#vectores"><i class="fa fa-check"></i><b>2.4.1</b> Vectores</a></li>
+<li class="chapter" data-level="2.4.2" data-path="Rintro.html"><a href="Rintro.html#data-frames"><i class="fa fa-check"></i><b>2.4.2</b> Data Frames</a></li>
+<li class="chapter" data-level="2.4.3" data-path="Rintro.html"><a href="Rintro.html#listas"><i class="fa fa-check"></i><b>2.4.3</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="Rintro.html"><a href="Rintro.html#r-markdown"><i class="fa fa-check"></i><b>2.5</b> R Markdown</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="Rintro.html"><a href="Rintro.html#que-es-r-markdown"><i class="fa fa-check"></i><b>2.5.1</b> ¿Qué es R Markdown?</a></li>
+<li class="chapter" data-level="2.5.2" data-path="Rintro.html"><a href="Rintro.html#estructura-basica-de-r-markdown"><i class="fa fa-check"></i><b>2.5.2</b> Estructura básica de R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="Rintro.html"><a href="Rintro.html#proyectos-de-rstudio"><i class="fa fa-check"></i><b>2.6</b> Proyectos de RStudio</a></li>
+<li class="chapter" data-level="2.7" data-path="Rintro.html"><a href="Rintro.html#otros-aspectos-importantes-de-r"><i class="fa fa-check"></i><b>2.7</b> Otros aspectos importantes de R</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="Rintro.html"><a href="Rintro.html#valores-faltantes"><i class="fa fa-check"></i><b>2.7.1</b> Valores faltantes</a></li>
+<li class="chapter" data-level="2.7.2" data-path="Rintro.html"><a href="Rintro.html#funciones"><i class="fa fa-check"></i><b>2.7.2</b> Funciones</a></li>
+<li class="chapter" data-level="2.7.3" data-path="Rintro.html"><a href="Rintro.html#funcionales"><i class="fa fa-check"></i><b>2.7.3</b> Funcionales</a></li>
+<li class="chapter" data-level="2.7.4" data-path="Rintro.html"><a href="Rintro.html#rendimiento-en-r"><i class="fa fa-check"></i><b>2.7.4</b> Rendimiento en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="Rintro.html"><a href="Rintro.html#tarea-1"><i class="fa fa-check"></i><b>2.8</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html"><i class="fa fa-check"></i><b>3</b> Manipulación y visualización de datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#el-principio-de-datos-limpios"><i class="fa fa-check"></i><b>3.1</b> El principio de datos limpios</a><ul>
+<li class="chapter" data-level="" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#ejemplo"><i class="fa fa-check"></i>Ejemplo:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#limpieza-de-datos"><i class="fa fa-check"></i><b>3.2</b> Limpieza de datos</a></li>
+<li class="chapter" data-level="3.3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#separa-aplica-combina"><i class="fa fa-check"></i><b>3.3</b> <em>Separa-aplica-combina</em></a></li>
+<li class="chapter" data-level="3.4" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#muertes-por-armas-de-fuego-en-eua"><i class="fa fa-check"></i><b>3.4</b> Muertes por armas de fuego en EUA</a></li>
+<li class="chapter" data-level="3.5" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#el-cuarteto-de-anscombe"><i class="fa fa-check"></i><b>3.5</b> El Cuarteto de Anscombe</a></li>
+<li class="chapter" data-level="3.6" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#the-grammar-of-graphics-de-leland-wilkinson"><i class="fa fa-check"></i><b>3.6</b> The <em>Grammar of Graphics</em> de Leland Wilkinson</a></li>
+<li class="chapter" data-level="3.7" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#ggplot"><i class="fa fa-check"></i><b>3.7</b> ggplot</a></li>
+<li class="chapter" data-level="3.8" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#un-histograma-de-las-muertes-en-iraq"><i class="fa fa-check"></i><b>3.8</b> Un histograma de las muertes en Iraq</a></li>
+<li class="chapter" data-level="3.9" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#inglehartwelzel-un-mapa-cultural-del-mundo"><i class="fa fa-check"></i><b>3.9</b> Inglehart–Welzel: un mapa cultural del mundo</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#creando-un-ggplot"><i class="fa fa-check"></i><b>3.9.1</b> Creando un ggplot</a></li>
+<li class="chapter" data-level="3.9.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#mapeos-aesthetics"><i class="fa fa-check"></i><b>3.9.2</b> Mapeos: Aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#poniendo-todo-junto"><i class="fa fa-check"></i><b>3.10</b> Poniendo todo junto</a></li>
+<li class="chapter" data-level="3.11" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#tarea-2"><i class="fa fa-check"></i><b>3.11</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html"><i class="fa fa-check"></i><b>4</b> Teorema del Límite Central</a><ul>
+<li class="chapter" data-level="4.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#la-distribucion-de-la-media"><i class="fa fa-check"></i><b>4.1</b> La distribución de la media</a></li>
+<li class="chapter" data-level="4.2" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#de-donde-proviene-la-distribucion-normal"><i class="fa fa-check"></i><b>4.2</b> ¿De dónde proviene la distribución normal?</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#que-signo-tiene-c"><i class="fa fa-check"></i><b>4.2.1</b> ¿Qué signo tiene c?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#otras-observaciones"><i class="fa fa-check"></i><b>4.3</b> Otras observaciones</a></li>
+<li class="chapter" data-level="4.4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#diagramas-de-caja-y-brazos"><i class="fa fa-check"></i><b>4.4</b> Diagramas de caja y brazos</a><ul>
+<li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-1"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-de-cuantiles-teoricos"><i class="fa fa-check"></i><b>4.5</b> Gráficas de cuantiles teóricos</a><ul>
+<li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-normal"><i class="fa fa-check"></i>Ejemplo: normal</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-de-cuantiles-para-un-conjunto-de-datos"><i class="fa fa-check"></i><b>4.6</b> Gráficas de cuantiles para un conjunto de datos</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#que-buscar-en-una-grafica-de-cuantiles"><i class="fa fa-check"></i><b>4.6.1</b> ¿Qué buscar en una gráfica de cuantiles?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-qq-normales"><i class="fa fa-check"></i><b>4.7</b> Gráficas qq-normales</a><ul>
+<li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-cantantes"><i class="fa fa-check"></i>Ejemplo: cantantes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#el-tlc-y-errores-estandar"><i class="fa fa-check"></i><b>4.8</b> El TLC y errores estándar</a></li>
+<li class="chapter" data-level="4.9" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-2"><i class="fa fa-check"></i><b>4.9</b> Ejemplo</a></li>
+<li class="chapter" data-level="4.10" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#tarea-3"><i class="fa fa-check"></i><b>4.10</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html"><i class="fa fa-check"></i><b>5</b> Análisis de datos categóricos</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#repaso-y-algunos-conceptos"><i class="fa fa-check"></i><b>5.1</b> Repaso y algunos conceptos</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#caso-binomial"><i class="fa fa-check"></i><b>5.1.1</b> Caso binomial</a></li>
+<li class="chapter" data-level="" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#estimacion-de-parametros-multinomiales"><i class="fa fa-check"></i>Estimación de parámetros multinomiales</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-chi2-de-pearson-de-una-multinomial"><i class="fa fa-check"></i><b>5.2</b> La <span class="math inline">\(\chi^2\)</span> de Pearson de una multinomial</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#cociente-de-verosimilitud-de-una-multinomial"><i class="fa fa-check"></i><b>5.2.1</b> Cociente de verosimilitud de una multinomial</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#definiciones"><i class="fa fa-check"></i><b>5.3</b> Definiciones</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#notacion"><i class="fa fa-check"></i><b>5.3.1</b> Notación</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#razon-de-momios"><i class="fa fa-check"></i><b>5.3.2</b> Razón de momios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#asociacion-en-tablas-de-tamano-itimes-j"><i class="fa fa-check"></i><b>5.4</b> Asociación en tablas de tamaño <span class="math inline">\(I\times J\)</span></a><ul>
+<li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#razones-de-momios-en-tablas-itimes-j"><i class="fa fa-check"></i><b>5.4.1</b> Razones de momios en tablas <span class="math inline">\(I\times J\)</span></a></li>
+<li class="chapter" data-level="5.4.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-mushrooms"><i class="fa fa-check"></i><b>5.4.2</b> Ejemplo: mushrooms</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#intervalos-de-confianza-para-los-parametros-de-asociacion"><i class="fa fa-check"></i><b>5.5</b> Intervalos de confianza para los parámetros de asociación</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#error-estandar-de-la-razon-de-momios"><i class="fa fa-check"></i><b>5.5.1</b> Error estándar de la razón de momios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-independencia"><i class="fa fa-check"></i><b>5.6</b> Prueba de independencia</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-prueba-chi2-de-pearson"><i class="fa fa-check"></i><b>5.6.1</b> La prueba <span class="math inline">\(\chi^2\)</span> de Pearson</a></li>
+<li class="chapter" data-level="5.6.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-brecha-de-genero"><i class="fa fa-check"></i><b>5.6.2</b> Ejemplo: brecha de género</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#general-social-survey-1972---2016"><i class="fa fa-check"></i><b>5.7</b> General Social Survey 1972 - 2016</a></li>
+<li class="chapter" data-level="5.8" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-catadora-de-te"><i class="fa fa-check"></i><b>5.8</b> La catadora de té</a></li>
+<li class="chapter" data-level="5.9" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-multinomiales-para-conteos"><i class="fa fa-check"></i><b>5.9</b> Modelos multinomiales para conteos</a></li>
+<li class="chapter" data-level="5.10" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-log-lineales-con-tres-variables-categoricas"><i class="fa fa-check"></i><b>5.10</b> Modelos log lineales con tres variables categóricas</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tipos-de-independencia"><i class="fa fa-check"></i><b>5.10.1</b> Tipos de independencia</a></li>
+<li class="chapter" data-level="5.10.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#asociacion-homogenea-e-interacciones-de-3-factores"><i class="fa fa-check"></i><b>5.10.2</b> Asociación homogénea e interacciones de 3 factores</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-sensitividad-y-especificidad"><i class="fa fa-check"></i><b>5.11</b> Ejemplo: sensitividad y especificidad</a></li>
+<li class="chapter" data-level="5.12" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-horoscopos"><i class="fa fa-check"></i><b>5.12</b> Ejemplo: horóscopos</a></li>
+<li class="chapter" data-level="5.13" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tarea-opcional"><i class="fa fa-check"></i><b>5.13</b> Tarea (opcional)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regresion-logistica.html"><a href="regresion-logistica.html"><i class="fa fa-check"></i><b>6</b> Regresión logística</a><ul>
+<li class="chapter" data-level="6.1" data-path="regresion-logistica.html"><a href="regresion-logistica.html#regresion-logistica-con-un-solo-predictor"><i class="fa fa-check"></i><b>6.1</b> Regresión logística con un solo predictor</a></li>
+<li class="chapter" data-level="6.2" data-path="regresion-logistica.html"><a href="regresion-logistica.html#el-modelo-de-regresion-logistica"><i class="fa fa-check"></i><b>6.2</b> El modelo de regresión logística</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="regresion-logistica.html"><a href="regresion-logistica.html#funcion-logistica"><i class="fa fa-check"></i><b>6.2.1</b> Función logística</a></li>
+<li class="chapter" data-level="" data-path="regresion-logistica.html"><a href="regresion-logistica.html#ejemplo-3"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="regresion-logistica.html"><a href="regresion-logistica.html#tarea-4"><i class="fa fa-check"></i><b>6.3</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estadística Aplicada III</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regresion-logistica" class="section level1">
+<h1><span class="header-section-number">Clase 6</span> Regresión logística</h1>
+<style>
+  .espacio {
+     margin-bottom: 1cm;
+  }
+</style>
+<style>
+  .espacio3 {
+     margin-bottom: 3cm;
+  }
+</style>
+<p>La regresión logística es la forma estándar de modelar los resultados binarios (es decir, los datos <span class="math inline">\(y_i\)</span> que toman los valores <span class="math inline">\(0\)</span> o <span class="math inline">\(1\)</span>).</p>
+<div id="regresion-logistica-con-un-solo-predictor" class="section level2">
+<h2><span class="header-section-number">6.1</span> Regresión logística con un solo predictor</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(arm)</code></pre></div>
+<p>Los científicos políticos han estado interesados en la identificación de partidos y sus cambios a lo largo del tiempo. Ilustramos aquí con una serie de regresiones transversales que modelan la identificación del partido dada la ideología política y las variables demográficas.</p>
+<p>Usamos una encuesta llamada <em>National Election Study</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brdata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/brdata.csv&quot;</span>)</code></pre></div>
+<p>Contamos con los siguientes predictores:</p>
+<ul>
+<li><p>identificación con un partido en una escala de 1-7 (1 = demócrata fuerte, 2 = demócrata, 3 = demócrata débil, 4 = independiente, …, 7 = republicano fuerte), que tratamos como una variable continua.</p></li>
+<li><p>ideología política (1 = fuerte liberal, 2 = liberal,., 7 = fuerte conservador),</p></li>
+<li><p>etnia (0 = blanco, 1 = negro, 0.5 = otro),</p></li>
+<li><p>edad (como categorías: 18- 29, 30-44, 45-64 y más de 65 años, con la categoría de edad más baja como referencia),</p></li>
+<li><p>educación (1 = sin escuela secundaria, 2 = graduado de la escuela secundaria, 3 = algunos estudios universitarios, 4 = graduado de la universidad),</p></li>
+<li><p>sexo (0 = hombre, 1 = mujer),</p></li>
+<li><p>ingreso (1 = percentil 0-16, 2 = percentil 17-33, 3 = percentil 34-67, 4 = percentil 68-95, 5 = percentil 96-100).</p></li>
+</ul>
+<p>Los partidos conservadores generalmente reciben más apoyo entre los votantes con mayores ingresos. Veamos cómo usar la regresión logística clásica con un análisis simple de este patrón de las elecciones de Estados Unidos en 1992.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos &lt;-<span class="st"> </span>brdata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(black) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(female) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(educ1) <span class="op">&amp;</span><span class="st"> </span>
+<span class="st">           </span><span class="op">!</span><span class="kw">is.na</span>(age) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(income) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(state)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(year)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(year <span class="op">%in%</span><span class="st"> </span><span class="dv">1952</span><span class="op">:</span><span class="dv">2000</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year.new =</span> <span class="kw">match</span>(year, <span class="kw">unique</span>(year)),
+         <span class="dt">income.new =</span> income <span class="op">-</span><span class="st"> </span><span class="dv">3</span>,
+         <span class="dt">age.new =</span> (age <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(age))<span class="op">/</span><span class="dv">10</span>,
+         <span class="dt">y =</span> rep_pres_intent,
+         <span class="dt">age.discrete =</span> <span class="kw">as.numeric</span>(<span class="kw">cut</span>(age, <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">29.5</span>, <span class="fl">44.5</span>, <span class="fl">64.5</span>, <span class="dv">200</span>))),
+         <span class="dt">race.adj =</span> <span class="kw">ifelse</span>(race <span class="op">&gt;=</span><span class="st"> </span><span class="dv">3</span>, <span class="fl">1.5</span>, race))</code></pre></div>
+<p>Para cada encuestado ponemos <span class="math inline">\(y_i=1\)</span> si el encuestado prefería a George Bush (el candidato Republicano a presidente) o <span class="math inline">\(y_i=0\)</span> si prefería a Bill Clinton (el candidato Demócrata). Por ahora excluímos a los encuestados que preferían a Ross Perot u otros candidatos, o que no tenían opinión.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos_<span class="dv">2</span> &lt;-<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">1992</span> <span class="op">&amp;</span><span class="st"> </span>presvote <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vote =</span> presvote <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(year, age, gender, race, black, female, vote, income)
+datos_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="right">age</th>
+<th align="right">gender</th>
+<th align="right">race</th>
+<th align="right">black</th>
+<th align="right">female</th>
+<th align="right">vote</th>
+<th align="right">income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="right">46</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">1992</td>
+<td align="right">40</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="right">61</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">1992</td>
+<td align="right">45</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="right">20</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">1992</td>
+<td align="right">79</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="right">77</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">1992</td>
+<td align="right">63</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="right">53</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">1992</td>
+<td align="right">25</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
+<p>Dado que nuestra variable de ingreso es categórica y la preferencia de voto que analizamos es binaria podríamos comenzar haciendo un análisis de datos categóricos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">prop.table</span>(<span class="kw">table</span>(datos_<span class="dv">2</span><span class="op">$</span>income, datos_<span class="dv">2</span><span class="op">$</span>vote), <span class="dv">1</span>)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">spread</span>(Var2, n) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="dt">Income=</span>Var1, <span class="dt">Clinton=</span><span class="st">`</span><span class="dt">0</span><span class="st">`</span>, <span class="dt">Bush=</span><span class="st">`</span><span class="dt">1</span><span class="st">`</span>)
+tab <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Income</th>
+<th align="right">Clinton</th>
+<th align="right">Bush</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="right">76.6</td>
+<td align="right">23.4</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="right">66.7</td>
+<td align="right">33.3</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="right">60.7</td>
+<td align="right">39.3</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="right">51.5</td>
+<td align="right">48.5</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="right">48.6</td>
+<td align="right">51.4</td>
+</tr>
+</tbody>
+</table>
+<p>En una gráfica de mosaico vemos los siguiente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aux &lt;-<span class="st"> </span>datos_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="kw">c</span>(<span class="st">&quot;vote&quot;</span>,<span class="st">&quot;income&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vote1 =</span> <span class="kw">ordered</span>(vote), <span class="dt">income1 =</span> <span class="kw">ordered</span>(income))
+<span class="kw">ggplot</span>(aux, <span class="kw">aes</span>(<span class="dt">x=</span>income1, <span class="dt">fill=</span>vote1)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&#39;fill&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">coord_flip</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">aspect.ratio =</span> <span class="dv">1</span>,<span class="dt">legend.position=</span><span class="st">&quot;bottom&quot;</span>,
+          <span class="dt">axis.text.y=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&#39;black&#39;</span>,<span class="dt">size=</span><span class="dv">10</span>),
+          <span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&#39;black&#39;</span>,<span class="dt">size=</span><span class="dv">10</span>),
+          <span class="dt">axis.title.x=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>),
+          <span class="dt">axis.title.y=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>),
+          <span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">11</span>)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_fill_discrete</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&#39;Proporción&#39;)</span></code></pre></div>
+<p><img src="06-logit_files/figure-html/unnamed-chunk-8-1.png" width="85%" style="display: block; margin: auto;" /></p>
+<hr />
+<p><br></p>
+<p>Para podríamos introducir perfiles de variables de ingreso para obtener una mejor intuición. Utilizando el método de regresión logística obtendríamos lo siguiente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Estimacion</span>
+fit.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(vote <span class="op">~</span><span class="st"> </span>income, <span class="dt">data =</span> datos_<span class="dv">2</span>, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+<span class="kw">display</span>(fit.<span class="dv">1</span>)
+<span class="co">#&gt; glm(formula = vote ~ income, family = binomial(link = &quot;logit&quot;), </span>
+<span class="co">#&gt;     data = datos_2)</span>
+<span class="co">#&gt;             coef.est coef.se</span>
+<span class="co">#&gt; (Intercept) -1.40     0.19  </span>
+<span class="co">#&gt; income       0.33     0.06  </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt;   n = 1179, k = 2</span>
+<span class="co">#&gt;   residual deviance = 1556.9, null deviance = 1591.2 (difference = 34.3)</span></code></pre></div>
+<p>Con este modelo buscamos predecir las preferencias dado el nivel de ingresos del encuestado, que se caracteriza por una escala de cinco puntos.</p>
+<p>El modelo ajustado es <span class="math display">\[
+P(y_i=1) = \mbox{logit}^{-1}(−1.40 + 0.33\,\cdot\,\mbox{income})
+\]</span></p>
+<p>Definimos así una función que llamamos <em>logit inversa</em> y de la cuál hablaremos más adelante:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">invlogit &lt;-<span class="st"> </span><span class="cf">function</span>(x){
+  <span class="kw">exp</span>(x)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(x))
+}</code></pre></div>
+<p>En la siguiente gráfica podemos ver los valores de la variable categórica de ingreso con un <em>jitter</em> y la función ajustada por el modelo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(datos_<span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">x =</span> income, <span class="dt">y =</span> vote)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.3</span>, <span class="dt">height =</span> <span class="fl">0.08</span>, <span class="dt">size =</span> <span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){<span class="kw">invlogit</span>(fit.<span class="dv">1</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">1</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){<span class="kw">invlogit</span>(fit.<span class="dv">1</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">1</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">10</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">10</span>), <span class="dt">breaks =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Clinton&quot;</span>,<span class="st">&quot;Bush&quot;</span>)) </code></pre></div>
+<p><img src="06-logit_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>En este ejemplo, estos puntos revelan muy poca información, pero queremos enfatizar que los datos y el modelo ajustado se pueden poner en una escala común.</p>
+<p>Definiremos matemáticamente este modelo y luego regresaremos para analizar su interpretación.</p>
+</div>
+<div id="el-modelo-de-regresion-logistica" class="section level2">
+<h2><span class="header-section-number">6.2</span> El modelo de regresión logística</h2>
+<p>No tendría sentido ajustar el modelo de regresión lineal continuo, <span class="math inline">\(X\beta + \mbox{error}\)</span>, a los datos de <span class="math inline">\(y\)</span>, que toman los valores de <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>. Notemos que intentar estimar las probabilidades de clase <span class="math inline">\(p_1(x)\)</span> de forma lineal con</p>
+<p><span class="math display">\[p_1(x)=\beta_0+\beta_1 x_1\]</span></p>
+<p>tiene el defecto de que el lado derecho puede producir valores fuera de <span class="math inline">\([0,1]\)</span>. La idea es entonces aplicar una función <span class="math inline">\(h\)</span> simple que transforme la recta real al intervalo <span class="math inline">\([0,1]:\)</span> <span class="math display">\[p_1(x) = h(\beta_0+\beta_1 x_1),\]</span> donde <span class="math inline">\(h\)</span> es una función que toma valores en <span class="math inline">\([0,1]\)</span>. ¿Cúal es la función más simple que hace esto?</p>
+<div id="funcion-logistica" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Función logística</h3>
+<p>Comenzamos con el caso más simple, poniendo <span class="math inline">\(\beta_0=0\)</span> y <span class="math inline">\(\beta_1=1\)</span>, de modo que <span class="math display">\[p_1(x)=h(x).\]</span> ¿Cómo debe ser <span class="math inline">\(h\)</span> para garantizar que <span class="math inline">\(h(x)\)</span> está entre 0 y 1 para toda <span class="math inline">\(x\)</span>? No van a funcionar polinomios, por ejemplo, porque para un polinomio cuando <span class="math inline">\(x\)</span> tiende a infinito, el polinomio tiende a <span class="math inline">\(\infty\)</span> o a <span class="math inline">\(-\infty\)</span>. Hay varias posibilidades, pero una de las más simples es la función logística.</p>
+
+<div class="comentario">
+La función logística está dada por <span class="math display">\[h(x)=\frac{e^x}{1+e^x}\]</span>
+</div>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">exp</span>(x)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(x)) }
+<span class="kw">curve</span>(h, <span class="dt">from=</span><span class="op">-</span><span class="dv">6</span>, <span class="dt">to =</span><span class="dv">6</span>)</code></pre></div>
+<p><img src="06-logit_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Esta función comprime adecuadamente (para nuestros propósitos) el rango de todos los reales dentro del intervalo <span class="math inline">\([0,1]\)</span>.</p>
+
+<div class="comentario">
+El modelo de regresión logística simple está dado por <span class="math display">\[p_1(x)=p_1(x;\beta)= h(\beta_0+\beta_1x_1)= \frac{e^{\beta_0+\beta_1x_1}}{1+ e^{\beta_0+\beta_1x_1}},\]</span> y <span class="math display">\[p_0(x)=p_0(x;\beta)=1-p_1(x;\beta),\]</span> donde <span class="math inline">\(\beta=(\beta_0,\beta_1)\)</span>.
+</div>
+
+<p>Este es un modelo paramétrico con 2 parámetros.</p>
+</div>
+<div id="ejemplo-3" class="section level3 unnumbered">
+<h3>Ejemplo</h3>
+<p>(Impago de tarjetas de crédito) Supongamos que <span class="math inline">\(X=\)</span> porcentaje del crédito máximo usado, y <span class="math inline">\(G\in\{1, 2\}\)</span>, donde <span class="math inline">\(1\)</span> corresponde al corriente y <span class="math inline">\(2\)</span> representa impago. Las probabilidades condicionales de clase para la clase <em>al corriente</em> podrían ser, por ejemplo:</p>
+<ul>
+<li><span class="math inline">\(p_1(x) = P(G=1|X = x) =0.95\)</span> si <span class="math inline">\(x &lt; 15\%\)</span></li>
+<li><span class="math inline">\(p_1(x) = P(G=1|X = x) = 0.95 - 0.007(x-15)\)</span> si <span class="math inline">\(x&gt;=15\%\)</span></li>
+</ul>
+<p>Estas son probabilidades, pues hay otras variables que influyen en que un cliente permanezca al corriente o no en sus pagos más allá de información contenida en el porcentaje de crédito usado. Nótese que estas probabilidades son diferentes a las no condicionadas, por ejempo, podríamos tener que a total <span class="math inline">\(P(G=1)=0.83\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="cf">function</span>(x){
+  <span class="kw">ifelse</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">15</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.007</span> <span class="op">*</span><span class="st"> </span>(x <span class="op">-</span><span class="st"> </span><span class="dv">15</span>))
+}
+<span class="kw">curve</span>(p_<span class="dv">1</span>, <span class="dv">0</span>,<span class="dv">100</span>, <span class="dt">xlab =</span> <span class="st">&#39;Porcentaje de crédito máximo&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;p_1(x)&#39;</span>,
+  <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
+<p><img src="06-logit_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Vamos a generar unos datos con un modelo simple:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1933</span>)
+x &lt;-<span class="st"> </span><span class="kw">pmin</span>(<span class="kw">rexp</span>(<span class="dv">500</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">30</span>),<span class="dv">100</span>)
+probs &lt;-<span class="st"> </span><span class="kw">p_1</span>(x)
+g &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">rbinom</span>(<span class="kw">length</span>(x), <span class="dv">1</span>, probs)<span class="op">==</span><span class="dv">1</span> ,<span class="dv">1</span>, <span class="dv">2</span>)
+dat_ent &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> x, <span class="dt">p_1 =</span> probs, <span class="dt">g =</span> <span class="kw">factor</span>(g))
+dat_ent <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(x, g) 
+<span class="co">#&gt; # A tibble: 500 x 2</span>
+<span class="co">#&gt;        x g    </span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;fct&gt;</span>
+<span class="co">#&gt; 1  0.532 1    </span>
+<span class="co">#&gt; 2 25.4   1    </span>
+<span class="co">#&gt; 3 37.5   1    </span>
+<span class="co">#&gt; 4 20.9   1    </span>
+<span class="co">#&gt; 5 70.9   2    </span>
+<span class="co">#&gt; 6 14.8   1    </span>
+<span class="co">#&gt; # ... with 494 more rows</span></code></pre></div>
+<p>Como este problema es de dos clases, podemos graficar como sigue:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graf_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dat_ent, <span class="kw">aes</span>(<span class="dt">x =</span> x)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> g, <span class="dt">y =</span> <span class="kw">as.numeric</span>(g<span class="op">==</span><span class="st">&#39;1&#39;</span>)), <span class="dt">width=</span><span class="dv">0</span>, <span class="dt">height=</span><span class="fl">0.1</span>)
+graf_<span class="dv">1</span></code></pre></div>
+<p><img src="06-logit_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Ahora intentaremos ajustar a mano (intenta cambiar las betas para p_mod_1 y p_mod_2 en el ejemplo de abajo) algunos modelos logísticos para las probabilidades de clase:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graf_data &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">1</span>))
+h &lt;-<span class="st"> </span><span class="cf">function</span>(z) <span class="kw">exp</span>(z)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(z))
+p_logistico &lt;-<span class="st"> </span><span class="cf">function</span>(beta_<span class="dv">0</span>, beta_<span class="dv">1</span>){
+  p &lt;-<span class="st"> </span><span class="cf">function</span>(x){
+    z &lt;-<span class="st"> </span>beta_<span class="dv">0</span> <span class="op">+</span><span class="st"> </span>beta_<span class="dv">1</span><span class="op">*</span>x
+    <span class="kw">h</span>(z)
+  }
+}
+p_mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">p_logistico</span>(<span class="op">-</span><span class="dv">20</span>, <span class="dv">1</span>)
+p_mod_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">p_logistico</span>(<span class="fl">3.2</span>, <span class="op">-</span><span class="fl">0.05</span>)
+graf_data &lt;-<span class="st"> </span>graf_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">p_mod_1 =</span> <span class="kw">p_mod_1</span>(x), <span class="dt">p_mod_2 =</span> <span class="kw">p_mod_2</span>(x))
+graf_verdadero &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">p_1 =</span> <span class="kw">p_1</span>(x))
+graf_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_data, <span class="kw">aes</span>(<span class="dt">y =</span> p_mod_<span class="dv">2</span>), <span class="dt">colour =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">size=</span><span class="fl">1.2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_data, <span class="kw">aes</span>(<span class="dt">y =</span> p_mod_<span class="dv">1</span>), <span class="dt">colour =</span> <span class="st">&#39;orange&#39;</span>, <span class="dt">size=</span><span class="fl">1.2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_verdadero, <span class="kw">aes</span>(<span class="dt">y =</span> p_<span class="dv">1</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Probabilidad al corriente&#39;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&#39;% crédito usado&#39;</span>)</code></pre></div>
+<p><img src="06-logit_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Podemos usar también la función glm de R para ajustar los coeficientes:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(g<span class="op">==</span><span class="dv">1</span> <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> dat_ent, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>)
+<span class="kw">coef</span>(mod_<span class="dv">1</span>)
+<span class="co">#&gt; (Intercept)           x </span>
+<span class="co">#&gt;      3.2447     -0.0435</span>
+p_mod_final &lt;-<span class="st"> </span><span class="kw">p_logistico</span>(<span class="kw">coef</span>(mod_<span class="dv">1</span>)[<span class="dv">1</span>], <span class="kw">coef</span>(mod_<span class="dv">1</span>)[<span class="dv">2</span>])
+graf_data &lt;-<span class="st"> </span>graf_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">p_mod_f =</span> <span class="kw">p_mod_final</span>(x))
+
+graf_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_data, <span class="kw">aes</span>(<span class="dt">y =</span> p_mod_f), <span class="dt">colour =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">size=</span><span class="fl">1.2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_data, <span class="kw">aes</span>(<span class="dt">y =</span> p_mod_<span class="dv">1</span>), <span class="dt">colour =</span> <span class="st">&#39;orange&#39;</span>, <span class="dt">size=</span><span class="fl">1.2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_verdadero, <span class="kw">aes</span>(<span class="dt">y =</span> p_<span class="dv">1</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Probabilidad al corriente&#39;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&#39;% crédito usado&#39;</span>)</code></pre></div>
+<p><img src="06-logit_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /></p>
+
+<div class="information">
+<p>Por lo tanto, modelamos la probabilidad de que <span class="math inline">\(y = 1\)</span>, como</p>
+<p><span class="math display">\[
+P(y_i=1)=\mbox{logit}^{-1}(X_i\beta),
+\]</span></p>
+<p>bajo el supuesto de que las respuestas <span class="math inline">\(y_i\)</span> son <em>independientes</em> dadas estas probabilidades. Nos referimos a <span class="math inline">\(X\beta\)</span> como el <em>predictor lineal</em>.</p>
+La función logística definida anteriormente <span class="math inline">\(h(x)=\dfrac{e^x}{1+e^x}\)</span> es <span class="math inline">\(\mbox{logit}^{-1}\)</span>, la función inversa de <em>logit</em>.
+</div>
+
+</div>
+</div>
+<div id="tarea-4" class="section level2">
+<h2><span class="header-section-number">6.3</span> Tarea</h2>
+<ul>
+<li><p>Demostrar que, si <span class="math inline">\(p_1(x)\)</span> está dado como <span class="math display">\[
+p_1(x)=p_1(x;\beta)= h(\beta_0+\beta_1x_1)= \frac{e^{\beta_0+\beta_1x_1}}{1+ e^{\beta_0+\beta_1x_1}}
+\]</span> entonces también podemos escribir: <span class="math display">\[p_0(x)=\frac{1}{1+e^{\beta_0+\beta_1x_1}}.\]</span></p></li>
+<li><p>Graficar la función <span class="math inline">\(p_1(x;\beta)\)</span> para distintos valores de <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span>.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analisis-de-datos-categoricos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
