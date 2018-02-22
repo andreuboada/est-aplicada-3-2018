@@ -32,7 +32,7 @@ Los científicos políticos han estado interesados en la identificación de part
 Usamos una encuesta llamada _National Election Study_.
 
 ```{r message=FALSE, warning=FALSE}
-brdata <- read_csv("datos/brdata.csv")
+brdata <- read_csv("datos/nes.csv")
 ```
 
 Contamos con los siguientes predictores: 
@@ -64,7 +64,8 @@ datos <- brdata %>%
          age.new = (age - mean(age))/10,
          y = rep_pres_intent,
          age.discrete = as.numeric(cut(age, c(0,29.5, 44.5, 64.5, 200))),
-         race.adj = ifelse(race >= 3, 1.5, race))
+         race.adj = ifelse(race >= 3, 1.5, race) - 1, 
+         gender = gender - 1)
 ```
 
 Para cada encuestado ponemos $y_i=1$ si el encuestado prefería a George Bush (el candidato Republicano a presidente) o $y_i=0$ si prefería a Bill Clinton (el candidato Demócrata). Por ahora excluímos a los encuestados que preferían a Ross Perot u otros candidatos, o que no tenían opinión.
@@ -73,7 +74,7 @@ Para cada encuestado ponemos $y_i=1$ si el encuestado prefería a George Bush (e
 datos_2 <- datos %>% 
   filter(year == 1992 & presvote < 3) %>%
   mutate(vote = presvote - 1) %>%
-  dplyr::select(year, age, gender, race, black, female, vote, income)
+  dplyr::select(year, age, age.new, gender, race.adj, educ1, vote, income, income.new)
 datos_2 %>% sample_n(10) %>% knitr::kable()
 ```
 
