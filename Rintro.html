@@ -1946,7 +1946,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB <span class="op">+</span><span class="st"> </span>teamID, Batting))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   2.922   0.104   3.026</span></code></pre></div>
+<span class="co">#&gt;   2.856   0.075   2.932</span></code></pre></div>
 <ul>
 <li><p><strong>user time</strong>: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.</p></li>
 <li><p><strong>elapsed time</strong>: tiempo en el reloj, tiempo que experimenta la persona.</p></li>
@@ -1954,7 +1954,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <p>El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">readLines</span>(<span class="st">&quot;http://www.jhsph.edu&quot;</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.009   0.016   1.075</span></code></pre></div>
+<span class="co">#&gt;   0.026   0.008   1.301</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(parallel)
 <span class="kw">system.time</span>(<span class="kw">mclapply</span>(<span class="dv">2000</span><span class="op">:</span><span class="dv">2006</span>, 
   <span class="cf">function</span>(x){
@@ -1962,7 +1962,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
     <span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB, sub)
 }, <span class="dt">mc.cores =</span> <span class="dv">5</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.064   0.059   0.078</span></code></pre></div>
+<span class="co">#&gt;   0.068   0.080   0.097</span></code></pre></div>
 <p>Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr</span>
 dplyr_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
@@ -2002,16 +2002,16 @@ est_r_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
 
 dplyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.143   0.000   0.143</span></code></pre></div>
+<span class="co">#&gt;   0.206   0.004   0.210</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   7.235   0.012   7.248</span></code></pre></div>
+<span class="co">#&gt;   7.679   0.008   7.688</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_l_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   73.98    1.72   75.73</span></code></pre></div>
+<span class="co">#&gt;   98.60    2.54  101.30</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_r_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.876   0.008   0.885</span></code></pre></div>
+<span class="co">#&gt;   1.030   0.024   1.054</span></code></pre></div>
 <p>La función <code>system.time</code> supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es <code>Rprof()</code>.</p>
 <p>Rprof es un perfilador de muestreo que registra cambios en la pila de funciones, funciona tomando muestras a intervalos regulares y tabula cuánto tiempo se lleva en cada función.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>, <span class="dt">interval =</span> <span class="fl">0.015</span>, <span class="dt">line.profiling =</span> <span class="ot">TRUE</span>)
@@ -2148,7 +2148,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.579   0.000   0.580</span></code></pre></div>
+<span class="co">#&gt;   0.490   0.000   0.491</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aciertos &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">FALSE</span>, <span class="fl">1e+06</span>) 
 <span class="kw">system.time</span>(
   <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="fl">1e+05</span>) {
@@ -2156,7 +2156,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.377   0.000   0.378</span></code></pre></div>
+<span class="co">#&gt;   0.443   0.000   0.442</span></code></pre></div>
 <p>Usando <code>rbind</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind &lt;-<span class="st"> </span><span class="cf">function</span>(){
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">character</span>(<span class="dv">0</span>), <span class="dt">b =</span> <span class="kw">numeric</span>(<span class="dv">0</span>)) 
@@ -2167,7 +2167,7 @@ mi.df
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;    1.14    0.00    1.14</span></code></pre></div>
+<span class="co">#&gt;    1.28    0.00    1.28</span></code></pre></div>
 <p>Si definimos el tamaño del data.frame obtenemos mejoras:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="cf">function</span>() {
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>), <span class="dt">b =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)) 
@@ -2179,7 +2179,7 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind_2</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.147   0.000   0.147</span></code></pre></div>
+<span class="co">#&gt;   0.156   0.000   0.156</span></code></pre></div>
 <p>Finalmente, veamos un enfoque totalmente vectorizado</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">porcolumna_df &lt;-<span class="st"> </span><span class="cf">function</span>(){
   a &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>) 
@@ -2189,7 +2189,7 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">porcolumna_df</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.002   0.000   0.001</span></code></pre></div>
+<span class="co">#&gt;   0.002   0.000   0.002</span></code></pre></div>
 <p>A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectorización, este incremento conlleva un costo en memoria. Si comparamos la versión mas lenta con la más rápida, en la última debemos asignar a, b y mi.df. Entonces, no siempre es mejor vectorizar, pues si consumimos la memoria, entonces la versión vectorizada puede enfrentarse al problema de uso de memoria en disco, que tiene aun más grandes penalizaciones en el desempeño que los ciclos que hemos visto.</p>
 <p><strong>4 Paralelizar</strong></p>
 <p>Paralelizar usa varios cores para trabajar de manera simultánea en varias secciones de un problema, no reduce el tiempo computacional pero incrementa el tiempo del usuario pues aprovecha los recursos. Como referencia está <a href="https://www.amazon.com/Parallel-Computing-Data-Science-Examples/dp/1466587016">Parallel Computing for Data Science</a> de Norm Matloff.</p>

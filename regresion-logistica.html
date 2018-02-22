@@ -274,7 +274,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(arm)</code></pre></div>
 <p>Los científicos políticos han estado interesados en la identificación de partidos y sus cambios a lo largo del tiempo. Ilustramos aquí con una serie de regresiones transversales que modelan la identificación del partido dada la ideología política y las variables demográficas.</p>
 <p>Usamos una encuesta llamada <em>National Election Study</em>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brdata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/brdata.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brdata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/nes.csv&quot;</span>)</code></pre></div>
 <p>Contamos con los siguientes predictores:</p>
 <ul>
 <li><p>identificación con un partido en una escala de 1-7 (1 = demócrata fuerte, 2 = demócrata, 3 = demócrata débil, 4 = independiente, …, 7 = republicano fuerte), que tratamos como una variable continua.</p></li>
@@ -296,126 +296,138 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
          <span class="dt">age.new =</span> (age <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(age))<span class="op">/</span><span class="dv">10</span>,
          <span class="dt">y =</span> rep_pres_intent,
          <span class="dt">age.discrete =</span> <span class="kw">as.numeric</span>(<span class="kw">cut</span>(age, <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">29.5</span>, <span class="fl">44.5</span>, <span class="fl">64.5</span>, <span class="dv">200</span>))),
-         <span class="dt">race.adj =</span> <span class="kw">ifelse</span>(race <span class="op">&gt;=</span><span class="st"> </span><span class="dv">3</span>, <span class="fl">1.5</span>, race))</code></pre></div>
+         <span class="dt">race.adj =</span> <span class="kw">ifelse</span>(race <span class="op">&gt;=</span><span class="st"> </span><span class="dv">3</span>, <span class="fl">1.5</span>, race) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, 
+         <span class="dt">gender =</span> gender <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
 <p>Para cada encuestado ponemos <span class="math inline">\(y_i=1\)</span> si el encuestado prefería a George Bush (el candidato Republicano a presidente) o <span class="math inline">\(y_i=0\)</span> si prefería a Bill Clinton (el candidato Demócrata). Por ahora excluímos a los encuestados que preferían a Ross Perot u otros candidatos, o que no tenían opinión.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos_<span class="dv">2</span> &lt;-<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">1992</span> <span class="op">&amp;</span><span class="st"> </span>presvote <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vote =</span> presvote <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(year, age, gender, race, black, female, vote, income)
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(year, age, age.new, gender, race.adj, educ1, vote, income, income.new)
 datos_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
 <thead>
 <tr class="header">
 <th align="right">year</th>
 <th align="right">age</th>
+<th align="right">age.new</th>
 <th align="right">gender</th>
-<th align="right">race</th>
-<th align="right">black</th>
-<th align="right">female</th>
+<th align="right">race.adj</th>
+<th align="right">educ1</th>
 <th align="right">vote</th>
 <th align="right">income</th>
+<th align="right">income.new</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="right">1992</td>
 <td align="right">46</td>
-<td align="right">2</td>
-<td align="right">2</td>
+<td align="right">0.055</td>
 <td align="right">1</td>
-<td align="right">1</td>
+<td align="right">1.0</td>
+<td align="right">3</td>
 <td align="right">0</td>
 <td align="right">4</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="right">1992</td>
 <td align="right">40</td>
-<td align="right">2</td>
+<td align="right">-0.545</td>
 <td align="right">1</td>
-<td align="right">0</td>
-<td align="right">1</td>
+<td align="right">0.0</td>
+<td align="right">4</td>
 <td align="right">0</td>
 <td align="right">3</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">1992</td>
 <td align="right">61</td>
-<td align="right">1</td>
-<td align="right">1</td>
+<td align="right">1.555</td>
 <td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.0</td>
+<td align="right">4</td>
 <td align="right">1</td>
 <td align="right">4</td>
+<td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="right">1992</td>
 <td align="right">45</td>
-<td align="right">2</td>
-<td align="right">2</td>
+<td align="right">-0.045</td>
 <td align="right">1</td>
-<td align="right">1</td>
+<td align="right">1.0</td>
+<td align="right">3</td>
 <td align="right">0</td>
 <td align="right">3</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="right">1992</td>
 <td align="right">20</td>
-<td align="right">1</td>
+<td align="right">-2.545</td>
+<td align="right">0</td>
+<td align="right">0.5</td>
 <td align="right">3</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
 <td align="right">1</td>
+<td align="right">-2</td>
 </tr>
 <tr class="even">
 <td align="right">1992</td>
 <td align="right">79</td>
-<td align="right">2</td>
-<td align="right">2</td>
+<td align="right">3.355</td>
 <td align="right">1</td>
-<td align="right">1</td>
+<td align="right">1.0</td>
+<td align="right">2</td>
 <td align="right">0</td>
 <td align="right">1</td>
+<td align="right">-2</td>
 </tr>
 <tr class="odd">
 <td align="right">1992</td>
 <td align="right">77</td>
+<td align="right">3.155</td>
+<td align="right">1</td>
+<td align="right">0.0</td>
 <td align="right">2</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">1</td>
 <td align="right">0</td>
 <td align="right">3</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="right">1992</td>
 <td align="right">63</td>
+<td align="right">1.755</td>
+<td align="right">1</td>
+<td align="right">0.0</td>
+<td align="right">3</td>
+<td align="right">1</td>
 <td align="right">2</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">2</td>
+<td align="right">-1</td>
 </tr>
 <tr class="odd">
 <td align="right">1992</td>
 <td align="right">53</td>
+<td align="right">0.755</td>
+<td align="right">1</td>
+<td align="right">0.0</td>
 <td align="right">2</td>
 <td align="right">1</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">1</td>
 <td align="right">2</td>
+<td align="right">-1</td>
 </tr>
 <tr class="even">
 <td align="right">1992</td>
 <td align="right">25</td>
-<td align="right">2</td>
+<td align="right">-2.045</td>
 <td align="right">1</td>
-<td align="right">0</td>
-<td align="right">1</td>
+<td align="right">0.0</td>
+<td align="right">4</td>
 <td align="right">0</td>
 <td align="right">3</td>
+<td align="right">0</td>
 </tr>
 </tbody>
 </table>

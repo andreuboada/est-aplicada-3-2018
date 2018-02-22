@@ -32,7 +32,7 @@ Usamos una encuesta llamada _National Election Study_.
 
 
 ```r
-brdata <- read_csv("datos/brdata.csv")
+brdata <- read_csv("datos/nes.csv")
 ```
 
 Contamos con los siguientes predictores: 
@@ -65,7 +65,8 @@ datos <- brdata %>%
          age.new = (age - mean(age))/10,
          y = rep_pres_intent,
          age.discrete = as.numeric(cut(age, c(0,29.5, 44.5, 64.5, 200))),
-         race.adj = ifelse(race >= 3, 1.5, race))
+         race.adj = ifelse(race >= 3, 1.5, race) - 1, 
+         gender = gender - 1)
 ```
 
 Para cada encuestado ponemos $y_i=1$ si el encuestado prefería a George Bush (el candidato Republicano a presidente) o $y_i=0$ si prefería a Bill Clinton (el candidato Demócrata). Por ahora excluímos a los encuestados que preferían a Ross Perot u otros candidatos, o que no tenían opinión.
@@ -75,24 +76,24 @@ Para cada encuestado ponemos $y_i=1$ si el encuestado prefería a George Bush (e
 datos_2 <- datos %>% 
   filter(year == 1992 & presvote < 3) %>%
   mutate(vote = presvote - 1) %>%
-  dplyr::select(year, age, gender, race, black, female, vote, income)
+  dplyr::select(year, age, age.new, gender, race.adj, educ1, vote, income, income.new)
 datos_2 %>% sample_n(10) %>% knitr::kable()
 ```
 
 
 
- year   age   gender   race   black   female   vote   income
------  ----  -------  -----  ------  -------  -----  -------
- 1992    46        2      2       1        1      0        4
- 1992    40        2      1       0        1      0        3
- 1992    61        1      1       0        0      1        4
- 1992    45        2      2       1        1      0        3
- 1992    20        1      3       0        0      0        1
- 1992    79        2      2       1        1      0        1
- 1992    77        2      1       0        1      0        3
- 1992    63        2      1       0        1      1        2
- 1992    53        2      1       0        1      1        2
- 1992    25        2      1       0        1      0        3
+ year   age   age.new   gender   race.adj   educ1   vote   income   income.new
+-----  ----  --------  -------  ---------  ------  -----  -------  -----------
+ 1992    46     0.055        1        1.0       3      0        4            1
+ 1992    40    -0.545        1        0.0       4      0        3            0
+ 1992    61     1.555        0        0.0       4      1        4            1
+ 1992    45    -0.045        1        1.0       3      0        3            0
+ 1992    20    -2.545        0        0.5       3      0        1           -2
+ 1992    79     3.355        1        1.0       2      0        1           -2
+ 1992    77     3.155        1        0.0       2      0        3            0
+ 1992    63     1.755        1        0.0       3      1        2           -1
+ 1992    53     0.755        1        0.0       2      1        2           -1
+ 1992    25    -2.045        1        0.0       4      0        3            0
 
 Dado que nuestra variable de ingreso es categórica y la preferencia de voto que analizamos es binaria podríamos comenzar haciendo un análisis de datos categóricos:
 
