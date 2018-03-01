@@ -269,7 +269,7 @@ Sumar 1 a la variable $x$ es equivalente a sumar $\beta$ en ambos lados de la ec
 Por ejemplo, si $\beta=0.2$, entonces una diferencia unitaria en $x$ corresponde a un cambio multiplicativo de $e^{0.2}=1.22$ en los momios de éxito (con respecto a los chances de un fracaso).
 
 ```{block2, type = "information"}
-**Nota:** El concepto de los momios puede ser un poco difícil de entender y comunicar, y razones de momios aún más. Sin embargo, los momios son útiles para conferirle al modelo una interpretación, para explicar cómo ciertos valores pueden aumentar los chances de que la probabilidad sea 1 utilizando la exponencial de algun coeficiente $e^{\beta_i}$.
+**Nota:** El concepto de los momios puede ser un poco difícil de entender y comunicar, y razones de momios aún más. Sin embargo, los momios son útiles para conferirle al modelo una interpretación, para explicar cómo ciertos valores pueden aumentar los chances de éxito utilizando la exponencial de algun coeficiente $e^{\beta_i}$.
 ```
 
 ## Ejemplo: pozos en Bangladesh
@@ -354,7 +354,7 @@ Nuestra variable de respuesta es
 
 $$
 y_{i} = \left\{ \begin{array}{cl}
-1 & \text{si la }\; i\text{-esima casa cambió de pozo},\\
+1 & \text{si la }\; i\text{-esima casa cambió}\,\,\, \text{de pozo},\\
 0 & \text{en otro caso.}
 \end{array}\right.
 $$
@@ -573,7 +573,7 @@ En regresión logística y otros modelos de datos discretos, no tiene sentido ca
 
 Por ahora, consideremos las siguientes propiedades de la desvianza:
   
-* La devianza es una mediada del error, menor devianza significa mejor ajuste de los datos.
+* La devianza es una medida del error, menor devianza significa mejor ajuste de los datos.
 
 * Si un predictor que es únicamente ruido aleatorio se agrega al modelo, esperaríamos que la devianza disminuyera en 1, en promedio.
 
@@ -796,6 +796,9 @@ para
 $j=0,1,\ldots, p$, donde fijamos $x_0^{(i)}=1$.
 ```
 
+---
+
+<br>
 
 Podríamos usar las siguientes implementaciones:
 
@@ -935,7 +938,7 @@ normalizar <- function(datos, datos_norm){
 diabetes_s <- normalizar(diabetes, datos_norm)
 ```
 
-```{r}
+```{r, out.width='100%'}
 x <- diabetes_s %>% select(age:skin) %>% as.matrix
 p <- ncol(x)
 y <- diabetes_s$type == 'Yes'
@@ -971,7 +974,7 @@ es los mismo que hacer máxima verosimilitud (condicional a los valores de $x$).
 
 #### Normalización {-}
 Igual que en regresión lineal, en regresión logística conviene normalizar
-las entradas antes de ajustar el modelo
+las entradas antes de ajustar el modelo.
 
 ## Regresión logística para problemas de más de 2 clases
 
@@ -1056,7 +1059,7 @@ Hay dos razones por las cuales una regresión logística puede estar no identifi
 
 1. Como con regresión lineal, si los predictores son colineales, entonces la estimación del predictor lineal, $X\beta$, no permite una estimación separable de los parámetros individuales $\beta$.
 
-2. Un problema diferente de identificabilidad, llamado _separción_ puede surgir cuando se tienen datos discretos.
+2. Un problema diferente de identificabilidad, llamado _separación_ puede surgir cuando se tienen datos discretos.
 
     * Si un predictor $x_j$ está completamente alineado con el resultado, de tal forma que $y = 1$ para todos los casos tales que $x_j$ exceda un umbral $T$, y $y=0$ para todos los casos donde $x_j<T$, entonces el mejor coeficiente para $\beta_j$ es $\infty$.
     
