@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-02-27">
+<meta name="date" content="2018-03-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -249,7 +249,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.4.3" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#metodologia-para-abordar-el-problema"><i class="fa fa-check"></i><b>7.4.3</b> Metodología para abordar el problema</a></li>
 <li class="chapter" data-level="7.4.4" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#ajuste-y-resultados-del-modelo"><i class="fa fa-check"></i><b>7.4.4</b> Ajuste y resultados del modelo</a></li>
 <li class="chapter" data-level="7.4.5" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#interpretacion-de-los-coeficientes-1"><i class="fa fa-check"></i><b>7.4.5</b> Interpretación de los coeficientes</a></li>
+<li class="chapter" data-level="7.4.6" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#agregamos-una-segunda-variable-de-entrada"><i class="fa fa-check"></i><b>7.4.6</b> Agregamos una segunda variable de entrada</a></li>
+<li class="chapter" data-level="7.4.7" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#comparacion-de-coeficientes-cuando-anades-un-predictor"><i class="fa fa-check"></i><b>7.4.7</b> Comparación de coeficientes cuando añades un predictor</a></li>
+<li class="chapter" data-level="7.4.8" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#graficar-el-modelo-ajustado-con-dos-predictores"><i class="fa fa-check"></i><b>7.4.8</b> Graficar el modelo ajustado con dos predictores</a></li>
 </ul></li>
+<li class="chapter" data-level="7.5" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#aprendizaje-de-coeficientes-para-regresion-logistica-binomial."><i class="fa fa-check"></i><b>7.5</b> Aprendizaje de coeficientes para regresión logística (binomial).</a></li>
+<li class="chapter" data-level="7.6" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#descenso-en-gradiente"><i class="fa fa-check"></i><b>7.6</b> Descenso en gradiente</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#seleccion-de-tamano-de-paso-eta"><i class="fa fa-check"></i><b>7.6.1</b> Selección de tamaño de paso <span class="math inline">\(\eta\)</span></a></li>
+<li class="chapter" data-level="7.6.2" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#funciones-de-varias-variables"><i class="fa fa-check"></i><b>7.6.2</b> Funciones de varias variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#ejemplo-diabetes"><i class="fa fa-check"></i><b>7.7</b> Ejemplo: diabetes</a></li>
+<li class="chapter" data-level="7.8" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#observaciones-adicionales"><i class="fa fa-check"></i><b>7.8</b> Observaciones adicionales</a></li>
+<li class="chapter" data-level="7.9" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#regresion-logistica-para-problemas-de-mas-de-2-clases"><i class="fa fa-check"></i><b>7.9</b> Regresión logística para problemas de más de 2 clases</a></li>
+<li class="chapter" data-level="7.10" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#regresion-logistica-multinomial"><i class="fa fa-check"></i><b>7.10</b> Regresión logística multinomial</a></li>
+<li class="chapter" data-level="7.11" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#identificabilidad-y-separacion"><i class="fa fa-check"></i><b>7.11</b> Identificabilidad y separación</a></li>
+<li class="chapter" data-level="7.12" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#tarea-5"><i class="fa fa-check"></i><b>7.12</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -321,6 +335,7 @@ g &lt;-<span class="st"> </span>g <span class="op">+</span><span class="st"> </s
 
 g <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;x&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;p(y=1|x)&quot;</span>)</code></pre></div>
 <p><img src="07-logit-2_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>A este método en estadística se le conoce como <em>bootstrap</em> porque consiste en tomar muestras con reemplazo del mismo tamaño de los datos. Es <strong>muy</strong> útil para estimar errores estándar.</p>
 </div>
 <div id="funcion-logistica-1" class="section level2">
 <h2><span class="header-section-number">7.2</span> Función logística</h2>
@@ -351,7 +366,7 @@ fit.<span class="dv">1</span><span class="op">$</span>coefficients
         <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;(menor ingreso)&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;4.31&quot;</span>, <span class="st">&quot;(mayor ingreso)&quot;</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">1</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Clinton (0)&quot;</span>, <span class="st">&quot;0.5&quot;</span>, <span class="st">&quot;Bush (1)&quot;</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Categoría de ingreso&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Voto&quot;</span>)</code></pre></div>
-<p><img src="07-logit-2_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p><span class="math display">\[
 \mbox{logistic regression model: }\; y = \mbox{logit}^{−1} (−1.40 + 0.33x)
 \]</span></p>
@@ -379,7 +394,7 @@ e^x &amp;=&amp; \dfrac{y}{1-y}\\
 x &amp;=&amp; \mbox{log}\left(\dfrac{y}{1-y}\right)
 \end{eqnarray*}
 \]</span></p>
-<p>Preferimos trabajar con <span class="math inline">\(\mbox{logit}^-{1}\)</span> porque es más natural pensar en la transformación del predictor lineal a las probabilidades, que al revés.</p>
+<p>Preferimos trabajar con <span class="math inline">\(\mbox{logit}^{-1}\)</span> porque es más natural pensar en la transformación del predictor lineal a las probabilidades, que al revés.</p>
 <p>Como la función logística inversa <em>no es lineal</em>, entonces la diferencia esperada en <span class="math inline">\(y\)</span> correspondiente a una diferencia fija en <span class="math inline">\(x\)</span> no es constante:</p>
 <ul>
 <li><p><span class="math inline">\(\mbox{logit}(0.5) = 0\)</span>, y <span class="math inline">\(\mbox{logit}(0.6) = 0.4\)</span>. Agregar <span class="math inline">\(0.4\)</span> en la escala de logit corresponde a un cambio de 50% a 60% en la escala de probabilidad.</p></li>
@@ -406,7 +421,7 @@ x &amp;=&amp; \mbox{log}\left(\dfrac{y}{1-y}\right)
 <li><p>Una diferencia de <span class="math inline">\(1\)</span> (1 más en la escala de ingreso de <span class="math inline">\(1\)</span> a <span class="math inline">\(5\)</span>) corresponde a una diferencia positiva de <span class="math inline">\(0.33\)</span> en la probabilidad (logit) de voto por Bush. Hay dos maneras convenientes de resumir esto directamente en términos de probabilidades:</p>
 <ul>
 <li><p>Podemos evaluar cómo cambia la probabilidad (logit) ante un cambio unitario con respecto a la media de <span class="math inline">\(x\)</span>. Como <span class="math inline">\(\bar{x}=3.1\)</span>, entonces podemos evaluar la función de regresión logísta en <span class="math inline">\(x=3\)</span> y <span class="math inline">\(x=2\)</span>. La difrerencia en <span class="math inline">\(P(y=1)\)</span> que corresponde a agregar <span class="math inline">\(1\)</span> a <span class="math inline">\(x\)</span> es: <span class="math display">\[ \mbox{logit}^{−1}(−1.40+0.33·3)−\mbox{logit}^{−1}(−1.40+0.33·2) = 0.08.\]</span> Una diferencia de 1 en la categoría de ingresos corresponde a una diferencia positiva del 8% en la probabilidad de apoyar a Bush.</p></li>
-<li><p>En vez de considerar un cambio discreto en <span class="math inline">\(x\)</span> podemos calcular la derivada de la curva logística en algún valor central, en este caso la media <span class="math inline">\(\bar{x}=3.1\)</span>. Diferenciando la función <span class="math display">\[\mbox{logit}^{−1}(\alpha + \beta x)\]</span> con respecto a <span class="math inline">\(x\)</span> resulta en <span class="math display">\[\beta e^{\alpha+\beta x}/(1 + e^{\alpha +\beta x})^2\]</span>. El valor del predictor lineal en el valor central de <span class="math inline">\(\bar{x}=3.1\)</span> es <span class="math display">\[−1.40+0.33·3.1 = −0.39,\]</span> y la pendiente de la curva, el “cambio” en <span class="math inline">\(P(y = 1)\)</span> por unidad pequeña de “cambio” en x, en este punto es <span class="math display">\[0.33e^{-0.39}/(1 + e^{-0.39})2 = 0.13.\]</span></p></li>
+<li><p>En vez de considerar un cambio discreto en <span class="math inline">\(x\)</span> podemos calcular la derivada de la curva logística en algún valor central, en este caso la media <span class="math inline">\(\bar{x}=3.1\)</span>. Diferenciando la función <span class="math display">\[\mbox{logit}^{−1}(\alpha + \beta x)\]</span> con respecto a <span class="math inline">\(x\)</span> resulta en <span class="math display">\[\beta e^{\alpha+\beta x}/(1 + e^{\alpha +\beta x})^2\]</span>. El valor del predictor lineal en el valor central de <span class="math inline">\(\bar{x}=3.1\)</span> es <span class="math display">\[−1.40+0.33·3.1 = −0.39,\]</span> y la pendiente de la curva, el “cambio” en <span class="math inline">\(P(y = 1)\)</span> por unidad pequeña de “cambio” en x, en este punto es <span class="math display">\[0.33\cdot e^{-0.39}/(1 + e^{-0.39})^2 = 0.13.\]</span></p></li>
 <li><p>Para este ejemplo, la diferencia en la escala de probabilidad es el mismo valor de 0.13 (con un lugar decimal); esto es típico, pero en algunos casos donde una diferencia de unidad es grande, la diferenciación y la derivada pueden dar respuestas ligeramente diferentes. Sin embargo, siempre serán el mismo signo.</p></li>
 <li><p>Podemos comparar la diferencia en la escala de probabilidad (0.08) con la derivada (0.13). Estas generalmente son similares, pero pueden no serlo cuando la diferencia de una unidad es grande.</p></li>
 </ul></li>
@@ -435,7 +450,7 @@ P(\mbox{vota por Bush}) = \mbox{logit}^{-1}(-1.4 + 0.33\;\cdot \;\mbox{ingreso})
 <p>Recordemos:</p>
 <p><br></p>
 <ul>
-<li><p>Si dos resultados tienen probabilidades <span class="math inline">\((p,1-p)\)</span>, entonces <span class="math inline">\(p(1-p)\)</span> se llaman los <em>momios</em>.</p></li>
+<li><p>Si dos resultados tienen probabilidades <span class="math inline">\((p,1-p)\)</span>, entonces <span class="math inline">\(p/(1-p)\)</span> se llaman los <em>momios</em>.</p></li>
 <li><p>Un momio de 1 es equivalente a una probabilidad de <span class="math inline">\(1/2\)</span>, es decir, ambos resultados (éxito y fracaso) son equiprobables.</p></li>
 <li><p>Momios de 0.5 y 2 representan probabilidades de 1/3 y 2/3, respectivamente.</p></li>
 <li><p>La <em>razón de momios</em> es un cociente de momios: <span class="math display">\[\dfrac{p_1/(1-p_1)}{p_2/(1-p_2)}.\]</span></p></li>
@@ -466,7 +481,7 @@ P(y_i=0|x) = \dfrac{1}{e^{\alpha+\beta x}}.
 <p>Por ejemplo, si <span class="math inline">\(\beta=0.2\)</span>, entonces una diferencia unitaria en <span class="math inline">\(x\)</span> corresponde a un cambio multiplicativo de <span class="math inline">\(e^{0.2}=1.22\)</span> en los momios de éxito (con respecto a los chances de un fracaso).</p>
 
 <div class="information">
-<strong>Nota:</strong> Al principio podría parecer que el concepto de momios puede ser un poco difícil de entender y comunicar. Las razones de momios son aún más oscuras. Sin embargo, aún hoy en día resulta útil para conferirle al modelo una interpretación que explique como ciertos valores pueden aumentar los chances de que la probabilidad sea 1 utilizando el coeficiente correspondiente exponenciado <span class="math inline">\(e^{\beta_i}\)</span>.
+<strong>Nota:</strong> El concepto de los momios puede ser un poco difícil de entender y comunicar, y razones de momios aún más. Sin embargo, los momios son útiles para conferirle al modelo una interpretación, para explicar cómo ciertos valores pueden aumentar los chances de que la probabilidad sea 1 utilizando la exponencial de algun coeficiente <span class="math inline">\(e^{\beta_i}\)</span>.
 </div>
 
 </div>
@@ -484,16 +499,22 @@ P(y_i=0|x) = \dfrac{1}{e^{\alpha+\beta x}}.
 <p class="espacio">
 </p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wells_all &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/wells_all.csv&quot;</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(wells_all, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(wells_all, <span class="kw">aes</span>(<span class="dt">x =</span> lon, <span class="dt">y =</span> lat)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="fl">0.05</span>)</code></pre></div>
 <p><img src="07-logit-2_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>En esta gráfica podemos ver los pozos en un área de <strong>Araihazar upazila, Bangladesh</strong>. Los puntos representan pozos con arsénico mayor o menor que el estándar de seguridad de 0.5 (en unidades de cientos de microgramos por litro).</p>
 <p>Los pozos están ubicados donde viven las personas. Las áreas vacías entre los pozos son principalmente tierras de cultivo.</p>
 <p><strong>Tanto pozos seguros como inseguros están mezclados en la mayor parte del área, lo que sugiere que los usuarios de pozos inseguros pueden recurrir a algún pozo seguro cercano.</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(wells_all, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">color =</span> <span class="cf">switch</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="fl">0.05</span>) <span class="op">+</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggmap)
+left &lt;-<span class="st"> </span><span class="kw">min</span>(wells_all<span class="op">$</span>lon)
+bottom &lt;-<span class="st"> </span><span class="kw">min</span>(wells_all<span class="op">$</span>lat)
+right &lt;-<span class="st"> </span><span class="kw">max</span>(wells_all<span class="op">$</span>lon)
+top &lt;-<span class="st"> </span><span class="kw">max</span>(wells_all<span class="op">$</span>lat)
+araihazar &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="kw">c</span>(left,bottom,right,top), <span class="dt">zoom =</span> <span class="dv">13</span>)
+<span class="kw">ggmap</span>(araihazar) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> wells_all, <span class="kw">aes</span>(<span class="dt">x =</span> lon, <span class="dt">y =</span> lat, <span class="dt">color =</span> <span class="cf">switch</span>), <span class="dt">size =</span> <span class="fl">0.05</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;navyblue&quot;</span>, <span class="st">&quot;red&quot;</span>))</code></pre></div>
-<p><img src="07-logit-2_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-14-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>En este artículo reciente se discuten posibles soluciones que hagan uso de tecnologías desarrolladas recientemente: <a href="https://www.reuters.com/article/us-bangladesh-pollution-water-health/can-technology-help-bangladesh-end-mass-arsenic-poisoning-idUSKCN1B80GP">Win, T. L. (2017, August 28). Can technology help Bangladesh end mass arsenic poisoning?</a></p>
 <p><br></p>
 <p>Pueden leer también este boletín de la Organización Mundial de la Salud <a href="http://www.who.int/bulletin/archives/78(9)1093.pdf">WHO</a>.</p>
@@ -503,8 +524,8 @@ P(y_i=0|x) = \dfrac{1}{e^{\alpha+\beta x}}.
 <h3><span class="header-section-number">7.4.2</span> Antecedentes del problema</h3>
 <p>Muchos de los pozos utilizados para el agua potable en Bangladesh y otros países del sur de Asia están contaminados con arsénico natural, afectando a aproximadamente 100 millones de personas. El arsénico es un veneno acumulativo y la exposición aumenta el riesgo de cáncer y otras enfermedades, y se estima que los riesgos son proporcionales a la exposición.</p>
 <p><strong>Causa del problema</strong></p>
-<p>La crisis de arsénico de Bangladesh se remonta a la década de 1970 cuando, en un esfuerzo por mejorar la calidad del agua potable y la lucha contra la diarrea, que era uno de los mayores asesinos de niños en el país, hubo inversiones internacionales a gran escala en la construcción de pozos tubulares. Se creía que los pozos proporcionarían suministros seguros para las familias, de lo contrario dependían del agua superficial sucia que mataba hasta 250,000 niños al año.</p>
-<p>Cualquier localidad puede incluir pozos con arsénico, como se puede ver en la gráfica de arriba. La mala noticia es que incluso si el pozo de tu vecino es seguro, eso no significa que el tuyo esté a salvo. Sin embargo, la buena noticia es que si tu pozo tiene un nivel alto de arsénico, entonces probablemente puedas encontrar un pozo seguro cerca (si es que estás dispuesto a caminar la distancia y tu vecino está dispuesto a compartir 😅). (La cantidad de agua necesaria para beber es lo suficientemente baja como para que agregar usuarios a un pozo no agotara su capacidad, y el agua superficial en esta área está sujeta a contaminación por microbios, de ahí el deseo de utilizar agua de pozos profundos).</p>
+<p>La crisis de arsénico de Bangladesh se remonta a la década de 1970 cuando, en un esfuerzo por mejorar la calidad del agua potable y la lucha contra la diarrea, que era uno de los mayores asesinos de niños en el país, hubo inversiones internacionales a gran escala en la construcción de pozos tubulares. Se creía que los pozos proporcionarían suministros seguros para las familias, de lo contrario dependían del agua superficial sucia que mataba hasta 250,000 niños al año. El agua superficial puede contener microbios, es por esto que era preferible el consumo de agua de pozos profundos.</p>
+<p>Cualquier localidad puede incluir pozos con arsénico, como se puede ver en la gráfica de arriba. La mala noticia es que incluso si el pozo de tu vecino es seguro, eso no significa que el tuyo esté a salvo. Sin embargo, la buena noticia es que si tu pozo tiene un nivel alto de arsénico, entonces probablemente puedas encontrar un pozo seguro cerca (si es que estás dispuesto a caminar y tu vecino está dispuesto a compartir 😅). La cantidad de agua necesaria para beber es lo suficientemente baja como para suponer que más personas pueden ocupar el pozo sin agotar su capacidad.</p>
 </div>
 <div id="metodologia-para-abordar-el-problema" class="section level3">
 <h3><span class="header-section-number">7.4.3</span> Metodología para abordar el problema</h3>
@@ -576,9 +597,10 @@ P(\mbox{cambie pozo}) = \mbox{logit}^{-1}(0.61 - 0.62 \cdot \mbox{dist_100}),
 \]</span></p>
 <p>con los datos (jitter) superpuestos.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(wells, <span class="kw">aes</span>(<span class="dt">x =</span> dist_<span class="dv">100</span>, <span class="dt">y =</span> <span class="cf">switch</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.3</span>, <span class="dt">height =</span> <span class="fl">0.08</span>, <span class="dt">size =</span> <span class="fl">0.1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){<span class="kw">invlogit</span>(fit.<span class="dv">1</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">2</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="fl">3.5</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;No switch&quot;</span>,<span class="st">&quot;Switch&quot;</span>)) </code></pre></div>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.308</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">size =</span> <span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){<span class="kw">invlogit</span>(fit.<span class="dv">2</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">2</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="fl">3.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;No switch&quot;</span>,<span class="st">&quot;Switch&quot;</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;P(switch)&quot;</span>)</code></pre></div>
 <p><img src="07-logit-2_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>La probabilidad de cambio es aproximadamente del 60% para las personas que viven cerca de un pozo seguro, disminuyendo a un 20% para las personas que viven a más de 300 metros de cualquier pozo seguro. Esto tiene sentido: la probabilidad de cambio es mayor para las personas que viven más cerca de un pozo seguro.</p>
 </div>
@@ -587,11 +609,12 @@ P(\mbox{cambie pozo}) = \mbox{logit}^{-1}(0.61 - 0.62 \cdot \mbox{dist_100}),
 <ol style="list-style-type: decimal">
 <li><p>El término constante se puede interpretar cuando <span class="math inline">\(\mbox{dist_100 = 0}\)</span>, en cuyo caso la probabilidad de cambio es <span class="math inline">\(\mbox{logit}^{-1}(0.61) = 0.65\)</span>. Por lo tanto, el modelo estima un 65% de probabilidades de cambio si vives junto a un pozo seguro existente.</p></li>
 <li><p>Podemos evaluar la “<strong>diferencia predictiva</strong>” con respecto a <span class="math inline">\(\mbox{dist_100}\)</span> calculando la derivada en la media de <span class="math inline">\(\mbox{dist_100}\)</span>, que es 0.48 (es decir, 48 metros). El valor del predictor lineal aquí es <span class="math display">\[0.61 - 0.62 \cdot 0.48 = 0.31,\]</span> y entonces la pendiente de la curva en este punto es <span class="math display">\[\dfrac{-0.62 \cdot e^{0.31}}{(1 + e^{0.31})^2} = -0.15.\]</span> Por lo tanto, agregar 1 a <span class="math inline">\(\mbox{dist_100}\)</span>, es decir, sumar 100 metros a la distancia al pozo seguro más cercano, representa una diferencia en la probabilidad de 15% <em>menos</em>.</p></li>
-<li><p>Con la “regla de dividir entre 4” nos da <span class="math display">\[\dfrac{\beta}{4}=\dfrac{-0.62}{4} = -0.15.\]</span> El resultado es el mismo al que se calculó usando la derivada porque la curva pasa aproximadamente por el punto del 50% de probabilidad (en realidad es 57%).</p></li>
+<li><p>La “regla de dividir entre 4” nos da <span class="math display">\[\dfrac{\beta}{4}=\dfrac{-0.62}{4} = -0.15.\]</span> El resultado es el mismo al que se calculó usando la derivada porque la curva pasa aproximadamente por el punto del 50% de probabilidad (en realidad es 57%).</p></li>
 <li><p>Además de interpretar su magnitud, podemos ver la significación estadística del coeficiente de distancia.</p></li>
 </ol>
 <p>Utilizamos el procedimiento visto al principio:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">M &lt;-<span class="st"> </span><span class="dv">500</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">110265</span>)
+M &lt;-<span class="st"> </span><span class="dv">500</span>
 N &lt;-<span class="st"> </span><span class="kw">nrow</span>(wells)
 
 modelos_wells &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span>M <span class="op">%&gt;%</span>
@@ -603,17 +626,655 @@ modelos_wells &lt;-<span class="st"> </span><span class="dv">1</span><span class
 <p>Vemos el resumen para la distancia:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(modelos_wells<span class="op">$</span>dist_<span class="dv">100</span>)
 <span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
-<span class="co">#&gt;  -0.985  -0.693  -0.623  -0.624  -0.560  -0.338</span></code></pre></div>
+<span class="co">#&gt;  -0.928  -0.687  -0.621  -0.624  -0.556  -0.333</span></code></pre></div>
 <p>Con cuantiles:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(modelos_wells<span class="op">$</span>dist_<span class="dv">100</span>, <span class="fl">0.025</span>)
 <span class="co">#&gt;   2.5% </span>
-<span class="co">#&gt; -0.835</span>
+<span class="co">#&gt; -0.839</span>
 <span class="kw">quantile</span>(modelos_wells<span class="op">$</span>dist_<span class="dv">100</span>, <span class="fl">0.975</span>)
 <span class="co">#&gt;  97.5% </span>
-<span class="co">#&gt; -0.419</span></code></pre></div>
-<p>La pendiente se estima bien, con un error estándar de sólo <span class="math inline">\(0.10\)</span>, que es muy pequeño en comparación con la estimación del coeficiente de <span class="math inline">\(-0.62\)</span>. El intervalo aproximado de 95% es <span class="math inline">\([-0.80, -0.42]\)</span>, que es claramente estadísticamente diferente de cero.</p>
-
+<span class="co">#&gt; -0.448</span></code></pre></div>
+<p>La pendiente se estima bien, con un error estándar de sólo <span class="math inline">\(0.10\)</span>, que es muy pequeño en comparación con la estimación del coeficiente de <span class="math inline">\(-0.62\)</span>. El intervalo aproximado de 95% es <span class="math inline">\([-0.83, -0.44]\)</span>, que es claramente estadísticamente diferente de cero.</p>
 </div>
+<div id="agregamos-una-segunda-variable-de-entrada" class="section level3">
+<h3><span class="header-section-number">7.4.6</span> Agregamos una segunda variable de entrada</h3>
+<p>Ahora ampliamos el ejemplo de cambio de pozo al agregar el nivel de arsénico del pozo existente como una entrada de regresión. Con los niveles presentes de arsénico en el agua potable de Bangladesh, los riesgos para la salud son proporcionales a su exposición, por lo que podemos esperar que el cambio de pozo sea más probable cuando el nivel de arsénico es alto.</p>
+<p>Veamos un histograma de niveles de arnésico:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(wells, <span class="kw">aes</span>(<span class="dt">x=</span>arsenic)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Hacemos la regresión logística añadiendo esta variable:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit.<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>arsenic, <span class="dt">data =</span> wells, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+fit.<span class="dv">3</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:  glm(formula = switch ~ dist_100 + arsenic, family = binomial(link = &quot;logit&quot;), </span>
+<span class="co">#&gt;     data = wells)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt; (Intercept)     dist_100      arsenic  </span>
+<span class="co">#&gt;     0.00275     -0.89664      0.46077  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Degrees of Freedom: 3019 Total (i.e. Null);  3017 Residual</span>
+<span class="co">#&gt; Null Deviance:       4120 </span>
+<span class="co">#&gt; Residual Deviance: 3930  AIC: 3940</span></code></pre></div>
+<p>Observaciones:</p>
+<ul>
+<li><p>Por lo tanto, comparando dos pozos <em>con el mismo nivel de arsénico</em> cada 100 metros de distancia al pozo más cercano que sea seguro, corresponde a una diferencia <em>negativa</em> de aproximadamente <span class="math inline">\(90\%\)</span> en la probabilidad logit de cambio.</p></li>
+<li><p>Utilizando la interpretación de momios, comparando dos pozos <em>con el mismo nivel de arsénico</em> si incrementamos la distancia del pozo seguro más cercano en 100 metros, entonces los chances de cambio de pozo son de <span class="math inline">\(e^{-0.9}=0.407\)</span> a favor de no cambiar de pozo.</p></li>
+<li><p>De manera similar una diferencia de 1 en niveles de arsénico corresponden a una diferencia <em>positiva</em> de 0.46 en la probabilidad logit de cambiar de pozo.</p></li>
+<li><p>Ambos coeficientes son estadísticamente significativos, cada uno con errores estándar que justifican ser significativamente distintos de cero.</p></li>
+<li><p>Una interpretación rápida la podemos obtener dividiendo los coeficientes entre 4:</p>
+<ul>
+<li><p>100 metros más de distancia corresponden aproximadamente a <span class="math inline">\(0.89/4=22\%\)</span> menos <em>probabilidad</em> de cambio, y</p></li>
+<li><p>1 unidad más de concentración de arsénico corresponden a aproximadamente <span class="math inline">\(0.46/4 = 11\%\)</span> de una diferencia positiva de probabilidad de cambio.</p></li>
+</ul></li>
+<li><p>Si comparamos estos dos coeficientes podría parecer que la distancia es un factor más importante que el nivel de arsénico para determinar la probabilidad de cambio. Este argumento es engañoso porque en los datos la distancia tienen <em>menor variación</em> que los niveles de arsénico:</p>
+<ul>
+<li><p>la desviación estándar de la distancia es 0.38 (en unidades de 100 metros), mientras que</p></li>
+<li><p>la desviación estándar de los niveles de arsénico es de 1.10.</p></li>
+</ul></li>
+<li><p>Comparando con los coeficientes de los predictores: <span class="math inline">\(-0.90\cdot 0.38 = -0.342\)</span> para distancia y <span class="math inline">\(0.46*1.10=0.51\)</span> para niveles de arsénico. Usando la regla de la división por 4, las diferencias en la probabilidad de cambio entre arsénico y distancia son de 13% y 8% respectivamente.</p></li>
+</ul>
+</div>
+<div id="comparacion-de-coeficientes-cuando-anades-un-predictor" class="section level3">
+<h3><span class="header-section-number">7.4.7</span> Comparación de coeficientes cuando añades un predictor</h3>
+<p>El coeficiente de distancia cambio de <span class="math inline">\(-0.62\)</span> en el modelo original a <span class="math inline">\(0.90\)</span> cuando el nivel de arsénico se añade al modelo. Este cambio ocurre porque los pozos que están lejos del pozo seguro más cercano probablemente tienen niveles altos de arsénico.</p>
+</div>
+<div id="graficar-el-modelo-ajustado-con-dos-predictores" class="section level3">
+<h3><span class="header-section-number">7.4.8</span> Graficar el modelo ajustado con dos predictores</h3>
+<p>La forma de ver esta relación entre los predictores y <span class="math inline">\(P(y=1)\)</span> como una función en una superficie de 3 dimensiones donde los dos predictores se ponen en los ejes horizontales. Estas gráficas suelen ser difíciles de leer por lo cual se hacen generalmente gráficas separadas:</p>
+<p>stat_function(fun = function(x){invlogit(fit.3<span class="math inline">\(coef[1] + fit.3\)</span>coef[2]*x + 0.5}, xlim = c(-0.3,3.5)) +</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(wells, <span class="kw">aes</span>(<span class="dt">x =</span> dist_<span class="dv">100</span>, <span class="dt">y =</span> <span class="cf">switch</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.308</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">size =</span> <span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){<span class="kw">invlogit</span>(fit.<span class="dv">3</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">3</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="fl">3.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){<span class="kw">invlogit</span>(fit.<span class="dv">3</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">3</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="fl">3.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">0.50</span>, <span class="dt">y =</span> <span class="fl">0.45</span>, <span class="dt">label =</span> <span class="st">&quot;As=0.5&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">0.75</span>, <span class="dt">y =</span> <span class="fl">0.65</span>, <span class="dt">label =</span> <span class="st">&quot;As=1.0&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Escogemos niveles de arsénico de 0.5 y 1.0 porque 0.5 es el valor mínimo de la concentración de arsénico (porque estamos estudiando únicamente pozos peligrosos), y una diferencia de 0.5 representa una comparación razonable, dada la distribución de los niveles de arsénico.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(wells, <span class="kw">aes</span>(<span class="dt">x =</span> arsenic, <span class="dt">y =</span> <span class="cf">switch</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.308</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">size =</span> <span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){<span class="kw">invlogit</span>(fit.<span class="dv">3</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span>fit.<span class="dv">3</span><span class="op">$</span>coef[<span class="dv">3</span>]<span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="dv">10</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){<span class="kw">invlogit</span>(fit.<span class="dv">3</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span>fit.<span class="dv">3</span><span class="op">$</span>coef[<span class="dv">3</span>]<span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="dv">10</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">0.7</span>, <span class="dt">y =</span> <span class="fl">0.80</span>, <span class="dt">label =</span> <span class="st">&quot;dist=0&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">2.0</span>, <span class="dt">y =</span> <span class="fl">0.65</span>, <span class="dt">label =</span> <span class="st">&quot;dist=50&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>La distancia de 0 representa la distancia mínima de un pozo seguro a un pozo posiblemente seguro. Dada la distribución de la distancia, una diferencia de 50 metros representa en si misma un diferencia sustancial en la probabilidad de cambiar de pozo.</p>
+</div>
+</div>
+<div id="aprendizaje-de-coeficientes-para-regresion-logistica-binomial." class="section level2">
+<h2><span class="header-section-number">7.5</span> Aprendizaje de coeficientes para regresión logística (binomial).</h2>
+<p>Ahora escribimos el modelo cuando tenemos más de una entrada. La idea es la misma: primero combinamos las variables linealmente usando pesos <span class="math inline">\(\beta\)</span>, y despúes comprimimos a <span class="math inline">\([0,1]\)</span> usando la función logística:</p>
+
+<div class="comentario">
+El modelo de regresión logística está dado por <span class="math display">\[p_1(x)=p_1(x;\beta)= h(\beta_0+\beta_1x_1 + \beta_2x_2 +\cdots + \beta_p x_p),\]</span> y <span class="math display">\[p_0(x)=p_0(x;\beta)=1-p_1(x;\beta),\]</span> donde <span class="math inline">\(\beta=(\beta_0,\beta_1, \ldots, \beta_p)\)</span>.
+</div>
+
+<p>Escribimos</p>
+<p><span class="math display">\[p_1(x)=p_1(x;\beta)= h(\beta_0+\beta_1x_1 + \beta_2x_2 +\cdots + \beta_p x_p),\]</span></p>
+<p>y definimos la <strong><em>devianza</em></strong> como</p>
+<p><span class="math display">\[D(\beta) = -2\sum_{i=1}^N \log(p_{y^{(i)}} (x^{(i)})).\]</span></p>
+
+<div class="nota">
+<p>En regresión logística y otros modelos de datos discretos, no tiene sentido calcular la desviación estándar residual y <span class="math inline">\(R^2\)</span>, por más o menos la misma razón por la que los modelos no se ajustan simplemente por mínimos cuadrados: el error cuadrado no es la medida matemáticamente óptima del error del modelo. En cambio, es estándar usar la <strong><em>devianza</em></strong>, un resumen estadístico del ajuste del modelo, definido para la regresión logística y otros modelos lineales generalizados para ser una analogía con la desviación estándar residual.</p>
+<p>Por ahora, consideremos las siguientes propiedades de la desvianza:</p>
+<ul>
+<li><p>La devianza es una mediada del error, menor devianza significa mejor ajuste de los datos.</p></li>
+<li><p>Si un predictor que es únicamente ruido aleatorio se agrega al modelo, esperaríamos que la devianza disminuyera en 1, en promedio.</p></li>
+<li><p>Si se añade al modelo un predictor informativo, se espera que la devianza disminuya en más de 1 en promedio. Cuando <span class="math inline">\(k\)</span> predictores se añaden al modelo, esperamos que la devianza disminuya en más de <span class="math inline">\(k\)</span>.</p></li>
+</ul>
+Los <strong>coeficientes estimados por regresión logística</strong> están dados por <span class="math display">\[\hat{\beta} = \arg\min_\beta D(\beta).\]</span>
+</div>
+
+<p class="espacio">
+</p>
+
+<div class="information">
+<ul>
+<li><p>El nombre de devianza se utiliza de manera diferente en distintos lugares (pero para cosas similares).</p></li>
+<li><p>Usamos el factor 2 por razones históricas (la medida de devianza definida en estadística tiene un 2, para usar más fácilmente en pruebas de hipótesis relacionadas con comparaciones de modelos).</p></li>
+<li>No es fácil interpretar la devianza, pero es útil para comparar modelos.
+</div>
+</li>
+</ul>
+<p><br></p>
+<p><br></p>
+</div>
+<div id="descenso-en-gradiente" class="section level2">
+<h2><span class="header-section-number">7.6</span> Descenso en gradiente</h2>
+<p>Aunque el problema de mínimos cuadrados se puede resolver analíticamente, proponemos un método numérico básico que es efectivo y puede escalarse a problemas grandes de manera relativamente simple: descenso en gradiente, o descenso máximo.</p>
+<p>Supongamos que una función <span class="math inline">\(h(x)\)</span> es convexa y tiene un mínimo. La idea de descenso en gradiente es comenzar con un candidato inicial <span class="math inline">\(z_0\)</span> y calcular la derivada en <span class="math inline">\(z^{(0)}\)</span>. Si <span class="math inline">\(h&#39;(z^{(0)})&gt;0\)</span>, la función es creciente en <span class="math inline">\(z^{(0)}\)</span> y nos movemos ligeramente a la izquierda para obtener un nuevo candidato <span class="math inline">\(z^{(1)}\)</span>. si <span class="math inline">\(h&#39;(z^{(0)})&lt;0\)</span>, la función es decreciente en <span class="math inline">\(z^{(0)}\)</span> y nos movemos ligeramente a la derecha para obtener un nuevo candidato <span class="math inline">\(z^{(1)}\)</span>. Iteramos este proceso hasta que la derivada es cercana a cero (estamos cerca del óptimo).</p>
+<p>Si <span class="math inline">\(\eta&gt;0\)</span> es una cantidad chica, podemos escribir</p>
+<p><span class="math display">\[z^{(1)} = z^{(0)} - \eta \,h&#39;(z^{(0)}).\]</span></p>
+<p>Nótese que cuando la derivada tiene magnitud alta, el movimiento de <span class="math inline">\(z^{(0)}\)</span> a <span class="math inline">\(z^{(1)}\)</span> es más grande, y siempre nos movemos una fracción de la derivada. En general hacemos <span class="math display">\[z^{(j+1)} = z^{(j)} - \eta\,h&#39;(z^{(j)})\]</span> para obtener una sucesión <span class="math inline">\(z^{(0)},z^{(1)},\ldots\)</span>. Esperamos a que <span class="math inline">\(z^{(j)}\)</span> converja para terminar la iteración.</p>
+<div id="ejemplo-4" class="section level4">
+<h4><span class="header-section-number">7.6.0.1</span> Ejemplo</h4>
+<p>Si tenemos</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="cf">function</span>(x) x<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(x <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(x<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<p>Calculamos (a mano):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h_deriv &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="dv">2</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>(x <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>x<span class="op">/</span>(x<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<p>Ahora iteramos con <span class="math inline">\(\eta = 0.4\)</span> y valor inicial <span class="math inline">\(z_0=5\)</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="dv">5</span>
+eta &lt;-<span class="st"> </span><span class="fl">0.4</span>
+descenso &lt;-<span class="st"> </span><span class="cf">function</span>(n, z_<span class="dv">0</span>, eta, h_deriv){
+  z &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>,n, <span class="kw">length</span>(z_<span class="dv">0</span>))
+  z[<span class="dv">1</span>, ] &lt;-<span class="st"> </span>z_<span class="dv">0</span>
+  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>(n<span class="op">-</span><span class="dv">1</span>)){
+    z[i<span class="op">+</span><span class="dv">1</span>, ] &lt;-<span class="st"> </span>z[i, ] <span class="op">-</span><span class="st"> </span>eta <span class="op">*</span><span class="st"> </span><span class="kw">h_deriv</span>(z[i, ])
+  }
+  z
+}
+z &lt;-<span class="st"> </span><span class="kw">descenso</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="fl">0.1</span>, h_deriv)
+z
+<span class="co">#&gt;       [,1]</span>
+<span class="co">#&gt;  [1,] 5.00</span>
+<span class="co">#&gt;  [2,] 3.44</span>
+<span class="co">#&gt;  [3,] 2.52</span>
+<span class="co">#&gt;  [4,] 1.98</span>
+<span class="co">#&gt;  [5,] 1.67</span>
+<span class="co">#&gt;  [6,] 1.49</span>
+<span class="co">#&gt;  [7,] 1.39</span>
+<span class="co">#&gt;  [8,] 1.33</span>
+<span class="co">#&gt;  [9,] 1.29</span>
+<span class="co">#&gt; [10,] 1.27</span>
+<span class="co">#&gt; [11,] 1.26</span>
+<span class="co">#&gt; [12,] 1.25</span>
+<span class="co">#&gt; [13,] 1.25</span>
+<span class="co">#&gt; [14,] 1.25</span>
+<span class="co">#&gt; [15,] 1.25</span>
+<span class="co">#&gt; [16,] 1.25</span>
+<span class="co">#&gt; [17,] 1.24</span>
+<span class="co">#&gt; [18,] 1.24</span>
+<span class="co">#&gt; [19,] 1.24</span>
+<span class="co">#&gt; [20,] 1.24</span></code></pre></div>
+<p>Y vemos que estamos cerca de la convergencia.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">curve</span>(h, <span class="op">-</span><span class="dv">3</span>, <span class="dv">6</span>)
+<span class="kw">points</span>(z[,<span class="dv">1</span>], <span class="kw">h</span>(z))
+<span class="kw">text</span>(z[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>], <span class="kw">h</span>(z[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>]), <span class="dt">pos =</span> <span class="dv">3</span>)</code></pre></div>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="seleccion-de-tamano-de-paso-eta" class="section level3">
+<h3><span class="header-section-number">7.6.1</span> Selección de tamaño de paso <span class="math inline">\(\eta\)</span></h3>
+<p>Si hacemos <span class="math inline">\(\eta\)</span> muy chico, el algoritmo puede tardar mucho en converger:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">descenso</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="fl">0.01</span>, h_deriv)
+<span class="kw">curve</span>(h, <span class="op">-</span><span class="dv">3</span>, <span class="dv">6</span>)
+<span class="kw">points</span>(z, <span class="kw">h</span>(z))
+<span class="kw">text</span>(z[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>], <span class="kw">h</span>(z[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>]), <span class="dt">pos =</span> <span class="dv">3</span>)</code></pre></div>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-34-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Si hacemos <span class="math inline">\(\eta\)</span> muy grande, el algoritmo puede divergir:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">descenso</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="fl">1.5</span>, h_deriv)
+z
+<span class="co">#&gt;            [,1]</span>
+<span class="co">#&gt;  [1,]  5.00e+00</span>
+<span class="co">#&gt;  [2,] -1.84e+01</span>
+<span class="co">#&gt;  [3,]  9.80e+01</span>
+<span class="co">#&gt;  [4,] -4.84e+02</span>
+<span class="co">#&gt;  [5,]  2.42e+03</span>
+<span class="co">#&gt;  [6,] -1.21e+04</span>
+<span class="co">#&gt;  [7,]  6.06e+04</span>
+<span class="co">#&gt;  [8,] -3.03e+05</span>
+<span class="co">#&gt;  [9,]  1.51e+06</span>
+<span class="co">#&gt; [10,] -7.57e+06</span>
+<span class="co">#&gt; [11,]  3.79e+07</span>
+<span class="co">#&gt; [12,] -1.89e+08</span>
+<span class="co">#&gt; [13,]  9.47e+08</span>
+<span class="co">#&gt; [14,] -4.73e+09</span>
+<span class="co">#&gt; [15,]  2.37e+10</span>
+<span class="co">#&gt; [16,] -1.18e+11</span>
+<span class="co">#&gt; [17,]  5.92e+11</span>
+<span class="co">#&gt; [18,] -2.96e+12</span>
+<span class="co">#&gt; [19,]  1.48e+13</span>
+<span class="co">#&gt; [20,] -7.40e+13</span></code></pre></div>
+<div class="comentario">
+<p>
+Es necesario ajustar el tamaño de paso para cada problema particular. Si la convergencia es muy lenta, podemos incrementarlo. Si las iteraciones divergen, podemos disminuirlo.
+</p>
+</div>
+</div>
+<div id="funciones-de-varias-variables" class="section level3">
+<h3><span class="header-section-number">7.6.2</span> Funciones de varias variables</h3>
+<p>Si ahora <span class="math inline">\(h(z)\)</span> es una función de <span class="math inline">\(p\)</span> variables, podemos intentar la misma idea usando el gradiente. Por cálculo sabemos que el gradiente apunta en la dirección de máximo crecimiento local. El gradiente es el vector columna con las derivadas parciales de <span class="math inline">\(h\)</span>:</p>
+<p><span class="math display">\[\nabla h(z) = \left( \frac{\partial h}{\partial z_1}, \frac{\partial h}{\partial z_2}, \ldots,    \frac{\partial h}{\partial z_p} \right)^t\]</span> Y el paso de iteración, dado un valor inicial <span class="math inline">\(z_0\)</span> y un tamaño de paso <span class="math inline">\(\eta &gt;0\)</span> es</p>
+<p><span class="math display">\[z^{(i+1)} = z^{(i)} - \eta \nabla h(z^{(i)})\]</span></p>
+<p>Las mismas consideraciones acerca del tamaño de paso <span class="math inline">\(\eta\)</span> aplican en el problema multivariado.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="cf">function</span>(z) {
+  z[<span class="dv">1</span>]<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>z[<span class="dv">2</span>]<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>z[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>z[<span class="dv">2</span>]
+}
+h_gr &lt;-<span class="st"> </span><span class="cf">function</span>(z_<span class="dv">1</span>,z_<span class="dv">2</span>) <span class="kw">apply</span>(<span class="kw">cbind</span>(z_<span class="dv">1</span>, z_<span class="dv">2</span>), <span class="dv">1</span>, h)
+grid_graf &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">z_1 =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="fl">0.1</span>), <span class="dt">z_2 =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="fl">0.1</span>))
+grid_graf &lt;-<span class="st"> </span>grid_graf <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">mutate</span>( <span class="dt">val =</span> <span class="kw">apply</span>(<span class="kw">cbind</span>(z_<span class="dv">1</span>,z_<span class="dv">2</span>), <span class="dv">1</span>, h))
+gr_contour &lt;-<span class="st"> </span><span class="kw">ggplot</span>(grid_graf, <span class="kw">aes</span>(<span class="dt">x =</span> z_<span class="dv">1</span>, <span class="dt">y =</span> z_<span class="dv">2</span>, <span class="dt">z =</span> val)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_contour</span>(<span class="dt">binwidth =</span> <span class="fl">1.5</span>, <span class="kw">aes</span>(<span class="dt">colour =</span> ..level..))
+gr_contour</code></pre></div>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>El gradiente está dado por</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h_grad &lt;-<span class="st"> </span><span class="cf">function</span>(z){
+  <span class="kw">c</span>(<span class="dv">2</span><span class="op">*</span>z[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>z[<span class="dv">2</span>], <span class="dv">2</span><span class="op">*</span>z[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>z[<span class="dv">1</span>])
+}</code></pre></div>
+<p>Podemos graficar la dirección de máximo descenso para diversos puntos. Estas direcciones son ortogonales a la curva de nivel que pasa por cada uno de los puntos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grad_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">h_grad</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">2</span>))
+grad_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">h_grad</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))
+eta &lt;-<span class="st"> </span><span class="fl">0.2</span>
+gr_contour <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="fl">0.0</span>, <span class="dt">xend=</span><span class="fl">0.0</span><span class="op">-</span>eta<span class="op">*</span>grad_<span class="dv">1</span>[<span class="dv">1</span>], <span class="dt">y=</span><span class="op">-</span><span class="dv">2</span>,
+     <span class="dt">yend=</span><span class="op">-</span><span class="dv">2</span><span class="op">-</span>eta<span class="op">*</span>grad_<span class="dv">1</span>[<span class="dv">2</span>]),
+    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.2</span>,<span class="st">&quot;cm&quot;</span>)))<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="dv">1</span>, <span class="dt">xend=</span><span class="dv">1</span><span class="op">-</span>eta<span class="op">*</span>grad_<span class="dv">2</span>[<span class="dv">1</span>], <span class="dt">y=</span><span class="dv">1</span>,
+     <span class="dt">yend=</span><span class="dv">1</span><span class="op">-</span>eta<span class="op">*</span>grad_<span class="dv">2</span>[<span class="dv">2</span>]),
+    <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.2</span>,<span class="st">&quot;cm&quot;</span>)))<span class="op">+</span><span class="st"> </span><span class="kw">coord_fixed</span>(<span class="dt">ratio =</span> <span class="dv">1</span>)</code></pre></div>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Y aplicamos descenso en gradiente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">inicial &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)
+iteraciones &lt;-<span class="st"> </span><span class="kw">descenso</span>(<span class="dv">20</span>, inicial , <span class="fl">0.1</span>, h_grad)
+iteraciones
+<span class="co">#&gt;        [,1]  [,2]</span>
+<span class="co">#&gt;  [1,] 3.000 1.000</span>
+<span class="co">#&gt;  [2,] 2.500 1.100</span>
+<span class="co">#&gt;  [3,] 2.110 1.130</span>
+<span class="co">#&gt;  [4,] 1.801 1.115</span>
+<span class="co">#&gt;  [5,] 1.552 1.072</span>
+<span class="co">#&gt;  [6,] 1.349 1.013</span>
+<span class="co">#&gt;  [7,] 1.181 0.945</span>
+<span class="co">#&gt;  [8,] 1.039 0.874</span>
+<span class="co">#&gt;  [9,] 0.919 0.803</span>
+<span class="co">#&gt; [10,] 0.815 0.734</span>
+<span class="co">#&gt; [11,] 0.726 0.669</span>
+<span class="co">#&gt; [12,] 0.647 0.608</span>
+<span class="co">#&gt; [13,] 0.579 0.551</span>
+<span class="co">#&gt; [14,] 0.518 0.499</span>
+<span class="co">#&gt; [15,] 0.464 0.451</span>
+<span class="co">#&gt; [16,] 0.417 0.407</span>
+<span class="co">#&gt; [17,] 0.374 0.367</span>
+<span class="co">#&gt; [18,] 0.336 0.331</span>
+<span class="co">#&gt; [19,] 0.302 0.299</span>
+<span class="co">#&gt; [20,] 0.271 0.269</span>
+ <span class="kw">ggplot</span>(<span class="dt">data=</span> grid_graf) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_contour</span>(<span class="dt">binwidth =</span> <span class="fl">1.5</span>, <span class="kw">aes</span>(<span class="dt">x =</span> z_<span class="dv">1</span>, <span class="dt">y =</span> z_<span class="dv">2</span>, <span class="dt">z =</span> val, <span class="dt">colour =</span> ..level..)) <span class="op">+</span><span class="st"> </span>
+<span class="st">   </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(iteraciones), <span class="kw">aes</span>(<span class="dt">x=</span>X1, <span class="dt">y=</span>X2), <span class="dt">colour =</span> <span class="st">&#39;red&#39;</span>)</code></pre></div>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Para minimizar utilizaremos descenso en gradiente (aunque hay más opciones).</p>
+<p>La última expresión para <span class="math inline">\(D(\beta)\)</span> puede ser difícil de operar, pero podemos reescribir como: <span class="math display">\[D(\beta) = -2\sum_{i=1}^N y^{(i)} \log(p_{1} (x^{(i)})) + (1-y^{(i)}) \log(p_{0} (x^{(i)})).\]</span></p>
+<p>Para hacer descenso en gradiente, necesitamos encontrar <span class="math inline">\(\frac{\partial D}{\beta_j}\)</span> para <span class="math inline">\(j=1,2,\ldots,p\)</span>.</p>
+<p>Igual que en regresión lineal, comenzamos por calcular la derivada de un término:</p>
+<p><span class="math display">\[D^{(i)} (\beta) = y^{(i)} \log(p_{1} (x^{(i)})) + (1-y^{(i)}) \log(1-p_{1} (x^{(i)}))\]</span></p>
+<p>Calculamos primero las derivadas de <span class="math inline">\(p_1 (x^{(i)};\beta)\)</span> (demostrar la siguiente ecuación): <span class="math display">\[\frac{\partial  p_1}{\partial \beta_0} = {p_1(x^{(i)})(1-p_1(x^{(i)}))},\]</span> y <span class="math display">\[\frac{\partial  p_1}{\partial \beta_j} = p_1(x^{(i)})(1-p_1(x^{(i)}))x_j^{(i)},\]</span></p>
+Así que
+<span class="math display">\[\begin{align*}
+\frac{\partial D^{(i)}}{\partial \beta_j} &amp;= \frac{y^{(i)}}{(p_1(x^{(i)}))}\frac{\partial  p_1}{\partial \beta_j} -
+\frac{1- y^{(i)}}{(1-p_1(x^{(i)}))}\frac{\partial  p_1}{\partial \beta_j} \\
+ &amp;= \left( \frac{y^{(i)} - p_1(x^{(i)})}{(p_1(x^{(i)}))(1-p_1(x^{(i)}))}  \right )\frac{\partial  p_1}{\partial \beta_j} \\
+ &amp; = \left ( y^{(i)} - p_1(x^{(i)}) \right ) x_j^{(i)} \\ 
+\end{align*}\]</span>
+<p>para <span class="math inline">\(j=0,1,\ldots,p\)</span>, usando la convención de <span class="math inline">\(x_0^{(i)}=1\)</span>. Podemos sumar ahora sobre la muestra de entrenamiento para obtener</p>
+<p><span class="math display">\[ \frac{\partial D}{\partial\beta_j} = - 2\sum_{i=1}^N  (y^{(i)}-p(x^{(i)}))x_j^{(i)}\]</span></p>
+<p>De modo que,</p>
+
+<div class="comentario">
+Para un paso <span class="math inline">\(\eta&gt;0\)</span> fijo, la iteración de descenso para regresión logística para el coeficiente <span class="math inline">\(\beta_j\)</span> es: <span class="math display">\[\beta_{j}^{(k+1)} = \beta_j^{(k)} + {2\eta} \sum_{i=1}^N (y^{(i)}-p(x^{(i)}))x_j^{(i)}\]</span> para <span class="math inline">\(j=0,1,\ldots, p\)</span>, donde fijamos <span class="math inline">\(x_0^{(i)}=1\)</span>.
+</div>
+
+<p>Podríamos usar las siguientes implementaciones:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devianza_calc &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){
+  dev_fun &lt;-<span class="st"> </span><span class="cf">function</span>(beta){
+    p_beta &lt;-<span class="st"> </span><span class="kw">h</span>(<span class="kw">as.matrix</span>(<span class="kw">cbind</span>(<span class="dv">1</span>, x)) <span class="op">%*%</span><span class="st"> </span>beta) 
+   <span class="op">-</span><span class="dv">2</span><span class="op">*</span><span class="kw">sum</span>(y<span class="op">*</span><span class="kw">log</span>(p_beta) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">-</span>y)<span class="op">*</span><span class="kw">log</span>(<span class="dv">1</span><span class="op">-</span>p_beta))
+  }
+  dev_fun
+}
+
+grad_calc &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){
+  salida_grad &lt;-<span class="st"> </span><span class="cf">function</span>(beta){
+    p_beta &lt;-<span class="st"> </span><span class="kw">h</span>(<span class="kw">as.matrix</span>(<span class="kw">cbind</span>(<span class="dv">1</span>, x)) <span class="op">%*%</span><span class="st"> </span>beta) 
+    e &lt;-<span class="st"> </span>y <span class="op">-</span><span class="st"> </span>p_beta
+    grad_out &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">2</span><span class="op">*</span><span class="kw">as.numeric</span>(<span class="kw">t</span>(<span class="kw">cbind</span>(<span class="dv">1</span>,x)) <span class="op">%*%</span><span class="st"> </span>e)
+    <span class="kw">names</span>(grad_out) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Intercept&#39;</span>, <span class="kw">colnames</span>(x))
+    grad_out
+  }
+  salida_grad
+}
+descenso &lt;-<span class="st"> </span><span class="cf">function</span>(n, z_<span class="dv">0</span>, eta, h_deriv){
+  z &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>,n, <span class="kw">length</span>(z_<span class="dv">0</span>))
+  z[<span class="dv">1</span>, ] &lt;-<span class="st"> </span>z_<span class="dv">0</span>
+  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>(n<span class="op">-</span><span class="dv">1</span>)){
+    z[i<span class="op">+</span><span class="dv">1</span>, ] &lt;-<span class="st"> </span>z[i, ] <span class="op">-</span><span class="st"> </span>eta <span class="op">*</span><span class="st"> </span><span class="kw">h_deriv</span>(z[i, ])
+  }
+  z
+}</code></pre></div>
+<div id="ejemplo-credito-maximo" class="section level4 unnumbered">
+<h4>Ejemplo: crédito máximo</h4>
+<p>Probemos nuestros cálculos con el ejemplo de 1 entrada de tarjetas de crédito.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="cf">function</span>(x){
+  <span class="kw">ifelse</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">15</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.007</span> <span class="op">*</span><span class="st"> </span>(x <span class="op">-</span><span class="st"> </span><span class="dv">15</span>))
+}
+<span class="kw">curve</span>(p_<span class="dv">1</span>, <span class="dv">0</span>,<span class="dv">100</span>, <span class="dt">xlab =</span> <span class="st">&#39;Porcentaje de crédito máximo&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;p_1(x)&#39;</span>,
+  <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-43-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">pmin</span>(<span class="kw">rexp</span>(<span class="dv">500</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">30</span>),<span class="dv">100</span>)
+probs &lt;-<span class="st"> </span><span class="kw">p_1</span>(x)
+y &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">rbinom</span>(<span class="kw">length</span>(x), <span class="dv">1</span>, probs)<span class="op">==</span><span class="dv">1</span> ,<span class="dv">1</span>, <span class="dv">2</span>)
+datos &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> x, <span class="dt">p_1 =</span> probs, <span class="dt">y =</span> <span class="kw">factor</span>(y))
+datos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(x, y) 
+<span class="co">#&gt; # A tibble: 500 x 2</span>
+<span class="co">#&gt;       x y    </span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;fct&gt;</span>
+<span class="co">#&gt; 1  4.74 1    </span>
+<span class="co">#&gt; 2 60.1  2    </span>
+<span class="co">#&gt; 3 20.6  1    </span>
+<span class="co">#&gt; 4 62.6  1    </span>
+<span class="co">#&gt; 5 15.0  1    </span>
+<span class="co">#&gt; 6 63.7  1    </span>
+<span class="co">#&gt; # ... with 494 more rows</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos<span class="op">$</span>y &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(datos<span class="op">$</span>y<span class="op">==</span><span class="dv">1</span>)
+datos &lt;-<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span>ungroup <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">x_s =</span> (x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x))<span class="op">/</span><span class="kw">sd</span>(x))
+devianza &lt;-<span class="st"> </span><span class="kw">devianza_calc</span>(datos[, <span class="st">&#39;x_s&#39;</span>, <span class="dt">drop =</span> <span class="ot">FALSE</span>], datos<span class="op">$</span>y)
+grad &lt;-<span class="st"> </span><span class="kw">grad_calc</span>(datos[, <span class="st">&#39;x_s&#39;</span>, <span class="dt">drop =</span> <span class="ot">FALSE</span>], datos<span class="op">$</span>y)
+h &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">exp</span>(x)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(x)) }
+<span class="kw">grad</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))
+<span class="co">#&gt; Intercept       x_s </span>
+<span class="co">#&gt;      -376       359</span>
+<span class="kw">grad</span>(<span class="kw">c</span>(<span class="fl">0.5</span>,<span class="op">-</span><span class="fl">0.1</span>))
+<span class="co">#&gt; Intercept       x_s </span>
+<span class="co">#&gt;      -238       137</span></code></pre></div>
+<p>Verificamos cálculo de gradiente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="kw">devianza</span>(<span class="kw">c</span>(<span class="fl">0.5</span><span class="op">+</span><span class="fl">0.0001</span>,<span class="op">-</span><span class="fl">0.1</span>)) <span class="op">-</span><span class="st"> </span><span class="kw">devianza</span>(<span class="kw">c</span>(<span class="fl">0.5</span>,<span class="op">-</span><span class="fl">0.1</span>)))<span class="op">/</span><span class="fl">0.0001</span>
+<span class="co">#&gt; [1] -238</span>
+(<span class="kw">devianza</span>(<span class="kw">c</span>(<span class="fl">0.5</span>,<span class="op">-</span><span class="fl">0.1</span><span class="op">+</span><span class="fl">0.0001</span>)) <span class="op">-</span><span class="st"> </span><span class="kw">devianza</span>(<span class="kw">c</span>(<span class="fl">0.5</span>,<span class="op">-</span><span class="fl">0.1</span>)))<span class="op">/</span><span class="fl">0.0001</span>
+<span class="co">#&gt; [1] 137</span></code></pre></div>
+<p>Y hacemos descenso:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iteraciones &lt;-<span class="st"> </span><span class="kw">descenso</span>(<span class="dv">200</span>, <span class="dt">z_0=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">eta =</span> <span class="fl">0.001</span>, <span class="dt">h_deriv =</span> grad)
+<span class="kw">tail</span>(iteraciones, <span class="dv">20</span>)
+<span class="co">#&gt;        [,1]  [,2]</span>
+<span class="co">#&gt; [181,] 2.25 -1.12</span>
+<span class="co">#&gt; [182,] 2.25 -1.12</span>
+<span class="co">#&gt; [183,] 2.25 -1.12</span>
+<span class="co">#&gt; [184,] 2.25 -1.12</span>
+<span class="co">#&gt; [185,] 2.25 -1.12</span>
+<span class="co">#&gt; [186,] 2.25 -1.12</span>
+<span class="co">#&gt; [187,] 2.25 -1.12</span>
+<span class="co">#&gt; [188,] 2.25 -1.12</span>
+<span class="co">#&gt; [189,] 2.25 -1.12</span>
+<span class="co">#&gt; [190,] 2.25 -1.12</span>
+<span class="co">#&gt; [191,] 2.25 -1.12</span>
+<span class="co">#&gt; [192,] 2.25 -1.12</span>
+<span class="co">#&gt; [193,] 2.25 -1.12</span>
+<span class="co">#&gt; [194,] 2.25 -1.12</span>
+<span class="co">#&gt; [195,] 2.25 -1.12</span>
+<span class="co">#&gt; [196,] 2.25 -1.12</span>
+<span class="co">#&gt; [197,] 2.25 -1.12</span>
+<span class="co">#&gt; [198,] 2.25 -1.12</span>
+<span class="co">#&gt; [199,] 2.25 -1.12</span>
+<span class="co">#&gt; [200,] 2.25 -1.12</span>
+<span class="kw">plot</span>(<span class="kw">apply</span>(iteraciones, <span class="dv">1</span>, devianza))
+<span class="kw">matplot</span>(iteraciones)</code></pre></div>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-47-1.png" width="70%" style="display: block; margin: auto;" /><img src="07-logit-2_files/figure-html/unnamed-chunk-47-2.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Comparamos con glm:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(y<span class="op">~</span>x_s, <span class="dt">data=</span>datos, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>) 
+<span class="kw">coef</span>(mod_<span class="dv">1</span>)
+<span class="co">#&gt; (Intercept)         x_s </span>
+<span class="co">#&gt;        2.25       -1.12</span>
+mod_<span class="dv">1</span><span class="op">$</span>deviance
+<span class="co">#&gt; [1] 315</span>
+<span class="kw">devianza</span>(iteraciones[<span class="dv">200</span>,])
+<span class="co">#&gt; [1] 315</span></code></pre></div>
+<p>Nótese que esta devianza está calculada sin dividir intre entre el número de casos. Podemos calcular la devianza promedio de entrenamiento haciendo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devianza</span>(iteraciones[<span class="dv">200</span>,])<span class="op">/</span><span class="kw">nrow</span>(datos)
+<span class="co">#&gt; [1] 0.629</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="ejemplo-diabetes" class="section level2">
+<h2><span class="header-section-number">7.7</span> Ejemplo: diabetes</h2>
+<p>Consideremos los datos <code>Pima.tr</code> del paqute <code>MASS</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diabetes &lt;-<span class="st"> </span>MASS<span class="op">::</span>Pima.tr
+diabetes <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">npreg</th>
+<th align="right">glu</th>
+<th align="right">bp</th>
+<th align="right">skin</th>
+<th align="right">bmi</th>
+<th align="right">ped</th>
+<th align="right">age</th>
+<th align="left">type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>133</td>
+<td align="right">6</td>
+<td align="right">80</td>
+<td align="right">66</td>
+<td align="right">30</td>
+<td align="right">26.2</td>
+<td align="right">0.313</td>
+<td align="right">41</td>
+<td align="left">No</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td align="right">4</td>
+<td align="right">99</td>
+<td align="right">76</td>
+<td align="right">15</td>
+<td align="right">23.2</td>
+<td align="right">0.223</td>
+<td align="right">21</td>
+<td align="left">No</td>
+</tr>
+<tr class="odd">
+<td>41</td>
+<td align="right">8</td>
+<td align="right">176</td>
+<td align="right">90</td>
+<td align="right">34</td>
+<td align="right">33.7</td>
+<td align="right">0.467</td>
+<td align="right">58</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="even">
+<td>175</td>
+<td align="right">0</td>
+<td align="right">95</td>
+<td align="right">85</td>
+<td align="right">25</td>
+<td align="right">37.4</td>
+<td align="right">0.247</td>
+<td align="right">24</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="odd">
+<td>37</td>
+<td align="right">1</td>
+<td align="right">79</td>
+<td align="right">80</td>
+<td align="right">25</td>
+<td align="right">25.4</td>
+<td align="right">0.583</td>
+<td align="right">22</td>
+<td align="left">No</td>
+</tr>
+<tr class="even">
+<td>102</td>
+<td align="right">4</td>
+<td align="right">117</td>
+<td align="right">62</td>
+<td align="right">12</td>
+<td align="right">29.7</td>
+<td align="right">0.380</td>
+<td align="right">30</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="odd">
+<td>26</td>
+<td align="right">9</td>
+<td align="right">164</td>
+<td align="right">84</td>
+<td align="right">21</td>
+<td align="right">30.8</td>
+<td align="right">0.831</td>
+<td align="right">32</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="even">
+<td>145</td>
+<td align="right">3</td>
+<td align="right">120</td>
+<td align="right">70</td>
+<td align="right">30</td>
+<td align="right">42.9</td>
+<td align="right">0.452</td>
+<td align="right">30</td>
+<td align="left">No</td>
+</tr>
+<tr class="odd">
+<td>69</td>
+<td align="right">0</td>
+<td align="right">131</td>
+<td align="right">66</td>
+<td align="right">40</td>
+<td align="right">34.3</td>
+<td align="right">0.196</td>
+<td align="right">22</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="even">
+<td>51</td>
+<td align="right">3</td>
+<td align="right">116</td>
+<td align="right">74</td>
+<td align="right">15</td>
+<td align="right">26.3</td>
+<td align="right">0.107</td>
+<td align="right">24</td>
+<td align="left">No</td>
+</tr>
+</tbody>
+</table>
+<p>Se trata de una población de 200 mujeres de al menos 21 años de edad, con un ancestro de los indios Pima, que viven alrededor de Phoenix, Arizona. A los individuos se les midió el nivel de glucosa y otras características para investigar si tenían diabetes de acuerdo con el US National Institute of Diabetes and Digestive and Kidney Diseases.</p>
+<p>Estos datos tiene las siguientes columnas:</p>
+<ul>
+<li><p>npreg: número de embarazos.</p></li>
+<li><p>glu: concentración de glucosa medida mediante un test oral de tolerancia</p></li>
+<li><p>bp: presión arterial diastólica (mmHg)</p></li>
+<li><p>skin: grosor de piel en triceps (mm)</p></li>
+<li><p>bmi: índice de masa corporal (peso en kg/(estatura en m)^2)</p></li>
+<li><p>ped: función diabetes pedigree</p></li>
+<li><p>age: edad en años</p></li>
+<li><p>type: Yes o No, diagnóstico de diabetes</p></li>
+</ul>
+<p>Normalizamos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diabetes<span class="op">$</span>id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(diabetes)
+datos_norm &lt;-<span class="st"> </span>diabetes <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(variable, valor, npreg<span class="op">:</span>age) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(variable) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">media =</span> <span class="kw">mean</span>(valor), <span class="dt">de =</span> <span class="kw">sd</span>(valor))
+
+normalizar &lt;-<span class="st"> </span><span class="cf">function</span>(datos, datos_norm){
+  datos <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">gather</span>(variable, valor, npreg<span class="op">:</span>age) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">left_join</span>(datos_norm) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">valor_s =</span> (valor  <span class="op">-</span><span class="st"> </span>media)<span class="op">/</span>de) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(id, type, variable, valor_s) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">spread</span>(variable, valor_s)
+}
+
+diabetes_s &lt;-<span class="st"> </span><span class="kw">normalizar</span>(diabetes, datos_norm)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>diabetes_s <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(age<span class="op">:</span>skin) <span class="op">%&gt;%</span><span class="st"> </span>as.matrix
+p &lt;-<span class="st"> </span><span class="kw">ncol</span>(x)
+y &lt;-<span class="st"> </span>diabetes_s<span class="op">$</span>type <span class="op">==</span><span class="st"> &#39;Yes&#39;</span>
+grad &lt;-<span class="st"> </span><span class="kw">grad_calc</span>(x, y)
+iteraciones &lt;-<span class="st"> </span><span class="kw">descenso</span>(<span class="dv">1000</span>, <span class="kw">rep</span>(<span class="dv">0</span>,p<span class="op">+</span><span class="dv">1</span>), <span class="fl">0.001</span>, <span class="dt">h_deriv =</span> grad)
+<span class="kw">matplot</span>(iteraciones)</code></pre></div>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-52-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diabetes_coef &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">variable =</span> <span class="kw">c</span>(<span class="st">&#39;Intercept&#39;</span>,<span class="kw">colnames</span>(x)), <span class="dt">coef =</span> iteraciones[<span class="dv">1000</span>,])
+diabetes_coef
+<span class="co">#&gt; # A tibble: 8 x 2</span>
+<span class="co">#&gt;   variable     coef</span>
+<span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Intercept -0.956 </span>
+<span class="co">#&gt; 2 age        0.452 </span>
+<span class="co">#&gt; 3 bmi        0.513 </span>
+<span class="co">#&gt; 4 bp        -0.0547</span>
+<span class="co">#&gt; 5 glu        1.02  </span>
+<span class="co">#&gt; 6 npreg      0.347 </span>
+<span class="co">#&gt; # ... with 2 more rows</span></code></pre></div>
+</div>
+<div id="observaciones-adicionales" class="section level2">
+<h2><span class="header-section-number">7.8</span> Observaciones adicionales</h2>
+<div id="maxima-verosimilitud" class="section level4 unnumbered">
+<h4>Máxima verosimilitud</h4>
+<p>Es fácil ver que este método de estimación de los coeficientes (minimizando la devianza de entrenamiento) es el método de máxima verosimilitud. La verosimilitud de la muestra de entrenamiento está dada por:</p>
+<p><span class="math display">\[L(\beta) =\prod_{i=1}^N p_{y^{(i)}} (x^{(i)})\]</span> Y la log verosimilitud es</p>
+<p><span class="math display">\[l(\beta) =\sum_{i=1}^N \log(p_{y^{(i)}} (x^{(i)})).\]</span></p>
+<p>Así que ajustar el modelo minimizando la devianza es los mismo que hacer máxima verosimilitud (condicional a los valores de <span class="math inline">\(x\)</span>).</p>
+</div>
+<div id="normalizacion" class="section level4 unnumbered">
+<h4>Normalización</h4>
+<p>Igual que en regresión lineal, en regresión logística conviene normalizar las entradas antes de ajustar el modelo</p>
+</div>
+</div>
+<div id="regresion-logistica-para-problemas-de-mas-de-2-clases" class="section level2">
+<h2><span class="header-section-number">7.9</span> Regresión logística para problemas de más de 2 clases</h2>
+<p>Consideramos ahora un problema con más de dos clases, de manera que <span class="math inline">\(Y ∈ {1,2,...,K}\)</span> (<span class="math inline">\(K\)</span> clases), y tenemos <span class="math inline">\(X = (X_1,\ldots,X_p)\)</span> entradas. ¿Cómo generalizar el modelo de regresión logística a este problema? Una estrategia es la de uno contra todos:</p>
+<p>En clasificación uno contra todos, hacemos</p>
+<ol style="list-style-type: decimal">
+<li><p>Para cada clase <span class="math inline">\(y\in\{1,\ldots,K\}\)</span> entrenamos un modelo de regresión logística (binaria) <span class="math inline">\(\hat{p}^{(y)}(x)\)</span>, tomando como positivos a los casos de 1 clase <span class="math inline">\(g\)</span>, y como negativos a todo el resto. Esto lo hacemos como en las secciones anteriores, y de manera independiente para cada clase.</p></li>
+<li><p>Para clasificar un nuevo caso <span class="math inline">\(x\)</span>, calculamos <span class="math display">\[\hat{p}^{(1)}, \hat{p}^{(2)},\ldots, \hat{p}^{(K)}\]</span></p></li>
+</ol>
+<p>y clasificamos a la clase de máxima probabilidad <span class="math display">\[\hat{Y}(x) = \arg\max_y \hat{p}^{(y)}(x)\]</span> Nótese que no hay ninguna garantía de que las probabilidades de clase sumen 1, pues se trata de estimaciones independientes de cada clase. En este sentido, produce estimaciones que en realidad no satisfacen las propiedades del modelo de probabilidad establecido. Sin embargo, esta estrategia es simple y en muchos casos funciona bien.</p>
+</div>
+<div id="regresion-logistica-multinomial" class="section level2">
+<h2><span class="header-section-number">7.10</span> Regresión logística multinomial</h2>
+<p>Si queremos obtener estimaciones de las probabilidades de clase que sumen uno, entonces tenemos que contruir las estimaciones de cada clase de manera conjunta.</p>
+<p>Tenemos que estimar, para cada <span class="math inline">\(x\)</span> y <span class="math inline">\(y\in\{1,\ldots, K\}\)</span>, las probabilidades condicionales de clase: <span class="math display">\[p_y(x) = P(Y = y|X = x).\]</span></p>
+<p>Consideremos primero cómo funciona el modelo de regresión logística (2 clases)</p>
+<p>Tenemos que <span class="math display">\[p_1(x) = h(\beta_0 + \beta_1x_1 + \ldots + \beta_p x_p) =
+\exp(\beta_0 + \beta_1x_1 + \ldots + \beta_p x_p)/Z
+\]</span> y <span class="math display">\[p_2 (x) = 1/Z\]</span> donde <span class="math inline">\(Z = 1 + \exp(\beta_0 + \beta_1x_1 + \ldots + \beta_p x_p)\)</span>.</p>
+<p>Podemos generalizar para más de 2 clases usando una idea similar:</p>
+<p><span class="math display">\[p_1(x) =  \exp(\beta_{0,1} + \beta_{1,1}x_1 + \ldots + \beta_{p,1} x_p)/Z\]</span></p>
+<p><span class="math display">\[p_2(x) =  \exp(\beta_{0,2} + \beta_{1,2}x_2 + \ldots + \beta_{p.2} x_p)/Z\]</span> hasta <span class="math display">\[p_{K-1}(x) =  \exp(\beta_{0,{K-1}} + \beta_{1,{K-1}}x_2 + \ldots + \beta_{p,{K-1}} x_p)/Z\]</span> y <span class="math display">\[p_K(x) = 1/Z\]</span></p>
+<p>En este caso, para que las probabilidades sumen 1, necesitamos que <span class="math display">\[Z = 1 + \sum_{j=1}^{K-1}\exp(\beta_0^j + \beta_1^jx_2 + \ldots + \beta_p^j x_p)\]</span></p>
+<p>Para ajustar coeficientes, usamos el mismo criterio de maximizar la log verosimilitud.</p>
+<p>Buscamos maximizar: <span class="math display">\[l(\beta)= \sum_{i=1}^N p_{g^{(i)}}(x^{(i)}),\]</span> donde <span class="math inline">\(\beta\)</span> contiene todos los coeficientes organizados en un vector de tamaño <span class="math inline">\((p+1)(K+1)\)</span>: <span class="math display">\[\beta = ( \beta_0^1, \beta_1^1, \ldots , \beta_p^1,  \beta_0^2, \beta_1^2, \ldots , \beta_p^2, \ldots \beta_0^{K-1}, \beta_1^{K-1}, \ldots , \beta_p^{K-1} )\]</span></p>
+<p>Y ahora podemos usar algún método númerico para maximizar la log verosimilitud (por ejemplo, descenso en gradiente). Cuando es muy importante tener probabilidades bien calibradas, el enfoque multinomial es más apropiado, pero muchas veces, especialmente si sólo nos interesa clasificar, los dos métodos dan resultados similares.</p>
+<p class="espacio">
+</p>
+
+<div class="information">
+Utilizando la función <code>multinom</code> del paquete <code>nnet</code> se puede hacer regresión logística multinomial. La función <code>glm</code> no tiene la familia multinomial.
+</div>
+
+<p><br></p>
+<p><br></p>
+</div>
+<div id="identificabilidad-y-separacion" class="section level2">
+<h2><span class="header-section-number">7.11</span> Identificabilidad y separación</h2>
+<p>Hay dos razones por las cuales una regresión logística puede estar no identificada (esto es, tener parámetros que no se pueden estimar con los datos disponibles y el modelo):</p>
+<ol style="list-style-type: decimal">
+<li><p>Como con regresión lineal, si los predictores son colineales, entonces la estimación del predictor lineal, <span class="math inline">\(X\beta\)</span>, no permite una estimación separable de los parámetros individuales <span class="math inline">\(\beta\)</span>.</p></li>
+<li><p>Un problema diferente de identificabilidad, llamado <em>separción</em> puede surgir cuando se tienen datos discretos.</p>
+<ul>
+<li><p>Si un predictor <span class="math inline">\(x_j\)</span> está completamente alineado con el resultado, de tal forma que <span class="math inline">\(y = 1\)</span> para todos los casos tales que <span class="math inline">\(x_j\)</span> exceda un umbral <span class="math inline">\(T\)</span>, y <span class="math inline">\(y=0\)</span> para todos los casos donde <span class="math inline">\(x_j&lt;T\)</span>, entonces el mejor coeficiente para <span class="math inline">\(\beta_j\)</span> es <span class="math inline">\(\infty\)</span>.</p></li>
+<li><p>A la inversa, si <span class="math inline">\(y=1\)</span> para todos los casos cuando <span class="math inline">\(x_j&lt;T\)</span>, y <span class="math inline">\(y=0\)</span> para todos los casos cuando <span class="math inline">\(x_j &gt; T\)</span>, entonces <span class="math inline">\(\hat{\beta}_j\)</span> sería <span class="math inline">\(-\infty\)</span>.</p></li>
+<li><p>Más generalmente, este problema ocurre si cualquier combinación lineal de predictores se alinea perfectamente con el resultado.</p></li>
+</ul></li>
+</ol>
+</div>
+<div id="tarea-5" class="section level2">
+<h2><span class="header-section-number">7.12</span> Tarea</h2>
+<p>Los datos <code>nes</code> (de la encuesta <em>National Election Study</em>) contienen datos de la preferencia presidencial y el ingreso de los votantes durante las elecciones de 1992. Los datos, junto con otras variables que incluyen <em>sex</em>, <em>ethnicity</em>, <em>education</em>, <em>party identification</em>, y <em>political ideology</em>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Ajusta varios modelos de regresión logística del apoyo a Bush dadas estas entradas incluyendo como predictores el ingreso y las variables antes mencionadas. Considera incluir algunas o todas las variables en el modelo.</p></li>
+<li><p>Evalúa y compara los diferentes modelos que ajustaste. Considera los coeficientes estimados y sus errores estándar. ¿Son significativos?</p></li>
+<li><p>Elige el mejor modelo e interprétalo. Compara la importancia de cada variable de entrada en la predicción.</p></li>
+<li><p>Ajusta el modelo <code>vote ~ income + female + black</code> para los años 1960, 1964, 1968, y 1972. ¿Qué sucedió con el coeficiente de <code>black</code> de 1964? Ve los datos e investiga por qué se obtuvo esta estimación extrema. ¿Qué se podría hacer para ajustar el modelo en 1964?</p></li>
+</ol>
+
 </div>
 </div>
             </section>
