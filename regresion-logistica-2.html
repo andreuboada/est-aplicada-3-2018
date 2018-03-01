@@ -253,7 +253,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.4.7" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#comparacion-de-coeficientes-cuando-anades-un-predictor"><i class="fa fa-check"></i><b>7.4.7</b> Comparación de coeficientes cuando añades un predictor</a></li>
 <li class="chapter" data-level="7.4.8" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#graficar-el-modelo-ajustado-con-dos-predictores"><i class="fa fa-check"></i><b>7.4.8</b> Graficar el modelo ajustado con dos predictores</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#aprendizaje-de-coeficientes-para-regresion-logistica-binomial."><i class="fa fa-check"></i><b>7.5</b> Aprendizaje de coeficientes para regresión logística (binomial).</a></li>
+<li class="chapter" data-level="7.5" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#ajuste-de-coeficientes-para-regresion-logistica-binomial."><i class="fa fa-check"></i><b>7.5</b> Ajuste de coeficientes para regresión logística (binomial).</a></li>
 <li class="chapter" data-level="7.6" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#descenso-en-gradiente"><i class="fa fa-check"></i><b>7.6</b> Descenso en gradiente</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#seleccion-de-tamano-de-paso-eta"><i class="fa fa-check"></i><b>7.6.1</b> Selección de tamaño de paso <span class="math inline">\(\eta\)</span></a></li>
 <li class="chapter" data-level="7.6.2" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#funciones-de-varias-variables"><i class="fa fa-check"></i><b>7.6.2</b> Funciones de varias variables</a></li>
@@ -481,7 +481,7 @@ P(y_i=0|x) = \dfrac{1}{e^{\alpha+\beta x}}.
 <p>Por ejemplo, si <span class="math inline">\(\beta=0.2\)</span>, entonces una diferencia unitaria en <span class="math inline">\(x\)</span> corresponde a un cambio multiplicativo de <span class="math inline">\(e^{0.2}=1.22\)</span> en los momios de éxito (con respecto a los chances de un fracaso).</p>
 
 <div class="information">
-<strong>Nota:</strong> El concepto de los momios puede ser un poco difícil de entender y comunicar, y razones de momios aún más. Sin embargo, los momios son útiles para conferirle al modelo una interpretación, para explicar cómo ciertos valores pueden aumentar los chances de que la probabilidad sea 1 utilizando la exponencial de algun coeficiente <span class="math inline">\(e^{\beta_i}\)</span>.
+<strong>Nota:</strong> El concepto de los momios puede ser un poco difícil de entender y comunicar, y razones de momios aún más. Sin embargo, los momios son útiles para conferirle al modelo una interpretación, para explicar cómo ciertos valores pueden aumentar los chances de éxito utilizando la exponencial de algun coeficiente <span class="math inline">\(e^{\beta_i}\)</span>.
 </div>
 
 </div>
@@ -539,7 +539,7 @@ araihazar &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span cl
 <p>Nuestra variable de respuesta es</p>
 <p><span class="math display">\[
 y_{i} = \left\{ \begin{array}{cl}
-1 &amp; \text{si la }\; i\text{-esima casa cambió de pozo},\\
+1 &amp; \text{si la }\; i\text{-esima casa cambió}\,\,\, \text{de pozo},\\
 0 &amp; \text{en otro caso.}
 \end{array}\right.
 \]</span></p>
@@ -610,7 +610,7 @@ P(\mbox{cambie pozo}) = \mbox{logit}^{-1}(0.61 - 0.62 \cdot \mbox{dist_100}),
 <li><p>El término constante se puede interpretar cuando <span class="math inline">\(\mbox{dist_100 = 0}\)</span>, en cuyo caso la probabilidad de cambio es <span class="math inline">\(\mbox{logit}^{-1}(0.61) = 0.65\)</span>. Por lo tanto, el modelo estima un 65% de probabilidades de cambio si vives junto a un pozo seguro existente.</p></li>
 <li><p>Podemos evaluar la “<strong>diferencia predictiva</strong>” con respecto a <span class="math inline">\(\mbox{dist_100}\)</span> calculando la derivada en la media de <span class="math inline">\(\mbox{dist_100}\)</span>, que es 0.48 (es decir, 48 metros). El valor del predictor lineal aquí es <span class="math display">\[0.61 - 0.62 \cdot 0.48 = 0.31,\]</span> y entonces la pendiente de la curva en este punto es <span class="math display">\[\dfrac{-0.62 \cdot e^{0.31}}{(1 + e^{0.31})^2} = -0.15.\]</span> Por lo tanto, agregar 1 a <span class="math inline">\(\mbox{dist_100}\)</span>, es decir, sumar 100 metros a la distancia al pozo seguro más cercano, representa una diferencia en la probabilidad de 15% <em>menos</em>.</p></li>
 <li><p>La “regla de dividir entre 4” nos da <span class="math display">\[\dfrac{\beta}{4}=\dfrac{-0.62}{4} = -0.15.\]</span> El resultado es el mismo al que se calculó usando la derivada porque la curva pasa aproximadamente por el punto del 50% de probabilidad (en realidad es 57%).</p></li>
-<li><p>Además de interpretar su magnitud, podemos ver la significación estadística del coeficiente de distancia.</p></li>
+<li><p>Además de interpretar su magnitud, podemos estudiar la distribución del error estándar del coeficiente de distancia.</p></li>
 </ol>
 <p>Utilizamos el procedimiento visto al principio:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">110265</span>)
@@ -702,8 +702,8 @@ fit.<span class="dv">3</span>
 <p>La distancia de 0 representa la distancia mínima de un pozo seguro a un pozo posiblemente seguro. Dada la distribución de la distancia, una diferencia de 50 metros representa en si misma un diferencia sustancial en la probabilidad de cambiar de pozo.</p>
 </div>
 </div>
-<div id="aprendizaje-de-coeficientes-para-regresion-logistica-binomial." class="section level2">
-<h2><span class="header-section-number">7.5</span> Aprendizaje de coeficientes para regresión logística (binomial).</h2>
+<div id="ajuste-de-coeficientes-para-regresion-logistica-binomial." class="section level2">
+<h2><span class="header-section-number">7.5</span> Ajuste de coeficientes para regresión logística (binomial).</h2>
 <p>Ahora escribimos el modelo cuando tenemos más de una entrada. La idea es la misma: primero combinamos las variables linealmente usando pesos <span class="math inline">\(\beta\)</span>, y despúes comprimimos a <span class="math inline">\([0,1]\)</span> usando la función logística:</p>
 
 <div class="comentario">
@@ -719,7 +719,7 @@ El modelo de regresión logística está dado por <span class="math display">\[p
 <p>En regresión logística y otros modelos de datos discretos, no tiene sentido calcular la desviación estándar residual y <span class="math inline">\(R^2\)</span>, por más o menos la misma razón por la que los modelos no se ajustan simplemente por mínimos cuadrados: el error cuadrado no es la medida matemáticamente óptima del error del modelo. En cambio, es estándar usar la <strong><em>devianza</em></strong>, un resumen estadístico del ajuste del modelo, definido para la regresión logística y otros modelos lineales generalizados para ser una analogía con la desviación estándar residual.</p>
 <p>Por ahora, consideremos las siguientes propiedades de la desvianza:</p>
 <ul>
-<li><p>La devianza es una mediada del error, menor devianza significa mejor ajuste de los datos.</p></li>
+<li><p>La devianza es una medida del error, menor devianza significa mejor ajuste de los datos.</p></li>
 <li><p>Si un predictor que es únicamente ruido aleatorio se agrega al modelo, esperaríamos que la devianza disminuyera en 1, en promedio.</p></li>
 <li><p>Si se añade al modelo un predictor informativo, se espera que la devianza disminuya en más de 1 en promedio. Cuando <span class="math inline">\(k\)</span> predictores se añaden al modelo, esperamos que la devianza disminuya en más de <span class="math inline">\(k\)</span>.</p></li>
 </ul>
@@ -913,6 +913,8 @@ Así que
 Para un paso <span class="math inline">\(\eta&gt;0\)</span> fijo, la iteración de descenso para regresión logística para el coeficiente <span class="math inline">\(\beta_j\)</span> es: <span class="math display">\[\beta_{j}^{(k+1)} = \beta_j^{(k)} + {2\eta} \sum_{i=1}^N (y^{(i)}-p(x^{(i)}))x_j^{(i)}\]</span> para <span class="math inline">\(j=0,1,\ldots, p\)</span>, donde fijamos <span class="math inline">\(x_0^{(i)}=1\)</span>.
 </div>
 
+<hr />
+<p><br></p>
 <p>Podríamos usar las siguientes implementaciones:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devianza_calc &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){
   dev_fun &lt;-<span class="st"> </span><span class="cf">function</span>(beta){
@@ -1189,7 +1191,7 @@ y &lt;-<span class="st"> </span>diabetes_s<span class="op">$</span>type <span cl
 grad &lt;-<span class="st"> </span><span class="kw">grad_calc</span>(x, y)
 iteraciones &lt;-<span class="st"> </span><span class="kw">descenso</span>(<span class="dv">1000</span>, <span class="kw">rep</span>(<span class="dv">0</span>,p<span class="op">+</span><span class="dv">1</span>), <span class="fl">0.001</span>, <span class="dt">h_deriv =</span> grad)
 <span class="kw">matplot</span>(iteraciones)</code></pre></div>
-<p><img src="07-logit-2_files/figure-html/unnamed-chunk-52-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-52-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diabetes_coef &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">variable =</span> <span class="kw">c</span>(<span class="st">&#39;Intercept&#39;</span>,<span class="kw">colnames</span>(x)), <span class="dt">coef =</span> iteraciones[<span class="dv">1000</span>,])
 diabetes_coef
 <span class="co">#&gt; # A tibble: 8 x 2</span>
@@ -1214,7 +1216,7 @@ diabetes_coef
 </div>
 <div id="normalizacion" class="section level4 unnumbered">
 <h4>Normalización</h4>
-<p>Igual que en regresión lineal, en regresión logística conviene normalizar las entradas antes de ajustar el modelo</p>
+<p>Igual que en regresión lineal, en regresión logística conviene normalizar las entradas antes de ajustar el modelo.</p>
 </div>
 </div>
 <div id="regresion-logistica-para-problemas-de-mas-de-2-clases" class="section level2">
@@ -1257,7 +1259,7 @@ Utilizando la función <code>multinom</code> del paquete <code>nnet</code> se pu
 <p>Hay dos razones por las cuales una regresión logística puede estar no identificada (esto es, tener parámetros que no se pueden estimar con los datos disponibles y el modelo):</p>
 <ol style="list-style-type: decimal">
 <li><p>Como con regresión lineal, si los predictores son colineales, entonces la estimación del predictor lineal, <span class="math inline">\(X\beta\)</span>, no permite una estimación separable de los parámetros individuales <span class="math inline">\(\beta\)</span>.</p></li>
-<li><p>Un problema diferente de identificabilidad, llamado <em>separción</em> puede surgir cuando se tienen datos discretos.</p>
+<li><p>Un problema diferente de identificabilidad, llamado <em>separación</em> puede surgir cuando se tienen datos discretos.</p>
 <ul>
 <li><p>Si un predictor <span class="math inline">\(x_j\)</span> está completamente alineado con el resultado, de tal forma que <span class="math inline">\(y = 1\)</span> para todos los casos tales que <span class="math inline">\(x_j\)</span> exceda un umbral <span class="math inline">\(T\)</span>, y <span class="math inline">\(y=0\)</span> para todos los casos donde <span class="math inline">\(x_j&lt;T\)</span>, entonces el mejor coeficiente para <span class="math inline">\(\beta_j\)</span> es <span class="math inline">\(\infty\)</span>.</p></li>
 <li><p>A la inversa, si <span class="math inline">\(y=1\)</span> para todos los casos cuando <span class="math inline">\(x_j&lt;T\)</span>, y <span class="math inline">\(y=0\)</span> para todos los casos cuando <span class="math inline">\(x_j &gt; T\)</span>, entonces <span class="math inline">\(\hat{\beta}_j\)</span> sería <span class="math inline">\(-\infty\)</span>.</p></li>

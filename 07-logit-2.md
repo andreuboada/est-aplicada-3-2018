@@ -261,7 +261,7 @@ Sumar 1 a la variable $x$ es equivalente a sumar $\beta$ en ambos lados de la ec
 
 Por ejemplo, si $\beta=0.2$, entonces una diferencia unitaria en $x$ corresponde a un cambio multiplicativo de $e^{0.2}=1.22$ en los momios de éxito (con respecto a los chances de un fracaso).
 
-\BeginKnitrBlock{information}<div class="information">**Nota:** El concepto de los momios puede ser un poco difícil de entender y comunicar, y razones de momios aún más. Sin embargo, los momios son útiles para conferirle al modelo una interpretación, para explicar cómo ciertos valores pueden aumentar los chances de que la probabilidad sea 1 utilizando la exponencial de algun coeficiente $e^{\beta_i}$.</div>\EndKnitrBlock{information}
+\BeginKnitrBlock{information}<div class="information">**Nota:** El concepto de los momios puede ser un poco difícil de entender y comunicar, y razones de momios aún más. Sin embargo, los momios son útiles para conferirle al modelo una interpretación, para explicar cómo ciertos valores pueden aumentar los chances de éxito utilizando la exponencial de algun coeficiente $e^{\beta_i}$.</div>\EndKnitrBlock{information}
 
 ## Ejemplo: pozos en Bangladesh
 
@@ -350,7 +350,7 @@ Nuestra variable de respuesta es
 
 $$
 y_{i} = \left\{ \begin{array}{cl}
-1 & \text{si la }\; i\text{-esima casa cambió de pozo},\\
+1 & \text{si la }\; i\text{-esima casa cambió}\,\,\, \text{de pozo},\\
 0 & \text{en otro caso.}
 \end{array}\right.
 $$
@@ -458,7 +458,7 @@ La probabilidad de cambio es aproximadamente del 60% para las personas que viven
 
 3. La "regla de dividir entre 4" nos da $$\dfrac{\beta}{4}=\dfrac{-0.62}{4} = -0.15.$$ El resultado es el mismo al que se calculó usando la derivada porque la curva pasa aproximadamente por el punto del 50% de probabilidad (en realidad es 57%).
 
-4. Además de interpretar su magnitud, podemos ver la significación estadística del coeficiente de distancia.
+4. Además de interpretar su magnitud, podemos estudiar la distribución del error estándar del coeficiente de distancia.
 
 Utilizamos el procedimiento visto al principio:
 
@@ -602,7 +602,7 @@ ggplot(wells, aes(x = arsenic, y = switch)) +
 
 La distancia de 0 representa la distancia mínima de un pozo seguro a un pozo posiblemente seguro. Dada la distribución de la distancia, una diferencia de 50 metros representa en si misma un diferencia sustancial en la probabilidad de cambiar de pozo.
 
-## Aprendizaje de coeficientes para regresión logística (binomial).
+## Ajuste de coeficientes para regresión logística (binomial).
 
 Ahora escribimos el modelo cuando tenemos más de una entrada. La idea es la misma:
 primero combinamos las variables linealmente usando pesos $\beta$, y despúes
@@ -627,7 +627,7 @@ $$D(\beta) = -2\sum_{i=1}^N \log(p_{y^{(i)}} (x^{(i)})).$$
 
 Por ahora, consideremos las siguientes propiedades de la desvianza:
   
-* La devianza es una mediada del error, menor devianza significa mejor ajuste de los datos.
+* La devianza es una medida del error, menor devianza significa mejor ajuste de los datos.
 
 * Si un predictor que es únicamente ruido aleatorio se agrega al modelo, esperaríamos que la devianza disminuyera en 1, en promedio.
 
@@ -926,6 +926,9 @@ $$\beta_{j}^{(k+1)} = \beta_j^{(k)} + {2\eta} \sum_{i=1}^N (y^{(i)}-p(x^{(i)}))x
 para 
 $j=0,1,\ldots, p$, donde fijamos $x_0^{(i)}=1$.</div>\EndKnitrBlock{comentario}
 
+---
+
+<br>
 
 Podríamos usar las siguientes implementaciones:
 
@@ -1144,7 +1147,7 @@ iteraciones <- descenso(1000, rep(0,p+1), 0.001, h_deriv = grad)
 matplot(iteraciones)
 ```
 
-<img src="07-logit-2_files/figure-html/unnamed-chunk-52-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="07-logit-2_files/figure-html/unnamed-chunk-52-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1184,7 +1187,7 @@ es los mismo que hacer máxima verosimilitud (condicional a los valores de $x$).
 
 #### Normalización {-}
 Igual que en regresión lineal, en regresión logística conviene normalizar
-las entradas antes de ajustar el modelo
+las entradas antes de ajustar el modelo.
 
 ## Regresión logística para problemas de más de 2 clases
 
@@ -1267,7 +1270,7 @@ Hay dos razones por las cuales una regresión logística puede estar no identifi
 
 1. Como con regresión lineal, si los predictores son colineales, entonces la estimación del predictor lineal, $X\beta$, no permite una estimación separable de los parámetros individuales $\beta$.
 
-2. Un problema diferente de identificabilidad, llamado _separción_ puede surgir cuando se tienen datos discretos.
+2. Un problema diferente de identificabilidad, llamado _separación_ puede surgir cuando se tienen datos discretos.
 
     * Si un predictor $x_j$ está completamente alineado con el resultado, de tal forma que $y = 1$ para todos los casos tales que $x_j$ exceda un umbral $T$, y $y=0$ para todos los casos donde $x_j<T$, entonces el mejor coeficiente para $\beta_j$ es $\infty$.
     
