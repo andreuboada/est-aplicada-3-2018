@@ -431,11 +431,7 @@ La probabilidad de cambio es aproximadamente del 60% para las personas que viven
 
 3. La "regla de dividir entre 4" nos da $$\dfrac{\beta}{4}=\dfrac{-0.62}{4} = -0.15.$$ El resultado es el mismo al que se calculó usando la derivada porque la curva pasa aproximadamente por el punto del 50% de probabilidad (en realidad es 57%).
 
-
-#################################
-CAMBIOS
-
-4. Además de interpretar su magnitud, podemos ver la significación estadística del coeficiente de distancia.
+4. Además de interpretar su magnitud, podemos estudiar la distribución del error estándar del coeficiente de distancia.
 
 Utilizamos el procedimiento visto al principio:
 
@@ -549,10 +545,7 @@ ggplot(wells, aes(x = arsenic, y = switch)) +
 
 La distancia de 0 representa la distancia mínima de un pozo seguro a un pozo posiblemente seguro. Dada la distribución de la distancia, una diferencia de 50 metros representa en si misma un diferencia sustancial en la probabilidad de cambiar de pozo.
 
-#################################
-CAMBIOS
-
-## Ajus te de coeficientes para regresión logística (binomial).
+## Ajuste de coeficientes para regresión logística (binomial).
 
 Ahora escribimos el modelo cuando tenemos más de una entrada. La idea es la misma:
 primero combinamos las variables linealmente usando pesos $\beta$, y despúes
