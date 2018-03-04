@@ -1183,7 +1183,10 @@ Y la log verosimilitud es
 
  $$l(\beta) =\sum_{i=1}^N \log(p_{y^{(i)}} (x^{(i)})).$$
 
-Así que ajustar el modelo minimizando la devianza es lo mismo que hacer máxima verosimilitud (condicional a los valores de $x$).
+Así que ajustar el modelo minimizando la devianza
+ s losmismo que hacer máxima verosimilitud (condicional a los valores de $x$).
+
+
 
 #### Normalización {-}
 Igual que en regresión lineal, en regresión logística conviene normalizar
