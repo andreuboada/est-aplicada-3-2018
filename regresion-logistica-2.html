@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-03-01">
+<meta name="date" content="2018-03-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -512,7 +512,7 @@ right &lt;-<span class="st"> </span><span class="kw">max</span>(wells_all<span c
 top &lt;-<span class="st"> </span><span class="kw">max</span>(wells_all<span class="op">$</span>lat)
 araihazar &lt;-<span class="st"> </span><span class="kw">get_map</span>(<span class="dt">location =</span> <span class="kw">c</span>(left,bottom,right,top), <span class="dt">zoom =</span> <span class="dv">13</span>)
 <span class="kw">ggmap</span>(araihazar) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> wells_all, <span class="kw">aes</span>(<span class="dt">x =</span> lon, <span class="dt">y =</span> lat, <span class="dt">color =</span> <span class="cf">switch</span>), <span class="dt">size =</span> <span class="fl">0.05</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> wells_all, <span class="kw">aes</span>(<span class="dt">x =</span> lon, <span class="dt">y =</span> lat, <span class="dt">color =</span> <span class="cf">switch</span>), <span class="dt">size =</span> <span class="fl">0.03</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;navyblue&quot;</span>, <span class="st">&quot;red&quot;</span>))</code></pre></div>
 <p><img src="07-logit-2_files/figure-html/unnamed-chunk-14-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>En este artículo reciente se discuten posibles soluciones que hagan uso de tecnologías desarrolladas recientemente: <a href="https://www.reuters.com/article/us-bangladesh-pollution-water-health/can-technology-help-bangladesh-end-mass-arsenic-poisoning-idUSKCN1B80GP">Win, T. L. (2017, August 28). Can technology help Bangladesh end mass arsenic poisoning?</a></p>
@@ -791,7 +791,7 @@ z
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">curve</span>(h, <span class="op">-</span><span class="dv">3</span>, <span class="dv">6</span>)
 <span class="kw">points</span>(z[,<span class="dv">1</span>], <span class="kw">h</span>(z))
 <span class="kw">text</span>(z[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>], <span class="kw">h</span>(z[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>]), <span class="dt">pos =</span> <span class="dv">3</span>)</code></pre></div>
-<p><img src="07-logit-2_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-33-1.png" width="50%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="seleccion-de-tamano-de-paso-eta" class="section level3">
 <h3><span class="header-section-number">7.6.1</span> Selección de tamaño de paso <span class="math inline">\(\eta\)</span></h3>
@@ -800,7 +800,7 @@ z
 <span class="kw">curve</span>(h, <span class="op">-</span><span class="dv">3</span>, <span class="dv">6</span>)
 <span class="kw">points</span>(z, <span class="kw">h</span>(z))
 <span class="kw">text</span>(z[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>], <span class="kw">h</span>(z[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>]), <span class="dt">pos =</span> <span class="dv">3</span>)</code></pre></div>
-<p><img src="07-logit-2_files/figure-html/unnamed-chunk-34-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-34-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <p>Si hacemos <span class="math inline">\(\eta\)</span> muy grande, el algoritmo puede divergir:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">descenso</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="fl">1.5</span>, h_deriv)
 z
@@ -895,7 +895,7 @@ iteraciones
 <p>Para minimizar utilizaremos descenso en gradiente (aunque hay más opciones).</p>
 <p>La última expresión para <span class="math inline">\(D(\beta)\)</span> puede ser difícil de operar, pero podemos reescribir como: <span class="math display">\[D(\beta) = -2\sum_{i=1}^N y^{(i)} \log(p_{1} (x^{(i)})) + (1-y^{(i)}) \log(p_{0} (x^{(i)})).\]</span></p>
 <p>Para hacer descenso en gradiente, necesitamos encontrar <span class="math inline">\(\frac{\partial D}{\beta_j}\)</span> para <span class="math inline">\(j=1,2,\ldots,p\)</span>.</p>
-<p>Igual que en regresión lineal, comenzamos por calcular la derivada de un término:</p>
+<p>Comenzamos por calcular la derivada de un término:</p>
 <p><span class="math display">\[D^{(i)} (\beta) = y^{(i)} \log(p_{1} (x^{(i)})) + (1-y^{(i)}) \log(1-p_{1} (x^{(i)}))\]</span></p>
 <p>Calculamos primero las derivadas de <span class="math inline">\(p_1 (x^{(i)};\beta)\)</span> (demostrar la siguiente ecuación): <span class="math display">\[\frac{\partial  p_1}{\partial \beta_0} = {p_1(x^{(i)})(1-p_1(x^{(i)}))},\]</span> y <span class="math display">\[\frac{\partial  p_1}{\partial \beta_j} = p_1(x^{(i)})(1-p_1(x^{(i)}))x_j^{(i)},\]</span></p>
 Así que
@@ -950,7 +950,7 @@ descenso &lt;-<span class="st"> </span><span class="cf">function</span>(n, z_<sp
 }
 <span class="kw">curve</span>(p_<span class="dv">1</span>, <span class="dv">0</span>,<span class="dv">100</span>, <span class="dt">xlab =</span> <span class="st">&#39;Porcentaje de crédito máximo&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;p_1(x)&#39;</span>,
   <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
-<p><img src="07-logit-2_files/figure-html/unnamed-chunk-43-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-43-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">pmin</span>(<span class="kw">rexp</span>(<span class="dv">500</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">30</span>),<span class="dv">100</span>)
 probs &lt;-<span class="st"> </span><span class="kw">p_1</span>(x)
 y &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">rbinom</span>(<span class="kw">length</span>(x), <span class="dv">1</span>, probs)<span class="op">==</span><span class="dv">1</span> ,<span class="dv">1</span>, <span class="dv">2</span>)
@@ -1191,7 +1191,7 @@ y &lt;-<span class="st"> </span>diabetes_s<span class="op">$</span>type <span cl
 grad &lt;-<span class="st"> </span><span class="kw">grad_calc</span>(x, y)
 iteraciones &lt;-<span class="st"> </span><span class="kw">descenso</span>(<span class="dv">1000</span>, <span class="kw">rep</span>(<span class="dv">0</span>,p<span class="op">+</span><span class="dv">1</span>), <span class="fl">0.001</span>, <span class="dt">h_deriv =</span> grad)
 <span class="kw">matplot</span>(iteraciones)</code></pre></div>
-<p><img src="07-logit-2_files/figure-html/unnamed-chunk-52-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="07-logit-2_files/figure-html/unnamed-chunk-52-1.png" width="50%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diabetes_coef &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">variable =</span> <span class="kw">c</span>(<span class="st">&#39;Intercept&#39;</span>,<span class="kw">colnames</span>(x)), <span class="dt">coef =</span> iteraciones[<span class="dv">1000</span>,])
 diabetes_coef
 <span class="co">#&gt; # A tibble: 8 x 2</span>
@@ -1212,7 +1212,7 @@ diabetes_coef
 <p>Es fácil ver que este método de estimación de los coeficientes (minimizando la devianza de entrenamiento) es el método de máxima verosimilitud. La verosimilitud de la muestra de entrenamiento está dada por:</p>
 <p><span class="math display">\[L(\beta) =\prod_{i=1}^N p_{y^{(i)}} (x^{(i)})\]</span> Y la log verosimilitud es</p>
 <p><span class="math display">\[l(\beta) =\sum_{i=1}^N \log(p_{y^{(i)}} (x^{(i)})).\]</span></p>
-<p>Así que ajustar el modelo minimizando la devianza es los mismo que hacer máxima verosimilitud (condicional a los valores de <span class="math inline">\(x\)</span>).</p>
+<p>Así que ajustar el modelo minimizando la devianza es lo mismo que hacer máxima verosimilitud (condicional a los valores de <span class="math inline">\(x\)</span>).</p>
 </div>
 <div id="normalizacion" class="section level4 unnumbered">
 <h4>Normalización</h4>

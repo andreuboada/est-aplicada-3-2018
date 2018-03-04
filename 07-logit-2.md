@@ -310,7 +310,7 @@ right <- max(wells_all$lon)
 top <- max(wells_all$lat)
 araihazar <- get_map(location = c(left,bottom,right,top), zoom = 13)
 ggmap(araihazar) +
-  geom_point(data = wells_all, aes(x = lon, y = lat, color = switch), size = 0.05) +
+  geom_point(data = wells_all, aes(x = lon, y = lat, color = switch), size = 0.03, alpha = 0.2) +
   scale_color_manual(values = c("navyblue", "red"))
 ```
 
@@ -739,7 +739,7 @@ points(z[,1], h(z))
 text(z[1:6], h(z[1:6]), pos = 3)
 ```
 
-<img src="07-logit-2_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="07-logit-2_files/figure-html/unnamed-chunk-33-1.png" width="50%" style="display: block; margin: auto;" />
 
 ### Selección de tamaño de paso $\eta$
 
@@ -753,7 +753,7 @@ points(z, h(z))
 text(z[1:6], h(z[1:6]), pos = 3)
 ```
 
-<img src="07-logit-2_files/figure-html/unnamed-chunk-34-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="07-logit-2_files/figure-html/unnamed-chunk-34-1.png" width="50%" style="display: block; margin: auto;" />
 
 Si hacemos $\eta$ muy grande, el algoritmo puede divergir:
 
@@ -894,7 +894,7 @@ $$D(\beta) = -2\sum_{i=1}^N y^{(i)} \log(p_{1} (x^{(i)})) + (1-y^{(i)}) \log(p_{
 Para hacer descenso en gradiente, necesitamos encontrar $\frac{\partial D}{\beta_j}$
 para $j=1,2,\ldots,p$.
 
-Igual que en regresión lineal, comenzamos por calcular la derivada de un término:
+Comenzamos por calcular la derivada de un término:
 
 $$D^{(i)} (\beta) = y^{(i)} \log(p_{1} (x^{(i)})) + (1-y^{(i)}) \log(1-p_{1} (x^{(i)}))$$
 
@@ -974,7 +974,7 @@ curve(p_1, 0,100, xlab = 'Porcentaje de crédito máximo', ylab = 'p_1(x)',
   ylim = c(0,1))
 ```
 
-<img src="07-logit-2_files/figure-html/unnamed-chunk-43-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="07-logit-2_files/figure-html/unnamed-chunk-43-1.png" width="50%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1010,7 +1010,9 @@ grad(c(0.5,-0.1))
 #> Intercept       x_s 
 #>      -238       137
 ```
+
 Verificamos cálculo de gradiente:
+
 
 ```r
 (devianza(c(0.5+0.0001,-0.1)) - devianza(c(0.5,-0.1)))/0.0001
@@ -1018,7 +1020,9 @@ Verificamos cálculo de gradiente:
 (devianza(c(0.5,-0.1+0.0001)) - devianza(c(0.5,-0.1)))/0.0001
 #> [1] 137
 ```
+
 Y hacemos descenso:
+
 
 ```r
 iteraciones <- descenso(200, z_0=c(0,0), eta = 0.001, h_deriv = grad)
@@ -1051,6 +1055,7 @@ matplot(iteraciones)
 <img src="07-logit-2_files/figure-html/unnamed-chunk-47-1.png" width="70%" style="display: block; margin: auto;" /><img src="07-logit-2_files/figure-html/unnamed-chunk-47-2.png" width="70%" style="display: block; margin: auto;" />
 
 Comparamos con glm:
+
 
 ```r
 mod_1 <- glm(y~x_s, data=datos, family = 'binomial') 
@@ -1147,7 +1152,7 @@ iteraciones <- descenso(1000, rep(0,p+1), 0.001, h_deriv = grad)
 matplot(iteraciones)
 ```
 
-<img src="07-logit-2_files/figure-html/unnamed-chunk-52-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="07-logit-2_files/figure-html/unnamed-chunk-52-1.png" width="50%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1165,9 +1170,7 @@ diabetes_coef
 #> # ... with 2 more rows
 ```
 
-
 ## Observaciones adicionales
-
 
 #### Máxima verosimilitud {-}
 
@@ -1180,10 +1183,7 @@ Y la log verosimilitud es
 
  $$l(\beta) =\sum_{i=1}^N \log(p_{y^{(i)}} (x^{(i)})).$$
 
-Así que ajustar el modelo minimizando la devianza
-es los mismo que hacer máxima verosimilitud (condicional a los valores de $x$).
-
-
+Así que ajustar el modelo minimizando la devianza es lo mismo que hacer máxima verosimilitud (condicional a los valores de $x$).
 
 #### Normalización {-}
 Igual que en regresión lineal, en regresión logística conviene normalizar
