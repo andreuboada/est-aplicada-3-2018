@@ -2,7 +2,7 @@
 --- 
 title: "Estadística Aplicada III"
 author: "Andreu Boada de Atela"
-date: "2018-03-04"
+date: "2018-03-06"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -29,7 +29,6 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2018 
 - Introducción a análisis de conglomerados
 - Introducción a estadística espacial
 
-
 ### Evaluación {-}
 
 - Tareas semanales (20%)
@@ -44,27 +43,24 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2018 
 
 ### Referencias principales {-}
 
-- [Agresti, Alan. Categorical data analysis. 3rd ed.  Hoboken, N. J.: John Wiley & Sons, 2013.](https://www.wiley.com/en-us/Categorical+Data+Analysis%2C+3rd+Edition-p-9780470463635)
+- [Gelman, A., & Hill, J. (2006). Data Analysis using Regression and Multilevel/hierarchical Models. Cambridge University Press.](https://www.amazon.com/gp/product/052168689X/)
 
-- [Johnson, R., y Wichern, D. Applied multivariate statistical analysis. Upper Saddle River, N. J.: Pearson Prentice Hall, 2007.](https://www.pearson.com/us/higher-education/program/Johnson-Applied-Multivariate-Statistical-Analysis-6th-Edition/PGM274834.html)
+- [Christopher, M. B. (2016). Pattern Recognition and Machine Learning. Springer.](http://www.springer.com/us/book/9780387310732)
+
+- [Agresti, Alan. (2013). Categorical Data Analysis. 3rd ed. Wiley.](https://www.wiley.com/en-us/Categorical+Data+Analysis%2C+3rd+Edition-p-9780470463635)
+
+- [Johnson, R., y Wichern, D. (2007). Applied Multivariate Statistical Analysis. 6th ed. Pearson Prentice Hall.](https://www.pearson.com/us/higher-education/program/Johnson-Applied-Multivariate-Statistical-Analysis-6th-Edition/PGM274834.html)
 
 ### Otras referencias {-}
 
-- [Pattern Recognition and Machine Learning](http://www.springer.com/us/book/9780387310732)
+- [Friedman, J., Hastie, T., & Tibshirani, R. (2001). The Elements of Statistical Learning. Springer.](https://web.stanford.edu/~hastie/ElemStatLearn/)
 
-- [The Elements of Statistical Learning, Hastie, Tibshirani y Friedman](https://web.stanford.edu/~hastie/ElemStatLearn/)
-
-- Greenacre, Michael J., ed. Multiple correspondence analysis and related methods. Boca Raton, Fla.: Chapman & Hall/CRC, 2006
+- [Anderson, T. W. (2003). An Introduction to Multivariate Statistical Analysis. 3rd ed. Wiley.](https://www.amazon.com/Introduction-Multivariate-Statistical-Analysis/dp/0471360910)
  
-- Thompson, Bruce. Canonical correlation analysis : uses and interpretation. Thousand Oaks, Calif.: Sage Publications, 1984
+- [Field, A., Miles, J., & Field, Z. (2012). Discovering Statistics Using R. Sage publications.](https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469)
 
-- Jackson, J. Edward. A user’s guide to principal components. New York: John Wiley & Sons, 1991.
-
-- Harrell, Frank E. Regression modeling strategies : with applications to linear models, logistic regression, and survival analysis. New York: Springer, c2001.
-
-- McLachlan, Geoffrey J. Discriminant analysis and statistical pattern recognition. New York: John Wiley & Sons, 1992. 
+- [Everitt, B., & Hothorn, T. (2011). An Introduction to Applied Multivariate Analysis with R. Springer](https://www.amazon.com/Introduction-Applied-Multivariate-Analysis-Use/dp/1441996494)
 
 ### Tareas {-}
 
 Enviar tareas por correo electrónico a: [andreuboadadeatela@gmail.com](andreuboadadeatela@gmail.com) con el asunto "EAPLICADA3-Tarea-[XX]-[clave única 1]-[clave única 2]" donde [XX] es el número de la tarea, [clave única 1] y [clave única 2] son tu clave y la de tu compañero con quien vas a trabajar durante el semestre.
- 

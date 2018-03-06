@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Estadística Aplicada III</title>
+  <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
+  <meta name="generator" content="bookdown 0.7.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Estadística Aplicada III" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)" />
+  <meta name="github-repo" content="andreuboada/est-aplicada-3-2018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Estadística Aplicada III" />
+  
+  <meta name="twitter:description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)" />
+  
+
+<meta name="author" content="Andreu Boada de Atela">
+
+
+<meta name="date" content="2018-03-06">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="regresion-logistica-2.html">
+<link rel="next" href="referencias.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="toc.css" type="text/css" />
+<link rel="stylesheet" href="font-awesome.min.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística Aplicada III</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Temario y referencias</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#evaluacion"><i class="fa fa-check"></i>Evaluación</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-r-y-rstudio"><i class="fa fa-check"></i>Software: R y Rstudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#referencias-principales"><i class="fa fa-check"></i>Referencias principales</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#otras-referencias"><i class="fa fa-check"></i>Otras referencias</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tareas"><i class="fa fa-check"></i>Tareas</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#por-que-un-analisis-multivariado"><i class="fa fa-check"></i><b>1.1</b> ¿Por qué un análisis multivariado?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#la-paradoja-de-simpson"><i class="fa fa-check"></i><b>1.2</b> La paradoja de Simpson</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#modelos-log-lineales"><i class="fa fa-check"></i><b>1.3</b> Modelos log-lineales</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#interpretacion-de-parametros"><i class="fa fa-check"></i><b>1.4</b> Interpretación de parámetros</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#ejemplo-dos-monedas"><i class="fa fa-check"></i><b>1.4.1</b> Ejemplo: dos monedas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#otros-ejemplos"><i class="fa fa-check"></i><b>1.5</b> Otros ejemplos</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#discriminacion-de-residentes-hispanos-con-discapacidades"><i class="fa fa-check"></i><b>1.5.1</b> Discriminación de residentes hispanos con discapacidades</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#consumo-de-chocolate-y-premios-nobel"><i class="fa fa-check"></i><b>1.5.2</b> Consumo de chocolate y premios Nobel</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#tarea"><i class="fa fa-check"></i><b>1.6</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Rintro.html"><a href="Rintro.html"><i class="fa fa-check"></i><b>2</b> Temas selectos de R</a><ul>
+<li class="chapter" data-level="2.1" data-path="Rintro.html"><a href="Rintro.html#que-ventajas-tiene-r"><i class="fa fa-check"></i><b>2.1</b> ¿Qué ventajas tiene R?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="Rintro.html"><a href="Rintro.html#r-es-gratuito-y-de-codigo-abierto"><i class="fa fa-check"></i><b>2.1.1</b> R es gratuito y de código abierto</a></li>
+<li class="chapter" data-level="2.1.2" data-path="Rintro.html"><a href="Rintro.html#r-tiene-una-comunidad-comprometida"><i class="fa fa-check"></i><b>2.1.2</b> R tiene una comunidad comprometida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="Rintro.html"><a href="Rintro.html#flujo-basico-de-trabajo-para-el-analisis-de-datos-en-r."><i class="fa fa-check"></i><b>2.2</b> Flujo básico de trabajo para el análisis de datos en R.</a></li>
+<li class="chapter" data-level="2.3" data-path="Rintro.html"><a href="Rintro.html#introduccion-a-r-como-lenguaje-de-programacion-y-la-plataforma-interactiva-de-rstudio."><i class="fa fa-check"></i><b>2.3</b> Introducción a R como lenguaje de programación, y la plataforma interactiva de RStudio.</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="Rintro.html"><a href="Rintro.html#como-entender-r"><i class="fa fa-check"></i><b>2.3.1</b> ¿Cómo entender R?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="Rintro.html"><a href="Rintro.html#por-que-r"><i class="fa fa-check"></i><b>2.3.2</b> ¿Por qué R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="Rintro.html"><a href="Rintro.html#estructuras-de-datos"><i class="fa fa-check"></i><b>2.4</b> Estructuras de datos</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="Rintro.html"><a href="Rintro.html#vectores"><i class="fa fa-check"></i><b>2.4.1</b> Vectores</a></li>
+<li class="chapter" data-level="2.4.2" data-path="Rintro.html"><a href="Rintro.html#data-frames"><i class="fa fa-check"></i><b>2.4.2</b> Data Frames</a></li>
+<li class="chapter" data-level="2.4.3" data-path="Rintro.html"><a href="Rintro.html#listas"><i class="fa fa-check"></i><b>2.4.3</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="Rintro.html"><a href="Rintro.html#r-markdown"><i class="fa fa-check"></i><b>2.5</b> R Markdown</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="Rintro.html"><a href="Rintro.html#que-es-r-markdown"><i class="fa fa-check"></i><b>2.5.1</b> ¿Qué es R Markdown?</a></li>
+<li class="chapter" data-level="2.5.2" data-path="Rintro.html"><a href="Rintro.html#estructura-basica-de-r-markdown"><i class="fa fa-check"></i><b>2.5.2</b> Estructura básica de R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="Rintro.html"><a href="Rintro.html#proyectos-de-rstudio"><i class="fa fa-check"></i><b>2.6</b> Proyectos de RStudio</a></li>
+<li class="chapter" data-level="2.7" data-path="Rintro.html"><a href="Rintro.html#otros-aspectos-importantes-de-r"><i class="fa fa-check"></i><b>2.7</b> Otros aspectos importantes de R</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="Rintro.html"><a href="Rintro.html#valores-faltantes"><i class="fa fa-check"></i><b>2.7.1</b> Valores faltantes</a></li>
+<li class="chapter" data-level="2.7.2" data-path="Rintro.html"><a href="Rintro.html#funciones"><i class="fa fa-check"></i><b>2.7.2</b> Funciones</a></li>
+<li class="chapter" data-level="2.7.3" data-path="Rintro.html"><a href="Rintro.html#funcionales"><i class="fa fa-check"></i><b>2.7.3</b> Funcionales</a></li>
+<li class="chapter" data-level="2.7.4" data-path="Rintro.html"><a href="Rintro.html#rendimiento-en-r"><i class="fa fa-check"></i><b>2.7.4</b> Rendimiento en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="Rintro.html"><a href="Rintro.html#tarea-1"><i class="fa fa-check"></i><b>2.8</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html"><i class="fa fa-check"></i><b>3</b> Manipulación y visualización de datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#el-principio-de-datos-limpios"><i class="fa fa-check"></i><b>3.1</b> El principio de datos limpios</a><ul>
+<li class="chapter" data-level="" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#ejemplo"><i class="fa fa-check"></i>Ejemplo:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#limpieza-de-datos"><i class="fa fa-check"></i><b>3.2</b> Limpieza de datos</a></li>
+<li class="chapter" data-level="3.3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#separa-aplica-combina"><i class="fa fa-check"></i><b>3.3</b> <em>Separa-aplica-combina</em></a></li>
+<li class="chapter" data-level="3.4" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#muertes-por-armas-de-fuego-en-eua"><i class="fa fa-check"></i><b>3.4</b> Muertes por armas de fuego en EUA</a></li>
+<li class="chapter" data-level="3.5" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#el-cuarteto-de-anscombe"><i class="fa fa-check"></i><b>3.5</b> El Cuarteto de Anscombe</a></li>
+<li class="chapter" data-level="3.6" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#the-grammar-of-graphics-de-leland-wilkinson"><i class="fa fa-check"></i><b>3.6</b> The <em>Grammar of Graphics</em> de Leland Wilkinson</a></li>
+<li class="chapter" data-level="3.7" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#ggplot"><i class="fa fa-check"></i><b>3.7</b> ggplot</a></li>
+<li class="chapter" data-level="3.8" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#un-histograma-de-las-muertes-en-iraq"><i class="fa fa-check"></i><b>3.8</b> Un histograma de las muertes en Iraq</a></li>
+<li class="chapter" data-level="3.9" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#inglehartwelzel-un-mapa-cultural-del-mundo"><i class="fa fa-check"></i><b>3.9</b> Inglehart–Welzel: un mapa cultural del mundo</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#creando-un-ggplot"><i class="fa fa-check"></i><b>3.9.1</b> Creando un ggplot</a></li>
+<li class="chapter" data-level="3.9.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#mapeos-aesthetics"><i class="fa fa-check"></i><b>3.9.2</b> Mapeos: Aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#poniendo-todo-junto"><i class="fa fa-check"></i><b>3.10</b> Poniendo todo junto</a></li>
+<li class="chapter" data-level="3.11" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#tarea-2"><i class="fa fa-check"></i><b>3.11</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html"><i class="fa fa-check"></i><b>4</b> Teorema del Límite Central</a><ul>
+<li class="chapter" data-level="4.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#la-distribucion-de-la-media"><i class="fa fa-check"></i><b>4.1</b> La distribución de la media</a></li>
+<li class="chapter" data-level="4.2" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#de-donde-proviene-la-distribucion-normal"><i class="fa fa-check"></i><b>4.2</b> ¿De dónde proviene la distribución normal?</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#que-signo-tiene-c"><i class="fa fa-check"></i><b>4.2.1</b> ¿Qué signo tiene c?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#otras-observaciones"><i class="fa fa-check"></i><b>4.3</b> Otras observaciones</a></li>
+<li class="chapter" data-level="4.4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#diagramas-de-caja-y-brazos"><i class="fa fa-check"></i><b>4.4</b> Diagramas de caja y brazos</a><ul>
+<li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-1"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-de-cuantiles-teoricos"><i class="fa fa-check"></i><b>4.5</b> Gráficas de cuantiles teóricos</a><ul>
+<li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-normal"><i class="fa fa-check"></i>Ejemplo: normal</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-de-cuantiles-para-un-conjunto-de-datos"><i class="fa fa-check"></i><b>4.6</b> Gráficas de cuantiles para un conjunto de datos</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#que-buscar-en-una-grafica-de-cuantiles"><i class="fa fa-check"></i><b>4.6.1</b> ¿Qué buscar en una gráfica de cuantiles?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-qq-normales"><i class="fa fa-check"></i><b>4.7</b> Gráficas qq-normales</a><ul>
+<li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-cantantes"><i class="fa fa-check"></i>Ejemplo: cantantes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#el-tlc-y-errores-estandar"><i class="fa fa-check"></i><b>4.8</b> El TLC y errores estándar</a></li>
+<li class="chapter" data-level="4.9" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-2"><i class="fa fa-check"></i><b>4.9</b> Ejemplo</a></li>
+<li class="chapter" data-level="4.10" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#tarea-3"><i class="fa fa-check"></i><b>4.10</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html"><i class="fa fa-check"></i><b>5</b> Análisis de datos categóricos</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#repaso-y-algunos-conceptos"><i class="fa fa-check"></i><b>5.1</b> Repaso y algunos conceptos</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#caso-binomial"><i class="fa fa-check"></i><b>5.1.1</b> Caso binomial</a></li>
+<li class="chapter" data-level="" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#estimacion-de-parametros-multinomiales"><i class="fa fa-check"></i>Estimación de parámetros multinomiales</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-chi2-de-pearson-de-una-multinomial"><i class="fa fa-check"></i><b>5.2</b> La <span class="math inline">\(\chi^2\)</span> de Pearson de una multinomial</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#cociente-de-verosimilitud-de-una-multinomial"><i class="fa fa-check"></i><b>5.2.1</b> Cociente de verosimilitud de una multinomial</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#definiciones"><i class="fa fa-check"></i><b>5.3</b> Definiciones</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#notacion"><i class="fa fa-check"></i><b>5.3.1</b> Notación</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#razon-de-momios"><i class="fa fa-check"></i><b>5.3.2</b> Razón de momios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#asociacion-en-tablas-de-tamano-itimes-j"><i class="fa fa-check"></i><b>5.4</b> Asociación en tablas de tamaño <span class="math inline">\(I\times J\)</span></a><ul>
+<li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#razones-de-momios-en-tablas-itimes-j"><i class="fa fa-check"></i><b>5.4.1</b> Razones de momios en tablas <span class="math inline">\(I\times J\)</span></a></li>
+<li class="chapter" data-level="5.4.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-mushrooms"><i class="fa fa-check"></i><b>5.4.2</b> Ejemplo: mushrooms</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#intervalos-de-confianza-para-los-parametros-de-asociacion"><i class="fa fa-check"></i><b>5.5</b> Intervalos de confianza para los parámetros de asociación</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#error-estandar-de-la-razon-de-momios"><i class="fa fa-check"></i><b>5.5.1</b> Error estándar de la razón de momios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-independencia"><i class="fa fa-check"></i><b>5.6</b> Prueba de independencia</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-prueba-chi2-de-pearson"><i class="fa fa-check"></i><b>5.6.1</b> La prueba <span class="math inline">\(\chi^2\)</span> de Pearson</a></li>
+<li class="chapter" data-level="5.6.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-brecha-de-genero"><i class="fa fa-check"></i><b>5.6.2</b> Ejemplo: brecha de género</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#general-social-survey-1972---2016"><i class="fa fa-check"></i><b>5.7</b> General Social Survey 1972 - 2016</a></li>
+<li class="chapter" data-level="5.8" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-catadora-de-te"><i class="fa fa-check"></i><b>5.8</b> La catadora de té</a></li>
+<li class="chapter" data-level="5.9" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-multinomiales-para-conteos"><i class="fa fa-check"></i><b>5.9</b> Modelos multinomiales para conteos</a></li>
+<li class="chapter" data-level="5.10" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-log-lineales-con-tres-variables-categoricas"><i class="fa fa-check"></i><b>5.10</b> Modelos log lineales con tres variables categóricas</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tipos-de-independencia"><i class="fa fa-check"></i><b>5.10.1</b> Tipos de independencia</a></li>
+<li class="chapter" data-level="5.10.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#asociacion-homogenea-e-interacciones-de-3-factores"><i class="fa fa-check"></i><b>5.10.2</b> Asociación homogénea e interacciones de 3 factores</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-sensitividad-y-especificidad"><i class="fa fa-check"></i><b>5.11</b> Ejemplo: sensitividad y especificidad</a></li>
+<li class="chapter" data-level="5.12" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-horoscopos"><i class="fa fa-check"></i><b>5.12</b> Ejemplo: horóscopos</a></li>
+<li class="chapter" data-level="5.13" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tarea-opcional"><i class="fa fa-check"></i><b>5.13</b> Tarea (opcional)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html"><i class="fa fa-check"></i><b>6</b> Regresión logística 1</a><ul>
+<li class="chapter" data-level="6.1" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html#regresion-logistica-con-un-solo-predictor"><i class="fa fa-check"></i><b>6.1</b> Regresión logística con un solo predictor</a></li>
+<li class="chapter" data-level="6.2" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html#el-modelo-de-regresion-logistica"><i class="fa fa-check"></i><b>6.2</b> El modelo de regresión logística</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html#funcion-logistica"><i class="fa fa-check"></i><b>6.2.1</b> Función logística</a></li>
+<li class="chapter" data-level="" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html#ejemplo-3"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html#tarea-4"><i class="fa fa-check"></i><b>6.3</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html"><i class="fa fa-check"></i><b>7</b> Regresión logística 2</a><ul>
+<li class="chapter" data-level="7.1" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#incertidumbre-en-la-estimacion"><i class="fa fa-check"></i><b>7.1</b> Incertidumbre en la estimación</a></li>
+<li class="chapter" data-level="7.2" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#funcion-logistica-1"><i class="fa fa-check"></i><b>7.2</b> Función logística</a></li>
+<li class="chapter" data-level="7.3" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#interpretacion-de-los-coeficientes"><i class="fa fa-check"></i><b>7.3</b> Interpretación de los coeficientes</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#evaluar-en-o-alrededor-de-la-media"><i class="fa fa-check"></i><b>7.3.1</b> Evaluar en (o alrededor de) la media</a></li>
+<li class="chapter" data-level="7.3.2" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#la-regla-de-dividir-entre-4"><i class="fa fa-check"></i><b>7.3.2</b> La regla de “dividir entre 4”</a></li>
+<li class="chapter" data-level="7.3.3" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#interpretacion-de-los-coeficientes-como-cocientes-de-momios"><i class="fa fa-check"></i><b>7.3.3</b> Interpretación de los coeficientes como cocientes de momios</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#ejemplo-pozos-en-bangladesh"><i class="fa fa-check"></i><b>7.4</b> Ejemplo: pozos en Bangladesh</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#descripcion-del-problema"><i class="fa fa-check"></i><b>7.4.1</b> Descripción del problema</a></li>
+<li class="chapter" data-level="7.4.2" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#antecedentes-del-problema"><i class="fa fa-check"></i><b>7.4.2</b> Antecedentes del problema</a></li>
+<li class="chapter" data-level="7.4.3" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#metodologia-para-abordar-el-problema"><i class="fa fa-check"></i><b>7.4.3</b> Metodología para abordar el problema</a></li>
+<li class="chapter" data-level="7.4.4" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#ajuste-y-resultados-del-modelo"><i class="fa fa-check"></i><b>7.4.4</b> Ajuste y resultados del modelo</a></li>
+<li class="chapter" data-level="7.4.5" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#interpretacion-de-los-coeficientes-1"><i class="fa fa-check"></i><b>7.4.5</b> Interpretación de los coeficientes</a></li>
+<li class="chapter" data-level="7.4.6" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#agregamos-una-segunda-variable-de-entrada"><i class="fa fa-check"></i><b>7.4.6</b> Agregamos una segunda variable de entrada</a></li>
+<li class="chapter" data-level="7.4.7" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#comparacion-de-coeficientes-cuando-anades-un-predictor"><i class="fa fa-check"></i><b>7.4.7</b> Comparación de coeficientes cuando añades un predictor</a></li>
+<li class="chapter" data-level="7.4.8" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#graficar-el-modelo-ajustado-con-dos-predictores"><i class="fa fa-check"></i><b>7.4.8</b> Graficar el modelo ajustado con dos predictores</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#ajuste-de-coeficientes-para-regresion-logistica-binomial."><i class="fa fa-check"></i><b>7.5</b> Ajuste de coeficientes para regresión logística (binomial).</a></li>
+<li class="chapter" data-level="7.6" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#descenso-en-gradiente"><i class="fa fa-check"></i><b>7.6</b> Descenso en gradiente</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#seleccion-de-tamano-de-paso-eta"><i class="fa fa-check"></i><b>7.6.1</b> Selección de tamaño de paso <span class="math inline">\(\eta\)</span></a></li>
+<li class="chapter" data-level="7.6.2" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#funciones-de-varias-variables"><i class="fa fa-check"></i><b>7.6.2</b> Funciones de varias variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#ejemplo-diabetes"><i class="fa fa-check"></i><b>7.7</b> Ejemplo: diabetes</a></li>
+<li class="chapter" data-level="7.8" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#observaciones-adicionales"><i class="fa fa-check"></i><b>7.8</b> Observaciones adicionales</a></li>
+<li class="chapter" data-level="7.9" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#regresion-logistica-para-problemas-de-mas-de-2-clases"><i class="fa fa-check"></i><b>7.9</b> Regresión logística para problemas de más de 2 clases</a></li>
+<li class="chapter" data-level="7.10" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#regresion-logistica-multinomial"><i class="fa fa-check"></i><b>7.10</b> Regresión logística multinomial</a></li>
+<li class="chapter" data-level="7.11" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#identificabilidad-y-separacion"><i class="fa fa-check"></i><b>7.11</b> Identificabilidad y separación</a></li>
+<li class="chapter" data-level="7.12" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#tarea-5"><i class="fa fa-check"></i><b>7.12</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html"><i class="fa fa-check"></i><b>8</b> Regresión logística 3</a><ul>
+<li class="chapter" data-level="8.1" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#regresion-logistica-con-interacciones"><i class="fa fa-check"></i><b>8.1</b> Regresión logística con interacciones</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#centrando-las-variables"><i class="fa fa-check"></i><b>8.1.1</b> Centrando las variables</a></li>
+<li class="chapter" data-level="8.1.2" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#graficas-del-modelo-con-interacciones"><i class="fa fa-check"></i><b>8.1.2</b> Gráficas del modelo con interacciones</a></li>
+<li class="chapter" data-level="8.1.3" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#otros-predictores"><i class="fa fa-check"></i><b>8.1.3</b> Otros predictores</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#ejemplo-oscares"><i class="fa fa-check"></i><b>8.2</b> Ejemplo óscares</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estadística Aplicada III</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regresion-logistica-3" class="section level1">
+<h1><span class="header-section-number">Clase 8</span> Regresión logística 3</h1>
+<style>
+  .espacio {
+     margin-bottom: 1cm;
+  }
+</style>
+<style>
+  .espacio3 {
+     margin-bottom: 3cm;
+  }
+</style>
+<div id="regresion-logistica-con-interacciones" class="section level2">
+<h2><span class="header-section-number">8.1</span> Regresión logística con interacciones</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>Recordemos el modelo de pozos en Bangladesh:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wells &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/wells.csv&quot;</span>)
+wells &lt;-<span class="st"> </span>wells <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">dist_100 =</span> dist<span class="op">/</span><span class="dv">100</span>)
+fit.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_<span class="dv">100</span>, <span class="dt">data =</span> wells, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+fit.<span class="dv">2</span></code></pre></div>
+<p>Posteriormente añadimos una segunda variable:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit.<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>arsenic, <span class="dt">data =</span> wells, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+fit.<span class="dv">3</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:  glm(formula = switch ~ dist_100 + arsenic, family = binomial(link = &quot;logit&quot;), </span>
+<span class="co">#&gt;     data = wells)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt; (Intercept)     dist_100      arsenic  </span>
+<span class="co">#&gt;     0.00275     -0.89664      0.46077  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Degrees of Freedom: 3019 Total (i.e. Null);  3017 Residual</span>
+<span class="co">#&gt; Null Deviance:       4120 </span>
+<span class="co">#&gt; Residual Deviance: 3930  AIC: 3940</span></code></pre></div>
+<p>Añadimos una interacción entre estos dos términos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit.<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>arsenic <span class="op">+</span><span class="st"> </span>dist_<span class="dv">100</span><span class="op">:</span>arsenic, <span class="dt">data =</span> wells,
+  <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+fit.<span class="dv">4</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:  glm(formula = switch ~ dist_100 + arsenic + dist_100:arsenic, </span>
+<span class="co">#&gt;     family = binomial(link = &quot;logit&quot;), data = wells)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;      (Intercept)          dist_100           arsenic  dist_100:arsenic  </span>
+<span class="co">#&gt;           -0.148            -0.577             0.556            -0.179  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Degrees of Freedom: 3019 Total (i.e. Null);  3016 Residual</span>
+<span class="co">#&gt; Null Deviance:       4120 </span>
+<span class="co">#&gt; Residual Deviance: 3930  AIC: 3940</span></code></pre></div>
+<p>Para entender los números en la tabla, usamos los siguientes trucos:</p>
+<ul>
+<li><p>Evaluar predicciones e interacciones en la media de los datos, que tienen valores promedio de 0.48 para distancia y 1.66 para arsénico (es decir, una distancia media de 48 metros al pozo seguro más cercano, y un nivel promedio de arsénico de 1.66 entre los pozos inseguros).</p></li>
+<li><p>Dividir entre 4 para obtener diferencias predictivas aproximadas en la escala de probabilidad.</p></li>
+</ul>
+<p>Intrepretamos los coeficientes:</p>
+<ol style="list-style-type: decimal">
+<li>El término constante no tiene interpretación: <span class="math inline">\(\mbox{logit}^{-1}(-0.15) = 0.47\)</span> es la probabilidad estimada de cambio, si la distancia al pozo seguro más cercano es 0 y el nivel de arsénico del pozo actual es 0. Esto es imposible porque la distribución de arsénico en pozos inseguros comienza en 0.5.</li>
+</ol>
+<p>En cambio, podemos evaluar la predicción en los valores promedio de dist_100 = 0.48 y arsénico = 1.66, la probabilidad de cambiar de pozo es <span class="math inline">\(\mbox{logit}^1(-0.15 - 0.58 · 0.48 + 0.56 · 1.66 - 0.18 · 0.48 · 1.66) = 0.59\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Coeficiente de distancia: esto corresponde a la comparación de dos pozos que difieren en 1 en dist100, si el nivel de arsénico es 0 para ambos pozos. Una vez más, no debemos tratar de interpretarlo.</li>
+</ol>
+<p>En cambio, podemos ver el valor promedio, arsénico = 1.66, donde la distancia tiene un coeficiente de <span class="math inline">\(-0.58 - 0.18 · 1.66 = -0.88\)</span> en la escala logit. Para interpretar esto rápidamente en la escala de probabilidad, lo dividimos por 4: <span class="math inline">\(-0.88 / 4 = -0.22\)</span>. Por lo tanto, al nivel medio de arsénico en los datos, a cada 100 metros de distancia le corresponden a una diferencia negativa aproximada del 22% en la probabilidad de cambio.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Coeficiente para arsénico: esto equivale a comparar dos pozos que difieren en 1 en arsénico, si la distancia al pozo seguro más cercano es 0 para ambos.</li>
+</ol>
+<p>Evaluamos la comparación en el valor promedio para la distancia, dist100 = 0.48, donde el arsénico tiene un coeficiente de <span class="math inline">\(0.56 - 0.18 · 0.48 = 0.47\)</span> en la escala logit. Para interpretar esto rápidamente en la escala de probabilidad, lo dividimos entre 4: <span class="math inline">\(0.47 / 4 = 0.12\)</span>. Por lo tanto, en el nivel medio de distancia en los datos, cada unidad adicional de arsénico corresponde a una diferencia positiva aproximada del 12% en la probabilidad de cambio.</p>
+<ol start="4" style="list-style-type: decimal">
+<li><p><em>Coeficiente para el término de interacción</em>: se puede interpretar de dos maneras:</p>
+<pre><code>* por cada unidad adicional de arsénico, el valor -0.18 se agrega al coeficiente de distancia. Ya hemos visto que el coeficiente de distancia es -0.88 en el nivel promedio de arsénico, por lo que podemos entender la interacción diciendo que la importancia de la distancia como predictor aumenta para los hogares con niveles más altos de arsénico.
+
+* por cada 100 metros adicionales de distancia al pozo más cercano, se agrega el valor -0.18 al coeficiente de arsénico. Ya hemos visto que el coeficiente de distancia es 0.47 a la distancia promedio al pozo seguro más cercano, y así podemos entender la interacción diciendo que la importancia del arsénico como predictor disminuye para los hogares que están más lejos de los pozos seguros existentes.</code></pre></li>
+</ol>
+<div id="centrando-las-variables" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Centrando las variables</h3>
+<p>Como se discutió anteriormente en el contexto de la regresión lineal, antes de ajustar las interacciones tiene sentido centrar las variables de entrada para que podamos interpretar los coeficientes más fácilmente. Las entradas centradas son:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wells &lt;-<span class="st"> </span>wells <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">dist_100_c =</span> dist_<span class="dv">100</span> <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(dist_<span class="dv">100</span>),
+         <span class="dt">arsenic_c =</span> arsenic <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(arsenic))</code></pre></div>
+<p>Podemos reajustar el modelo usando las variables de entrada centradas, lo que hará que los coeficientes sean mucho más fáciles de interpretar:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit.<span class="dv">5</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_100_c <span class="op">+</span><span class="st"> </span>arsenic_c <span class="op">+</span><span class="st"> </span>dist_100_c<span class="op">:</span>arsenic_c, <span class="dt">data =</span> wells,
+  <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+fit.<span class="dv">5</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:  glm(formula = switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c, </span>
+<span class="co">#&gt;     family = binomial(link = &quot;logit&quot;), data = wells)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;          (Intercept)            dist_100_c             arsenic_c  </span>
+<span class="co">#&gt;                0.351                -0.874                 0.470  </span>
+<span class="co">#&gt; dist_100_c:arsenic_c  </span>
+<span class="co">#&gt;               -0.179  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Degrees of Freedom: 3019 Total (i.e. Null);  3016 Residual</span>
+<span class="co">#&gt; Null Deviance:       4120 </span>
+<span class="co">#&gt; Residual Deviance: 3930  AIC: 3940</span></code></pre></div>
+<p>Centramos las entradas, no los predictores. Por lo tanto, no centramos la interacción (dist_100 * arsénico); más bien, incluimos la interacción de las dos variables de entrada centradas.</p>
+<p>Interpretamos los coeficientes en esta nueva escala:</p>
+<ol style="list-style-type: decimal">
+<li><p>Término constante: <span class="math inline">\(\mbox{logit}^{-1}(0.35) = 0.59\)</span> es la probabilidad estimada cambiar de pozo, si dist_100_c = arsenic_c = 0, es decir, en las medias de la distancia al pozo seguro más cercano y el nivel de arsénico. (Obtuvimos este mismo cálculo, pero con más esfuerzo, con nuestro modelo anterior con datos no centrados).</p></li>
+<li><p>Coeficiente de distancia: éste es el coeficiente de distancia (en la escala logit) si el nivel de arsénico está en su valor promedio. Para interpretar esto rápidamente en la escala de probabilidad, lo dividimos por 4: <span class="math inline">\(-0.88 / 4 = -0.22\)</span>. Por lo tanto, al nivel medio de arsénico en los datos, cada 100 metros de distancia corresponde a una diferencia negativa aproximada del 22% en la probabilidad de cambio.</p></li>
+<li><p>Coeficiente para arsénico: este es el coeficiente para el nivel de arsénico si la distancia al pozo seguro más cercano está en su valor promedio. Para interpretar esto rápidamente en la escala de probabilidad, lo dividimos por 4: <span class="math inline">\(0.47 / 4 = 0.12\)</span>. Por lo tanto, en el nivel medio de distancia en los datos, cada unidad adicional de arsénico corresponde a una diferencia positiva aproximada del 12% en la probabilidad de cambio.</p></li>
+<li><p>Coeficiente para el término de interacción: esto no se modifica al centrarse y tiene la misma interpretación que antes.</p></li>
+</ol>
+<p>Las predicciones para nuevas observaciones no se modifican. El centrado lineal de los predictores cambia las interpretaciones de los coeficientes pero no cambia el modelo subyacente.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(fit.<span class="dv">5</span>)
+<span class="co">#&gt; List of 30</span>
+<span class="co">#&gt;  $ coefficients     : Named num [1:4] 0.351 -0.874 0.47 -0.179</span>
+<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:4] &quot;(Intercept)&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
+<span class="co">#&gt;  $ residuals        : Named num [1:3020] 1.37 2.09 -3.24 1.72 1.86 ...</span>
+<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
+<span class="co">#&gt;  $ fitted.values    : Named num [1:3020] 0.73 0.478 0.691 0.58 0.537 ...</span>
+<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
+<span class="co">#&gt;  $ effects          : Named num [1:3020] -7.033 -5.805 -11.023 1.748 0.903 ...</span>
+<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;(Intercept)&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot; ...</span>
+<span class="co">#&gt;  $ R                : num [1:4, 1:4] -26.3509 0 0 0 -0.0976 ...</span>
+<span class="co">#&gt;   ..- attr(*, &quot;dimnames&quot;)=List of 2</span>
+<span class="co">#&gt;   .. ..$ : chr [1:4] &quot;(Intercept)&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
+<span class="co">#&gt;   .. ..$ : chr [1:4] &quot;(Intercept)&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
+<span class="co">#&gt;  $ rank             : int 4</span>
+<span class="co">#&gt;  $ qr               :List of 5</span>
+<span class="co">#&gt;   ..$ qr   : num [1:3020, 1:4] -26.3509 0.019 0.0175 0.0187 0.0189 ...</span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;dimnames&quot;)=List of 2</span>
+<span class="co">#&gt;   .. .. ..$ : chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
+<span class="co">#&gt;   .. .. ..$ : chr [1:4] &quot;(Intercept)&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
+<span class="co">#&gt;   ..$ rank : int 4</span>
+<span class="co">#&gt;   ..$ qraux: num [1:4] 1.02 1 1.01 1</span>
+<span class="co">#&gt;   ..$ pivot: int [1:4] 1 2 3 4</span>
+<span class="co">#&gt;   ..$ tol  : num 1e-11</span>
+<span class="co">#&gt;   ..- attr(*, &quot;class&quot;)= chr &quot;qr&quot;</span>
+<span class="co">#&gt;  $ family           :List of 12</span>
+<span class="co">#&gt;   ..$ family    : chr &quot;binomial&quot;</span>
+<span class="co">#&gt;   ..$ link      : chr &quot;logit&quot;</span>
+<span class="co">#&gt;   ..$ linkfun   :function (mu)  </span>
+<span class="co">#&gt;   ..$ linkinv   :function (eta)  </span>
+<span class="co">#&gt;   ..$ variance  :function (mu)  </span>
+<span class="co">#&gt;   ..$ dev.resids:function (y, mu, wt)  </span>
+<span class="co">#&gt;   ..$ aic       :function (y, n, mu, wt, dev)  </span>
+<span class="co">#&gt;   ..$ mu.eta    :function (eta)  </span>
+<span class="co">#&gt;   ..$ initialize:  expression({  if (NCOL(y) == 1) {  if (is.factor(y))  y &lt;- y != levels(y)[1L]  n &lt;- rep.int(1, nobs)  y[weights =| __truncated__</span>
+<span class="co">#&gt;   ..$ validmu   :function (mu)  </span>
+<span class="co">#&gt;   ..$ valideta  :function (eta)  </span>
+<span class="co">#&gt;   ..$ simulate  :function (object, nsim)  </span>
+<span class="co">#&gt;   ..- attr(*, &quot;class&quot;)= chr &quot;family&quot;</span>
+<span class="co">#&gt;  $ linear.predictors: Named num [1:3020] 0.9961 -0.0864 0.8043 0.3233 0.1473 ...</span>
+<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
+<span class="co">#&gt;  $ deviance         : num 3928</span>
+<span class="co">#&gt;  $ aic              : num 3936</span>
+<span class="co">#&gt;  $ null.deviance    : num 4118</span>
+<span class="co">#&gt;  $ iter             : int 4</span>
+<span class="co">#&gt;  $ weights          : Named num [1:3020] 0.197 0.25 0.214 0.244 0.249 ...</span>
+<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
+<span class="co">#&gt;  $ prior.weights    : Named num [1:3020] 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
+<span class="co">#&gt;  $ df.residual      : int 3016</span>
+<span class="co">#&gt;  $ df.null          : int 3019</span>
+<span class="co">#&gt;  $ y                : Named num [1:3020] 1 1 0 1 1 1 1 1 1 1 ...</span>
+<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
+<span class="co">#&gt;  $ converged        : logi TRUE</span>
+<span class="co">#&gt;  $ boundary         : logi FALSE</span>
+<span class="co">#&gt;  $ model            :&#39;data.frame&#39;:   3020 obs. of  3 variables:</span>
+<span class="co">#&gt;   ..$ switch    : int [1:3020] 1 1 0 1 1 1 1 1 1 1 ...</span>
+<span class="co">#&gt;   ..$ dist_100_c: num [1:3020] -0.3151 -0.0101 -0.2736 -0.2685 -0.0746 ...</span>
+<span class="co">#&gt;   ..$ arsenic_c : num [1:3020] 0.703 -0.947 0.413 -0.507 -0.557 ...</span>
+<span class="co">#&gt;   ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39;  language switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;variables&quot;)= language list(switch, dist_100_c, arsenic_c)</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;factors&quot;)= int [1:3, 1:3] 0 1 0 0 0 1 0 1 1</span>
+<span class="co">#&gt;   .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2</span>
+<span class="co">#&gt;   .. .. .. .. ..$ : chr [1:3] &quot;switch&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot;</span>
+<span class="co">#&gt;   .. .. .. .. ..$ : chr [1:3] &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;term.labels&quot;)= chr [1:3] &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;order&quot;)= int [1:3] 1 1 2</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;intercept&quot;)= int 1</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;response&quot;)= int 1</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; </span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;predvars&quot;)= language list(switch, dist_100_c, arsenic_c)</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:3] &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot;</span>
+<span class="co">#&gt;   .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:3] &quot;switch&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot;</span>
+<span class="co">#&gt;  $ call             : language glm(formula = switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c,      family = binomial(link = &quot;logit&quot;), data = wells)</span>
+<span class="co">#&gt;  $ formula          :Class &#39;formula&#39;  language switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c</span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; </span>
+<span class="co">#&gt;  $ terms            :Classes &#39;terms&#39;, &#39;formula&#39;  language switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c</span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;variables&quot;)= language list(switch, dist_100_c, arsenic_c)</span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;factors&quot;)= int [1:3, 1:3] 0 1 0 0 0 1 0 1 1</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2</span>
+<span class="co">#&gt;   .. .. .. ..$ : chr [1:3] &quot;switch&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot;</span>
+<span class="co">#&gt;   .. .. .. ..$ : chr [1:3] &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;term.labels&quot;)= chr [1:3] &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;order&quot;)= int [1:3] 1 1 2</span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;intercept&quot;)= int 1</span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;response&quot;)= int 1</span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; </span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;predvars&quot;)= language list(switch, dist_100_c, arsenic_c)</span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:3] &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot;</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;names&quot;)= chr [1:3] &quot;switch&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot;</span>
+<span class="co">#&gt;  $ data             :Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:   3020 obs. of  8 variables:</span>
+<span class="co">#&gt;   ..$ switch    : int [1:3020] 1 1 0 1 1 1 1 1 1 1 ...</span>
+<span class="co">#&gt;   ..$ arsenic   : num [1:3020] 2.36 0.71 2.07 1.15 1.1 3.9 2.97 3.24 3.28 2.52 ...</span>
+<span class="co">#&gt;   ..$ dist      : num [1:3020] 16.8 47.3 21 21.5 40.9 ...</span>
+<span class="co">#&gt;   ..$ assoc     : int [1:3020] 0 0 0 0 1 1 1 0 1 1 ...</span>
+<span class="co">#&gt;   ..$ educ      : int [1:3020] 0 0 10 12 14 9 4 10 0 0 ...</span>
+<span class="co">#&gt;   ..$ dist_100  : num [1:3020] 0.168 0.473 0.21 0.215 0.409 ...</span>
+<span class="co">#&gt;   ..$ dist_100_c: num [1:3020] -0.3151 -0.0101 -0.2736 -0.2685 -0.0746 ...</span>
+<span class="co">#&gt;   ..$ arsenic_c : num [1:3020] 0.703 -0.947 0.413 -0.507 -0.557 ...</span>
+<span class="co">#&gt;  $ offset           : NULL</span>
+<span class="co">#&gt;  $ control          :List of 3</span>
+<span class="co">#&gt;   ..$ epsilon: num 1e-08</span>
+<span class="co">#&gt;   ..$ maxit  : num 25</span>
+<span class="co">#&gt;   ..$ trace  : logi FALSE</span>
+<span class="co">#&gt;  $ method           : chr &quot;glm.fit&quot;</span>
+<span class="co">#&gt;  $ contrasts        : NULL</span>
+<span class="co">#&gt;  $ xlevels          : Named list()</span>
+<span class="co">#&gt;  - attr(*, &quot;class&quot;)= chr [1:2] &quot;glm&quot; &quot;lm&quot;</span></code></pre></div>
+<p><img src="figuras/manicule.jpg" /> Estima el error estándar del coeficiente de interacción usando la técnica de <em>bootsrap</em>. ¿Es significativo dicho coeficiente?</p>
+<p class="espacio">
+</p>
+<p><br></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(fit.<span class="dv">5</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c, </span>
+<span class="co">#&gt;     family = binomial(link = &quot;logit&quot;), data = wells)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt;  -2.78   -1.20    0.77    1.08    1.85  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;                      Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)            0.3511     0.0399    8.81   &lt;2e-16 ***</span>
+<span class="co">#&gt; dist_100_c            -0.8737     0.1048   -8.34   &lt;2e-16 ***</span>
+<span class="co">#&gt; arsenic_c              0.4695     0.0421   11.16   &lt;2e-16 ***</span>
+<span class="co">#&gt; dist_100_c:arsenic_c  -0.1789     0.1023   -1.75     0.08 .  </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 4118.1  on 3019  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 3927.6  on 3016  degrees of freedom</span>
+<span class="co">#&gt; AIC: 3936</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 4</span></code></pre></div>
+</div>
+<div id="graficas-del-modelo-con-interacciones" class="section level3">
+<h3><span class="header-section-number">8.1.2</span> Gráficas del modelo con interacciones</h3>
+<p>La forma más clara de visualizar el modelo de interacción es graficar la función de la curva de regresión para cada posible escenario.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">invlogit &lt;-<span class="st"> </span><span class="cf">function</span>(x){
+  <span class="kw">exp</span>(x)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(x))
+}
+<span class="kw">ggplot</span>(wells, <span class="kw">aes</span>(<span class="dt">x =</span> dist_<span class="dv">100</span>, <span class="dt">y =</span> <span class="cf">switch</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.308</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">size =</span> <span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){
+    <span class="kw">invlogit</span>(fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">4</span>]<span class="op">*</span><span class="fl">0.5</span><span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="fl">3.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){
+    <span class="kw">invlogit</span>(fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">4</span>]<span class="op">*</span><span class="dv">1</span><span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="fl">3.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">0.50</span>, <span class="dt">y =</span> <span class="fl">0.45</span>, <span class="dt">label =</span> <span class="st">&quot;As=0.5&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">0.75</span>, <span class="dt">y =</span> <span class="fl">0.65</span>, <span class="dt">label =</span> <span class="st">&quot;As=1.0&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="08-logit-3_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(wells, <span class="kw">aes</span>(<span class="dt">x =</span> arsenic, <span class="dt">y =</span> <span class="cf">switch</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.308</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">size =</span> <span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){
+    <span class="kw">invlogit</span>(fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">0</span> <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">3</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">4</span>]<span class="op">*</span><span class="dv">0</span><span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="dv">10</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){
+    <span class="kw">invlogit</span>(fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">3</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">4</span>]<span class="op">*</span><span class="fl">0.5</span><span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="dv">10</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">0.7</span>, <span class="dt">y =</span> <span class="fl">0.80</span>, <span class="dt">label =</span> <span class="st">&quot;dist=0&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">2.0</span>, <span class="dt">y =</span> <span class="fl">0.65</span>, <span class="dt">label =</span> <span class="st">&quot;dist=50&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="08-logit-3_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>La interacción no es grande en el rango de la mayoría de los datos. En la gráfica de arriba vemos que las líneas se empiezan a juntar a los 300 metros de distancia.</p>
+<p>Las diferencias en el cambio asociadas con las diferencias en el nivel de arsénico son grandes si se está cerca de un pozo seguro, pero el efecto disminuye si se está lejos de un pozo seguro. Esta interacción tiene algún sentido; sin embargo, hay cierta incertidumbre en el tamaño de la interacción (de la tabla de regresión anterior, una estimación de -0.18 con un error estándar de 0.10). Solo hay unos pocos datos en el área donde la interacción hace alguna diferencia.</p>
+<p>La interacción también aparece en la figura 5.12b, esta vez en una gráfica de probabilidad de cambio en función de la concentración de arsénico, en dos niveles de distancia diferentes.</p>
+</div>
+<div id="otros-predictores" class="section level3">
+<h3><span class="header-section-number">8.1.3</span> Otros predictores</h3>
+<p>¿Son más propensos los usuarios a cambiar de pozo si tienen asociaciones con su comunidad o mayor educación? Para ver, agregamos dos entradas:</p>
+<ul>
+<li><p>assoc = 1 si un miembro del hogar pertenece a alguna organización comunitaria</p></li>
+<li><p>educ = años de educación del usuario del pozo.</p></li>
+</ul>
+<p>En realidad, trabajamos con educ4 = educ / 4, por las razones habituales de hacer que su coeficiente de regresión sea más interpretable: ahora representa la diferencia predictiva de agregar cuatro años de educación.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wells &lt;-<span class="st"> </span>wells <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">educ4 =</span> educ <span class="op">/</span><span class="st"> </span><span class="dv">4</span>)
+fit.<span class="dv">6</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_100_c <span class="op">+</span><span class="st"> </span>
+<span class="st">               </span>arsenic_c <span class="op">+</span><span class="st"> </span>dist_100_c<span class="op">:</span>arsenic_c <span class="op">+</span>
+<span class="st">               </span>assoc <span class="op">+</span><span class="st"> </span>educ4, 
+             <span class="dt">data =</span> wells,
+             <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+fit.<span class="dv">6</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:  glm(formula = switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c + </span>
+<span class="co">#&gt;     assoc + educ4, family = binomial(link = &quot;logit&quot;), data = wells)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;          (Intercept)            dist_100_c             arsenic_c  </span>
+<span class="co">#&gt;                0.203                -0.875                 0.475  </span>
+<span class="co">#&gt;                assoc                 educ4  dist_100_c:arsenic_c  </span>
+<span class="co">#&gt;               -0.123                 0.168                -0.161  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Degrees of Freedom: 3019 Total (i.e. Null);  3014 Residual</span>
+<span class="co">#&gt; Null Deviance:       4120 </span>
+<span class="co">#&gt; Residual Deviance: 3910  AIC: 3920</span></code></pre></div>
+<ul>
+<li><p>Para los hogares con pozos inseguros, pertenecer a una asociación comunitaria sorprendentemente no es predictivo de cambio de pozo, después de controlar los otros factores en el modelo.</p></li>
+<li><p>Sin embargo, las personas con educación superior tienen más probabilidades de cambiar: la diferencia estimada bruta es <span class="math inline">\(0.17 / 4 = 0.04\)</span>, o una diferencia positiva de 4% en la probabilidad de cambio cuando se comparan hogares que difieren en 4 años de educación.</p></li>
+</ul>
+<p>El coeficiente para la educación tiene sentido y es estadísticamente significativo, por lo que lo mantenemos en el modelo. El coeficiente de asociación comunitaria no tiene sentido y no es estadísticamente significativo, por lo que lo eliminamos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit.<span class="dv">7</span> &lt;-<span class="st"> </span><span class="kw">glm</span> (<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_100_c <span class="op">+</span><span class="st"> </span>arsenic_c <span class="op">+</span><span class="st"> </span>dist_100_c<span class="op">:</span>arsenic_c <span class="op">+</span><span class="st"> </span>educ4,
+              <span class="dt">data =</span> wells,
+              <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+fit.<span class="dv">7</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:  glm(formula = switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c + </span>
+<span class="co">#&gt;     educ4, family = binomial(link = &quot;logit&quot;), data = wells)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;          (Intercept)            dist_100_c             arsenic_c  </span>
+<span class="co">#&gt;                0.148                -0.875                 0.477  </span>
+<span class="co">#&gt;                educ4  dist_100_c:arsenic_c  </span>
+<span class="co">#&gt;                0.169                -0.163  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Degrees of Freedom: 3019 Total (i.e. Null);  3015 Residual</span>
+<span class="co">#&gt; Null Deviance:       4120 </span>
+<span class="co">#&gt; Residual Deviance: 3910  AIC: 3920</span></code></pre></div>
+<p>Añadimos otras interacciones (centrando la variable de educación):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wells &lt;-<span class="st"> </span>wells <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">educ4_c =</span> educ4 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(educ4))
+fit.<span class="dv">8</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_100_c <span class="op">+</span><span class="st"> </span>arsenic_c <span class="op">+</span><span class="st"> </span>educ4_c <span class="op">+</span><span class="st"> </span>dist_100_c<span class="op">:</span>arsenic_c <span class="op">+</span>
+<span class="st">               </span>dist_100_c<span class="op">:</span>educ4_c <span class="op">+</span><span class="st"> </span>arsenic_c<span class="op">:</span>educ4_c, 
+             <span class="dt">data =</span> wells,
+             <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+<span class="kw">summary</span>(fit.<span class="dv">8</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = switch ~ dist_100_c + arsenic_c + educ4_c + dist_100_c:arsenic_c + </span>
+<span class="co">#&gt;     dist_100_c:educ4_c + arsenic_c:educ4_c, family = binomial(link = &quot;logit&quot;), </span>
+<span class="co">#&gt;     data = wells)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -2.571  -1.196   0.731   1.072   1.871  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;                      Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)            0.3563     0.0403    8.84  &lt; 2e-16 ***</span>
+<span class="co">#&gt; dist_100_c            -0.9029     0.1073   -8.41  &lt; 2e-16 ***</span>
+<span class="co">#&gt; arsenic_c              0.4950     0.0431   11.50  &lt; 2e-16 ***</span>
+<span class="co">#&gt; educ4_c                0.1850     0.0392    4.72  2.4e-06 ***</span>
+<span class="co">#&gt; dist_100_c:arsenic_c  -0.1177     0.1035   -1.14   0.2557    </span>
+<span class="co">#&gt; dist_100_c:educ4_c     0.3227     0.1066    3.03   0.0025 ** </span>
+<span class="co">#&gt; arsenic_c:educ4_c      0.0722     0.0439    1.65   0.0996 .  </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 4118.1  on 3019  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 3891.7  on 3013  degrees of freedom</span>
+<span class="co">#&gt; AIC: 3906</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 4</span></code></pre></div>
+<p>Podemos interpretar estas nuevas interacciones entendiendo cómo la educación modifica la diferencia predictiva correspondiente a la distancia y el arsénico.</p>
+<ul>
+<li><p><em>Interacción de distancia y educación</em>: una diferencia de 4 años de educación corresponde a una diferencia de 0.32 en el coeficiente para dist100. Como ya hemos visto, dist_100 tiene un coeficiente negativo en promedio; por lo tanto, los cambios positivos en la educación reducen la asociación negativa de la distancia. Esto tiene sentido: las personas con más educación probablemente tengan otros recursos, por lo que andar una distancia extra para obtener agua no es una carga tan pesada.</p></li>
+<li><p><em>Interacción de arsénico y educación</em>: una diferencia de 4 años de educación corresponde a una diferencia de 0.07 en el coeficiente de arsénico. Como ya hemos visto, el arsénico tiene un coeficiente positivo en promedio; por lo tanto, aumentar la educación aumenta la asociación positiva del arsénico. Esto tiene sentido: las personas con más educación podrían estar más informadas sobre los riesgos del arsénico y, por lo tanto, ser más sensibles al aumento de los niveles de arsénico (o, a la inversa, tener menos prisa para cambiar de pozos con niveles de arsénico relativamente bajos).</p></li>
+</ul>
+<p><strong>Estandarizar los predictores</strong></p>
+<p>Deberíamos considerar seriamente la posibilidad de estandarizar todos los predictores como una opción predeterminada para ajustar modelos con interacciones. Las dificultades con dist100 y educ4 en este ejemplo sugieren que la estandarización, restar la media de cada una de las variables de entrada y dividir entre 2 desviaciones estándar.</p>
+</div>
+</div>
+<div id="ejemplo-oscares" class="section level2">
+<h2><span class="header-section-number">8.2</span> Ejemplo óscares</h2>
+<p>Algunas de los factores citados usualmente por las personas como importantes para que una película gane un Óscar son:</p>
+<ol style="list-style-type: decimal">
+<li><p>Estar nominada a Mejor Director.</p></li>
+<li><p>Haber ganado un premio en los Director’s Guild Awards.</p></li>
+<li><p>Tener más nominaciones a la Academia.</p></li>
+<li><p>Ganó mejor película en Golden Globe Awards.</p></li>
+<li><p>La calificación en IMdb.</p></li>
+<li><p>El score de Metacritic</p></li>
+<li><p>El gusto de las personas por la película.</p></li>
+<li><p>El score en RT de los críticos más destacados.</p></li>
+<li><p>Las recaudaciones en taquilla dométicas.</p></li>
+<li><p>Las recaudaciones en taquilla generales.</p></li>
+<li><p>El presupuesto con el que se realizó la película.</p></li>
+<li><p>La duración de la película.</p></li>
+<li><p>El número de estrellas “conocidas”</p></li>
+</ol>
+<p>Contamos con datos que provienen de varias fuentes y se tienen las siguientes variables disponibles:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Descripción</th>
+<th>Fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>film</td>
+<td>Nombre de la película nominada</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>year</td>
+<td>Año de nominación de la película</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>release_date</td>
+<td>Fecha de lanzamiento</td>
+<td>IMdb</td>
+</tr>
+<tr class="even">
+<td>mpaa</td>
+<td>Clasificación</td>
+<td>IMdb</td>
+</tr>
+<tr class="odd">
+<td>imdb_score</td>
+<td>Rating de IMdb</td>
+<td>IMdb</td>
+</tr>
+<tr class="even">
+<td>metacritic_score</td>
+<td>Score de Metacritic</td>
+<td>IMdb</td>
+</tr>
+<tr class="odd">
+<td>rt_audience_score</td>
+<td>% de personas que la favorecen</td>
+<td>Rotten Tomatoes</td>
+</tr>
+<tr class="even">
+<td>rt_critic_score</td>
+<td>Score de “Top critics”</td>
+<td>Rotten Tomatoes</td>
+</tr>
+<tr class="odd">
+<td>bo</td>
+<td>Recaudado en taquilla</td>
+<td>Box Office Mojo</td>
+</tr>
+<tr class="even">
+<td>budget</td>
+<td>Estimated budget</td>
+<td>Wikipedia</td>
+</tr>
+<tr class="odd">
+<td>running_time</td>
+<td>Duración (en minutos)</td>
+<td>Wikipedia</td>
+</tr>
+<tr class="even">
+<td>stars_count</td>
+<td># de actores mostrados en el recuadro</td>
+<td>Wikipedia</td>
+</tr>
+<tr class="odd">
+<td>aabd</td>
+<td>Nominación a mejor director Óscar</td>
+<td>Wikipedia</td>
+</tr>
+<tr class="even">
+<td>dga</td>
+<td>Ganadora del Director’s Guild</td>
+<td>Wikipedia</td>
+</tr>
+<tr class="odd">
+<td>noms</td>
+<td>Número de nominaciones al Óscar</td>
+<td>Wikipedia</td>
+</tr>
+<tr class="even">
+<td>ggbp</td>
+<td>Ganadora en los Globos</td>
+<td>Wikipedia</td>
+</tr>
+<tr class="odd">
+<td>winner</td>
+<td>Ganó Óscar</td>
+<td>Wikipedia</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oscars &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/oscars.csv&quot;</span>)
+<span class="kw">glimpse</span>(oscars)
+<span class="co">#&gt; Observations: 156</span>
+<span class="co">#&gt; Variables: 17</span>
+<span class="co">#&gt; $ film              &lt;chr&gt; &quot;Forrest Gump&quot;, &quot;Four Weddings and a Funeral...</span>
+<span class="co">#&gt; $ year              &lt;int&gt; 1994, 1994, 1994, 1994, 1994, 1995, 1995, 19...</span>
+<span class="co">#&gt; $ release_date      &lt;date&gt; 1994-07-06, 1994-04-15, 1994-10-14, 1994-10...</span>
+<span class="co">#&gt; $ mpaa              &lt;chr&gt; &quot;PG-13&quot;, &quot;R&quot;, &quot;R&quot;, &quot;PG-13&quot;, &quot;R&quot;, &quot;PG&quot;, &quot;G&quot;, ...</span>
+<span class="co">#&gt; $ imdb_score        &lt;dbl&gt; 8.8, 7.1, 8.9, 7.5, 9.3, 7.6, 6.8, 8.4, 7.7,...</span>
+<span class="co">#&gt; $ metacritic_score  &lt;int&gt; 82, 81, 94, 88, 80, 77, 83, 68, 84, 81, 85, ...</span>
+<span class="co">#&gt; $ rt_audience_score &lt;int&gt; 95, 74, 96, 87, 98, 87, 67, 85, 90, 94, 92, ...</span>
+<span class="co">#&gt; $ rt_critic_score   &lt;int&gt; 72, 95, 94, 96, 91, 95, 97, 77, 98, 93, 93, ...</span>
+<span class="co">#&gt; $ bo                &lt;dbl&gt; 677.90, 245.70, 213.90, 24.80, 58.30, 355.20...</span>
+<span class="co">#&gt; $ budget            &lt;dbl&gt; 55.0, 2.8, 88.5, 31.0, 25.0, 52.0, 30.0, 65....</span>
+<span class="co">#&gt; $ running_time      &lt;int&gt; 142, 117, 154, 133, 142, 140, 92, 178, 136, ...</span>
+<span class="co">#&gt; $ stars_count       &lt;int&gt; 5, 10, 12, 5, 7, 6, 2, 4, 4, 3, 5, 7, 12, 5,...</span>
+<span class="co">#&gt; $ aabd              &lt;int&gt; 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1,...</span>
+<span class="co">#&gt; $ dga               &lt;int&gt; 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,...</span>
+<span class="co">#&gt; $ noms              &lt;int&gt; 19, 12, 17, 11, 7, 7, 6, 6, 17, 1, 12, 7, 12...</span>
+<span class="co">#&gt; $ ggbp              &lt;int&gt; 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1,...</span>
+<span class="co">#&gt; $ winner            &lt;int&gt; 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,...</span></code></pre></div>
+<p>Ajustamos un modelo de regresión logística para “winner” utilizando como predictores “imdb_score + metacritic_score + rt_audience_score + rt_critic_score + bo + budget + running_time + stars_count + aabd + dga + noms + ggbp”:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oscars_<span class="dv">2</span> &lt;-<span class="st"> </span>oscars <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">imdb_score =</span> imdb_score<span class="op">/</span><span class="dv">10</span>,
+         <span class="dt">metacritic_score =</span> metacritic_score<span class="op">/</span><span class="dv">100</span>,
+         <span class="dt">rt_audience_score =</span> rt_audience_score<span class="op">/</span><span class="dv">100</span>,
+         <span class="dt">bo =</span> <span class="kw">log</span>(bo),
+         <span class="dt">budget =</span> <span class="kw">log</span>(budget),
+         <span class="dt">running_time =</span> <span class="kw">log</span>(running_time),
+         <span class="dt">stars_count =</span> <span class="kw">log</span>(stars_count))
+fit.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">formula =</span> winner <span class="op">~</span><span class="st"> </span>imdb_score <span class="op">+</span><span class="st"> </span>rt_critic_score <span class="op">+</span><span class="st"> </span>bo <span class="op">+</span><span class="st"> </span>budget <span class="op">+</span><span class="st"> </span>
+<span class="st">               </span>running_time <span class="op">+</span><span class="st"> </span>stars_count <span class="op">+</span><span class="st"> </span>aabd <span class="op">+</span><span class="st"> </span>dga <span class="op">+</span><span class="st"> </span>noms <span class="op">+</span><span class="st"> </span>ggbp, 
+             <span class="dt">family =</span> <span class="kw">binomial</span>(<span class="dt">link =</span> <span class="st">&quot;logit&quot;</span>), 
+             <span class="dt">data =</span> oscars_<span class="dv">2</span>)
+fit.<span class="dv">1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:  glm(formula = winner ~ imdb_score + rt_critic_score + bo + budget + </span>
+<span class="co">#&gt;     running_time + stars_count + aabd + dga + noms + ggbp, family = binomial(link = &quot;logit&quot;), </span>
+<span class="co">#&gt;     data = oscars_2)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;     (Intercept)       imdb_score  rt_critic_score               bo  </span>
+<span class="co">#&gt;        -14.7473          11.0596          -0.0426           0.1991  </span>
+<span class="co">#&gt;          budget     running_time      stars_count             aabd  </span>
+<span class="co">#&gt;         -0.7994           0.9864           0.6808           0.6482  </span>
+<span class="co">#&gt;             dga             noms             ggbp  </span>
+<span class="co">#&gt;          3.6727           0.1642           0.4169  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Degrees of Freedom: 146 Total (i.e. Null);  136 Residual</span>
+<span class="co">#&gt;   (9 observations deleted due to missingness)</span>
+<span class="co">#&gt; Null Deviance:       128 </span>
+<span class="co">#&gt; Residual Deviance: 65.7  AIC: 87.7</span></code></pre></div>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>La variable que tiene más impacto en la probabilidad de ganar un Óscar…</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Ganó un premio en el Director’s Guild.</p></li>
+<li><p>Número de nominaciones a los Óscares.</p></li>
+<li><p>Crítica de Rotting Tomatoes (Top critics).</p></li>
+<li><p>Presupuesto</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>Si la película ganó un premio en los Director’s Guild, entonces la probabilidad de ganar un Óscar</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>la probabilidad de ganar un Óscar aumenta en 3.67.</p></li>
+<li><p>la probabilidad logit de ganar un Óscar aumenta en 3.67.</p></li>
+<li><p>los momios de ganar un Óscar son 3.67.</p></li>
+<li><p>los momios de ganr un Óscar aumentan en <span class="math inline">\(e^{3.67}\)</span>.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regresion-logistica-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

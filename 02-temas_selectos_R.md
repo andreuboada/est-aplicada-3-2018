@@ -2000,7 +2000,7 @@ Batting %>% sample_n(10) %>% knitr::kable()
 ```r
 system.time(lm(R ~ AB + teamID, Batting))
 #>    user  system elapsed 
-#>    2.98    0.10   10.09
+#>   2.922   0.104   3.026
 ```
 
 - __user time__: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.
@@ -2013,7 +2013,7 @@ El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:
 ```r
 system.time(readLines("http://www.jhsph.edu"))
 #>    user  system elapsed 
-#>   0.022   0.004   0.334
+#>   0.022   0.004   3.713
 ```
 
 
@@ -2025,7 +2025,7 @@ system.time(mclapply(2000:2006,
     lm(R ~ AB, sub)
 }, mc.cores = 5))
 #>    user  system elapsed 
-#>   0.037   0.058   0.276
+#>   0.058   0.044   0.074
 ```
 
 Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.
@@ -2070,28 +2070,28 @@ est_r_st <- system.time({
 
 dplyr_st
 #>    user  system elapsed 
-#>   0.144   0.000   0.542
+#>   0.129   0.000   0.130
 ```
 
 
 ```r
 plyr_st
 #>    user  system elapsed 
-#>   7.528   0.013  26.356
+#>   7.198   0.012   7.210
 ```
 
 
 ```r
 est_l_st
 #>    user  system elapsed 
-#>   82.76    2.08  294.29
+#>   63.17    1.43   64.60
 ```
 
 
 ```r
 est_r_st
 #>    user  system elapsed 
-#>   0.649   0.004   2.248
+#>   0.598   0.004   0.601
 ```
 
 La función `system.time` supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es `Rprof()`.
@@ -2270,7 +2270,7 @@ system.time(
         aciertos[i] <- TRUE
 })
 #>    user  system elapsed 
-#>   0.368   0.004   1.182
+#>   0.345   0.000   0.345
 ```
 
 
@@ -2282,7 +2282,7 @@ system.time(
         aciertos[i] <- TRUE
 })
 #>    user  system elapsed 
-#>   0.255   0.000   0.795
+#>   0.244   0.000   0.244
 ```
 
 Usando `rbind`:
@@ -2298,7 +2298,7 @@ mi.df
 }
 system.time(mi.df.1 <- crecer_rbind())
 #>    user  system elapsed 
-#>   0.856   0.000   2.891
+#>   0.765   0.000   0.766
 ```
 
 Si definimos el tamaño del data.frame obtenemos mejoras:
@@ -2315,7 +2315,7 @@ mi.df <- data.frame(a = rep(NA, 1000), b = rep(NA, 1000))
 }
 system.time(mi.df.1 <- crecer_rbind_2())
 #>    user  system elapsed 
-#>   0.089   0.000   0.277
+#>   0.099   0.000   0.099
 ```
 
 Finalmente, veamos un enfoque totalmente vectorizado

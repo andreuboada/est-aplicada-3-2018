@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-03-04">
+<meta name="date" content="2018-03-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="regresion-logistica-1.html">
-<link rel="next" href="referencias.html">
+<link rel="next" href="regresion-logistica-3.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -264,6 +264,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.10" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#regresion-logistica-multinomial"><i class="fa fa-check"></i><b>7.10</b> Regresión logística multinomial</a></li>
 <li class="chapter" data-level="7.11" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#identificabilidad-y-separacion"><i class="fa fa-check"></i><b>7.11</b> Identificabilidad y separación</a></li>
 <li class="chapter" data-level="7.12" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#tarea-5"><i class="fa fa-check"></i><b>7.12</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html"><i class="fa fa-check"></i><b>8</b> Regresión logística 3</a><ul>
+<li class="chapter" data-level="8.1" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#regresion-logistica-con-interacciones"><i class="fa fa-check"></i><b>8.1</b> Regresión logística con interacciones</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#centrando-las-variables"><i class="fa fa-check"></i><b>8.1.1</b> Centrando las variables</a></li>
+<li class="chapter" data-level="8.1.2" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#graficas-del-modelo-con-interacciones"><i class="fa fa-check"></i><b>8.1.2</b> Gráficas del modelo con interacciones</a></li>
+<li class="chapter" data-level="8.1.3" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#otros-predictores"><i class="fa fa-check"></i><b>8.1.3</b> Otros predictores</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#ejemplo-oscares"><i class="fa fa-check"></i><b>8.2</b> Ejemplo óscares</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -683,7 +691,6 @@ fit.<span class="dv">3</span>
 <div id="graficar-el-modelo-ajustado-con-dos-predictores" class="section level3">
 <h3><span class="header-section-number">7.4.8</span> Graficar el modelo ajustado con dos predictores</h3>
 <p>La forma de ver esta relación entre los predictores y <span class="math inline">\(P(y=1)\)</span> como una función en una superficie de 3 dimensiones donde los dos predictores se ponen en los ejes horizontales. Estas gráficas suelen ser difíciles de leer por lo cual se hacen generalmente gráficas separadas:</p>
-<p>stat_function(fun = function(x){invlogit(fit.3<span class="math inline">\(coef[1] + fit.3\)</span>coef[2]*x + 0.5}, xlim = c(-0.3,3.5)) +</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(wells, <span class="kw">aes</span>(<span class="dt">x =</span> dist_<span class="dv">100</span>, <span class="dt">y =</span> <span class="cf">switch</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.308</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">size =</span> <span class="fl">0.1</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){<span class="kw">invlogit</span>(fit.<span class="dv">3</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">3</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="fl">3.5</span>)) <span class="op">+</span>
@@ -1212,7 +1219,7 @@ diabetes_coef
 <p>Es fácil ver que este método de estimación de los coeficientes (minimizando la devianza de entrenamiento) es el método de máxima verosimilitud. La verosimilitud de la muestra de entrenamiento está dada por:</p>
 <p><span class="math display">\[L(\beta) =\prod_{i=1}^N p_{y^{(i)}} (x^{(i)})\]</span> Y la log verosimilitud es</p>
 <p><span class="math display">\[l(\beta) =\sum_{i=1}^N \log(p_{y^{(i)}} (x^{(i)})).\]</span></p>
-<p>Así que ajustar el modelo minimizando la devianza s losmismo que hacer máxima verosimilitud (condicional a los valores de <span class="math inline">\(x\)</span>).</p>
+<p>Así que ajustar el modelo minimizando la devianza es lo mismo que hacer máxima verosimilitud (condicional a los valores de <span class="math inline">\(x\)</span>).</p>
 </div>
 <div id="normalizacion" class="section level4 unnumbered">
 <h4>Normalización</h4>
@@ -1285,7 +1292,7 @@ Utilizando la función <code>multinom</code> del paquete <code>nnet</code> se pu
         </div>
       </div>
 <a href="regresion-logistica-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="regresion-logistica-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

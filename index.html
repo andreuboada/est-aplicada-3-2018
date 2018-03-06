@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-03-04">
+<meta name="date" content="2018-03-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -265,6 +265,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.11" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#identificabilidad-y-separacion"><i class="fa fa-check"></i><b>7.11</b> Identificabilidad y separación</a></li>
 <li class="chapter" data-level="7.12" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#tarea-5"><i class="fa fa-check"></i><b>7.12</b> Tarea</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html"><i class="fa fa-check"></i><b>8</b> Regresión logística 3</a><ul>
+<li class="chapter" data-level="8.1" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#regresion-logistica-con-interacciones"><i class="fa fa-check"></i><b>8.1</b> Regresión logística con interacciones</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#centrando-las-variables"><i class="fa fa-check"></i><b>8.1.1</b> Centrando las variables</a></li>
+<li class="chapter" data-level="8.1.2" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#graficas-del-modelo-con-interacciones"><i class="fa fa-check"></i><b>8.1.2</b> Gráficas del modelo con interacciones</a></li>
+<li class="chapter" data-level="8.1.3" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#otros-predictores"><i class="fa fa-check"></i><b>8.1.3</b> Otros predictores</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#ejemplo-oscares"><i class="fa fa-check"></i><b>8.2</b> Ejemplo óscares</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
@@ -289,7 +297,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">Estadística Aplicada III</h1>
 <h4 class="author"><em>Andreu Boada de Atela</em></h4>
-<h4 class="date"><em>2018-03-04</em></h4>
+<h4 class="date"><em>2018-03-06</em></h4>
 </div>
 <div id="temario-y-referencias" class="section level1 unnumbered">
 <h1>Temario y referencias</h1>
@@ -326,20 +334,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="referencias-principales" class="section level3 unnumbered">
 <h3>Referencias principales</h3>
 <ul>
-<li><p><a href="https://www.wiley.com/en-us/Categorical+Data+Analysis%2C+3rd+Edition-p-9780470463635">Agresti, Alan. Categorical data analysis. 3rd ed. Hoboken, N. J.: John Wiley &amp; Sons, 2013.</a></p></li>
-<li><p><a href="https://www.pearson.com/us/higher-education/program/Johnson-Applied-Multivariate-Statistical-Analysis-6th-Edition/PGM274834.html">Johnson, R., y Wichern, D. Applied multivariate statistical analysis. Upper Saddle River, N. J.: Pearson Prentice Hall, 2007.</a></p></li>
+<li><p><a href="https://www.amazon.com/gp/product/052168689X/">Gelman, A., &amp; Hill, J. (2006). Data Analysis using Regression and Multilevel/hierarchical Models. Cambridge University Press.</a></p></li>
+<li><p><a href="http://www.springer.com/us/book/9780387310732">Christopher, M. B. (2016). Pattern Recognition and Machine Learning. Springer.</a></p></li>
+<li><p><a href="https://www.wiley.com/en-us/Categorical+Data+Analysis%2C+3rd+Edition-p-9780470463635">Agresti, Alan. (2013). Categorical Data Analysis. 3rd ed. Wiley.</a></p></li>
+<li><p><a href="https://www.pearson.com/us/higher-education/program/Johnson-Applied-Multivariate-Statistical-Analysis-6th-Edition/PGM274834.html">Johnson, R., y Wichern, D. (2007). Applied Multivariate Statistical Analysis. 6th ed. Pearson Prentice Hall.</a></p></li>
 </ul>
 </div>
 <div id="otras-referencias" class="section level3 unnumbered">
 <h3>Otras referencias</h3>
 <ul>
-<li><p><a href="http://www.springer.com/us/book/9780387310732">Pattern Recognition and Machine Learning</a></p></li>
-<li><p><a href="https://web.stanford.edu/~hastie/ElemStatLearn/">The Elements of Statistical Learning, Hastie, Tibshirani y Friedman</a></p></li>
-<li><p>Greenacre, Michael J., ed. Multiple correspondence analysis and related methods. Boca Raton, Fla.: Chapman &amp; Hall/CRC, 2006</p></li>
-<li><p>Thompson, Bruce. Canonical correlation analysis : uses and interpretation. Thousand Oaks, Calif.: Sage Publications, 1984</p></li>
-<li><p>Jackson, J. Edward. A user’s guide to principal components. New York: John Wiley &amp; Sons, 1991.</p></li>
-<li><p>Harrell, Frank E. Regression modeling strategies : with applications to linear models, logistic regression, and survival analysis. New York: Springer, c2001.</p></li>
-<li><p>McLachlan, Geoffrey J. Discriminant analysis and statistical pattern recognition. New York: John Wiley &amp; Sons, 1992.</p></li>
+<li><p><a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Friedman, J., Hastie, T., &amp; Tibshirani, R. (2001). The Elements of Statistical Learning. Springer.</a></p></li>
+<li><p><a href="https://www.amazon.com/Introduction-Multivariate-Statistical-Analysis/dp/0471360910">Anderson, T. W. (2003). An Introduction to Multivariate Statistical Analysis. 3rd ed. Wiley.</a></p></li>
+<li><p><a href="https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469">Field, A., Miles, J., &amp; Field, Z. (2012). Discovering Statistics Using R. Sage publications.</a></p></li>
+<li><p><a href="https://www.amazon.com/Introduction-Applied-Multivariate-Analysis-Use/dp/1441996494">Everitt, B., &amp; Hothorn, T. (2011). An Introduction to Applied Multivariate Analysis with R. Springer</a></p></li>
 </ul>
 </div>
 <div id="tareas" class="section level3 unnumbered">

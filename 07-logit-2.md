@@ -569,9 +569,6 @@ El coeficiente de distancia cambio de $-0.62$ en el modelo original a $0.90$ cua
 
 La forma de ver esta relación entre los predictores y $P(y=1)$ como una función en una superficie de 3 dimensiones donde los dos predictores se ponen en los ejes horizontales. Estas gráficas suelen ser difíciles de leer por lo cual se hacen generalmente gráficas separadas:
 
-  stat_function(fun = function(x){invlogit(fit.3$coef[1] + fit.3$coef[2]*x + 0.5}, xlim = c(-0.3,3.5)) +
-
-
 
 ```r
 ggplot(wells, aes(x = dist_100, y = switch)) +
@@ -1183,10 +1180,7 @@ Y la log verosimilitud es
 
  $$l(\beta) =\sum_{i=1}^N \log(p_{y^{(i)}} (x^{(i)})).$$
 
-Así que ajustar el modelo minimizando la devianza
- s losmismo que hacer máxima verosimilitud (condicional a los valores de $x$).
-
-
+Así que ajustar el modelo minimizando la devianza es lo mismo que hacer máxima verosimilitud (condicional a los valores de $x$).
 
 #### Normalización {-}
 Igual que en regresión lineal, en regresión logística conviene normalizar
