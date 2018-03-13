@@ -12,6 +12,10 @@
   }
 </style>
 
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
 ## Ejemplo óscares
 
 Algunas de los factores citados usualmente por las personas como importantes para que una película gane un Óscar son:
@@ -67,7 +71,6 @@ Contamos con datos que provienen de varias fuentes y se tienen las siguientes va
 
 
 ```{r message=FALSE, warning=FALSE}
-library(tidyverse)
 oscars <- read_csv("datos/oscars.csv")
 glimpse(oscars)
 ```
@@ -90,6 +93,11 @@ fit.1 <- glm(formula = winner ~ imdb_score + rt_critic_score + bo + budget +
              data = oscars_2)
 fit.1
 ```
+
+```{r}
+mean(oscars$dga)
+```
+
 
 Podemos ver las probabilidades $p_1({x^{(i)}})$, $i=1,\ldots,N$, que _predice_ el modelo utilizando la función `predict`:
 
@@ -189,9 +197,9 @@ el cociente de la probabilidad y su complemento, la razón de exitosos por fraca
 <p class="espacio">
 </p>
 
-* Si la probabilidad de un evento es un medio, entonces los momios son uno-a-uno o _justos_.
+* Si la probabilidad de un evento es $1/2$, entonces los momios son _uno a uno_ o _justos_.
 
-* Si la probabilidad es $1/3$, entoncea los momios son uno a dos.
+* Si la probabilidad es $1/3$, entonces los momios son uno a dos.
 ```
 
 <br>
@@ -236,9 +244,9 @@ $$
 
 3. Calcular la derivada de la curva logística en la media: $$\dfrac{\beta_j\, e^{\beta_0+\beta_j \bar{x}_j}}{(1 + e^{\beta_0 +\beta_j \bar{x}_j})^2}.$$
 
-4. Dividir entre 4: $$\dfrac{\beta_j}{4}.$$
+4. Dividir entre 4: $$\dfrac{\beta_j}{4}.$$ Se interpreta como la diferencia en la probabilidad ante un cambio unitario en $x_j$ alrededor de la media (aproximadamente).
 
-Se interpreta como la diferencia en la probabilidad ante un cambio unitario en $x_j$ alrededor de la media (aproximadamente).
+5. Calcular el cociente de momios: $$\mbox{log}\left[\dfrac{P(y_i=1|x)}{P(y_i=0|x)} \right] = \alpha + \beta x.$$ Sumar 1 a la variable $x$ es equivalente a sumar $\beta$ en ambos lados de la ecuación. Exponenciando nuevamente ambos lados, el cociente de momios se multiplica por $e^\beta$.
 
 <br>
 
@@ -274,28 +282,35 @@ Supongamos que se ajustan los coeficientes de un modelo lineal logístico y una 
 <div class="centered">
 <p class="espacio">
 </p>
-Supongamos que se ajusta un modelo logístico $h(x_i^\prime \beta)=g(\beta_0+\beta_1x_1^{(i)}+\beta_2 x_2^{(i)})$. Supongamos que $\beta_0=6, \;\beta_1=-1,\; \beta_2=0$. ¿Cuál de las siguientes figuras puede servir como una regla de decisión para este modelo?
+Supongamos que se ajusta un modelo logístico $p_1(x_i)=h(\beta_0+\beta_1x_1^{(i)}+\beta_2 x_2^{(i)})$. Supongamos que $\beta_0=6, \;\beta_1=-1,\; \beta_2=0$. ¿Cuál de las siguientes figuras puede servir como una regla de decisión para este modelo?
 
-(a) ![](figuras/a.png)
+(a) 
 
-(b) ![](figuras/b.png)
+&nbsp; ![](figuras/a.png){width=20%}
 
-(c) ![](figuras/c.png)
+(b) 
 
-(d) ![](figuras/d.png)
+&nbsp; ![](figuras/b.png){width=20%}
+
+(c) 
+
+&nbsp; ![](figuras/c.png){width=20%}
+
+(d) 
+
+&nbsp; ![](figuras/d.png){width=20%}
 
 <p class="espacio3">
 </p>
 </div>
+
 <br>
 
+---
+
+<br>
 
 ## Regresión logística con interacciones
-
-```{r message=FALSE, warning=FALSE}
-library(tidyverse)
-```
-
 
 Recordemos el modelo de pozos en Bangladesh:
 
@@ -343,9 +358,9 @@ Evaluamos la comparación en el valor promedio para la distancia, dist100 = 0.48
 
 4. _Coeficiente para el término de interacción_: se puede interpretar de dos maneras:
 
-        * por cada unidad adicional de arsénico, el valor -0.18 se agrega al coeficiente de distancia. Ya hemos visto que el coeficiente de distancia es -0.88 en el nivel promedio de arsénico, por lo que podemos entender la interacción diciendo que la importancia de la distancia como predictor aumenta para los hogares con niveles más altos de arsénico.
+   * por cada unidad adicional de arsénico, el valor -0.18 se agrega al coeficiente de distancia. Ya hemos visto que el coeficiente de distancia es -0.88 en el nivel promedio de arsénico, por lo que podemos entender la interacción diciendo que la importancia de la distancia como predictor aumenta para los hogares con niveles más altos de arsénico.
         
-        * por cada 100 metros adicionales de distancia al pozo más cercano, se agrega el valor -0.18 al coeficiente de arsénico. Ya hemos visto que el coeficiente de distancia es 0.47 a la distancia promedio al pozo seguro más cercano, y así podemos entender la interacción diciendo que la importancia del arsénico como predictor disminuye para los hogares que están más lejos de los pozos seguros existentes.
+   * por cada 100 metros adicionales de distancia al pozo más cercano, se agrega el valor -0.18 al coeficiente de arsénico. Ya hemos visto que el coeficiente de distancia es 0.47 a la distancia promedio al pozo seguro más cercano, y así podemos entender la interacción diciendo que la importancia del arsénico como predictor disminuye para los hogares que están más lejos de los pozos seguros existentes.
 
 
 #### Centrando las variables {-}
@@ -381,11 +396,6 @@ Interpretamos los coeficientes en esta nueva escala:
 
 
 Las predicciones para nuevas observaciones no se modifican. El centrado lineal de los predictores cambia las interpretaciones de los coeficientes pero no cambia el modelo subyacente.
-
-```{r}
-str(fit.5)
-```
-
 
 ![](figuras/manicule.jpg) Estima el error estándar del coeficiente de interacción usando la técnica de _bootsrap_. ¿Es significativo dicho coeficiente?
 
@@ -430,8 +440,6 @@ ggplot(wells, aes(x = arsenic, y = switch)) +
 La interacción no es grande en el rango de la mayoría de los datos. En la gráfica de arriba vemos que las líneas se empiezan a juntar a los 300 metros de distancia. 
 
 Las diferencias en el cambio asociadas con las diferencias en el nivel de arsénico son grandes si se está cerca de un pozo seguro, pero el efecto disminuye si se está lejos de un pozo seguro. Esta interacción tiene algún sentido; sin embargo, hay cierta incertidumbre en el tamaño de la interacción (de la tabla de regresión anterior, una estimación de -0.18 con un error estándar de 0.10). Solo hay unos pocos datos en el área donde la interacción hace alguna diferencia.
-
-La interacción también aparece en la figura 5.12b, esta vez en una gráfica de probabilidad de cambio en función de la concentración de arsénico, en dos niveles de distancia diferentes.
 
 ## Agregar más predictores
 
@@ -489,4 +497,99 @@ Podemos interpretar estas nuevas interacciones entendiendo cómo la educación m
 **Estandarizar los predictores**
 
 Deberíamos considerar seriamente la posibilidad de estandarizar todos los predictores como una opción predeterminada para ajustar modelos con interacciones. Las dificultades con dist100 y educ4 en este ejemplo sugieren que la estandarización, restar la media de cada una de las variables de entrada  y dividir entre 2 desviaciones estándar.
+
+
+## Evaluación de modelos de regresión logística
+
+Podemos definir residuales en regresión logística como
+$$
+\mbox{residual}_i = y_i − E(y_i|X_i) = y_i − \mbox{logit}^{-1}(X_i\beta).
+$$
+Los datos $y_i$ son discretos y también los residuales. Por ejemplo, si $\mbox{logit}^{-1} (X_i\beta) = 0.7$, entonces $\mbox{residual}_i = -0.7$ o +$0.3$, dependiendo de si $y_i = 0$ o $1$. 
+
+Graficamos los residuales de la regresión logística: 
+
+```{r}
+fit.8 <- glm(switch ~ dist_100_c + arsenic_c + educ4_c + dist_100_c:arsenic_c +
+               dist_100_c:educ4_c + arsenic_c:educ4_c,
+             data = wells,
+             family=binomial(link="logit"))
+
+# Probabilidades de predicción
+wells$pred.8 <- fit.8$fitted.values
+
+ggplot(wells, aes(x=pred.8, y=switch-pred.8)) +
+  geom_point(size=1) +
+  geom_abline(slope = 0, intercept = 0) +
+  xlab("P(switch) de predicción") +
+  ylab("Observado - estimado")
+```
+
+Vemos que esto no es útil. En la gráfica se ve un patrón fuerte en los residuales debido a que las observaciones de $y_i$ son _discretas_. Esto nos sugiere hacer una gráfica de residuales agrupados.
+
+
+Para calcular los residuales agrupados dividimos los datos en clases (cubetas) en función de sus valores ajustados. Luego graficamos el residual promedio contra el valor promedio ajustado para cada cubeta. 
+
+Calculamos la agrupación de los residuales con la siguiente función:
+
+```{r}
+binned_residuals <- function(x, y, nclass=sqrt(length(x))){
+  breaks.index <- floor(length(x)*(1:(nclass-1))/nclass)
+  breaks <- c (-Inf, sort(x)[breaks.index], Inf)
+  output <- NULL
+  xbreaks <- NULL
+  x.binned <- as.numeric (cut (x, breaks))
+  for (i in 1:nclass){
+    items <- (1:length(x))[x.binned==i]
+    x.range <- range(x[items])
+    xbar <- mean(x[items])
+    ybar <- mean(y[items])
+    n <- length(items)
+    sdev <- sd(y[items])
+    output <- rbind(output, c(xbar, ybar, n, x.range, 2*sdev/sqrt(n)))
+  }
+  colnames(output) <- c ("xbar", "ybar", "n", "x.lo", "x.hi", "2se")
+  return (list(binned=output, xbreaks=xbreaks))
+}
+```
+
+![](figuras/manicule.jpg) La función *binned_residuals* recibe como entrada un vector $x$. ¿Es significativo dicho coeficiente?
+
+<p class="espacio">
+</p>
+<br>
+
+Vemos la gráfica:
+
+```{r}
+br.8 <- binned_residuals(wells$pred.8, wells$switch-wells$pred.8, nclass=40) %>% 
+  .$binned %>%
+  as.data.frame()
+
+ggplot(br.8, aes(xbar, ybar)) +
+  geom_point() +
+  geom_line(aes(x=xbar, y=`2se`), color="grey60") +
+  geom_line(aes(x=xbar, y=-`2se`), color="grey60") +
+  geom_abline(intercept = 0, slope = 0) +
+  xlab("P(switch) de predicción") +
+  ylab("Residual promedio")
+```
+
+Lo que observamos es los datos divididos en 40 cubetas de igual tamaño. Las líneas de color gris (calculadas como $2p (1 - p) / n$, donde $n$ es el número de puntos por cubeta, $3020/40 = 75$ en este caso) indican $\pm 2$ errores estándar, dentro de los cuales uno esperaría que caigan aproximadamente el 95% de los residuales agrupados, si el modelo fuera realmente verdadero.
+
+_Sólo uno_ de los 40 residuales agrupados caen fuera de los límites, lo cual no nos sorprende después de nuestro análisis previo, y tampoco vemos un patrón dramático en los residuales.
+
+---
+
+<br>
+
+```{r, out.width='30%', echo=FALSE, eval=FALSE}
+df <- tibble(x1=c(1,1,2,3),x2=c(0.5,1.5,1,1),y=c(0,0,1,0))
+g <- ggplot(df, aes(x=x1, y=x2, color=as.factor(y), shape=as.factor(y))) + 
+  geom_point(size=3) + 
+  theme_bw() + guides(color=FALSE, shape=FALSE) +
+  xlab(expression(~x[{1}])) + ylab(expression(~x[{2}]))
+ggsave(filename = "~/Desktop/grafica.pdf", plot = g, device = "pdf", width = 3, height = 3)
+```
+
 
