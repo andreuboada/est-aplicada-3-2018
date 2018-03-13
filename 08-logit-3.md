@@ -482,9 +482,9 @@ Evaluamos la comparación en el valor promedio para la distancia, dist100 = 0.48
 
 4. _Coeficiente para el término de interacción_: se puede interpretar de dos maneras:
 
-        * por cada unidad adicional de arsénico, el valor -0.18 se agrega al coeficiente de distancia. Ya hemos visto que el coeficiente de distancia es -0.88 en el nivel promedio de arsénico, por lo que podemos entender la interacción diciendo que la importancia de la distancia como predictor aumenta para los hogares con niveles más altos de arsénico.
+   * por cada unidad adicional de arsénico, el valor -0.18 se agrega al coeficiente de distancia. Ya hemos visto que el coeficiente de distancia es -0.88 en el nivel promedio de arsénico, por lo que podemos entender la interacción diciendo que la importancia de la distancia como predictor aumenta para los hogares con niveles más altos de arsénico.
         
-        * por cada 100 metros adicionales de distancia al pozo más cercano, se agrega el valor -0.18 al coeficiente de arsénico. Ya hemos visto que el coeficiente de distancia es 0.47 a la distancia promedio al pozo seguro más cercano, y así podemos entender la interacción diciendo que la importancia del arsénico como predictor disminuye para los hogares que están más lejos de los pozos seguros existentes.
+   * por cada 100 metros adicionales de distancia al pozo más cercano, se agrega el valor -0.18 al coeficiente de arsénico. Ya hemos visto que el coeficiente de distancia es 0.47 a la distancia promedio al pozo seguro más cercano, y así podemos entender la interacción diciendo que la importancia del arsénico como predictor disminuye para los hogares que están más lejos de los pozos seguros existentes.
 
 
 #### Centrando las variables {-}
@@ -535,119 +535,6 @@ Interpretamos los coeficientes en esta nueva escala:
 
 
 Las predicciones para nuevas observaciones no se modifican. El centrado lineal de los predictores cambia las interpretaciones de los coeficientes pero no cambia el modelo subyacente.
-
-
-```r
-str(fit.5)
-#> List of 30
-#>  $ coefficients     : Named num [1:4] 0.351 -0.874 0.47 -0.179
-#>   ..- attr(*, "names")= chr [1:4] "(Intercept)" "dist_100_c" "arsenic_c" "dist_100_c:arsenic_c"
-#>  $ residuals        : Named num [1:3020] 1.37 2.09 -3.24 1.72 1.86 ...
-#>   ..- attr(*, "names")= chr [1:3020] "1" "2" "3" "4" ...
-#>  $ fitted.values    : Named num [1:3020] 0.73 0.478 0.691 0.58 0.537 ...
-#>   ..- attr(*, "names")= chr [1:3020] "1" "2" "3" "4" ...
-#>  $ effects          : Named num [1:3020] -7.033 -5.805 -11.023 1.748 0.903 ...
-#>   ..- attr(*, "names")= chr [1:3020] "(Intercept)" "dist_100_c" "arsenic_c" "dist_100_c:arsenic_c" ...
-#>  $ R                : num [1:4, 1:4] -26.3509 0 0 0 -0.0976 ...
-#>   ..- attr(*, "dimnames")=List of 2
-#>   .. ..$ : chr [1:4] "(Intercept)" "dist_100_c" "arsenic_c" "dist_100_c:arsenic_c"
-#>   .. ..$ : chr [1:4] "(Intercept)" "dist_100_c" "arsenic_c" "dist_100_c:arsenic_c"
-#>  $ rank             : int 4
-#>  $ qr               :List of 5
-#>   ..$ qr   : num [1:3020, 1:4] -26.3509 0.019 0.0175 0.0187 0.0189 ...
-#>   .. ..- attr(*, "dimnames")=List of 2
-#>   .. .. ..$ : chr [1:3020] "1" "2" "3" "4" ...
-#>   .. .. ..$ : chr [1:4] "(Intercept)" "dist_100_c" "arsenic_c" "dist_100_c:arsenic_c"
-#>   ..$ rank : int 4
-#>   ..$ qraux: num [1:4] 1.02 1 1.01 1
-#>   ..$ pivot: int [1:4] 1 2 3 4
-#>   ..$ tol  : num 1e-11
-#>   ..- attr(*, "class")= chr "qr"
-#>  $ family           :List of 12
-#>   ..$ family    : chr "binomial"
-#>   ..$ link      : chr "logit"
-#>   ..$ linkfun   :function (mu)  
-#>   ..$ linkinv   :function (eta)  
-#>   ..$ variance  :function (mu)  
-#>   ..$ dev.resids:function (y, mu, wt)  
-#>   ..$ aic       :function (y, n, mu, wt, dev)  
-#>   ..$ mu.eta    :function (eta)  
-#>   ..$ initialize:  expression({  if (NCOL(y) == 1) {  if (is.factor(y))  y <- y != levels(y)[1L]  n <- rep.int(1, nobs)  y[weights =| __truncated__
-#>   ..$ validmu   :function (mu)  
-#>   ..$ valideta  :function (eta)  
-#>   ..$ simulate  :function (object, nsim)  
-#>   ..- attr(*, "class")= chr "family"
-#>  $ linear.predictors: Named num [1:3020] 0.9961 -0.0864 0.8043 0.3233 0.1473 ...
-#>   ..- attr(*, "names")= chr [1:3020] "1" "2" "3" "4" ...
-#>  $ deviance         : num 3928
-#>  $ aic              : num 3936
-#>  $ null.deviance    : num 4118
-#>  $ iter             : int 4
-#>  $ weights          : Named num [1:3020] 0.197 0.25 0.214 0.244 0.249 ...
-#>   ..- attr(*, "names")= chr [1:3020] "1" "2" "3" "4" ...
-#>  $ prior.weights    : Named num [1:3020] 1 1 1 1 1 1 1 1 1 1 ...
-#>   ..- attr(*, "names")= chr [1:3020] "1" "2" "3" "4" ...
-#>  $ df.residual      : int 3016
-#>  $ df.null          : int 3019
-#>  $ y                : Named num [1:3020] 1 1 0 1 1 1 1 1 1 1 ...
-#>   ..- attr(*, "names")= chr [1:3020] "1" "2" "3" "4" ...
-#>  $ converged        : logi TRUE
-#>  $ boundary         : logi FALSE
-#>  $ model            :'data.frame':	3020 obs. of  3 variables:
-#>   ..$ switch    : int [1:3020] 1 1 0 1 1 1 1 1 1 1 ...
-#>   ..$ dist_100_c: num [1:3020] -0.3151 -0.0101 -0.2736 -0.2685 -0.0746 ...
-#>   ..$ arsenic_c : num [1:3020] 0.703 -0.947 0.413 -0.507 -0.557 ...
-#>   ..- attr(*, "terms")=Classes 'terms', 'formula'  language switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c
-#>   .. .. ..- attr(*, "variables")= language list(switch, dist_100_c, arsenic_c)
-#>   .. .. ..- attr(*, "factors")= int [1:3, 1:3] 0 1 0 0 0 1 0 1 1
-#>   .. .. .. ..- attr(*, "dimnames")=List of 2
-#>   .. .. .. .. ..$ : chr [1:3] "switch" "dist_100_c" "arsenic_c"
-#>   .. .. .. .. ..$ : chr [1:3] "dist_100_c" "arsenic_c" "dist_100_c:arsenic_c"
-#>   .. .. ..- attr(*, "term.labels")= chr [1:3] "dist_100_c" "arsenic_c" "dist_100_c:arsenic_c"
-#>   .. .. ..- attr(*, "order")= int [1:3] 1 1 2
-#>   .. .. ..- attr(*, "intercept")= int 1
-#>   .. .. ..- attr(*, "response")= int 1
-#>   .. .. ..- attr(*, ".Environment")=<environment: R_GlobalEnv> 
-#>   .. .. ..- attr(*, "predvars")= language list(switch, dist_100_c, arsenic_c)
-#>   .. .. ..- attr(*, "dataClasses")= Named chr [1:3] "numeric" "numeric" "numeric"
-#>   .. .. .. ..- attr(*, "names")= chr [1:3] "switch" "dist_100_c" "arsenic_c"
-#>  $ call             : language glm(formula = switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c,      family = binomial(link = "logit"), data = wells)
-#>  $ formula          :Class 'formula'  language switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c
-#>   .. ..- attr(*, ".Environment")=<environment: R_GlobalEnv> 
-#>  $ terms            :Classes 'terms', 'formula'  language switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c
-#>   .. ..- attr(*, "variables")= language list(switch, dist_100_c, arsenic_c)
-#>   .. ..- attr(*, "factors")= int [1:3, 1:3] 0 1 0 0 0 1 0 1 1
-#>   .. .. ..- attr(*, "dimnames")=List of 2
-#>   .. .. .. ..$ : chr [1:3] "switch" "dist_100_c" "arsenic_c"
-#>   .. .. .. ..$ : chr [1:3] "dist_100_c" "arsenic_c" "dist_100_c:arsenic_c"
-#>   .. ..- attr(*, "term.labels")= chr [1:3] "dist_100_c" "arsenic_c" "dist_100_c:arsenic_c"
-#>   .. ..- attr(*, "order")= int [1:3] 1 1 2
-#>   .. ..- attr(*, "intercept")= int 1
-#>   .. ..- attr(*, "response")= int 1
-#>   .. ..- attr(*, ".Environment")=<environment: R_GlobalEnv> 
-#>   .. ..- attr(*, "predvars")= language list(switch, dist_100_c, arsenic_c)
-#>   .. ..- attr(*, "dataClasses")= Named chr [1:3] "numeric" "numeric" "numeric"
-#>   .. .. ..- attr(*, "names")= chr [1:3] "switch" "dist_100_c" "arsenic_c"
-#>  $ data             :Classes 'tbl_df', 'tbl' and 'data.frame':	3020 obs. of  8 variables:
-#>   ..$ switch    : int [1:3020] 1 1 0 1 1 1 1 1 1 1 ...
-#>   ..$ arsenic   : num [1:3020] 2.36 0.71 2.07 1.15 1.1 3.9 2.97 3.24 3.28 2.52 ...
-#>   ..$ dist      : num [1:3020] 16.8 47.3 21 21.5 40.9 ...
-#>   ..$ assoc     : int [1:3020] 0 0 0 0 1 1 1 0 1 1 ...
-#>   ..$ educ      : int [1:3020] 0 0 10 12 14 9 4 10 0 0 ...
-#>   ..$ dist_100  : num [1:3020] 0.168 0.473 0.21 0.215 0.409 ...
-#>   ..$ dist_100_c: num [1:3020] -0.3151 -0.0101 -0.2736 -0.2685 -0.0746 ...
-#>   ..$ arsenic_c : num [1:3020] 0.703 -0.947 0.413 -0.507 -0.557 ...
-#>  $ offset           : NULL
-#>  $ control          :List of 3
-#>   ..$ epsilon: num 1e-08
-#>   ..$ maxit  : num 25
-#>   ..$ trace  : logi FALSE
-#>  $ method           : chr "glm.fit"
-#>  $ contrasts        : NULL
-#>  $ xlevels          : Named list()
-#>  - attr(*, "class")= chr [1:2] "glm" "lm"
-```
-
 
 ![](figuras/manicule.jpg) Estima el error estándar del coeficiente de interacción usando la técnica de _bootsrap_. ¿Es significativo dicho coeficiente?
 
@@ -705,7 +592,7 @@ ggplot(wells, aes(x = dist_100, y = switch)) +
   annotate("text", x = 0.75, y = 0.65, label = "As=1.0", size = 4)
 ```
 
-<img src="08-logit-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="08-logit-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -719,13 +606,11 @@ ggplot(wells, aes(x = arsenic, y = switch)) +
   annotate("text", x = 2.0, y = 0.65, label = "dist=50", size = 4)
 ```
 
-<img src="08-logit-3_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="08-logit-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
 
 La interacción no es grande en el rango de la mayoría de los datos. En la gráfica de arriba vemos que las líneas se empiezan a juntar a los 300 metros de distancia. 
 
 Las diferencias en el cambio asociadas con las diferencias en el nivel de arsénico son grandes si se está cerca de un pozo seguro, pero el efecto disminuye si se está lejos de un pozo seguro. Esta interacción tiene algún sentido; sin embargo, hay cierta incertidumbre en el tamaño de la interacción (de la tabla de regresión anterior, una estimación de -0.18 con un error estándar de 0.10). Solo hay unos pocos datos en el área donde la interacción hace alguna diferencia.
-
-La interacción también aparece en la figura 5.12b, esta vez en una gráfica de probabilidad de cambio en función de la concentración de arsénico, en dos niveles de distancia diferentes.
 
 ## Agregar más predictores
 
@@ -870,7 +755,7 @@ ggplot(wells, aes(x=pred.8, y=switch-pred.8)) +
   ylab("Observado - estimado")
 ```
 
-<img src="08-logit-3_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="08-logit-3_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
 
 Vemos que esto no es útil. En la gráfica se ve un patrón fuerte en los residuales debido a que las observaciones de $y_i$ son _discretas_. Esto nos sugiere hacer una gráfica de residuales agrupados.
 
@@ -924,7 +809,7 @@ ggplot(br.8, aes(xbar, ybar)) +
   ylab("Residual promedio")
 ```
 
-<img src="08-logit-3_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="08-logit-3_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
 
 Lo que observamos es los datos divididos en 40 cubetas de igual tamaño. Las líneas de color gris (calculadas como $2p (1 - p) / n$, donde $n$ es el número de puntos por cubeta, $3020/40 = 75$ en este caso) indican $\pm 2$ errores estándar, dentro de los cuales uno esperaría que caigan aproximadamente el 95% de los residuales agrupados, si el modelo fuera realmente verdadero.
 
@@ -936,51 +821,3 @@ _Sólo uno_ de los 40 residuales agrupados caen fuera de los límites, lo cual n
 
 
 
-![](figuras/manicule2.jpg) 
-<div class="centered">
-<p class="espacio">
-</p>
-En regresión logística, el gradiente de $D(\beta)$ está dado por
-$$
-p_1(x) = h\left(\beta_0+\beta_1 x_1 + \beta_2x_2\right).
-$$
-¿Cuál de las siguientes afirmaciones son ciertas? Selecciona una o más.
-<center>
-![](figuras/ejemplo.png){width=60%}
-</center>
-
-(a) $D(\beta)$ será una función convexa, por lo que descenso en gradiente debería converger al mínimo global.
-
-(b) Para incrementar el ajuste del modelo a los datos podríamos agregar términos polinomiales o de interacción, por ejemplo, $p_1(x_i)=h\left(\beta_0+\beta_1 x_1 + \beta_2x_2 + \beta_3x_1^2 + \beta_4x_1x_2 +\beta_5x_2^2\right)$.
-
-(c) Los datos no se pueden separar utilizando una recta de modo que las observaciones de éxito estén de un lado de la recta y las observaciones de fracaso del otro. Por lo tanto, descenso en gradiente no podría converger.
-
-(d) Como lo datos no se pueden separar mediante una recta, entonces el método de regresión logística produciría los mismos resultados que aplicar regresión lineal a estos datos.
-
-<p class="espacio3">
-</p>
-</div>
-<br>
-
-![](figuras/manicule2.jpg) 
-<div class="centered">
-<p class="espacio">
-</p>
-En regresión logística el gradiente de la devianza está dado por
-$$
-\dfrac{\partial D(\beta)}{\partial \beta_j} = \sum_{i=1}^N(h_\beta(x^{(i)}) - y^{(i)})x_j^{(i)}.
-$$
-¿Cuál de las siguientes expresiones es una actualizción correcta para descenso en gradiente con parámetro $\alpha$? Selecciona una o más.
-
-(a) $\beta_j := \beta_j - \alpha\frac{1}{N}\sum_{i=1}^N\left(\beta^Tx-y^{(i)}\right)x_j^{(i)}.$
-
-(b) $\beta := \beta - \alpha\frac{1}{N}\sum_{i=1}^N\left(\dfrac{1}{1+e^{-\beta^Tx^{(i)}}}-y^{(i)}\right)x^{(i)}.$
-
-(c) $\beta := \beta - \alpha\frac{1}{N}\sum_{i=1}^N\left(\beta^Tx-y^{(i)}\right)x^{(i)}.$
-
-(d) $\beta_j := \beta_j - \alpha\frac{1}{N}\sum_{i=1}^N\left(\dfrac{1}{1+e^{-\beta^Tx^{(i)}}}-y^{(i)}\right)x_j^{(i)}$ &nbsp; (actualiza simultáneamente para toda $j$).
-
-<p class="espacio3">
-</p>
-</div>
-<br>

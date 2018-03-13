@@ -806,11 +806,12 @@ fit.<span class="dv">4</span>
 </ol>
 <p>Evaluamos la comparación en el valor promedio para la distancia, dist100 = 0.48, donde el arsénico tiene un coeficiente de <span class="math inline">\(0.56 - 0.18 · 0.48 = 0.47\)</span> en la escala logit. Para interpretar esto rápidamente en la escala de probabilidad, lo dividimos entre 4: <span class="math inline">\(0.47 / 4 = 0.12\)</span>. Por lo tanto, en el nivel medio de distancia en los datos, cada unidad adicional de arsénico corresponde a una diferencia positiva aproximada del 12% en la probabilidad de cambio.</p>
 <ol start="4" style="list-style-type: decimal">
-<li><p><em>Coeficiente para el término de interacción</em>: se puede interpretar de dos maneras:</p>
-<pre><code>* por cada unidad adicional de arsénico, el valor -0.18 se agrega al coeficiente de distancia. Ya hemos visto que el coeficiente de distancia es -0.88 en el nivel promedio de arsénico, por lo que podemos entender la interacción diciendo que la importancia de la distancia como predictor aumenta para los hogares con niveles más altos de arsénico.
-
-* por cada 100 metros adicionales de distancia al pozo más cercano, se agrega el valor -0.18 al coeficiente de arsénico. Ya hemos visto que el coeficiente de distancia es 0.47 a la distancia promedio al pozo seguro más cercano, y así podemos entender la interacción diciendo que la importancia del arsénico como predictor disminuye para los hogares que están más lejos de los pozos seguros existentes.</code></pre></li>
+<li><em>Coeficiente para el término de interacción</em>: se puede interpretar de dos maneras:</li>
 </ol>
+<ul>
+<li><p>por cada unidad adicional de arsénico, el valor -0.18 se agrega al coeficiente de distancia. Ya hemos visto que el coeficiente de distancia es -0.88 en el nivel promedio de arsénico, por lo que podemos entender la interacción diciendo que la importancia de la distancia como predictor aumenta para los hogares con niveles más altos de arsénico.</p></li>
+<li><p>por cada 100 metros adicionales de distancia al pozo más cercano, se agrega el valor -0.18 al coeficiente de arsénico. Ya hemos visto que el coeficiente de distancia es 0.47 a la distancia promedio al pozo seguro más cercano, y así podemos entender la interacción diciendo que la importancia del arsénico como predictor disminuye para los hogares que están más lejos de los pozos seguros existentes.</p></li>
+</ul>
 <div id="centrando-las-variables" class="section level4 unnumbered">
 <h4>Centrando las variables</h4>
 <p>Como se discutió anteriormente en el contexto de la regresión lineal, antes de ajustar las interacciones tiene sentido centrar las variables de entrada para que podamos interpretar los coeficientes más fácilmente. Las entradas centradas son:</p>
@@ -843,114 +844,6 @@ fit.<span class="dv">5</span>
 <li><p>Coeficiente para el término de interacción: esto no se modifica al centrarse y tiene la misma interpretación que antes.</p></li>
 </ol>
 <p>Las predicciones para nuevas observaciones no se modifican. El centrado lineal de los predictores cambia las interpretaciones de los coeficientes pero no cambia el modelo subyacente.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(fit.<span class="dv">5</span>)
-<span class="co">#&gt; List of 30</span>
-<span class="co">#&gt;  $ coefficients     : Named num [1:4] 0.351 -0.874 0.47 -0.179</span>
-<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:4] &quot;(Intercept)&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
-<span class="co">#&gt;  $ residuals        : Named num [1:3020] 1.37 2.09 -3.24 1.72 1.86 ...</span>
-<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
-<span class="co">#&gt;  $ fitted.values    : Named num [1:3020] 0.73 0.478 0.691 0.58 0.537 ...</span>
-<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
-<span class="co">#&gt;  $ effects          : Named num [1:3020] -7.033 -5.805 -11.023 1.748 0.903 ...</span>
-<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;(Intercept)&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot; ...</span>
-<span class="co">#&gt;  $ R                : num [1:4, 1:4] -26.3509 0 0 0 -0.0976 ...</span>
-<span class="co">#&gt;   ..- attr(*, &quot;dimnames&quot;)=List of 2</span>
-<span class="co">#&gt;   .. ..$ : chr [1:4] &quot;(Intercept)&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
-<span class="co">#&gt;   .. ..$ : chr [1:4] &quot;(Intercept)&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
-<span class="co">#&gt;  $ rank             : int 4</span>
-<span class="co">#&gt;  $ qr               :List of 5</span>
-<span class="co">#&gt;   ..$ qr   : num [1:3020, 1:4] -26.3509 0.019 0.0175 0.0187 0.0189 ...</span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;dimnames&quot;)=List of 2</span>
-<span class="co">#&gt;   .. .. ..$ : chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
-<span class="co">#&gt;   .. .. ..$ : chr [1:4] &quot;(Intercept)&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
-<span class="co">#&gt;   ..$ rank : int 4</span>
-<span class="co">#&gt;   ..$ qraux: num [1:4] 1.02 1 1.01 1</span>
-<span class="co">#&gt;   ..$ pivot: int [1:4] 1 2 3 4</span>
-<span class="co">#&gt;   ..$ tol  : num 1e-11</span>
-<span class="co">#&gt;   ..- attr(*, &quot;class&quot;)= chr &quot;qr&quot;</span>
-<span class="co">#&gt;  $ family           :List of 12</span>
-<span class="co">#&gt;   ..$ family    : chr &quot;binomial&quot;</span>
-<span class="co">#&gt;   ..$ link      : chr &quot;logit&quot;</span>
-<span class="co">#&gt;   ..$ linkfun   :function (mu)  </span>
-<span class="co">#&gt;   ..$ linkinv   :function (eta)  </span>
-<span class="co">#&gt;   ..$ variance  :function (mu)  </span>
-<span class="co">#&gt;   ..$ dev.resids:function (y, mu, wt)  </span>
-<span class="co">#&gt;   ..$ aic       :function (y, n, mu, wt, dev)  </span>
-<span class="co">#&gt;   ..$ mu.eta    :function (eta)  </span>
-<span class="co">#&gt;   ..$ initialize:  expression({  if (NCOL(y) == 1) {  if (is.factor(y))  y &lt;- y != levels(y)[1L]  n &lt;- rep.int(1, nobs)  y[weights =| __truncated__</span>
-<span class="co">#&gt;   ..$ validmu   :function (mu)  </span>
-<span class="co">#&gt;   ..$ valideta  :function (eta)  </span>
-<span class="co">#&gt;   ..$ simulate  :function (object, nsim)  </span>
-<span class="co">#&gt;   ..- attr(*, &quot;class&quot;)= chr &quot;family&quot;</span>
-<span class="co">#&gt;  $ linear.predictors: Named num [1:3020] 0.9961 -0.0864 0.8043 0.3233 0.1473 ...</span>
-<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
-<span class="co">#&gt;  $ deviance         : num 3928</span>
-<span class="co">#&gt;  $ aic              : num 3936</span>
-<span class="co">#&gt;  $ null.deviance    : num 4118</span>
-<span class="co">#&gt;  $ iter             : int 4</span>
-<span class="co">#&gt;  $ weights          : Named num [1:3020] 0.197 0.25 0.214 0.244 0.249 ...</span>
-<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
-<span class="co">#&gt;  $ prior.weights    : Named num [1:3020] 1 1 1 1 1 1 1 1 1 1 ...</span>
-<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
-<span class="co">#&gt;  $ df.residual      : int 3016</span>
-<span class="co">#&gt;  $ df.null          : int 3019</span>
-<span class="co">#&gt;  $ y                : Named num [1:3020] 1 1 0 1 1 1 1 1 1 1 ...</span>
-<span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3020] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span>
-<span class="co">#&gt;  $ converged        : logi TRUE</span>
-<span class="co">#&gt;  $ boundary         : logi FALSE</span>
-<span class="co">#&gt;  $ model            :&#39;data.frame&#39;:   3020 obs. of  3 variables:</span>
-<span class="co">#&gt;   ..$ switch    : int [1:3020] 1 1 0 1 1 1 1 1 1 1 ...</span>
-<span class="co">#&gt;   ..$ dist_100_c: num [1:3020] -0.3151 -0.0101 -0.2736 -0.2685 -0.0746 ...</span>
-<span class="co">#&gt;   ..$ arsenic_c : num [1:3020] 0.703 -0.947 0.413 -0.507 -0.557 ...</span>
-<span class="co">#&gt;   ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39;  language switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;variables&quot;)= language list(switch, dist_100_c, arsenic_c)</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;factors&quot;)= int [1:3, 1:3] 0 1 0 0 0 1 0 1 1</span>
-<span class="co">#&gt;   .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2</span>
-<span class="co">#&gt;   .. .. .. .. ..$ : chr [1:3] &quot;switch&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot;</span>
-<span class="co">#&gt;   .. .. .. .. ..$ : chr [1:3] &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;term.labels&quot;)= chr [1:3] &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;order&quot;)= int [1:3] 1 1 2</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;intercept&quot;)= int 1</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;response&quot;)= int 1</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; </span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;predvars&quot;)= language list(switch, dist_100_c, arsenic_c)</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:3] &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot;</span>
-<span class="co">#&gt;   .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:3] &quot;switch&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot;</span>
-<span class="co">#&gt;  $ call             : language glm(formula = switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c,      family = binomial(link = &quot;logit&quot;), data = wells)</span>
-<span class="co">#&gt;  $ formula          :Class &#39;formula&#39;  language switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c</span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; </span>
-<span class="co">#&gt;  $ terms            :Classes &#39;terms&#39;, &#39;formula&#39;  language switch ~ dist_100_c + arsenic_c + dist_100_c:arsenic_c</span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;variables&quot;)= language list(switch, dist_100_c, arsenic_c)</span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;factors&quot;)= int [1:3, 1:3] 0 1 0 0 0 1 0 1 1</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2</span>
-<span class="co">#&gt;   .. .. .. ..$ : chr [1:3] &quot;switch&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot;</span>
-<span class="co">#&gt;   .. .. .. ..$ : chr [1:3] &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;term.labels&quot;)= chr [1:3] &quot;dist_100_c&quot; &quot;arsenic_c&quot; &quot;dist_100_c:arsenic_c&quot;</span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;order&quot;)= int [1:3] 1 1 2</span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;intercept&quot;)= int 1</span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;response&quot;)= int 1</span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; </span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;predvars&quot;)= language list(switch, dist_100_c, arsenic_c)</span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:3] &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot;</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;names&quot;)= chr [1:3] &quot;switch&quot; &quot;dist_100_c&quot; &quot;arsenic_c&quot;</span>
-<span class="co">#&gt;  $ data             :Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:   3020 obs. of  8 variables:</span>
-<span class="co">#&gt;   ..$ switch    : int [1:3020] 1 1 0 1 1 1 1 1 1 1 ...</span>
-<span class="co">#&gt;   ..$ arsenic   : num [1:3020] 2.36 0.71 2.07 1.15 1.1 3.9 2.97 3.24 3.28 2.52 ...</span>
-<span class="co">#&gt;   ..$ dist      : num [1:3020] 16.8 47.3 21 21.5 40.9 ...</span>
-<span class="co">#&gt;   ..$ assoc     : int [1:3020] 0 0 0 0 1 1 1 0 1 1 ...</span>
-<span class="co">#&gt;   ..$ educ      : int [1:3020] 0 0 10 12 14 9 4 10 0 0 ...</span>
-<span class="co">#&gt;   ..$ dist_100  : num [1:3020] 0.168 0.473 0.21 0.215 0.409 ...</span>
-<span class="co">#&gt;   ..$ dist_100_c: num [1:3020] -0.3151 -0.0101 -0.2736 -0.2685 -0.0746 ...</span>
-<span class="co">#&gt;   ..$ arsenic_c : num [1:3020] 0.703 -0.947 0.413 -0.507 -0.557 ...</span>
-<span class="co">#&gt;  $ offset           : NULL</span>
-<span class="co">#&gt;  $ control          :List of 3</span>
-<span class="co">#&gt;   ..$ epsilon: num 1e-08</span>
-<span class="co">#&gt;   ..$ maxit  : num 25</span>
-<span class="co">#&gt;   ..$ trace  : logi FALSE</span>
-<span class="co">#&gt;  $ method           : chr &quot;glm.fit&quot;</span>
-<span class="co">#&gt;  $ contrasts        : NULL</span>
-<span class="co">#&gt;  $ xlevels          : Named list()</span>
-<span class="co">#&gt;  - attr(*, &quot;class&quot;)= chr [1:2] &quot;glm&quot; &quot;lm&quot;</span></code></pre></div>
 <p><img src="figuras/manicule.jpg" /> Estima el error estándar del coeficiente de interacción usando la técnica de <em>bootsrap</em>. ¿Es significativo dicho coeficiente?</p>
 <p class="espacio">
 </p>
@@ -997,7 +890,7 @@ fit.<span class="dv">5</span>
     <span class="kw">invlogit</span>(fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">4</span>]<span class="op">*</span><span class="dv">1</span><span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="fl">3.5</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">0.50</span>, <span class="dt">y =</span> <span class="fl">0.45</span>, <span class="dt">label =</span> <span class="st">&quot;As=0.5&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">0.75</span>, <span class="dt">y =</span> <span class="fl">0.65</span>, <span class="dt">label =</span> <span class="st">&quot;As=1.0&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="08-logit-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="08-logit-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(wells, <span class="kw">aes</span>(<span class="dt">x =</span> arsenic, <span class="dt">y =</span> <span class="cf">switch</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.308</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">size =</span> <span class="fl">0.1</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){
@@ -1006,10 +899,9 @@ fit.<span class="dv">5</span>
     <span class="kw">invlogit</span>(fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">3</span>]<span class="op">*</span>x <span class="op">+</span><span class="st"> </span>fit.<span class="dv">5</span><span class="op">$</span>coef[<span class="dv">4</span>]<span class="op">*</span><span class="fl">0.5</span><span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.3</span>,<span class="dv">10</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">0.7</span>, <span class="dt">y =</span> <span class="fl">0.80</span>, <span class="dt">label =</span> <span class="st">&quot;dist=0&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">2.0</span>, <span class="dt">y =</span> <span class="fl">0.65</span>, <span class="dt">label =</span> <span class="st">&quot;dist=50&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="08-logit-3_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="08-logit-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>La interacción no es grande en el rango de la mayoría de los datos. En la gráfica de arriba vemos que las líneas se empiezan a juntar a los 300 metros de distancia.</p>
 <p>Las diferencias en el cambio asociadas con las diferencias en el nivel de arsénico son grandes si se está cerca de un pozo seguro, pero el efecto disminuye si se está lejos de un pozo seguro. Esta interacción tiene algún sentido; sin embargo, hay cierta incertidumbre en el tamaño de la interacción (de la tabla de regresión anterior, una estimación de -0.18 con un error estándar de 0.10). Solo hay unos pocos datos en el área donde la interacción hace alguna diferencia.</p>
-<p>La interacción también aparece en la figura 5.12b, esta vez en una gráfica de probabilidad de cambio en función de la concentración de arsénico, en dos niveles de distancia diferentes.</p>
 </div>
 <div id="agregar-mas-predictores" class="section level2">
 <h2><span class="header-section-number">8.5</span> Agregar más predictores</h2>
@@ -1124,7 +1016,7 @@ wells<span class="op">$</span>pred.<span class="dv">8</span> &lt;-<span class="s
 <span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">0</span>, <span class="dt">intercept =</span> <span class="dv">0</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;P(switch) de predicción&quot;) +</span>
 <span class="st">  ylab(&quot;</span>Observado <span class="op">-</span><span class="st"> </span>estimado<span class="st">&quot;)</span></code></pre></div>
-<p><img src="08-logit-3_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="08-logit-3_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Vemos que esto no es útil. En la gráfica se ve un patrón fuerte en los residuales debido a que las observaciones de <span class="math inline">\(y_i\)</span> son <em>discretas</em>. Esto nos sugiere hacer una gráfica de residuales agrupados.</p>
 <p>Para calcular los residuales agrupados dividimos los datos en clases (cubetas) en función de sus valores ajustados. Luego graficamos el residual promedio contra el valor promedio ajustado para cada cubeta.</p>
 <p>Calculamos la agrupación de los residuales con la siguiente función:</p>
@@ -1162,47 +1054,10 @@ wells<span class="op">$</span>pred.<span class="dv">8</span> &lt;-<span class="s
 <span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> <span class="dv">0</span>, <span class="dt">slope =</span> <span class="dv">0</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;P(switch) de predicción&quot;) +</span>
 <span class="st">  ylab(&quot;</span>Residual promedio<span class="st">&quot;)</span></code></pre></div>
-<p><img src="08-logit-3_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="08-logit-3_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Lo que observamos es los datos divididos en 40 cubetas de igual tamaño. Las líneas de color gris (calculadas como <span class="math inline">\(2p (1 - p) / n\)</span>, donde <span class="math inline">\(n\)</span> es el número de puntos por cubeta, <span class="math inline">\(3020/40 = 75\)</span> en este caso) indican <span class="math inline">\(\pm 2\)</span> errores estándar, dentro de los cuales uno esperaría que caigan aproximadamente el 95% de los residuales agrupados, si el modelo fuera realmente verdadero.</p>
 <p><em>Sólo uno</em> de los 40 residuales agrupados caen fuera de los límites, lo cual no nos sorprende después de nuestro análisis previo, y tampoco vemos un patrón dramático en los residuales.</p>
 <hr />
-<p><br></p>
-<img src="figuras/manicule2.jpg" />
-<div class="centered">
-<p class="espacio">
-</p>
-En regresión logística, el gradiente de <span class="math inline">\(D(\beta)\)</span> está dado por <span class="math display">\[
-p_1(x) = h\left(\beta_0+\beta_1 x_1 + \beta_2x_2\right).
-\]</span> ¿Cuál de las siguientes afirmaciones son ciertas? Selecciona una o más.
-<center>
-<img src="figuras/ejemplo.png" style="width:60.0%" />
-</center>
-<ol style="list-style-type: lower-alpha">
-<li><p><span class="math inline">\(D(\beta)\)</span> será una función convexa, por lo que descenso en gradiente debería converger al mínimo global.</p></li>
-<li><p>Para incrementar el ajuste del modelo a los datos podríamos agregar términos polinomiales o de interacción, por ejemplo, <span class="math inline">\(p_1(x_i)=h\left(\beta_0+\beta_1 x_1 + \beta_2x_2 + \beta_3x_1^2 + \beta_4x_1x_2 +\beta_5x_2^2\right)\)</span>.</p></li>
-<li><p>Los datos no se pueden separar utilizando una recta de modo que las observaciones de éxito estén de un lado de la recta y las observaciones de fracaso del otro. Por lo tanto, descenso en gradiente no podría converger.</p></li>
-<li><p>Como lo datos no se pueden separar mediante una recta, entonces el método de regresión logística produciría los mismos resultados que aplicar regresión lineal a estos datos.</p></li>
-</ol>
-<p class="espacio3">
-</p>
-</div>
-<p><br></p>
-<img src="figuras/manicule2.jpg" />
-<div class="centered">
-<p class="espacio">
-</p>
-<p>En regresión logística el gradiente de la devianza está dado por <span class="math display">\[
-\dfrac{\partial D(\beta)}{\partial \beta_j} = \sum_{i=1}^N(h_\beta(x^{(i)}) - y^{(i)})x_j^{(i)}.
-\]</span> ¿Cuál de las siguientes expresiones es una actualizción correcta para descenso en gradiente con parámetro <span class="math inline">\(\alpha\)</span>? Selecciona una o más.</p>
-<ol style="list-style-type: lower-alpha">
-<li><p><span class="math inline">\(\beta_j := \beta_j - \alpha\frac{1}{N}\sum_{i=1}^N\left(\beta^Tx-y^{(i)}\right)x_j^{(i)}.\)</span></p></li>
-<li><p><span class="math inline">\(\beta := \beta - \alpha\frac{1}{N}\sum_{i=1}^N\left(\dfrac{1}{1+e^{-\beta^Tx^{(i)}}}-y^{(i)}\right)x^{(i)}.\)</span></p></li>
-<li><p><span class="math inline">\(\beta := \beta - \alpha\frac{1}{N}\sum_{i=1}^N\left(\beta^Tx-y^{(i)}\right)x^{(i)}.\)</span></p></li>
-<li><p><span class="math inline">\(\beta_j := \beta_j - \alpha\frac{1}{N}\sum_{i=1}^N\left(\dfrac{1}{1+e^{-\beta^Tx^{(i)}}}-y^{(i)}\right)x_j^{(i)}\)</span>   (actualiza simultáneamente para toda <span class="math inline">\(j\)</span>).</p></li>
-</ol>
-<p class="espacio3">
-</p>
-</div>
 <p><br></p>
 
 </div>
