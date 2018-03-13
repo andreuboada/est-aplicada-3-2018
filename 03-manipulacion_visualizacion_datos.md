@@ -140,10 +140,12 @@ Una **base de datos** es una colección de valores numéricos o categóricos. Ca
 
 <br>
 
-### Ejemplo: {-}
+**Ejemplo:**
+
+<p class="espacio3">
+</p>
 
 Supongamos un experimento con 3 pacientes cada uno tiene resultados de dos tratamientos (A y B):
-
 
 ||tratamientoA|tratamientoB
 ----|------------|---------

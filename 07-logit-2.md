@@ -66,7 +66,7 @@ A este método en estadística se le conoce como _bootstrap_ porque consiste en 
 \BeginKnitrBlock{information}<div class="information">**Recordemos:** $\mbox{logit}^{-1}$ es la función de  transformación de los predictores lineales a las probabilidades que se utilizan en la regresión logística.
 
 $$
-\mbox{logit}^{-1}(x) = \mbox{log}\left(\dfrac{x}{1-x}\right)
+\mbox{logit}^{-1}(x) = \dfrac{e^x}{1+e^x}
 $$</div>\EndKnitrBlock{information}
 
 
@@ -220,7 +220,7 @@ Otra forma de interpretar los coeficientes de la regresión logística es en té
   
 <br>
 
-* Si dos resultados tienen probabilidades $(p,1-p)$, entonces $p/(1-p)$ se llaman los _momios_.
+* Si el resultado de un experimento tiene probabilidad $p$, entonces $p/(1-p)$ se llaman los _momios_.
 
 * Un momio de 1 es equivalente a una probabilidad de $1/2$, es decir, ambos resultados (éxito y fracaso) son equiprobables.
 
@@ -278,6 +278,8 @@ El arsénico es un veneno acumulativo y la exposición aumenta el riesgo de cán
 
 <img src="figuras/arsenic.png" width="70%" style="display: block; margin: auto;" />
 
+<br>
+
 <p class="espacio">
 </p>
 
@@ -332,7 +334,7 @@ __Causa del problema__
 
 La crisis de arsénico de Bangladesh se remonta a la década de 1970 cuando, en un esfuerzo por mejorar la calidad del agua potable y la lucha contra la diarrea, que era uno de los mayores asesinos de niños en el país, hubo inversiones internacionales a gran escala en la construcción de pozos tubulares. Se creía que los pozos proporcionarían suministros seguros para las familias, de lo contrario dependían del agua superficial sucia que mataba hasta 250,000 niños al año. El agua superficial puede contener microbios, es por esto que era preferible el consumo de agua de pozos profundos.
 
-Cualquier localidad puede incluir pozos con arsénico, como se puede ver en la gráfica de arriba. La mala noticia es que incluso si el pozo de tu vecino es seguro, eso no significa que el tuyo esté a salvo. Sin embargo, la buena noticia es que si tu pozo tiene un nivel alto de arsénico, entonces probablemente puedas encontrar un pozo seguro cerca (si es que estás dispuesto a caminar y tu vecino está dispuesto a compartir 😅). La cantidad de agua necesaria para beber es lo suficientemente baja como para suponer que más personas pueden ocupar el pozo sin agotar su capacidad.
+Cualquier localidad puede incluir pozos con arsénico, como se puede ver en la gráfica de arriba. La mala noticia es que incluso si el pozo de tu vecino es seguro, eso no significa que el tuyo esté a salvo. Sin embargo, la buena noticia es que si tu pozo tiene un nivel alto de arsénico, entonces probablemente puedas encontrar un pozo seguro cerca (si es que estás dispuesto a caminar y tu vecino está dispuesto a compartir). La cantidad de agua necesaria para beber es lo suficientemente baja como para suponer que más personas pueden ocupar el pozo sin agotar su capacidad.
 
 ### Metodología para abordar el problema
 
@@ -350,7 +352,7 @@ Nuestra variable de respuesta es
 
 $$
 y_{i} = \left\{ \begin{array}{cl}
-1 & \text{si la }\; i\text{-esima casa cambió}\,\,\, \text{de pozo},\\
+1 & \text{si la }\; i\text{-esima casa cambió}\;\; \text{de pozo},\\
 0 & \text{en otro caso.}
 \end{array}\right.
 $$
@@ -750,7 +752,7 @@ points(z, h(z))
 text(z[1:6], h(z[1:6]), pos = 3)
 ```
 
-<img src="07-logit-2_files/figure-html/unnamed-chunk-34-1.png" width="50%" style="display: block; margin: auto;" />
+<img src="07-logit-2_files/figure-html/unnamed-chunk-34-1.png" width="100%" style="display: block; margin: auto;" />
 
 Si hacemos $\eta$ muy grande, el algoritmo puede divergir:
 
@@ -910,8 +912,7 @@ Así que
 \end{align*}
 
 para $j=0,1,\ldots,p$, usando la convención de $x_0^{(i)}=1$. Podemos sumar
-ahora sobre la muestra de entrenamiento para obtener
-
+ahora sobre los datos para obtener:
 
 $$ \frac{\partial D}{\partial\beta_j} = - 2\sum_{i=1}^N  (y^{(i)}-p(x^{(i)}))x_j^{(i)}$$
 
@@ -1065,7 +1066,7 @@ devianza(iteraciones[200,])
 #> [1] 315
 ```
 
-Nótese que esta devianza está calculada sin dividir intre entre el número de casos. Podemos calcular la devianza promedio de entrenamiento haciendo:
+Nótese que esta devianza está calculada sin dividir intre entre el número de casos. Podemos calcular la devianza promedio haciendo:
 
 
 ```r
@@ -1146,34 +1147,33 @@ p <- ncol(x)
 y <- diabetes_s$type == 'Yes'
 grad <- grad_calc(x, y)
 iteraciones <- descenso(1000, rep(0,p+1), 0.001, h_deriv = grad)
-matplot(iteraciones)
 ```
-
-<img src="07-logit-2_files/figure-html/unnamed-chunk-52-1.png" width="50%" style="display: block; margin: auto;" />
 
 
 ```r
 diabetes_coef <- data_frame(variable = c('Intercept',colnames(x)), coef = iteraciones[1000,])
-diabetes_coef
-#> # A tibble: 8 x 2
-#>   variable     coef
-#>   <chr>       <dbl>
-#> 1 Intercept -0.956 
-#> 2 age        0.452 
-#> 3 bmi        0.513 
-#> 4 bp        -0.0547
-#> 5 glu        1.02  
-#> 6 npreg      0.347 
-#> # ... with 2 more rows
+diabetes_coef %>% knitr::kable()
 ```
+
+
+
+variable       coef
+----------  -------
+Intercept    -0.956
+age           0.452
+bmi           0.513
+bp           -0.055
+glu           1.017
+npreg         0.347
+ped           0.559
+skin         -0.022
 
 ## Observaciones adicionales
 
 #### Máxima verosimilitud {-}
 
 Es fácil ver que este método de estimación de los coeficientes (minimizando la
-devianza de entrenamiento) es el método de máxima verosimilitud.  La verosimilitud
-de la muestra de entrenamiento está dada por:
+devianza) es el método de máxima verosimilitud.  La verosimilitud está dada por:
 
  $$L(\beta) =\prod_{i=1}^N p_{y^{(i)}} (x^{(i)})$$
 Y la log verosimilitud es
@@ -1195,7 +1195,7 @@ Una estrategia es la de uno contra todos:
 
 En clasificación uno contra todos, hacemos
 
-1. Para cada clase $y\in\{1,\ldots,K\}$ entrenamos un modelo de regresión
+1. Para cada clase $y\in\{1,\ldots,K\}$ ajustamos un modelo de regresión
 logística (binaria) $\hat{p}^{(y)}(x)$, tomando como positivos a los casos de 1
 clase $g$, y como negativos a todo el resto. Esto lo hacemos como en las secciones anteriores, y de manera independiente para cada clase.
 

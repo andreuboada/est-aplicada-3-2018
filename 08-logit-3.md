@@ -13,6 +13,11 @@
   }
 </style>
 
+
+```r
+library(tidyverse)
+```
+
 ## Ejemplo óscares
 
 Algunas de los factores citados usualmente por las personas como importantes para que una película gane un Óscar son:
@@ -69,7 +74,6 @@ Contamos con datos que provienen de varias fuentes y se tienen las siguientes va
 
 
 ```r
-library(tidyverse)
 oscars <- read_csv("datos/oscars.csv")
 glimpse(oscars)
 #> Observations: 156
@@ -128,6 +132,13 @@ fit.1
 #> Null Deviance:	    128 
 #> Residual Deviance: 65.7 	AIC: 87.7
 ```
+
+
+```r
+mean(oscars$dga)
+#> [1] 0.154
+```
+
 
 Podemos ver las probabilidades $p_1({x^{(i)}})$, $i=1,\ldots,N$, que _predice_ el modelo utilizando la función `predict`:
 
@@ -283,9 +294,9 @@ el cociente de la probabilidad y su complemento, la razón de exitosos por fraca
 <p class="espacio">
 </p>
 
-* Si la probabilidad de un evento es un medio, entonces los momios son uno-a-uno o _justos_.
+* Si la probabilidad de un evento es $1/2$, entonces los momios son _uno a uno_ o _justos_.
 
-* Si la probabilidad es $1/3$, entoncea los momios son uno a dos.</div>\EndKnitrBlock{information}
+* Si la probabilidad es $1/3$, entonces los momios son uno a dos.</div>\EndKnitrBlock{information}
 
 <br>
 
@@ -308,7 +319,7 @@ ggplot(graf_data, aes(x = x)) +
   geom_line(aes(y = logit), colour = 'lightpink', size=1.2)
 ```
 
-<img src="08-logit-3_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="08-logit-3_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" />
 
 Despejando para $\pi_i$ obtenemos 
 
@@ -332,9 +343,9 @@ $$
 
 3. Calcular la derivada de la curva logística en la media: $$\dfrac{\beta_j\, e^{\beta_0+\beta_j \bar{x}_j}}{(1 + e^{\beta_0 +\beta_j \bar{x}_j})^2}.$$
 
-4. Dividir entre 4: $$\dfrac{\beta_j}{4}.$$
+4. Dividir entre 4: $$\dfrac{\beta_j}{4}.$$ Se interpreta como la diferencia en la probabilidad ante un cambio unitario en $x_j$ alrededor de la media (aproximadamente).
 
-Se interpreta como la diferencia en la probabilidad ante un cambio unitario en $x_j$ alrededor de la media (aproximadamente).
+5. Calcular el cociente de momios: $$\mbox{log}\left[\dfrac{P(y_i=1|x)}{P(y_i=0|x)} \right] = \alpha + \beta x.$$ Sumar 1 a la variable $x$ es equivalente a sumar $\beta$ en ambos lados de la ecuación. Exponenciando nuevamente ambos lados, el cociente de momios se multiplica por $e^\beta$.
 
 <br>
 
@@ -370,29 +381,35 @@ Supongamos que se ajustan los coeficientes de un modelo lineal logístico y una 
 <div class="centered">
 <p class="espacio">
 </p>
-Supongamos que se ajusta un modelo logístico $h(x_i^\prime \beta)=g(\beta_0+\beta_1x_1^{(i)}+\beta_2 x_2^{(i)})$. Supongamos que $\beta_0=6, \;\beta_1=-1,\; \beta_2=0$. ¿Cuál de las siguientes figuras puede servir como una regla de decisión para este modelo?
+Supongamos que se ajusta un modelo logístico $p_1(x_i)=h(\beta_0+\beta_1x_1^{(i)}+\beta_2 x_2^{(i)})$. Supongamos que $\beta_0=6, \;\beta_1=-1,\; \beta_2=0$. ¿Cuál de las siguientes figuras puede servir como una regla de decisión para este modelo?
 
-(a) ![](figuras/a.png)
+(a) 
 
-(b) ![](figuras/b.png)
+&nbsp; ![](figuras/a.png){width=20%}
 
-(c) ![](figuras/c.png)
+(b) 
 
-(d) ![](figuras/d.png)
+&nbsp; ![](figuras/b.png){width=20%}
+
+(c) 
+
+&nbsp; ![](figuras/c.png){width=20%}
+
+(d) 
+
+&nbsp; ![](figuras/d.png){width=20%}
 
 <p class="espacio3">
 </p>
 </div>
+
 <br>
 
+---
+
+<br>
 
 ## Regresión logística con interacciones
-
-
-```r
-library(tidyverse)
-```
-
 
 Recordemos el modelo de pozos en Bangladesh:
 
@@ -688,7 +705,7 @@ ggplot(wells, aes(x = dist_100, y = switch)) +
   annotate("text", x = 0.75, y = 0.65, label = "As=1.0", size = 4)
 ```
 
-<img src="08-logit-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="08-logit-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -702,7 +719,7 @@ ggplot(wells, aes(x = arsenic, y = switch)) +
   annotate("text", x = 2.0, y = 0.65, label = "dist=50", size = 4)
 ```
 
-<img src="08-logit-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="08-logit-3_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
 
 La interacción no es grande en el rango de la mayoría de los datos. En la gráfica de arriba vemos que las líneas se empiezan a juntar a los 300 metros de distancia. 
 
@@ -825,3 +842,145 @@ Podemos interpretar estas nuevas interacciones entendiendo cómo la educación m
 
 Deberíamos considerar seriamente la posibilidad de estandarizar todos los predictores como una opción predeterminada para ajustar modelos con interacciones. Las dificultades con dist100 y educ4 en este ejemplo sugieren que la estandarización, restar la media de cada una de las variables de entrada  y dividir entre 2 desviaciones estándar.
 
+
+## Evaluación de modelos de regresión logística
+
+Podemos definir residuales en regresión logística como
+$$
+\mbox{residual}_i = y_i − E(y_i|X_i) = y_i − \mbox{logit}^{-1}(X_i\beta).
+$$
+Los datos $y_i$ son discretos y también los residuales. Por ejemplo, si $\mbox{logit}^{-1} (X_i\beta) = 0.7$, entonces $\mbox{residual}_i = -0.7$ o +$0.3$, dependiendo de si $y_i = 0$ o $1$. 
+
+Graficamos los residuales de la regresión logística: 
+
+
+```r
+fit.8 <- glm(switch ~ dist_100_c + arsenic_c + educ4_c + dist_100_c:arsenic_c +
+               dist_100_c:educ4_c + arsenic_c:educ4_c,
+             data = wells,
+             family=binomial(link="logit"))
+
+# Probabilidades de predicción
+wells$pred.8 <- fit.8$fitted.values
+
+ggplot(wells, aes(x=pred.8, y=switch-pred.8)) +
+  geom_point(size=1) +
+  geom_abline(slope = 0, intercept = 0) +
+  xlab("P(switch) de predicción") +
+  ylab("Observado - estimado")
+```
+
+<img src="08-logit-3_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
+
+Vemos que esto no es útil. En la gráfica se ve un patrón fuerte en los residuales debido a que las observaciones de $y_i$ son _discretas_. Esto nos sugiere hacer una gráfica de residuales agrupados.
+
+
+Para calcular los residuales agrupados dividimos los datos en clases (cubetas) en función de sus valores ajustados. Luego graficamos el residual promedio contra el valor promedio ajustado para cada cubeta. 
+
+Calculamos la agrupación de los residuales con la siguiente función:
+
+
+```r
+binned_residuals <- function(x, y, nclass=sqrt(length(x))){
+  breaks.index <- floor(length(x)*(1:(nclass-1))/nclass)
+  breaks <- c (-Inf, sort(x)[breaks.index], Inf)
+  output <- NULL
+  xbreaks <- NULL
+  x.binned <- as.numeric (cut (x, breaks))
+  for (i in 1:nclass){
+    items <- (1:length(x))[x.binned==i]
+    x.range <- range(x[items])
+    xbar <- mean(x[items])
+    ybar <- mean(y[items])
+    n <- length(items)
+    sdev <- sd(y[items])
+    output <- rbind(output, c(xbar, ybar, n, x.range, 2*sdev/sqrt(n)))
+  }
+  colnames(output) <- c ("xbar", "ybar", "n", "x.lo", "x.hi", "2se")
+  return (list(binned=output, xbreaks=xbreaks))
+}
+```
+
+![](figuras/manicule.jpg) La función *binned_residuals* recibe como entrada un vector $x$. ¿Es significativo dicho coeficiente?
+
+<p class="espacio">
+</p>
+<br>
+
+Vemos la gráfica:
+
+
+```r
+br.8 <- binned_residuals(wells$pred.8, wells$switch-wells$pred.8, nclass=40) %>% 
+  .$binned %>%
+  as.data.frame()
+
+ggplot(br.8, aes(xbar, ybar)) +
+  geom_point() +
+  geom_line(aes(x=xbar, y=`2se`), color="grey60") +
+  geom_line(aes(x=xbar, y=-`2se`), color="grey60") +
+  geom_abline(intercept = 0, slope = 0) +
+  xlab("P(switch) de predicción") +
+  ylab("Residual promedio")
+```
+
+<img src="08-logit-3_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" />
+
+Lo que observamos es los datos divididos en 40 cubetas de igual tamaño. Las líneas de color gris (calculadas como $2p (1 - p) / n$, donde $n$ es el número de puntos por cubeta, $3020/40 = 75$ en este caso) indican $\pm 2$ errores estándar, dentro de los cuales uno esperaría que caigan aproximadamente el 95% de los residuales agrupados, si el modelo fuera realmente verdadero.
+
+_Sólo uno_ de los 40 residuales agrupados caen fuera de los límites, lo cual no nos sorprende después de nuestro análisis previo, y tampoco vemos un patrón dramático en los residuales.
+
+---
+
+<br>
+
+
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+En regresión logística, el gradiente de $D(\beta)$ está dado por
+$$
+p_1(x) = h\left(\beta_0+\beta_1 x_1 + \beta_2x_2\right).
+$$
+¿Cuál de las siguientes afirmaciones son ciertas? Selecciona una o más.
+<center>
+![](figuras/ejemplo.png){width=60%}
+</center>
+
+(a) $D(\beta)$ será una función convexa, por lo que descenso en gradiente debería converger al mínimo global.
+
+(b) Para incrementar el ajuste del modelo a los datos podríamos agregar términos polinomiales o de interacción, por ejemplo, $p_1(x_i)=h\left(\beta_0+\beta_1 x_1 + \beta_2x_2 + \beta_3x_1^2 + \beta_4x_1x_2 +\beta_5x_2^2\right)$.
+
+(c) Los datos no se pueden separar utilizando una recta de modo que las observaciones de éxito estén de un lado de la recta y las observaciones de fracaso del otro. Por lo tanto, descenso en gradiente no podría converger.
+
+(d) Como lo datos no se pueden separar mediante una recta, entonces el método de regresión logística produciría los mismos resultados que aplicar regresión lineal a estos datos.
+
+<p class="espacio3">
+</p>
+</div>
+<br>
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+En regresión logística el gradiente de la devianza está dado por
+$$
+\dfrac{\partial D(\beta)}{\partial \beta_j} = \sum_{i=1}^N(h_\beta(x^{(i)}) - y^{(i)})x_j^{(i)}.
+$$
+¿Cuál de las siguientes expresiones es una actualizción correcta para descenso en gradiente con parámetro $\alpha$? Selecciona una o más.
+
+(a) $\beta_j := \beta_j - \alpha\frac{1}{N}\sum_{i=1}^N\left(\beta^Tx-y^{(i)}\right)x_j^{(i)}.$
+
+(b) $\beta := \beta - \alpha\frac{1}{N}\sum_{i=1}^N\left(\dfrac{1}{1+e^{-\beta^Tx^{(i)}}}-y^{(i)}\right)x^{(i)}.$
+
+(c) $\beta := \beta - \alpha\frac{1}{N}\sum_{i=1}^N\left(\beta^Tx-y^{(i)}\right)x^{(i)}.$
+
+(d) $\beta_j := \beta_j - \alpha\frac{1}{N}\sum_{i=1}^N\left(\dfrac{1}{1+e^{-\beta^Tx^{(i)}}}-y^{(i)}\right)x_j^{(i)}$ &nbsp; (actualiza simultáneamente para toda $j$).
+
+<p class="espacio3">
+</p>
+</div>
+<br>
