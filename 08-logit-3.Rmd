@@ -592,4 +592,3 @@ g <- ggplot(df, aes(x=x1, y=x2, color=as.factor(y), shape=as.factor(y))) +
 ggsave(filename = "~/Desktop/grafica.pdf", plot = g, device = "pdf", width = 3, height = 3)
 ```
 
-
