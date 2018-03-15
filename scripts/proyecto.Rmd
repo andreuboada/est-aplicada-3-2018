@@ -1,0 +1,145 @@
+---
+title: "Proyecto de Estadística Aplicada 3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+## Instrucciones
+
+1. Entregar por correo electrónico a más tardar el 4 de abril antes de la hora de clase.
+
+2. Se trabajará en equipos de dos personas. 
+
+3. Se entrega un reporte por equipo.
+
+4. El reporte debe explicar claramente las respuestas e incluir el código. 
+
+5. Está **prohibido** discutir con otros equipos.
+
+6. Cada ejercicio tiene un peso de 2 puntos.
+
+## Ejercicios
+
+### Ejercicio 1
+
+1. Los siguientes son datos de cáncer de próstata de Morrison et. al 1973. Los datos son: el centro de diagnóstico ($X_1$), el grado nuclear ($X_2$) y supervivencia ($X_3$).
+
+| $X_2$       | **Maligno**      | **Maligno**   | **Benigno**      | **Benigno**   |
+|-------------|------------------|---------------|------------------|---------------|
+| $X_1$/$X_3$ | **no sobrevive** | **sobrevive** | **no sobrevive** | **sobrevive** |
+| Boston      | 35               | 59            | 47               | 112           |
+| Glanmorgan  | 42               | 77            | 26               | 76            |
+
+  a. Podemos ajustar modelos log-lineales usando modelos lineales generalizados. Ajusta varios modelos para los datos de cáncer utilizando la función glm con familia poisson. 
+
+  Ejemplo de _glm_ con los datos de admisiones:
+
+```{r warning=FALSE, message=FALSE}
+admisiones <- read_csv("../recursos/admissions.csv")
+admin_freq <- xtabs(~Admit + Dept + Gender, data = admisiones)
+admin_df <- as.data.frame(admin_freq)
+# ajustamos el modelo con una interacción
+mod <- glm(formula = Freq ~ Admit + Dept + Gender + Dept:Admit, 
+           family = poisson, 
+           data = admin_df)
+# vemos los coeficientes
+summary(mod)
+admin_df$pred <- predict(mod, admin_df[, -4], type = "response")
+admin_df
+admin_df_2 <- admin_df %>% gather(tipo, valor, Freq, pred)
+ggplot(admin_df_2, aes(x = Admit, y = valor/sum(admin_df$Freq), color = tipo)) + 
+  facet_grid(Gender~Dept) + 
+  geom_point() +
+  labs(y = "p")
+```
+
+  b. Elige el modelo más apropiado utilizando alguna estadística o un criterio de ajuste.
+
+  c. Obtén las frecuencias ajustadas por el modelo utilizando la función `predict`.
+
+  d. Haz una gráfica de panel de las frecuencias y las frecuencias ajustadas donde en los páneles se deberán tener las variables de centro de diagnóstico ($X_1$) y grado nuclear ($X_2$). Concluye sobre el modelo elegido.
+  
+### Ejercicio 2
+
+2. Recordemos los datos de admisiones de Berkeley en 1973, que están en el archivo admissions.csv. Vimos en clase que la única indicación de dependencia entre aceptación (Admit) y género (Gender) estaba en un departamento particular (Dept A). Construye entonces dos modelos log-lineales: uno para el departamento A y otro para el resto. Explica por qué usar dos modelos es mejor que uno solo para entender estos datos.
+
+### Ejercicio 3
+
+3. El archivo rodents.csv contiene datos sobre roedores en apartamentos de la ciudad de Nueva York. El objetivo es predecir la infestación de roedores (no/sí = 0/1) en un departamento, usando variables a nivel del hogar y a nivel vecindario. Se puede conocer más sobre las variables en el documento de Word adjunto a los datos.
+
+```{r message=FALSE, warning=FALSE}
+rodents <- read_csv("../recursos/rodents.csv")
+glimpse(rodents)
+```
+
+a. Ajusta un modelo de regresión logística para predecir la presencia de roedores (la variable _rodent2_). Utiliza como predictor la variable *race* de grupos étnicos. Combina categorías según sea necesario. Discute los coeficientes estimados en el modelo, interpretando adecuadamente los coeficientes del modelo.
+
+c. Ahora agrega al modelo otros predictores que te parezcan relevantes para describir la presencia de roedores en el departamento. Construye el modelo agregando las variables una por una, primero las que impliquen una disminución mayor en la devianza.
+
+d. Introduce en el modelo un término de interacción entre dos variables de interés e interpreta el coeficiente.
+    
+### Ejercicio 4
+
+4. [Dressify](https://www.dressify.in/) es una tienda de ropa, que tiene como objetivo "traer las últimas tendencias de la moda al mundo". Obtuvieron datos sobre varios vestidos y su estilo, precio, tamaño, tipo de tela, patrones y diferentes atributos. El objetivo de Dressify es entender qué factores influyen en la recomendación de un vestido basándose en los datos. Los datos están en el archivo dressify.csv.
+
+```{r message=FALSE, warning=FALSE}
+dressify <- read_csv("../recursos/dressify.csv")
+glimpse(dressify)
+```
+
+a. Realiza una limpieza de datos preliminar para posteriormente hacer un análisis que permita llegar a una conclusión sobre qué vestidos debe recomendar. Para esto:
+
+    + Revisa las variables *Price*, *Season*, *NeckLine*, y *Size* y observa que éstas tienen observaciones que no fueron codificadas correctamente y asígnales un valor.
+
+    + Realiza un histograma de la variable *Rating* y observa que se puede agrupar en 3 categorías. Recodifica esta variable en una variable ordinal numérica, o bien, en una variable categórica. 
+
+    + Haz un histograma de la variable *Season* y nota que hubo inconsistencias en el registro de los datos. Crea una variable que tenga los niveles: Spring, Summer, Autumn, Winter.
+
+    + ¿Hay alguna variable tal que no sea apropiado incluirla en el análisis?
+
+b. Ajusta un modelo de regresión logística para predecir la recomendación de un vestido (`Recomended`).
+
+c. Elige los _dos_ atributos en los vestidos que influyen más para la recomendación de un vestido. Interpreta los coeficientes de estas variables utilizando las cinco técnicas vistas en clase: evaluar en la media, evaluar el cambio unitario en la media, calcular la derivada en la media, dividir entre 4, y calcular el cociente de momios.
+
+d. Ajusta un nuevo modelo logístico utilizando como predictores únicamente las variables que elegiste en el inciso anterior. Compara el _ajuste_ de este modelo con el del inciso b.
+
+e. Ajusta un modelo log-lineal utilizando glm y la familia poisson con las variables que elegiste en el inciso c y calcula las frecuencias de predicción para ambos modelos. Compara estas frecuencias para decidir qué modelo ajusta mejor a los datos.
+
+f. Grafica las curvas de ROC de los modelos de los incisos b y d. ¿Qué modelo es superior?
+
+g. Discute un punto de corte apropiado para hacer una recomendación de un vestido. ¿Escogerías especificidad más alta o sensibilidad más alta? Explica discutiendo qué implica cada tipo de error (falso positivo o falso negativo). Escoge el punto de corte y muestra la matriz de confusión correspondiente.
+    
+### Ejercicio 5
+
+5. Descarga el paquete `multtest` de BioConductor (un proyecto de código abierto que provee a la comunidad de R de herramientas para el análisis y la comprensión de datos genómicos):
+
+```{r, eval = FALSE}
+source("http://www.bioconductor.org/biocLite.R")
+biocLite("multtest")
+```
+    
+  Carga la librería y los datos de leucemia del paquete:
+    
+```{r, eval = FALSE}
+library(multtest)
+data(golub)
+```
+  
+  Ahora están disponibles los objetos `golub` y `golub.c` en tu ambiente. La matriz `golub` contiene perfiles de expresión génica de 38 pacientes con leucemia. En este caso cada perfil se compone de 3051 genes. El objeto `golub.cl` es una variable indicadora del tipo de leucemia (AML o ALL) del paciente.
+
+a. Relaciona el subtipo de leucemia y los perfiles de expresión génica mediante un modelo de regresión logística. Ajusta este modelo utilizando regularización Ridge con parámetro de penalización $\lambda = 0.1$. _Nota:_ es necesario centrar los perfiles de expresión alrededor del cero.
+
+b. Obtén los coeficientes del modelo de regresión y la devianza. El ajuste es casi perfecto. ¿Podría ser que los datos están sobreajustados? O bien, ¿podría ser que la información biológica en los niveles de expresión génica realmente determinan casi perfectamente el subtipo de leucemia?
+
+c. Para decidir entre las dos explicaciones del inciso anterior, realiza una permutación de los subtipos (la variable $y$) y vuelve a ajustar el modelo de regresión logística. Obtén los coeficientes del modelo de regresión y la devianza. Con base en esto, ¿qué explicación es más plausible? _Nota_: para hacer la permutación aleatoria establece un valor para la semilla utilizando la función `set.seed()`.
+
+d. Ajusta nuevamente el modelo con parámetros de penalización $\lambda=1$, $\lambda=10$, y $\lambda=1000$. Grafica las curvas de ROC de los modelos y explica qué modelo es superior.
+
+e. Describe qué harías para evitar el sobreajuste. ¿Cómo influye el parámetro $\lambda$ en la posibilidad de sobreajustar los datos?
