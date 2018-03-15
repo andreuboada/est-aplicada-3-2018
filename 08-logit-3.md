@@ -328,7 +328,7 @@ ggplot(graf_data, aes(x = x)) +
   geom_line(aes(y = logit), colour = 'lightpink', size=1.2)
 ```
 
-<img src="08-logit-3_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="08-logit-3_files/figure-html/unnamed-chunk-10-1.png" width="60%" style="display: block; margin: auto;" />
 
 Despejando para $\pi_i$ obtenemos 
 
@@ -818,11 +818,661 @@ ggplot(br.8, aes(xbar, ybar)) +
 
 <img src="08-logit-3_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
 
-Lo que observamos es los datos divididos en 40 cubetas de igual tamaño. Las líneas de color gris (calculadas como $2p (1 - p) / n$, donde $n$ es el número de puntos por cubeta, $3020/40 = 75$ en este caso) indican $\pm 2$ errores estándar, dentro de los cuales uno esperaría que caigan aproximadamente el 95% de los residuales agrupados, si el modelo fuera realmente verdadero.
+<p class="espacio3">
+</p>
 
-_Sólo uno_ de los $40$ residuales agrupados caen fuera de los límites, lo cual no nos sorprende después de nuestro análisis previo, y tampoco vemos un patrón dramático en los residuales.
+Lo que observamos es los datos divididos en 40 cubetas de igual tamaño. Las líneas de color gris se calculan como 
+$$
+\displaystyle{2\sqrt{\frac{p(1 - p)}{n}}},
+$$
+donde $n$ es el número de puntos por cubeta. En este caso, $n = 3020/40 = 75$ en este caso) indican 
+
+Si consideramos $\pm 2$ errores estándar esperamos que caigan adentro de estas bandas aproximadamente el 95% de los residuales agrupados (si el modelo fuera realmente verdadero).
 
 ---
 
 <br>
 
+### Gráficas de residuales agrupados vs predictores
+
+Podemos estudiar los residuales graficándolos contra algunos predictores.
+
+Graficamos los residuales contra la distancia al pozo seguro más cercano:
+
+
+```r
+br.8.dist <- binned_residuals(wells$dist_100, wells$switch-wells$pred.8, nclass=40) %>% 
+  .$binned %>%
+  as.data.frame()
+ggplot(br.8.dist, aes(xbar, ybar)) +
+  geom_point() +
+  geom_line(aes(x=xbar, y=`2se`), color="grey60") +
+  geom_line(aes(x=xbar, y=-`2se`), color="grey60") +
+  geom_abline(intercept = 0, slope = 0) +
+  xlab("P(switch) de predicción") +
+  ylab("Distancia al pozo seguro más cercano")
+```
+
+<img src="08-logit-3_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" />
+
+No observamos algún patrón en los residuales de la gráfica anterior, lo cual es consistente con el modelo.
+
+Vemos ahora la gráfica con arsénico:
+
+
+```r
+br.8.ars <- binned_residuals(wells$arsenic, wells$switch-wells$pred.8, nclass=40) %>% 
+  .$binned %>%
+  as.data.frame()
+ggplot(br.8.ars, aes(xbar, ybar)) +
+  geom_point() +
+  geom_line(aes(x=xbar, y=`2se`), color="grey60") +
+  geom_line(aes(x=xbar, y=-`2se`), color="grey60") +
+  geom_smooth(method = 'loess', se=F, color="red", size=0.5) +
+  geom_abline(intercept = 0, slope = 0) +
+  xlab("P(switch) de predicción") +
+  ylab("Arsénico")
+```
+
+<img src="08-logit-3_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" />
+
+Esta gráfica sí muestra un patrón en los residuales. Tiene un residual negativo extremo. Además podemos decir que:
+
+* las personas en los pozos para las primeras 3 cubetas tienen probabilidad de cambio promedio de:
+
+
+```r
+personas_cub3 <- wells %>% filter(arsenic <= 0.59)
+sum(personas_cub3$switch)/nrow(personas_cub3)
+#> [1] 0.308
+```
+
+* el modelo predice que la probabilidad de cambio de estas personas en las primras tres cubetas es en promedio:
+
+
+```r
+mean(personas_cub3$pred.8)
+#> [1] 0.485
+```
+
+Esto quiere decir que la probabilidad de que realmente cambien de pozo es aproximadamente 20% menos que la que predice el modelo. 
+
+* Observamos un patrón en los residuales: los residuales positivos (ej promedio) están en la mitad del rango de arsénico, y los residuales están en los extremos.
+
+<p class="espacio3">
+</p>
+
+### Transformaciones
+
+Ahora consideramos transformar la variable de arsénico: vemos un patrón en los residuales en el cual estos primero aumentan y luego disminuyen. 
+
+Para solucionar esto hay algunas opciones:
+
+* usar una __transformación logarítmica__.
+
+* agregar un término cuadrático al término lineal.
+
+En este caso como la variable de arsénico es no negativa es un poco más práctico utilizar la transformación de logaritmo.
+
+
+```r
+wells <- wells %>% mutate(arsenic_log = log(arsenic),
+                          arsenic_log_c = arsenic_log - mean(arsenic_log))
+fit.9 <- glm(switch ~ dist_100_c + arsenic_log_c + educ4_c +
+               dist_100_c:arsenic_log_c + dist_100_c:educ4_c + arsenic_log_c:educ4_c,
+             data = wells,
+             family=binomial(link="logit"))
+summary(fit.9)
+#> 
+#> Call:
+#> glm(formula = switch ~ dist_100_c + arsenic_log_c + educ4_c + 
+#>     dist_100_c:arsenic_log_c + dist_100_c:educ4_c + arsenic_log_c:educ4_c, 
+#>     family = binomial(link = "logit"), data = wells)
+#> 
+#> Deviance Residuals: 
+#>    Min      1Q  Median      3Q     Max  
+#> -2.103  -1.162   0.718   1.040   1.923  
+#> 
+#> Coefficients:
+#>                          Estimate Std. Error z value Pr(>|z|)    
+#> (Intercept)                0.3452     0.0405    8.53  < 2e-16 ***
+#> dist_100_c                -0.9796     0.1112   -8.81  < 2e-16 ***
+#> arsenic_log_c              0.9036     0.0695   13.00  < 2e-16 ***
+#> educ4_c                    0.1785     0.0390    4.58  4.7e-06 ***
+#> dist_100_c:arsenic_log_c  -0.1567     0.1851   -0.85   0.3974    
+#> dist_100_c:educ4_c         0.3384     0.1078    3.14   0.0017 ** 
+#> arsenic_log_c:educ4_c      0.0601     0.0703    0.85   0.3926    
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 
+#> (Dispersion parameter for binomial family taken to be 1)
+#> 
+#>     Null deviance: 4118.1  on 3019  degrees of freedom
+#> Residual deviance: 3863.1  on 3013  degrees of freedom
+#> AIC: 3877
+#> 
+#> Number of Fisher Scoring iterations: 4
+```
+
+Esto da resultados similares al modelo anterior, los signos de las interacciones son los mismos y los signos de los efectos principales también son los mismos.
+
+Volvemos a hacer la gráfica de niveles de arsénico vs residuales:
+
+
+```r
+wells$pred.9 <- fit.9$fitted.values
+br.fit.9 <- binned_residuals(wells$arsenic, wells$switch-wells$pred.9, nclass=40) %>% 
+  .$binned %>%
+  as.data.frame()
+ggplot(br.fit.9, aes(xbar, ybar)) +
+  geom_point() +
+  geom_line(aes(x=xbar, y=`2se`), color="grey60") +
+  geom_line(aes(x=xbar, y=-`2se`), color="grey60") +
+  geom_smooth(method = 'loess', se=F, color="red", size=0.5) +
+  geom_abline(intercept = 0, slope = 0) +
+  xlab("Residual promedio P(switch)") +
+  ylab("Arsénico")
+```
+
+<img src="08-logit-3_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" />
+
+Los residuales se ven mucho mejor, aunque para niveles bajos de arsénico aún hay muchos residuales negativos: los usuarios de pozos con niveles de arsénico justo por encima de $0.50$ tienen menos probabilidad de cambiarse que la que predice el modelo.
+
+Posibles explicaciones:
+
++ psicológicamente, las mediciones justo por encima de $0.50$ podrían parecer no muy graves
+
++ por error de medición, tal vez algunos de los pozos con $0.51$ o $0.52$ se midieron antes o después y de encontrar niveles de arsénico por debajo de $0.5$
+
+
+### Tasa de error y comparación contra el modelo nulo
+
+La __tasa de error__ se define como la proporción de casos para los cuáles la predicción de $y_i$ a partir de la probabilidad estimada
+$$
+\pi_i=p_1(x_i)=\mbox{logit}^{-1}(X_i\beta)
+$$
+es _incorrecta_.
+
+Para hacer la predicción para cada $y_i$ es necesario definir un **punto de corte**, en principio se utiliza el $0.5$ de la forma que la predicción de $y_i$, denotada por $\hat{y}_i$, es
+$$
+\hat{y}_{i} = \left\{ \begin{array}{cl}
+1 & \text{si }\;\mbox{logit}^{-1}(X_i\beta) > 0.5,\\
+0 & \text{en otro caso.}
+\end{array}\right.
+$$
+
+Por lo tanto, calculamos la tasa de error para el ejemplo de los pozos:
+
+
+```r
+(error_rate <- mean((wells$pred.9>0.5 & wells$switch==0) | (wells$pred.9<=0.5 & wells$switch==1)))
+#> [1] 0.365
+```
+
+\BeginKnitrBlock{nota}<div class="nota">Observaciones:
+  
+* La tasa de error siempre debe ser menor que $1/2$.
+
+* Si la tasa de error fuera mayor o igual a $1/2$, entonces poniendo todas las $\beta^\prime\mbox{s}$ igual a cero obtendríamos un mejor modelo.
+
+* El **modelo nulo** se define como el modelo que asigna la misma probabilidad $p$ a toda $y_i$, y dicha probabilidad es $$p = \dfrac{1}{n}\sum_{i=1}^N{y_i}.$$</div>\EndKnitrBlock{nota}
+
+<p class="espacio3">
+</p>
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+
+¿Cuál o cuáles de las siguientes afirmaciones son ciertas?
+
+(a) La tasa de error del modelo nulo es igual a $p$.
+
+(b) El modelo nulo es aquel en el cual todas las observaciones son equiprobables.
+
+(c) El modelo nulo es simplemente regresión logística con sólo un término constante.
+
+(d) La tasa de error del modelo nulo es igual a $1-p$.
+
+<p class="espacio3">
+</p>
+</div>
+<br>
+
+Por ejemplo, en el modelo de los pozos la tasa de error del modelo nulo es:
+
+
+```r
+mean(1-wells$switch)
+#> [1] 0.425
+```
+
+Es decir, $58\%$ de los encuestados cambiaron de pozo, pero $42\%$ no cambiaron de pozo.
+
+<p class="espacio3">
+</p>
+
+\BeginKnitrBlock{information}<div class="information">**Interpretación del modelo nulo:** 
+  
+  + el modelo sin predictores le da a cada persona un $58\%$ de posibilidad de cambio (que corresponde a una predicción puntual de cambiar para cada persona), y
+
+  + esta predicción será incorrecta el $42\%$ de las veces.</div>\EndKnitrBlock{information}
+
+<p class="espacio3">
+</p>
+
+\BeginKnitrBlock{nota}<div class="nota">Nota:
+
+<p class="espacio">
+</p> 
+
+* Utilizamos la **devianza** para evaluar el ajuste de un modelo porque la tasa de error no es un resumen perfecto del _desajuste_ del modelo. La razón de esto es que la tasa de error no puede distinguir entre predicciones de $0.6$ y $0.9$, por ejemplo, porque únicamente toma en cuenta predicciones de $y_i$'s.
+
+* Es importante poder predecir $y_i$'s pero generalmente es más útil trabajar con las probabilidades porque en estas subyace la incertidumbre de la predicción.
+
+* La tasa de error se utiliza a menudo porque es fácil de interpretar y en la práctica puede llegar a ser muy útil.
+
+* Una tasa de error igual a la tasa de error del modelo nulo es terrible, y la mejor tasa de error posible es cero.
+
+* Una tasa de error alta (cercana a la del modelo nulo pero menor) no significa que el modelo no sea útil. La interpretación del modelo puede aportar a explicar el fenómeno de estudio.</div>\EndKnitrBlock{nota}
+
+<p class="espacio3">
+</p>
+
+La razón por la cual la tasa de error del modelo de pozos es alta se resume en los siguientes puntos:
+
+* La mayoría de los datos están alrededor de las medias de los predictores (la distancia menor a 100 m y arsénico en  0.5 y 1).
+
+* Por el punto anterior, para la mayoría de los datos la probabilidad de cambio $P(\mbox{switch})=0.58$ funciona bien, que es simplementa la media en los datos.
+
+* El modelo da información sobre lo que está pasando en los extremos, pero relativamente hay muy pocos datos, por lo que la precisión predictiva general del modelo no es muy alta.
+
+---
+
+<br>
+
+## Diferencias predictivas promedio en la escala de probabilidad
+
+Recordemos:
+
+1. Las regresiones logísticas son inherentemente más difíciles que las regresiones lineales para interpretar.
+
+2. La regresión logística es no lineal en la escala de probabilidad, es decir, a una diferencia unitaria en $x$ no le corresponde una diferencia constante en $P(y_i=1)$.
+
+3. Como resultado de esto, los coeficientes de regresión logística no se pueden interpretar directamente en la escala de probabilidad.
+
+<p class="espacio3">
+</p>
+
+Se puede calcular la _diferencia predictiva promedio_ como función de los valores de entrada de los predictores para luego dar una diferencia _promedio_ en $P(y=1)$ correspondiente a una diferencia en cada una de las variables de entrada.
+
+Comenzamos utilizando el siguiente modelo sin interacciones para hacer más simple la explicación:
+
+
+```r
+fit.10 <- glm(switch ~ dist_100 + arsenic + educ4,
+               data = wells,
+               family=binomial(link="logit"))
+summary(fit.10)
+#> 
+#> Call:
+#> glm(formula = switch ~ dist_100 + arsenic + educ4, family = binomial(link = "logit"), 
+#>     data = wells)
+#> 
+#> Deviance Residuals: 
+#>    Min      1Q  Median      3Q     Max  
+#> -2.577  -1.197   0.755   1.063   1.699  
+#> 
+#> Coefficients:
+#>             Estimate Std. Error z value Pr(>|z|)    
+#> (Intercept)  -0.2139     0.0931   -2.30    0.022 *  
+#> dist_100     -0.8956     0.1046   -8.56  < 2e-16 ***
+#> arsenic       0.4684     0.0416   11.26  < 2e-16 ***
+#> educ4         0.1713     0.0383    4.47  7.7e-06 ***
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 
+#> (Dispersion parameter for binomial family taken to be 1)
+#> 
+#>     Null deviance: 4118.1  on 3019  degrees of freedom
+#> Residual deviance: 3910.4  on 3016  degrees of freedom
+#> AIC: 3918
+#> 
+#> Number of Fisher Scoring iterations: 4
+```
+
+<p class="espacio3">
+</p>
+
+**Ejemplo: Diferencia predictiva promedio en probabilidad de cambio, comparando hogares que están a 100 metros o menos de un pozo seguro más cercano.**
+
+<p class="espacio3">
+</p>
+
+Comparemos dos hogares:
+
+* uno con $\mbox{dist_100} = 0$, y 
+
+* uno con $\mbox{dist_100} = 1$, 
+
+pero ambos con los mismos valores en las otras variables de entrada: arsénico y educ4.
+
+La _diferencia predictiva_ en probabilidad de cambiar de pozo entre los dos hogares:
+$$
+\begin{eqnarray*}
+\delta(\mbox{arsenic}, \mbox{educ4}) = \mbox{logit}^{−1}(−0.21 − 0.90 \cdot 1 + 0.47 \cdot \mbox{arsenic} + 0.17 \cdot \mbox{educ4}) &−&\\ \mbox{logit}^{−1}(−0.21 − 0.90 \cdot 0 + 0.47 \cdot \mbox{arsenic} + 0.17 \cdot \mbox{educ4}).
+\end{eqnarray*}
+$$
+Escribimos $\delta$ como una función de arsénico y educ4 para enfatizar que depende de los niveles de estas otras variables.
+
+
+Promeiamos las diferencias predictivas sobre los $n$ hogares en los datos para obtener:
+$$
+\mbox{diferencia predictiva promedio} = \dfrac{1}{n}\sum_{i=1}^n{\delta(\mbox{arsenic}_i, \mbox{educ4}_i)}
+$$
+
+Hacemos el cálculo:
+
+
+```r
+b <- coef(fit.10)
+hi <- 1
+lo <- 0
+delta <- invlogit (b[1] + b[2]*hi + b[3]*wells$arsenic + b[4]*wells$educ4) -
+         invlogit (b[1] + b[2]*lo + b[3]*wells$arsenic + b[4]*wells$educ4)
+print(mean(delta))
+#> [1] -0.204
+```
+
+El resultado es $-0.20$, lo que implica que, en promedio en los datos, los hogares que están a 100 metros del pozo seguro más cercano tienen un $20\%$ menos de probabilidades de cambiar, en comparación con los hogares que están justo al lado del pozo seguro más cercano, con mismos niveles de arsénico y mismos niveles de educación.
+
+---
+
+<br>
+
+**Ejemplo: Diferencia predictiva promedio en probabilidad de cambio, comparando hogares con niveles de arsénico existentes de 0.5 y 1.0.**
+
+Calculamos la diferencia predictiva y la diferencia predictiva promedio, comparando los hogares en dos niveles diferentes de arsénico, suponiendo que la distancia al pozo seguro más cercano y los niveles de educación son iguales. Elegimos $\mbox{arsenic} = 0.5$ y $1.0$ como puntos de comparación porque $0.5$ es el nivel más bajo inseguro, $1.0$ es el doble, y esta comparación captura gran parte del rango de los datos:
+
+
+```r
+hi <- 1.0
+lo <- 0.5
+delta <- invlogit (b[1] + b[2]*wells$dist_100 + b[3]*hi + b[4]*wells$educ4) -
+         invlogit (b[1] + b[2]*wells$dist_100 + b[3]*lo + b[4]*wells$educ4)
+print (mean(delta))
+#> [1] 0.0564
+```
+
+El resultado es $0.06$, por lo que esta comparación corresponde a una diferencia del $6\%$ en la probabilidad de cambiar de pozo.
+
+**Ejemplo: Diferencia predictiva promedio en probabilidad de cambio, comparando hogares con 0 y 12 años de educación.**
+
+Calcular nuevamente la diferencia predictiva promedio de la probabilidad de cambio de pozo para hogares con 0 vs 12 años de educación:
+
+
+```r
+hi <- 3
+lo <- 0
+delta <- invlogit (b[1]+b[2]*wells$dist_100+b[3]*wells$arsenic+b[4]*hi) -
+         invlogit (b[1]+b[2]*wells$dist_100+b[3]*wells$arsenic+b[4]*lo)
+print (mean(delta))
+#> [1] 0.117
+```
+
+---
+
+<br>
+
+### Diferencias predictivas promedio en presencia de interacciones {-}
+
+Por ejemplo, consideremos la diferencia predictiva promedio, comparando $\mbox{dist} = 0$ con $\mbox{dist} = 100$, para el modelo que incluye una interacción distancia $\times$ arsénico:
+
+
+```r
+fit.11 <- glm(switch ~ dist_100 + arsenic + educ4 + dist_100:arsenic,
+              data = wells,
+              family=binomial(link="logit"))
+summary(fit.11)
+#> 
+#> Call:
+#> glm(formula = switch ~ dist_100 + arsenic + educ4 + dist_100:arsenic, 
+#>     family = binomial(link = "logit"), data = wells)
+#> 
+#> Deviance Residuals: 
+#>    Min      1Q  Median      3Q     Max  
+#> -2.715  -1.189   0.748   1.069   1.722  
+#> 
+#> Coefficients:
+#>                  Estimate Std. Error z value Pr(>|z|)    
+#> (Intercept)       -0.3490     0.1264   -2.76   0.0057 ** 
+#> dist_100          -0.6047     0.2095   -2.89   0.0039 ** 
+#> arsenic            0.5554     0.0695    7.99  1.4e-15 ***
+#> educ4              0.1692     0.0383    4.42  1.0e-05 ***
+#> dist_100:arsenic  -0.1629     0.1023   -1.59   0.1115    
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 
+#> (Dispersion parameter for binomial family taken to be 1)
+#> 
+#>     Null deviance: 4118.1  on 3019  degrees of freedom
+#> Residual deviance: 3907.9  on 3015  degrees of freedom
+#> AIC: 3918
+#> 
+#> Number of Fisher Scoring iterations: 4
+```
+
+Calculamos la diferencia predictiva promedio entre hogares a 0 y 100 metros de distancia del pozo seguro como:
+
+
+```r
+b <- coef(fit.11)
+hi <- 1
+lo <- 0
+delta <- invlogit(b[1] + b[2]*hi + b[3]*wells$arsenic + b[4]*wells$educ4 + b[5]*hi*wells$arsenic) -
+         invlogit(b[1] + b[2]*lo + b[3]*wells$arsenic + b[4]*wells$educ4 + b[5]*lo*wells$arsenic)
+print(mean(delta))
+#> [1] -0.194
+```
+
+### Notación general para diferencias predictivas {-}
+
+Consideramos que deseamos evaluar las diferencias predictivas una a la vez y usamos la notación de:
+
+* $u$ para la entrada de interés, y 
+
+* $v$ para el vector de todas las otras entradas.
+
+Supongamos que estamos considerando comparaciones entre $u=u^{(1)}$ y $u=u^{(0)}$ y todas las demás variables permanecen constantes.
+
+La diferencia predictiva en probabilidades entre los dos casos que difiere solo en $u$ es:
+$$
+\delta(u^{(\mbox{hi})},u^{(\mbox{lo})},v,\beta) = P(y=1|u^{(\mbox{hi})},v,\beta)−P(y=1|u^{(\mbox{lo})},v,\beta).
+$$
+
+La diferencia predictiva media es la media de las $n$ diferencias predictivas correspondientes a cada observación en los datos:
+$$
+\Delta(u^{(\mbox{hi})}, u^{(\mbox{lo})}) = \dfrac{1}{n} \sum_{i=1}^n{\delta(u^{(\mbox{hi})}, u^{(\mbox{lo})}, v_i, β),}
+$$
+donde $v_i$ representa el vector de otras variables de entrada para la $i$-ésima observación. 
+
+<p class="espacio3">
+</p>
+
+Consideremos el modelo de regresión logística con la interacción de educación y distancia:
+
+
+```r
+fit.12 <- glm(switch ~ dist_100 + arsenic + educ4 + dist_100:educ4,
+              data = wells,
+              family=binomial(link="logit"))
+```
+
+Los coeficientes del modelo son:
+
+```r
+coef(fit.12)
+#>    (Intercept)       dist_100        arsenic          educ4 dist_100:educ4 
+#>       0.000496      -1.389852       0.480599      -0.008308       0.382545
+```
+
+
+```r
+b <- coef(fit.12)
+hi <- 3
+lo <- 0
+delta <- invlogit(b[1] + b[2]*wells$dist_100 + b[3]*wells$arsenic + b[4]*hi + b[5]*wells$educ*wells$dist_100) -
+         invlogit(b[1] + b[2]*wells$dist_100 + b[3]*wells$arsenic + b[4]*lo + b[5]*wells$educ*wells$dist_100)
+print(mean(delta))
+#> [1] -0.00468
+```
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+
+La diferencia predictiva promedio entre hogares con 0 años y 12 años de educación es:
+
+(a) -0.05
+
+(b) 0.30
+
+(c) 0.12
+
+(d) 0.05
+
+<p class="espacio3">
+</p>
+</div>
+<br>
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+En regresión logística, el gradiente de $D(\beta)$ está dado por
+$$
+p_1(x) = h\left(\beta_0+\beta_1 x_1 + \beta_2x_2\right).
+$$
+<p class="espacio3">
+</p>
+
+Se cuenta con los datos de la siguiente tabla y que aparecen en la gráfica de la derecha:
+
+<p class="espacio3">
+</p>
+
+<center>
+![](figuras/ejemplo.png){width=60%}
+</center>
+
+<p class="espacio3">
+</p>
+<p class="espacio3">
+</p>
+
+¿Cuál de las siguientes afirmaciones son ciertas? Selecciona una o más.
+
+
+(a) $D(\beta)$ será una función convexa, por lo que descenso en gradiente debería converger al mínimo global.
+
+(b) Para incrementar el ajuste del modelo a los datos podríamos agregar términos polinomiales o de interacción, por ejemplo, $p_1(x_i)=h\left(\beta_0+\beta_1 x_1 + \beta_2x_2 + \beta_3x_1^2 + \beta_4x_1x_2 +\beta_5x_2^2\right)$.
+
+(c) Los datos no se pueden separar utilizando una recta de modo que las observaciones de éxito estén de un lado de la recta y las observaciones de fracaso del otro. Por lo tanto, descenso en gradiente no podría converger.
+
+(d) Como lo datos no se pueden separar mediante una recta, entonces el método de regresión logística produciría los mismos resultados que aplicar regresión lineal a estos datos.
+
+<p class="espacio3">
+</p>
+</div>
+<br>
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+En regresión logística el gradiente de la devianza está dado por
+$$
+\dfrac{\partial D(\beta)}{\partial \beta_j} = \sum_{i=1}^N(h_\beta(x^{(i)}) - y^{(i)})x_j^{(i)}.
+$$
+¿Cuál de las siguientes expresiones es una actualizción correcta para descenso en gradiente con parámetro $\alpha$? Selecciona una o más.
+
+(a) $\beta_j := \beta_j - \alpha\frac{1}{N}\sum_{i=1}^N\left(\beta^Tx-y^{(i)}\right)x_j^{(i)}.$
+
+(b) $\beta := \beta - \alpha\frac{1}{N}\sum_{i=1}^N\left(\dfrac{1}{1+e^{-\beta^Tx^{(i)}}}-y^{(i)}\right)x^{(i)}.$
+
+(c) $\beta := \beta - \alpha\frac{1}{N}\sum_{i=1}^N\left(\beta^Tx-y^{(i)}\right)x^{(i)}.$
+
+(d) $\beta_j := \beta_j - \alpha\frac{1}{N}\sum_{i=1}^N\left(\dfrac{1}{1+e^{-\beta^Tx^{(i)}}}-y^{(i)}\right)x_j^{(i)}$ &nbsp; (actualiza simultáneamente para toda $j$).
+
+<p class="espacio3">
+</p>
+</div>
+<br>
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+
+¿Cuáles de las siguientes afirmaciones son ciertas? 
+
+(a) La devianza $D(\beta)$ en regresión logística con $N\geq 1$ observaciones siempre es no negativa.
+
+(b) En regresión logística, descenso en gradiente algunas veces converge a un mínimo global (no logra encontrar el mínimo global). Esta es la razón por la cual preferimos algoritmos más avanzados de optimización, como BFGS y Región de confianza.
+
+(c) La regresión lineal siempre funciona bien para hacer clasificación si se clasifica utilizando un umbral en la predicción hecha por regresión lineal.
+
+(d) La función logística $h(x)=\frac{1}{1+e^{-x}}$ nunca es mayor que uno ($>1$).
+
+<p class="espacio3">
+</p>
+</div>
+<br>
+
+---
+
+<br>
+
+## Tarea
+
+1. Utiliza los datos de cambio de pozos de arsénico del archivo wells.csv.
+
+a. Ajusta un modelo de regresión logística para la probabilidad de cambio de pozo utilizando una transformación logarítmica para la variable de distancia.
+
+b. Haz una gráfica que muestre la probabilidad de cambio de pozo como función de la distancia al pozo, y que en la gráfica se muestren también los datos.
+
+c. Haz una gráfica de residuales contra ajustados utilizando residuales agrupados.
+
+d. Calcula la tasa de error del modelo ajustado y compárala con la tasa de error del modelo nulo.
+
+e. Crea variables indicadores correspondientes a:
+
+    + $\mbox{dist} < 100$,
+    
+    + $100 \leq \mbox{dist} < 200$, y 
+    
+    + $\mbox{dist} \geq 200$.
+    
+  Ajusta una regresión logística para $P(\mbox{switch})$ utilizando estas tres variables indicadoras. Con este nuevo modelo repite las gráficas de los incisos b y c, y los cálculos del inciso d.
+
+
+2. Continuamos con los datos de los pozos.
+
+a. Ajusta una regresión logística utilizando como predictores distancia, el logaritmo del arsénico y su interacción. Interpreta los coeficientes estimados y sus errores estándar.
+
+b. Haz gráficas que muestren la relación entre la probabilidad de cambio de pozo, la distancia y el nivel de arsénico.
+
+c. Calcula las diferencias predictivas promedio correspondientes a:
+
+    + la diferencia entre $\mbox{dist}=0$ y $\mbox{dist=100}$, cuando arsénico permanece constante.
+    
+    + la diferencia entre $\mbox{dist=100}$ y $\mbox{dist=200}$, cuando arsénico permanece constante.
+    
+    + la diferencia entre $\mbox{arsenic=0.5}$ y $\mbox{arsenic=1.0}$, cuando distancia permanece constante.
+    
+    + la diferencia entre $\mbox{arsenic=1.0}$ y $\mbox{arsenic=2.0}$, cuando distancia permanece constante.
+
+Discute los resultados.

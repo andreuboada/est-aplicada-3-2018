@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-03-13">
+<meta name="date" content="2018-03-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -269,7 +269,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.3" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#regresion-logistica-con-interacciones"><i class="fa fa-check"></i><b>8.3</b> Regresión logística con interacciones</a></li>
 <li class="chapter" data-level="8.4" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#graficas-del-modelo-con-interacciones"><i class="fa fa-check"></i><b>8.4</b> Gráficas del modelo con interacciones</a></li>
 <li class="chapter" data-level="8.5" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#agregar-mas-predictores"><i class="fa fa-check"></i><b>8.5</b> Agregar más predictores</a></li>
-<li class="chapter" data-level="8.6" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#evaluacion-de-modelos-de-regresion-logistica"><i class="fa fa-check"></i><b>8.6</b> Evaluación de modelos de regresión logística</a></li>
+<li class="chapter" data-level="8.6" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#evaluacion-de-modelos-de-regresion-logistica"><i class="fa fa-check"></i><b>8.6</b> Evaluación de modelos de regresión logística</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#graficas-de-residuales-agrupados-vs-predictores"><i class="fa fa-check"></i><b>8.6.1</b> Gráficas de residuales agrupados vs predictores</a></li>
+<li class="chapter" data-level="8.6.2" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#transformaciones"><i class="fa fa-check"></i><b>8.6.2</b> Transformaciones</a></li>
+<li class="chapter" data-level="8.6.3" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#tasa-de-error-y-comparacion-contra-el-modelo-nulo"><i class="fa fa-check"></i><b>8.6.3</b> Tasa de error y comparación contra el modelo nulo</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#diferencias-predictivas-promedio-en-la-escala-de-probabilidad"><i class="fa fa-check"></i><b>8.7</b> Diferencias predictivas promedio en la escala de probabilidad</a><ul>
+<li class="chapter" data-level="" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#diferencias-predictivas-promedio-en-presencia-de-interacciones"><i class="fa fa-check"></i>Diferencias predictivas promedio en presencia de interacciones</a></li>
+<li class="chapter" data-level="" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#notacion-general-para-diferencias-predictivas"><i class="fa fa-check"></i>Notación general para diferencias predictivas</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#tarea-6"><i class="fa fa-check"></i><b>8.8</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -691,7 +700,7 @@ fit.<span class="dv">1</span>
 graf_data &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">100</span>), <span class="dt">logit =</span> <span class="kw">logit</span>(x))
 <span class="kw">ggplot</span>(graf_data, <span class="kw">aes</span>(<span class="dt">x =</span> x)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> logit), <span class="dt">colour =</span> <span class="st">&#39;lightpink&#39;</span>, <span class="dt">size=</span><span class="fl">1.2</span>)</code></pre></div>
-<p><img src="08-logit-3_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="08-logit-3_files/figure-html/unnamed-chunk-10-1.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Despejando para <span class="math inline">\(\pi_i\)</span> obtenemos</p>
 <p><span class="math display">\[
 \pi_i = \mbox{logit}^{-1}(\eta_i)=\mbox{logit}^{-1}(x_i^\prime\beta)=\dfrac{e^{x_i^\prime\beta}}{1+e^{x_i^\prime\beta}}
@@ -1057,10 +1066,490 @@ wells<span class="op">$</span>pred.<span class="dv">8</span> &lt;-<span class="s
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;P(switch) de predicción&quot;) +</span>
 <span class="st">  ylab(&quot;</span>Residual promedio<span class="st">&quot;)</span></code></pre></div>
 <p><img src="08-logit-3_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>Lo que observamos es los datos divididos en 40 cubetas de igual tamaño. Las líneas de color gris (calculadas como <span class="math inline">\(2p (1 - p) / n\)</span>, donde <span class="math inline">\(n\)</span> es el número de puntos por cubeta, <span class="math inline">\(3020/40 = 75\)</span> en este caso) indican <span class="math inline">\(\pm 2\)</span> errores estándar, dentro de los cuales uno esperaría que caigan aproximadamente el 95% de los residuales agrupados, si el modelo fuera realmente verdadero.</p>
-<p><em>Sólo uno</em> de los <span class="math inline">\(40\)</span> residuales agrupados caen fuera de los límites, lo cual no nos sorprende después de nuestro análisis previo, y tampoco vemos un patrón dramático en los residuales.</p>
+<p class="espacio3">
+</p>
+<p>Lo que observamos es los datos divididos en 40 cubetas de igual tamaño. Las líneas de color gris se calculan como <span class="math display">\[
+\displaystyle{2\sqrt{\frac{p(1 - p)}{n}}},
+\]</span> donde <span class="math inline">\(n\)</span> es el número de puntos por cubeta. En este caso, <span class="math inline">\(n = 3020/40 = 75\)</span> en este caso) indican</p>
+<p>Si consideramos <span class="math inline">\(\pm 2\)</span> errores estándar esperamos que caigan adentro de estas bandas aproximadamente el 95% de los residuales agrupados (si el modelo fuera realmente verdadero).</p>
 <hr />
 <p><br></p>
+<div id="graficas-de-residuales-agrupados-vs-predictores" class="section level3">
+<h3><span class="header-section-number">8.6.1</span> Gráficas de residuales agrupados vs predictores</h3>
+<p>Podemos estudiar los residuales graficándolos contra algunos predictores.</p>
+<p>Graficamos los residuales contra la distancia al pozo seguro más cercano:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">br.<span class="fl">8.</span>dist &lt;-<span class="st"> </span><span class="kw">binned_residuals</span>(wells<span class="op">$</span>dist_<span class="dv">100</span>, wells<span class="op">$</span><span class="cf">switch</span><span class="op">-</span>wells<span class="op">$</span>pred.<span class="dv">8</span>, <span class="dt">nclass=</span><span class="dv">40</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>.<span class="op">$</span>binned <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">as.data.frame</span>()
+<span class="kw">ggplot</span>(br.<span class="fl">8.</span>dist, <span class="kw">aes</span>(xbar, ybar)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>xbar, <span class="dt">y=</span><span class="st">`</span><span class="dt">2se</span><span class="st">`</span>), <span class="dt">color=</span><span class="st">&quot;grey60&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>xbar, <span class="dt">y=</span><span class="op">-</span><span class="st">`</span><span class="dt">2se</span><span class="st">`</span>), <span class="dt">color=</span><span class="st">&quot;grey60&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> <span class="dv">0</span>, <span class="dt">slope =</span> <span class="dv">0</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;P(switch) de predicción&quot;) +</span>
+<span class="st">  ylab(&quot;</span>Distancia al pozo seguro más cercano<span class="st">&quot;)</span></code></pre></div>
+<p><img src="08-logit-3_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>No observamos algún patrón en los residuales de la gráfica anterior, lo cual es consistente con el modelo.</p>
+<p>Vemos ahora la gráfica con arsénico:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">br.<span class="fl">8.</span>ars &lt;-<span class="st"> </span><span class="kw">binned_residuals</span>(wells<span class="op">$</span>arsenic, wells<span class="op">$</span><span class="cf">switch</span><span class="op">-</span>wells<span class="op">$</span>pred.<span class="dv">8</span>, <span class="dt">nclass=</span><span class="dv">40</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>.<span class="op">$</span>binned <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">as.data.frame</span>()
+<span class="kw">ggplot</span>(br.<span class="fl">8.</span>ars, <span class="kw">aes</span>(xbar, ybar)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>xbar, <span class="dt">y=</span><span class="st">`</span><span class="dt">2se</span><span class="st">`</span>), <span class="dt">color=</span><span class="st">&quot;grey60&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>xbar, <span class="dt">y=</span><span class="op">-</span><span class="st">`</span><span class="dt">2se</span><span class="st">`</span>), <span class="dt">color=</span><span class="st">&quot;grey60&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&#39;loess&#39;</span>, <span class="dt">se=</span>F, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">0.5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> <span class="dv">0</span>, <span class="dt">slope =</span> <span class="dv">0</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;P(switch) de predicción&quot;) +</span>
+<span class="st">  ylab(&quot;</span>Arsénico<span class="st">&quot;)</span></code></pre></div>
+<p><img src="08-logit-3_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Esta gráfica sí muestra un patrón en los residuales. Tiene un residual negativo extremo. Además podemos decir que:</p>
+<ul>
+<li>las personas en los pozos para las primeras 3 cubetas tienen probabilidad de cambio promedio de:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">personas_cub3 &lt;-<span class="st"> </span>wells <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(arsenic <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.59</span>)
+<span class="kw">sum</span>(personas_cub3<span class="op">$</span><span class="cf">switch</span>)<span class="op">/</span><span class="kw">nrow</span>(personas_cub3)
+<span class="co">#&gt; [1] 0.308</span></code></pre></div>
+<ul>
+<li>el modelo predice que la probabilidad de cambio de estas personas en las primras tres cubetas es en promedio:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(personas_cub3<span class="op">$</span>pred.<span class="dv">8</span>)
+<span class="co">#&gt; [1] 0.485</span></code></pre></div>
+<p>Esto quiere decir que la probabilidad de que realmente cambien de pozo es aproximadamente 20% menos que la que predice el modelo.</p>
+<ul>
+<li>Observamos un patrón en los residuales: los residuales positivos (ej promedio) están en la mitad del rango de arsénico, y los residuales están en los extremos.</li>
+</ul>
+<p class="espacio3">
+</p>
+</div>
+<div id="transformaciones" class="section level3">
+<h3><span class="header-section-number">8.6.2</span> Transformaciones</h3>
+<p>Ahora consideramos transformar la variable de arsénico: vemos un patrón en los residuales en el cual estos primero aumentan y luego disminuyen.</p>
+<p>Para solucionar esto hay algunas opciones:</p>
+<ul>
+<li><p>usar una <strong>transformación logarítmica</strong>.</p></li>
+<li><p>agregar un término cuadrático al término lineal.</p></li>
+</ul>
+<p>En este caso como la variable de arsénico es no negativa es un poco más práctico utilizar la transformación de logaritmo.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wells &lt;-<span class="st"> </span>wells <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">arsenic_log =</span> <span class="kw">log</span>(arsenic),
+                          <span class="dt">arsenic_log_c =</span> arsenic_log <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(arsenic_log))
+fit.<span class="dv">9</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_100_c <span class="op">+</span><span class="st"> </span>arsenic_log_c <span class="op">+</span><span class="st"> </span>educ4_c <span class="op">+</span>
+<span class="st">               </span>dist_100_c<span class="op">:</span>arsenic_log_c <span class="op">+</span><span class="st"> </span>dist_100_c<span class="op">:</span>educ4_c <span class="op">+</span><span class="st"> </span>arsenic_log_c<span class="op">:</span>educ4_c,
+             <span class="dt">data =</span> wells,
+             <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+<span class="kw">summary</span>(fit.<span class="dv">9</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = switch ~ dist_100_c + arsenic_log_c + educ4_c + </span>
+<span class="co">#&gt;     dist_100_c:arsenic_log_c + dist_100_c:educ4_c + arsenic_log_c:educ4_c, </span>
+<span class="co">#&gt;     family = binomial(link = &quot;logit&quot;), data = wells)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -2.103  -1.162   0.718   1.040   1.923  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;                          Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)                0.3452     0.0405    8.53  &lt; 2e-16 ***</span>
+<span class="co">#&gt; dist_100_c                -0.9796     0.1112   -8.81  &lt; 2e-16 ***</span>
+<span class="co">#&gt; arsenic_log_c              0.9036     0.0695   13.00  &lt; 2e-16 ***</span>
+<span class="co">#&gt; educ4_c                    0.1785     0.0390    4.58  4.7e-06 ***</span>
+<span class="co">#&gt; dist_100_c:arsenic_log_c  -0.1567     0.1851   -0.85   0.3974    </span>
+<span class="co">#&gt; dist_100_c:educ4_c         0.3384     0.1078    3.14   0.0017 ** </span>
+<span class="co">#&gt; arsenic_log_c:educ4_c      0.0601     0.0703    0.85   0.3926    </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 4118.1  on 3019  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 3863.1  on 3013  degrees of freedom</span>
+<span class="co">#&gt; AIC: 3877</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 4</span></code></pre></div>
+<p>Esto da resultados similares al modelo anterior, los signos de las interacciones son los mismos y los signos de los efectos principales también son los mismos.</p>
+<p>Volvemos a hacer la gráfica de niveles de arsénico vs residuales:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wells<span class="op">$</span>pred.<span class="dv">9</span> &lt;-<span class="st"> </span>fit.<span class="dv">9</span><span class="op">$</span>fitted.values
+br.fit.<span class="dv">9</span> &lt;-<span class="st"> </span><span class="kw">binned_residuals</span>(wells<span class="op">$</span>arsenic, wells<span class="op">$</span><span class="cf">switch</span><span class="op">-</span>wells<span class="op">$</span>pred.<span class="dv">9</span>, <span class="dt">nclass=</span><span class="dv">40</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>.<span class="op">$</span>binned <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">as.data.frame</span>()
+<span class="kw">ggplot</span>(br.fit.<span class="dv">9</span>, <span class="kw">aes</span>(xbar, ybar)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>xbar, <span class="dt">y=</span><span class="st">`</span><span class="dt">2se</span><span class="st">`</span>), <span class="dt">color=</span><span class="st">&quot;grey60&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>xbar, <span class="dt">y=</span><span class="op">-</span><span class="st">`</span><span class="dt">2se</span><span class="st">`</span>), <span class="dt">color=</span><span class="st">&quot;grey60&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&#39;loess&#39;</span>, <span class="dt">se=</span>F, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="fl">0.5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> <span class="dv">0</span>, <span class="dt">slope =</span> <span class="dv">0</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Residual promedio P(switch)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Arsénico&quot;</span>)</code></pre></div>
+<p><img src="08-logit-3_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Los residuales se ven mucho mejor, aunque para niveles bajos de arsénico aún hay muchos residuales negativos: los usuarios de pozos con niveles de arsénico justo por encima de <span class="math inline">\(0.50\)</span> tienen menos probabilidad de cambiarse que la que predice el modelo.</p>
+<p>Posibles explicaciones:</p>
+<ul>
+<li><p>psicológicamente, las mediciones justo por encima de <span class="math inline">\(0.50\)</span> podrían parecer no muy graves</p></li>
+<li><p>por error de medición, tal vez algunos de los pozos con <span class="math inline">\(0.51\)</span> o <span class="math inline">\(0.52\)</span> se midieron antes o después y de encontrar niveles de arsénico por debajo de <span class="math inline">\(0.5\)</span></p></li>
+</ul>
+</div>
+<div id="tasa-de-error-y-comparacion-contra-el-modelo-nulo" class="section level3">
+<h3><span class="header-section-number">8.6.3</span> Tasa de error y comparación contra el modelo nulo</h3>
+<p>La <strong>tasa de error</strong> se define como la proporción de casos para los cuáles la predicción de <span class="math inline">\(y_i\)</span> a partir de la probabilidad estimada <span class="math display">\[
+\pi_i=p_1(x_i)=\mbox{logit}^{-1}(X_i\beta)
+\]</span> es <em>incorrecta</em>.</p>
+<p>Para hacer la predicción para cada <span class="math inline">\(y_i\)</span> es necesario definir un <strong>punto de corte</strong>, en principio se utiliza el <span class="math inline">\(0.5\)</span> de la forma que la predicción de <span class="math inline">\(y_i\)</span>, denotada por <span class="math inline">\(\hat{y}_i\)</span>, es <span class="math display">\[
+\hat{y}_{i} = \left\{ \begin{array}{cl}
+1 &amp; \text{si }\;\mbox{logit}^{-1}(X_i\beta) &gt; 0.5,\\
+0 &amp; \text{en otro caso.}
+\end{array}\right.
+\]</span></p>
+<p>Por lo tanto, calculamos la tasa de error para el ejemplo de los pozos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(error_rate &lt;-<span class="st"> </span><span class="kw">mean</span>((wells<span class="op">$</span>pred.<span class="dv">9</span><span class="op">&gt;</span><span class="fl">0.5</span> <span class="op">&amp;</span><span class="st"> </span>wells<span class="op">$</span><span class="cf">switch</span><span class="op">==</span><span class="dv">0</span>) <span class="op">|</span><span class="st"> </span>(wells<span class="op">$</span>pred.<span class="dv">9</span><span class="op">&lt;=</span><span class="fl">0.5</span> <span class="op">&amp;</span><span class="st"> </span>wells<span class="op">$</span><span class="cf">switch</span><span class="op">==</span><span class="dv">1</span>)))
+<span class="co">#&gt; [1] 0.365</span></code></pre></div>
+
+<div class="nota">
+<p>Observaciones:</p>
+<ul>
+<li><p>La tasa de error siempre debe ser menor que <span class="math inline">\(1/2\)</span>.</p></li>
+<li><p>Si la tasa de error fuera mayor o igual a <span class="math inline">\(1/2\)</span>, entonces poniendo todas las <span class="math inline">\(\beta^\prime\mbox{s}\)</span> igual a cero obtendríamos un mejor modelo.</p></li>
+<li>El <strong>modelo nulo</strong> se define como el modelo que asigna la misma probabilidad <span class="math inline">\(p\)</span> a toda <span class="math inline">\(y_i\)</span>, y dicha probabilidad es <span class="math display">\[p = \dfrac{1}{n}\sum_{i=1}^N{y_i}.\]</span>
+</div>
+</li>
+</ul>
+<p class="espacio3">
+</p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>¿Cuál o cuáles de las siguientes afirmaciones son ciertas?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>La tasa de error del modelo nulo es igual a <span class="math inline">\(p\)</span>.</p></li>
+<li><p>El modelo nulo es aquel en el cual todas las observaciones son equiprobables.</p></li>
+<li><p>El modelo nulo es simplemente regresión logística con sólo un término constante.</p></li>
+<li><p>La tasa de error del modelo nulo es igual a <span class="math inline">\(1-p\)</span>.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<p>Por ejemplo, en el modelo de los pozos la tasa de error del modelo nulo es:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="dv">1</span><span class="op">-</span>wells<span class="op">$</span><span class="cf">switch</span>)
+<span class="co">#&gt; [1] 0.425</span></code></pre></div>
+<p>Es decir, <span class="math inline">\(58\%\)</span> de los encuestados cambiaron de pozo, pero <span class="math inline">\(42\%\)</span> no cambiaron de pozo.</p>
+<p class="espacio3">
+</p>
+
+<div class="information">
+<p><strong>Interpretación del modelo nulo:</strong></p>
+<ul>
+<li><p>el modelo sin predictores le da a cada persona un <span class="math inline">\(58\%\)</span> de posibilidad de cambio (que corresponde a una predicción puntual de cambiar para cada persona), y</p></li>
+<li>esta predicción será incorrecta el <span class="math inline">\(42\%\)</span> de las veces.
+</div>
+</li>
+</ul>
+<p class="espacio3">
+</p>
+
+<div class="nota">
+<p>Nota:</p>
+<p class="espacio">
+</p>
+<ul>
+<li><p>Utilizamos la <strong>devianza</strong> para evaluar el ajuste de un modelo porque la tasa de error no es un resumen perfecto del <em>desajuste</em> del modelo. La razón de esto es que la tasa de error no puede distinguir entre predicciones de <span class="math inline">\(0.6\)</span> y <span class="math inline">\(0.9\)</span>, por ejemplo, porque únicamente toma en cuenta predicciones de <span class="math inline">\(y_i\)</span>’s.</p></li>
+<li><p>Es importante poder predecir <span class="math inline">\(y_i\)</span>’s pero generalmente es más útil trabajar con las probabilidades porque en estas subyace la incertidumbre de la predicción.</p></li>
+<li><p>La tasa de error se utiliza a menudo porque es fácil de interpretar y en la práctica puede llegar a ser muy útil.</p></li>
+<li><p>Una tasa de error igual a la tasa de error del modelo nulo es terrible, y la mejor tasa de error posible es cero.</p></li>
+<li>Una tasa de error alta (cercana a la del modelo nulo pero menor) no significa que el modelo no sea útil. La interpretación del modelo puede aportar a explicar el fenómeno de estudio.
+</div>
+</li>
+</ul>
+<p class="espacio3">
+</p>
+<p>La razón por la cual la tasa de error del modelo de pozos es alta se resume en los siguientes puntos:</p>
+<ul>
+<li><p>La mayoría de los datos están alrededor de las medias de los predictores (la distancia menor a 100 m y arsénico en 0.5 y 1).</p></li>
+<li><p>Por el punto anterior, para la mayoría de los datos la probabilidad de cambio <span class="math inline">\(P(\mbox{switch})=0.58\)</span> funciona bien, que es simplementa la media en los datos.</p></li>
+<li><p>El modelo da información sobre lo que está pasando en los extremos, pero relativamente hay muy pocos datos, por lo que la precisión predictiva general del modelo no es muy alta.</p></li>
+</ul>
+<hr />
+<p><br></p>
+</div>
+</div>
+<div id="diferencias-predictivas-promedio-en-la-escala-de-probabilidad" class="section level2">
+<h2><span class="header-section-number">8.7</span> Diferencias predictivas promedio en la escala de probabilidad</h2>
+<p>Recordemos:</p>
+<ol style="list-style-type: decimal">
+<li><p>Las regresiones logísticas son inherentemente más difíciles que las regresiones lineales para interpretar.</p></li>
+<li><p>La regresión logística es no lineal en la escala de probabilidad, es decir, a una diferencia unitaria en <span class="math inline">\(x\)</span> no le corresponde una diferencia constante en <span class="math inline">\(P(y_i=1)\)</span>.</p></li>
+<li><p>Como resultado de esto, los coeficientes de regresión logística no se pueden interpretar directamente en la escala de probabilidad.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+<p>Se puede calcular la <em>diferencia predictiva promedio</em> como función de los valores de entrada de los predictores para luego dar una diferencia <em>promedio</em> en <span class="math inline">\(P(y=1)\)</span> correspondiente a una diferencia en cada una de las variables de entrada.</p>
+<p>Comenzamos utilizando el siguiente modelo sin interacciones para hacer más simple la explicación:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit.<span class="dv">10</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>arsenic <span class="op">+</span><span class="st"> </span>educ4,
+               <span class="dt">data =</span> wells,
+               <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+<span class="kw">summary</span>(fit.<span class="dv">10</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = switch ~ dist_100 + arsenic + educ4, family = binomial(link = &quot;logit&quot;), </span>
+<span class="co">#&gt;     data = wells)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -2.577  -1.197   0.755   1.063   1.699  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)  -0.2139     0.0931   -2.30    0.022 *  </span>
+<span class="co">#&gt; dist_100     -0.8956     0.1046   -8.56  &lt; 2e-16 ***</span>
+<span class="co">#&gt; arsenic       0.4684     0.0416   11.26  &lt; 2e-16 ***</span>
+<span class="co">#&gt; educ4         0.1713     0.0383    4.47  7.7e-06 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 4118.1  on 3019  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 3910.4  on 3016  degrees of freedom</span>
+<span class="co">#&gt; AIC: 3918</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 4</span></code></pre></div>
+<p class="espacio3">
+</p>
+<p><strong>Ejemplo: Diferencia predictiva promedio en probabilidad de cambio, comparando hogares que están a 100 metros o menos de un pozo seguro más cercano.</strong></p>
+<p class="espacio3">
+</p>
+<p>Comparemos dos hogares:</p>
+<ul>
+<li><p>uno con <span class="math inline">\(\mbox{dist_100} = 0\)</span>, y</p></li>
+<li><p>uno con <span class="math inline">\(\mbox{dist_100} = 1\)</span>,</p></li>
+</ul>
+<p>pero ambos con los mismos valores en las otras variables de entrada: arsénico y educ4.</p>
+<p>La <em>diferencia predictiva</em> en probabilidad de cambiar de pozo entre los dos hogares: <span class="math display">\[
+\begin{eqnarray*}
+\delta(\mbox{arsenic}, \mbox{educ4}) = \mbox{logit}^{−1}(−0.21 − 0.90 \cdot 1 + 0.47 \cdot \mbox{arsenic} + 0.17 \cdot \mbox{educ4}) &amp;−&amp;\\ \mbox{logit}^{−1}(−0.21 − 0.90 \cdot 0 + 0.47 \cdot \mbox{arsenic} + 0.17 \cdot \mbox{educ4}).
+\end{eqnarray*}
+\]</span> Escribimos <span class="math inline">\(\delta\)</span> como una función de arsénico y educ4 para enfatizar que depende de los niveles de estas otras variables.</p>
+<p>Promeiamos las diferencias predictivas sobre los <span class="math inline">\(n\)</span> hogares en los datos para obtener: <span class="math display">\[
+\mbox{diferencia predictiva promedio} = \dfrac{1}{n}\sum_{i=1}^n{\delta(\mbox{arsenic}_i, \mbox{educ4}_i)}
+\]</span></p>
+<p>Hacemos el cálculo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b &lt;-<span class="st"> </span><span class="kw">coef</span>(fit.<span class="dv">10</span>)
+hi &lt;-<span class="st"> </span><span class="dv">1</span>
+lo &lt;-<span class="st"> </span><span class="dv">0</span>
+delta &lt;-<span class="st"> </span><span class="kw">invlogit</span> (b[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>b[<span class="dv">2</span>]<span class="op">*</span>hi <span class="op">+</span><span class="st"> </span>b[<span class="dv">3</span>]<span class="op">*</span>wells<span class="op">$</span>arsenic <span class="op">+</span><span class="st"> </span>b[<span class="dv">4</span>]<span class="op">*</span>wells<span class="op">$</span>educ4) <span class="op">-</span>
+<span class="st">         </span><span class="kw">invlogit</span> (b[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>b[<span class="dv">2</span>]<span class="op">*</span>lo <span class="op">+</span><span class="st"> </span>b[<span class="dv">3</span>]<span class="op">*</span>wells<span class="op">$</span>arsenic <span class="op">+</span><span class="st"> </span>b[<span class="dv">4</span>]<span class="op">*</span>wells<span class="op">$</span>educ4)
+<span class="kw">print</span>(<span class="kw">mean</span>(delta))
+<span class="co">#&gt; [1] -0.204</span></code></pre></div>
+<p>El resultado es <span class="math inline">\(-0.20\)</span>, lo que implica que, en promedio en los datos, los hogares que están a 100 metros del pozo seguro más cercano tienen un <span class="math inline">\(20\%\)</span> menos de probabilidades de cambiar, en comparación con los hogares que están justo al lado del pozo seguro más cercano, con mismos niveles de arsénico y mismos niveles de educación.</p>
+<hr />
+<p><br></p>
+<p><strong>Ejemplo: Diferencia predictiva promedio en probabilidad de cambio, comparando hogares con niveles de arsénico existentes de 0.5 y 1.0.</strong></p>
+<p>Calculamos la diferencia predictiva y la diferencia predictiva promedio, comparando los hogares en dos niveles diferentes de arsénico, suponiendo que la distancia al pozo seguro más cercano y los niveles de educación son iguales. Elegimos <span class="math inline">\(\mbox{arsenic} = 0.5\)</span> y <span class="math inline">\(1.0\)</span> como puntos de comparación porque <span class="math inline">\(0.5\)</span> es el nivel más bajo inseguro, <span class="math inline">\(1.0\)</span> es el doble, y esta comparación captura gran parte del rango de los datos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hi &lt;-<span class="st"> </span><span class="fl">1.0</span>
+lo &lt;-<span class="st"> </span><span class="fl">0.5</span>
+delta &lt;-<span class="st"> </span><span class="kw">invlogit</span> (b[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>b[<span class="dv">2</span>]<span class="op">*</span>wells<span class="op">$</span>dist_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>b[<span class="dv">3</span>]<span class="op">*</span>hi <span class="op">+</span><span class="st"> </span>b[<span class="dv">4</span>]<span class="op">*</span>wells<span class="op">$</span>educ4) <span class="op">-</span>
+<span class="st">         </span><span class="kw">invlogit</span> (b[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>b[<span class="dv">2</span>]<span class="op">*</span>wells<span class="op">$</span>dist_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>b[<span class="dv">3</span>]<span class="op">*</span>lo <span class="op">+</span><span class="st"> </span>b[<span class="dv">4</span>]<span class="op">*</span>wells<span class="op">$</span>educ4)
+<span class="kw">print</span> (<span class="kw">mean</span>(delta))
+<span class="co">#&gt; [1] 0.0564</span></code></pre></div>
+<p>El resultado es <span class="math inline">\(0.06\)</span>, por lo que esta comparación corresponde a una diferencia del <span class="math inline">\(6\%\)</span> en la probabilidad de cambiar de pozo.</p>
+<p><strong>Ejemplo: Diferencia predictiva promedio en probabilidad de cambio, comparando hogares con 0 y 12 años de educación.</strong></p>
+<p>Calcular nuevamente la diferencia predictiva promedio de la probabilidad de cambio de pozo para hogares con 0 vs 12 años de educación:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hi &lt;-<span class="st"> </span><span class="dv">3</span>
+lo &lt;-<span class="st"> </span><span class="dv">0</span>
+delta &lt;-<span class="st"> </span><span class="kw">invlogit</span> (b[<span class="dv">1</span>]<span class="op">+</span>b[<span class="dv">2</span>]<span class="op">*</span>wells<span class="op">$</span>dist_<span class="dv">100</span><span class="op">+</span>b[<span class="dv">3</span>]<span class="op">*</span>wells<span class="op">$</span>arsenic<span class="op">+</span>b[<span class="dv">4</span>]<span class="op">*</span>hi) <span class="op">-</span>
+<span class="st">         </span><span class="kw">invlogit</span> (b[<span class="dv">1</span>]<span class="op">+</span>b[<span class="dv">2</span>]<span class="op">*</span>wells<span class="op">$</span>dist_<span class="dv">100</span><span class="op">+</span>b[<span class="dv">3</span>]<span class="op">*</span>wells<span class="op">$</span>arsenic<span class="op">+</span>b[<span class="dv">4</span>]<span class="op">*</span>lo)
+<span class="kw">print</span> (<span class="kw">mean</span>(delta))
+<span class="co">#&gt; [1] 0.117</span></code></pre></div>
+<hr />
+<p><br></p>
+<div id="diferencias-predictivas-promedio-en-presencia-de-interacciones" class="section level3 unnumbered">
+<h3>Diferencias predictivas promedio en presencia de interacciones</h3>
+<p>Por ejemplo, consideremos la diferencia predictiva promedio, comparando <span class="math inline">\(\mbox{dist} = 0\)</span> con <span class="math inline">\(\mbox{dist} = 100\)</span>, para el modelo que incluye una interacción distancia <span class="math inline">\(\times\)</span> arsénico:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit.<span class="dv">11</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>arsenic <span class="op">+</span><span class="st"> </span>educ4 <span class="op">+</span><span class="st"> </span>dist_<span class="dv">100</span><span class="op">:</span>arsenic,
+              <span class="dt">data =</span> wells,
+              <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
+<span class="kw">summary</span>(fit.<span class="dv">11</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = switch ~ dist_100 + arsenic + educ4 + dist_100:arsenic, </span>
+<span class="co">#&gt;     family = binomial(link = &quot;logit&quot;), data = wells)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -2.715  -1.189   0.748   1.069   1.722  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;                  Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)       -0.3490     0.1264   -2.76   0.0057 ** </span>
+<span class="co">#&gt; dist_100          -0.6047     0.2095   -2.89   0.0039 ** </span>
+<span class="co">#&gt; arsenic            0.5554     0.0695    7.99  1.4e-15 ***</span>
+<span class="co">#&gt; educ4              0.1692     0.0383    4.42  1.0e-05 ***</span>
+<span class="co">#&gt; dist_100:arsenic  -0.1629     0.1023   -1.59   0.1115    </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 4118.1  on 3019  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 3907.9  on 3015  degrees of freedom</span>
+<span class="co">#&gt; AIC: 3918</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 4</span></code></pre></div>
+<p>Calculamos la diferencia predictiva promedio entre hogares a 0 y 100 metros de distancia del pozo seguro como:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b &lt;-<span class="st"> </span><span class="kw">coef</span>(fit.<span class="dv">11</span>)
+hi &lt;-<span class="st"> </span><span class="dv">1</span>
+lo &lt;-<span class="st"> </span><span class="dv">0</span>
+delta &lt;-<span class="st"> </span><span class="kw">invlogit</span>(b[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>b[<span class="dv">2</span>]<span class="op">*</span>hi <span class="op">+</span><span class="st"> </span>b[<span class="dv">3</span>]<span class="op">*</span>wells<span class="op">$</span>arsenic <span class="op">+</span><span class="st"> </span>b[<span class="dv">4</span>]<span class="op">*</span>wells<span class="op">$</span>educ4 <span class="op">+</span><span class="st"> </span>b[<span class="dv">5</span>]<span class="op">*</span>hi<span class="op">*</span>wells<span class="op">$</span>arsenic) <span class="op">-</span>
+<span class="st">         </span><span class="kw">invlogit</span>(b[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>b[<span class="dv">2</span>]<span class="op">*</span>lo <span class="op">+</span><span class="st"> </span>b[<span class="dv">3</span>]<span class="op">*</span>wells<span class="op">$</span>arsenic <span class="op">+</span><span class="st"> </span>b[<span class="dv">4</span>]<span class="op">*</span>wells<span class="op">$</span>educ4 <span class="op">+</span><span class="st"> </span>b[<span class="dv">5</span>]<span class="op">*</span>lo<span class="op">*</span>wells<span class="op">$</span>arsenic)
+<span class="kw">print</span>(<span class="kw">mean</span>(delta))
+<span class="co">#&gt; [1] -0.194</span></code></pre></div>
+</div>
+<div id="notacion-general-para-diferencias-predictivas" class="section level3 unnumbered">
+<h3>Notación general para diferencias predictivas</h3>
+<p>Consideramos que deseamos evaluar las diferencias predictivas una a la vez y usamos la notación de:</p>
+<ul>
+<li><p><span class="math inline">\(u\)</span> para la entrada de interés, y</p></li>
+<li><p><span class="math inline">\(v\)</span> para el vector de todas las otras entradas.</p></li>
+</ul>
+<p>Supongamos que estamos considerando comparaciones entre <span class="math inline">\(u=u^{(1)}\)</span> y <span class="math inline">\(u=u^{(0)}\)</span> y todas las demás variables permanecen constantes.</p>
+<p>La diferencia predictiva en probabilidades entre los dos casos que difiere solo en <span class="math inline">\(u\)</span> es: <span class="math display">\[
+\delta(u^{(\mbox{hi})},u^{(\mbox{lo})},v,\beta) = P(y=1|u^{(\mbox{hi})},v,\beta)−P(y=1|u^{(\mbox{lo})},v,\beta).
+\]</span></p>
+<p>La diferencia predictiva media es la media de las <span class="math inline">\(n\)</span> diferencias predictivas correspondientes a cada observación en los datos: <span class="math display">\[
+\Delta(u^{(\mbox{hi})}, u^{(\mbox{lo})}) = \dfrac{1}{n} \sum_{i=1}^n{\delta(u^{(\mbox{hi})}, u^{(\mbox{lo})}, v_i, β),}
+\]</span> donde <span class="math inline">\(v_i\)</span> representa el vector de otras variables de entrada para la <span class="math inline">\(i\)</span>-ésima observación.</p>
+<p class="espacio3">
+</p>
+<p>Consideremos el modelo de regresión logística con la interacción de educación y distancia:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit.<span class="dv">12</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="cf">switch</span> <span class="op">~</span><span class="st"> </span>dist_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>arsenic <span class="op">+</span><span class="st"> </span>educ4 <span class="op">+</span><span class="st"> </span>dist_<span class="dv">100</span><span class="op">:</span>educ4,
+              <span class="dt">data =</span> wells,
+              <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))</code></pre></div>
+<p>Los coeficientes del modelo son:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coef</span>(fit.<span class="dv">12</span>)
+<span class="co">#&gt;    (Intercept)       dist_100        arsenic          educ4 dist_100:educ4 </span>
+<span class="co">#&gt;       0.000496      -1.389852       0.480599      -0.008308       0.382545</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b &lt;-<span class="st"> </span><span class="kw">coef</span>(fit.<span class="dv">12</span>)
+hi &lt;-<span class="st"> </span><span class="dv">3</span>
+lo &lt;-<span class="st"> </span><span class="dv">0</span>
+delta &lt;-<span class="st"> </span><span class="kw">invlogit</span>(b[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>b[<span class="dv">2</span>]<span class="op">*</span>wells<span class="op">$</span>dist_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>b[<span class="dv">3</span>]<span class="op">*</span>wells<span class="op">$</span>arsenic <span class="op">+</span><span class="st"> </span>b[<span class="dv">4</span>]<span class="op">*</span>hi <span class="op">+</span><span class="st"> </span>b[<span class="dv">5</span>]<span class="op">*</span>wells<span class="op">$</span>educ<span class="op">*</span>wells<span class="op">$</span>dist_<span class="dv">100</span>) <span class="op">-</span>
+<span class="st">         </span><span class="kw">invlogit</span>(b[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>b[<span class="dv">2</span>]<span class="op">*</span>wells<span class="op">$</span>dist_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>b[<span class="dv">3</span>]<span class="op">*</span>wells<span class="op">$</span>arsenic <span class="op">+</span><span class="st"> </span>b[<span class="dv">4</span>]<span class="op">*</span>lo <span class="op">+</span><span class="st"> </span>b[<span class="dv">5</span>]<span class="op">*</span>wells<span class="op">$</span>educ<span class="op">*</span>wells<span class="op">$</span>dist_<span class="dv">100</span>)
+<span class="kw">print</span>(<span class="kw">mean</span>(delta))
+<span class="co">#&gt; [1] -0.00468</span></code></pre></div>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>La diferencia predictiva promedio entre hogares con 0 años y 12 años de educación es:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>-0.05</p></li>
+<li><p>0.30</p></li>
+<li><p>0.12</p></li>
+<li><p>0.05</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+En regresión logística, el gradiente de <span class="math inline">\(D(\beta)\)</span> está dado por <span class="math display">\[
+p_1(x) = h\left(\beta_0+\beta_1 x_1 + \beta_2x_2\right).
+\]</span>
+<p class="espacio3">
+</p>
+<p>Se cuenta con los datos de la siguiente tabla y que aparecen en la gráfica de la derecha:</p>
+<p class="espacio3">
+</p>
+<center>
+<img src="figuras/ejemplo.png" style="width:60.0%" />
+</center>
+<p class="espacio3">
+</p>
+<p class="espacio3">
+</p>
+<p>¿Cuál de las siguientes afirmaciones son ciertas? Selecciona una o más.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(D(\beta)\)</span> será una función convexa, por lo que descenso en gradiente debería converger al mínimo global.</p></li>
+<li><p>Para incrementar el ajuste del modelo a los datos podríamos agregar términos polinomiales o de interacción, por ejemplo, <span class="math inline">\(p_1(x_i)=h\left(\beta_0+\beta_1 x_1 + \beta_2x_2 + \beta_3x_1^2 + \beta_4x_1x_2 +\beta_5x_2^2\right)\)</span>.</p></li>
+<li><p>Los datos no se pueden separar utilizando una recta de modo que las observaciones de éxito estén de un lado de la recta y las observaciones de fracaso del otro. Por lo tanto, descenso en gradiente no podría converger.</p></li>
+<li><p>Como lo datos no se pueden separar mediante una recta, entonces el método de regresión logística produciría los mismos resultados que aplicar regresión lineal a estos datos.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>En regresión logística el gradiente de la devianza está dado por <span class="math display">\[
+\dfrac{\partial D(\beta)}{\partial \beta_j} = \sum_{i=1}^N(h_\beta(x^{(i)}) - y^{(i)})x_j^{(i)}.
+\]</span> ¿Cuál de las siguientes expresiones es una actualizción correcta para descenso en gradiente con parámetro <span class="math inline">\(\alpha\)</span>? Selecciona una o más.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(\beta_j := \beta_j - \alpha\frac{1}{N}\sum_{i=1}^N\left(\beta^Tx-y^{(i)}\right)x_j^{(i)}.\)</span></p></li>
+<li><p><span class="math inline">\(\beta := \beta - \alpha\frac{1}{N}\sum_{i=1}^N\left(\dfrac{1}{1+e^{-\beta^Tx^{(i)}}}-y^{(i)}\right)x^{(i)}.\)</span></p></li>
+<li><p><span class="math inline">\(\beta := \beta - \alpha\frac{1}{N}\sum_{i=1}^N\left(\beta^Tx-y^{(i)}\right)x^{(i)}.\)</span></p></li>
+<li><p><span class="math inline">\(\beta_j := \beta_j - \alpha\frac{1}{N}\sum_{i=1}^N\left(\dfrac{1}{1+e^{-\beta^Tx^{(i)}}}-y^{(i)}\right)x_j^{(i)}\)</span>   (actualiza simultáneamente para toda <span class="math inline">\(j\)</span>).</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>¿Cuáles de las siguientes afirmaciones son ciertas?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>La devianza <span class="math inline">\(D(\beta)\)</span> en regresión logística con <span class="math inline">\(N\geq 1\)</span> observaciones siempre es no negativa.</p></li>
+<li><p>En regresión logística, descenso en gradiente algunas veces converge a un mínimo global (no logra encontrar el mínimo global). Esta es la razón por la cual preferimos algoritmos más avanzados de optimización, como BFGS y Región de confianza.</p></li>
+<li><p>La regresión lineal siempre funciona bien para hacer clasificación si se clasifica utilizando un umbral en la predicción hecha por regresión lineal.</p></li>
+<li><p>La función logística <span class="math inline">\(h(x)=\frac{1}{1+e^{-x}}\)</span> nunca es mayor que uno (<span class="math inline">\(&gt;1\)</span>).</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<hr />
+<p><br></p>
+</div>
+</div>
+<div id="tarea-6" class="section level2">
+<h2><span class="header-section-number">8.8</span> Tarea</h2>
+<ol style="list-style-type: decimal">
+<li>Utiliza los datos de cambio de pozos de arsénico del archivo wells.csv.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Ajusta un modelo de regresión logística para la probabilidad de cambio de pozo utilizando una transformación logarítmica para la variable de distancia.</p></li>
+<li><p>Haz una gráfica que muestre la probabilidad de cambio de pozo como función de la distancia al pozo, y que en la gráfica se muestren también los datos.</p></li>
+<li><p>Haz una gráfica de residuales contra ajustados utilizando residuales agrupados.</p></li>
+<li><p>Calcula la tasa de error del modelo ajustado y compárala con la tasa de error del modelo nulo.</p></li>
+<li><p>Crea variables indicadores correspondientes a:</p>
+<ul>
+<li><p><span class="math inline">\(\mbox{dist} &lt; 100\)</span>,</p></li>
+<li><p><span class="math inline">\(100 \leq \mbox{dist} &lt; 200\)</span>, y</p></li>
+<li><p><span class="math inline">\(\mbox{dist} \geq 200\)</span>.</p></li>
+</ul></li>
+</ol>
+<p>Ajusta una regresión logística para <span class="math inline">\(P(\mbox{switch})\)</span> utilizando estas tres variables indicadoras. Con este nuevo modelo repite las gráficas de los incisos b y c, y los cálculos del inciso d.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Continuamos con los datos de los pozos.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Ajusta una regresión logística utilizando como predictores distancia, el logaritmo del arsénico y su interacción. Interpreta los coeficientes estimados y sus errores estándar.</p></li>
+<li><p>Haz gráficas que muestren la relación entre la probabilidad de cambio de pozo, la distancia y el nivel de arsénico.</p></li>
+<li><p>Calcula las diferencias predictivas promedio correspondientes a:</p>
+<ul>
+<li><p>la diferencia entre <span class="math inline">\(\mbox{dist}=0\)</span> y <span class="math inline">\(\mbox{dist=100}\)</span>, cuando arsénico permanece constante.</p></li>
+<li><p>la diferencia entre <span class="math inline">\(\mbox{dist=100}\)</span> y <span class="math inline">\(\mbox{dist=200}\)</span>, cuando arsénico permanece constante.</p></li>
+<li><p>la diferencia entre <span class="math inline">\(\mbox{arsenic=0.5}\)</span> y <span class="math inline">\(\mbox{arsenic=1.0}\)</span>, cuando distancia permanece constante.</p></li>
+<li><p>la diferencia entre <span class="math inline">\(\mbox{arsenic=1.0}\)</span> y <span class="math inline">\(\mbox{arsenic=2.0}\)</span>, cuando distancia permanece constante.</p></li>
+</ul></li>
+</ol>
+<p>Discute los resultados.</p>
 
 </div>
 </div>

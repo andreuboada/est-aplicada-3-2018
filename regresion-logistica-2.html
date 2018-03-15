@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-03-13">
+<meta name="date" content="2018-03-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -269,7 +269,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.3" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#regresion-logistica-con-interacciones"><i class="fa fa-check"></i><b>8.3</b> Regresión logística con interacciones</a></li>
 <li class="chapter" data-level="8.4" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#graficas-del-modelo-con-interacciones"><i class="fa fa-check"></i><b>8.4</b> Gráficas del modelo con interacciones</a></li>
 <li class="chapter" data-level="8.5" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#agregar-mas-predictores"><i class="fa fa-check"></i><b>8.5</b> Agregar más predictores</a></li>
-<li class="chapter" data-level="8.6" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#evaluacion-de-modelos-de-regresion-logistica"><i class="fa fa-check"></i><b>8.6</b> Evaluación de modelos de regresión logística</a></li>
+<li class="chapter" data-level="8.6" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#evaluacion-de-modelos-de-regresion-logistica"><i class="fa fa-check"></i><b>8.6</b> Evaluación de modelos de regresión logística</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#graficas-de-residuales-agrupados-vs-predictores"><i class="fa fa-check"></i><b>8.6.1</b> Gráficas de residuales agrupados vs predictores</a></li>
+<li class="chapter" data-level="8.6.2" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#transformaciones"><i class="fa fa-check"></i><b>8.6.2</b> Transformaciones</a></li>
+<li class="chapter" data-level="8.6.3" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#tasa-de-error-y-comparacion-contra-el-modelo-nulo"><i class="fa fa-check"></i><b>8.6.3</b> Tasa de error y comparación contra el modelo nulo</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#diferencias-predictivas-promedio-en-la-escala-de-probabilidad"><i class="fa fa-check"></i><b>8.7</b> Diferencias predictivas promedio en la escala de probabilidad</a><ul>
+<li class="chapter" data-level="" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#diferencias-predictivas-promedio-en-presencia-de-interacciones"><i class="fa fa-check"></i>Diferencias predictivas promedio en presencia de interacciones</a></li>
+<li class="chapter" data-level="" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#notacion-general-para-diferencias-predictivas"><i class="fa fa-check"></i>Notación general para diferencias predictivas</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#tarea-6"><i class="fa fa-check"></i><b>8.8</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -1027,6 +1036,8 @@ mod_<span class="dv">1</span><span class="op">$</span>deviance
 <p>Nótese que esta devianza está calculada sin dividir intre entre el número de casos. Podemos calcular la devianza promedio haciendo:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">devianza</span>(iteraciones[<span class="dv">200</span>,])<span class="op">/</span><span class="kw">nrow</span>(datos)
 <span class="co">#&gt; [1] 0.629</span></code></pre></div>
+<hr />
+<p><br></p>
 </div>
 </div>
 </div>

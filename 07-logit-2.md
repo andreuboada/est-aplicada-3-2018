@@ -1074,6 +1074,10 @@ devianza(iteraciones[200,])/nrow(datos)
 #> [1] 0.629
 ```
 
+---
+
+<br> 
+
 ## Ejemplo: diabetes
 
 Consideremos los datos `Pima.tr` del paqute `MASS`:

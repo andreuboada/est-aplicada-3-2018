@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-03-13">
+<meta name="date" content="2018-03-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -269,7 +269,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.3" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#regresion-logistica-con-interacciones"><i class="fa fa-check"></i><b>8.3</b> Regresión logística con interacciones</a></li>
 <li class="chapter" data-level="8.4" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#graficas-del-modelo-con-interacciones"><i class="fa fa-check"></i><b>8.4</b> Gráficas del modelo con interacciones</a></li>
 <li class="chapter" data-level="8.5" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#agregar-mas-predictores"><i class="fa fa-check"></i><b>8.5</b> Agregar más predictores</a></li>
-<li class="chapter" data-level="8.6" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#evaluacion-de-modelos-de-regresion-logistica"><i class="fa fa-check"></i><b>8.6</b> Evaluación de modelos de regresión logística</a></li>
+<li class="chapter" data-level="8.6" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#evaluacion-de-modelos-de-regresion-logistica"><i class="fa fa-check"></i><b>8.6</b> Evaluación de modelos de regresión logística</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#graficas-de-residuales-agrupados-vs-predictores"><i class="fa fa-check"></i><b>8.6.1</b> Gráficas de residuales agrupados vs predictores</a></li>
+<li class="chapter" data-level="8.6.2" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#transformaciones"><i class="fa fa-check"></i><b>8.6.2</b> Transformaciones</a></li>
+<li class="chapter" data-level="8.6.3" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#tasa-de-error-y-comparacion-contra-el-modelo-nulo"><i class="fa fa-check"></i><b>8.6.3</b> Tasa de error y comparación contra el modelo nulo</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#diferencias-predictivas-promedio-en-la-escala-de-probabilidad"><i class="fa fa-check"></i><b>8.7</b> Diferencias predictivas promedio en la escala de probabilidad</a><ul>
+<li class="chapter" data-level="" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#diferencias-predictivas-promedio-en-presencia-de-interacciones"><i class="fa fa-check"></i>Diferencias predictivas promedio en presencia de interacciones</a></li>
+<li class="chapter" data-level="" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#notacion-general-para-diferencias-predictivas"><i class="fa fa-check"></i>Notación general para diferencias predictivas</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#tarea-6"><i class="fa fa-check"></i><b>8.8</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -1982,7 +1991,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB <span class="op">+</span><span class="st"> </span>teamID, Batting))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   2.933   0.116   3.050</span></code></pre></div>
+<span class="co">#&gt;   3.079   0.124   3.204</span></code></pre></div>
 <ul>
 <li><p><strong>user time</strong>: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.</p></li>
 <li><p><strong>elapsed time</strong>: tiempo en el reloj, tiempo que experimenta la persona.</p></li>
@@ -1990,7 +1999,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <p>El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">readLines</span>(<span class="st">&quot;http://www.jhsph.edu&quot;</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.029   0.001   2.831</span></code></pre></div>
+<span class="co">#&gt;   0.029   0.000   4.487</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(parallel)
 <span class="kw">system.time</span>(<span class="kw">mclapply</span>(<span class="dv">2000</span><span class="op">:</span><span class="dv">2006</span>, 
   <span class="cf">function</span>(x){
@@ -1998,7 +2007,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
     <span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB, sub)
 }, <span class="dt">mc.cores =</span> <span class="dv">5</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.047   0.070   0.077</span></code></pre></div>
+<span class="co">#&gt;   0.075   0.087   0.103</span></code></pre></div>
 <p>Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr</span>
 dplyr_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
@@ -2038,16 +2047,16 @@ est_r_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
 
 dplyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.128   0.000   0.129</span></code></pre></div>
+<span class="co">#&gt;   0.208   0.000   0.209</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   7.317   0.004   7.324</span></code></pre></div>
+<span class="co">#&gt;  11.623   0.004  11.629</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_l_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   65.89    1.58   67.53</span></code></pre></div>
+<span class="co">#&gt;    89.3     2.1    91.4</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_r_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.594   0.012   0.606</span></code></pre></div>
+<span class="co">#&gt;   0.628   0.016   0.644</span></code></pre></div>
 <p>La función <code>system.time</code> supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es <code>Rprof()</code>.</p>
 <p>Rprof es un perfilador de muestreo que registra cambios en la pila de funciones, funciona tomando muestras a intervalos regulares y tabula cuánto tiempo se lleva en cada función.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>, <span class="dt">interval =</span> <span class="fl">0.015</span>, <span class="dt">line.profiling =</span> <span class="ot">TRUE</span>)
@@ -2184,7 +2193,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.356   0.000   0.357</span></code></pre></div>
+<span class="co">#&gt;   0.515   0.000   0.515</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aciertos &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">FALSE</span>, <span class="fl">1e+06</span>) 
 <span class="kw">system.time</span>(
   <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="fl">1e+05</span>) {
@@ -2192,7 +2201,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.243   0.000   0.243</span></code></pre></div>
+<span class="co">#&gt;   0.441   0.000   0.441</span></code></pre></div>
 <p>Usando <code>rbind</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind &lt;-<span class="st"> </span><span class="cf">function</span>(){
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">character</span>(<span class="dv">0</span>), <span class="dt">b =</span> <span class="kw">numeric</span>(<span class="dv">0</span>)) 
@@ -2203,7 +2212,7 @@ mi.df
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.787   0.000   0.787</span></code></pre></div>
+<span class="co">#&gt;   0.788   0.000   0.788</span></code></pre></div>
 <p>Si definimos el tamaño del data.frame obtenemos mejoras:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="cf">function</span>() {
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>), <span class="dt">b =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)) 
@@ -2215,7 +2224,7 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind_2</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.088   0.000   0.087</span></code></pre></div>
+<span class="co">#&gt;   0.094   0.000   0.094</span></code></pre></div>
 <p>Finalmente, veamos un enfoque totalmente vectorizado</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">porcolumna_df &lt;-<span class="st"> </span><span class="cf">function</span>(){
   a &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>) 
