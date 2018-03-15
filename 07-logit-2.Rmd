@@ -890,6 +890,10 @@ Nótese que esta devianza está calculada sin dividir intre entre el número de 
 devianza(iteraciones[200,])/nrow(datos)
 ```
 
+---
+
+<br> 
+
 ## Ejemplo: diabetes
 
 Consideremos los datos `Pima.tr` del paqute `MASS`:
