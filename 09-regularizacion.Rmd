@@ -397,7 +397,7 @@ Y graficamos juntas:
   
 ```{r}
 library(ROCR)
-pred_rocr <- prediction(diabetes$probs_prueba_2, diabetes$type) 
+pred_rocr <- prediction(diabetes$probs_2, diabetes$type) 
 perf <- performance(pred_rocr, measure = "sens", x.measure = "fpr") 
 auc_2 <- performance(pred_rocr, measure = "auc")@y.values
 graf_roc_2 <- data_frame(tfp = perf@x.values[[1]], sens = perf@y.values[[1]], 
