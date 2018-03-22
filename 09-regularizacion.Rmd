@@ -19,6 +19,8 @@
 library(tidyverse)
 ```
 
+## Repaso
+
 ```{block2, type = "information"}
 La __tasa de error__ se define como la proporción de casos para los cuáles la predicción de $y_i$ a partir de la probabilidad estimada
 $$
@@ -77,7 +79,9 @@ Veamos primero las ventajas y desventajas de estas dos medidas:
 <p class="espacio3">
 </p>
 
-### ¿Por qué son importantes otras medidas de clasificación?
+## Otras medidas de clasificación
+
+¿Por qué son importantes otras medidas de clasificación?
 
 - Diagnosticar a alguien con una enfermedad cuando no la tiene
 tiene consecuencias distintas a diagnosticar como libre de enfermedad a alguien
@@ -137,9 +141,9 @@ knitr::kable(round(prop.table(tabla_1, 1),2))
 
 Ahora pensemos cómo podría sernos de utilidad esta tabla. Pensemos qué implicaciones tendría esta tabla de confusión, si la clasificación fuera respecto a:
 
-    + la severidad de emergencias en un hospital, donde A=requiere atención inmediata B=urgente C=puede posponerse, entonces qué implicación tendría cada uno de los números de la tabla.
++ la severidad de emergencias en un hospital, donde A=requiere atención inmediata B=urgente C=puede posponerse, entonces qué implicación tendría cada uno de los números de la tabla.
 
-    + tipos de cliente de un negocio, por ejemplo, A = cliente de gasto potencial alto, B=cliente medio, C=abandonador. Imagínate que tiene un costo intentar conservar a un abandonador, y hay una inversión alta para tratar a los clientes A.
++ tipos de cliente de un negocio, por ejemplo, A = cliente de gasto potencial alto, B=cliente medio, C=abandonador. Imagínate que tiene un costo intentar conservar a un abandonador, y hay una inversión alta para tratar a los clientes A.
 
 La tasa de incorrectos es la misma en los dos ejemplos, pero la adecuación del modelo es muy diferente.
 
@@ -159,13 +163,11 @@ A los casos clasificados correctamente les llamamos positivos verdaderos (pv) y 
 
 La matriz de confusion es entonces
 
-```{r, warning=FALSE, message=FALSE}
-tabla <- data_frame('-' = c('positivo.pred','negativo.pred','total'),
-                    'positivo'=c('pv','fn','pos'),
-                    'negativo'=c('fp','nv','neg'),
-                    'total' = c('pred.pos','pred.neg',''))
-knitr::kable(tabla)
-```
+|                     | positivos | negativos | total    |
+|---------------------|-----------|-----------|----------|
+| predicción posiriva | pv        | fp        | pred.pos |
+| predicción negativa | fn        | nv        | pred.neg |
+| total               | pos       | neg       |          |
 
 
 Nótese que un modelo bueno, en general, es uno que tiene la mayor parte de los casos en la diagonal de la matriz de confusión.
@@ -175,25 +177,25 @@ Podemos estudiar nuestro modelo en términos de las proporciones de casos que ca
   - Tasa de falsos positivos
 
 $$
-\frac{fp}{fp+nv}=\frac{fp}{neg}
+\frac{\mbox{fp}}{\mbox{fp}+\mbox{nv}}=\frac{\mbox{fp}}{\mbox{neg}}
 $$
   
   - Tasa de falsos negativos
 
 $$
-\frac{fn}{pv+fn}=\frac{fn}{pos}
+\frac{\mbox{fn}}{\mbox{pv}+\mbox{fn}}=\frac{\mbox{fn}}{\mbox{pos}}
 $$
   
   - Especificidad
 
 $$
-\frac{nv}{fp+nv}=\frac{nv}{neg}
+\frac{\mbox{nv}}{\mbox{fp}+\mbox{nv}}=\frac{\mbox{nv}}{\mbox{neg}}
 $$
 
   - Sensibilidad
   
 $$
-\frac{pv}{pv+fn}=\frac{pv}{pos}
+\frac{\mbox{pv}}{\mbox{pv}+\mbox{fn}}=\frac{\mbox{pv}}{\mbox{pos}}
 $$ 
   
 Y también otras que tienen como base las predicciones:
@@ -201,20 +203,20 @@ Y también otras que tienen como base las predicciones:
   - Valor predictivo positivo o Precisión
   
 $$
-\frac{vp}{vp+fp}=\frac{vp}{pred.pos}
+\frac{\mbox{vp}}{\mbox{vp}+\mbox{fp}}=\frac{\mbox{vp}}{\mbox{pred.pos}}
 $$
   
   - Valor predictivo negativo
   
 $$
-\frac{vn}{fn+vn}=\frac{vn}{pred.neg}
+\frac{\mbox{vn}}{\mbox{fn}+\mbox{vn}}=\frac{\mbox{vn}}{\mbox{pred.neg}}
 $$
   
 Dependiendo de el tema y el objetivo hay medidas más naturales que otras:
   
   + En pruebas clínicas, se usa típicamente sensibilidad y especificidad (proporción de positivos que detectamos y proporción de negativos que descartamos).
 
-  + En búsqueda y recuperación de documentos (positivo=el documento es relevante, negativo=el documento no es relevante), se usa precisión y recall (precisión=de los documentos que entregamos (predicción positiva), cuáles son realmente positivos/relevantes, y recall=de todos los documentos relevantes, cuáles devolvemos). Aquí la tasa de falsos positivos (de todos los negativos, cuáles se predicen positivos), por ejemplo, no es de ayuda pues generalmente son bajas y no discriminan el desempeño de los modelos. La razón es que típicamente hay una gran cantidad de negativos, y se devuelven relativamente pocos documentos, de forma que la tasa de falsos positivos generalmente es muy pequeña.
+  + En búsqueda y recuperación de documentos (positivo=el documento es relevante, negativo=el documento no es relevante), se usa precisión y sensibilidad (precisión=de los documentos que entregamos (predicción positiva), cuáles son realmente positivos/relevantes, y sensibilidad=de todos los documentos relevantes, cuáles devolvemos). Aquí la tasa de falsos positivos (de todos los negativos, cuáles se predicen positivos), por ejemplo, no es de ayuda pues generalmente son bajas y no discriminan el desempeño de los modelos. La razón es que típicamente hay una gran cantidad de negativos, y se devuelven relativamente pocos documentos, de forma que la tasa de falsos positivos generalmente es muy pequeña.
 
 #### Ejercicio {-}
 
@@ -238,7 +240,7 @@ diabetes <- MASS::Pima.tr
 diabetes %>% sample_n(10) %>% knitr::kable()
 ```
 
-Calcula la matriz de confusión para el modelo logístico de diabetes en términos de glucosa.  Calcula adicionalmente con la muestra de prueba sus valores de especificidad y sensibilidad, y precisión y recall.
+Calcula la matriz de confusión para el modelo logístico de diabetes en términos de glucosa.  Calcula especificidad, sensibilidad, y precisión.
 
 ```{r, warnings=FALSE, messages=FALSE}
 mod_1 <- glm(type ~ glu, data = diabetes, family = 'binomial')
@@ -262,7 +264,7 @@ Recordemos que una vez que hemos estimado con $\hat{p}_1(x)$, nuestra regla de c
 
 Esto sugiere una regla alternativa:
   
-Para $0 < d < 1$, podemos utilizar nuestras estimaciones $\hat{p}_1(x)$ para construir un clasificador alternativo poniendo:
+Para $0 < d < 1$, podemos utilizar nuestras estimaciones $\hat{p}_1(x)$ para construir un modelo alternativo poniendo:
   
 1. Predecir positivo si $\hat{p}_1(x) > d$, 
 
@@ -270,9 +272,9 @@ Para $0 < d < 1$, podemos utilizar nuestras estimaciones $\hat{p}_1(x)$ para con
 
 Distintos valores de $d$ dan distintos perfiles de sensibilidad-especificidad para una misma estimación de las probabilidades condicionales de clase:
 
-- Para minimizar la tasa de incorrectos conviene poner $d = 0.5$. Sin embargo, en ocasiones no es esto lo que se busca de un modelo de clasificación binaria.
+* Para minimizar la tasa de incorrectos conviene poner $d = 0.5$. Sin embargo, en ocasiones no es esto lo que se busca de un modelo de clasificación binaria.
 
-- Cuando incrementamos d, quiere decir que exigimos estar más seguros de que un caso es positivo para clasificarlo como positivo. Eso quiere decir que la especifidad va a ser más grande (entre los negativos verdaderos va a haber menos falsos positivos). Sin embargo, la sensibilidad va a ser más chica pues captamos menos de los verdaderos positivos.
+* Cuando incrementamos d, quiere decir que exigimos estar más seguros de que un caso es positivo para clasificarlo como positivo. Eso quiere decir que la especifidad va a ser más grande (entre los negativos verdaderos va a haber menos falsos positivos). Sin embargo, la sensibilidad va a ser más chica pues captamos menos de los verdaderos positivos.
 
 #### Ejemplo {-}
 
@@ -287,7 +289,7 @@ tab
 La especificidad ahora es `r round(tab[1,1],2)`, muy alta (descartamos muy bien casos negativos), pero la sensibilidad se deteriora a `r round(tab[2,2],2)`.
 
 
-- Cuando hacemos más chica $d$, entonces exigimos estar más seguros de que un caso es negativo para clasificarlo como negativo. Esto aumenta la sensibilidad, pero la especificidad baja.
+* Cuando hacemos más chica $d$, entonces exigimos estar más seguros de que un caso es negativo para clasificarlo como negativo. Esto aumenta la sensibilidad, pero la especificidad baja.
 
 Por ejemplo, si en el caso de diabetes ponemos el punto de corte en 0.3:
 
@@ -318,13 +320,13 @@ ggplot(clasif_1, aes(x=tasa_falsos_pos, y=sensibilidad,
 <br>
 
 ```{block2, type = "nota"}
-1. Nótese que agregamos otros dos clasificadores, uno perfecto, que tiene tasa de falsos positivos igual a 0 y sensibilidad igual a 1.
+1. Nótese que agregamos otros dos modelos de clasificación, uno perfecto, que tiene tasa de falsos positivos igual a 0 y sensibilidad igual a 1.
 
 2. En esta gráfica, un modelo que esté _más arriba a la izquierda_ domina a otro que esté más abajo a la derecha porque tiene mejor especificidad y mejor sensibilidad. Entre los puntos de corte $0.3$, $0.5$ y $0.7$ de la gráfica, no hay ninguno que domine a otro.
   
 3. Todos los modelos en la diagonal son equivalentes a clasificar las observaciones _al azar_. ¿Por qué? La razón es que si cada vez que vemos un nuevo caso lo clasificamos como positivo con probabilidad $p$ fija y arbitraria. Esto implica que cuando veamos un caso positivo, la probabilidad de 'atinarle' es de $p$ (sensibilidad), y cuando vemos un negativo, la probabilidad de equivocarnos también es de $p$ (tasa de falsos positivos). De modo que este modelo al azar está en la diagonal.
 
-4. ¿Qué podemos decir acerca de los modelos que caen por debajo de la diagonal? Estos son particularmente malos, pues existen los modelos al azar que tienen mayor sensibilidad y especificidad. Sin embargo, se puede construir un mejor clasificador volteando las predicciones, lo que cambia sensibilidad por tasa de falsos positivos.
+4. ¿Qué podemos decir acerca de los modelos que caen por debajo de la diagonal? Estos son particularmente malos, pues existen los modelos al azar que tienen mayor sensibilidad y especificidad. Sin embargo, se puede construir un mejor modelo volteando las predicciones, lo que cambia sensibilidad por tasa de falsos positivos.
 
 5. ¿Cuál de los tres modelos es el mejor? En términos de la tasa de incorrectos, el de corte 0.5. Sin embargo, para otros propósitos puede ser razonable escoger alguno de los otros.
 ```
@@ -349,13 +351,13 @@ head(arrange(diabetes, desc(probs_1)))
 tableplot(diabetes, sortCol = probs_1)
 ```
 
-La columna de probabilidad de la derecha nos dice en qué valores podemos cortar para obtener distintos clasificadores. Nótese que si cortamos más arriba, se nos escapan más positivos verdaderos que clasificamos como negativos, pero clasificamos a más negativos verdaderos como negativos. Lo opuesto ocurre cuando cortamos más abajo.
+La columna de probabilidad de la derecha nos dice en qué valores podemos cortar para obtener distintos modelos. Nótese que si cortamos más arriba, se nos escapan más positivos verdaderos que clasificamos como negativos, pero clasificamos a más negativos verdaderos como negativos. Lo opuesto ocurre cuando cortamos más abajo.
 
 Vamos a graficar todos los pares (1-especificidad, sensibilidad) para cada punto de corte $d$ de estas probabilidades.
 
 ```{r, message=FALSE, warning=FALSE}
 library(ROCR)
-pred_rocr <- prediction(diabetes$probs_prueba_1, diabetes$type) 
+pred_rocr <- prediction(diabetes$probs_1, diabetes$type) 
 perf <- performance(pred_rocr, measure = "sens", x.measure = "fpr") 
 graf_roc_1 <- data_frame(tfp = perf@x.values[[1]], sens = perf@y.values[[1]], 
                          d = perf@alpha.values[[1]])
@@ -673,13 +675,7 @@ Seleccionamos $\lambda$ para minimizar el error de predicción,
 es decir, para mejorar nuestro modelo ajustado en cuanto a sus 
 predicciones.
 
-- No tiene sentido intentar escoger $\lambda>0$ usando el error
-de entrenamiento. La razón es que siempre que aumentamos $\lambda$, obtenemos
-un valor mayor de la devianza del modelo, pues $\lambda$ más
-grande implica que pesa menos la minimización de la devianza
-en el problema de la minimización. En otras palabras, los coeficientes tienen
-una penalización más fuerte, de modo que el mínimo que se alcanza es mayor
-en términos de devianza.
+- No tiene sentido intentar escoger $\lambda>0$ usando la tasa de error. La razón es que siempre que aumentamos $\lambda$, obtenemos un valor mayor de la devianza del modelo, pues $\lambda$ más grande implica que pesa menos la minimización de la devianza en el problema de la minimización. En otras palabras, los coeficientes tienen una penalización más fuerte, de modo que el mínimo que se alcanza es mayor en términos de devianza.
 
 - Intentamos escoger $\lambda$ de forma que se minimice el error de predicción.
 
