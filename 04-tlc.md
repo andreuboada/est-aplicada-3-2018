@@ -742,7 +742,7 @@ experimento(1)
 #> # A tibble: 1 x 2
 #>       k     x
 #>   <dbl> <int>
-#> 1  1.00    12
+#> 1    1.    12
 ```
 
 Ahora utilizamos la fución `map_df` del paquete `purrr` para obtener 1000 realizaciones del experimento en un data frame:

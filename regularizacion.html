@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Estadística Aplicada III</title>
+  <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
+  <meta name="generator" content="bookdown 0.7.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Estadística Aplicada III" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)" />
+  <meta name="github-repo" content="andreuboada/est-aplicada-3-2018" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Estadística Aplicada III" />
+  
+  <meta name="twitter:description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)" />
+  
+
+<meta name="author" content="Andreu Boada de Atela">
+
+
+<meta name="date" content="2018-03-22">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="regresion-logistica-3.html">
+<link rel="next" href="referencias.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="toc.css" type="text/css" />
+<link rel="stylesheet" href="font-awesome.min.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estadística Aplicada III</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Temario y referencias</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#evaluacion"><i class="fa fa-check"></i>Evaluación</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-r-y-rstudio"><i class="fa fa-check"></i>Software: R y Rstudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#referencias-principales"><i class="fa fa-check"></i>Referencias principales</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#otras-referencias"><i class="fa fa-check"></i>Otras referencias</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tareas"><i class="fa fa-check"></i>Tareas</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#por-que-un-analisis-multivariado"><i class="fa fa-check"></i><b>1.1</b> ¿Por qué un análisis multivariado?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#la-paradoja-de-simpson"><i class="fa fa-check"></i><b>1.2</b> La paradoja de Simpson</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#modelos-log-lineales"><i class="fa fa-check"></i><b>1.3</b> Modelos log-lineales</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#interpretacion-de-parametros"><i class="fa fa-check"></i><b>1.4</b> Interpretación de parámetros</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#ejemplo-dos-monedas"><i class="fa fa-check"></i><b>1.4.1</b> Ejemplo: dos monedas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#otros-ejemplos"><i class="fa fa-check"></i><b>1.5</b> Otros ejemplos</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#discriminacion-de-residentes-hispanos-con-discapacidades"><i class="fa fa-check"></i><b>1.5.1</b> Discriminación de residentes hispanos con discapacidades</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#consumo-de-chocolate-y-premios-nobel"><i class="fa fa-check"></i><b>1.5.2</b> Consumo de chocolate y premios Nobel</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#tarea"><i class="fa fa-check"></i><b>1.6</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Rintro.html"><a href="Rintro.html"><i class="fa fa-check"></i><b>2</b> Temas selectos de R</a><ul>
+<li class="chapter" data-level="2.1" data-path="Rintro.html"><a href="Rintro.html#que-ventajas-tiene-r"><i class="fa fa-check"></i><b>2.1</b> ¿Qué ventajas tiene R?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="Rintro.html"><a href="Rintro.html#r-es-gratuito-y-de-codigo-abierto"><i class="fa fa-check"></i><b>2.1.1</b> R es gratuito y de código abierto</a></li>
+<li class="chapter" data-level="2.1.2" data-path="Rintro.html"><a href="Rintro.html#r-tiene-una-comunidad-comprometida"><i class="fa fa-check"></i><b>2.1.2</b> R tiene una comunidad comprometida</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="Rintro.html"><a href="Rintro.html#flujo-basico-de-trabajo-para-el-analisis-de-datos-en-r."><i class="fa fa-check"></i><b>2.2</b> Flujo básico de trabajo para el análisis de datos en R.</a></li>
+<li class="chapter" data-level="2.3" data-path="Rintro.html"><a href="Rintro.html#introduccion-a-r-como-lenguaje-de-programacion-y-la-plataforma-interactiva-de-rstudio."><i class="fa fa-check"></i><b>2.3</b> Introducción a R como lenguaje de programación, y la plataforma interactiva de RStudio.</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="Rintro.html"><a href="Rintro.html#como-entender-r"><i class="fa fa-check"></i><b>2.3.1</b> ¿Cómo entender R?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="Rintro.html"><a href="Rintro.html#por-que-r"><i class="fa fa-check"></i><b>2.3.2</b> ¿Por qué R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="Rintro.html"><a href="Rintro.html#estructuras-de-datos"><i class="fa fa-check"></i><b>2.4</b> Estructuras de datos</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="Rintro.html"><a href="Rintro.html#vectores"><i class="fa fa-check"></i><b>2.4.1</b> Vectores</a></li>
+<li class="chapter" data-level="2.4.2" data-path="Rintro.html"><a href="Rintro.html#data-frames"><i class="fa fa-check"></i><b>2.4.2</b> Data Frames</a></li>
+<li class="chapter" data-level="2.4.3" data-path="Rintro.html"><a href="Rintro.html#listas"><i class="fa fa-check"></i><b>2.4.3</b> Listas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="Rintro.html"><a href="Rintro.html#r-markdown"><i class="fa fa-check"></i><b>2.5</b> R Markdown</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="Rintro.html"><a href="Rintro.html#que-es-r-markdown"><i class="fa fa-check"></i><b>2.5.1</b> ¿Qué es R Markdown?</a></li>
+<li class="chapter" data-level="2.5.2" data-path="Rintro.html"><a href="Rintro.html#estructura-basica-de-r-markdown"><i class="fa fa-check"></i><b>2.5.2</b> Estructura básica de R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="Rintro.html"><a href="Rintro.html#proyectos-de-rstudio"><i class="fa fa-check"></i><b>2.6</b> Proyectos de RStudio</a></li>
+<li class="chapter" data-level="2.7" data-path="Rintro.html"><a href="Rintro.html#otros-aspectos-importantes-de-r"><i class="fa fa-check"></i><b>2.7</b> Otros aspectos importantes de R</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="Rintro.html"><a href="Rintro.html#valores-faltantes"><i class="fa fa-check"></i><b>2.7.1</b> Valores faltantes</a></li>
+<li class="chapter" data-level="2.7.2" data-path="Rintro.html"><a href="Rintro.html#funciones"><i class="fa fa-check"></i><b>2.7.2</b> Funciones</a></li>
+<li class="chapter" data-level="2.7.3" data-path="Rintro.html"><a href="Rintro.html#funcionales"><i class="fa fa-check"></i><b>2.7.3</b> Funcionales</a></li>
+<li class="chapter" data-level="2.7.4" data-path="Rintro.html"><a href="Rintro.html#rendimiento-en-r"><i class="fa fa-check"></i><b>2.7.4</b> Rendimiento en R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="Rintro.html"><a href="Rintro.html#tarea-1"><i class="fa fa-check"></i><b>2.8</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html"><i class="fa fa-check"></i><b>3</b> Manipulación y visualización de datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#el-principio-de-datos-limpios"><i class="fa fa-check"></i><b>3.1</b> El principio de datos limpios</a></li>
+<li class="chapter" data-level="3.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#limpieza-de-datos"><i class="fa fa-check"></i><b>3.2</b> Limpieza de datos</a></li>
+<li class="chapter" data-level="3.3" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#separa-aplica-combina"><i class="fa fa-check"></i><b>3.3</b> <em>Separa-aplica-combina</em></a></li>
+<li class="chapter" data-level="3.4" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#muertes-por-armas-de-fuego-en-eua"><i class="fa fa-check"></i><b>3.4</b> Muertes por armas de fuego en EUA</a></li>
+<li class="chapter" data-level="3.5" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#el-cuarteto-de-anscombe"><i class="fa fa-check"></i><b>3.5</b> El Cuarteto de Anscombe</a></li>
+<li class="chapter" data-level="3.6" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#the-grammar-of-graphics-de-leland-wilkinson"><i class="fa fa-check"></i><b>3.6</b> The <em>Grammar of Graphics</em> de Leland Wilkinson</a></li>
+<li class="chapter" data-level="3.7" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#ggplot"><i class="fa fa-check"></i><b>3.7</b> ggplot</a></li>
+<li class="chapter" data-level="3.8" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#un-histograma-de-las-muertes-en-iraq"><i class="fa fa-check"></i><b>3.8</b> Un histograma de las muertes en Iraq</a></li>
+<li class="chapter" data-level="3.9" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#inglehartwelzel-un-mapa-cultural-del-mundo"><i class="fa fa-check"></i><b>3.9</b> Inglehart–Welzel: un mapa cultural del mundo</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#creando-un-ggplot"><i class="fa fa-check"></i><b>3.9.1</b> Creando un ggplot</a></li>
+<li class="chapter" data-level="3.9.2" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#mapeos-aesthetics"><i class="fa fa-check"></i><b>3.9.2</b> Mapeos: Aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#poniendo-todo-junto"><i class="fa fa-check"></i><b>3.10</b> Poniendo todo junto</a></li>
+<li class="chapter" data-level="3.11" data-path="manipulacion-y-visualizacion-de-datos.html"><a href="manipulacion-y-visualizacion-de-datos.html#tarea-2"><i class="fa fa-check"></i><b>3.11</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html"><i class="fa fa-check"></i><b>4</b> Teorema del Límite Central</a><ul>
+<li class="chapter" data-level="4.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#la-distribucion-de-la-media"><i class="fa fa-check"></i><b>4.1</b> La distribución de la media</a></li>
+<li class="chapter" data-level="4.2" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#de-donde-proviene-la-distribucion-normal"><i class="fa fa-check"></i><b>4.2</b> ¿De dónde proviene la distribución normal?</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#que-signo-tiene-c"><i class="fa fa-check"></i><b>4.2.1</b> ¿Qué signo tiene c?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#otras-observaciones"><i class="fa fa-check"></i><b>4.3</b> Otras observaciones</a></li>
+<li class="chapter" data-level="4.4" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#diagramas-de-caja-y-brazos"><i class="fa fa-check"></i><b>4.4</b> Diagramas de caja y brazos</a><ul>
+<li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-de-cuantiles-teoricos"><i class="fa fa-check"></i><b>4.5</b> Gráficas de cuantiles teóricos</a><ul>
+<li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-normal"><i class="fa fa-check"></i>Ejemplo: normal</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-de-cuantiles-para-un-conjunto-de-datos"><i class="fa fa-check"></i><b>4.6</b> Gráficas de cuantiles para un conjunto de datos</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#que-buscar-en-una-grafica-de-cuantiles"><i class="fa fa-check"></i><b>4.6.1</b> ¿Qué buscar en una gráfica de cuantiles?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#graficas-qq-normales"><i class="fa fa-check"></i><b>4.7</b> Gráficas qq-normales</a><ul>
+<li class="chapter" data-level="" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-cantantes"><i class="fa fa-check"></i>Ejemplo: cantantes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#el-tlc-y-errores-estandar"><i class="fa fa-check"></i><b>4.8</b> El TLC y errores estándar</a></li>
+<li class="chapter" data-level="4.9" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#ejemplo-1"><i class="fa fa-check"></i><b>4.9</b> Ejemplo</a></li>
+<li class="chapter" data-level="4.10" data-path="teorema-del-limite-central.html"><a href="teorema-del-limite-central.html#tarea-3"><i class="fa fa-check"></i><b>4.10</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html"><i class="fa fa-check"></i><b>5</b> Análisis de datos categóricos</a><ul>
+<li class="chapter" data-level="5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#repaso-y-algunos-conceptos"><i class="fa fa-check"></i><b>5.1</b> Repaso y algunos conceptos</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#caso-binomial"><i class="fa fa-check"></i><b>5.1.1</b> Caso binomial</a></li>
+<li class="chapter" data-level="" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#estimacion-de-parametros-multinomiales"><i class="fa fa-check"></i>Estimación de parámetros multinomiales</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-chi2-de-pearson-de-una-multinomial"><i class="fa fa-check"></i><b>5.2</b> La <span class="math inline">\(\chi^2\)</span> de Pearson de una multinomial</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#cociente-de-verosimilitud-de-una-multinomial"><i class="fa fa-check"></i><b>5.2.1</b> Cociente de verosimilitud de una multinomial</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#definiciones"><i class="fa fa-check"></i><b>5.3</b> Definiciones</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#notacion"><i class="fa fa-check"></i><b>5.3.1</b> Notación</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#razon-de-momios"><i class="fa fa-check"></i><b>5.3.2</b> Razón de momios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#asociacion-en-tablas-de-tamano-itimes-j"><i class="fa fa-check"></i><b>5.4</b> Asociación en tablas de tamaño <span class="math inline">\(I\times J\)</span></a><ul>
+<li class="chapter" data-level="5.4.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#razones-de-momios-en-tablas-itimes-j"><i class="fa fa-check"></i><b>5.4.1</b> Razones de momios en tablas <span class="math inline">\(I\times J\)</span></a></li>
+<li class="chapter" data-level="5.4.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-mushrooms"><i class="fa fa-check"></i><b>5.4.2</b> Ejemplo: mushrooms</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#intervalos-de-confianza-para-los-parametros-de-asociacion"><i class="fa fa-check"></i><b>5.5</b> Intervalos de confianza para los parámetros de asociación</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#error-estandar-de-la-razon-de-momios"><i class="fa fa-check"></i><b>5.5.1</b> Error estándar de la razón de momios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#prueba-de-independencia"><i class="fa fa-check"></i><b>5.6</b> Prueba de independencia</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-prueba-chi2-de-pearson"><i class="fa fa-check"></i><b>5.6.1</b> La prueba <span class="math inline">\(\chi^2\)</span> de Pearson</a></li>
+<li class="chapter" data-level="5.6.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-brecha-de-genero"><i class="fa fa-check"></i><b>5.6.2</b> Ejemplo: brecha de género</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#general-social-survey-1972---2016"><i class="fa fa-check"></i><b>5.7</b> General Social Survey 1972 - 2016</a></li>
+<li class="chapter" data-level="5.8" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#la-catadora-de-te"><i class="fa fa-check"></i><b>5.8</b> La catadora de té</a></li>
+<li class="chapter" data-level="5.9" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-multinomiales-para-conteos"><i class="fa fa-check"></i><b>5.9</b> Modelos multinomiales para conteos</a></li>
+<li class="chapter" data-level="5.10" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#modelos-log-lineales-con-tres-variables-categoricas"><i class="fa fa-check"></i><b>5.10</b> Modelos log lineales con tres variables categóricas</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tipos-de-independencia"><i class="fa fa-check"></i><b>5.10.1</b> Tipos de independencia</a></li>
+<li class="chapter" data-level="5.10.2" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#asociacion-homogenea-e-interacciones-de-3-factores"><i class="fa fa-check"></i><b>5.10.2</b> Asociación homogénea e interacciones de 3 factores</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-sensitividad-y-especificidad"><i class="fa fa-check"></i><b>5.11</b> Ejemplo: sensitividad y especificidad</a></li>
+<li class="chapter" data-level="5.12" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#ejemplo-horoscopos"><i class="fa fa-check"></i><b>5.12</b> Ejemplo: horóscopos</a></li>
+<li class="chapter" data-level="5.13" data-path="analisis-de-datos-categoricos.html"><a href="analisis-de-datos-categoricos.html#tarea-opcional"><i class="fa fa-check"></i><b>5.13</b> Tarea (opcional)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html"><i class="fa fa-check"></i><b>6</b> Regresión logística 1</a><ul>
+<li class="chapter" data-level="6.1" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html#regresion-logistica-con-un-solo-predictor"><i class="fa fa-check"></i><b>6.1</b> Regresión logística con un solo predictor</a></li>
+<li class="chapter" data-level="6.2" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html#el-modelo-de-regresion-logistica"><i class="fa fa-check"></i><b>6.2</b> El modelo de regresión logística</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html#funcion-logistica"><i class="fa fa-check"></i><b>6.2.1</b> Función logística</a></li>
+<li class="chapter" data-level="" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html#ejemplo-2"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="regresion-logistica-1.html"><a href="regresion-logistica-1.html#tarea-4"><i class="fa fa-check"></i><b>6.3</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html"><i class="fa fa-check"></i><b>7</b> Regresión logística 2</a><ul>
+<li class="chapter" data-level="7.1" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#incertidumbre-en-la-estimacion"><i class="fa fa-check"></i><b>7.1</b> Incertidumbre en la estimación</a></li>
+<li class="chapter" data-level="7.2" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#funcion-logistica-1"><i class="fa fa-check"></i><b>7.2</b> Función logística</a></li>
+<li class="chapter" data-level="7.3" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#interpretacion-de-los-coeficientes"><i class="fa fa-check"></i><b>7.3</b> Interpretación de los coeficientes</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#evaluar-en-o-alrededor-de-la-media"><i class="fa fa-check"></i><b>7.3.1</b> Evaluar en (o alrededor de) la media</a></li>
+<li class="chapter" data-level="7.3.2" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#la-regla-de-dividir-entre-4"><i class="fa fa-check"></i><b>7.3.2</b> La regla de “dividir entre 4”</a></li>
+<li class="chapter" data-level="7.3.3" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#interpretacion-de-los-coeficientes-como-cocientes-de-momios"><i class="fa fa-check"></i><b>7.3.3</b> Interpretación de los coeficientes como cocientes de momios</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#ejemplo-pozos-en-bangladesh"><i class="fa fa-check"></i><b>7.4</b> Ejemplo: pozos en Bangladesh</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#descripcion-del-problema"><i class="fa fa-check"></i><b>7.4.1</b> Descripción del problema</a></li>
+<li class="chapter" data-level="7.4.2" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#antecedentes-del-problema"><i class="fa fa-check"></i><b>7.4.2</b> Antecedentes del problema</a></li>
+<li class="chapter" data-level="7.4.3" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#metodologia-para-abordar-el-problema"><i class="fa fa-check"></i><b>7.4.3</b> Metodología para abordar el problema</a></li>
+<li class="chapter" data-level="7.4.4" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#ajuste-y-resultados-del-modelo"><i class="fa fa-check"></i><b>7.4.4</b> Ajuste y resultados del modelo</a></li>
+<li class="chapter" data-level="7.4.5" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#interpretacion-de-los-coeficientes-1"><i class="fa fa-check"></i><b>7.4.5</b> Interpretación de los coeficientes</a></li>
+<li class="chapter" data-level="7.4.6" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#agregamos-una-segunda-variable-de-entrada"><i class="fa fa-check"></i><b>7.4.6</b> Agregamos una segunda variable de entrada</a></li>
+<li class="chapter" data-level="7.4.7" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#comparacion-de-coeficientes-cuando-anades-un-predictor"><i class="fa fa-check"></i><b>7.4.7</b> Comparación de coeficientes cuando añades un predictor</a></li>
+<li class="chapter" data-level="7.4.8" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#graficar-el-modelo-ajustado-con-dos-predictores"><i class="fa fa-check"></i><b>7.4.8</b> Graficar el modelo ajustado con dos predictores</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#ajuste-de-coeficientes-para-regresion-logistica-binomial."><i class="fa fa-check"></i><b>7.5</b> Ajuste de coeficientes para regresión logística (binomial).</a></li>
+<li class="chapter" data-level="7.6" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#descenso-en-gradiente"><i class="fa fa-check"></i><b>7.6</b> Descenso en gradiente</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#seleccion-de-tamano-de-paso-eta"><i class="fa fa-check"></i><b>7.6.1</b> Selección de tamaño de paso <span class="math inline">\(\eta\)</span></a></li>
+<li class="chapter" data-level="7.6.2" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#funciones-de-varias-variables"><i class="fa fa-check"></i><b>7.6.2</b> Funciones de varias variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#ejemplo-diabetes"><i class="fa fa-check"></i><b>7.7</b> Ejemplo: diabetes</a></li>
+<li class="chapter" data-level="7.8" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#observaciones-adicionales"><i class="fa fa-check"></i><b>7.8</b> Observaciones adicionales</a></li>
+<li class="chapter" data-level="7.9" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#regresion-logistica-para-problemas-de-mas-de-2-clases"><i class="fa fa-check"></i><b>7.9</b> Regresión logística para problemas de más de 2 clases</a></li>
+<li class="chapter" data-level="7.10" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#regresion-logistica-multinomial"><i class="fa fa-check"></i><b>7.10</b> Regresión logística multinomial</a></li>
+<li class="chapter" data-level="7.11" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#identificabilidad-y-separacion"><i class="fa fa-check"></i><b>7.11</b> Identificabilidad y separación</a></li>
+<li class="chapter" data-level="7.12" data-path="regresion-logistica-2.html"><a href="regresion-logistica-2.html#tarea-5"><i class="fa fa-check"></i><b>7.12</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html"><i class="fa fa-check"></i><b>8</b> Regresión logística 3</a><ul>
+<li class="chapter" data-level="8.1" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#ejemplo-oscares"><i class="fa fa-check"></i><b>8.1</b> Ejemplo óscares</a></li>
+<li class="chapter" data-level="8.2" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#repaso-de-regresion-logistica"><i class="fa fa-check"></i><b>8.2</b> Repaso de regresión logística</a></li>
+<li class="chapter" data-level="8.3" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#regresion-logistica-con-interacciones"><i class="fa fa-check"></i><b>8.3</b> Regresión logística con interacciones</a></li>
+<li class="chapter" data-level="8.4" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#graficas-del-modelo-con-interacciones"><i class="fa fa-check"></i><b>8.4</b> Gráficas del modelo con interacciones</a></li>
+<li class="chapter" data-level="8.5" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#agregar-mas-predictores"><i class="fa fa-check"></i><b>8.5</b> Agregar más predictores</a></li>
+<li class="chapter" data-level="8.6" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#evaluacion-de-modelos-de-regresion-logistica"><i class="fa fa-check"></i><b>8.6</b> Evaluación de modelos de regresión logística</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#graficas-de-residuales-agrupados-vs-predictores"><i class="fa fa-check"></i><b>8.6.1</b> Gráficas de residuales agrupados vs predictores</a></li>
+<li class="chapter" data-level="8.6.2" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#transformaciones"><i class="fa fa-check"></i><b>8.6.2</b> Transformaciones</a></li>
+<li class="chapter" data-level="8.6.3" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#tasa-de-error-y-comparacion-contra-el-modelo-nulo"><i class="fa fa-check"></i><b>8.6.3</b> Tasa de error y comparación contra el modelo nulo</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#diferencias-predictivas-promedio-en-la-escala-de-probabilidad"><i class="fa fa-check"></i><b>8.7</b> Diferencias predictivas promedio en la escala de probabilidad</a><ul>
+<li class="chapter" data-level="" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#diferencias-predictivas-promedio-en-presencia-de-interacciones"><i class="fa fa-check"></i>Diferencias predictivas promedio en presencia de interacciones</a></li>
+<li class="chapter" data-level="" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#notacion-general-para-diferencias-predictivas"><i class="fa fa-check"></i>Notación general para diferencias predictivas</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="regresion-logistica-3.html"><a href="regresion-logistica-3.html#tarea-6"><i class="fa fa-check"></i><b>8.8</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regularizacion.html"><a href="regularizacion.html"><i class="fa fa-check"></i><b>9</b> Regularización</a><ul>
+<li class="chapter" data-level="9.1" data-path="regularizacion.html"><a href="regularizacion.html#repaso"><i class="fa fa-check"></i><b>9.1</b> Repaso</a></li>
+<li class="chapter" data-level="9.2" data-path="regularizacion.html"><a href="regularizacion.html#otras-medidas-de-clasificacion"><i class="fa fa-check"></i><b>9.2</b> Otras medidas de clasificación</a></li>
+<li class="chapter" data-level="9.3" data-path="regularizacion.html"><a href="regularizacion.html#analisis-de-error-en-clasificacion-binaria"><i class="fa fa-check"></i><b>9.3</b> Análisis de error en clasificación binaria</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="regularizacion.html"><a href="regularizacion.html#punto-de-corte-para-un-clasificador-binario"><i class="fa fa-check"></i><b>9.3.1</b> Punto de corte para un clasificador binario</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="regularizacion.html"><a href="regularizacion.html#curvas-roc"><i class="fa fa-check"></i><b>9.4</b> Curvas ROC</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="regularizacion.html"><a href="regularizacion.html#espacio-roc"><i class="fa fa-check"></i><b>9.4.1</b> Espacio ROC</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="regularizacion.html"><a href="regularizacion.html#regularizacion-1"><i class="fa fa-check"></i><b>9.5</b> Regularización</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="regularizacion.html"><a href="regularizacion.html#reduciendo-varianza-de-los-coeficientes"><i class="fa fa-check"></i><b>9.5.1</b> Reduciendo varianza de los coeficientes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="regularizacion.html"><a href="regularizacion.html#regularizacion-ridge"><i class="fa fa-check"></i><b>9.6</b> Regularización Ridge</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="regularizacion.html"><a href="regularizacion.html#seleccion-de-coeficiente-de-regularizacion"><i class="fa fa-check"></i><b>9.6.1</b> Selección de coeficiente de regularización</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="regularizacion.html"><a href="regularizacion.html#regularizacion-lasso"><i class="fa fa-check"></i><b>9.7</b> Regularización Lasso</a></li>
+<li class="chapter" data-level="9.8" data-path="regularizacion.html"><a href="regularizacion.html#tarea-7"><i class="fa fa-check"></i><b>9.8</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estadística Aplicada III</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regularizacion" class="section level1">
+<h1><span class="header-section-number">Clase 9</span> Regularización</h1>
+<style>
+  .espacio {
+    margin-bottom: 1cm;
+  }
+</style>
+<style>
+  .espacio3 {
+    margin-bottom: 3cm;
+  }
+</style>
+<p class="espacio">
+</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<div id="repaso" class="section level2">
+<h2><span class="header-section-number">9.1</span> Repaso</h2>
+
+<div class="information">
+<p>La <strong>tasa de error</strong> se define como la proporción de casos para los cuáles la predicción de <span class="math inline">\(y_i\)</span> a partir de la probabilidad estimada <span class="math display">\[
+\pi_i=p_1(x_i)=\mbox{logit}^{-1}(X_i\beta)
+\]</span> es incorrecta.</p>
+<p>Para hacer la predicción para cada <span class="math inline">\(y_i\)</span> es necesario definir un <strong>punto de corte</strong>, en principio se utiliza el <span class="math inline">\(0.5\)</span> de la forma que la predicción de <span class="math inline">\(y_i\)</span>, denotada por <span class="math inline">\(\hat{y}_i\)</span>, es <span class="math display">\[
+\hat{y}_{i} = \left\{ \begin{array}{cl}
+1 &amp; \text{si }\;\mbox{logit}^{-1}(X_i\beta) &gt; 0.5,\\
+0 &amp; \text{en otro caso.}
+\end{array}\right.
+\]</span></p>
+<p class="espacio3">
+</p>
+<p>Definimos la <strong><em>devianza</em></strong> como <span class="math display">\[
+D(\beta) = -2\sum_{i=1}^N \log(p_{y^{(i)}} (x^{(i)})),
+\]</span> y utilizamos descenso en gradiente paera minimizar <span class="math inline">\(D(\beta\)</span> con respecto a <span class="math inline">\(\beta\)</span>.</p>
+<p>Es fácil ver que este método de estimación de los coeficientes (minimizando la devianza) es el método de máxima verosimilitud. La verosimilitud está dada por:</p>
+<p><span class="math display">\[
+L(\beta) =\prod_{i=1}^N p_{y^{(i)}} (x^{(i)}),
+\]</span> y la log verosimilitud es <span class="math display">\[
+l(\beta) =\sum_{i=1}^N \log(p_{y^{(i)}} (x^{(i)})).
+\]</span></p>
+Usamos el factor <span class="math inline">\(2\)</span> en la medida de devianza para usarla más fácilmente en pruebas de hipótesis relacionadas con comparaciones entre modelos.
+</div>
+
+<p><br></p>
+<p><br></p>
+<p>Después de estudiar la tasa de error y la tasa de error del modelo nulo, presentamos técnicas adicionales para evaluar el desempeño de un modelo.</p>
+<p>Veamos primero las ventajas y desventajas de estas dos medidas:</p>
+<p class="espacio3">
+</p>
+<table>
+<colgroup>
+<col width="7%" />
+<col width="47%" />
+<col width="45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Ventajas</th>
+<th>Desventajas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Devianza</td>
+<td>- es una buena medida para ajustar y evaluar el desempeño de un modelo - permite comparar modelos</td>
+<td>- es una medida dificil de interpretar en cuanto a los errores que podemos esperar del modelo</td>
+</tr>
+<tr class="even">
+<td>Tasa de error</td>
+<td>- puede interpretarse con facilidad</td>
+<td>- no puede representar errores de clasificación que son cualitativamente diferentes</td>
+</tr>
+</tbody>
+</table>
+<p class="espacio3">
+</p>
+</div>
+<div id="otras-medidas-de-clasificacion" class="section level2">
+<h2><span class="header-section-number">9.2</span> Otras medidas de clasificación</h2>
+<p>¿Por qué son importantes otras medidas de clasificación?</p>
+<ul>
+<li><p>Diagnosticar a alguien con una enfermedad cuando no la tiene tiene consecuencias distintas a diagnosticar como libre de enfermedad a alguien que la tiene.</p></li>
+<li><p>Estas consecuencias dependen de cómo son los tratamientos y de qué tan peligrosa es la enfermedad.</p></li>
+<li><p>Cuando usamos un buscador como Google, es cualitativamente diferente que el buscador omita resultados relevantes a que nos presente resultados irrelevantes.</p></li>
+<li><p>¿Otros ejemplos?</p></li>
+</ul>
+<p>En general, los costos de los distintos errores son distintos, y en muchos problemas quiséramos entenderlos y controlarlos individualmente. Aunque en teoría podríamos asignar costos a los errores y definir una <em>función de pérdida</em> apropiada, en la práctica esto muchas veces no es tan fácil o deseable. Una función de pérdida se utiliza para la estimación de parámetros, y es tal que le asocia a cada observación un valor que representa un costo asociado a la clasificación, generalmente es la diferencia entre los valores estimados y los observados para cada observación en los datos.</p>
+<p>Podemos, sin embargo, reportar el tipo de errores que ocurren:</p>
+
+<div class="comentario">
+<p><strong>Matriz de confusión</strong></p>
+<p class="espacio3">
+</p>
+<p>La matriz de confusión <span class="math inline">\(C\)</span> está dada por</p>
+<span class="math display">\[
+C_{i,j}=\mbox{Nú}\;\,\mbox{mero de casos de la clase verdadera j que son clasificados como clase i}
+\]</span>
+</div>
+
+<div id="ejemplo-4" class="section level4 unnumbered">
+<h4>Ejemplo</h4>
+<p>En un ejemplo de tres clases, podríamos obtener la matriz de confusión:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A.pred</td>
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>B.pred</td>
+<td align="right">20</td>
+<td align="right">105</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td>C.pred</td>
+<td align="right">20</td>
+<td align="right">10</td>
+<td align="right">30</td>
+</tr>
+</tbody>
+</table>
+<p>Esto quiere decir que de 90 casos de clase <span class="math inline">\(A\)</span>, sólo clasificamos a 50 en la clase correcta, de 117 casos de clase <span class="math inline">\(B\)</span>, acertamos en 105, etcétera.</p>
+<p>Podemos ver esta tabla de distintas formas, por ejemplo, usando porcentajes por columna, nos dice cómo se distribuyen los casos de cada clase:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">round</span>(<span class="kw">prop.table</span>(tabla_<span class="dv">1</span>, <span class="dv">2</span>),<span class="dv">2</span>))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A.pred</td>
+<td align="right">0.56</td>
+<td align="right">0.02</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="even">
+<td>B.pred</td>
+<td align="right">0.22</td>
+<td align="right">0.90</td>
+<td align="right">0.25</td>
+</tr>
+<tr class="odd">
+<td>C.pred</td>
+<td align="right">0.22</td>
+<td align="right">0.09</td>
+<td align="right">0.75</td>
+</tr>
+</tbody>
+</table>
+<p>Mientras que una tabla de porcentajes por renglón nos muestra qué pasa cada vez que hacemos una predicción dada:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">round</span>(<span class="kw">prop.table</span>(tabla_<span class="dv">1</span>, <span class="dv">1</span>),<span class="dv">2</span>))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A.pred</td>
+<td align="right">0.96</td>
+<td align="right">0.04</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="even">
+<td>B.pred</td>
+<td align="right">0.15</td>
+<td align="right">0.78</td>
+<td align="right">0.07</td>
+</tr>
+<tr class="odd">
+<td>C.pred</td>
+<td align="right">0.33</td>
+<td align="right">0.17</td>
+<td align="right">0.50</td>
+</tr>
+</tbody>
+</table>
+<p>Ahora pensemos cómo podría sernos de utilidad esta tabla. Pensemos qué implicaciones tendría esta tabla de confusión, si la clasificación fuera respecto a:</p>
+<ul>
+<li><p>la severidad de emergencias en un hospital, donde A=requiere atención inmediata B=urgente C=puede posponerse, entonces qué implicación tendría cada uno de los números de la tabla.</p></li>
+<li><p>tipos de cliente de un negocio, por ejemplo, A = cliente de gasto potencial alto, B=cliente medio, C=abandonador. Imagínate que tiene un costo intentar conservar a un abandonador, y hay una inversión alta para tratar a los clientes A.</p></li>
+</ul>
+<p>La tasa de incorrectos es la misma en los dos ejemplos, pero la adecuación del modelo es muy diferente.</p>
+</div>
+</div>
+<div id="analisis-de-error-en-clasificacion-binaria" class="section level2">
+<h2><span class="header-section-number">9.3</span> Análisis de error en clasificación binaria</h2>
+<p>Cuando la variable a predecir es binaria (dos clases), podemos etiquetar una clase como <em>positivo</em> y otra como <em>negativo</em>. En el fondo no importa cómo catalogemos cada clase, pero para problemas particulares una asignación puede ser más natural. Por ejemplo, en diagnóstico de enfermedades, positivo=tiene la enfermedad, en análisis de crédito, positivo=cae en impago, en sistemas de recomendacion, positivo = le gusta el producto X, en recuperación de textos, positivo=el documento es relevante a la búsqueda, etc.</p>
+
+<div class="comentario">
+<p>Hay dos tipos de errores en un modelo logístico binario (positivo - negativo):</p>
+<ul>
+<li><p>Falsos positivos (fp): clasificar como positivo a un caso negativo.</p></li>
+<li><p>Falsos negativos (fn): clasificar como negativo a un caso positivo.</p></li>
+</ul>
+A los casos clasificados correctamente les llamamos positivos verdaderos (pv) y negativos verdaderos (nv).
+</div>
+
+<p>La matriz de confusion es entonces</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>positivos</th>
+<th>negativos</th>
+<th>total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>predicción posiriva</td>
+<td>pv</td>
+<td>fp</td>
+<td>pred.pos</td>
+</tr>
+<tr class="even">
+<td>predicción negativa</td>
+<td>fn</td>
+<td>nv</td>
+<td>pred.neg</td>
+</tr>
+<tr class="odd">
+<td>total</td>
+<td>pos</td>
+<td>neg</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Nótese que un modelo bueno, en general, es uno que tiene la mayor parte de los casos en la diagonal de la matriz de confusión.</p>
+<p>Podemos estudiar nuestro modelo en términos de las proporciones de casos que caen en cada celda, que dependen del desempeño del modelo en cuanto a casos positivos y negativos. La nomenclatura es confusa, pues en distintas áreas se usan distintos nombres para estas proporciones:</p>
+<ul>
+<li>Tasa de falsos positivos</li>
+</ul>
+<p><span class="math display">\[
+\frac{\mbox{fp}}{\mbox{fp}+\mbox{nv}}=\frac{\mbox{fp}}{\mbox{neg}}
+\]</span></p>
+<ul>
+<li>Tasa de falsos negativos</li>
+</ul>
+<p><span class="math display">\[
+\frac{\mbox{fn}}{\mbox{pv}+\mbox{fn}}=\frac{\mbox{fn}}{\mbox{pos}}
+\]</span></p>
+<ul>
+<li>Especificidad</li>
+</ul>
+<p><span class="math display">\[
+\frac{\mbox{nv}}{\mbox{fp}+\mbox{nv}}=\frac{\mbox{nv}}{\mbox{neg}}
+\]</span></p>
+<ul>
+<li>Sensibilidad</li>
+</ul>
+<p><span class="math display">\[
+\frac{\mbox{pv}}{\mbox{pv}+\mbox{fn}}=\frac{\mbox{pv}}{\mbox{pos}}
+\]</span></p>
+<p>Y también otras que tienen como base las predicciones:</p>
+<ul>
+<li>Valor predictivo positivo o Precisión</li>
+</ul>
+<p><span class="math display">\[
+\frac{\mbox{vp}}{\mbox{vp}+\mbox{fp}}=\frac{\mbox{vp}}{\mbox{pred.pos}}
+\]</span></p>
+<ul>
+<li>Valor predictivo negativo</li>
+</ul>
+<p><span class="math display">\[
+\frac{\mbox{vn}}{\mbox{fn}+\mbox{vn}}=\frac{\mbox{vn}}{\mbox{pred.neg}}
+\]</span></p>
+<p>Dependiendo de el tema y el objetivo hay medidas más naturales que otras:</p>
+<ul>
+<li><p>En pruebas clínicas, se usa típicamente sensibilidad y especificidad (proporción de positivos que detectamos y proporción de negativos que descartamos).</p></li>
+<li><p>En búsqueda y recuperación de documentos (positivo=el documento es relevante, negativo=el documento no es relevante), se usa precisión y sensibilidad (precisión=de los documentos que entregamos (predicción positiva), cuáles son realmente positivos/relevantes, y sensibilidad=de todos los documentos relevantes, cuáles devolvemos). Aquí la tasa de falsos positivos (de todos los negativos, cuáles se predicen positivos), por ejemplo, no es de ayuda pues generalmente son bajas y no discriminan el desempeño de los modelos. La razón es que típicamente hay una gran cantidad de negativos, y se devuelven relativamente pocos documentos, de forma que la tasa de falsos positivos generalmente es muy pequeña.</p></li>
+</ul>
+<div id="ejercicio" class="section level4 unnumbered">
+<h4>Ejercicio</h4>
+<p>¿Qué relaciones hay entre las cantidades mostradas arriba?</p>
+<ol style="list-style-type: decimal">
+<li><p>Escribe la tasa de clasificación incorrecta en términos de especificidad y sensibilidad.</p></li>
+<li><p>También intenta escribir valor predictivo positivo y valor predictivo negativo en términos de sensibilidad y especificidad.</p></li>
+</ol>
+
+<div class="comentario">
+Cada modelo tiene un balance distinto especificidad-sensibliidad. Muchas veces no escogemos modelos por la tasa de error solamente, sino que intentamos buscar un balance adecuado entre el comportamiento de clasificación para positivos y para negativos.
+</div>
+
+</div>
+<div id="ejercicio-1" class="section level4 unnumbered">
+<h4>Ejercicio</h4>
+<p>Consideremos los datos <code>Pima.tr</code> del paqute <code>MASS</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diabetes &lt;-<span class="st"> </span>MASS<span class="op">::</span>Pima.tr
+diabetes <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">npreg</th>
+<th align="right">glu</th>
+<th align="right">bp</th>
+<th align="right">skin</th>
+<th align="right">bmi</th>
+<th align="right">ped</th>
+<th align="right">age</th>
+<th align="left">type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>17</td>
+<td align="right">1</td>
+<td align="right">109</td>
+<td align="right">60</td>
+<td align="right">8</td>
+<td align="right">25.4</td>
+<td align="right">0.947</td>
+<td align="right">21</td>
+<td align="left">No</td>
+</tr>
+<tr class="even">
+<td>167</td>
+<td align="right">0</td>
+<td align="right">151</td>
+<td align="right">90</td>
+<td align="right">46</td>
+<td align="right">42.1</td>
+<td align="right">0.371</td>
+<td align="right">21</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="odd">
+<td>119</td>
+<td align="right">1</td>
+<td align="right">136</td>
+<td align="right">74</td>
+<td align="right">50</td>
+<td align="right">37.4</td>
+<td align="right">0.399</td>
+<td align="right">24</td>
+<td align="left">No</td>
+</tr>
+<tr class="even">
+<td>31</td>
+<td align="right">1</td>
+<td align="right">79</td>
+<td align="right">60</td>
+<td align="right">42</td>
+<td align="right">43.5</td>
+<td align="right">0.678</td>
+<td align="right">23</td>
+<td align="left">No</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td align="right">7</td>
+<td align="right">195</td>
+<td align="right">70</td>
+<td align="right">33</td>
+<td align="right">25.1</td>
+<td align="right">0.163</td>
+<td align="right">55</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="even">
+<td>91</td>
+<td align="right">1</td>
+<td align="right">79</td>
+<td align="right">75</td>
+<td align="right">30</td>
+<td align="right">32.0</td>
+<td align="right">0.396</td>
+<td align="right">22</td>
+<td align="left">No</td>
+</tr>
+<tr class="odd">
+<td>97</td>
+<td align="right">4</td>
+<td align="right">110</td>
+<td align="right">76</td>
+<td align="right">20</td>
+<td align="right">28.4</td>
+<td align="right">0.118</td>
+<td align="right">27</td>
+<td align="left">No</td>
+</tr>
+<tr class="even">
+<td>56</td>
+<td align="right">4</td>
+<td align="right">127</td>
+<td align="right">88</td>
+<td align="right">11</td>
+<td align="right">34.5</td>
+<td align="right">0.598</td>
+<td align="right">28</td>
+<td align="left">No</td>
+</tr>
+<tr class="odd">
+<td>141</td>
+<td align="right">1</td>
+<td align="right">167</td>
+<td align="right">74</td>
+<td align="right">17</td>
+<td align="right">23.4</td>
+<td align="right">0.447</td>
+<td align="right">33</td>
+<td align="left">Yes</td>
+</tr>
+<tr class="even">
+<td>148</td>
+<td align="right">0</td>
+<td align="right">177</td>
+<td align="right">60</td>
+<td align="right">29</td>
+<td align="right">34.6</td>
+<td align="right">1.072</td>
+<td align="right">21</td>
+<td align="left">Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Calcula la matriz de confusión para el modelo logístico de diabetes en términos de glucosa. Calcula especificidad, sensibilidad, y precisión.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(type <span class="op">~</span><span class="st"> </span>glu, <span class="dt">data =</span> diabetes, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>)
+preds &lt;-<span class="st"> </span>mod_<span class="dv">1</span><span class="op">$</span>fitted.values</code></pre></div>
+<hr />
+<p><br></p>
+</div>
+<div id="punto-de-corte-para-un-clasificador-binario" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> Punto de corte para un clasificador binario</h3>
+<p>¿Qué sucede cuando el perfil de sensibilidad y especificidad de unmodelo logístivco no es apropiado para nuestros fines?</p>
+<p>Recordemos que una vez que hemos estimado con <span class="math inline">\(\hat{p}_1(x)\)</span>, nuestra regla de clasificación es:</p>
+<ol style="list-style-type: decimal">
+<li><p>Predecir positivo si <span class="math inline">\(\hat{p}_1(x) &gt; 0.5\)</span>,</p></li>
+<li><p>Predecir negativo si <span class="math inline">\(\hat{p}_1(x) \leq 0.5.\)</span></p></li>
+</ol>
+<p>Esto sugiere una regla alternativa:</p>
+<p>Para <span class="math inline">\(0 &lt; d &lt; 1\)</span>, podemos utilizar nuestras estimaciones <span class="math inline">\(\hat{p}_1(x)\)</span> para construir un modelo alternativo poniendo:</p>
+<ol style="list-style-type: decimal">
+<li><p>Predecir positivo si <span class="math inline">\(\hat{p}_1(x) &gt; d\)</span>,</p></li>
+<li><p>Predecir negativo si <span class="math inline">\(\hat{p}_1(x) \leq d\)</span>.</p></li>
+</ol>
+<p>Distintos valores de <span class="math inline">\(d\)</span> dan distintos perfiles de sensibilidad-especificidad para una misma estimación de las probabilidades condicionales de clase:</p>
+<ul>
+<li><p>Para minimizar la tasa de incorrectos conviene poner <span class="math inline">\(d = 0.5\)</span>. Sin embargo, en ocasiones no es esto lo que se busca de un modelo de clasificación binaria.</p></li>
+<li><p>Cuando incrementamos d, quiere decir que exigimos estar más seguros de que un caso es positivo para clasificarlo como positivo. Eso quiere decir que la especifidad va a ser más grande (entre los negativos verdaderos va a haber menos falsos positivos). Sin embargo, la sensibilidad va a ser más chica pues captamos menos de los verdaderos positivos.</p></li>
+</ul>
+<div id="ejemplo-5" class="section level4 unnumbered">
+<h4>Ejemplo</h4>
+<p>Por ejemplo, si en el caso de diabetes incrementamos el punto de corte a <span class="math inline">\(0.7\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(preds <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.7</span>, diabetes<span class="op">$</span>type)
+<span class="co">#&gt;        </span>
+<span class="co">#&gt;          No Yes</span>
+<span class="co">#&gt;   FALSE 128  52</span>
+<span class="co">#&gt;   TRUE    4  16</span>
+tab &lt;-<span class="st"> </span><span class="kw">prop.table</span>(<span class="kw">table</span>(preds <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.7</span>, diabetes<span class="op">$</span>type),<span class="dv">2</span>)
+tab
+<span class="co">#&gt;        </span>
+<span class="co">#&gt;             No    Yes</span>
+<span class="co">#&gt;   FALSE 0.9697 0.7647</span>
+<span class="co">#&gt;   TRUE  0.0303 0.2353</span></code></pre></div>
+<p>La especificidad ahora es 0.97, muy alta (descartamos muy bien casos negativos), pero la sensibilidad se deteriora a 0.24.</p>
+<ul>
+<li>Cuando hacemos más chica <span class="math inline">\(d\)</span>, entonces exigimos estar más seguros de que un caso es negativo para clasificarlo como negativo. Esto aumenta la sensibilidad, pero la especificidad baja.</li>
+</ul>
+<p>Por ejemplo, si en el caso de diabetes ponemos el punto de corte en 0.3:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(preds <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.3</span>, diabetes<span class="op">$</span>type)
+<span class="co">#&gt;        </span>
+<span class="co">#&gt;         No Yes</span>
+<span class="co">#&gt;   FALSE 94  15</span>
+<span class="co">#&gt;   TRUE  38  53</span>
+tab &lt;-<span class="st"> </span><span class="kw">prop.table</span>(<span class="kw">table</span>(preds <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.3</span>, diabetes<span class="op">$</span>type),<span class="dv">2</span>)
+tab
+<span class="co">#&gt;        </span>
+<span class="co">#&gt;            No   Yes</span>
+<span class="co">#&gt;   FALSE 0.712 0.221</span>
+<span class="co">#&gt;   TRUE  0.288 0.779</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="curvas-roc" class="section level2">
+<h2><span class="header-section-number">9.4</span> Curvas ROC</h2>
+<div id="espacio-roc" class="section level3">
+<h3><span class="header-section-number">9.4.1</span> Espacio ROC</h3>
+<p>Podemos visualizar el desempeño de cada uno de estos modelos con punto de corte mapeándolos a las coordenadas de tasa de falsos positivos (1-especificidad) y sensibilidad:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">clasif_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">corte =</span> <span class="kw">c</span>(<span class="st">&#39;0.3&#39;</span>,<span class="st">&#39;0.5&#39;</span>,<span class="st">&#39;0.7&#39;</span>,<span class="st">&#39;perfecto&#39;</span>,<span class="st">&#39;azar&#39;</span>),
+  <span class="dt">tasa_falsos_pos=</span><span class="kw">c</span>(<span class="fl">0.24</span>,<span class="fl">0.08</span>,<span class="fl">0.02</span>,<span class="dv">0</span>,<span class="fl">0.7</span>),
+  <span class="dt">sensibilidad =</span><span class="kw">c</span>(<span class="fl">0.66</span>, <span class="fl">0.46</span>,<span class="fl">0.19</span>,<span class="dv">1</span>,<span class="fl">0.7</span>))
+<span class="kw">ggplot</span>(clasif_<span class="dv">1</span>, <span class="kw">aes</span>(<span class="dt">x=</span>tasa_falsos_pos, <span class="dt">y=</span>sensibilidad,
+                     <span class="dt">label=</span>corte)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept=</span><span class="dv">0</span>, <span class="dt">slope=</span><span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) <span class="op">+</span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="dt">hjust=</span><span class="op">-</span><span class="fl">0.3</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;1-especificidad (tasa falsos pos)&#39;</span>)</code></pre></div>
+<p><img src="09-regularizacion_files/figure-html/unnamed-chunk-14-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><br></p>
+
+<div class="nota">
+<ol style="list-style-type: decimal">
+<li><p>Nótese que agregamos otros dos modelos de clasificación, uno perfecto, que tiene tasa de falsos positivos igual a 0 y sensibilidad igual a 1.</p></li>
+<li><p>En esta gráfica, un modelo que esté <em>más arriba a la izquierda</em> domina a otro que esté más abajo a la derecha porque tiene mejor especificidad y mejor sensibilidad. Entre los puntos de corte <span class="math inline">\(0.3\)</span>, <span class="math inline">\(0.5\)</span> y <span class="math inline">\(0.7\)</span> de la gráfica, no hay ninguno que domine a otro.</p></li>
+<li><p>Todos los modelos en la diagonal son equivalentes a clasificar las observaciones <em>al azar</em>. ¿Por qué? La razón es que si cada vez que vemos un nuevo caso lo clasificamos como positivo con probabilidad <span class="math inline">\(p\)</span> fija y arbitraria. Esto implica que cuando veamos un caso positivo, la probabilidad de ‘atinarle’ es de <span class="math inline">\(p\)</span> (sensibilidad), y cuando vemos un negativo, la probabilidad de equivocarnos también es de <span class="math inline">\(p\)</span> (tasa de falsos positivos). De modo que este modelo al azar está en la diagonal.</p></li>
+<li><p>¿Qué podemos decir acerca de los modelos que caen por debajo de la diagonal? Estos son particularmente malos, pues existen los modelos al azar que tienen mayor sensibilidad y especificidad. Sin embargo, se puede construir un mejor modelo volteando las predicciones, lo que cambia sensibilidad por tasa de falsos positivos.</p></li>
+<li>¿Cuál de los tres modelos es el mejor? En términos de la tasa de incorrectos, el de corte 0.5. Sin embargo, para otros propósitos puede ser razonable escoger alguno de los otros.
+</div>
+</li>
+</ol>
+<p>En lugar de examinar cada punto de corte por separado, podemos hacer el análisis de todos los posibles puntos de corte mediante la curva ROC (receiver operating characteristic, de ingeniería).</p>
+
+<div class="comentario">
+Para un problema de clasificación binaria, dadas estimaciones <span class="math inline">\(\hat{p}(x)\)</span>, la curva ROC grafica todos los pares de (1-especificidad, sensibilidad) para cada posible punto de corte <span class="math inline">\(\hat{p}(x) &gt; d\)</span>.
+</div>
+
+<div id="ejemplo-6" class="section level4 unnumbered">
+<h4>Ejemplo</h4>
+<p>Recordemos los datos de diabéticos. Modelamos el tipo de diabetes tomando como predictor el nivel de glucosa. Con el paquete <code>tabplot</code> podemos obtener la gráfica de abajo.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tabplot)
+mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(type <span class="op">~</span><span class="st"> </span>glu, diabetes, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>)
+diabetes<span class="op">$</span>probs_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(mod_<span class="dv">1</span>, <span class="dt">newdata =</span> diabetes, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>) 
+<span class="kw">head</span>(<span class="kw">arrange</span>(diabetes, <span class="kw">desc</span>(probs_<span class="dv">1</span>)))
+<span class="co">#&gt;   npreg glu bp skin  bmi   ped age type probs_1</span>
+<span class="co">#&gt; 1     1 199 76   43 42.9 1.394  22  Yes   0.882</span>
+<span class="co">#&gt; 2     0 198 66   32 41.3 0.502  28  Yes   0.878</span>
+<span class="co">#&gt; 3     2 197 70   99 34.7 0.575  62  Yes   0.874</span>
+<span class="co">#&gt; 4     7 195 70   33 25.1 0.163  55  Yes   0.866</span>
+<span class="co">#&gt; 5     7 194 68   28 35.9 0.745  41  Yes   0.861</span>
+<span class="co">#&gt; 6     1 193 50   16 25.9 0.655  24   No   0.857</span>
+<span class="kw">tableplot</span>(diabetes, <span class="dt">sortCol =</span> probs_<span class="dv">1</span>)</code></pre></div>
+<p><img src="09-regularizacion_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>La columna de probabilidad de la derecha nos dice en qué valores podemos cortar para obtener distintos modelos. Nótese que si cortamos más arriba, se nos escapan más positivos verdaderos que clasificamos como negativos, pero clasificamos a más negativos verdaderos como negativos. Lo opuesto ocurre cuando cortamos más abajo.</p>
+<p>Vamos a graficar todos los pares (1-especificidad, sensibilidad) para cada punto de corte <span class="math inline">\(d\)</span> de estas probabilidades.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ROCR)
+pred_rocr &lt;-<span class="st"> </span><span class="kw">prediction</span>(diabetes<span class="op">$</span>probs_<span class="dv">1</span>, diabetes<span class="op">$</span>type) 
+perf &lt;-<span class="st"> </span><span class="kw">performance</span>(pred_rocr, <span class="dt">measure =</span> <span class="st">&quot;sens&quot;</span>, <span class="dt">x.measure =</span> <span class="st">&quot;fpr&quot;</span>) 
+graf_roc_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">tfp =</span> perf<span class="op">@</span>x.values[[<span class="dv">1</span>]], <span class="dt">sens =</span> perf<span class="op">@</span>y.values[[<span class="dv">1</span>]], 
+                         <span class="dt">d =</span> perf<span class="op">@</span>alpha.values[[<span class="dv">1</span>]])
+
+<span class="kw">ggplot</span>(graf_roc_<span class="dv">1</span>, <span class="kw">aes</span>(<span class="dt">x =</span> tfp, <span class="dt">y =</span> sens, <span class="dt">colour=</span>d)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;1-especificidad&#39;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&#39;Sensibilidad&#39;</span>) </code></pre></div>
+<p><img src="09-regularizacion_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>En esta gráfica podemos ver todos los modelos posibles basados en las probabilidades de clase. Dejamos para más tarde la selección del punto de corte.</p>
+<p>También podemos definir una medida resumen del desempeño de un modelo según esta curva:</p>
+
+<div class="comentario">
+La medida AUC (area under the curve) para un modelo es el área bajo la curva generada por los pares (sensibilidad, 1-especificidad) de la curva ROC.
+</div>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">auc_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">performance</span>(pred_rocr, <span class="dt">measure =</span> <span class="st">&#39;auc&#39;</span>)<span class="op">@</span>y.values
+auc_<span class="dv">1</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] 0.789</span></code></pre></div>
+<p>También es útil para comparar modelos. Consideremos el modelo de los datos de diabetes que incluyen todas las variables:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(type <span class="op">~</span><span class="st"> </span>., diabetes, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>)
+diabetes<span class="op">$</span>probs_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(mod_<span class="dv">2</span>, <span class="dt">newdata =</span> diabetes, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>) 
+<span class="kw">head</span>(<span class="kw">arrange</span>(diabetes, <span class="kw">desc</span>(probs_<span class="dv">2</span>)))
+<span class="co">#&gt;   npreg glu bp skin  bmi   ped age type probs_1 probs_2</span>
+<span class="co">#&gt; 1     0 137 40   35 43.1 2.288  33  Yes   0.419   0.976</span>
+<span class="co">#&gt; 2     1 199 76   43 42.9 1.394  22  Yes   0.882   0.972</span>
+<span class="co">#&gt; 3     7 194 68   28 35.9 0.745  41  Yes   0.861   0.948</span>
+<span class="co">#&gt; 4     2 197 70   99 34.7 0.575  62  Yes   0.874   0.944</span>
+<span class="co">#&gt; 5    10 148 84   48 37.6 1.001  51  Yes   0.522   0.932</span>
+<span class="co">#&gt; 6     8 181 68   36 30.1 0.615  60  Yes   0.792   0.918</span>
+<span class="kw">tableplot</span>(diabetes, <span class="dt">sortCol =</span> probs_<span class="dv">2</span>)</code></pre></div>
+<p><img src="09-regularizacion_files/figure-html/unnamed-chunk-21-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Y graficamos juntas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ROCR)
+pred_rocr &lt;-<span class="st"> </span><span class="kw">prediction</span>(diabetes<span class="op">$</span>probs_<span class="dv">2</span>, diabetes<span class="op">$</span>type) 
+perf &lt;-<span class="st"> </span><span class="kw">performance</span>(pred_rocr, <span class="dt">measure =</span> <span class="st">&quot;sens&quot;</span>, <span class="dt">x.measure =</span> <span class="st">&quot;fpr&quot;</span>) 
+auc_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">performance</span>(pred_rocr, <span class="dt">measure =</span> <span class="st">&quot;auc&quot;</span>)<span class="op">@</span>y.values
+graf_roc_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">tfp =</span> perf<span class="op">@</span>x.values[[<span class="dv">1</span>]], <span class="dt">sens =</span> perf<span class="op">@</span>y.values[[<span class="dv">1</span>]], 
+                         <span class="dt">d =</span> perf<span class="op">@</span>alpha.values[[<span class="dv">1</span>]])
+
+graf_roc_<span class="dv">2</span><span class="op">$</span>modelo &lt;-<span class="st"> &#39;Todas las variables&#39;</span>
+graf_roc_<span class="dv">1</span><span class="op">$</span>modelo &lt;-<span class="st"> &#39;Solo glucosa&#39;</span>
+graf_roc &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(graf_roc_<span class="dv">1</span>, graf_roc_<span class="dv">2</span>)
+
+<span class="kw">ggplot</span>(graf_roc, <span class="kw">aes</span>(<span class="dt">x =</span> tfp, <span class="dt">y =</span> sens, <span class="dt">colour =</span> modelo)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;1-especificidad&#39;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&#39;Sensibilidad&#39;</span>) </code></pre></div>
+<p><img src="09-regularizacion_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Comparación auc:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">auc_<span class="dv">1</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] 0.789</span>
+auc_<span class="dv">2</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] 0.851</span></code></pre></div>
+<p>En este ejemplo, vemos que casi no importa que perfil de especificidad y sensibilidad busquemos: el modelo que usa todas las variables domina casi siempre al modelo que sólo utiliza las variables de glucosa.</p>
+<p>La razón es que para cualquier punto de corte (con sensibilidad menor a 0.4) en el modelo de una variable, existe otro modelo en la curva roja (todas las variable), que domina al primero.</p>
+<hr />
+<p><br></p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="regularizacion-1" class="section level2">
+<h2><span class="header-section-number">9.5</span> Regularización</h2>
+<p>En primer lugar, supondremos que tenemos un problema con <span class="math inline">\(n=400\)</span> y <span class="math inline">\(p=100\)</span>, y tomamos como modelo para los datos (sin ordenada al origen):</p>
+<p><span class="math display">\[
+p_1(x)=h\left(\sum_{j=1}^{100} \beta_j x_j\right ),
+\]</span></p>
+<p>donde <span class="math inline">\(h\)</span> es la función logística.</p>
+<p>Nótese que este es el <em>verdadero modelo para los datos</em>. Para simular datos, primero generamos las betas fijas, y después, utilizando estas betas, generamos 400 observaciones.</p>
+<p>Generamos las betas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="cf">function</span>(x){ <span class="dv">1</span> <span class="op">/</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span>x))}
+<span class="kw">set.seed</span>(<span class="dv">2805</span>)
+beta &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="fl">0.1</span>)
+<span class="kw">names</span>(beta) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&#39;V&#39;</span>, <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(beta))
+<span class="kw">head</span>(beta)
+<span class="co">#&gt;       V1       V2       V3       V4       V5       V6 </span>
+<span class="co">#&gt; -0.11988  0.03463 -0.08182  0.01492  0.04016  0.00204</span></code></pre></div>
+<p>Con esta función simulamos 400 observaciones.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sim_datos &lt;-<span class="st"> </span><span class="cf">function</span>(n, m, beta){
+  p &lt;-<span class="st"> </span><span class="kw">length</span>(beta)
+  <span class="co">#n = observaciones, p=num variables</span>
+  mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(n<span class="op">*</span>p, <span class="dv">0</span>, <span class="fl">0.5</span>), n, p) <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n) 
+  prob &lt;-<span class="st"> </span><span class="kw">h</span>(mat <span class="op">%*%</span><span class="st"> </span>beta) 
+  y &lt;-<span class="st"> </span><span class="kw">rbinom</span>(n, <span class="dv">1</span>, prob)
+  dat &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(mat)
+  dat<span class="op">$</span>y &lt;-<span class="st"> </span>y
+  dat
+}
+<span class="kw">set.seed</span>(<span class="dv">9921</span>)
+datos &lt;-<span class="st"> </span><span class="kw">sim_datos</span>(<span class="dt">n =</span> <span class="dv">400</span>, <span class="dt">beta =</span> beta)</code></pre></div>
+<p>Y ahora ajustamos el modelo de regresión logística:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(y <span class="op">~</span><span class="st"> </span><span class="op">-</span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>., datos, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>)</code></pre></div>
+<p>¿Qué tan buenas fueron nuestras estimaciones?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(beta, mod_<span class="dv">1</span><span class="op">$</span>coefficients) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;Coeficientes&#39;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Coeficientes estimados&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept=</span><span class="dv">0</span>, <span class="dt">slope =</span><span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>))<span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>))</code></pre></div>
+<p><img src="09-regularizacion_files/figure-html/unnamed-chunk-27-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Y notamos que las estimaciones no son muy buenas. Podemos hacer otra simulación para confirmar que el problema es que las estimaciones son muy variables.</p>
+<p>Con otra muestra, vemos que las estimaciones tienen varianza alta.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">sim_datos</span>(<span class="dt">n =</span> <span class="dv">400</span>, <span class="dt">beta =</span> beta)
+mod_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(y <span class="op">~</span><span class="st"> </span><span class="op">-</span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>., datos_<span class="dv">2</span>, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>)
+<span class="kw">qplot</span>(mod_<span class="dv">1</span><span class="op">$</span>coefficients, mod_<span class="dv">2</span><span class="op">$</span>coefficients) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&#39;Coeficientes mod 1&#39;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Coeficientes mod 2&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept=</span><span class="dv">0</span>, <span class="dt">slope =</span><span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>))<span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>))</code></pre></div>
+<p><img src="09-regularizacion_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Si repetimos varias veces:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat_sim &lt;-<span class="st"> </span><span class="kw">map_df</span>(<span class="dt">.x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">50</span>, <span class="dt">.f =</span> <span class="cf">function</span>(i, beta){
+  salida &lt;-<span class="st"> </span><span class="kw">sim_datos</span>(<span class="dt">n=</span><span class="dv">400</span>, <span class="dt">beta=</span>beta)
+  mod &lt;-<span class="st"> </span><span class="kw">glm</span>(y <span class="op">~</span><span class="st"> </span><span class="op">-</span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>., salida, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>)
+  <span class="kw">tibble</span>(<span class="dt">rep =</span> i, <span class="dt">vars =</span> <span class="kw">names</span>(<span class="kw">coef</span>(mod)), <span class="dt">coefs =</span> <span class="kw">coef</span>(mod))
+}, <span class="dt">beta =</span> beta)
+<span class="kw">head</span>(dat_sim)
+<span class="co">#&gt; # A tibble: 6 x 3</span>
+<span class="co">#&gt;     rep vars    coefs</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     1 V1    -0.0789</span>
+<span class="co">#&gt; 2     1 V2     0.142 </span>
+<span class="co">#&gt; 3     1 V3     0.109 </span>
+<span class="co">#&gt; 4     1 V4     0.140 </span>
+<span class="co">#&gt; 5     1 V5     0.926 </span>
+<span class="co">#&gt; 6     1 V6     0.120</span></code></pre></div>
+<p>Vemos que hay mucha variabilidad en la estimación de los coeficientes (en rojo están los verdaderos):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat_sim &lt;-<span class="st"> </span>dat_sim <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">vars =</span> <span class="kw">reorder</span>(vars, coefs, mean))
+<span class="kw">ggplot</span>(dat_sim, <span class="kw">aes</span>(<span class="dt">x=</span>vars, <span class="dt">y=</span>coefs)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data=</span><span class="kw">data_frame</span>(<span class="dt">coefs=</span>beta, <span class="dt">vars=</span><span class="kw">names</span>(beta)), 
+    <span class="kw">aes</span>(<span class="dt">y=</span>beta, <span class="dt">group=</span><span class="dv">1</span>), <span class="dt">col=</span><span class="st">&#39;red&#39;</span>,<span class="dt">size=</span><span class="fl">1.1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</code></pre></div>
+<p><img src="09-regularizacion_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>En la práctica, nosotros tenemos una sola muestra de entrenamiento. Así que, con una muestra de tamaño <span class="math inline">\(n=500\)</span> como en este ejemplo, obtendremos típicamente resultados no muy buenos. <strong>Estos coeficientes ruidosos afectan nuestras predicciones</strong>.</p>
+<p>Vemos ahora lo que pasa con nuestra <span class="math inline">\(\hat{p}_1(x)\)</span> estimadas, comparándolas con <span class="math inline">\(p_1(x)\)</span>, para la primera simulación:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>y) <span class="op">%&gt;%</span><span class="st"> </span>as.matrix
+ps &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">prob_hat_1 =</span> <span class="kw">h</span>(mod_<span class="dv">1</span><span class="op">$</span>fitted.values), 
+                        <span class="dt">prob_1 =</span> <span class="kw">as.numeric</span>(<span class="kw">h</span>(x<span class="op">%*%</span><span class="st"> </span>beta)),
+                        <span class="dt">clase =</span> datos<span class="op">$</span>y)
+<span class="kw">head</span>(ps)
+<span class="co">#&gt; # A tibble: 6 x 3</span>
+<span class="co">#&gt;   prob_hat_1 prob_1 clase</span>
+<span class="co">#&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1      0.530  0.372     0</span>
+<span class="co">#&gt; 2      0.524  0.170     0</span>
+<span class="co">#&gt; 3      0.545  0.349     0</span>
+<span class="co">#&gt; 4      0.534  0.380     0</span>
+<span class="co">#&gt; 5      0.653  0.432     0</span>
+<span class="co">#&gt; 6      0.727  0.913     1</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ps, <span class="kw">aes</span>(<span class="dt">x=</span>prob_<span class="dv">1</span>, <span class="dt">y=</span>prob_hat_<span class="dv">1</span>, <span class="dt">colour=</span><span class="kw">factor</span>(clase))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="09-regularizacion_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Si la estimación fuera perfecta, esta gráfica sería una diagonal. Vemos entonces que cometemos errores grandes. El problema no es que nuestro modelo no sea apropiado (logístico), pues ése es el modelo real. El problema es la variabilidad en la estimación de los coeficientes que notamos arriba.</p>
+<div id="reduciendo-varianza-de-los-coeficientes" class="section level3">
+<h3><span class="header-section-number">9.5.1</span> Reduciendo varianza de los coeficientes</h3>
+<p>Como el problema es la varianza, podemos atacar este problema poniendo restricciones a los coeficientes, de manera que caigan en rangos más aceptables. Una manera de hacer esto es sustituir el problema de minimización de regresión logística, que es minimizar la devianza:</p>
+<p><span class="math display">\[
+\min_{\beta} D(\beta)
+\]</span></p>
+<p>con un problema penalizado</p>
+<p><span class="math display">\[
+\min_{\beta} D(\beta) + \lambda\sum_{i=1}^p \beta_j^2
+\]</span></p>
+<p>escogiendo un valor apropiado de <span class="math inline">\(\lambda\)</span>. También es posible poner restricciones sobre el tamaño de <span class="math inline">\(\sum_{i=1}^p \beta_j^2\)</span>, lo cual es equivalente al problema de penalización.</p>
+<p>En este caso obtenemos (veremos más del paquete <em>glmnet</em>):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(glmnet)
+mod_restringido &lt;-<span class="st"> </span><span class="kw">glmnet</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> datos<span class="op">$</span>y, 
+  <span class="dt">alpha =</span> <span class="dv">0</span>,
+  <span class="dt">family=</span><span class="st">&#39;binomial&#39;</span>, <span class="dt">intercept =</span> F, 
+  <span class="dt">lambda =</span> <span class="fl">0.1</span>)
+beta_penalizado &lt;-<span class="st"> </span><span class="kw">coef</span>(mod_restringido)[<span class="op">-</span><span class="dv">1</span>] <span class="co"># quitar intercept</span></code></pre></div>
+<p>Y podemos ver que el tamaño de los coeficientes se redujo considerablemente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(beta_penalizado<span class="op">^</span><span class="dv">2</span>)
+<span class="co">#&gt; [1] 0.465</span>
+<span class="kw">sum</span>(<span class="kw">coef</span>(mod_<span class="dv">1</span>)<span class="op">^</span><span class="dv">2</span>)
+<span class="co">#&gt; [1] 24.5</span></code></pre></div>
+<p>Los nuevos coeficientes estimados:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(beta, beta_penalizado) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;Coeficientes&#39;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Coeficientes estimados&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">xintercept=</span><span class="dv">0</span>, <span class="dt">slope =</span><span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="fl">0.5</span>))<span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">0.5</span>,<span class="fl">0.5</span>))
+<span class="co">#&gt; Warning: Ignoring unknown parameters: xintercept</span></code></pre></div>
+<p><img src="09-regularizacion_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ps<span class="op">$</span>prob_hat_pen &lt;-<span class="st"> </span><span class="kw">h</span>(x <span class="op">%*%</span><span class="st"> </span><span class="kw">as.numeric</span>(beta_penalizado))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ps, <span class="kw">aes</span>(<span class="dt">x=</span>prob_<span class="dv">1</span>, <span class="dt">y=</span>prob_hat_pen, <span class="dt">colour=</span><span class="kw">factor</span>(clase))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="09-regularizacion_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab &lt;-<span class="st"> </span><span class="kw">table</span>(ps<span class="op">$</span>prob_hat_pen <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, ps<span class="op">$</span>clase)
+<span class="kw">prop.table</span>(tab, <span class="dt">margin=</span><span class="dv">2</span>)
+<span class="co">#&gt;        </span>
+<span class="co">#&gt;             0     1</span>
+<span class="co">#&gt;   FALSE 0.731 0.262</span>
+<span class="co">#&gt;   TRUE  0.269 0.738</span></code></pre></div>
+<p>Comparamos con la tabla de confusión <em>sin penalizar</em>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab &lt;-<span class="st"> </span><span class="kw">table</span>(ps<span class="op">$</span>prob_hat_<span class="dv">1</span> <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, ps<span class="op">$</span>clase)
+tab
+<span class="co">#&gt;       </span>
+<span class="co">#&gt;          0   1</span>
+<span class="co">#&gt;   TRUE 186 214</span></code></pre></div>
+</div>
+</div>
+<div id="regularizacion-ridge" class="section level2">
+<h2><span class="header-section-number">9.6</span> Regularización Ridge</h2>
+<p>Arriba vimos un ejemplo de regresión penalizada tipo <strong>Ridge</strong>. Recordemos que en regresión logística buscamos minimizar, <span class="math display">\[
+D(\beta)=-2\sum_{i=1}^n y_i \log\left(h(x_i^\prime \beta)\right) + (1-y_i) \log\left(1-h(x_i^\prime \beta)\right).
+\]</span></p>
+
+<div class="comentario">
+En regresión <strong>ridge</strong>, para <span class="math inline">\(\lambda&gt;0\)</span> fija minimizamos <span class="math display">\[D_{\lambda}^{ridge} (\beta)=D(\beta)  + \lambda\sum_{i=1}^p \beta_j^2\]</span>, donde suponemos que las entradas están estandarizadas (centradas y escaladas por la desviación estándar).
+</div>
+
+<div id="observaciones" class="section level4 unnumbered">
+<h4>Observaciones</h4>
+<ul>
+<li><p>La idea de regresión penalizada consiste en estabilizar la estimación de los coeficientes, especialmente en casos donde tenemos muchas variables en relación al número de observaciones. La penalización no permite que varíen tan fuertemente los coeficientes.</p></li>
+<li><p>Cuando <span class="math inline">\(\lambda\)</span> es mas grande, los coeficientes se encogen más fuertemente hacia cero con respecto al problema no regularizado. En este caso, estamos <strong>reduciendo la varianza</strong> pero potencialmente <strong>incrementando el sesgo</strong>.</p></li>
+<li><p>Cuando <span class="math inline">\(\lambda\)</span> es mas chico, los coeficientes se encogen menos fuertemente hacia cero, y quedan más cercanos a los coeficientes de mínimos cuadrados/máxima verosimilitud. En este caso, estamos <strong>reduciendo el sesgo</strong> pero <strong>incrementando la varianza</strong>.</p></li>
+<li><p>Nótese que no penalizamos <span class="math inline">\(\beta_0\)</span>. Es posible hacerlo, pero típicamente no lo hacemos. Recordemos que en regresión logística, la probabilidad ajustada cuando las entradas toman su valor en la media es igual a <span class="math inline">\(h(\beta_0)\)</span>.</p></li>
+<li><p>Que las variables estén estandarizadas es importante para que tenga sentido la penalización. Si las variables <span class="math inline">\(x_j\)</span> están en distintas escalas (por ejemplo pesos y dólares), entonces también los coeficientes <span class="math inline">\(\beta_j\)</span> están en distintas escalas, y una penalización fija no afecta de la misma forma a cada coeficiente.</p></li>
+</ul>
+<p>Resolver este problema por descenso en gradiente no tiene dificultad, pues:</p>
+
+<div class="comentario">
+<span class="math display">\[
+\frac{\partial D_{\lambda}^{ridge} (\beta)}{\partial\beta_j} = \frac{\partial D(\beta)}{\beta_j} + 2\lambda\beta_j
+\]</span> para <span class="math inline">\(j=1,\ldots, p\)</span>, y <span class="math display">\[
+\frac{\partial D_{\lambda}^{ridge} (\beta)}{\partial\beta_0} = \frac{\partial D(\beta)}{\beta_0}.
+\]</span>
+</div>
+
+<p>De forma que sólo hay que hacer una modificaciónmínima al algoritmo de descenso en gradiente para el caso no regularizado.</p>
+</div>
+<div id="seleccion-de-coeficiente-de-regularizacion" class="section level3">
+<h3><span class="header-section-number">9.6.1</span> Selección de coeficiente de regularización</h3>
+<p>Seleccionamos <span class="math inline">\(\lambda\)</span> para minimizar el error de predicción, es decir, para mejorar nuestro modelo ajustado en cuanto a sus predicciones.</p>
+<ul>
+<li><p>No tiene sentido intentar escoger <span class="math inline">\(\lambda&gt;0\)</span> usando la tasa de error. La razón es que siempre que aumentamos <span class="math inline">\(\lambda\)</span>, obtenemos un valor mayor de la devianza del modelo, pues <span class="math inline">\(\lambda\)</span> más grande implica que pesa menos la minimización de la devianza en el problema de la minimización. En otras palabras, los coeficientes tienen una penalización más fuerte, de modo que el mínimo que se alcanza es mayor en términos de devianza.</p></li>
+<li><p>Intentamos escoger <span class="math inline">\(\lambda\)</span> de forma que se minimice el error de predicción.</p></li>
+</ul>
+</div>
+</div>
+<div id="regularizacion-lasso" class="section level2">
+<h2><span class="header-section-number">9.7</span> Regularización Lasso</h2>
+<p>Otra forma de regularización es <strong>Lasso</strong>, que en lugar de penalizar con la suma de cuadrados en los coeficientes, penaliza por la suma de su valor absoluto.</p>
+
+<div class="comentario">
+En regresión <strong>Lasso</strong> para <span class="math inline">\(\lambda&gt;0\)</span> fija minimizamos <span class="math display">\[
+D_{\lambda}^2 (\beta)=D(\beta)  + \lambda\sum_{i=1}^p |\beta_j|,
+\]</span> donde suponemos que las entradas están estandarizadas (centradas y escaladas por la desviación estándar).
+</div>
+
+<p>El problema de minimización de ridge y de Lasso se pueden reescribir como problemas de restricción:</p>
+
+<div class="comentario">
+En regresión <strong>Lasso</strong> para <span class="math inline">\(s&gt;0\)</span> fija minimizamos <span class="math display">\[D(\beta),\]</span> sujeto a <span class="math display">\[\sum_{i=1}^p |\beta_j|&lt; s\]</span> donde suponemos que las entradas están estandarizadas (centradas y escaladas por la desviación estándar).
+</div>
+
+
+<div class="comentario">
+En regresión <strong>ridge</strong> para <span class="math inline">\(t&gt;0\)</span> fija minimizamos <span class="math display">\[D(\beta),\]</span> sujeto a <span class="math display">\[\sum_{i=1}^p \beta_j^2 &lt; t\]</span> donde suponemos que las entradas están estandarizadas (centradas y escaladas por la desviación estándar).
+</div>
+<p> <span class="math inline">\(s\)</span> y <span class="math inline">\(t\)</span> chicas corresponden a valores de penalización <span class="math inline">\(\lambda\)</span> grandes.</p>
+<p>En un principio, puede parecer que ridge y Lasso deben dar resultados muy similares, pues en ambos casos penalizamos por el tamaño de los coeficientes. Sin embargo, son distintos de una manera muy importante.</p>
+<p>En la siguiente gráfica regresentamos las curvas de nivel de <span class="math inline">\(D(\beta)\)</span>. Recordemos que en regresión logística intentamos minimizar esta cantidad sin restricciones, y este mínimo se encuentra en el centro de estas curvas de nivel. Para el problema restringido, buscamos más bien la curva de nivel más baja que intersecta la restricción:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&#39;./figuras/ridge_lasso.png&#39;</span>)</code></pre></div>
+<p><img src="figuras/ridge_lasso.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><br></p>
+<p>Y obsérvese ahora que la solución de Lasso <em>puede hacer algunos coeficientes igual a 0</em>. Es decir,</p>
+
+<div class="comentario">
+<p>En regresión ridge, los coeficientes se encogen gradualmente desde la solución no restringida hasta el origen. Ridge es un método de <strong>encogimiento de coeficientes.</strong></p>
+En regresión Lasso, los coeficientes se encogen gradualmente, pero también se excluyen variables del modelo. Por eso Lasso es un método de <em>encogimiento y selección de variables</em>.
+</div>
+
+
+<div class="comentario">
+<ul>
+<li><p>Regresión ridge es especialmente útil cuando tenemos varias variables de entrada fuertemente correlacionadas. Regresión ridge intenta encoger juntos coeficientes de variables correlacionadas para reducir varianza en las predicciones.</p></li>
+<li><p>Lasso encoge igualmente coeficientes para reducir varianza, pero también comparte similitudes con <em>regresión de mejor subconjunto</em>, en donde para cada número de variables <span class="math inline">\(l\)</span> buscamos escoger las <span class="math inline">\(l\)</span> variables que den el mejor modelo. Sin embargo, el enfoque de Lasso es más escalable y puede calcularse de manera más simple.</p></li>
+<li>Descenso en gradiente no es apropiado para regresión Lasso (ver documentación de glmnet para ver cómo se hace en este paquete). El problema es que los coeficientes nunca se hacen exactamente cero, pues la restricción no es diferenciable en el origen (coeficientes igual a cero).
+</div>
+</li>
+</ul>
+</div>
+<div id="tarea-7" class="section level2">
+<h2><span class="header-section-number">9.8</span> Tarea</h2>
+<p>Consideramos datos para detección de spam en e-mail de <a href="https://archive.ics.uci.edu/ml/datasets/spambase">spambase</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+spam &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;datos/spam.csv&#39;</span>)</code></pre></div>
+<p>Las variables de entrada son extraídas de emails (los textos de emails fueron procesados para obtener estas entradas). Son frecuencias de ocurrencia de palabras (por ejemplo, wffree, wfremove, wfmail son frecuencias de las palabras free, remove, mail, etc.), y otras entradas cuentan aparición de ciertos caracteres (cfdollar, cfexc son frecuencias de caracteres signo de dólar y signo de exclamación).</p>
+<p>Queremos predecir con estas entradas si un mail es spam o no</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(spam<span class="op">$</span>spam)
+<span class="co">#&gt; </span>
+<span class="co">#&gt;    0    1 </span>
+<span class="co">#&gt; 2788 1813</span></code></pre></div>
+<p>Utiliza el método de regresión logística para hacer la estimación.</p>
+<ol style="list-style-type: decimal">
+<li><p>Construye un modelo solamente usando las variables de caracteres (cfsc, cfpar, etc). Calcula la curva ROC.</p></li>
+<li><p>Construye un modelo utilizando todas las variables. Calcula la curva ROC.</p></li>
+<li><p>Haz gráficas de las curvas ROC de los dos modelos anteriores. ¿Qué modelo es superior?</p></li>
+<li><p>Discute un punto de corte apropiado para hacer un filtro de spam. ¿Escogerías especificidad más alta o sensibilidad más alta? Explica discutiendo los costos de cada tipo de error (falso positivo o falso negativo). Escoge el punto de corte y muestra la matriz de confusión correspondiente.</p></li>
+<li><p>Repite el ejercicio de spam (con todas las variables), y utiliza regresión logística ridge (glmnet). Escoge un parámetro de regularización y recalcula la matriz de confusión. ¿Obtuviste ganancias en clasificación? Checa los nuevos coeficientes y compara con los que obtuviste usando regresión logística sin regularización.</p></li>
+</ol>
+<p><strong>Nota</strong>: para obtener coeficientes estandarizados con glmnet debes estandarizar los datos a mano antes de correr glmnet.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regresion-logistica-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
