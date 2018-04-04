@@ -1,0 +1,338 @@
+# Modelos lineales generalizados
+
+<style>
+  .espacio {
+    margin-bottom: 1cm;
+  }
+</style>
+  
+  <style>
+  .espacio3 {
+    margin-bottom: 3cm;
+  }
+</style>
+
+<p class="espacio">
+</p>
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+## Regresión lineal y logística
+
+Los modelos lineales generalizados son una familia de modelos para el análisis estadístico. Incluye la regresión lineal y logística como casos especiales.
+
+La regresión lineal predice directamente datos continuos $y$ de un _predictor lineal_ $X\beta = \beta_0 + X_1\beta_1 + \cdots + X_k\beta_k.$
+
+La regresión logística predice $P(y=1)$ para datos binarios a partir de un predictor lineal transformado por la función logística inversa.
+
+Un modelo lineal generalizado consiste de:
+
+1. Un vector de datos $y=(y_1,\ldots,y_n)$
+
+2. Predictores $X$ y coeficientes $\beta$ para construir un predictor lineal $X\beta$.
+
+3. Una _función liga_ $g$ que da como resultado datos transformados $$\hat{y}=g^{-1}(X\beta)$$ que son usados para modelar los datos.
+
+4. Una distribución para los datos $p(y|\hat{y})$.
+
+5. Posiblemente otros parámetros, como varianza, o puntos de corte,
+involucrados en los predictores, o bien, la función liga o la distribución de los datos.
+
+<p class="espacio3">
+</p>
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+
+¿Qué función liga se utiliza en regresión lineal?
+
+(a) $g(x) = X\beta$.
+
+(b) $g(x)=\alpha + \beta x$.
+
+(c) $g(x)=\dfrac{1}{\sqrt{2\pi\sigma^2}}\,e^{-\frac{1}{2\sigma^2}(x-\mu)^2}$.
+
+(d) $g(x)=x$.
+
+<p class="espacio3">
+</p>
+</div>
+<br>
+
+<p class="espacio3">
+</p>
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+
+¿Qué función liga se utiliza en regresión logística?
+
+(a) $g(x) = \dfrac{e^x}{1-e^x}$.
+
+(b) $g(x)= \mbox{logit}(x)$.
+
+(c) $g(x)=\dfrac{1}{1+e^{-x}}$.
+
+(d) $g(x)=x$.
+
+<p class="espacio3">
+</p>
+</div>
+<br>
+
+---
+
+## Otros modelos
+
+Otros modelos que vamos a ver después son:
+
+1. El _modelo Poisson_ se utiliza para datos de _conteos_; es decir, donde cada dato observado $y_i$ puede ser igual a $0, 1, 2,\dots$. La función liga que se utiliza habitualmente $g$ es logarítmica, de modo que $g(x) = \mbox{exp}(x)$ transforma un predictor lineal continuo Xiβ en un yi positivo. La distribución de datos es Poisson.
+
+  Por lo general, es una buena idea agregar un parámetro a este modelo para capturar la **sobredispersión**, es decir, la variación en los datos más allá de la que captura el modelo con la distribución Poisson.
+  
+  
+2. El modelo _logístico-binomial_ se utiliza en casos cuando los datos observados $y_i$ representa el número de éxitos en un número $n_i$ de ensayos o experimentos. En este modelo la función liga es $\mbox{logit}^{-1}$ y la distribución de los datos es binomial.
+
+  Al igual que con la regresión Poisson, el modelo binomial típicamente se puede mejorar agregando un parámetro de sobredispersión.
+
+3. El modelo _probit_ es el mismo que la regresión logística pero se reemplaza la función logit por la _distribución normal acumulada_, o equivalentemente con la distribución normal en lugar de la logística en los errores estimados del modelo.
+
+
+<p class="espacio">
+</p>
+
+```{block2, type = "information"}
+**Nota:** Para mayor información de este tipo de dataframes consulta la documentación de la libreria .Podemos usar `glm()` directamente para ajustar regresiones logísticas-binomiales, probit y Poisson, entre otras, y para corregir la sobredispersión cuando sea necesario.
+```
+
+<br>
+
+<br>
+
+## Ejemplo: accidentes de tráfico
+
+En el modelo de Poisson, cada observación $i$ corresponde a una situación (típicamente una ubicación espacial o un intervalo de tiempo) en la que se observan eventos $y_i$. Por ejemplo, con $i$ se puede representar esquinas de calles en una ciudad y $y_i$ podría ser el número de accidentes de tráfico en la $i$-ésima esquina en un año determinado.
+
+Al igual que con la regresión lineal y logística, la variación en $y$ puede explicarse con predictores lineales $X$. En el ejemplo de accidentes de tráfico, estos predictores podrían incluir: un término constante, una medida de la velocidad promedio del tráfico cerca de la esquina y un indicador para si la esquina tiene una señal de tráfico. El modelo básico de regresión de Poisson tiene la forma
+
+$$
+y_i \sim \mbox{Poisson}(\theta_i).
+$$
+
+El parámetro $\theta_i$ debe ser positivo, por lo que tiene sentido ajustar un predictor lineal en una escala logarítmica:
+
+$$
+\theta_i = \exp(X_i\beta).
+$$
+
+## Interpretación de coeficientes Poisson
+
+Los coeficientes $\beta$ pueden exponenciarse y tratarse como efectos multiplicativos. Por ejemplo, supongamos que el modelo de accidentes de tráfico es
+$$
+y_i ∼ \mbox{Poisson}(\exp(2.8 + 0.012X_{i1} − 0.20X_{i2})),
+$$
+donde $X_{i1}$ es la velocidad promedio (en millas por hora, o mph) en las calles cercanas y $X_{i2} = 1$ si la esquina (o intersección) tiene una señal de tráfico y $0$ en caso contrario. 
+
+<p class="espacio">
+</p>
+
+Entonces podemos interpretar cada coeficiente de la siguiente manera:
+
++ El término constante es el intercepto, es decir, la predicción de si $X_{i1} = 0$ y $X_{i2} = 0$. Como esto no es posible (ninguna calle tendrá una velocidad promedio de 0), no intentaremos interpretar el término constante.
+
++ El coeficiente de $X_{i1}$ es la diferencia esperada en $y$ (en la escala logarítmica) para cada mph adicional de velocidad de tráfico. Por lo tanto, el aumento multiplicativo esperado es $e^{0.012} = 1.012$, o una diferencia positiva de 1.2% en la tasa de accidentes de tráfico por mph. Dado que la velocidad del tráfico varía en decenas de mph, en realidad tendría sentido definir $X_{i1}$ como velocidad en decenas de mph, en cuyo caso su coeficiente sería 0.12, que corresponde a un aumento del 12% (más precisamente, $e^{0.12} = 1.127$: a 12.7% de aumento) en la tasa de accidentes por diez mph.
+
++ El coeficiente de $X_{i2}$ nos dice que la diferencia predictiva de tener una señal de tráfico se puede encontrar multiplicando la tasa de accidentes por $\exp(-0.20) = 0.82$ produciendo una reducción del 18%.
+
+Al igual que con los modelos de regresión en general, cada coeficiente se interpreta como una comparación en el que un predictor difiere en una unidad, mientras que todos los demás predictores permanecen constantes, lo cual no es necesariamente el supuesto más apropiado. Por ejemplo, no se debería esperar necesariamente que la instalación de señales de tráfico en todas las esquinas de la ciudad reduzca los accidentes en un 18%.
+
+## Diferencias entre el modelo binomial y Poisson
+
+El modelo de Poisson es similar al modelo binomial para conteos pero se aplica en situaciones ligeramente diferentes:
+
+* Si cada punto de datos $y_i$ se puede interpretar como el número de "éxitos" de $n_i$ experimentos aleatorios, entonces es común usar el modelo Binomial-logístico.
+
+* Si cada punto de datos $y_i$ no tiene un límite superior natural (no se basa en un número determinado de ensayos independientes) entonces es común usar el modelo de regresión de Poisson-logarítmico.
+
+---
+
+<br>
+
+## Ejemplo: fertilidad en Fiji
+
+La siguiente tabla daptada de Little (1978) [@rj1978generalized]:, proviene de la Encuesta de Fertilidad de Fiji, publicada en los informes de World Fertility Survey. La tabla muestra datos sobre el número de hijos nacidos de mujeres casadas de raza de indios nativos clasificados por duración desde su primer matrimonio (agrupados en seis categorías), tipo de lugar de residencia (Suva, otro urbano y rural) y nivel educativo (cuatro categorías: ninguno, primaria inferior, primaria superior y secundaria o superior). Cada casilla de la tabla muestra la media, la varianza y el número de observaciones.
+
+<p class="espacio3">
+</p>
+
+<font size="1" face="Times New Roman">
+<table class='tex-table' width="80%">
+<tr class='bt'><td class='ar'>Marr.</td><td colspan='4' align='center'>Suva</td><td colspan='4' align='center'>Otro urbano</td><td colspan='4' align='center'>Rural</td></tr>
+<tr class='bb'><td class='ar'>Dur.</td><td class='ar'>N</td><td class='ar'>LP</td><td class='ar'>UP</td><td class='ar'>S\(+\)</td><td class='ar'>N</td><td class='ar'>LP</td><td class='ar'>UP</td><td class='ar'>S\(+\)</td><td class='ar'>N</td><td class='ar'>LP</td><td class='ar'>UP</td><td class='ar'>S\(+\)</td></tr>
+<tr class='bt'><td class='ar'>0&ndash;4</td><td class='ar'>0.50</td><td class='ar'>1.14</td><td class='ar'>0.90</td><td class='ar'>0.73</td><td class='ar'>1.17</td><td class='ar'>0.85</td><td class='ar'>1.05</td><td class='ar'>0.69</td><td class='ar'>0.97</td><td class='ar'>0.96</td><td class='ar'>0.97</td><td class='ar'>0.74</td></tr>
+<tr><td class='ar'></td><td class='ar'>1.14</td><td class='ar'>0.73</td><td class='ar'>0.67</td><td class='ar'>0.48</td><td class='ar'>1.06</td><td class='ar'>1.59</td><td class='ar'>0.73</td><td class='ar'>0.54</td><td class='ar'>0.88</td><td class='ar'>0.81</td><td class='ar'>0.80</td><td class='ar'>0.59</td></tr>
+<tr><td class='ar'></td><td class='ar'>8</td><td class='ar'>21</td><td class='ar'>42</td><td class='ar'>51</td><td class='ar'>12</td><td class='ar'>27</td><td class='ar'>39</td><td class='ar'>51</td><td class='ar'>62</td><td class='ar'>102</td><td class='ar'>107</td><td class='ar'>47</td></tr>
+<tr><td class='ar'>5&ndash;9</td><td class='ar'>3.10</td><td class='ar'>2.67</td><td class='ar'>2.04</td><td class='ar'>1.73</td><td class='ar'>4.54</td><td class='ar'>2.65</td><td class='ar'>2.68</td><td class='ar'>2.29</td><td class='ar'>2.44</td><td class='ar'>2.71</td><td class='ar'>2.47</td><td class='ar'>2.24</td></tr>
+<tr><td class='ar'></td><td class='ar'>1.66</td><td class='ar'>0.99</td><td class='ar'>1.87</td><td class='ar'>0.68</td><td class='ar'>3.44</td><td class='ar'>1.51</td><td class='ar'>0.97</td><td class='ar'>0.81</td><td class='ar'>1.93</td><td class='ar'>1.36</td><td class='ar'>1.30</td><td class='ar'>1.19</td></tr>
+<tr><td class='ar'></td><td class='ar'>10</td><td class='ar'>30</td><td class='ar'>24</td><td class='ar'>22</td><td class='ar'>13</td><td class='ar'>37</td><td class='ar'>44</td><td class='ar'>21</td><td class='ar'>70</td><td class='ar'>117</td><td class='ar'>81</td><td class='ar'>21</td></tr>
+<tr><td class='ar'>10&ndash;14</td><td class='ar'>4.08</td><td class='ar'>3.67</td><td class='ar'>2.90</td><td class='ar'>2.00</td><td class='ar'>4.17</td><td class='ar'>3.33</td><td class='ar'>3.62</td><td class='ar'>3.33</td><td class='ar'>4.14</td><td class='ar'>4.14</td><td class='ar'>3.94</td><td class='ar'>3.33</td></tr>
+<tr><td class='ar'></td><td class='ar'>1.72</td><td class='ar'>2.31</td><td class='ar'>1.57</td><td class='ar'>1.82</td><td class='ar'>2.97</td><td class='ar'>2.99</td><td class='ar'>1.96</td><td class='ar'>1.52</td><td class='ar'>3.52</td><td class='ar'>3.31</td><td class='ar'>3.28</td><td class='ar'>2.50</td></tr>
+<tr><td class='ar'></td><td class='ar'>12</td><td class='ar'>27</td><td class='ar'>20</td><td class='ar'>12</td><td class='ar'>18</td><td class='ar'>43</td><td class='ar'>29</td><td class='ar'>15</td><td class='ar'>88</td><td class='ar'>132</td><td class='ar'>50</td><td class='ar'>9</td></tr>
+<tr><td class='ar'>15&ndash;19</td><td class='ar'>4.21</td><td class='ar'>4.94</td><td class='ar'>3.15</td><td class='ar'>2.75</td><td class='ar'>4.70</td><td class='ar'>5.36</td><td class='ar'>4.60</td><td class='ar'>3.80</td><td class='ar'>5.06</td><td class='ar'>5.59</td><td class='ar'>4.50</td><td class='ar'>2.00</td></tr>
+<tr><td class='ar'></td><td class='ar'>2.03</td><td class='ar'>1.46</td><td class='ar'>0.81</td><td class='ar'>0.92</td><td class='ar'>7.40</td><td class='ar'>2.97</td><td class='ar'>3.83</td><td class='ar'>0.70</td><td class='ar'>4.91</td><td class='ar'>3.23</td><td class='ar'>3.29</td><td class='ar'>&ndash;</td></tr>
+<tr><td class='ar'></td><td class='ar'>14</td><td class='ar'>31</td><td class='ar'>13</td><td class='ar'>4</td><td class='ar'>23</td><td class='ar'>42</td><td class='ar'>20</td><td class='ar'>5</td><td class='ar'>114</td><td class='ar'>86</td><td class='ar'>30</td><td class='ar'>1</td></tr>
+<tr><td class='ar'>20&ndash;24</td><td class='ar'>5.62</td><td class='ar'>5.06</td><td class='ar'>3.92</td><td class='ar'>2.60</td><td class='ar'>5.36</td><td class='ar'>5.88</td><td class='ar'>5.00</td><td class='ar'>5.33</td><td class='ar'>6.46</td><td class='ar'>6.34</td><td class='ar'>5.74</td><td class='ar'>2.50</td></tr>
+<tr><td class='ar'></td><td class='ar'>4.15</td><td class='ar'>4.64</td><td class='ar'>4.08</td><td class='ar'>4.30</td><td class='ar'>7.19</td><td class='ar'>4.44</td><td class='ar'>4.33</td><td class='ar'>0.33</td><td class='ar'>8.20</td><td class='ar'>5.72</td><td class='ar'>5.20</td><td class='ar'>0.50</td></tr>
+<tr><td class='ar'></td><td class='ar'>21</td><td class='ar'>18</td><td class='ar'>12</td><td class='ar'>5</td><td class='ar'>22</td><td class='ar'>25</td><td class='ar'>13</td><td class='ar'>3</td><td class='ar'>117</td><td class='ar'>68</td><td class='ar'>23</td><td class='ar'>2</td></tr>
+<tr><td class='ar'>25&ndash;29</td><td class='ar'>6.60</td><td class='ar'>6.74</td><td class='ar'>5.38</td><td class='ar'>2.00</td><td class='ar'>6.52</td><td class='ar'>7.51</td><td class='ar'>7.54</td><td class='ar'>&ndash;</td><td class='ar'>7.48</td><td class='ar'>7.81</td><td class='ar'>5.80</td><td class='ar'>&ndash;</td></tr>
+<tr><td class='ar'></td><td class='ar'>12.40</td><td class='ar'>11.66</td><td class='ar'>4.27</td><td class='ar'>&ndash;</td><td class='ar'>11.45</td><td class='ar'>10.53</td><td class='ar'>12.60</td><td class='ar'>&ndash;</td><td class='ar'>11.34</td><td class='ar'>7.57</td><td class='ar'>7.07</td><td class='ar'>&ndash;</td></tr>
+<tr class='bb'><td class='ar'></td><td class='ar'>47</td><td class='ar'>27</td><td class='ar'>8</td><td class='ar'>1</td><td class='ar'>46</td><td class='ar'>45</td><td class='ar'>13</td><td class='ar'>&ndash;</td><td class='ar'>195</td><td class='ar'>59</td><td class='ar'>10</td><td class='ar'>&ndash;</td></tr>
+</table>
+</font>
+
+<p class="espacio3">
+</p>
+
+En nuestro análisis, trataremos el número de hijos nacidos de cada mujer como la variable respuesta, y la duración de su matrimonio, el tipo de lugar de residencia y el nivel educativo como predictores.
+
+Consideremos:
+
++ Las unidades $i$ son mujeres en un lugar de residencia, para un nivel educativo, y una duración de matrimonio dados
+
++ La respuesta $y_i$ es el número de nacimientos de mujeres en dicho grupo
+
++ Los predictores son la duración de su matrimonio, el tipo de lugar de residencia y el nivel educativo.
+
+Ajustamos el modelo únicamente con el intercepto:
+
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+ceb <- read_csv("datos/ceb.csv")
+mod_1 <- glm(formula = n ~ 1, family=poisson, data = ceb)
+summary(mod_1)
+```
+
+Ahora agregamos primero la variable de lugar de residencia:
+
+```{r}
+mod_2 <- glm(formula = n ~ res, family=poisson, data = ceb)
+summary(mod_2)
+```
+
+Vemos que la devianza disminuye significativamente. Ahora agregamos los otros predictores y evaluamos el modelo nuevamente:
+
+```{r}
+mod_3 <- glm(formula = n ~ res + dur + educ, family=poisson, data = ceb)
+summary(mod_3)
+```
+
+La devianza disminuyó significativamente. 
+
+## Variable de expuestos (offset)
+
+En la mayoría de las aplicaciones de regresión de Poisson, los conteos pueden interpretarse relativos a un número, por ejemplo, el número de vehículos que cruzan la esquina. En el modelo general de regresión de Poisson, pensamos en $y_i$ como el número de casos en un proceso con tasa $\theta_i$ y expuestos $u_i$:
+
+$$
+y_i \sim \mbox{Poisson}(u_i\theta_i),
+$$
+donde, como antes, $\theta_i = \exp(X_i\beta)$. El logaritmo de expuestos, $\log(u_i)$, se denomina _offset_ (o desplazamiento) en la terminología del modelo lineal generalizado.
+
+Observaciones:
+
+* Los coeficientes de regresión $\beta$ resumen las asociaciones entre los predictores y $θ_i$ (en nuestro ejemplo, la tasa de accidentes de tráfico por vehículo).
+
+* Poner el logaritmo de expuestos en el modelo como un desplazamiento, como en el modelo, es equivalente a incluirlo como un predictor de regresión, pero con coeficiente fijado en $1$. Otra opción es incluirlo como un predictor y permitir que su coeficiente sea estimado a partir de los datos, pero a veces es más simple mantenerlo como un desplazamiento para que la tasa estimada $\theta$ tenga una interpretación más directa.
+
+## Ejemplos: seguros
+
+Los datos `Insurance` en el paquete `MASS` consisten de los números de asegurados de una compañía de seguros de autos que estuvieron expuestos a riesgo, y el número de reclamos realizados por los asegurados en el tercer trimestre de 1973.
+
+```{r message=FALSE, warning=FALSE}
+library(MASS)
+data(Insurance)
+Insurance %>% head %>% knitr::kable()
+```
+
+Las variables son:
+
+1. Distrito. residencia del que tiene la póliza 1 a 4 (ciudades importantes)
+
+2. Grupo. tipo de coche: <1 litro, 1-1.5 litros, 1.5-2 litros, >2 litros
+
+3. Edad. grupo de edad: <25, 25-29, 30-35, >35.
+
+4. Holders. número de asegurados.
+
+5. Reclamos. número de reclamos.
+
+Esta vez tenemos:
+
++ cada observación $i$ corresponde a un grupo de asegurados de acuerdo a su distrito, tipo de coche, y edad.
+
++ el resultado $y_i$ es el número de reclamos en dicho grupo
+
++ los expuestos $u_i$ son el número de asegurados
+
++ las entradas son los índices de precinto y etnicidad
+
++ los predictores son: distrito, grupo y edad
+
+Ilustramos el ajuste del modelo en tres pasos. Primero, ajustamos un modelo con los expuestos y un término constante solo:
+
+```{r}
+mod_1 <- glm(formula = Claims ~ 1, family=poisson, offset=log(Holders), data = Insurance)
+summary(mod_1)
+```
+
+Ahora agregamos el predictor de distrito:
+
+
+```{r}
+mod_2 <- glm(formula = Claims ~ District, family=poisson, offset=log(Holders), data = Insurance)
+summary(mod_2)
+```
+
+Nota:
+
+1. El AIC disminuye de 555.58 a 548.85. 
+
+2. Se puede ver que solamente District4 tiene un coeficiente significativo. Se puede interpretar como que aquellos que son del Distrito 4 tiene 22% más reclamos comparado con el Distrito control, el Distrito 1.
+
+
+Ahora agregamos el predictor de edad:
+
+```{r}
+mod_3 <- glm(formula = Claims ~ District + Age, 
+             family=poisson, 
+             offset=log(Holders), 
+             data = Insurance)
+summary(mod_3)
+```
+
+Notamos que:
+
+1. El AIC disminuye nuevamente de 548.85 a 471.41, una reducción mucho más significativa. Esto nos dice que la variable de edad mejora considerablemente el ajuste del modelo.
+
+2. El coeficiente de Distrito 4 aumentó de 22% a 24% cuando controlamos por el grupo de edad. Comparando con el grupo base (grupo control) Distrito 1, el número de reclamos es $\exp(0.22)=1.24$ veces más en el Distrito 4.
+
+3. El grupo de edad L (25-29) tiene un coeficiente significativo de -0.37 que podemos interpretar como que pertenecer a ese grupo de edad tiene 37% menos reclamos comparado con el grupo de edad control (<25).
+
+
+Por último incluyendo todos los predictores el modelo ajustado es:
+
+```{r}
+mod_4 <- glm(formula = Claims ~ District + Age + Group, 
+             family=poisson, 
+             offset=log(Holders), 
+             data = Insurance)
+summary(mod_4)
+```
+
+Observamos que controlando por el grupo de auto los coeficientes de las otras variables no cambian mucho y que solamente es significativo el coeficiente del grupo L (1-1.5 litros). Interpretamos que los asegurados con coches de 1-1.5 litros tienen 42.9% más reclamos que los asegurados con autos de <1 litro.
