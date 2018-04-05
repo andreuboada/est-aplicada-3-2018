@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="modelos-lineales-generalizados.html">
-
+<link rel="prev" href="regularizacion.html">
+<link rel="next" href="referencias.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -329,25 +329,1250 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="referencias" class="section level1 unnumbered">
-<h1>Referencias</h1>
+<div id="modelos-lineales-generalizados" class="section level1">
+<h1><span class="header-section-number">Clase 10</span> Modelos lineales generalizados</h1>
+<style>
+  .espacio {
+    margin-bottom: 1cm;
+  }
+</style>
+<style>
+  .espacio3 {
+    margin-bottom: 3cm;
+  }
+</style>
+<p class="espacio">
+</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<div id="regresion-lineal-y-logistica" class="section level2">
+<h2><span class="header-section-number">10.1</span> Regresión lineal y logística</h2>
+<p>Los modelos lineales generalizados son una familia de modelos para el análisis estadístico. Incluye la regresión lineal y logística como casos especiales.</p>
+<p>La regresión lineal predice directamente datos continuos <span class="math inline">\(y\)</span> de un <em>predictor lineal</em> <span class="math inline">\(X\beta = \beta_0 + X_1\beta_1 + \cdots + X_k\beta_k.\)</span></p>
+<p>La regresión logística predice <span class="math inline">\(P(y=1)\)</span> para datos binarios a partir de un predictor lineal transformado por la función logística inversa.</p>
+<p>Un modelo lineal generalizado consiste de:</p>
+<ol style="list-style-type: decimal">
+<li><p>Un vector de datos <span class="math inline">\(y=(y_1,\ldots,y_n)\)</span></p></li>
+<li><p>Predictores <span class="math inline">\(X\)</span> y coeficientes <span class="math inline">\(\beta\)</span> para construir un predictor lineal <span class="math inline">\(X\beta\)</span>.</p></li>
+<li><p>Una <em>función liga</em> <span class="math inline">\(g\)</span> que da como resultado datos transformados <span class="math display">\[\hat{y}=g^{-1}(X\beta)\]</span> que son usados para modelar los datos.</p></li>
+<li><p>Una distribución para los datos <span class="math inline">\(p(y|\hat{y})\)</span>.</p></li>
+<li><p>Posiblemente otros parámetros, como varianza, o puntos de corte, involucrados en los predictores, o bien, la función liga o la distribución de los datos.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>¿Qué función liga se utiliza en regresión lineal?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(g(x) = X\beta\)</span>.</p></li>
+<li><p><span class="math inline">\(g(x)=\alpha + \beta x\)</span>.</p></li>
+<li><p><span class="math inline">\(g(x)=\dfrac{1}{\sqrt{2\pi\sigma^2}}\,e^{-\frac{1}{2\sigma^2}(x-\mu)^2}\)</span>.</p></li>
+<li><p><span class="math inline">\(g(x)=x\)</span>.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<p class="espacio3">
+</p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>¿Qué función liga se utiliza en regresión logística?</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(g(x) = \dfrac{e^x}{1-e^x}\)</span>.</p></li>
+<li><p><span class="math inline">\(g(x)= \mbox{logit}(x)\)</span>.</p></li>
+<li><p><span class="math inline">\(g(x)=\dfrac{1}{1+e^{-x}}\)</span>.</p></li>
+<li><p><span class="math inline">\(g(x)=x\)</span>.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<hr />
+</div>
+<div id="otros-modelos" class="section level2">
+<h2><span class="header-section-number">10.2</span> Otros modelos</h2>
+<p>Otros modelos que vamos a ver después son:</p>
+<ol style="list-style-type: decimal">
+<li>El <em>modelo Poisson</em> se utiliza para datos de <em>conteos</em>; es decir, donde cada dato observado <span class="math inline">\(y_i\)</span> puede ser igual a <span class="math inline">\(0, 1, 2,\dots\)</span>. La función liga que se utiliza habitualmente <span class="math inline">\(g\)</span> es logarítmica, de modo que <span class="math inline">\(g(x) = \mbox{exp}(x)\)</span> transforma un predictor lineal continuo Xiβ en un yi positivo. La distribución de datos es Poisson.</li>
+</ol>
+<p>Por lo general, es una buena idea agregar un parámetro a este modelo para capturar la <strong>sobredispersión</strong>, es decir, la variación en los datos más allá de la que captura el modelo con la distribución Poisson.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>El modelo <em>logístico-binomial</em> se utiliza en casos cuando los datos observados <span class="math inline">\(y_i\)</span> representa el número de éxitos en un número <span class="math inline">\(n_i\)</span> de ensayos o experimentos. En este modelo la función liga es <span class="math inline">\(\mbox{logit}^{-1}\)</span> y la distribución de los datos es binomial.</li>
+</ol>
+<p>Al igual que con la regresión Poisson, el modelo binomial típicamente se puede mejorar agregando un parámetro de sobredispersión.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>El modelo <em>probit</em> es el mismo que la regresión logística pero se reemplaza la función logit por la <em>distribución normal acumulada</em>, o equivalentemente con la distribución normal en lugar de la logística en los errores estimados del modelo.</li>
+</ol>
+<p class="espacio">
+</p>
 
+<div class="information">
+<strong>Nota:</strong> Para mayor información de este tipo de dataframes consulta la documentación de la libreria .Podemos usar <code>glm()</code> directamente para ajustar regresiones logísticas-binomiales, probit y Poisson, entre otras, y para corregir la sobredispersión cuando sea necesario.
+</div>
+
+<p><br></p>
+<p><br></p>
+</div>
+<div id="ejemplo-accidentes-de-trafico" class="section level2">
+<h2><span class="header-section-number">10.3</span> Ejemplo: accidentes de tráfico</h2>
+<p>En el modelo de Poisson, cada observación <span class="math inline">\(i\)</span> corresponde a una situación (típicamente una ubicación espacial o un intervalo de tiempo) en la que se observan eventos <span class="math inline">\(y_i\)</span>. Por ejemplo, con <span class="math inline">\(i\)</span> se puede representar esquinas de calles en una ciudad y <span class="math inline">\(y_i\)</span> podría ser el número de accidentes de tráfico en la <span class="math inline">\(i\)</span>-ésima esquina en un año determinado.</p>
+<p>Al igual que con la regresión lineal y logística, la variación en <span class="math inline">\(y\)</span> puede explicarse con predictores lineales <span class="math inline">\(X\)</span>. En el ejemplo de accidentes de tráfico, estos predictores podrían incluir: un término constante, una medida de la velocidad promedio del tráfico cerca de la esquina y un indicador para si la esquina tiene una señal de tráfico. El modelo básico de regresión de Poisson tiene la forma</p>
+<p><span class="math display">\[
+y_i \sim \mbox{Poisson}(\theta_i).
+\]</span></p>
+<p>El parámetro <span class="math inline">\(\theta_i\)</span> debe ser positivo, por lo que tiene sentido ajustar un predictor lineal en una escala logarítmica:</p>
+<p><span class="math display">\[
+\theta_i = \exp(X_i\beta).
+\]</span></p>
+</div>
+<div id="interpretacion-de-coeficientes-poisson" class="section level2">
+<h2><span class="header-section-number">10.4</span> Interpretación de coeficientes Poisson</h2>
+<p>Los coeficientes <span class="math inline">\(\beta\)</span> pueden exponenciarse y tratarse como efectos multiplicativos. Por ejemplo, supongamos que el modelo de accidentes de tráfico es <span class="math display">\[
+y_i ∼ \mbox{Poisson}(\exp(2.8 + 0.012X_{i1} − 0.20X_{i2})),
+\]</span> donde <span class="math inline">\(X_{i1}\)</span> es la velocidad promedio (en millas por hora, o mph) en las calles cercanas y <span class="math inline">\(X_{i2} = 1\)</span> si la esquina (o intersección) tiene una señal de tráfico y <span class="math inline">\(0\)</span> en caso contrario.</p>
+<p class="espacio">
+</p>
+<p>Entonces podemos interpretar cada coeficiente de la siguiente manera:</p>
+<ul>
+<li><p>El término constante es el intercepto, es decir, la predicción de si <span class="math inline">\(X_{i1} = 0\)</span> y <span class="math inline">\(X_{i2} = 0\)</span>. Como esto no es posible (ninguna calle tendrá una velocidad promedio de 0), no intentaremos interpretar el término constante.</p></li>
+<li><p>El coeficiente de <span class="math inline">\(X_{i1}\)</span> es la diferencia esperada en <span class="math inline">\(y\)</span> (en la escala logarítmica) para cada mph adicional de velocidad de tráfico. Por lo tanto, el aumento multiplicativo esperado es <span class="math inline">\(e^{0.012} = 1.012\)</span>, o una diferencia positiva de 1.2% en la tasa de accidentes de tráfico por mph. Dado que la velocidad del tráfico varía en decenas de mph, en realidad tendría sentido definir <span class="math inline">\(X_{i1}\)</span> como velocidad en decenas de mph, en cuyo caso su coeficiente sería 0.12, que corresponde a un aumento del 12% (más precisamente, <span class="math inline">\(e^{0.12} = 1.127\)</span>: a 12.7% de aumento) en la tasa de accidentes por diez mph.</p></li>
+<li><p>El coeficiente de <span class="math inline">\(X_{i2}\)</span> nos dice que la diferencia predictiva de tener una señal de tráfico se puede encontrar multiplicando la tasa de accidentes por <span class="math inline">\(\exp(-0.20) = 0.82\)</span> produciendo una reducción del 18%.</p></li>
+</ul>
+<p>Al igual que con los modelos de regresión en general, cada coeficiente se interpreta como una comparación en el que un predictor difiere en una unidad, mientras que todos los demás predictores permanecen constantes, lo cual no es necesariamente el supuesto más apropiado. Por ejemplo, no se debería esperar necesariamente que la instalación de señales de tráfico en todas las esquinas de la ciudad reduzca los accidentes en un 18%.</p>
+</div>
+<div id="diferencias-entre-el-modelo-binomial-y-poisson" class="section level2">
+<h2><span class="header-section-number">10.5</span> Diferencias entre el modelo binomial y Poisson</h2>
+<p>El modelo de Poisson es similar al modelo binomial para conteos pero se aplica en situaciones ligeramente diferentes:</p>
+<ul>
+<li><p>Si cada punto de datos <span class="math inline">\(y_i\)</span> se puede interpretar como el número de “éxitos” de <span class="math inline">\(n_i\)</span> experimentos aleatorios, entonces es común usar el modelo Binomial-logístico.</p></li>
+<li><p>Si cada punto de datos <span class="math inline">\(y_i\)</span> no tiene un límite superior natural (no se basa en un número determinado de ensayos independientes) entonces es común usar el modelo de regresión de Poisson-logarítmico.</p></li>
+</ul>
+<hr />
+<p><br></p>
+</div>
+<div id="ejemplo-fertilidad-en-fiji" class="section level2">
+<h2><span class="header-section-number">10.6</span> Ejemplo: fertilidad en Fiji</h2>
+<p>La siguiente tabla daptada de Little (1978) <span class="citation">(RJ <a href="#ref-rj1978generalized">1978</a>)</span>:, proviene de la Encuesta de Fertilidad de Fiji, publicada en los informes de World Fertility Survey. La tabla muestra datos sobre el número de hijos nacidos de mujeres casadas de raza de indios nativos clasificados por duración desde su primer matrimonio (agrupados en seis categorías), tipo de lugar de residencia (Suva, otro urbano y rural) y nivel educativo (cuatro categorías: ninguno, primaria inferior, primaria superior y secundaria o superior). Cada casilla de la tabla muestra la media, la varianza y el número de observaciones.</p>
+<p class="espacio3">
+</p>
+<font size="1" face="Times New Roman">
+<table class="tex-table" width="80%">
+<tr class="bt">
+<td class="ar">
+Marr.
+</td>
+<td colspan="4" align="center">
+Suva
+</td>
+<td colspan="4" align="center">
+Otro urbano
+</td>
+<td colspan="4" align="center">
+Rural
+</td>
+</tr>
+<tr class="bb">
+<td class="ar">
+Dur.
+</td>
+<td class="ar">
+N
+</td>
+<td class="ar">
+LP
+</td>
+<td class="ar">
+UP
+</td>
+<td class="ar">
+S<span class="math inline">\(+\)</span>
+</td>
+<td class="ar">
+N
+</td>
+<td class="ar">
+LP
+</td>
+<td class="ar">
+UP
+</td>
+<td class="ar">
+S<span class="math inline">\(+\)</span>
+</td>
+<td class="ar">
+N
+</td>
+<td class="ar">
+LP
+</td>
+<td class="ar">
+UP
+</td>
+<td class="ar">
+S<span class="math inline">\(+\)</span>
+</td>
+</tr>
+<tr class="bt">
+<td class="ar">
+0–4
+</td>
+<td class="ar">
+0.50
+</td>
+<td class="ar">
+1.14
+</td>
+<td class="ar">
+0.90
+</td>
+<td class="ar">
+0.73
+</td>
+<td class="ar">
+1.17
+</td>
+<td class="ar">
+0.85
+</td>
+<td class="ar">
+1.05
+</td>
+<td class="ar">
+0.69
+</td>
+<td class="ar">
+0.97
+</td>
+<td class="ar">
+0.96
+</td>
+<td class="ar">
+0.97
+</td>
+<td class="ar">
+0.74
+</td>
+</tr>
+<tr>
+<td class="ar">
+</td>
+<td class="ar">
+1.14
+</td>
+<td class="ar">
+0.73
+</td>
+<td class="ar">
+0.67
+</td>
+<td class="ar">
+0.48
+</td>
+<td class="ar">
+1.06
+</td>
+<td class="ar">
+1.59
+</td>
+<td class="ar">
+0.73
+</td>
+<td class="ar">
+0.54
+</td>
+<td class="ar">
+0.88
+</td>
+<td class="ar">
+0.81
+</td>
+<td class="ar">
+0.80
+</td>
+<td class="ar">
+0.59
+</td>
+</tr>
+<tr>
+<td class="ar">
+</td>
+<td class="ar">
+8
+</td>
+<td class="ar">
+21
+</td>
+<td class="ar">
+42
+</td>
+<td class="ar">
+51
+</td>
+<td class="ar">
+12
+</td>
+<td class="ar">
+27
+</td>
+<td class="ar">
+39
+</td>
+<td class="ar">
+51
+</td>
+<td class="ar">
+62
+</td>
+<td class="ar">
+102
+</td>
+<td class="ar">
+107
+</td>
+<td class="ar">
+47
+</td>
+</tr>
+<tr>
+<td class="ar">
+5–9
+</td>
+<td class="ar">
+3.10
+</td>
+<td class="ar">
+2.67
+</td>
+<td class="ar">
+2.04
+</td>
+<td class="ar">
+1.73
+</td>
+<td class="ar">
+4.54
+</td>
+<td class="ar">
+2.65
+</td>
+<td class="ar">
+2.68
+</td>
+<td class="ar">
+2.29
+</td>
+<td class="ar">
+2.44
+</td>
+<td class="ar">
+2.71
+</td>
+<td class="ar">
+2.47
+</td>
+<td class="ar">
+2.24
+</td>
+</tr>
+<tr>
+<td class="ar">
+</td>
+<td class="ar">
+1.66
+</td>
+<td class="ar">
+0.99
+</td>
+<td class="ar">
+1.87
+</td>
+<td class="ar">
+0.68
+</td>
+<td class="ar">
+3.44
+</td>
+<td class="ar">
+1.51
+</td>
+<td class="ar">
+0.97
+</td>
+<td class="ar">
+0.81
+</td>
+<td class="ar">
+1.93
+</td>
+<td class="ar">
+1.36
+</td>
+<td class="ar">
+1.30
+</td>
+<td class="ar">
+1.19
+</td>
+</tr>
+<tr>
+<td class="ar">
+</td>
+<td class="ar">
+10
+</td>
+<td class="ar">
+30
+</td>
+<td class="ar">
+24
+</td>
+<td class="ar">
+22
+</td>
+<td class="ar">
+13
+</td>
+<td class="ar">
+37
+</td>
+<td class="ar">
+44
+</td>
+<td class="ar">
+21
+</td>
+<td class="ar">
+70
+</td>
+<td class="ar">
+117
+</td>
+<td class="ar">
+81
+</td>
+<td class="ar">
+21
+</td>
+</tr>
+<tr>
+<td class="ar">
+10–14
+</td>
+<td class="ar">
+4.08
+</td>
+<td class="ar">
+3.67
+</td>
+<td class="ar">
+2.90
+</td>
+<td class="ar">
+2.00
+</td>
+<td class="ar">
+4.17
+</td>
+<td class="ar">
+3.33
+</td>
+<td class="ar">
+3.62
+</td>
+<td class="ar">
+3.33
+</td>
+<td class="ar">
+4.14
+</td>
+<td class="ar">
+4.14
+</td>
+<td class="ar">
+3.94
+</td>
+<td class="ar">
+3.33
+</td>
+</tr>
+<tr>
+<td class="ar">
+</td>
+<td class="ar">
+1.72
+</td>
+<td class="ar">
+2.31
+</td>
+<td class="ar">
+1.57
+</td>
+<td class="ar">
+1.82
+</td>
+<td class="ar">
+2.97
+</td>
+<td class="ar">
+2.99
+</td>
+<td class="ar">
+1.96
+</td>
+<td class="ar">
+1.52
+</td>
+<td class="ar">
+3.52
+</td>
+<td class="ar">
+3.31
+</td>
+<td class="ar">
+3.28
+</td>
+<td class="ar">
+2.50
+</td>
+</tr>
+<tr>
+<td class="ar">
+</td>
+<td class="ar">
+12
+</td>
+<td class="ar">
+27
+</td>
+<td class="ar">
+20
+</td>
+<td class="ar">
+12
+</td>
+<td class="ar">
+18
+</td>
+<td class="ar">
+43
+</td>
+<td class="ar">
+29
+</td>
+<td class="ar">
+15
+</td>
+<td class="ar">
+88
+</td>
+<td class="ar">
+132
+</td>
+<td class="ar">
+50
+</td>
+<td class="ar">
+9
+</td>
+</tr>
+<tr>
+<td class="ar">
+15–19
+</td>
+<td class="ar">
+4.21
+</td>
+<td class="ar">
+4.94
+</td>
+<td class="ar">
+3.15
+</td>
+<td class="ar">
+2.75
+</td>
+<td class="ar">
+4.70
+</td>
+<td class="ar">
+5.36
+</td>
+<td class="ar">
+4.60
+</td>
+<td class="ar">
+3.80
+</td>
+<td class="ar">
+5.06
+</td>
+<td class="ar">
+5.59
+</td>
+<td class="ar">
+4.50
+</td>
+<td class="ar">
+2.00
+</td>
+</tr>
+<tr>
+<td class="ar">
+</td>
+<td class="ar">
+2.03
+</td>
+<td class="ar">
+1.46
+</td>
+<td class="ar">
+0.81
+</td>
+<td class="ar">
+0.92
+</td>
+<td class="ar">
+7.40
+</td>
+<td class="ar">
+2.97
+</td>
+<td class="ar">
+3.83
+</td>
+<td class="ar">
+0.70
+</td>
+<td class="ar">
+4.91
+</td>
+<td class="ar">
+3.23
+</td>
+<td class="ar">
+3.29
+</td>
+<td class="ar">
+–
+</td>
+</tr>
+<tr>
+<td class="ar">
+</td>
+<td class="ar">
+14
+</td>
+<td class="ar">
+31
+</td>
+<td class="ar">
+13
+</td>
+<td class="ar">
+4
+</td>
+<td class="ar">
+23
+</td>
+<td class="ar">
+42
+</td>
+<td class="ar">
+20
+</td>
+<td class="ar">
+5
+</td>
+<td class="ar">
+114
+</td>
+<td class="ar">
+86
+</td>
+<td class="ar">
+30
+</td>
+<td class="ar">
+1
+</td>
+</tr>
+<tr>
+<td class="ar">
+20–24
+</td>
+<td class="ar">
+5.62
+</td>
+<td class="ar">
+5.06
+</td>
+<td class="ar">
+3.92
+</td>
+<td class="ar">
+2.60
+</td>
+<td class="ar">
+5.36
+</td>
+<td class="ar">
+5.88
+</td>
+<td class="ar">
+5.00
+</td>
+<td class="ar">
+5.33
+</td>
+<td class="ar">
+6.46
+</td>
+<td class="ar">
+6.34
+</td>
+<td class="ar">
+5.74
+</td>
+<td class="ar">
+2.50
+</td>
+</tr>
+<tr>
+<td class="ar">
+</td>
+<td class="ar">
+4.15
+</td>
+<td class="ar">
+4.64
+</td>
+<td class="ar">
+4.08
+</td>
+<td class="ar">
+4.30
+</td>
+<td class="ar">
+7.19
+</td>
+<td class="ar">
+4.44
+</td>
+<td class="ar">
+4.33
+</td>
+<td class="ar">
+0.33
+</td>
+<td class="ar">
+8.20
+</td>
+<td class="ar">
+5.72
+</td>
+<td class="ar">
+5.20
+</td>
+<td class="ar">
+0.50
+</td>
+</tr>
+<tr>
+<td class="ar">
+</td>
+<td class="ar">
+21
+</td>
+<td class="ar">
+18
+</td>
+<td class="ar">
+12
+</td>
+<td class="ar">
+5
+</td>
+<td class="ar">
+22
+</td>
+<td class="ar">
+25
+</td>
+<td class="ar">
+13
+</td>
+<td class="ar">
+3
+</td>
+<td class="ar">
+117
+</td>
+<td class="ar">
+68
+</td>
+<td class="ar">
+23
+</td>
+<td class="ar">
+2
+</td>
+</tr>
+<tr>
+<td class="ar">
+25–29
+</td>
+<td class="ar">
+6.60
+</td>
+<td class="ar">
+6.74
+</td>
+<td class="ar">
+5.38
+</td>
+<td class="ar">
+2.00
+</td>
+<td class="ar">
+6.52
+</td>
+<td class="ar">
+7.51
+</td>
+<td class="ar">
+7.54
+</td>
+<td class="ar">
+–
+</td>
+<td class="ar">
+7.48
+</td>
+<td class="ar">
+7.81
+</td>
+<td class="ar">
+5.80
+</td>
+<td class="ar">
+–
+</td>
+</tr>
+<tr>
+<td class="ar">
+</td>
+<td class="ar">
+12.40
+</td>
+<td class="ar">
+11.66
+</td>
+<td class="ar">
+4.27
+</td>
+<td class="ar">
+–
+</td>
+<td class="ar">
+11.45
+</td>
+<td class="ar">
+10.53
+</td>
+<td class="ar">
+12.60
+</td>
+<td class="ar">
+–
+</td>
+<td class="ar">
+11.34
+</td>
+<td class="ar">
+7.57
+</td>
+<td class="ar">
+7.07
+</td>
+<td class="ar">
+–
+</td>
+</tr>
+<tr class="bb">
+<td class="ar">
+</td>
+<td class="ar">
+47
+</td>
+<td class="ar">
+27
+</td>
+<td class="ar">
+8
+</td>
+<td class="ar">
+1
+</td>
+<td class="ar">
+46
+</td>
+<td class="ar">
+45
+</td>
+<td class="ar">
+13
+</td>
+<td class="ar">
+–
+</td>
+<td class="ar">
+195
+</td>
+<td class="ar">
+59
+</td>
+<td class="ar">
+10
+</td>
+<td class="ar">
+–
+</td>
+</tr>
+</table>
+<p></font></p>
+<p class="espacio3">
+</p>
+<p>En nuestro análisis, trataremos el número de hijos nacidos de cada mujer como la variable respuesta, y la duración de su matrimonio, el tipo de lugar de residencia y el nivel educativo como predictores.</p>
+<p>Consideremos:</p>
+<ul>
+<li><p>Las unidades <span class="math inline">\(i\)</span> son mujeres en un lugar de residencia, para un nivel educativo, y una duración de matrimonio dados</p></li>
+<li><p>La respuesta <span class="math inline">\(y_i\)</span> es el número de nacimientos de mujeres en dicho grupo</p></li>
+<li><p>Los predictores son la duración de su matrimonio, el tipo de lugar de residencia y el nivel educativo.</p></li>
+</ul>
+<p>Ajustamos el modelo únicamente con el intercepto:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+ceb &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/ceb.csv&quot;</span>)
+mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">formula =</span> n <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">family=</span>poisson, <span class="dt">data =</span> ceb)
+<span class="kw">summary</span>(mod_<span class="dv">1</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = n ~ 1, family = poisson, data = ceb)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt;  -8.20   -4.74   -2.38    1.37   17.94  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)   3.6440     0.0193     189   &lt;2e-16 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for poisson family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 2059.5  on 69  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 2059.5  on 69  degrees of freedom</span>
+<span class="co">#&gt; AIC: 2414</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 5</span></code></pre></div>
+<p>Ahora agregamos primero la variable de lugar de residencia:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">formula =</span> n <span class="op">~</span><span class="st"> </span>res, <span class="dt">family=</span>poisson, <span class="dt">data =</span> ceb)
+<span class="kw">summary</span>(mod_<span class="dv">2</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = n ~ res, family = poisson, data = ceb)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -11.31   -2.87   -0.36    2.25   12.35  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)   4.2366     0.0251   169.0   &lt;2e-16 ***</span>
+<span class="co">#&gt; resSuva      -1.2409     0.0521   -23.8   &lt;2e-16 ***</span>
+<span class="co">#&gt; resurban     -0.9652     0.0477   -20.2   &lt;2e-16 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for poisson family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 2059.5  on 69  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 1247.5  on 67  degrees of freedom</span>
+<span class="co">#&gt; AIC: 1605</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 5</span></code></pre></div>
+<p>Vemos que la devianza disminuye significativamente. Ahora agregamos los otros predictores y evaluamos el modelo nuevamente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">formula =</span> n <span class="op">~</span><span class="st"> </span>res <span class="op">+</span><span class="st"> </span>dur <span class="op">+</span><span class="st"> </span>educ, <span class="dt">family=</span>poisson, <span class="dt">data =</span> ceb)
+<span class="kw">summary</span>(mod_<span class="dv">3</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = n ~ res + dur + educ, family = poisson, data = ceb)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -8.332  -2.688  -0.175   1.429   8.685  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)   4.7599     0.0521   91.35  &lt; 2e-16 ***</span>
+<span class="co">#&gt; resSuva      -1.2199     0.0521  -23.41  &lt; 2e-16 ***</span>
+<span class="co">#&gt; resurban     -0.9652     0.0477  -20.22  &lt; 2e-16 ***</span>
+<span class="co">#&gt; dur14-Oct    -0.2236     0.0629   -3.56  0.00038 ***</span>
+<span class="co">#&gt; dur15-19     -0.3958     0.0661   -5.99  2.1e-09 ***</span>
+<span class="co">#&gt; dur20-24     -0.5478     0.0693   -7.91  2.6e-15 ***</span>
+<span class="co">#&gt; dur25-29     -0.1313     0.0633   -2.07  0.03814 *  </span>
+<span class="co">#&gt; dur9-May     -0.1495     0.0616   -2.43  0.01529 *  </span>
+<span class="co">#&gt; educnone     -0.0492     0.0468   -1.05  0.29275    </span>
+<span class="co">#&gt; educsec+     -1.0807     0.0695  -15.55  &lt; 2e-16 ***</span>
+<span class="co">#&gt; educupper    -0.4831     0.0529   -9.13  &lt; 2e-16 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for poisson family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 2059.53  on 69  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance:  787.98  on 59  degrees of freedom</span>
+<span class="co">#&gt; AIC: 1162</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 5</span></code></pre></div>
+<p>La devianza disminuyó significativamente.</p>
+</div>
+<div id="variable-de-expuestos-offset" class="section level2">
+<h2><span class="header-section-number">10.7</span> Variable de expuestos (offset)</h2>
+<p>En la mayoría de las aplicaciones de regresión de Poisson, los conteos pueden interpretarse relativos a un número, por ejemplo, el número de vehículos que cruzan la esquina. En el modelo general de regresión de Poisson, pensamos en <span class="math inline">\(y_i\)</span> como el número de casos en un proceso con tasa <span class="math inline">\(\theta_i\)</span> y expuestos <span class="math inline">\(u_i\)</span>:</p>
+<p><span class="math display">\[
+y_i \sim \mbox{Poisson}(u_i\theta_i),
+\]</span> donde, como antes, <span class="math inline">\(\theta_i = \exp(X_i\beta)\)</span>. El logaritmo de expuestos, <span class="math inline">\(\log(u_i)\)</span>, se denomina <em>offset</em> (o desplazamiento) en la terminología del modelo lineal generalizado.</p>
+<p>Observaciones:</p>
+<ul>
+<li><p>Los coeficientes de regresión <span class="math inline">\(\beta\)</span> resumen las asociaciones entre los predictores y <span class="math inline">\(θ_i\)</span> (en nuestro ejemplo, la tasa de accidentes de tráfico por vehículo).</p></li>
+<li><p>Poner el logaritmo de expuestos en el modelo como un desplazamiento, como en el modelo, es equivalente a incluirlo como un predictor de regresión, pero con coeficiente fijado en <span class="math inline">\(1\)</span>. Otra opción es incluirlo como un predictor y permitir que su coeficiente sea estimado a partir de los datos, pero a veces es más simple mantenerlo como un desplazamiento para que la tasa estimada <span class="math inline">\(\theta\)</span> tenga una interpretación más directa.</p></li>
+</ul>
+</div>
+<div id="ejemplos-seguros" class="section level2">
+<h2><span class="header-section-number">10.8</span> Ejemplos: seguros</h2>
+<p>Los datos <code>Insurance</code> en el paquete <code>MASS</code> consisten de los números de asegurados de una compañía de seguros de autos que estuvieron expuestos a riesgo, y el número de reclamos realizados por los asegurados en el tercer trimestre de 1973.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
+<span class="kw">data</span>(Insurance)
+Insurance <span class="op">%&gt;%</span><span class="st"> </span>head <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">District</th>
+<th align="left">Group</th>
+<th align="left">Age</th>
+<th align="right">Holders</th>
+<th align="right">Claims</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">&lt;1l</td>
+<td align="left">&lt;25</td>
+<td align="right">197</td>
+<td align="right">38</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">&lt;1l</td>
+<td align="left">25-29</td>
+<td align="right">264</td>
+<td align="right">35</td>
+</tr>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">&lt;1l</td>
+<td align="left">30-35</td>
+<td align="right">246</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">&lt;1l</td>
+<td align="left">&gt;35</td>
+<td align="right">1680</td>
+<td align="right">156</td>
+</tr>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1-1.5l</td>
+<td align="left">&lt;25</td>
+<td align="right">284</td>
+<td align="right">63</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">1-1.5l</td>
+<td align="left">25-29</td>
+<td align="right">536</td>
+<td align="right">84</td>
+</tr>
+</tbody>
+</table>
+<p>Las variables son:</p>
+<ol style="list-style-type: decimal">
+<li><p>Distrito. residencia del que tiene la póliza 1 a 4 (ciudades importantes)</p></li>
+<li><p>Grupo. tipo de coche: &lt;1 litro, 1-1.5 litros, 1.5-2 litros, &gt;2 litros</p></li>
+<li><p>Edad. grupo de edad: &lt;25, 25-29, 30-35, &gt;35.</p></li>
+<li><p>Holders. número de asegurados.</p></li>
+<li><p>Reclamos. número de reclamos.</p></li>
+</ol>
+<p>Esta vez tenemos:</p>
+<ul>
+<li><p>cada observación <span class="math inline">\(i\)</span> corresponde a un grupo de asegurados de acuerdo a su distrito, tipo de coche, y edad.</p></li>
+<li><p>el resultado <span class="math inline">\(y_i\)</span> es el número de reclamos en dicho grupo</p></li>
+<li><p>los expuestos <span class="math inline">\(u_i\)</span> son el número de asegurados</p></li>
+<li><p>las entradas son los índices de precinto y etnicidad</p></li>
+<li><p>los predictores son: distrito, grupo y edad</p></li>
+</ul>
+<p>Ilustramos el ajuste del modelo en tres pasos. Primero, ajustamos un modelo con los expuestos y un término constante solo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">formula =</span> Claims <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">family=</span>poisson, <span class="dt">offset=</span><span class="kw">log</span>(Holders), <span class="dt">data =</span> Insurance)
+<span class="kw">summary</span>(mod_<span class="dv">1</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = Claims ~ 1, family = poisson, data = Insurance, </span>
+<span class="co">#&gt;     offset = log(Holders))</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -4.973  -0.325   0.790   1.976   4.073  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)  -2.0033     0.0178    -112   &lt;2e-16 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for poisson family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 236.26  on 63  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 236.26  on 63  degrees of freedom</span>
+<span class="co">#&gt; AIC: 555.6</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 4</span></code></pre></div>
+<p>Ahora agregamos el predictor de distrito:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">formula =</span> Claims <span class="op">~</span><span class="st"> </span>District, <span class="dt">family=</span>poisson, <span class="dt">offset=</span><span class="kw">log</span>(Holders), <span class="dt">data =</span> Insurance)
+<span class="kw">summary</span>(mod_<span class="dv">2</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = Claims ~ District, family = poisson, data = Insurance, </span>
+<span class="co">#&gt;     offset = log(Holders))</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -4.556  -0.486   0.847   1.703   4.112  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)  -2.0328     0.0269  -75.54  &lt; 2e-16 ***</span>
+<span class="co">#&gt; District2     0.0224     0.0430    0.52  0.60273    </span>
+<span class="co">#&gt; District3     0.0133     0.0503    0.26  0.79232    </span>
+<span class="co">#&gt; District4     0.2218     0.0616    3.60  0.00031 ***</span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for poisson family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 236.26  on 63  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 223.53  on 60  degrees of freedom</span>
+<span class="co">#&gt; AIC: 548.9</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 4</span></code></pre></div>
+<p>Nota:</p>
+<ol style="list-style-type: decimal">
+<li><p>El AIC disminuye de 555.58 a 548.85.</p></li>
+<li><p>Se puede ver que solamente District4 tiene un coeficiente significativo. Se puede interpretar como que aquellos que son del Distrito 4 tiene 22% más reclamos comparado con el Distrito control, el Distrito 1.</p></li>
+</ol>
+<p>Ahora agregamos el predictor de edad:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">formula =</span> Claims <span class="op">~</span><span class="st"> </span>District <span class="op">+</span><span class="st"> </span>Age, 
+             <span class="dt">family=</span>poisson, 
+             <span class="dt">offset=</span><span class="kw">log</span>(Holders), 
+             <span class="dt">data =</span> Insurance)
+<span class="kw">summary</span>(mod_<span class="dv">3</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = Claims ~ District + Age, family = poisson, data = Insurance, </span>
+<span class="co">#&gt;     offset = log(Holders))</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -3.024  -0.988  -0.126   1.227   3.403  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept)  -1.8760     0.0310  -60.57  &lt; 2e-16 ***</span>
+<span class="co">#&gt; District2     0.0345     0.0430    0.80     0.42    </span>
+<span class="co">#&gt; District3     0.0468     0.0505    0.93     0.35    </span>
+<span class="co">#&gt; District4     0.2470     0.0617    4.01  6.2e-05 ***</span>
+<span class="co">#&gt; Age.L        -0.3732     0.0493   -7.57  3.8e-14 ***</span>
+<span class="co">#&gt; Age.Q        -0.0270     0.0488   -0.55     0.58    </span>
+<span class="co">#&gt; Age.C        -0.0184     0.0485   -0.38     0.70    </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for poisson family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 236.26  on 63  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance: 140.09  on 57  degrees of freedom</span>
+<span class="co">#&gt; AIC: 471.4</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 4</span></code></pre></div>
+<p>Notamos que:</p>
+<ol style="list-style-type: decimal">
+<li><p>El AIC disminuye nuevamente de 548.85 a 471.41, una reducción mucho más significativa. Esto nos dice que la variable de edad mejora considerablemente el ajuste del modelo.</p></li>
+<li><p>El coeficiente de Distrito 4 aumentó de 22% a 24% cuando controlamos por el grupo de edad. Comparando con el grupo base (grupo control) Distrito 1, el número de reclamos es <span class="math inline">\(\exp(0.22)=1.24\)</span> veces más en el Distrito 4.</p></li>
+<li><p>El grupo de edad L (25-29) tiene un coeficiente significativo de -0.37 que podemos interpretar como que pertenecer a ese grupo de edad tiene 37% menos reclamos comparado con el grupo de edad control (&lt;25).</p></li>
+</ol>
+<p>Por último incluyendo todos los predictores el modelo ajustado es:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">formula =</span> Claims <span class="op">~</span><span class="st"> </span>District <span class="op">+</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>Group, 
+             <span class="dt">family=</span>poisson, 
+             <span class="dt">offset=</span><span class="kw">log</span>(Holders), 
+             <span class="dt">data =</span> Insurance)
+<span class="kw">summary</span>(mod_<span class="dv">4</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; glm(formula = Claims ~ District + Age + Group, family = poisson, </span>
+<span class="co">#&gt;     data = Insurance, offset = log(Holders))</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Deviance Residuals: </span>
+<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
+<span class="co">#&gt; -2.466  -0.508  -0.032   0.556   1.940  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;              Estimate Std. Error z value Pr(&gt;|z|)    </span>
+<span class="co">#&gt; (Intercept) -1.810508   0.032972  -54.91  &lt; 2e-16 ***</span>
+<span class="co">#&gt; District2    0.025868   0.043016    0.60  0.54760    </span>
+<span class="co">#&gt; District3    0.038524   0.050512    0.76  0.44566    </span>
+<span class="co">#&gt; District4    0.234205   0.061673    3.80  0.00015 ***</span>
+<span class="co">#&gt; Age.L       -0.394432   0.049404   -7.98  1.4e-15 ***</span>
+<span class="co">#&gt; Age.Q       -0.000355   0.048918   -0.01  0.99421    </span>
+<span class="co">#&gt; Age.C       -0.016737   0.048478   -0.35  0.72991    </span>
+<span class="co">#&gt; Group.L      0.429708   0.049459    8.69  &lt; 2e-16 ***</span>
+<span class="co">#&gt; Group.Q      0.004632   0.041988    0.11  0.91215    </span>
+<span class="co">#&gt; Group.C     -0.029294   0.033069   -0.89  0.37570    </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; (Dispersion parameter for poisson family taken to be 1)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     Null deviance: 236.26  on 63  degrees of freedom</span>
+<span class="co">#&gt; Residual deviance:  51.42  on 54  degrees of freedom</span>
+<span class="co">#&gt; AIC: 388.7</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Number of Fisher Scoring iterations: 4</span></code></pre></div>
+<p>Observamos que controlando por el grupo de auto los coeficientes de las otras variables no cambian mucho y que solamente es significativo el coeficiente del grupo L (1-1.5 litros). Interpretamos que los asegurados con coches de 1-1.5 litros tienen 42.9% más reclamos que los asegurados con autos de &lt;1 litro.</p>
+
+</div>
+</div>
+<h3>Referencias</h3>
 <div id="refs" class="references">
-<div>
-<p>Fisher, Ronald A. 1936. “The Use of Multiple Measurements in Taxonomic Problems.” <em>Annals of Human Genetics</em> 7 (2). Wiley Online Library: 179–88.</p>
-</div>
-<div>
-<p>Johnson, Richard Arnold, Dean W Wichern, and others. 2014. <em>Applied Multivariate Statistical Analysis</em>. Vol. 4. Prentice-Hall New Jersey.</p>
-</div>
-<div>
+<div id="ref-rj1978generalized">
 <p>RJ, LITTLE. 1978. “Generalized Linear Models for Cross-Classified Data from the Wfs.”</p>
-</div>
-<div>
-<p>Tufte, Edward, and P Graves-Morris. 2014. “The Visual Display of Quantitative Information.; 1983.”</p>
-</div>
-<div>
-<p>Wickham, Hadley, and Garrett Grolemund. 2016. “R for Data Science.” Sebastopol, CA: O’Reilly. ‘http://r4ds.had.co.nz‘.</p>
-</div>
 </div>
 </div>
             </section>
@@ -355,8 +1580,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="modelos-lineales-generalizados.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="regularizacion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
