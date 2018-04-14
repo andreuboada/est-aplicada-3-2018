@@ -75,9 +75,9 @@ involucrados en los predictores, o bien, la función liga o la distribución de 
 
 (a) $g(x) = \dfrac{e^x}{1-e^x}$.
 
-(b) $g(x)= \mbox{logit}(x)$.
+(b) $g(x)= \mbox{logit}^{-1}(x)$.
 
-(c) $g(x)=\dfrac{1}{1+e^{-x}}$.
+(c) $g(x)=\left(\dfrac{1}{1+e^{-x}}\right)^{-1}$.
 
 (d) $g(x)=x$.
 
@@ -92,23 +92,18 @@ involucrados en los predictores, o bien, la función liga o la distribución de 
 
 Otros modelos que vamos a ver después son:
 
-1. El _modelo Poisson_ se utiliza para datos de _conteos_; es decir, donde cada dato observado $y_i$ puede ser igual a $0, 1, 2,\dots$. La función liga que se utiliza habitualmente $g$ es logarítmica, de modo que $g(x) = \mbox{exp}(x)$ transforma un predictor lineal continuo Xiβ en un yi positivo. La distribución de datos es Poisson.
+1. El _modelo Poisson_ se utiliza para datos de _conteos_; es decir, donde cada dato observado $y_i$ puede ser igual a $0, 1, 2,\dots$. La función liga que se utiliza habitualmente $g$ es logarítmica, de modo que $g(x) = \mbox{exp}(x)$ transforma un predictor lineal continuo $X_i\beta$ en un $y_i$ positivo. La distribución de datos es Poisson. A veces es buena idea agregar un parámetro a este modelo para capturar la **sobredispersión**, es decir, la variación en los datos más allá de la que captura el modelo.
 
-  Por lo general, es una buena idea agregar un parámetro a este modelo para capturar la **sobredispersión**, es decir, la variación en los datos más allá de la que captura el modelo con la distribución Poisson.
-  
-  
-2. El modelo _logístico-binomial_ se utiliza en casos cuando los datos observados $y_i$ representa el número de éxitos en un número $n_i$ de ensayos o experimentos. En este modelo la función liga es $\mbox{logit}^{-1}$ y la distribución de los datos es binomial.
+2. El modelo _logístico-binomial_ se utiliza en casos cuando los datos observados $y_i$ representan el número de éxitos en $n_i$ ensayos independientes. En este modelo la función liga es $\mbox{logit}$ y la distribución de los datos es binomial. Al igual que con la regresión Poisson, el modelo binomial típicamente se puede mejorar agregando un parámetro de sobredispersión.
 
-  Al igual que con la regresión Poisson, el modelo binomial típicamente se puede mejorar agregando un parámetro de sobredispersión.
-
-3. El modelo _probit_ es el mismo que la regresión logística pero se reemplaza la función logit por la _distribución normal acumulada_, o equivalentemente con la distribución normal en lugar de la logística en los errores estimados del modelo.
+3. El modelo _probit_ es igual que regresión logística pero se reemplaza la función liga por la _distribución normal acumulada_. Se puede pensar como usar la distribución normal en los errores estimados del modelo.
 
 
 <p class="espacio">
 </p>
 
 ```{block2, type = "information"}
-**Nota:** Para mayor información de este tipo de dataframes consulta la documentación de la libreria .Podemos usar `glm()` directamente para ajustar regresiones logísticas-binomiales, probit y Poisson, entre otras, y para corregir la sobredispersión cuando sea necesario.
+**Nota:** Podemos usar `glm()` directamente para ajustar regresiones logísticas-binomiales, probit y Poisson, entre otras, y para corregir la sobredispersión cuando sea necesario.
 ```
 
 <br>
@@ -134,19 +129,20 @@ $$
 ## Interpretación de coeficientes Poisson
 
 Los coeficientes $\beta$ pueden exponenciarse y tratarse como efectos multiplicativos. Por ejemplo, supongamos que el modelo de accidentes de tráfico es
+
 $$
 y_i ∼ \mbox{Poisson}(\exp(2.8 + 0.012X_{i1} − 0.20X_{i2})),
 $$
-donde $X_{i1}$ es la velocidad promedio (en millas por hora, o mph) en las calles cercanas y $X_{i2} = 1$ si la esquina (o intersección) tiene una señal de tráfico y $0$ en caso contrario. 
+donde $X_{i1}$ es la velocidad promedio (en millas por hora) en las calles cercanas y $X_{i2} = 1$ si la esquina (o intersección) tiene una señal de tráfico y $0$ en caso contrario. 
 
 <p class="espacio">
 </p>
 
 Entonces podemos interpretar cada coeficiente de la siguiente manera:
 
-+ El término constante es el intercepto, es decir, la predicción de si $X_{i1} = 0$ y $X_{i2} = 0$. Como esto no es posible (ninguna calle tendrá una velocidad promedio de 0), no intentaremos interpretar el término constante.
++ El término constante es el intercepto, es decir, la predicción de si $X_{i1} = 0$ y $X_{i2} = 0$. Como esto no es posible (ninguna calle tendrá una velocidad promedio de 0), entonces no intentaremos interpretar el término constante.
 
-+ El coeficiente de $X_{i1}$ es la diferencia esperada en $y$ (en la escala logarítmica) para cada mph adicional de velocidad de tráfico. Por lo tanto, el aumento multiplicativo esperado es $e^{0.012} = 1.012$, o una diferencia positiva de 1.2% en la tasa de accidentes de tráfico por mph. Dado que la velocidad del tráfico varía en decenas de mph, en realidad tendría sentido definir $X_{i1}$ como velocidad en decenas de mph, en cuyo caso su coeficiente sería 0.12, que corresponde a un aumento del 12% (más precisamente, $e^{0.12} = 1.127$: a 12.7% de aumento) en la tasa de accidentes por diez mph.
++ El coeficiente de $X_{i1}$ es la diferencia esperada en $y$ (en la escala logarítmica) para cada milla por hora adicional de velocidad de tráfico. Por lo tanto, el aumento multiplicativo esperado es $e^{0.012} = 1.012$, o una diferencia positiva de 1.2% en la tasa de accidentes de tráfico por milla por hora. Dado que la velocidad del tráfico varía en decenas de milla por hora, en realidad tendría sentido definir $X_{i1}$ como velocidad en decenas de milla por hora, en cuyo caso su coeficiente sería 0.12, que corresponde a un aumento del 12% (más precisamente, $e^{0.12} = 1.127$: a 12.7% de aumento) en la tasa de accidentes por diez milla por hora.
 
 + El coeficiente de $X_{i2}$ nos dice que la diferencia predictiva de tener una señal de tráfico se puede encontrar multiplicando la tasa de accidentes por $\exp(-0.20) = 0.82$ produciendo una reducción del 18%.
 
@@ -156,9 +152,9 @@ Al igual que con los modelos de regresión en general, cada coeficiente se inter
 
 El modelo de Poisson es similar al modelo binomial para conteos pero se aplica en situaciones ligeramente diferentes:
 
-* Si cada punto de datos $y_i$ se puede interpretar como el número de "éxitos" de $n_i$ experimentos aleatorios, entonces es común usar el modelo Binomial-logístico.
+* Si cada observación $y_i$ se puede interpretar como el número de "éxitos" de $n_i$ experimentos aleatorios, entonces es común usar el modelo Binomial-logístico.
 
-* Si cada punto de datos $y_i$ no tiene un límite superior natural (no se basa en un número determinado de ensayos independientes) entonces es común usar el modelo de regresión de Poisson-logarítmico.
+* Si cada observación $y_i$ no tiene un límite superior natural (no se basa en un número determinado de ensayos independientes) entonces es común usar el modelo Poisson-logarítmico.
 
 ---
 
@@ -166,7 +162,7 @@ El modelo de Poisson es similar al modelo binomial para conteos pero se aplica e
 
 ## Ejemplo: fertilidad en Fiji
 
-La siguiente tabla daptada de Little (1978) [@rj1978generalized]:, proviene de la Encuesta de Fertilidad de Fiji, publicada en los informes de World Fertility Survey. La tabla muestra datos sobre el número de hijos nacidos de mujeres casadas de raza de indios nativos clasificados por duración desde su primer matrimonio (agrupados en seis categorías), tipo de lugar de residencia (Suva, otro urbano y rural) y nivel educativo (cuatro categorías: ninguno, primaria inferior, primaria superior y secundaria o superior). Cada casilla de la tabla muestra la media, la varianza y el número de observaciones.
+La siguiente tabla adaptada de Little (1978) [@rj1978generalized]:, proviene de la Encuesta de Fertilidad de Fiji, publicada en los informes de World Fertility Survey. La tabla muestra datos sobre el número de hijos nacidos de mujeres casadas de raza de indios nativos clasificados por duración desde su primer matrimonio (agrupados en seis categorías), tipo de lugar de residencia (Suva, otro urbano y rural) y nivel educativo (cuatro categorías: ninguno, primaria inferior, primaria superior y secundaria o superior). Cada casilla de la tabla muestra la media, la varianza y el número de observaciones.
 
 <p class="espacio3">
 </p>
@@ -215,25 +211,53 @@ Ajustamos el modelo únicamente con el intercepto:
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 ceb <- read_csv("datos/ceb.csv")
+ceb$educ <- ordered(ceb$educ, levels=c("none","lower","sec+","upper"))
+ceb$dur <- ordered(ceb$dur, 
+                   levels=c("0-4","9-May","14-Oct","15-19","20-24","25-29"), 
+                   labels=c("0-4", "5-9", "10-14","15-19","20-24","25-29"))
+ceb$res <- ordered(ceb$res, levels=c("rural", "urban", "Suva"))
 mod_1 <- glm(formula = n ~ 1, family=poisson, data = ceb)
 summary(mod_1)
 ```
 
+```{r}
+mod_11 <- glm(formula = n ~ res + educ + dur, family=poisson, data = ceb)
+summary(mod_11)
+```
+
+
 Ahora agregamos primero la variable de lugar de residencia:
 
 ```{r}
-mod_2 <- glm(formula = n ~ res, family=poisson, data = ceb)
+ceb$res <- C(ceb$res, treatment) # modelo con grupo control
+mod_2 <- glm(formula = n ~ res, family=poisson, data = ceb, contrasts = NULL)
 summary(mod_2)
 ```
 
 Vemos que la devianza disminuye significativamente. Ahora agregamos los otros predictores y evaluamos el modelo nuevamente:
 
 ```{r}
+ceb$dur <- forcats::fct_rev(ceb$dur)
+ceb$dur <- C(ceb$dur,treatment)
+ceb$educ <- C(ceb$educ,treatment)
 mod_3 <- glm(formula = n ~ res + dur + educ, family=poisson, data = ceb)
 summary(mod_3)
 ```
 
-La devianza disminuyó significativamente. 
+La devianza disminuyó significativamente.
+
+Vemos cómo se comportan las predicciones:
+
+```{r, out.width='100%'}
+preds <- predict(mod_3, ceb)
+ceb$pred <- preds
+ceb_larga <- ceb %>% gather(clase, valor, n, pred)
+ggplot(ceb_larga, aes(x = dur, y = valor/sum(ceb$n), colour = clase)) + 
+  geom_point() + 
+  facet_grid(educ ~ res) +
+  theme(axis.text.x = element_text(angle = 25))
+```
+
 
 ## Variable de expuestos (offset)
 
@@ -248,11 +272,11 @@ Observaciones:
 
 * Los coeficientes de regresión $\beta$ resumen las asociaciones entre los predictores y $θ_i$ (en nuestro ejemplo, la tasa de accidentes de tráfico por vehículo).
 
-* Poner el logaritmo de expuestos en el modelo como un desplazamiento, como en el modelo, es equivalente a incluirlo como un predictor de regresión, pero con coeficiente fijado en $1$. Otra opción es incluirlo como un predictor y permitir que su coeficiente sea estimado a partir de los datos, pero a veces es más simple mantenerlo como un desplazamiento para que la tasa estimada $\theta$ tenga una interpretación más directa.
+* Poner el logaritmo de expuestos en el modelo es equivalente a incluirlo como un predictor de regresión, pero con coeficiente fijado en $1$. Otra opción es incluirlo como un predictor y permitir que su coeficiente sea estimado a partir de los datos, pero a veces es más simple mantenerlo como un desplazamiento para que la tasa estimada $\theta$ tenga una interpretación más directa.
 
 ## Ejemplos: seguros
 
-Los datos `Insurance` en el paquete `MASS` consisten de los números de asegurados de una compañía de seguros de autos que estuvieron expuestos a riesgo, y el número de reclamos realizados por los asegurados en el tercer trimestre de 1973.
+Los datos `Insurance` en el paquete `MASS` consisten del número de asegurados de una compañía de seguros de autos que estuvieron expuestos a riesgo por accidente y el número de reclamos realizados por los asegurados en el tercer trimestre de 1973.
 
 ```{r message=FALSE, warning=FALSE}
 library(MASS)
@@ -309,6 +333,7 @@ Nota:
 Ahora agregamos el predictor de edad:
 
 ```{r}
+Insurance$Age <- C(Insurance$Age,treatment)
 mod_3 <- glm(formula = Claims ~ District + Age, 
              family=poisson, 
              offset=log(Holders), 
@@ -328,6 +353,7 @@ Notamos que:
 Por último incluyendo todos los predictores el modelo ajustado es:
 
 ```{r}
+Insurance$Group <- C(Insurance$Group, treatment)
 mod_4 <- glm(formula = Claims ~ District + Age + Group, 
              family=poisson, 
              offset=log(Holders), 
@@ -335,4 +361,340 @@ mod_4 <- glm(formula = Claims ~ District + Age + Group,
 summary(mod_4)
 ```
 
-Observamos que controlando por el grupo de auto los coeficientes de las otras variables no cambian mucho y que solamente es significativo el coeficiente del grupo L (1-1.5 litros). Interpretamos que los asegurados con coches de 1-1.5 litros tienen 42.9% más reclamos que los asegurados con autos de <1 litro.
+Observamos que controlando por el grupo de auto los coeficientes de las otras variables no cambian mucho. 
+
+### Número de expuestos (interpretación) {-}
+
+Interpretamos que los asegurados con coches de 1-1.5 litros tienen 16.1% más reclamos que los asegurados con autos de <1 litro. Además, veamos que en este ejemplo el número de reclamos se compara con el número de asegurados, de modo que como el coeficiente para el indicador de edad entre 25 y 29 es menor que 1, entonces las personas de este grupo de edad tienen un número desproporcionadamente menor en sus tasas de reclamos, en comparación con las personas del grupo de edad menor a 25 años.
+
+## Ejemplo: árboles
+
+Veamos un ejemplo con datos de árboles. 
+
+```{r message=FALSE, warning=FALSE}
+dat <- read_csv("datos/treedata.csv")
+dat %>% head %>% knitr::kable()
+```
+
+La variable `cover` de cobertura es un número entero entre mayor o igual a 1 y representa la presencia de árboles de determinada especie en una parcela.
+
+Las variables en los datos son:
+
+* __plotID__: unique code for each spatial unit (note some sampled more than once) 
+
+* __date__: when species occurrence recorded plotsize: size of quadrat in m2 
+
+* __spcode__: unique 7-letter code for each species species: species name 
+
+* __cover__: local abundance measured as estimated horizontal cover (ie, relative area of shadow if sun is directly above) classes 1-10 are: 1=trace, 2=0-1%, 3=1-2%, 4=2-5%, 5=5-10%, 6=10-25%, 7=25-50%, 8=50-75%, 9=75-95%, 10=95-100% 
+
+* __utme__: plot UTM Easting, zone 17 (NAD27 Datum) utmn: plot UTM Northing, zone 17 (NAD27 Datum) elev: elevation in meters from a digital elevation model (10 m res) 
+
+* __tci__: topographic convergence index, or site "water potential"; measured as the upslope contributing area divided by the tangent of the slope angle (Beven and Kirkby 1979) streamdist: distance of plot from the nearest permanent stream (meters) 
+
+* __disturb__: plot disturbance history (from a Park report); CORPLOG=corporate logging; SETTLE=concentrated settlement, VIRGIN="high in virgin attributes", LT-SEL=light or selective logging 
+
+* __beers__: transformed slope aspect ('heat load index'); 0 is SW (hottest), 2 is NE (coolest)
+
+Cumple dos criterios comunes:
+
+1. la variable respuesta es discreta y entera
+
+2. tiene una variación que generalmente aumenta con la media (se puede considerar esto desde los primeros principios: si una especie tiene una abundancia media alrededor de 1, la varianza tiene que ser baja porque no se puede obtener más baja que esto dados nuestros datos, una media de 5, sin embargo, podría tener una gran varianza).
+
+Tomemos como ejemplo primero el _abeto oriental_:
+
+```{r message=FALSE, warning=FALSE}
+dat_2 <- dat %>% filter(species == "Tsuga canadensis")
+```
+
+Veamos media y varianza:
+
+```{r}
+mean(dat_2$cover)
+```
+
+
+```{r}
+var(dat_2$cover)
+```
+
+Veamos la distribución:
+
+```{r}
+ggplot(dat_2, aes(x=cover)) +
+  geom_bar(stat='count')
+```
+
+Si los datos tuvieran una distribución Poisson:
+
+```{r}
+dat_sim <- data.frame(cover.sim= rpois(700,4.66))
+ggplot(dat_sim, aes(x=cover.sim)) + geom_bar(stat='count')
+```
+
+Ajustamos primero el modelo únicamente con el intercepto:
+
+```{r}
+mod_1 <- glm(cover~1,data=dat_2,family=poisson)
+summary(mod_1)
+```
+
+La salida es similar a la salida de `lm`. Una diferencia importante es cómo se ajustan los coeficientes: esperábamos una media de 4.66, pero en lugar de eso obtuvimos 1.54. 
+
+```{block2, type = "information"}
+**Nota:** Aquí y en todos los demás casos donde la función liga no es la identidad, los coeficientes ajustados están en la escala de la función liga, no en la escala de los datos originales. Para recuperar el coeficiente apropiadamente escalado aplicamos la inversa de la función liga.
+```
+
+Aplicamos la función exponencial:
+
+```{r}
+exp(coefficients(mod_1))
+```
+
+Agregamos un predictor continuo `elev` de elevación:
+
+```{r}
+ggplot(dat_2, aes(x=elev,y=cover)) +
+  geom_jitter(width = 0, height = 0.3, size=0.8, alpha = 0.8) +
+  geom_smooth()
+```
+
+```{r}
+mod_2 <- glm(cover~tci+elev+beers+streamdist,data=dat_2,family=poisson)
+summary(mod_2)
+```
+
+Nota:
+
+* la prueba de $\chi^2$ generalmente se "recomienda" para los modelos con "varianza conocida" (Poisson y Binomial). 
+
+* el modelo con elevación no le añade al modelo ningún poder explicativo
+
+Usamos ahora la variable `disturb` de _disturbance_ (o perturbación), que es un cambio temporal en las condiciones ambientales que puede causar un cambio pronunciado en un ecosistema. 
+
+Ajustamos el modelo:
+
+```{r}
+mod_3 <- glm(cover~tci+elev+beers+disturb+streamdist,data=dat_2,family=poisson)
+summary(mod_3)
+```
+
+Parece haber relación con que el bosque sea "virgen", pero el modelo realmente no es muy bueno (el AIC es similar). 
+
+```{r}
+AIC(mod_1, mod_2, mod_3)
+```
+
+La función `step` nos dice qué variables disminuyen mayor el AIC.
+
+```{r}
+step(mod_3)
+```
+
+Tomemos en cuenta el modelo con una interacción entre `streamdist` y `disturb`:
+
+```{r}
+mod_4 = glm(cover~disturb*streamdist,data=dat_2,family=poisson)
+summary(mod_4)
+```
+
+<br>
+
+![](figuras/manicule.jpg)  ¿Cómo interpretarías los coeficientes del término de interacción? Veamos la distribución de `streamdist`.
+
+```{r message=FALSE, warning=FALSE, out.width="50%"}
+ggplot(data = dat_2, aes(x = streamdist)) +
+    geom_histogram(binwidth = 20)
+```
+
+<p class="espacio">
+</p>
+<br>
+
+<p class="espacio3">
+</p>
+
+![](figuras/manicule2.jpg) 
+<div class="centered">
+<p class="espacio">
+</p>
+
+El modelo de regresión anterior
+
+(a) presenta sobredispersión.
+
+(b) $g(x)=\alpha + \beta x$.
+
+(c) $g(x)=\dfrac{1}{\sqrt{2\pi\sigma^2}}\,e^{-\frac{1}{2\sigma^2}(x-\mu)^2}$.
+
+(d) $g(x)=x$.
+
+<p class="espacio3">
+</p>
+</div>
+<br>
+
+---
+
+## Sobredispersión
+
+Sobredispersión: Una peculiaridad de la distribución de Poisson es que su media es igual a su varianza. Sin embargo, en ciertos conjuntos de datos se observa una varianza superior a la esperada. El fenómeno se conoce como sobredispersión e indica que el modelo no es adecuado. Un motivo frecuente es la omisión de alguna variable relevante. En algunos casos se aconseja recurrir a la distribución binomial negativa.
+
+En el modelo
+
+$$
+E(y_i)=u_i \theta_i,\qquad \sqrt{V(y_i)} = \sqrt{u_i \theta_i}
+$$
+
+Definimos los residuales estandarizados como
+
+$$
+\begin{eqnarray*}
+z_i &=& \dfrac{y_i -\hat{y}_i}{\sqrt{V(\hat{y}_i)} } \\
+&=& \dfrac{y_i - u_i\hat{\theta}_i}{\sqrt{u_i \hat{\theta}_i}}
+\end{eqnarray*}
+$$
+
+donde
+
+$$
+\hat{\theta}_i = e^{X_i\hat{\beta}}
+$$
+
+Si el modelo de Poisson es verdadero, entonces las $z_i$'s deben ser aproximadamente independientes (no exactamente independiente, ya que se utiliza la misma estimación $\beta$ para calcularlos todos), cada uno con media 0 y desviación estándar 1. Sin embargo, si hay sobredispersión, esperaríamos que las $z_i$'s fueran más grandes, en valor absoluto, reflejando la variación adicional más allá de lo que predice el modelo.
+
+Podemos probar la sobredispersión en una regresión Poisson calculando la suma de cuadrados de los $n$ residuos estandarizados
+
+$$
+\sum_{i=1}^n{z_i^2}
+$$
+
+y comparando esta cantidad con la distribución $\chi^2_{n-k}$, que es lo que esperaríamos bajo el modelo (usando $n-k$ en lugar de $n$ grados de libertad para explicar la estimación de $k$ coeficientes en la regresión).
+
+La distribución de una $\chi^2_{n-k}$ tiene media $n-k$, por lo que se define la sobredispersión como
+
+$$
+\mbox{sobredispersión estimada} = \dfrac{1}{n-k}\sum_{i=1}^n{z_i^2}.
+$$
+
+## Ejemplo: número de publicaciones
+
+Usamos datos de Long (1990) sobre la cantidad de publicaciones producidas por Ph.D. bioquímicos para ilustrar la aplicación de Poisson con sobredispersión [@long2001predicted].
+
+Las variables en el conjunto de datos son:
+
+* __art__: articles in last three years of Ph.D.
+* __fem__: coded one for females
+* __mar__: coded one if married
+* __kid5__: number of children under age six
+* __phd__: prestige of Ph.D. program
+* __ment__: articles by mentor in last three years
+
+```{r}
+library(foreign)
+ab <- read.dta("http://www.stata-press.com/data/lf2/couart2.dta")
+ab %>% head %>% knitr::kable()
+```
+
+
+```{r}
+r <- c(mean(ab$art), var(ab$art))
+c(mean=r[1], var=r[2], r[2]/r[1])
+```
+
+La cantidad media de artículos es 1.69 y la varianza es 3.71, un poco más que el doble de la media. Los datos están muy dispersos, pero por supuesto no hemos considerado ninguna covariable todavía.
+
+Vamos a ajustar el modelo utilizado por Long y Freese (2001), un modelo aditivo simple que utiliza los cinco predictores.
+
+```{r}
+mp <- glm(art~fem+mar+kid5+phd+ment, family=poisson, data=ab)
+summary(mp)
+```
+
+Vemos que el modelo obviamente no se ajusta a los datos.
+
+Calculamos la sobredispersión estimada:
+
+```{r}
+yhat <- predict(mp, type="response")
+z <- (ab$art-yhat)/sqrt(yhat)
+k <- length(mp$coefficients)
+n <- nrow(ab)
+cat("la sobredispersión estimada es ", sum(z^2)/(n-k), "\n")
+cat("valor p de la prueba de sobredispersión", pchisq(sum(z^2), n-k), "\n")
+```
+
+El valor p es 1, lo que indica que la probabilidad  de que una variable aleatoria con distribución $\chi^2_{909}$ tome un valor tan grande como 1662.547 es esencialmente cero.
+
+También podemos hacer una gráfica de residuales estandarizados vs ajustados:
+
+```{r}
+ab$ajustados <- predict(mp, type="response")
+ab$residuales <- (ab$art-ab$ajustados)
+ab$residuales_est <- (ab$art-ab$ajustados)/sqrt(ab$ajustados)
+ggplot(ab, aes(x=ajustados, y=residuales_est)) +
+  geom_jitter(width = .5, height = .5, alpha = 0.3) +
+  geom_abline(slope = 0, intercept = 0, color ='red') +
+  geom_abline(slope = 0, intercept = 2, color ='navyblue') +
+  geom_abline(slope = 0, intercept = -2, color ='navyblue')
+```
+
+La gráfica de residuales vs ajustados:
+
+```{r}
+ggplot(ab, aes(x=ajustados, y=residuales)) +
+  geom_jitter(width = 1, height = 1) +
+  geom_abline(slope = 0, intercept = 0, color ='red')
+```
+
+
+Para ajustar la inferencia por sobredispersión en `glm` utilizamos la familia `quasipoisson`:
+
+```{r}
+mq <- glm(art~fem+mar+kid5+phd+ment, family=quasipoisson, data=ab)
+summary(mq)
+```
+
+Escribimos este modelo como
+
+$$
+y_i \sim \mbox{Poisson sobredispersado }(u_i \exp(X_i\beta), \omega),
+$$
+donde $\omega$ es el parámetro de sobredispersión. Estrictamente hablando, "Poisson sobredispersado" no es un modelo único, sino que describe cualquier modelo de recuento de datos para el cual la varianza de los datos es $\omega$ veces la media, reduciéndose al Poisson si $\omega = 1$.
+
+
+Un modelo específico común mente utilizado en este escenario es la distribución llamada binomial negativa:
+$$
+y_i \sim \mbox{Negativo-binomial} (\mbox{media} = u_i \exp (X_i\beta), \mbox{sobredispersión} = \omega).
+$$
+
+Ahora ajustamos un modelo binomial negativo con los mismos predictores. Para hacer esto, necesitamos la función `glm.nb()` del paquete `MASS`.
+
+```{r}
+library(MASS)
+mnb <- glm.nb(art ~ fem + kid5 + ment, data = ab)
+summary(mnb)
+```
+
+
+Podemos ver el parámetro $1/\omega$, que interpretamos como la varianza estimada:
+
+```{r}
+mnb$theta
+```
+
+Se puede ajustar el modelo usando `glm` indicando que se trata de una familia binomial negativa usando el mismo parámetro de sobredispersión utilizando únicamente los 3 predictores más explicativos:
+
+```{r}
+mnbg <- glm(art ~ fem + kid5 + ment,
+            family=negative.binomial(mnb$theta), data = ab)
+summary(mnbg)
+```
+
+El ajuste del modelo es similar. Sin embargo, la varianza es varias veces la media en
+este modelo, y dado que los errores estándar se basan en el supuesto 
+de que la varianza es igual a la media, esto crea un problema esn las estimaciones. 
+La varianza real es varias veces más de lo que debería
+ser, y los errores estándar estimados con el modelo Poisson estaban claramente
+subestimados. 
