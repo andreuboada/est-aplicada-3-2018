@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Aplicada III</title>
   <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
-  <meta name="generator" content="bookdown 0.7.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.8 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Aplicada III" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-04-15">
+<meta name="date" content="2018-04-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -312,6 +312,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.9" data-path="modelos-lineales-generalizados.html"><a href="modelos-lineales-generalizados.html#ejemplo-arboles"><i class="fa fa-check"></i><b>10.9</b> Ejemplo: árboles</a></li>
 <li class="chapter" data-level="10.10" data-path="modelos-lineales-generalizados.html"><a href="modelos-lineales-generalizados.html#sobredispersion"><i class="fa fa-check"></i><b>10.10</b> Sobredispersión</a></li>
 <li class="chapter" data-level="10.11" data-path="modelos-lineales-generalizados.html"><a href="modelos-lineales-generalizados.html#ejemplo-numero-de-publicaciones"><i class="fa fa-check"></i><b>10.11</b> Ejemplo: número de publicaciones</a></li>
+<li class="chapter" data-level="10.12" data-path="modelos-lineales-generalizados.html"><a href="modelos-lineales-generalizados.html#tarea-8"><i class="fa fa-check"></i><b>10.12</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html"><i class="fa fa-check"></i><b>11</b> Análisis de Discriminante Lineal (LDA)</a><ul>
+<li class="chapter" data-level="11.1" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#problemas-de-clasificacion"><i class="fa fa-check"></i><b>11.1</b> Problemas de clasificación</a></li>
+<li class="chapter" data-level="11.2" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#funciones-de-discriminante"><i class="fa fa-check"></i><b>11.2</b> Funciones de discriminante</a></li>
+<li class="chapter" data-level="11.3" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#regresion-lineal-en-una-matriz-indicadora"><i class="fa fa-check"></i><b>11.3</b> Regresión lineal en una matriz indicadora</a></li>
+<li class="chapter" data-level="11.4" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#discriminante-lineal-de-fisher"><i class="fa fa-check"></i><b>11.4</b> Discriminante lineal de Fisher</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#ejemplo-separacion-entre-clases"><i class="fa fa-check"></i><b>11.4.1</b> Ejemplo: separación entre clases</a></li>
+<li class="chapter" data-level="11.4.2" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#ejemplo-iris-de-fisher"><i class="fa fa-check"></i><b>11.4.2</b> Ejemplo: iris de Fisher</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#tarea-9"><i class="fa fa-check"></i><b>11.5</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -2024,7 +2035,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB <span class="op">+</span><span class="st"> </span>teamID, Batting))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   2.826   0.096   2.922</span></code></pre></div>
+<span class="co">#&gt;     3.1     0.1     3.2</span></code></pre></div>
 <ul>
 <li><p><strong>user time</strong>: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.</p></li>
 <li><p><strong>elapsed time</strong>: tiempo en el reloj, tiempo que experimenta la persona.</p></li>
@@ -2032,7 +2043,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <p>El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">readLines</span>(<span class="st">&quot;http://www.jhsph.edu&quot;</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.020   0.001   1.325</span></code></pre></div>
+<span class="co">#&gt;   0.026   0.000   2.567</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(parallel)
 <span class="kw">system.time</span>(<span class="kw">mclapply</span>(<span class="dv">2000</span><span class="op">:</span><span class="dv">2006</span>, 
   <span class="cf">function</span>(x){
@@ -2040,7 +2051,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
     <span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB, sub)
 }, <span class="dt">mc.cores =</span> <span class="dv">5</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.070   0.045   0.085</span></code></pre></div>
+<span class="co">#&gt;   0.034   0.047   0.095</span></code></pre></div>
 <p>Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr</span>
 dplyr_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
@@ -2080,16 +2091,16 @@ est_r_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
 
 dplyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.122   0.000   0.122</span></code></pre></div>
+<span class="co">#&gt;   0.138   0.000   0.138</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   7.324   0.004   7.328</span></code></pre></div>
+<span class="co">#&gt;    8.04    0.00    8.04</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_l_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   64.88    1.55   66.44</span></code></pre></div>
+<span class="co">#&gt;   70.18    1.74   71.93</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_r_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.538   0.020   0.558</span></code></pre></div>
+<span class="co">#&gt;   0.601   0.016   0.617</span></code></pre></div>
 <p>La función <code>system.time</code> supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es <code>Rprof()</code>.</p>
 <p>Rprof es un perfilador de muestreo que registra cambios en la pila de funciones, funciona tomando muestras a intervalos regulares y tabula cuánto tiempo se lleva en cada función.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>, <span class="dt">interval =</span> <span class="fl">0.015</span>, <span class="dt">line.profiling =</span> <span class="ot">TRUE</span>)
@@ -2226,7 +2237,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.233   0.004   0.238</span></code></pre></div>
+<span class="co">#&gt;   0.282   0.000   0.283</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aciertos &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">FALSE</span>, <span class="fl">1e+06</span>) 
 <span class="kw">system.time</span>(
   <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="fl">1e+05</span>) {
@@ -2234,7 +2245,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;    0.22    0.00    0.22</span></code></pre></div>
+<span class="co">#&gt;   0.250   0.000   0.251</span></code></pre></div>
 <p>Usando <code>rbind</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind &lt;-<span class="st"> </span><span class="cf">function</span>(){
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">character</span>(<span class="dv">0</span>), <span class="dt">b =</span> <span class="kw">numeric</span>(<span class="dv">0</span>)) 
@@ -2245,7 +2256,7 @@ mi.df
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.739   0.000   0.739</span></code></pre></div>
+<span class="co">#&gt;   0.793   0.000   0.792</span></code></pre></div>
 <p>Si definimos el tamaño del data.frame obtenemos mejoras:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="cf">function</span>() {
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>), <span class="dt">b =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)) 
@@ -2257,7 +2268,7 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind_2</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.076   0.000   0.076</span></code></pre></div>
+<span class="co">#&gt;   0.081   0.000   0.081</span></code></pre></div>
 <p>Finalmente, veamos un enfoque totalmente vectorizado</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">porcolumna_df &lt;-<span class="st"> </span><span class="cf">function</span>(){
   a &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>) 
@@ -2267,7 +2278,7 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">porcolumna_df</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.001   0.000   0.001</span></code></pre></div>
+<span class="co">#&gt;   0.002   0.000   0.001</span></code></pre></div>
 <p>A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectorización, este incremento conlleva un costo en memoria. Si comparamos la versión mas lenta con la más rápida, en la última debemos asignar a, b y mi.df. Entonces, no siempre es mejor vectorizar, pues si consumimos la memoria, entonces la versión vectorizada puede enfrentarse al problema de uso de memoria en disco, que tiene aun más grandes penalizaciones en el desempeño que los ciclos que hemos visto.</p>
 <p><strong>4 Paralelizar</strong></p>
 <p>Paralelizar usa varios cores para trabajar de manera simultánea en varias secciones de un problema, no reduce el tiempo computacional pero incrementa el tiempo del usuario pues aprovecha los recursos. Como referencia está <a href="https://www.amazon.com/Parallel-Computing-Data-Science-Examples/dp/1466587016">Parallel Computing for Data Science</a> de Norm Matloff.</p>

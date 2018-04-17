@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="intro.html">
+<link rel="prev" href="modelos-lineales-generalizados.html">
+<link rel="next" href="referencias.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -345,64 +345,385 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Estadística Aplicada III</h1>
-<p class="author"><em>Andreu Boada de Atela</em></p>
-<p class="date"><em>2018-04-17</em></p>
+<div id="analisis-de-discriminante-lineal-lda" class="section level1">
+<h1><span class="header-section-number">Clase 11</span> Análisis de Discriminante Lineal (LDA)</h1>
+<style>
+  .espacio {
+    margin-bottom: 1cm;
+  }
+</style>
+<style>
+  .espacio3 {
+    margin-bottom: 3cm;
+  }
+</style>
+<p class="espacio">
+</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<div id="problemas-de-clasificacion" class="section level2">
+<h2><span class="header-section-number">11.1</span> Problemas de clasificación</h2>
+<p>En los problemas de clasificación deseamos predecir categorías de clase discretas, o más generalmente las probabilidades, que se encuentran entre 0 y 1.</p>
+<p>Para lograr predecir probabilidades, consideramos una generalización del modelo linea en el cual transformamos la función lineal de <span class="math inline">\(\beta\)</span> usando una función no lineal <span class="math inline">\(g^{-1}\)</span> tal que <span class="math display">\[
+y_i = g^{-1}(x_i^T\beta).
+\]</span></p>
+<p>A <span class="math inline">\(g\)</span> la conocemos como función liga.</p>
+<p>Para clasificar utilizamos las <em>superficies de decisión</em> que corresponden a <span class="math display">\[
+y_i(\beta) = \mbox{constante},
+\]</span> de modo que <span class="math display">\[
+x_i^T\beta = \mbox{constante}
+\]</span> y, por lo tanto, las superficies de decisión son funciones lineales de <span class="math inline">\(x\)</span>, incluso si la función <span class="math inline">\(g\)</span> no es lineal. Por esta razón, los modelos descritos se llaman modelos lineales generalizados.</p>
 </div>
-<div id="temario-y-referencias" class="section level1 unnumbered">
-<h1>Temario y referencias</h1>
-<p><strong>Todas las notas y material del curso estarán en este</strong> <a href="https://github.com/andreuboada/est-aplicada-3-2018">repositorio</a>.</p>
-<ul>
-<li>Análisis exploratorio de datos</li>
-<li>Temas selectos de R</li>
-<li>Análisis de datos categóricos</li>
-<li>Regresión logística</li>
-<li>Regularización y selección de modelos</li>
-<li>Introducción a modelos lineales generalizados</li>
-<li>Análisis de discriminante lineal</li>
-<li>Componentes principales y análisis de factores</li>
-<li>Análisis de la correlación canónica</li>
-<li>Introducción a análisis de conglomerados</li>
-<li>Introducción a estadística espacial</li>
-</ul>
-<div id="evaluacion" class="section level3 unnumbered">
-<h3>Evaluación</h3>
-<ul>
-<li>Tareas semanales (20%)</li>
-<li>Examen parcial (30% práctico, 20% teórico)</li>
-<li>Un examen final (30% práctico)</li>
-</ul>
+<div id="funciones-de-discriminante" class="section level2">
+<h2><span class="header-section-number">11.2</span> Funciones de discriminante</h2>
+<p>Definimos un discriminante (clasificador) lineal así:</p>
+<p><span class="math display">\[
+y_i = x_i^T\beta
+\]</span> lo denotaremos por <span class="math display">\[
+y(x) = w^T x+ w_0
+\]</span> porque vemos <span class="math inline">\(w_0\)</span> como el umbral de tal forma que un vector de entrada <span class="math inline">\(x\)</span> se asigna a la clase 1 cuando <span class="math inline">\(y(x)&gt;0\)</span> y a la clase 2 en otro caso.</p>
+<p class="espacio">
+</p>
+
+<div class="information">
+La <em>superficie de decisión</em> está definida, por lo tanto, por la ecuación <span class="math inline">\(y(x) = 0\)</span>, que corresponde a un hiperplano de <span class="math inline">\(D-1\)</span> dimensiones dentro del conjunto de entrada de <span class="math inline">\(D\)</span> dimensiones.
 </div>
-<div id="software-r-y-rstudio" class="section level3 unnumbered">
-<h3>Software: R y Rstudio</h3>
-<ul>
-<li><a href="https://cran.r-project.org">R</a> Sitio de R (CRAN)</li>
-<li><a href="https://www.rstudio.com/products/RStudio/">Rstudio</a> Interfaz gráfica para trabajar en R.</li>
-<li><a href="https://www.rstudio.com/online-learning/#R">Recursos para aprender R</a></li>
-</ul>
+
+<p><br></p>
+<p>Consideremos dos puntos <span class="math inline">\(x_A\)</span> y <span class="math inline">\(x_B\)</span> en la superficie de decisión.</p>
+<p>Como <span class="math display">\[
+y(x_A) = y(x_B) = 0, 
+\]</span> entonces <span class="math display">\[
+w^T(x_A −x_B) = 0.
+\]</span> Por lo tanto, el vector <span class="math inline">\(w\)</span> es ortogonal a todo vector en la superficie de decisión, y así <span class="math inline">\(w\)</span> determina la orientación de la superficie.</p>
+<p>Similarmente, si <span class="math inline">\(x\)</span> está en la superficie de decisión, entonces <span class="math inline">\(y(x)=0\)</span>, y entonces, la distancia del origen a la superficie de decisión es:</p>
+<p><span class="math display">\[
+\dfrac{w^Tx}{\|{w}\|} = -\dfrac{w_0}{\|{w}\|}.
+\]</span></p>
+<p><img src="figuras/lda_1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="referencias-principales" class="section level3 unnumbered">
-<h3>Referencias principales</h3>
-<ul>
-<li><p><a href="https://www.amazon.com/gp/product/052168689X/">Gelman, A., &amp; Hill, J. (2006). Data Analysis using Regression and Multilevel/hierarchical Models. Cambridge University Press.</a></p></li>
-<li><p><a href="http://www.springer.com/us/book/9780387310732">Christopher, M. B. (2016). Pattern Recognition and Machine Learning. Springer.</a></p></li>
-<li><p><a href="https://www.wiley.com/en-us/Categorical+Data+Analysis%2C+3rd+Edition-p-9780470463635">Agresti, Alan. (2013). Categorical Data Analysis. 3rd ed. Wiley.</a></p></li>
-<li><p><a href="https://www.pearson.com/us/higher-education/program/Johnson-Applied-Multivariate-Statistical-Analysis-6th-Edition/PGM274834.html">Johnson, R., y Wichern, D. (2007). Applied Multivariate Statistical Analysis. 6th ed. Pearson Prentice Hall.</a></p></li>
-</ul>
+<div id="regresion-lineal-en-una-matriz-indicadora" class="section level2">
+<h2><span class="header-section-number">11.3</span> Regresión lineal en una matriz indicadora</h2>
+<p>Supongamos que <span class="math inline">\(Y\)</span> es una matriz indicadora donde <span class="math inline">\(Y_{ij}\)</span> es <span class="math inline">\(1\)</span> si la <span class="math inline">\(i\)</span>-ésima obsevación pertenece a la categoría <span class="math inline">\(j\)</span> y <span class="math inline">\(0\)</span> en otro caso.</p>
+<p><span class="math display">\[
+\hat{W} = (X^TX)^{−1}X^TY.
+\]</span></p>
+<p>Si <span class="math inline">\(\tilde{x}\)</span> es un vector de entradas, entonces <span class="math display">\[
+y(x) = \hat{W}^T\tilde{x}
+\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(matlib)
+
+<span class="kw">set.seed</span>(<span class="dv">186923</span>)
+n &lt;-<span class="st"> </span><span class="dv">300</span>
+
+x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(n<span class="op">/</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>), <span class="kw">rnorm</span>(n<span class="op">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="fl">1.5</span>), <span class="kw">rnorm</span>(n<span class="op">/</span><span class="dv">3</span>, <span class="dv">5</span>))
+x2 &lt;-<span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">sd =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="op">-</span><span class="dv">5</span>, n<span class="op">/</span><span class="dv">3</span>), <span class="kw">rep</span>(<span class="dv">0</span>, n<span class="op">/</span><span class="dv">3</span>), <span class="kw">rep</span>(<span class="dv">5</span>, n<span class="op">/</span><span class="dv">3</span>))
+y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;a&quot;</span>,n<span class="op">/</span><span class="dv">3</span>),<span class="kw">rep</span>(<span class="st">&quot;b&quot;</span>,n<span class="op">/</span><span class="dv">3</span>),<span class="kw">rep</span>(<span class="st">&quot;c&quot;</span>,n<span class="op">/</span><span class="dv">3</span>))
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x1, x2, y)
+
+Y &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nrow =</span> n, <span class="dt">ncol =</span> <span class="dv">3</span>)
+Y[,<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n<span class="op">/</span><span class="dv">3</span>),<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">2</span><span class="op">*</span>n<span class="op">/</span><span class="dv">3</span>))
+Y[,<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>,n<span class="op">/</span><span class="dv">3</span>),<span class="kw">rep</span>(<span class="dv">1</span>,n<span class="op">/</span><span class="dv">3</span>),<span class="kw">rep</span>(<span class="dv">0</span>,n<span class="op">/</span><span class="dv">3</span>))
+Y[,<span class="dv">3</span>] &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>Y[,<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>Y[,<span class="dv">2</span>]
+df<span class="op">$</span>y1 &lt;-<span class="st"> </span>Y[,<span class="dv">1</span>]
+df<span class="op">$</span>y2 &lt;-<span class="st"> </span>Y[,<span class="dv">2</span>]
+df<span class="op">$</span>y3 &lt;-<span class="st"> </span>Y[,<span class="dv">3</span>]
+
+X &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(df[,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)])
+p &lt;-<span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span><span class="kw">inv</span>(<span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>Y
+df<span class="op">$</span>p1 &lt;-<span class="st"> </span>p[,<span class="dv">1</span>]
+df<span class="op">$</span>p2 &lt;-<span class="st"> </span>p[,<span class="dv">2</span>]
+df<span class="op">$</span>p3 &lt;-<span class="st"> </span>p[,<span class="dv">3</span>]
+
+<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> x2))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> y)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> p1), <span class="dt">color =</span> <span class="st">&#39;red&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> p2), <span class="dt">color =</span> <span class="st">&#39;green&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> p3), <span class="dt">color =</span> <span class="st">&#39;blue&#39;</span>)</code></pre></div>
+<p><img src="11-lda-1_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Hay un problema serio con el enfoque de regresión cuando el número de clases <span class="math inline">\(K \geq3\)</span>, y en especial si <span class="math inline">\(K\)</span> es grande. Debido a la naturaleza rígida del modelo de regresión, unas clases pueden enmascarar a otras. Esto lo vemos en la gráfica de arriba con <span class="math inline">\(K = 3\)</span>. Las tres clases están perfectamente separadas por límites de decisión lineales, sin embargo, la regresión lineal pierde por completo a la clase de en medio.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(y1 <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">data =</span> df)
+lm_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(y2 <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">data =</span> df)
+df<span class="op">$</span>pred_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(lm_<span class="dv">1</span>)
+df<span class="op">$</span>pred_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(lm_<span class="dv">2</span>)
+df<span class="op">$</span>pred_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>df<span class="op">$</span>pred_<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>df<span class="op">$</span>pred_<span class="dv">2</span></code></pre></div>
+<p>Obtenemos la predicción tomando el máximo de cada renglón:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(df<span class="op">$</span>pred_<span class="dv">1</span> <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred_<span class="dv">2</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>pred_<span class="dv">1</span> <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred_<span class="dv">3</span>, <span class="st">&#39;a&#39;</span>, 
+                  <span class="kw">ifelse</span>(df<span class="op">$</span>pred_<span class="dv">2</span> <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred_<span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>pred_<span class="dv">2</span> <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred_<span class="dv">3</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>))</code></pre></div>
+<p>Podemos hacer una gráfica de las predicciones en este caso de <span class="math inline">\(x_1\)</span> contra los ajustados por el modelo lineal:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>x1, <span class="dt">y =</span> pred_<span class="dv">1</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&#39;red&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x1, <span class="dt">y =</span> pred_<span class="dv">2</span>), <span class="dt">color =</span> <span class="st">&#39;green&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x1, <span class="dt">y =</span> pred_<span class="dv">3</span>), <span class="dt">color =</span> <span class="st">&#39;blue&#39;</span>)</code></pre></div>
+<p><img src="11-lda-1_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Comparamos contra los observados y calculamos el error:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>pred <span class="op">==</span><span class="st"> </span>df<span class="op">$</span>y)
+<span class="co">#&gt; [1] 0.24</span></code></pre></div>
+<p><br></p>
+<p>Si utilizamos un modelo lineal con términos cuadráticos entonces el ajuste lo haríamos de esta manera:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_1_q &lt;-<span class="st"> </span><span class="kw">lm</span>(y1 <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dv">2</span>), <span class="dt">data =</span> df)
+lm_2_q &lt;-<span class="st"> </span><span class="kw">lm</span>(y2 <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dv">2</span>), <span class="dt">data =</span> df)
+lm_3_q &lt;-<span class="st"> </span><span class="kw">lm</span>(y3 <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dv">2</span>), <span class="dt">data =</span> df)
+df<span class="op">$</span>pred_1_q &lt;-<span class="st"> </span><span class="kw">predict</span>(lm_1_q)
+df<span class="op">$</span>pred_2_q &lt;-<span class="st"> </span><span class="kw">predict</span>(lm_2_q)
+df<span class="op">$</span>pred_3_q &lt;-<span class="st"> </span><span class="kw">predict</span>(lm_3_q)</code></pre></div>
+<p>Obtenemos nuevamente la predicción tomando el máximo de cada renglón:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>pred_q &lt;-<span class="st"> </span><span class="kw">ifelse</span>(df<span class="op">$</span>pred_1_q <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred_2_q <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>pred_1_q <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred_3_q, <span class="st">&#39;a&#39;</span>, 
+                  <span class="kw">ifelse</span>(df<span class="op">$</span>pred_2_q <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred_1_q <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>pred_2_q <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred_3_q, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>x2, <span class="dt">y =</span> pred_1_q)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&#39;red&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x2, <span class="dt">y =</span> pred_2_q), <span class="dt">color =</span> <span class="st">&#39;green&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x2, <span class="dt">y =</span> pred_3_q), <span class="dt">color =</span> <span class="st">&#39;blue&#39;</span>)</code></pre></div>
+<p><img src="11-lda-1_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Comparamos contra los observados y calculamos el error:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>pred_q <span class="op">==</span><span class="st"> </span>df<span class="op">$</span>y)
+<span class="co">#&gt; [1] 0.02</span></code></pre></div>
+<p><br></p>
+<p>Repetimos una tercera vez pero ahora utilizando regresión logística:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">glm_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="kw">I</span>(y<span class="op">==</span><span class="st">&#39;a&#39;</span>) <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">family =</span> binomial, <span class="dt">data =</span> df)
+<span class="co">#&gt; Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+glm_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="kw">I</span>(y<span class="op">==</span><span class="st">&#39;b&#39;</span>) <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">family =</span> binomial, <span class="dt">data =</span> df)
+glm_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="kw">I</span>(y<span class="op">==</span><span class="st">&#39;c&#39;</span>) <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">family =</span> binomial, <span class="dt">data =</span> df)
+<span class="co">#&gt; Warning: glm.fit: algorithm did not converge</span>
+
+<span class="co">#&gt; Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+df<span class="op">$</span>pred1_glm &lt;-<span class="st"> </span><span class="kw">predict</span>(glm_<span class="dv">1</span>, <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>)
+df<span class="op">$</span>pred2_glm &lt;-<span class="st"> </span><span class="kw">predict</span>(glm_<span class="dv">2</span>, <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>)
+df<span class="op">$</span>pred3_glm &lt;-<span class="st"> </span><span class="kw">predict</span>(glm_<span class="dv">3</span>, <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>)</code></pre></div>
+<p>Calculamos las predicciones de acuerdo a este modelo logístico:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>pred_glm &lt;-<span class="st"> </span><span class="kw">ifelse</span>(df<span class="op">$</span>pred1_glm <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred2_glm <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>pred1_glm <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred3_glm, <span class="st">&#39;a&#39;</span>, 
+                  <span class="kw">ifelse</span>(df<span class="op">$</span>pred2_glm <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred1_glm <span class="op">&amp;</span><span class="st"> </span>df<span class="op">$</span>pred2_glm <span class="op">&gt;</span><span class="st"> </span>df<span class="op">$</span>pred3_glm, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>))</code></pre></div>
+<p>Calculamos el error:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>pred_glm <span class="op">==</span><span class="st"> </span>df<span class="op">$</span>y)
+<span class="co">#&gt; [1] 0.01</span></code></pre></div>
 </div>
-<div id="otras-referencias" class="section level3 unnumbered">
-<h3>Otras referencias</h3>
+<div id="discriminante-lineal-de-fisher" class="section level2">
+<h2><span class="header-section-number">11.4</span> Discriminante lineal de Fisher</h2>
+<p>Una forma de ver un modelo de clasificación lineal es en términos de <em>reducción de dimensionalidad</em>. Esto se refiere a la extracción de características de los datos que los transforma de un espacio de dimensión alta a un espacio de dimensión baja, usualmente <span class="math inline">\(2\)</span> ó <span class="math inline">\(3\)</span>.</p>
+<p>Consideremos primero el caso de dos clases, y supongamos que tomamos un vector de predictores de dimensión <span class="math inline">\(D\)</span> y lo proyectamos en una dimensión usando la misma función: <span class="math display">\[
+y = w^Tx.
+\]</span></p>
+<p>Si colocamos un umbral y clasificamos como clase 1 si <span class="math inline">\(y\geq-w_0\)</span>, y clase 2 en otro caso, entonces obtenemos nuestro clasificador lineal estándar ya visto antes. En general, la proyección en una dimensión conduce a una pérdida considerable de información, y las clases que están bien separadas en el espacio original de dimensión <span class="math inline">\(D\)</span> pueden superponerse fuertemente en una dimensión.</p>
+<p>Sin embargo, ajustando los componentes de <span class="math inline">\(w\)</span>, podemos seleccionar una proyección que maximiza la separación entre clases. Para empezar, consideremos un problema de dos clases en el que hay <span class="math inline">\(N_1\)</span> puntos en la clase 1 y <span class="math inline">\(N_2\)</span> puntos en la clase 2, de modo que los vectores de medias de las dos clases están dados por <span class="math display">\[
+m_1 = \dfrac{1}{N_1}\sum_{i\in C_1}x_i,\qquad m_2=\dfrac{1}{N_2}\sum_{i\in C_2}x_i.
+\]</span></p>
+<p>Podríamos elegir <span class="math inline">\(w\)</span> para maximizar la <em>separación entre clases</em>: <span class="math display">\[
+w^T(m_2 − m_1)
+\]</span></p>
+<p>Sin embargo, esta expresión se puede hacer arbitrariamente grande simplemente aumentando la magnitud de <span class="math inline">\(w\)</span>, entonces se utiliza la restricción <span class="math display">\[
+\sum_i{w_i^2}=1
+\]</span></p>
+<p>Resolvemos usando multiplicadores de Lagrange. Vemos que <span class="math inline">\(w\)</span> es proporcional a <span class="math inline">\(m_2 - m_1\)</span>.</p>
+<p>Sin embargo, todavía hay un problema con este enfoque. Esto muestra</p>
+<p><img src="figuras/lda_2.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Las dos clases de arriba que están bien separadas en el espacio bidimensional original <span class="math inline">\((x_1, x_2)\)</span> pero se sobrelapan considerablemente cuando se proyectan sobre la línea que une sus medios.</p>
+<p>Esta dificultad surge por las covarianzas de las distribuciones de clase no son diagonales. La idea propuesta por Fisher es maximizar una función que:</p>
 <ul>
-<li><p><a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Friedman, J., Hastie, T., &amp; Tibshirani, R. (2001). The Elements of Statistical Learning. Springer.</a></p></li>
-<li><p><a href="https://www.amazon.com/Introduction-Multivariate-Statistical-Analysis/dp/0471360910">Anderson, T. W. (2003). An Introduction to Multivariate Statistical Analysis. 3rd ed. Wiley.</a></p></li>
-<li><p><a href="https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469">Field, A., Miles, J., &amp; Field, Z. (2012). Discovering Statistics Using R. Sage publications.</a></p></li>
-<li><p><a href="https://www.amazon.com/Introduction-Applied-Multivariate-Analysis-Use/dp/1441996494">Everitt, B., &amp; Hothorn, T. (2011). An Introduction to Applied Multivariate Analysis with R. Springer</a></p></li>
+<li><p>separe las observaciones por las medios de clase proyectadas, y al mismo tiempo</p></li>
+<li><p>dé una variación pequeña dentro de cada clase.</p></li>
 </ul>
+<p>La varianza <em>dentro</em> de la clase de los datos transformados de la clase <span class="math inline">\(C_k\)</span> está dada por</p>
+<p><span class="math display">\[
+s_k = \sum_{i\in C_k}{(y_i - w^Tm_k)^2}.
+\]</span> donde <span class="math inline">\(y_i = w^Tx_i\)</span>.</p>
+<p>Para el caso de <span class="math inline">\(K=2\)</span> clases, la varianza total dentro de las clases se define como <span class="math inline">\(s_1^2 + s_2^2\)</span>. Se define una cantidad llamada “criterio de Fisher” <span class="math inline">\(J(w)\)</span> que se desea maximizar</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+J(w) &amp;=&amp; \dfrac{m_2-m_1}{s_1^2+s_2^2} \\
+&amp;=&amp; \dfrac{w^TS_Ww}{w^TS_Bw}
+\end{eqnarray*}
+\]</span> donde <span class="math inline">\(S_B\)</span> es la matriz de covarianzas <em>entre</em> clases <span class="math display">\[
+S_B = (m_2 - m_1)(m_2-m_1)^T
+\]</span> y <span class="math inline">\(S_W\)</span> es la matriz de covarianzas <em>dentro</em> de las clases <span class="math display">\[
+S_W = \sum_{i \in C_1}{(x_i - m_1)(x_i-m_1)^T} + \sum_{i \in C_2}{(x_i - m_2)(x_i-m_2)^T}.
+\]</span></p>
+<p>Buscamos maximizar <span class="math inline">\(J(w)\)</span> con respecto a <span class="math inline">\(w\)</span> para encontrar los pesos <span class="math inline">\(w\)</span> para el discriminador lineal <span class="math inline">\(y(x)=w^Tx\)</span>.</p>
+
+<div class="nota">
+<p><strong>Notas:</strong></p>
+<p class="espacio3">
+</p>
+<ul>
+<li><p>Este se conoce como <em>discriminante lineal de Fisher</em>, aunque estrictamente no es un discriminante, sino más bien una elección de dirección específica para la proyección de los datos en una dimensión.</p></li>
+<li><p>Sin embargo, los datos proyectados pueden usarse posteriormente para construir un discriminante, eligiendo un umbral <span class="math inline">\(y_0\)</span> para que clasifiquemos un nuevo punto como clase 1 si <span class="math inline">\(y(x)\geq y_0\)</span> y como clase 2 en caso contrario.</p></li>
+<li>Podemos modelar las densidades condicionales de clase <span class="math inline">\(p(y|C_k)\)</span> usando distribuciones normales y estimar parámetros por máxima verosimilitud. El supuesto de normalidad se justifica por el teorema del límite central porque <span class="math inline">\(y = w^Tx\)</span> es una suma ponderada de variables aleatorias.
 </div>
-<div id="tareas" class="section level3 unnumbered">
-<h3>Tareas</h3>
-<p>Enviar tareas por correo electrónico a: <a href="andreuboadadeatela@gmail.com" class="uri">andreuboadadeatela@gmail.com</a> con el asunto “EAPLICADA3-Tarea-[XX]-[clave única 1]-[clave única 2]” donde [XX] es el número de la tarea, [clave única 1] y [clave única 2] son tu clave y la de tu compañero con quien vas a trabajar durante el semestre.</p>
+</li>
+</ul>
+<p><br></p>
+<hr />
+<div id="ejemplo-separacion-entre-clases" class="section level3">
+<h3><span class="header-section-number">11.4.1</span> Ejemplo: separación entre clases</h3>
+<p>Regresamos al ejemplo de arriba pero ahora hacemos el ajuste con discriminante lineal:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
+lda_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">lda</span>(y <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">data =</span> df)
+df<span class="op">$</span>pred_lda &lt;-<span class="st"> </span><span class="kw">predict</span>(lda_<span class="dv">1</span>)<span class="op">$</span>class</code></pre></div>
+<p>Vemos nuevamente el error:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>pred_lda <span class="op">==</span><span class="st"> </span>df<span class="op">$</span>y)
+<span class="co">#&gt; [1] 0.0167</span></code></pre></div>
+</div>
+<div id="ejemplo-iris-de-fisher" class="section level3">
+<h3><span class="header-section-number">11.4.2</span> Ejemplo: iris de Fisher</h3>
+<p>El estadístico y biólogo británico Ronald Fisher publicó su artículo de 1936 “El uso de mediciones múltiples en problemas taxonómicos como un ejemplo de análisis discriminante lineal”.</p>
+<p>El conjunto de datos consiste de 50 observaciones de <em>cada</em> una de las tres especies de Iris (Iris setosa, Iris virginica e Iris versicolor). Se midieron cuatro características de cada muestra: la longitud y el ancho de los sépalos y pétalos, en centímetros.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>21</td>
+<td align="right">5.4</td>
+<td align="right">3.4</td>
+<td align="right">1.7</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td>113</td>
+<td align="right">6.8</td>
+<td align="right">3.0</td>
+<td align="right">5.5</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td>38</td>
+<td align="right">4.9</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td align="right">5.0</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td>23</td>
+<td align="right">4.6</td>
+<td align="right">3.6</td>
+<td align="right">1.0</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td>140</td>
+<td align="right">6.9</td>
+<td align="right">3.1</td>
+<td align="right">5.4</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td>145</td>
+<td align="right">6.7</td>
+<td align="right">3.3</td>
+<td align="right">5.7</td>
+<td align="right">2.5</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="even">
+<td>99</td>
+<td align="right">5.1</td>
+<td align="right">2.5</td>
+<td align="right">3.0</td>
+<td align="right">1.1</td>
+<td align="left">versicolor</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(Sepal.Length, Sepal.Width, <span class="dt">color =</span> Species)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Species), <span class="dt">size =</span> <span class="dv">3</span>)</code></pre></div>
+<p><img src="11-lda-1_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(Petal.Length, Petal.Width, <span class="dt">color =</span> Species)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Species), <span class="dt">size =</span> <span class="dv">3</span>)</code></pre></div>
+<p><img src="11-lda-1_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>En resumen tenemos 4 variables y todas están relacionadas con la especie a la cual pertenece (hay 3 especies):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GGally)
+<span class="kw">ggpairs</span>(iris, <span class="dt">columns =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(iris), <span class="dt">title =</span> <span class="st">&quot;&quot;</span>,  
+  <span class="dt">axisLabels =</span> <span class="st">&quot;show&quot;</span>, <span class="dt">columnLabels =</span> <span class="kw">colnames</span>(iris))</code></pre></div>
+<p><img src="11-lda-1_files/figure-html/unnamed-chunk-24-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(MASS)
+iris.lda&lt;-<span class="kw">lda</span>(Species <span class="op">~</span><span class="st"> </span>Sepal.Length <span class="op">+</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>Petal.Length <span class="op">+</span><span class="st"> </span>Petal.Width, <span class="dt">data =</span>    iris)
+datPred&lt;-<span class="kw">data.frame</span>(<span class="dt">Species=</span><span class="kw">predict</span>(iris.lda)<span class="op">$</span>class,<span class="kw">predict</span>(iris.lda)<span class="op">$</span>x) <span class="co">#create data.frame</span></code></pre></div>
+<p>Creamos las superficies de decisión y las probabilidades de clase:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris.lda2 &lt;-<span class="st"> </span><span class="kw">lda</span>(datPred[,<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>], datPred[,<span class="dv">1</span>])
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(datPred[,<span class="dv">2</span>]), <span class="kw">max</span>(datPred[,<span class="dv">2</span>]), <span class="dt">length.out=</span><span class="dv">30</span>)
+y &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(datPred[,<span class="dv">3</span>]), <span class="kw">max</span>(datPred[,<span class="dv">3</span>]), <span class="dt">length.out=</span><span class="dv">30</span>)
+Xcon &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="kw">rep</span>(x,<span class="kw">length</span>(y)),<span class="kw">rep</span>(y, <span class="kw">rep</span>(<span class="kw">length</span>(x), <span class="kw">length</span>(y)))), <span class="dt">ncol =</span> <span class="dv">2</span>)
+iris.pr1 &lt;-<span class="st"> </span><span class="kw">predict</span>(iris.lda2, Xcon)<span class="op">$</span>post[, <span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>,<span class="st">&quot;versicolor&quot;</span>)] <span class="op">%*%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)
+iris.pr2 &lt;-<span class="st"> </span><span class="kw">predict</span>(iris.lda2, Xcon)<span class="op">$</span>post[, <span class="kw">c</span>(<span class="st">&quot;virginica&quot;</span>,<span class="st">&quot;setosa&quot;</span>)] <span class="op">%*%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)</code></pre></div>
+<p>Graficamos las superficies (rectas) de decisión sobre los ajustados por el modelo por especie de flor:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pr&lt;-<span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">rep</span>(x, <span class="kw">length</span>(y)), <span class="dt">y=</span><span class="kw">rep</span>(y, <span class="dt">each=</span><span class="kw">length</span>(x)), 
+    <span class="dt">z1=</span><span class="kw">as.vector</span>(iris.pr1), <span class="dt">z2=</span><span class="kw">as.vector</span>(iris.pr2))
+<span class="kw">ggplot</span>(datPred, <span class="kw">aes</span>(<span class="dt">x=</span>LD1, <span class="dt">y=</span>LD2) ) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>, <span class="kw">aes</span>(<span class="dt">pch =</span> Species,  <span class="dt">col=</span>Species)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_contour</span>(<span class="dt">data=</span>pr, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y, <span class="dt">z=</span>z1), <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">5</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_contour</span>(<span class="dt">data=</span>pr, <span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y, <span class="dt">z=</span>z2), <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">5</span>))</code></pre></div>
+<p><img src="11-lda-1_files/figure-html/unnamed-chunk-27-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="tarea-9" class="section level2">
+<h2><span class="header-section-number">11.5</span> Tarea</h2>
+<ol style="list-style-type: decimal">
+<li>Para comparar regresión lineal, análisis de discriminante lineal y regresión logística con dos clases utiliza el siguiente código para responder los incisos siguientes. Utiliza tu clave única como semilla.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">clave_unica &lt;-<span class="st"> </span><span class="dv">110265</span>
+<span class="kw">set.seed</span>(clave_unica)
+n &lt;-<span class="st"> </span><span class="dv">300</span>
+x1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(n<span class="op">/</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">5</span>), <span class="kw">rnorm</span>(n<span class="op">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="fl">1.5</span>), <span class="kw">rnorm</span>(n<span class="op">/</span><span class="dv">3</span>, <span class="dv">5</span>)) 
+x2 &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">12</span><span class="op">*</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>,n<span class="op">/</span><span class="dv">2</span>),<span class="kw">rep</span>(<span class="dv">1</span>,n<span class="op">/</span><span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">sd =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="op">-</span><span class="dv">5</span>, n<span class="op">/</span><span class="dv">2</span>), <span class="kw">rep</span>(<span class="dv">0</span>, n<span class="op">/</span><span class="dv">2</span>)) 
+out &lt;-<span class="st"> </span><span class="kw">sample</span>((n<span class="op">/</span><span class="dv">2</span>)<span class="op">:</span>n, <span class="dt">size =</span> n<span class="op">/</span><span class="dv">10</span>)
+x1[out] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n<span class="op">/</span><span class="dv">10</span>, <span class="dv">5</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span><span class="dv">10</span>
+x2[out] &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">12</span> <span class="op">+</span><span class="st"> </span>x1[out] <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n<span class="op">/</span><span class="dv">10</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>) <span class="op">-</span><span class="st"> </span><span class="dv">15</span>
+
+y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&#39;a&#39;</span>, n<span class="op">/</span><span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&#39;b&#39;</span>, n<span class="op">/</span><span class="dv">2</span>))
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x1, x2, y)
+<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> x1, <span class="dt">y =</span> x2, <span class="dt">color =</span> y)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="11-lda-1_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Haz una gráfica de las superficies de decisión (rectas que separan las dos clases) utilizando el modelo simple de regresión lineal con predictores lineales. Calcula el error de predicción.</p></li>
+<li><p>¿Habrá alguna diferencia entre el error utilizando regresión lineal con términos de polinomios cuadráticos y el error calculado en el inciso anterior?</p></li>
+<li><p>Repite el inciso <em>a.</em> utilizando regresión logística. ¿Por qué la regresión logística es más consistente en la presencia de datos atípicos?</p></li>
+<li><p>Repite el inciso <em>a.</em> utilizando análisis de discriminante lineal y compara con el error obtenido en los incisos anteriores.</p></li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Demuestra que, en regresión lineal, si cada vector objetivo <span class="math inline">\(y_i\)</span> satisface una restricción lineal <span class="math display">\[
+a^T y_i + b = 0
+\]</span> para algunas constantes <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>, entonces la predicción del modelo para cualquier valor de <span class="math inline">\(x\)</span> satisface la misma restricción, de modo que <span class="math display">\[
+a^T y(x) + b = 0.
+\]</span> Por lo tanto, utilizando la codificación 1-a-K indicadoras para las <span class="math inline">\(K\)</span> clases, entonces las predicciones que produce el modelo tendrán la propiedad de que los elementos de <span class="math inline">\(y(x)\)</span> sumarán a 1 para cualquier valor de <span class="math inline">\(x\)</span>. Aunque no necesariamente están en el intervalo <span class="math inline">\((0,1)\)</span>.</li>
+</ol>
 
 </div>
 </div>
@@ -411,8 +732,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="modelos-lineales-generalizados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

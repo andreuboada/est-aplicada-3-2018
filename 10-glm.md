@@ -1261,3 +1261,38 @@ de que la varianza es igual a la media, esto crea un problema esn las estimacion
 La varianza real es varias veces más de lo que debería
 ser, y los errores estándar estimados con el modelo Poisson estaban claramente
 subestimados. 
+
+## Tarea
+
+Se tienen datos de una prueba controlada aleatorizada (en inglés se la llama RCT por randomized controlled trial) dirigida a parejas con alto riesgo de infección por VIH. La intervención brindó sesiones de asesoramiento sobre prácticas que podrían reducir la probabilidad de contraer el VIH. Las parejas se asignaron al azar a un grupo control (en el que solo participó la mujer) o un grupo en el que participaron los dos miembros de la pareja. Después de tres meses se registró como resultado el "número de actos sexuales sin protección".
+
+
+```r
+risky_behaviors <- read_csv("datos/risky_behaviors.csv")
+risky_behaviors %>% sample_n(10) %>% knitr::kable()
+```
+
+
+
+sex      couples   women_alone  bs_hiv      bupacts   fupacts
+------  --------  ------------  ---------  --------  --------
+woman          0             1  negative         28         0
+woman          0             1  negative          9         4
+man            0             1  negative          3         0
+woman          0             1  negative          3         3
+man            0             0  negative         87         6
+man            0             1  negative         30         3
+man            0             1  positive         50        28
+man            1             0  negative         16         8
+man            1             0  positive         20         5
+woman          0             1  negative          5        25
+
+
+a. Modela este resultado (`fupacts`) como una función de la asignación del tratamiento (`women_alone`) usando una regresión Poisson. ¿El modelo se ajusta bien? ¿Hay evidencia de sobredispersión?
+
+b. A continuación, añade al modelo las variables restantes. ¿El modelo se ajusta mejor? ¿Hay evidencia de sobredispersión? Compara el AIC con el del inciso anterior.
+
+c. Ajusta un modelo Poisson sobredispersado. ¿Qué puedes concluir con respecto a la efectividad de la intervención?
+
+d. Estos datos incluyen respuestas tanto de hombrescomo de mujeres de las parejas participantes. ¿Esto nos dice algo con respecto a los supuestos del modelado?
+

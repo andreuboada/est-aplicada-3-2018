@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Aplicada III</title>
   <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
-  <meta name="generator" content="bookdown 0.7.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.8 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Aplicada III" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-04-15">
+<meta name="date" content="2018-04-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="regularizacion.html">
-<link rel="next" href="referencias.html">
+<link rel="next" href="analisis-de-discriminante-lineal-lda.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -312,6 +312,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.9" data-path="modelos-lineales-generalizados.html"><a href="modelos-lineales-generalizados.html#ejemplo-arboles"><i class="fa fa-check"></i><b>10.9</b> Ejemplo: árboles</a></li>
 <li class="chapter" data-level="10.10" data-path="modelos-lineales-generalizados.html"><a href="modelos-lineales-generalizados.html#sobredispersion"><i class="fa fa-check"></i><b>10.10</b> Sobredispersión</a></li>
 <li class="chapter" data-level="10.11" data-path="modelos-lineales-generalizados.html"><a href="modelos-lineales-generalizados.html#ejemplo-numero-de-publicaciones"><i class="fa fa-check"></i><b>10.11</b> Ejemplo: número de publicaciones</a></li>
+<li class="chapter" data-level="10.12" data-path="modelos-lineales-generalizados.html"><a href="modelos-lineales-generalizados.html#tarea-8"><i class="fa fa-check"></i><b>10.12</b> Tarea</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html"><i class="fa fa-check"></i><b>11</b> Análisis de Discriminante Lineal (LDA)</a><ul>
+<li class="chapter" data-level="11.1" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#problemas-de-clasificacion"><i class="fa fa-check"></i><b>11.1</b> Problemas de clasificación</a></li>
+<li class="chapter" data-level="11.2" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#funciones-de-discriminante"><i class="fa fa-check"></i><b>11.2</b> Funciones de discriminante</a></li>
+<li class="chapter" data-level="11.3" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#regresion-lineal-en-una-matriz-indicadora"><i class="fa fa-check"></i><b>11.3</b> Regresión lineal en una matriz indicadora</a></li>
+<li class="chapter" data-level="11.4" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#discriminante-lineal-de-fisher"><i class="fa fa-check"></i><b>11.4</b> Discriminante lineal de Fisher</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#ejemplo-separacion-entre-clases"><i class="fa fa-check"></i><b>11.4.1</b> Ejemplo: separación entre clases</a></li>
+<li class="chapter" data-level="11.4.2" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#ejemplo-iris-de-fisher"><i class="fa fa-check"></i><b>11.4.2</b> Ejemplo: iris de Fisher</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="analisis-de-discriminante-lineal-lda.html"><a href="analisis-de-discriminante-lineal-lda.html#tarea-9"><i class="fa fa-check"></i><b>11.5</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -2259,6 +2270,112 @@ mnb &lt;-<span class="st"> </span><span class="kw">glm.nb</span>(art <span class
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Number of Fisher Scoring iterations: 6</span></code></pre></div>
 <p>El ajuste del modelo es similar. Sin embargo, la varianza es varias veces la media en este modelo, y dado que los errores estándar se basan en el supuesto de que la varianza es igual a la media, esto crea un problema esn las estimaciones. La varianza real es varias veces más de lo que debería ser, y los errores estándar estimados con el modelo Poisson estaban claramente subestimados.</p>
+</div>
+<div id="tarea-8" class="section level2">
+<h2><span class="header-section-number">10.12</span> Tarea</h2>
+<p>Se tienen datos de una prueba controlada aleatorizada (en inglés se la llama RCT por randomized controlled trial) dirigida a parejas con alto riesgo de infección por VIH. La intervención brindó sesiones de asesoramiento sobre prácticas que podrían reducir la probabilidad de contraer el VIH. Las parejas se asignaron al azar a un grupo control (en el que solo participó la mujer) o un grupo en el que participaron los dos miembros de la pareja. Después de tres meses se registró como resultado el “número de actos sexuales sin protección”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">risky_behaviors &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/risky_behaviors.csv&quot;</span>)
+risky_behaviors <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">sex</th>
+<th align="right">couples</th>
+<th align="right">women_alone</th>
+<th align="left">bs_hiv</th>
+<th align="right">bupacts</th>
+<th align="right">fupacts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">woman</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="left">negative</td>
+<td align="right">28</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">woman</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="left">negative</td>
+<td align="right">9</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">man</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="left">negative</td>
+<td align="right">3</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">woman</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="left">negative</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">man</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="left">negative</td>
+<td align="right">87</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="left">man</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="left">negative</td>
+<td align="right">30</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">man</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="left">positive</td>
+<td align="right">50</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="left">man</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="left">negative</td>
+<td align="right">16</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="left">man</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="left">positive</td>
+<td align="right">20</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">woman</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="left">negative</td>
+<td align="right">5</td>
+<td align="right">25</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li><p>Modela este resultado (<code>fupacts</code>) como una función de la asignación del tratamiento (<code>women_alone</code>) usando una regresión Poisson. ¿El modelo se ajusta bien? ¿Hay evidencia de sobredispersión?</p></li>
+<li><p>A continuación, añade al modelo las variables restantes. ¿El modelo se ajusta mejor? ¿Hay evidencia de sobredispersión? Compara el AIC con el del inciso anterior.</p></li>
+<li><p>Ajusta un modelo Poisson sobredispersado. ¿Qué puedes concluir con respecto a la efectividad de la intervención?</p></li>
+<li><p>Estos datos incluyen respuestas tanto de hombrescomo de mujeres de las parejas participantes. ¿Esto nos dice algo con respecto a los supuestos del modelado?</p></li>
+</ol>
 
 </div>
 </div>
@@ -2277,7 +2394,7 @@ mnb &lt;-<span class="st"> </span><span class="kw">glm.nb</span>(art <span class
         </div>
       </div>
 <a href="regularizacion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="analisis-de-discriminante-lineal-lda.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
