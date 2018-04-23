@@ -1,4 +1,4 @@
-# Análisis de Discriminante Lineal (LDA)
+# Análisis de Discriminante Lineal 1
 
 <style>
   .espacio {
