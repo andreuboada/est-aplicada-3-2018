@@ -1,5 +1,8 @@
 language: r
 cache: packages
+r_github_packages:
+- hadley/devtools
+- itsrainingdata/mnistR
 pandoc_version: 1.19.2.1
 before_script:
 - chmod +x ./_build.sh
@@ -9,4 +12,5 @@ script:
 - "./_deploy.sh"
 env:
   global:
+  - NOT_CRAN: "true"
   - secure: XnAKGg1d/CYzVkMkd+9vetwBDyW4CQgTOVQ8sa/b8XhTCxTVffVrB3wVn6VIcrfnl0Hu4IM9ZgGwH18CHsE6C1iRBljylw00Q2la80SRgHjsFwSXOKj+iYinE051UGbefjeeWfBd6KukGo3FxxiC49VM86gRXgwoKTUH+wL/97az88hXefhtRkMWAR8GiM+TMUVvHvxOgberv9AgA6hqnfbmI/EC6bVoWN0USCA70LKSPB5Zc2S3PpHN14VuCQXV5r1iT3bb+dvG+cDoGEM2ng1mq1CWO9zPSdjIAOpKoE4rqOgbkle/wPwiuQj3IPjX5u62i+KjR9Ly9xE53nV+7R8+tvGc1xtear+w50YHypGQGW4bjBGeVqSayukfLSoDbLI44BU15F5dERgYzT9ALtwrnklK41UanFzoOzSPddvHenxEJhD+7iyG3+wCwplz5EhkFzj6/gxIXmIsd/SyBCj17s92py/jye3eAYST/DKQdH48C3aii0+xKzkOCv0PVC8UNzbUuz279Mvup+jPZXmKscUHmaozbtstsjWdmZc+8tynPlRwocNCJzTOhN+fe1iCgLZpvYSN/IL6g5uOqNFL4qtwNnJAS3H4Jt6B1ySh9Jegf+cky6mjVVn0ItlH4VFN0q4bDt6CMlIkbWQeVtneLyCV8BLwX1OPNeLU9lM=
