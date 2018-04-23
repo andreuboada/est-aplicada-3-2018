@@ -109,20 +109,33 @@ la dirección de este espacio por $u_1$ y por conveniencia usamos un vector
 unitario ($u_1^Tu_1=1$). La proyección de cada punto $y_i$ es un escalar (pues
 $M=1$) cuyo valor es $u_1^Ty_i$. La media de los datos proyectados es 
 $u_1^T\bar{y}$ donde 
-$$\bar{y}=\frac{1}{N}\sum_{i=1}^N y_i$$
+
+$$
+\bar{y}=\frac{1}{N}\sum_{i=1}^N y_i
+$$
 por tanto la varianza de los datos proyectados es
-$$\frac{1}{N}\sum_{i=1}^N (u_1^Ty_i-u_1^T\bar{y})^2=u_1^TSu_1$$
+$$
+\frac{1}{N}\sum_{i=1}^N (u_1^Ty_i-u_1^T\bar{y})^2=u_1^TSu_1
+$$
 donde S es la matriz de covarianzas de los datos:
-$$S=\frac{1}{N}\sum_{i=1}^N (y_i-\bar{y})(y_i-\bar{y})^T.$$
+$$
+S=\frac{1}{N}\sum_{i=1}^N (y_i-\bar{y})(y_i-\bar{y})^T.
+$$
 
 Ahora maximizamamos la varianza de la proyección respecto a $u_1$:
-$$argmax_{u_1}u_1^TSu_1 + \lambda_1(1-u_1^Tu_1)$$
+$$
+\mbox{argmax}_{u_1}u_1^TSu_1 + \lambda_1(1-u_1^Tu_1)
+$$
 Derivando encontramos un punto estacionario en 
-$$Su_1=\lambda_1u_1$$
+$$
+Su_1=\lambda_1u_1
+$$
 por lo que $u_1$ debe ser un eigenvector de S, notamos también que la varianza 
 esta dada por:
-$$u_1^TSu_1=\lambda_1$$
-y por tanto la varianza será máxima si igualamos $u_1$ con el mayor 
+$$
+u_1^TSu_1=\lambda_1,
+$$
+y por tanto, la varianza será máxima si igualamos $u_1$ con el mayor 
 eigenvector de $S$, que llamamos primer componente principal.
 
 Si elegimos $M>1$, definimos los componentes de manera incremental, en cada 
@@ -141,19 +154,25 @@ $j$ y $u_i^Tu_i = 1$.
 
 Como esta es una base de $R^D$ podemos expresar los datos observados como
 
-$$y_i=\sum_{j=1}^D \alpha_{ij}u_j$$
+$$
+y_i=\sum_{j=1}^D \alpha_{ij}u_j
+$$
 
 Esto corresponde a una rotación en el sistema de coordenadas. Utilizando la 
 propiedad ortonormal obtenemos $\alpha_{ij}={y_i} ^Tu_j$, por tanto:
 
-$$y_i=\sum_{j=1}^D ({y_i} ^Tu_j) u_j$$
+$$
+y_i=\sum_{j=1}^D ({y_i} ^Tu_j) u_j
+$$
 
 Ahora, como buscamos aproximar este punto ($y_i$) usando una representación 
 que involucre un número de variables $M<D$, la subespacio de dimensión $M$
 se puede representar usando los primeros $M$ vectores de la base, de tal manera 
 que podemos aproximar cada punto como:
 
-$$\hat{y}_i=\sum_{j=1}^M x_{ij}{u_j} + \sum_{j=M+1}^D b_j u_j$$
+$$
+\hat{y}_i=\sum_{j=1}^M x_{ij}{u_j} + \sum_{j=M+1}^D b_j u_j
+$$
 
 donde los valores $x_{ij}$ dependen del dato que estamos proyectando y las $b_j$
 son constantes para todos los datos. Buscamos $(u_1,...,u_D)$, $x_{ij}$ y $b_j$
@@ -162,7 +181,9 @@ donde definimos la distorsión como la distancia al cuadrado entre el punto
 original $y_i$ y la aproximación $\hat{y}_i$ promediada sore todos los puntos
 de la base de datos:
 
-$$J=\frac{1}{N}\sum_{j=1}^N(y_j-\hat{y}_j)^T(y_j-\hat{y}_j)$$
+$$
+J=\frac{1}{N}\sum_{j=1}^N(y_j-\hat{y}_j)^T(y_j-\hat{y}_j)
+$$
 
 La minimización (derivar e igualar a cero) nos lleva a:
 
@@ -171,26 +192,36 @@ La minimización (derivar e igualar a cero) nos lleva a:
 * $b_{j}=\bar{y}^Tu_j$, con $j=M+1,...,D$
 
 Sustituyendo $x_{ij}$ y $b_j$ en $y_i=\sum_{j=1}^D ({y_i} ^Tu_j) u_j$ llegamos a
-$$y_i-\hat{y}_i=\sum_{j=M+1}^D [(y_n-\bar{y})^Tu_j]u_j$$
+$$
+y_i-\hat{y}_i=\sum_{j=M+1}^D [(y_n-\bar{y})^Tu_j]u_j
+$$
 
 y vemos que el error mínimo ocurre en la proyección ortogonal sobre el 
 subespacio generado por $\{u1,...,u_M\}$.
 
 Usando lo anterior obtenemos
 
-$$J=\frac{1}{N}\sum_{j=1}^N \sum_{i=M+1}^D [(y_n-\bar{y})^Tu_j]^T[(y_n-\bar{y})^Tu_j]$$
-$$J=\frac{1}{D}\sum_{j=1}^D u_i^TSu_i$$
+$$
+J=\frac{1}{N}\sum_{j=1}^N \sum_{i=M+1}^D [(y_n-\bar{y})^Tu_j]^T[(y_n-\bar{y})^Tu_j]
+$$
+$$
+J=\frac{1}{D}\sum_{j=1}^D u_i^TSu_i
+$$
 
 Aún falta minimizar $J$ respecto a $u_i$, esta es una minimización con la 
 restricción $u_i^Tu_i=1$, si derivamos respecto a $u_i$ obtenemos
 
-$$Su_i=\lambda_i u_i$$
+$$
+Su_i=\lambda_i u_i
+$$
 
 por lo que cualquier eigenvector de S corresponde a un punto crítico. Si todos
 corresponden a un punto crítico ¿cómo elegimos? Notemos que si sustituimos la
 solución de $u_i$ en J obtenemos
 
-$$J=\sum_{j=M+1}^D \lambda_j$$
+$$
+J=\sum_{j=M+1}^D \lambda_j
+$$
 
 por lo que para obtener el mínimo valor de $J$ hay que seleccionar los $D-M$
 eigenvectores corresponidientes a los menores eigenvalores y por tanto los 
@@ -241,11 +272,143 @@ plot(lambda, type = "l")
 plot(J, type = "l")
 ```
 
+Si vemos las fórmulas de arriba podemos escribir el vector de aproximación 
+correspondiente a una observación.
+
+$$
+\begin{eqnarray*}
+\hat{y}_i&=&\sum_{j=1}^M x_{ij}{u_j} + \sum_{j=M+1}^D b_j u_j\\
+&=&\sum_{j=1}^M y_i^Tu_j{u_j} + \sum_{j=M+1}^D \bar{y}^Tu_j u_j\\
+&=&\bar{x} + \sum_{j=1}^M (y_i^Tu_j-\bar{x}^Tu_j)u_j
+\end{eqnarray*}
+$$
+
+donde usamos:
+
+$$
+\bar{x}=\sum_{j=1}^D (\bar{x}^Tu_j)u_j.
+$$
+
+La compresión está en que reemplazamos cada vector de observaciones de dimensión 
+$D$ ($y_i$) por un vector de dimensión $M$.
+
+La siguiente figura muestra la compresión para distintos valores de $M$ del
+prmer dígito de la base de datos. 
+
+```{r, fig.width=9.4, fig.height=2.5}
+tres_1 <- data_tres[3, ]
+par(mfrow=c(1,5))
+imageD(tres_1)
+for(M in c(1, 10, 50, 300)){
+  u_M <- u[, 1:M]
+  y_M <- tres_1 %*% u_M
+  y_approx <- tres_mean + y_M %*% t(u_M)
+  imageD(y_approx)
+}
+```
+
+### Ejemplo: compresión de una imagen
+
+```{r, eval=FALSE, echo=FALSE}
+## load image
+library(bmp)
+library(pixmap)
+library(jpeg)
+
+grey <- readJPEG("figuras/perrito.jpg", native = FALSE)[,,1]
+
+pr <- pixmapGrey(grey)
+plot(pr)
+
+size <- dim(img)
+
+k <- 5 #was calculated with sum(s$d[1:285])/sum(s$d) = 0.9919 -> covers 99% of the data
+
+## calculate mean
+columnMeans <- colMeans(grey)
+
+## subtract mean
+greyNoMean = t(apply(grey,1,columnMeans,FUN="-"))
+
+s <- svd(greyNoMean)
+
+u_M <- s$v[,1:k]
+
+y_M <- greyNoMean %*% u_M
+
+y_approx <- y_M %*% t(u_M)
+
+pr <- pixmapGrey(y_approx)
+plot(pr)
+## add mean
+y_mean = t(apply(y_approx,1,columnMeans,FUN="+"))
+pr <- pixmapGrey(y_mean)
+plot(pr)
+```
 
 
+#### Preprocesamiento
 
+Otra aplicación de componentes principales es preprocesamento, en este caso
+el objetivo no es reducción de dimensión sino la transformación de un conjunto
+de daros con el fin de estandarizar algunas de sus propiedades. Esto puede ser
+importante para el correcto funcionamiento de algoritmos o métodos que se desean 
+usar después.
 
+Veamos los datos _faithful_ de erupciones del volcán Old Faithful.
 
+```{r}
+head(faithful) %>% knitr::kable()
+```
+
+Notamos que
+el tiempo entre erupciones es de un orden de magnitud mayor que la duración de 
+la erupción. Por ejemplo, si quisieramos hacer k-medias sería natural 
+estandarizar los datos. Sin embargo, con PCA podemos normalizar los datos 
+para tener cero media y covarianza unitaria, de tal manera que la correlación 
+entre distintas variables es cero.
+
+Para hacer esto escribimos la ecuación de eigenvectores como 
+
+$$
+SU=UL
+$$
+
+donde $L$ es una matriz diagonal con los elementos $\lambda_i$ y $U$ es una 
+matriz ortogonal cuyas columnas son los vectores $u_i$. Entonces, para cada
+observación $y_i$ definimos su valor transformado 
+
+$$
+z_i=L^{-1/2}U^T(y_i-\bar{y})
+$$
+
+es claro que el conjunto $(z_1,...,z_N)$ tiene media cero, veamos ahora la 
+covarianza:
+
+$$
+\frac{1}{N}\sum_{j=1}^Nz_jz_j^T=\frac{1}{N}\sum_{j=1}^NL^{-1/2}U^T(y_j-\bar{y})(y_j-\bar{y})^TUL^{-1/2}
+$$
+
+$$
+=L^{-1/2}U^TSUL^{-1/2}=L{-1/2}LL^{-1/2}=I
+$$
+
+Esta operación se conoce como _whitening_ o _sphereing_.
+
+```{r, echo=FALSE,eval=FALSE}
+head(faithful)
+par(mfrow=c(1, 2))
+
+ggplot(faithful, aes(x = eruptions, y = waiting)) +
+  geom_point()
+
+faith_pca <- prcomp(faithful, scale. = TRUE)
+
+faithful$pc1 <- faith_pca$x[, 1]
+faithful$pc2 <- faith_pca$x[, 2]
+ggplot(faithful, aes(x = pc1, y = pc2)) +
+  geom_point()
+```
 
 
 
