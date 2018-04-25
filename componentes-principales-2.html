@@ -341,7 +341,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="14.4.3" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#ejemplo-grado-de-marginacion"><i class="fa fa-check"></i><b>14.4.3</b> Ejemplo: grado de marginación</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html"><i class="fa fa-check"></i><b>15</b> Componentes Principales 2</a></li>
+<li class="chapter" data-level="15" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html"><i class="fa fa-check"></i><b>15</b> Componentes Principales 2</a><ul>
+<li class="chapter" data-level="15.1" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#pca-probabilistico-y-analisis-de-factores"><i class="fa fa-check"></i><b>15.1</b> PCA probabilístico y Análisis de Factores</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#analisis-de-factores"><i class="fa fa-check"></i><b>15.1.1</b> Análisis de factores</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#analisis-de-factores-descripcion-tradicional"><i class="fa fa-check"></i><b>15.2</b> Análisis de factores (descripción tradicional)</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#el-modelo"><i class="fa fa-check"></i><b>15.2.1</b> El modelo</a></li>
+<li class="chapter" data-level="15.2.2" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#estimacion-del-modelo"><i class="fa fa-check"></i><b>15.2.2</b> Estimación del modelo</a></li>
+<li class="chapter" data-level="15.2.3" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#analisis-de-factores-de-maxima-verosimilitud"><i class="fa fa-check"></i><b>15.2.3</b> Análisis de factores de máxima verosimilitud</a></li>
+<li class="chapter" data-level="15.2.4" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#evaluacion-del-modelo"><i class="fa fa-check"></i><b>15.2.4</b> Evaluación del modelo</a></li>
+<li class="chapter" data-level="15.2.5" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#visualizacion"><i class="fa fa-check"></i><b>15.2.5</b> Visualización</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
@@ -378,7 +389,463 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p class="espacio">
 </p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<div id="pca-probabilistico-y-analisis-de-factores" class="section level2">
+<h2><span class="header-section-number">15.1</span> PCA probabilístico y Análisis de Factores</h2>
+<p>La formulación de PCA esta fundadda en una proyección lineal de los datos sobre un subespacio de dimensión menor. En esta sección veremos que PCA también se puede expresar como la solución de máxima verosimilitud de en un modelo probabilístico de variable latente.</p>
+<p>El PCA probabilístico y el análisis de factores tienen las siguientes propiedades deseables:</p>
+<ul>
+<li><p>Representan una distribución Gaussiana con restricciones en el que el número de parámetros se puede restringir, mientras que podemos capturar las correlaciones dominantes de los datos. En general una distribución Gaussiana multivariada tiene <span class="math inline">\(p(p+1)/2\)</span> parámetros independientes en la matriz de covarianzas por lo que el número de parámetros crece de manera cuadrática con <span class="math inline">\(p\)</span>. Por otra parte si restringimos a una matriz de covarianzas diagonal tenemos solamente <span class="math inline">\(p\)</span> parámetros pero no podemos entender las correlaciones. PCA probabilístico (y AF) es un punto medio en el que las <span class="math inline">\(q\)</span> correlaciones más fuertes se pueden capturar mientras que el número de parámetros crece de manera lineal con <span class="math inline">\(p\)</span>. En el caso de CPP con <span class="math inline">\(q\)</span> componentes: <span class="math inline">\(p\cdot q + 1 - q\cdot(q-1)/2\)</span>.</p></li>
+<li><p>Podemos derivar un algoritmo EM para CPP que es eficente computacionalmente en situaciones en los que nos interesa calcular pocas componentes.</p></li>
+<li><p>La combinación de un modelo probabilísitico y el algoritmo EM nos permite tratar con datos faltantes en la base de datos.</p></li>
+<li><p>La existencia de la verosimilitud nos permite comparar modelos. Por ejemplo podemos hacer validación cruzada para elegir el número de componentes/factores que ajustan mejor a los datos.</p></li>
+<li><p>Podemos utilizar el modelo para generar muestras de la distribución.</p></li>
+</ul>
+<p>Para formular PCA probabilístico introducimos una variable latente <span class="math inline">\(X\)</span> que corresponde al subespacio de componentes principales, suponemos <span class="math inline">\(X\sim N(0, I)\)</span>. Por otra parte, la distribución de la variable aleatoria observada <span class="math inline">\(Y\)</span> condicional a la variable latente <span class="math inline">\(X\)</span> es <span class="math inline">\(Y|X\sim N(Wx+\mu, \sigma^2I\)</span></p>
+<p>Veremos que las columnas de <span class="math inline">\(W\)</span> (dimensión <span class="math inline">\(D\times M\)</span>) generan un subsepacio que correponde al subespacio de componentes principales.</p>
+<p>El siguiente esquema explica el modelo PCA probabilístico desde el punto de vista generativo.</p>
+<p><img src="imagenes/PCA_p.png" style="width: 600px;"/></p>
+<p>Desde este enfoque vemos que primero selecciona aleatoriamente un valor de la variable latente (<span class="math inline">\(x\)</span>) y después muestreamos el valor observado condicional a la variable latente, en particular la variable obsevada (de dimensión <span class="math inline">\(D\)</span>) se define usando una transformación lineal del espacio latente mas ruido Gaussiano aleatorio:</p>
+<p><span class="math display">\[y=Wx + \mu + \epsilon\]</span></p>
+<p>donde <span class="math inline">\(x\sim N(0, I)\)</span> de dimensión <span class="math inline">\(M\)</span> y <span class="math inline">\(\epsilon \sim N(0, \sigma^2I)\)</span> de dimensión <span class="math inline">\(D\)</span>.</p>
+<p>Ahora, si queremos usar máxima verosimilitud para estimar <span class="math inline">\(W\)</span>, <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma^2\)</span>, necesitamos una expresión para la distribución marginal de la variable observada:</p>
+<p><span class="math display">\[p(y)=\int p(y|x)p(x)dx\]</span></p>
+<p>dado que este corresponde a un modelo Gaussiano lineal su distribución marginal es nuevamente Gaussiana con media <span class="math inline">\(\mu\)</span> y matriz de covarianzas <span class="math inline">\(C=WW^T+\sigma^2I.\)</span></p>
+<p>Entonces, la distribución <span class="math inline">\(p(y)\)</span> depende de los parámetros <span class="math inline">\(W\)</span>, <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma^2\)</span>; sin embargo hay una redundancia en la parametrización que corresponde a rotaciones en el espacio de coordenadas de las variables latentes. Para ver esto consideremos <span class="math inline">\(Q\)</span> una matriz ortonormal de dimensión <span class="math inline">\(D \times D\)</span> (<span class="math inline">\(Q\)</span> es una matriz de rotación), <span class="math display">\[Q^T Q = Q Q^T = I\]</span> Al observar la igualdad <span class="math inline">\(C=WW^T+\sigma^2I\)</span>, notamos que no existe una única <span class="math inline">\(W\)</span> que la satisfaga pues si definimos <span class="math inline">\(\tilde{W}=WQ\)</span> tenemos que <span class="math display">\[\tilde{W}\tilde{W}^T=WQQ^TW^T=WW^T\]</span> y por tanto <span class="math inline">\(C=\tilde{W}{W}^T+\sigma^2I\)</span>. Este es un aspecto que consideraremos más a fondo en la parte de estimación.</p>
+<div id="maxima-verosimilitud-1" class="section level4">
+<h4><span class="header-section-number">15.1.0.1</span> Máxima verosimilitud</h4>
+<p>Consideramos la determinación de los parámetros usando máxima verosimilitud: <span class="math display">\[
+\begin{aligned}
+\log p(y)&amp;=\sum_{i=1}^N\log p(y_j)\\
+&amp;=-\frac{ND}{2}-\frac{N}{2}\log(2\pi)\log|C| -\frac{1}{2}\sum_{j=1}^N(y_j-\mu)^TC^{-1}(y_j-\mu)
+\end{aligned}
+\]</span></p>
+<p>Derivando e igualando a cero obtenemos <span class="math inline">\(\hat{\mu}=\bar{y}\)</span>, la maximización con respecto a <span class="math inline">\(W\)</span> y <span class="math inline">\(\sigma^2\)</span> es más difícil pero tiene forma cerrada (<a href="http://research.microsoft.com/pubs/67218/bishop-ppca-jrss.pdf">Tipping y Bishop 1999</a>).</p>
+<p><span class="math display">\[\hat{W}=U_{M}(L_M-\sigma^2I)^{1/2}R\]</span></p>
+<p>donde <span class="math inline">\(U_{M}\)</span> es una matriz de dimensión <span class="math inline">\(D \times M\)</span> cuyas columnas corresponden a los <span class="math inline">\(M\)</span> eigenvectores asociados a los mayores eigenvalores de la matriz de covarianzas <span class="math inline">\(S\)</span>. La matriz <span class="math inline">\(L\)</span> de dimensión <span class="math inline">\(M \times M\)</span> esta conformada por los eigenvalores correspondientes. Por último, R res cualquier matriz ortonormal de dimensión <span class="math inline">\(M \times M\)</span>.</p>
+<p>Suponemos que los eigenvectores están ordenados en orden decreciente de acuerdo a sus eigenvalores correspondientes <span class="math inline">\(u_1,...,u_M\)</span>, en este caso las columnas de <span class="math inline">\(W\)</span> definen el subespacio de PCA estándar. Por su parte, la solución de máxima verosimilitud para <span class="math inline">\(\sigma^2\)</span> es:</p>
+<p><span class="math display">\[\hat{\sigma^2}=\frac{1}{D-M}\sum_{j=M+1}^D \lambda_j\]</span></p>
+<p>notemos que <span class="math inline">\(\hat{\sigma}^2\)</span> es la varianza promedio asociada a las dimensiones que no incluimos.</p>
+<p>Ahora, como R es ortogonal se puede interpretar como una matriz de rotación en el espacio de variables latentes. Por ahora, pensemos <span class="math inline">\(R=I\)</span> notamos que las columnas de <span class="math inline">\(W\)</span> son los vectores de componentes principales escalados por los parámetros de varianza <span class="math inline">\(\lambda_i-\sigma^2\)</span>, para ver la interpretación notemos que en la suma de Gaussianas independientes las varianzas son aditivas. Por tanto, la varianza <span class="math inline">\(\lambda_i\)</span> en la dirección de un eigenvector <span class="math inline">\(u_i\)</span> se compone de la contribución <span class="math inline">\((\lambda_i-\sigma^2)\)</span> de la proyección del espacio latente (varianza 1) al espacio de los datos a través de la columna correspondiente de <span class="math inline">\(W\)</span> mas la contribución del ruido con varianza isotrópica <span class="math inline">\(\sigma^2\)</span>.</p>
+</div>
+<div id="observaciones-1" class="section level4">
+<h4><span class="header-section-number">15.1.0.2</span> Observaciones</h4>
+<ul>
+<li><p>El método convencional de PCA se suele describir como una proyección de los puntos en un espacio de dimensión <span class="math inline">\(D\)</span> en un subespacio de dimensión <span class="math inline">\(M\)</span>.</p></li>
+<li><p>PCA probabilístco se expresa de manera más natural como un mapeo del espacio latente al espacio de los datos observados.</p></li>
+<li><p>Una función importante de PCA probabilítico es definir una distribución Gaussiana multivariada en donde el número de grados de libertad se puede controlar al mismo tiempo que podemos capturar las correlaciones más importantes de los datos.</p></li>
+<li><p>PCA convencional corrresponde al límite <span class="math inline">\(\sigma^2 \to 0\)</span></p></li>
+<li><p>PCA probabilístico se puede escribir en términos de un espacio latente por lo que la implementación del algoritmo EM es una opción natural. En casos donde <span class="math inline">\(M&lt;&lt;D\)</span> la estimación mediante EM puede ser más eficiente.</p></li>
+<li><p>Debido a que tenemos un modelo probabilitico para PCA podemos trabajar con faltantes (MCAR y MAR) marginalizando sobre la distribución de los no observados. El manejo de faltantes es otra ventaja de la implementación EM.</p></li>
+<li><p>El algoritmo EM se puede extender al caso de Análisis de factores para el cuál no hay una solución cerrada.</p></li>
+</ul>
+</div>
+<div id="analisis-de-factores" class="section level3">
+<h3><span class="header-section-number">15.1.1</span> Análisis de factores</h3>
+<p>El análisis de factores es muy similar a PCA probabilístico, la diferencia radica en que en la distribución condicional de <span class="math inline">\(Y|X\)</span> la matriz de covarianza se supone diagonal en lugar de isotrópica:</p>
+<p><span class="math display">\[Y|X \sim N(Wx + \mu, \Psi)\]</span></p>
+<p>Donde <span class="math inline">\(\Psi\)</span> es una matriz diagonal de dimensión <span class="math inline">\(D \times D\)</span>. Al igual que en PCA probabilístico, el modelo de FA supone que las variables observadas son independientes dado las latentes. En escencia el análisis de factores está explicando la estructura de covarianza observada representando la varianza<br />
+independiente asociada a cada variable en la matriz <span class="math inline">\(W\)</span> y capturando la varianza compartda en <span class="math inline">\(W\)</span>.</p>
+<p>La distribución marginal de las variables observadas es <span class="math inline">\(X\sim N(\mu, C)\)</span> donde <span class="math display">\[C=WW^T+\Psi.\]</span></p>
+<p>De manera similar a PCA probabilístico el modelo es invariante a rotaciones en el espacio latente.</p>
+</div>
+</div>
+<div id="analisis-de-factores-descripcion-tradicional" class="section level2">
+<h2><span class="header-section-number">15.2</span> Análisis de factores (descripción tradicional)</h2>
+<p>Trataremos ahora con análisis de factores, los modelos que veremos se enfocan en variables observadas y latentes continuas. La idea esencial del análisis de factores es describir las relaciones entre varias variables observadas (<span class="math inline">\(Y=Y_1,...,Y_p\)</span>) a través de variables latentes (<span class="math inline">\(X_1,...,X_q\)</span>) donde <span class="math inline">\(q &lt; p\)</span>. Como ejemplo consideremos una encuesta de consumo de hogares, donde observamos el nivel de consumo de <span class="math inline">\(p\)</span> productos diferentes. Las variaciones de los componentes de <span class="math inline">\(Y\)</span> quizá se puedan explicar por 2 o 3 factores de conducta del hogar, estos podrían ser un deseo básico de comfort, o el deseo de alcanzar cierto nivel social u otros conceptos sociales. Es común que estos factores no observados sean de mayor interés que las observaciones en si mismas.</p>
+<p>En la gráfica inferior vemos un ejemplo en educación donde las variables <em>vocab, reading, maze,…</em> corresponden a las variables observadas mientras que <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span> son las variables latentes. Observamos que añadir <em>estructura</em> al problema resulta en una simplificación del modelo.</p>
+<p><img src="14-pca-2_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" /><img src="14-pca-2_files/figure-html/unnamed-chunk-3-2.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>En ocasiones, el análisis de factores se utiliza como una técnica de reducción de dimensión que esta basada en un modelo. Idealmente, toda la información en la base de datos se puede reproducir por un número menor de factores.</p>
+<div id="el-modelo" class="section level3">
+<h3><span class="header-section-number">15.2.1</span> El modelo</h3>
+<p>Sea <span class="math inline">\(Y = (Y_1,...,Y_p)^T\)</span> un vector de variables aleatorias observables donde todas las variables son cuantitativas. Supongamos que cada <span class="math inline">\(Y_j\)</span> en <span class="math inline">\(Y\)</span> (<span class="math inline">\(j=1,...,p\)</span>) satisface: <span class="math display">\[Y_j = \sum_{k=1}^K \lambda_{jk} X_k + u_j\]</span> donde * <span class="math inline">\(X_k\)</span> son los factores comunes (variables aleatorias continuas no observables).</p>
+<ul>
+<li><p><span class="math inline">\(u_j\)</span> son errores (aleatorios).</p></li>
+<li><p><span class="math inline">\(\lambda_{jk}\)</span> son las <em>cargas</em> de la variable <span class="math inline">\(j\)</span> en el factor <span class="math inline">\(k\)</span>, (parámetros).</p></li>
+</ul>
+<p>En notación matricial el modelo se escribe: <span class="math display">\[Y_{p\times 1} = \Lambda_{p\times K} X_{K\times 1} + U_{p\times 1}\]</span> donde <span class="math inline">\(\Lambda, X\)</span> y <span class="math inline">\(U\)</span> no son observadas, únicamente observamos <span class="math inline">\(Y\)</span>.</p>
+<p>Adicionalmente, tenemos los siguientes supuestos:</p>
+<ul>
+<li><p><span class="math inline">\(X \perp U\)</span>, esto es, los errores y los factores son independientes.</p></li>
+<li><p><span class="math inline">\(E(X)=E(U)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(Cov(X) = I_k\)</span> (modelo ortogonal de factores) ésto se ve en la gráfica pues no hay arcos que unan a <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span>.</p></li>
+<li><p><span class="math inline">\(Cov(U) = \Psi\)</span>, donde <span class="math inline">\(\Psi\)</span> es una matriz diagonal (<span class="math inline">\(p \times p\)</span>).</p></li>
+</ul>
+<p>Típicamente, se asume que <span class="math inline">\(U\)</span> y <span class="math inline">\(X\)</span> son Normales multivariadas. ¿Cómo vemos que <span class="math inline">\(Y_i \perp Y_j|X\)</span></p>
+<p>Lo que buscamos es explicar la relación entre las variables observadas a través de las variables latentes, las relaciones que buscamos explicar están resumidas en la matriz de varianzas y covarianzas. En nuestro ejemplo la matriz es la siguiente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ability.cov<span class="op">$</span>cov
+<span class="co">#&gt;         general picture blocks  maze reading  vocab</span>
+<span class="co">#&gt; general   24.64    5.99   33.5  6.02   20.75  29.70</span>
+<span class="co">#&gt; picture    5.99    6.70   18.1  1.78    4.94   7.20</span>
+<span class="co">#&gt; blocks    33.52   18.14  149.8 19.42   31.43  50.75</span>
+<span class="co">#&gt; maze       6.02    1.78   19.4 12.71    4.76   9.07</span>
+<span class="co">#&gt; reading   20.75    4.94   31.4  4.76   52.60  66.76</span>
+<span class="co">#&gt; vocab     29.70    7.20   50.8  9.07   66.76 135.29</span></code></pre></div>
+<p>y la matriz de correlaciones es:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov2cor</span>(ability.cov<span class="op">$</span>cov)
+<span class="co">#&gt;         general picture blocks  maze reading vocab</span>
+<span class="co">#&gt; general   1.000   0.466  0.552 0.340   0.576 0.514</span>
+<span class="co">#&gt; picture   0.466   1.000  0.572 0.193   0.263 0.239</span>
+<span class="co">#&gt; blocks    0.552   0.572  1.000 0.445   0.354 0.356</span>
+<span class="co">#&gt; maze      0.340   0.193  0.445 1.000   0.184 0.219</span>
+<span class="co">#&gt; reading   0.576   0.263  0.354 0.184   1.000 0.791</span>
+<span class="co">#&gt; vocab     0.514   0.239  0.356 0.219   0.791 1.000</span></code></pre></div>
+<p>Entonces, volviendo al modelo examinemos que implicaciones tiene en la matriz de varianzas y covarianzas de las variables aleatorias observables. Denotemos la matriz de varianzas y covarianzas por <span class="math inline">\(\Sigma = Var(Y)\)</span> y la expresaremos en términos de los parámetros del modelo.</p>
+<p><span class="math display">\[\Sigma = \Lambda \Lambda^T + \Psi\]</span></p>
+<p>Los términos en la diagonal de <span class="math inline">\(\Sigma\)</span> (varianzas de cada variable observada) son:</p>
+<p><span class="math display">\[Var(Y_j) = \sum_{k= 1}^K \lambda_{jk}^2 + \Psi_{jj}\]</span> <span class="math display">\[= comunalidad + unicidad\]</span></p>
+<p>La <strong>comunalidad</strong> de la variable <span class="math inline">\(Y_j\)</span> dada por <span class="math inline">\(\sum_{k= 1}^K \Lambda^2(j,k)\)</span> es la varianza que comparte esta variable con otras variables por medio de los factores, mientras que la <strong>unicidad</strong> <span class="math inline">\(\Psi(j,j)\)</span> es la varianza de la variable <span class="math inline">\(j\)</span> que no comparte con el resto. Un buen análisis de factores tiene comunalidades altas y unicidades bajas (relativamente).</p>
+<p>Los términos fuera de la diagonal están dados por:</p>
+<p><span class="math display">\[Cov(Y_j, Y_i)= \sum_{k=1}^K\lambda_{jk}\lambda_{ik}\]</span></p>
+<p><img src="figuras/manicule2.jpg" /> Sea <span class="math inline">\(X \sim N(0, 1), u_1 \sim N(0,1),u_2 \sim N(0,2)\)</span>. Definimos <span class="math display">\[Y_1 = X + u_1\]</span> <span class="math display">\[Y_2 = -X+u_2\]</span></p>
+<ul>
+<li><p>Comunalidades:</p></li>
+<li><p>Unicidades:</p></li>
+<li><p>Descomposición de la matriz de varianzas y covarianzas:</p></li>
+</ul>
+<p><strong>Ejemplo:</strong> Pruebas de habilidad.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ability_fa &lt;-<span class="st"> </span><span class="kw">factanal</span>(<span class="dt">factors =</span> <span class="dv">2</span>, <span class="dt">covmat =</span> ability.cov, <span class="dt">rotation =</span> <span class="st">&quot;none&quot;</span>)
+ability_fa
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; factanal(factors = 2, covmat = ability.cov, rotation = &quot;none&quot;)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Uniquenesses:</span>
+<span class="co">#&gt; general picture  blocks    maze reading   vocab </span>
+<span class="co">#&gt;   0.455   0.589   0.218   0.769   0.052   0.334 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Loadings:</span>
+<span class="co">#&gt;         Factor1 Factor2</span>
+<span class="co">#&gt; general  0.648   0.354 </span>
+<span class="co">#&gt; picture  0.347   0.538 </span>
+<span class="co">#&gt; blocks   0.471   0.748 </span>
+<span class="co">#&gt; maze     0.253   0.408 </span>
+<span class="co">#&gt; reading  0.964  -0.135 </span>
+<span class="co">#&gt; vocab    0.815         </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;                Factor1 Factor2</span>
+<span class="co">#&gt; SS loadings      2.420   1.162</span>
+<span class="co">#&gt; Proportion Var   0.403   0.194</span>
+<span class="co">#&gt; Cumulative Var   0.403   0.597</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Test of the hypothesis that 2 factors are sufficient.</span>
+<span class="co">#&gt; The chi square statistic is 6.11 on 4 degrees of freedom.</span>
+<span class="co">#&gt; The p-value is 0.191</span></code></pre></div>
+</div>
+<div id="estimacion-del-modelo" class="section level3">
+<h3><span class="header-section-number">15.2.2</span> Estimación del modelo</h3>
+<p>Antes de adentrarnos en la estimación vale la pena considerar dos aspectos:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Rotaciones</strong>: Al observar la igualdad <span class="math inline">\(\Sigma = \Lambda\Lambda^T + \Psi\)</span>, notamos que no existe una única <span class="math inline">\(\Lambda\)</span> que la satisfaga. Sea <span class="math inline">\(Q\)</span> una matriz ortonormal de dimensión <span class="math inline">\(K \times K\)</span> (<span class="math inline">\(Q\)</span> es una matriz de rotación), <span class="math display">\[Q^T Q = Q Q^T = I\]</span> Si <span class="math inline">\(\Lambda\)</span> es tal que <span class="math inline">\(Y = \Lambda X + U\)</span> y <span class="math inline">\(\Sigma = \Lambda\Lambda^T + \Psi\)</span> entonces, <span class="math display">\[Y=(\Lambda Q)(Q^TX) + U\]</span> <span class="math display">\[\Sigma = (\Lambda Q) (\Lambda Q)^T + \Psi =  \Lambda\Lambda^T + \Psi\]</span> por lo tanto, <span class="math inline">\(\Lambda_1 = (\Lambda Q)\)</span> y <span class="math inline">\(X_1 = Q^TX\)</span> también son una solución para el modelo. Esto nos dice, que cualquier rotación de las cargas nos da una solución. Hay amplia literatura en este tema, típicamente la elección de una rotación busca mejorar la interpretación.</p></li>
+<li><strong>¿Cuántos factores?:</strong> No hay una respuesta directa a la pregunta pero para aspirar a contestarla respondamos primero: ¿Cuántos factores puedo estimar? Contemos el número de parámetros que vamos a estimar y veamos los grados de libertad:<br />
+</li>
+</ol>
+<ul>
+<li>Parámetros en <span class="math inline">\(\Sigma:p(p+1)/2\)</span><br />
+</li>
+<li>Parámetros en <span class="math inline">\(\Lambda\)</span> y <span class="math inline">\(\Psi:pK + p\)</span><br />
+</li>
+<li>Restricciones necesarias para fijar la rotación: <span class="math inline">\(K(K-1)/2\)</span><br />
+</li>
+<li>Grados de libertad: <span class="math inline">\(d = p(p+1)/2 - (pK + p - K(K-1)/2)\)</span><br />
+Si <span class="math inline">\(d &lt; 0\)</span>, no podemos estimar el modelo, por lo tanto el mayor número de factores que puedo estimar depende del número de variables observadas. Por ejemplo si <span class="math inline">\(p = 5\)</span>, únicamente podemos estimar modelos con 1 ó 2 factores.<br />
+Volviendo a la pregunta original: ¿Cuántos factores debo modelar? La respuesta depende del objetivo del análisis de factores, en ocasiones se desea utilizar las variables latentes como un _resumen__ de las variables observadas e incorporarlas a ánalisis posteriores, en este caso es conveniente analizar el porcentaje de la varianza en las variables observadas que se puede explicar con los factores, por ejemplo si el tercer factor no contribuye de manera importante a explicar la variabilidad observada, el modelo con dos factores sería preferible. Por otra parte, si asumimos normalidad (<span class="math inline">\(X\sim N(0, I), U\sim N(0, \Psi)\)</span>) podemos comparar la verosimilitud (o AIC, BIC) de los modelos con distinto número de factores y elegir de acuerdo a este criterio.</li>
+</ul>
+<p>Una vez que fijamos el número de factores, hay varios métodos de estimación, el más popular implementa el algoritmo <strong>EM</strong>, sin embargo este método requiere supuestos de normalidad. Dentro de los métodos que no requieren supuestos adicionales está el método de <strong>factores principales</strong>.</p>
+<div id="metodo-del-factor-principal" class="section level4">
+<h4><span class="header-section-number">15.2.2.1</span> Método del factor principal</h4>
+<p>En adelante utilzamos la matriz de covarianzas muestral, <span class="math display">\[S = \frac{1}{N} \sum_{n = 1}^N(X_n-\bar{X})(X_n-\bar{X})^T\]</span> como la estimación de la matriz de covarianzas poblacional <span class="math inline">\(\Sigma\)</span>. Usualmente no es posible encontrar matrices <span class="math inline">\(\hat{\Lambda},\hat{\Psi}\)</span> tales que la igualdad <span class="math inline">\(S = \hat{\Lambda}\hat{\Lambda}^T+\hat{\Psi}\)</span> se cumpla de manera exacta. Por tanto el objetivo es encontrar matrices tales que se minimice <span class="math inline">\(traza(S-\hat{S})^T(S-\hat{S})\)</span> donde <span class="math inline">\(\hat{S} = \hat{\delta}\hat{\delta}^T+\hat{Psi}\)</span>. El algoritmo del método del factor principal funciona de la siguiente manera:</p>
+<ol style="list-style-type: decimal">
+<li><p>Inicializa <span class="math inline">\(\hat{\Psi}\)</span> (cualquier valor)</p></li>
+<li><p><span class="math inline">\(\hat{\Psi}=\)</span> los <span class="math inline">\(K\)</span> mayores eigenvectores de la matriz <span class="math display">\[(\hat{S} - \hat{\Psi})\]</span> Nos fijamos en esta diferencia porque nos interesa explicar las covarianzas a través de los factores comunes.</p></li>
+<li><p><span class="math inline">\(\hat{\Psi} = diag(S-\hat{\Lambda}\hat{\Lambda}^T)\)</span></p></li>
+</ol>
+<p>Los pasos 2 y 3 se repiten hasta alcanzar convergencia. Este algoritmo no es muy popular debido a que la convergencia no está asegurada, se considera lento y los valores iniciales de <span class="math inline">\(\Psi\)</span> suelen influenciar la solución final.</p>
+</div>
+</div>
+<div id="analisis-de-factores-de-maxima-verosimilitud" class="section level3">
+<h3><span class="header-section-number">15.2.3</span> Análisis de factores de máxima verosimilitud</h3>
+<p>Supongamos ahora que, <span class="math display">\[X \sim N(0, I)\]</span> <span class="math display">\[U \sim N(0,\Psi)\]</span> Entonces la distribución del vector de variables aleatorias observables <span class="math inline">\(Y\)</span> es <span class="math display">\[Y \sim N(\mu + \Lambda x, \Sigma)\]</span> donde <span class="math inline">\(\Sigma = \Lambda \Lambda^T + \Psi\)</span> (igual que antes). Es fácil ver que la distribución condicional de <span class="math inline">\(Y\)</span> es: <span class="math display">\[Y|X \sim N(\mu + \Lambda x, \Psi)\]</span> por tanto, se cumple las independencias condicionales que leemos en la gráfica. Ahora, la log verosimilitud es: <span class="math display">\[log L(\Sigma) = - \frac{np}{2} log(2\pi) - \frac{n}{2}log det(\Sigma) - \frac{n}{2}tr(\Sigma^{-1}S)\]</span> buscamos parámetros<span class="math inline">\(\hat{\Lambda}\)</span> y <span class="math inline">\(\hat{Psi}\)</span> que maximizen esta log-verosimilitud, sin embargo, estos parámetros no se pueden separar facilmente (es decir maximizar individualmente) ya que están relacionados a través de <span class="math inline">\(det(\Sigma)\)</span> y <span class="math inline">\(\Sigma^{-1}\)</span>. No hay una forma cerrada para encontrar los parámetros de máxima verosimilitud de la expresión anterior. Recurrimos entonces al algoritmo <strong>EM</strong>, donde en el paso <strong>E</strong> <em>rellanamos</em> los valores de <span class="math inline">\(X\)</span> y en el paso <strong>M</strong> estimamos <span class="math inline">\(\Lambda\)</span> y <span class="math inline">\(\Psi\)</span> utilizando que éstos parámetros se pueden separar si conozco <span class="math inline">\(X\)</span>.</p>
+</div>
+<div id="evaluacion-del-modelo" class="section level3">
+<h3><span class="header-section-number">15.2.4</span> Evaluación del modelo</h3>
+<p>Volviendo al número de factores, una vez que hacemos supuestos de normalidad podemos calcular la devianza del modelo: <span class="math display">\[D = n*(tr(\hat{\Sigma}^{-1}S) - log det(\hat{\Sigma}^{-1}S) - p)\]</span> y el BIC. Por tanto, podemos comparar modelos con distintos factores utilizando este criterio. <span class="math display">\[d = p - {1}{2}((p-q)^2 - (p+q))\]</span> y por tanto <span class="math inline">\(BIC = D + d log N\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(psych)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: &#39;psych&#39;</span>
+<span class="co">#&gt; The following objects are masked from &#39;package:ggplot2&#39;:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     %+%, alpha</span>
+dev &lt;-<span class="st"> </span><span class="cf">function</span>(fit){
+  S &lt;-<span class="st"> </span>fit<span class="op">$</span>correlation
+  n &lt;-<span class="st"> </span>fit<span class="op">$</span>n.obs
+  p &lt;-<span class="st"> </span><span class="kw">nrow</span>(S)
+  Sigma &lt;-<span class="st"> </span>(fit<span class="op">$</span>loadings) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(fit<span class="op">$</span>loadings) <span class="op">+</span><span class="st"> </span><span class="kw">diag</span>(fit<span class="op">$</span>uniqueness)
+  mat.aux &lt;-<span class="st"> </span><span class="kw">solve</span>(Sigma) <span class="op">%*%</span><span class="st"> </span>S
+  D &lt;-<span class="st"> </span>n <span class="op">*</span><span class="st"> </span>(<span class="kw">tr</span>(mat.aux) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="kw">det</span>(mat.aux)) <span class="op">-</span><span class="st"> </span>p)
+  <span class="kw">return</span>(D)
+}
+BIC &lt;-<span class="st"> </span><span class="cf">function</span>(fit){
+  p &lt;-<span class="st"> </span><span class="kw">nrow</span>(fit<span class="op">$</span>loadings)
+  q &lt;-<span class="st"> </span><span class="kw">ncol</span>(fit<span class="op">$</span>loadings)
+  v &lt;-<span class="st"> </span>p <span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>((p <span class="op">-</span><span class="st"> </span>q) <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(p <span class="op">+</span><span class="st"> </span>q))
+  D &lt;-<span class="st"> </span><span class="kw">dev</span>(fit)
+  BIC &lt;-<span class="st"> </span>D <span class="op">+</span><span class="st"> </span>v <span class="op">*</span><span class="st"> </span><span class="kw">log</span>(fit<span class="op">$</span>n.obs) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>
+  <span class="kw">return</span>(BIC)
+}
+ability.fa.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">factanal</span>(<span class="dt">factors =</span> <span class="dv">1</span>, <span class="dt">covmat =</span> ability.cov, 
+  <span class="dt">rotation =</span> <span class="st">&quot;none&quot;</span>)
+ability.fa.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">factanal</span>(<span class="dt">factors =</span> <span class="dv">2</span>, <span class="dt">covmat =</span> ability.cov, 
+  <span class="dt">rotation =</span> <span class="st">&quot;none&quot;</span>)
+ability.fa.<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">factanal</span>(<span class="dt">factors =</span> <span class="dv">3</span>, <span class="dt">covmat =</span> ability.cov, 
+  <span class="dt">rotation =</span> <span class="st">&quot;none&quot;</span>)
+<span class="kw">BIC</span>(ability.fa.<span class="dv">1</span>)
+<span class="co">#&gt; [1] 71.2</span>
+<span class="kw">BIC</span>(ability.fa.<span class="dv">2</span>)
+<span class="co">#&gt; [1] 11.1</span>
+<span class="kw">BIC</span>(ability.fa.<span class="dv">3</span>)
+<span class="co">#&gt; [1] 14.2</span></code></pre></div>
+<p>Veamos también el porcentaje de la varianza observada que se puede explicar con los distintos modelos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ability.fa.<span class="dv">1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; factanal(factors = 1, covmat = ability.cov, rotation = &quot;none&quot;)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Uniquenesses:</span>
+<span class="co">#&gt; general picture  blocks    maze reading   vocab </span>
+<span class="co">#&gt;   0.535   0.853   0.748   0.910   0.232   0.280 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Loadings:</span>
+<span class="co">#&gt;         Factor1</span>
+<span class="co">#&gt; general 0.682  </span>
+<span class="co">#&gt; picture 0.384  </span>
+<span class="co">#&gt; blocks  0.502  </span>
+<span class="co">#&gt; maze    0.300  </span>
+<span class="co">#&gt; reading 0.877  </span>
+<span class="co">#&gt; vocab   0.849  </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;                Factor1</span>
+<span class="co">#&gt; SS loadings      2.443</span>
+<span class="co">#&gt; Proportion Var   0.407</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Test of the hypothesis that 1 factor is sufficient.</span>
+<span class="co">#&gt; The chi square statistic is 75.2 on 9 degrees of freedom.</span>
+<span class="co">#&gt; The p-value is 1.46e-12</span>
+ability.fa.<span class="dv">2</span> 
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; factanal(factors = 2, covmat = ability.cov, rotation = &quot;none&quot;)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Uniquenesses:</span>
+<span class="co">#&gt; general picture  blocks    maze reading   vocab </span>
+<span class="co">#&gt;   0.455   0.589   0.218   0.769   0.052   0.334 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Loadings:</span>
+<span class="co">#&gt;         Factor1 Factor2</span>
+<span class="co">#&gt; general  0.648   0.354 </span>
+<span class="co">#&gt; picture  0.347   0.538 </span>
+<span class="co">#&gt; blocks   0.471   0.748 </span>
+<span class="co">#&gt; maze     0.253   0.408 </span>
+<span class="co">#&gt; reading  0.964  -0.135 </span>
+<span class="co">#&gt; vocab    0.815         </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;                Factor1 Factor2</span>
+<span class="co">#&gt; SS loadings      2.420   1.162</span>
+<span class="co">#&gt; Proportion Var   0.403   0.194</span>
+<span class="co">#&gt; Cumulative Var   0.403   0.597</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Test of the hypothesis that 2 factors are sufficient.</span>
+<span class="co">#&gt; The chi square statistic is 6.11 on 4 degrees of freedom.</span>
+<span class="co">#&gt; The p-value is 0.191</span>
+ability.fa.<span class="dv">3</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; factanal(factors = 3, covmat = ability.cov, rotation = &quot;none&quot;)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Uniquenesses:</span>
+<span class="co">#&gt; general picture  blocks    maze reading   vocab </span>
+<span class="co">#&gt;   0.441   0.217   0.329   0.580   0.040   0.336 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Loadings:</span>
+<span class="co">#&gt;         Factor1 Factor2 Factor3</span>
+<span class="co">#&gt; general  0.636   0.367   0.139 </span>
+<span class="co">#&gt; picture  0.350   0.766  -0.272 </span>
+<span class="co">#&gt; blocks   0.441   0.639   0.263 </span>
+<span class="co">#&gt; maze     0.236   0.325   0.509 </span>
+<span class="co">#&gt; reading  0.974  -0.109         </span>
+<span class="co">#&gt; vocab    0.811                 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;                Factor1 Factor2 Factor3</span>
+<span class="co">#&gt; SS loadings      2.382   1.249   0.427</span>
+<span class="co">#&gt; Proportion Var   0.397   0.208   0.071</span>
+<span class="co">#&gt; Cumulative Var   0.397   0.605   0.676</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; The degrees of freedom for the model is 0 and the fit was 0</span></code></pre></div>
+<p>Finalmente, volvamos a las rotaciones. La interpretación de los factores se facilita cuando cada variable observada <em>carga</em> principalmente en un factor, por ello, muchos de los métodos de rotación buscan acentuar esta característica:</p>
+<ul>
+<li><p>Rotación <strong>varimax</strong>: Resulta en algunas cargas altas y otras bajas para cada factor, de manera que las cargas bajas se puedan ignorar en la interpretación.</p></li>
+<li><p>Rotación <strong>promax</strong>: Esta es una rotación <em>oblicua</em>, lo que implica que se pierde la ortogonalidad de los factores. El resultado de esta rotación es que usualmente las cargas se vuelven incluso más extremas que con la rotación varimax.</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ability.varimax &lt;-<span class="st"> </span><span class="kw">factanal</span>(<span class="dt">factors =</span> <span class="dv">2</span>, <span class="dt">covmat =</span> ability.cov, 
+  <span class="dt">rotation =</span> <span class="st">&quot;varimax&quot;</span>)
+ability.promax &lt;-<span class="st"> </span><span class="kw">factanal</span>(<span class="dt">factors =</span> <span class="dv">2</span>, <span class="dt">covmat =</span> ability.cov, 
+  <span class="dt">rotation =</span> <span class="st">&quot;promax&quot;</span>)
+<span class="kw">cbind</span>(ability.varimax<span class="op">$</span>loadings, ability.promax<span class="op">$</span>loadings) <span class="co"># cutoff = 0.1</span>
+<span class="co">#&gt;         Factor1 Factor2 Factor1  Factor2</span>
+<span class="co">#&gt; general   0.499   0.543  0.3642  0.47041</span>
+<span class="co">#&gt; picture   0.156   0.622 -0.0577  0.67120</span>
+<span class="co">#&gt; blocks    0.206   0.860 -0.0915  0.93189</span>
+<span class="co">#&gt; maze      0.109   0.468 -0.0537  0.50800</span>
+<span class="co">#&gt; reading   0.956   0.182  1.0234 -0.09549</span>
+<span class="co">#&gt; vocab     0.785   0.225  0.8112  0.00911</span></code></pre></div>
+</div>
+<div id="visualizacion" class="section level3">
+<h3><span class="header-section-number">15.2.5</span> Visualización</h3>
+<p>Cuando realizamos componentes principales es común querer proyectar los datos en las componentes. En el caso de AF no es tan sencillo porque los factores son aleatorios, pero hay métodos para calcular puntajes (scores).</p>
+<ul>
+<li><p>Método de Bartlett. Supongamos que conocemos <span class="math inline">\(\Lambda\)</span> y <span class="math inline">\(\Psi\)</span>, denotemos los puntajes del individuo <span class="math inline">\(i\)</span> en los factores por <span class="math inline">\(x_i\)</span>, entonces si <span class="math inline">\(y_i\)</span> es el vector de variables observables del i-ésimo individuo, tenemos que <span class="math inline">\(y_i\)</span> dada <span class="math inline">\(x_i\)</span> se distribuye <span class="math inline">\(N(\Lambda x_i, \Psi)\)</span>, por lo que la log-verosimilitud de la observación <span class="math inline">\(y_i\)</span> esta dada por <span class="math display">\[-\frac{1}{2} log|2\pi\Psi| - \frac{1}{2}(y_i- \Lambda f_i)^T \Psi^{-1}(y_i - \Lambda x_i)\]</span> Derivando e igualando a cero se obtiene: <span class="math display">\[\hat{x}_i = (\Lambda^T\Psi^{-1}\Lambda)\Lambda^T\Psi^{-1}y_i\]</span></p></li>
+<li><p>Método de Thompson. Consideramos <span class="math inline">\(x_i\)</span> aleatorio, i.e. <span class="math inline">\(X\sim N(0,I)\)</span>, entonces <span class="math inline">\(f|y\)</span> se distribuye <span class="math inline">\(N(\Lambda^T\Psi^{-1}y, I-\Lambda^T \Psi^{-1}\Lambda)\)</span> por lo que un estimador natural para <span class="math inline">\(x_i\)</span> es <span class="math display">\[\hat{x}_i = \Lambda^T\Psi^{-1}y_i\]</span></p></li>
+</ul>
+<p><strong>Ejemplo.</strong> La base de datos wine contiene medidas en 13 atributos diferentes de 180 vinos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gridExtra)
+wine &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/wine.csv&quot;</span>)
+<span class="kw">head</span>(wine)
+<span class="co">#&gt; # A tibble: 6 x 14</span>
+<span class="co">#&gt;    Type Alcohol Malic   Ash Alcalinity Magnesium Phenols Flavanoids</span>
+<span class="co">#&gt;   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;     &lt;int&gt;   &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     1    14.2  1.71  2.43       15.6       127    2.80       3.06</span>
+<span class="co">#&gt; 2     1    13.2  1.78  2.14       11.2       100    2.65       2.76</span>
+<span class="co">#&gt; 3     1    13.2  2.36  2.67       18.6       101    2.80       3.24</span>
+<span class="co">#&gt; 4     1    14.4  1.95  2.50       16.8       113    3.85       3.49</span>
+<span class="co">#&gt; 5     1    13.2  2.59  2.87       21.0       118    2.80       2.69</span>
+<span class="co">#&gt; 6     1    14.2  1.76  2.45       15.2       112    3.27       3.39</span>
+<span class="co">#&gt; # ... with 6 more variables: Nonflavanoids &lt;dbl&gt;, Proanthocyanins &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Color &lt;dbl&gt;, Hue &lt;dbl&gt;, Dilution &lt;dbl&gt;, Proline &lt;int&gt;</span>
+pc.wine.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">princomp</span>(wine, <span class="dt">scores =</span> <span class="ot">TRUE</span>)
 
+fa.wine &lt;-<span class="st"> </span><span class="kw">factanal</span>(wine, <span class="dt">factors =</span> <span class="dv">2</span>, <span class="dt">scores =</span> <span class="st">&quot;Bartlett&quot;</span>)
+fa.pc.wine &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">fa1 =</span> fa.wine<span class="op">$</span>scores[, <span class="dv">1</span>], <span class="dt">pc1 =</span> pc.wine.<span class="dv">1</span><span class="op">$</span>scores[, <span class="dv">1</span>], 
+  <span class="dt">fa2 =</span> fa.wine<span class="op">$</span>scores[, <span class="dv">2</span>], <span class="dt">pc2 =</span> pc.wine.<span class="dv">1</span><span class="op">$</span>scores[, <span class="dv">2</span>])
+
+comp_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fa.pc.wine, <span class="kw">aes</span>(<span class="dt">x =</span> fa1, <span class="dt">y =</span> pc1)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()
+comp_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fa.pc.wine, <span class="kw">aes</span>(<span class="dt">x =</span> fa1, <span class="dt">y =</span> pc2)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()
+
+<span class="kw">grid.arrange</span>(comp_<span class="dv">1</span>, comp_<span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)
+
+pc.wine.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">princomp</span>(wine, <span class="dt">scores =</span> T, <span class="dt">cor =</span> T)
+
+fa.pc.wine &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">fa1 =</span> fa.wine<span class="op">$</span>scores[, <span class="dv">1</span>], <span class="dt">pc1 =</span> pc.wine.<span class="dv">2</span><span class="op">$</span>scores[, <span class="dv">1</span>], 
+  <span class="dt">fa2 =</span> fa.wine<span class="op">$</span>scores[, <span class="dv">2</span>], <span class="dt">pc2 =</span> pc.wine.<span class="dv">2</span><span class="op">$</span>scores[, <span class="dv">2</span>])
+
+comp_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fa.pc.wine, <span class="kw">aes</span>(<span class="dt">x =</span> fa1, <span class="dt">y =</span> pc1)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()
+comp_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fa.pc.wine, <span class="kw">aes</span>(<span class="dt">x =</span> fa2, <span class="dt">y =</span> pc2)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()
+
+<span class="kw">grid.arrange</span>(comp_<span class="dv">1</span>, comp_<span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="kw">biplot</span>(pc.wine.<span class="dv">1</span>)
+<span class="kw">biplot</span>(pc.wine.<span class="dv">2</span>)
+
+<span class="co"># Ejemplo simulación</span>
+x1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)
+x2 &lt;-<span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span> <span class="op">*</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)
+x3 &lt;-<span class="st"> </span><span class="dv">10</span> <span class="op">*</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>) 
+
+x &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x1, x2, x3)
+
+fact.x &lt;-<span class="st"> </span><span class="kw">fa</span>(x, <span class="dt">factors =</span> <span class="dv">1</span>, <span class="dt">covar =</span> <span class="ot">TRUE</span>, <span class="dt">fm =</span><span class="st">&quot;ml&quot;</span>)
+pc.x &lt;-<span class="st"> </span><span class="kw">princomp</span>(x)
+fact.x<span class="op">$</span>loadings
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Loadings:</span>
+<span class="co">#&gt;    ML1  </span>
+<span class="co">#&gt; x1 0.999</span>
+<span class="co">#&gt; x2 0.999</span>
+<span class="co">#&gt; x3 0.789</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;                  ML1</span>
+<span class="co">#&gt; SS loadings    2.617</span>
+<span class="co">#&gt; Proportion Var 0.872</span>
+pc.x<span class="op">$</span>loadings
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Loadings:</span>
+<span class="co">#&gt;    Comp.1 Comp.2 Comp.3</span>
+<span class="co">#&gt; x1         0.707  0.707</span>
+<span class="co">#&gt; x2         0.707 -0.707</span>
+<span class="co">#&gt; x3  1.000              </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;                Comp.1 Comp.2 Comp.3</span>
+<span class="co">#&gt; SS loadings     1.000  1.000  1.000</span>
+<span class="co">#&gt; Proportion Var  0.333  0.333  0.333</span>
+<span class="co">#&gt; Cumulative Var  0.333  0.667  1.000</span>
+
+y &lt;-<span class="st"> </span><span class="kw">scale</span>(x)
+
+fact.y &lt;-<span class="st"> </span><span class="kw">fa</span>(y, <span class="dt">factors =</span> <span class="dv">1</span>, <span class="dt">fm =</span><span class="st">&quot;ml&quot;</span>)
+pc.y &lt;-<span class="st"> </span><span class="kw">princomp</span>(y)
+fact.y<span class="op">$</span>loadings
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Loadings:</span>
+<span class="co">#&gt;    ML1  </span>
+<span class="co">#&gt; x1 0.999</span>
+<span class="co">#&gt; x2 0.999</span>
+<span class="co">#&gt; x3      </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;                  ML1</span>
+<span class="co">#&gt; SS loadings    1.999</span>
+<span class="co">#&gt; Proportion Var 0.666</span>
+pc.y<span class="op">$</span>loadings
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Loadings:</span>
+<span class="co">#&gt;    Comp.1 Comp.2 Comp.3</span>
+<span class="co">#&gt; x1  0.705         0.707</span>
+<span class="co">#&gt; x2  0.705        -0.707</span>
+<span class="co">#&gt; x3        -0.997       </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;                Comp.1 Comp.2 Comp.3</span>
+<span class="co">#&gt; SS loadings     1.000  1.000  1.000</span>
+<span class="co">#&gt; Proportion Var  0.333  0.333  0.333</span>
+<span class="co">#&gt; Cumulative Var  0.333  0.667  1.000</span>
+
+fact.y
+<span class="co">#&gt; Factor Analysis using method =  ml</span>
+<span class="co">#&gt; Call: fa(r = y, fm = &quot;ml&quot;, factors = 1)</span>
+<span class="co">#&gt; Standardized loadings (pattern matrix) based upon correlation matrix</span>
+<span class="co">#&gt;     ML1     h2     u2 com</span>
+<span class="co">#&gt; x1 1.00 0.9975 0.0025   1</span>
+<span class="co">#&gt; x2 1.00 0.9975 0.0025   1</span>
+<span class="co">#&gt; x3 0.06 0.0035 0.9965   1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;                 ML1</span>
+<span class="co">#&gt; SS loadings    2.00</span>
+<span class="co">#&gt; Proportion Var 0.67</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Mean item complexity =  1</span>
+<span class="co">#&gt; Test of the hypothesis that 1 factor is sufficient.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; The degrees of freedom for the null model are  3  and the objective function was  13.9 with Chi Square of  13848</span>
+<span class="co">#&gt; The degrees of freedom for the model are 0  and the objective function was  7.59 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; The root mean square of the residuals (RMSR) is  0 </span>
+<span class="co">#&gt; The df corrected root mean square of the residuals is  NA </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; The harmonic number of observations is  1000 with the empirical chi square  0.01  with prob &lt;  NA </span>
+<span class="co">#&gt; The total number of observations was  1000  with Likelihood Chi Square =  7560  with prob &lt;  NA </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Tucker Lewis Index of factoring reliability =  -Inf</span>
+<span class="co">#&gt; Fit based upon off diagonal values = 1</span>
+<span class="co">#&gt; Measures of factor score adequacy             </span>
+<span class="co">#&gt;                                                   ML1</span>
+<span class="co">#&gt; Correlation of (regression) scores with factors     1</span>
+<span class="co">#&gt; Multiple R square of scores with factors            1</span>
+<span class="co">#&gt; Minimum correlation of possible factor scores       1</span></code></pre></div>
+<p><img src="14-pca-2_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" /><img src="14-pca-2_files/figure-html/unnamed-chunk-10-2.png" width="70%" style="display: block; margin: auto;" /><img src="14-pca-2_files/figure-html/unnamed-chunk-10-3.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>En el ejemplo de simulación vemos que el análisis de componentes principales se alinea con la dirección de máxima varianza <span class="math inline">\(X_3\)</span> mientras que el análisis de factores ignora el componente no correlacionado y captura el componente correlacionado <span class="math inline">\(X_2 + X_1\)</span>. Debido a que en FA modelamos diferentes <em>unicidades</em> <span class="math inline">\(u_j\)</span> para cada <span class="math inline">\(Y_j\)</span> el análisis de factores puede verse como un modelo para la estructura de correlación de <span class="math inline">\(Y_j\)</span> en lugar de la estructura de covarianzas.</p>
+
+</div>
+</div>
 </div>
             </section>
 
