@@ -210,7 +210,7 @@ library(igraph)
 library(bnlearn) 
 areas <- colnames(ability.cov$cov)
 ug <- empty.graph(areas)
-arcs(ug, ignore.cycles = TRUE) = matrix(c("general", "picture", "general", 
+arcs(ug, check.cycles = TRUE) = matrix(c("general", "picture", "general", 
   "blocks", "general", "maze", "general", "reading", "general", "vocab", 
   "picture", "blocks", "picture", "maze", "picture", "reading", "picture", 
   "vocab", "blocks", "maze", "blocks", "reading", "blocks", "vocab", 
@@ -219,7 +219,7 @@ arcs(ug, ignore.cycles = TRUE) = matrix(c("general", "picture", "general",
 plot(ug)
 
 ug <- empty.graph(c("X1", "X2", areas))
-arcs(ug, ignore.cycles = TRUE) = matrix(c("X1", "general","X1", "picture", "X1", 
+arcs(ug, check.cycles = TRUE) = matrix(c("X1", "general","X1", "picture", "X1", 
   "blocks", "X1", "maze", "X1", "reading", "X1", "vocab", "X2", "general", "X2",   
   "picture", "X2", "blocks", "X2", "maze", "X2", "reading", "X2", "vocab"), 
   ncol = 2, 
@@ -300,7 +300,7 @@ Los términos fuera de la diagonal están dados por:
 
 $$Cov(Y_j, Y_i)= \sum_{k=1}^K\lambda_{jk}\lambda_{ik}$$
 
-![](../../computo/imagenes/manicule2.jpg)  Sea 
+![](figuras/manicule2.jpg)  Sea 
 $X \sim N(0, 1), u_1 \sim N(0,1),u_2 \sim N(0,2)$. Definimos 
 $$Y_1 = X + u_1$$
 $$Y_2 = -X+u_2$$
@@ -477,17 +477,15 @@ $$\hat{x}_i = \Lambda^T\Psi^{-1}y_i$$
 
 **Ejemplo.** La base de datos wine contiene medidas en 13 atributos diferentes de 180 vinos.
 
-```{r, fig.height=5}
+```{r fig.height=5, message=FALSE, warning=FALSE}
 library(gridExtra)
-library(ggplot2)
-wine <- read.table("wine.txt", header=T, quote="\"")
+wine <- read_csv("datos/wine.csv")
 head(wine)
 pc.wine.1 <- princomp(wine, scores = TRUE)
 
 fa.wine <- factanal(wine, factors = 2, scores = "Bartlett")
 fa.pc.wine <- data.frame(fa1 = fa.wine$scores[, 1], pc1 = pc.wine.1$scores[, 1], 
   fa2 = fa.wine$scores[, 2], pc2 = pc.wine.1$scores[, 2])
-
 
 comp_1 <- ggplot(fa.pc.wine, aes(x = fa1, y = pc1)) + 
   geom_point()
@@ -531,10 +529,7 @@ fact.y$loadings
 pc.y$loadings
 
 fact.y
-
 ```
 
 En el ejemplo de simulación vemos que el análisis de componentes principales se alinea con la dirección de máxima varianza $X_3$ mientras que el análisis de factores ignora el componente no correlacionado y captura el componente correlacionado $X_2 + X_1$. Debido a que en FA modelamos diferentes _unicidades_ $u_j$ para cada $Y_j$ el análisis de factores puede verse como un modelo para la estructura de correlación de $Y_j$ en lugar de la estructura de covarianzas.
-
-
 
