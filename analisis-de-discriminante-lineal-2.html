@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="analisis-de-datos-categoricos.html">
-<link rel="next" href="regresion-logistica-2.html">
+<link rel="prev" href="analisis-de-discriminante-lineal-1.html">
+<link rel="next" href="ejemplo-admisiones-al-mba.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -362,388 +362,235 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="regresion-logistica-1" class="section level1">
-<h1><span class="header-section-number">Clase 6</span> Regresión logística 1</h1>
+<div id="analisis-de-discriminante-lineal-2" class="section level1">
+<h1><span class="header-section-number">Clase 12</span> Análisis de Discriminante Lineal 2</h1>
 <style>
   .espacio {
-     margin-bottom: 1cm;
+    margin-bottom: 1cm;
   }
 </style>
 <style>
   .espacio3 {
-     margin-bottom: 3cm;
+    margin-bottom: 3cm;
   }
 </style>
-<p>La regresión logística es la forma estándar de modelar los resultados binarios (es decir, los datos <span class="math inline">\(y_i\)</span> que toman los valores <span class="math inline">\(0\)</span> o <span class="math inline">\(1\)</span>).</p>
-<div id="regresion-logistica-con-un-solo-predictor" class="section level2">
-<h2><span class="header-section-number">6.1</span> Regresión logística con un solo predictor</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(arm)</code></pre></div>
-<p>Los científicos políticos han estado interesados en la identificación de partidos y sus cambios a lo largo del tiempo. Ilustramos aquí con una serie de regresiones transversales que modelan la identificación del partido dada la ideología política y las variables demográficas.</p>
-<p>Usamos una encuesta llamada <em>National Election Study</em>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brdata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/nes.csv&quot;</span>)</code></pre></div>
-<p>Contamos con los siguientes predictores:</p>
-<ul>
-<li><p>identificación con un partido en una escala de 1-7 (1 = demócrata fuerte, 2 = demócrata, 3 = demócrata débil, 4 = independiente, …, 7 = republicano fuerte), que tratamos como una variable continua.</p></li>
-<li><p>ideología política (1 = fuerte liberal, 2 = liberal,., 7 = fuerte conservador),</p></li>
-<li><p>etnia (0 = blanco, 1 = negro, 0.5 = otro),</p></li>
-<li><p>edad (como categorías: 18- 29, 30-44, 45-64 y más de 65 años, con la categoría de edad más baja como referencia),</p></li>
-<li><p>educación (1 = sin escuela secundaria, 2 = graduado de la escuela secundaria, 3 = algunos estudios universitarios, 4 = graduado de la universidad),</p></li>
-<li><p>sexo (0 = hombre, 1 = mujer),</p></li>
-<li><p>ingreso (1 = percentil 0-16, 2 = percentil 17-33, 3 = percentil 34-67, 4 = percentil 68-95, 5 = percentil 96-100).</p></li>
-</ul>
-<p>Los partidos conservadores generalmente reciben más apoyo entre los votantes con mayores ingresos. Veamos cómo usar la regresión logística clásica con un análisis simple de este patrón de las elecciones de Estados Unidos en 1992.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos &lt;-<span class="st"> </span>brdata <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(black) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(female) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(educ1) <span class="op">&amp;</span><span class="st"> </span>
-<span class="st">           </span><span class="op">!</span><span class="kw">is.na</span>(age) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(income) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(state)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(year)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(year <span class="op">%in%</span><span class="st"> </span><span class="dv">1952</span><span class="op">:</span><span class="dv">2000</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year.new =</span> <span class="kw">match</span>(year, <span class="kw">unique</span>(year)),
-         <span class="dt">income.new =</span> income <span class="op">-</span><span class="st"> </span><span class="dv">3</span>,
-         <span class="dt">age.new =</span> (age <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(age))<span class="op">/</span><span class="dv">10</span>,
-         <span class="dt">y =</span> rep_pres_intent,
-         <span class="dt">age.discrete =</span> <span class="kw">as.numeric</span>(<span class="kw">cut</span>(age, <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">29.5</span>, <span class="fl">44.5</span>, <span class="fl">64.5</span>, <span class="dv">200</span>))),
-         <span class="dt">race.adj =</span> <span class="kw">ifelse</span>(race <span class="op">&gt;=</span><span class="st"> </span><span class="dv">3</span>, <span class="fl">1.5</span>, race) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, 
-         <span class="dt">gender =</span> gender <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
-<p>Para cada encuestado ponemos <span class="math inline">\(y_i=1\)</span> si el encuestado prefería a George Bush (el candidato Republicano a presidente) o <span class="math inline">\(y_i=0\)</span> si prefería a Bill Clinton (el candidato Demócrata). Por ahora excluímos a los encuestados que preferían a Ross Perot u otros candidatos, o que no tenían opinión.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos_<span class="dv">2</span> &lt;-<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">1992</span> <span class="op">&amp;</span><span class="st"> </span>presvote <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vote =</span> presvote <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(year, age, age.new, gender, race.adj, educ1, vote, income, income.new)
-datos_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<p class="espacio">
+</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<div id="aplicaciones" class="section level2">
+<h2><span class="header-section-number">12.1</span> Aplicaciones</h2>
+<p>El análisis discriminante lineal (LDA) de Fisher es un método utilizado en estadística, reconocimiento de patrones y aprendizaje estadístico para encontrar una combinación lineal de variables que caracteriza o separa dos o más clases de objetos o eventos.</p>
+<p>La combinación lineal resultante se puede utilizar como un clasificador lineal o, más comúnmente, para la reducción de dimensionalidad antes de usar otro método de clasificación.</p>
+<p>El análisis de discriminante lineal tiene entre sus posibles aplicaciones:</p>
+<ol style="list-style-type: decimal">
+<li><p>Predicción de bancarrota: la predicción de bancarrota se basa en datos de en indicadores contables y otras variables financieras. El análisis discriminante lineal fue el primer método estadístico aplicado para explicar sistemáticamente qué empresas entraron en bancarrota vs. cuáles sobrevivieron.</p></li>
+<li><p>Marketing: el análisis discriminante solía utilizarse para determinar los factores que distinguen diferentes tipos de clientes y/o productos utilizando datos provenientes de encuestas u otras fuentes de datos.</p></li>
+<li><p>Estudios biomédicos: la principal aplicación del análisis discriminante en medicina es la evaluación del estado de gravedad de un paciente y el pronóstico del desenlace de la enfermedad. Por ejemplo, en un análisis retrospectivo, los pacientes se dividen en grupos según la gravedad de la enfermedad: leve, moderada y grave. Luego, se estudian los resultados de los análisis clínicos y de laboratorio para ver qué variables son toman valores diferentes entre los grupos estudiados. Usando estas variables, se construyen funciones discriminantes que ayudan a clasificar objetivamente la enfermedad en un futuro paciente en leve, moderada o severa.</p></li>
+</ol>
+<p>El análisis de discriminante lineal también se conoce como “análisis discriminante canónico”, o simplemente “análisis discriminante”.</p>
+</div>
+<div id="ejemplo-vinos" class="section level2">
+<h2><span class="header-section-number">12.2</span> Ejemplo: vinos</h2>
+<p>Tenemos 13 concentraciones químicas que describen muestras de vino de tres cultivares.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wine &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/wine.csv&quot;</span>)
+wine <span class="op">%&gt;%</span><span class="st"> </span>head <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th align="right">year</th>
-<th align="right">age</th>
-<th align="right">age.new</th>
-<th align="right">gender</th>
-<th align="right">race.adj</th>
-<th align="right">educ1</th>
-<th align="right">vote</th>
-<th align="right">income</th>
-<th align="right">income.new</th>
+<th align="right">Type</th>
+<th align="right">Alcohol</th>
+<th align="right">Malic</th>
+<th align="right">Ash</th>
+<th align="right">Alcalinity</th>
+<th align="right">Magnesium</th>
+<th align="right">Phenols</th>
+<th align="right">Flavanoids</th>
+<th align="right">Nonflavanoids</th>
+<th align="right">Proanthocyanins</th>
+<th align="right">Color</th>
+<th align="right">Hue</th>
+<th align="right">Dilution</th>
+<th align="right">Proline</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">1992</td>
-<td align="right">46</td>
-<td align="right">0.055</td>
 <td align="right">1</td>
-<td align="right">1.0</td>
-<td align="right">3</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="right">1</td>
+<td align="right">14.2</td>
+<td align="right">1.71</td>
+<td align="right">2.43</td>
+<td align="right">15.6</td>
+<td align="right">127</td>
+<td align="right">2.80</td>
+<td align="right">3.06</td>
+<td align="right">0.28</td>
+<td align="right">2.29</td>
+<td align="right">5.64</td>
+<td align="right">1.04</td>
+<td align="right">3.92</td>
+<td align="right">1065</td>
 </tr>
 <tr class="even">
-<td align="right">1992</td>
-<td align="right">40</td>
-<td align="right">-0.545</td>
 <td align="right">1</td>
-<td align="right">0.0</td>
-<td align="right">4</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">0</td>
+<td align="right">13.2</td>
+<td align="right">1.78</td>
+<td align="right">2.14</td>
+<td align="right">11.2</td>
+<td align="right">100</td>
+<td align="right">2.65</td>
+<td align="right">2.76</td>
+<td align="right">0.26</td>
+<td align="right">1.28</td>
+<td align="right">4.38</td>
+<td align="right">1.05</td>
+<td align="right">3.40</td>
+<td align="right">1050</td>
 </tr>
 <tr class="odd">
-<td align="right">1992</td>
-<td align="right">61</td>
-<td align="right">1.555</td>
-<td align="right">0</td>
-<td align="right">0.0</td>
-<td align="right">4</td>
 <td align="right">1</td>
-<td align="right">4</td>
-<td align="right">1</td>
+<td align="right">13.2</td>
+<td align="right">2.36</td>
+<td align="right">2.67</td>
+<td align="right">18.6</td>
+<td align="right">101</td>
+<td align="right">2.80</td>
+<td align="right">3.24</td>
+<td align="right">0.30</td>
+<td align="right">2.81</td>
+<td align="right">5.68</td>
+<td align="right">1.03</td>
+<td align="right">3.17</td>
+<td align="right">1185</td>
 </tr>
 <tr class="even">
-<td align="right">1992</td>
-<td align="right">45</td>
-<td align="right">-0.045</td>
 <td align="right">1</td>
-<td align="right">1.0</td>
-<td align="right">3</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">0</td>
+<td align="right">14.4</td>
+<td align="right">1.95</td>
+<td align="right">2.50</td>
+<td align="right">16.8</td>
+<td align="right">113</td>
+<td align="right">3.85</td>
+<td align="right">3.49</td>
+<td align="right">0.24</td>
+<td align="right">2.18</td>
+<td align="right">7.80</td>
+<td align="right">0.86</td>
+<td align="right">3.45</td>
+<td align="right">1480</td>
 </tr>
 <tr class="odd">
-<td align="right">1992</td>
-<td align="right">20</td>
-<td align="right">-2.545</td>
-<td align="right">0</td>
-<td align="right">0.5</td>
-<td align="right">3</td>
-<td align="right">0</td>
 <td align="right">1</td>
-<td align="right">-2</td>
+<td align="right">13.2</td>
+<td align="right">2.59</td>
+<td align="right">2.87</td>
+<td align="right">21.0</td>
+<td align="right">118</td>
+<td align="right">2.80</td>
+<td align="right">2.69</td>
+<td align="right">0.39</td>
+<td align="right">1.82</td>
+<td align="right">4.32</td>
+<td align="right">1.04</td>
+<td align="right">2.93</td>
+<td align="right">735</td>
 </tr>
 <tr class="even">
-<td align="right">1992</td>
-<td align="right">79</td>
-<td align="right">3.355</td>
 <td align="right">1</td>
-<td align="right">1.0</td>
-<td align="right">2</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">-2</td>
-</tr>
-<tr class="odd">
-<td align="right">1992</td>
-<td align="right">77</td>
-<td align="right">3.155</td>
-<td align="right">1</td>
-<td align="right">0.0</td>
-<td align="right">2</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="right">1992</td>
-<td align="right">63</td>
-<td align="right">1.755</td>
-<td align="right">1</td>
-<td align="right">0.0</td>
-<td align="right">3</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">-1</td>
-</tr>
-<tr class="odd">
-<td align="right">1992</td>
-<td align="right">53</td>
-<td align="right">0.755</td>
-<td align="right">1</td>
-<td align="right">0.0</td>
-<td align="right">2</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">-1</td>
-</tr>
-<tr class="even">
-<td align="right">1992</td>
-<td align="right">25</td>
-<td align="right">-2.045</td>
-<td align="right">1</td>
-<td align="right">0.0</td>
-<td align="right">4</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">0</td>
+<td align="right">14.2</td>
+<td align="right">1.76</td>
+<td align="right">2.45</td>
+<td align="right">15.2</td>
+<td align="right">112</td>
+<td align="right">3.27</td>
+<td align="right">3.39</td>
+<td align="right">0.34</td>
+<td align="right">1.97</td>
+<td align="right">6.75</td>
+<td align="right">1.05</td>
+<td align="right">2.85</td>
+<td align="right">1450</td>
 </tr>
 </tbody>
 </table>
-<p>Dado que nuestra variable de ingreso es categórica y la preferencia de voto que analizamos es binaria podríamos comenzar haciendo un análisis de datos categóricos:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">prop.table</span>(<span class="kw">table</span>(datos_<span class="dv">2</span><span class="op">$</span>income, datos_<span class="dv">2</span><span class="op">$</span>vote), <span class="dv">1</span>)<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">spread</span>(Var2, n) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="dt">Income=</span>Var1, <span class="dt">Clinton=</span><span class="st">`</span><span class="dt">0</span><span class="st">`</span>, <span class="dt">Bush=</span><span class="st">`</span><span class="dt">1</span><span class="st">`</span>)
-tab <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Income</th>
-<th align="right">Clinton</th>
-<th align="right">Bush</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="right">76.6</td>
-<td align="right">23.4</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="right">66.7</td>
-<td align="right">33.3</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="right">60.7</td>
-<td align="right">39.3</td>
-</tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="right">51.5</td>
-<td align="right">48.5</td>
-</tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="right">48.6</td>
-<td align="right">51.4</td>
-</tr>
-</tbody>
-</table>
-<p>En una gráfica de mosaico vemos los siguiente:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aux &lt;-<span class="st"> </span>datos_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="kw">c</span>(<span class="st">&quot;vote&quot;</span>,<span class="st">&quot;income&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vote1 =</span> <span class="kw">ordered</span>(vote), <span class="dt">income1 =</span> <span class="kw">ordered</span>(income))
-<span class="kw">ggplot</span>(aux, <span class="kw">aes</span>(<span class="dt">x=</span>income1, <span class="dt">fill=</span>vote1)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">&#39;fill&#39;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">coord_flip</span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">theme</span>(<span class="dt">aspect.ratio =</span> <span class="dv">1</span>,<span class="dt">legend.position=</span><span class="st">&quot;bottom&quot;</span>,
-          <span class="dt">axis.text.y=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&#39;black&#39;</span>,<span class="dt">size=</span><span class="dv">10</span>),
-          <span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">color=</span><span class="st">&#39;black&#39;</span>,<span class="dt">size=</span><span class="dv">10</span>),
-          <span class="dt">axis.title.x=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>),
-          <span class="dt">axis.title.y=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>),
-          <span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">11</span>)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">scale_fill_discrete</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&#39;Proporción&#39;)</span></code></pre></div>
-<p><img src="06-logit-1_files/figure-html/unnamed-chunk-8-1.png" width="85%" style="display: block; margin: auto;" /></p>
-<hr />
-<p><br></p>
-<p>Para podríamos introducir perfiles de variables de ingreso para obtener una mejor intuición. Utilizando el método de regresión logística obtendríamos lo siguiente:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Estimacion</span>
-fit.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(vote <span class="op">~</span><span class="st"> </span>income, <span class="dt">data =</span> datos_<span class="dv">2</span>, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>))
-<span class="kw">display</span>(fit.<span class="dv">1</span>)
-<span class="co">#&gt; glm(formula = vote ~ income, family = binomial(link = &quot;logit&quot;), </span>
-<span class="co">#&gt;     data = datos_2)</span>
-<span class="co">#&gt;             coef.est coef.se</span>
-<span class="co">#&gt; (Intercept) -1.40     0.19  </span>
-<span class="co">#&gt; income       0.33     0.06  </span>
-<span class="co">#&gt; ---</span>
-<span class="co">#&gt;   n = 1179, k = 2</span>
-<span class="co">#&gt;   residual deviance = 1556.9, null deviance = 1591.2 (difference = 34.3)</span></code></pre></div>
-<p>Con este modelo buscamos predecir las preferencias dado el nivel de ingresos del encuestado, que se caracteriza por una escala de cinco puntos.</p>
-<p>El modelo ajustado es <span class="math display">\[
-P(y_i=1) = \mbox{logit}^{-1}(−1.40 + 0.33\,\cdot\,\mbox{income})
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GGally)
+<span class="kw">ggpairs</span>(wine[<span class="dv">2</span><span class="op">:</span><span class="dv">6</span>], <span class="dt">columns =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">title =</span> <span class="st">&quot;&quot;</span>,  
+  <span class="dt">axisLabels =</span> <span class="st">&quot;show&quot;</span>, <span class="dt">columnLabels =</span> <span class="kw">colnames</span>(wine[<span class="dv">2</span><span class="op">:</span><span class="dv">6</span>]))</code></pre></div>
+<p><img src="12-lda-2_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>El propósito del análisis de discriminante lineal (LDA) en este ejemplo es encontrar las combinaciones lineales de las variables originales (las 13 concentraciones químicas) que proporcionen <em>la mejor separación</em> posible entre los grupos (variedades de vino) en nuestro conjunto de datos.</p>
+<p>Supongamos entonces que queremos separar los vinos por cultivar. Los vinos provienen de tres cultivares diferentes, por lo que el número de clases es <span class="math inline">\(K = 3\)</span> y el número de variables predictoras es 13 (concentraciones de 13 componentes químicos, <span class="math inline">\(p = 13\)</span>).</p>
+<p>El número máximo de funciones discriminantes útiles que pueden separar los vinos por cultivar es el mínimo entre <span class="math inline">\(K-1\)</span> y <span class="math inline">\(p\)</span>, por lo que en este caso es el número de superficies de decisión es 2.</p>
+<p>Por lo tanto, podemos encontrar como máximo 2 funciones discriminantes útiles para separar los vinos por cultivar, utilizando las 13 variables de concentraciones químicas.</p>
+<p>Ajustamos el modelo de discriminante lineal:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
+wine_lda &lt;-<span class="st"> </span><span class="kw">lda</span>(Type <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> wine)</code></pre></div>
+<p>Para obtener los valores de los pesos de las funciones discriminantes, podemos escribir:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wine_lda
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lda(Type ~ ., data = wine)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Prior probabilities of groups:</span>
+<span class="co">#&gt;     1     2     3 </span>
+<span class="co">#&gt; 0.331 0.399 0.270 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Group means:</span>
+<span class="co">#&gt;   Alcohol Malic  Ash Alcalinity Magnesium Phenols Flavanoids Nonflavanoids</span>
+<span class="co">#&gt; 1    13.7  2.01 2.46       17.0     106.3    2.84      2.982         0.290</span>
+<span class="co">#&gt; 2    12.3  1.93 2.24       20.2      94.5    2.26      2.081         0.364</span>
+<span class="co">#&gt; 3    13.2  3.33 2.44       21.4      99.3    1.68      0.781         0.448</span>
+<span class="co">#&gt;   Proanthocyanins Color   Hue Dilution Proline</span>
+<span class="co">#&gt; 1            1.90  5.53 1.062     3.16    1116</span>
+<span class="co">#&gt; 2            1.63  3.09 1.056     2.79     520</span>
+<span class="co">#&gt; 3            1.15  7.40 0.683     1.68     630</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients of linear discriminants:</span>
+<span class="co">#&gt;                      LD1       LD2</span>
+<span class="co">#&gt; Alcohol         -0.40340  0.871793</span>
+<span class="co">#&gt; Malic            0.16525  0.305380</span>
+<span class="co">#&gt; Ash             -0.36908  2.345850</span>
+<span class="co">#&gt; Alcalinity       0.15480 -0.146381</span>
+<span class="co">#&gt; Magnesium       -0.00216 -0.000463</span>
+<span class="co">#&gt; Phenols          0.61805 -0.032213</span>
+<span class="co">#&gt; Flavanoids      -1.66119 -0.491998</span>
+<span class="co">#&gt; Nonflavanoids   -1.49582 -1.630954</span>
+<span class="co">#&gt; Proanthocyanins  0.13409 -0.307088</span>
+<span class="co">#&gt; Color            0.35506  0.253231</span>
+<span class="co">#&gt; Hue             -0.81804 -1.515634</span>
+<span class="co">#&gt; Dilution        -1.15756  0.051184</span>
+<span class="co">#&gt; Proline         -0.00269  0.002853</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Proportion of trace:</span>
+<span class="co">#&gt;   LD1   LD2 </span>
+<span class="co">#&gt; 0.688 0.312</span></code></pre></div>
+<p>Esto significa que la primera función discriminante es una combinación lineal de las variables: <span class="math display">\[
+-0.403 \cdot \mbox{Alcohol} + 0.165 \cdot \mbox{Malic} \;+\cdots+\; -0.003 \cdot \mbox{Proline}. 
 \]</span></p>
-<p>Definimos así una función que llamamos <em>logit inversa</em> y de la cuál hablaremos más adelante:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">invlogit &lt;-<span class="st"> </span><span class="cf">function</span>(x){
-  <span class="kw">exp</span>(x)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(x))
-}</code></pre></div>
-<p>En la siguiente gráfica podemos ver los valores de la variable categórica de ingreso con un <em>jitter</em> y la función ajustada por el modelo:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(datos_<span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">x =</span> income, <span class="dt">y =</span> vote)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.3</span>, <span class="dt">height =</span> <span class="fl">0.08</span>, <span class="dt">size =</span> <span class="fl">0.1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){<span class="kw">invlogit</span>(fit.<span class="dv">1</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">1</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x){<span class="kw">invlogit</span>(fit.<span class="dv">1</span><span class="op">$</span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fit.<span class="dv">1</span><span class="op">$</span>coef[<span class="dv">2</span>]<span class="op">*</span>x)}, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">10</span>)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">10</span>), <span class="dt">breaks =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Clinton&quot;</span>,<span class="st">&quot;Bush&quot;</span>)) </code></pre></div>
-<p><img src="06-logit-1_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>En este ejemplo, estos puntos revelan muy poca información, pero queremos enfatizar que los datos y el modelo ajustado se pueden poner en una escala común.</p>
-<p>Definiremos matemáticamente este modelo y luego regresaremos para analizar su interpretación.</p>
-</div>
-<div id="el-modelo-de-regresion-logistica" class="section level2">
-<h2><span class="header-section-number">6.2</span> El modelo de regresión logística</h2>
-<p>No tendría sentido ajustar el modelo de regresión lineal continuo, <span class="math inline">\(X\beta + \mbox{error}\)</span>, a los datos de <span class="math inline">\(y\)</span>, que toman los valores de <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>. Notemos que intentar estimar las probabilidades de clase <span class="math inline">\(p_1(x)\)</span> de forma lineal con</p>
-<p><span class="math display">\[p_1(x)=\beta_0+\beta_1 x_1\]</span></p>
-<p>tiene el defecto de que el lado derecho puede producir valores fuera de <span class="math inline">\([0,1]\)</span>. La idea es entonces aplicar una función <span class="math inline">\(h\)</span> simple que transforme la recta real al intervalo <span class="math inline">\([0,1]:\)</span> <span class="math display">\[p_1(x) = h(\beta_0+\beta_1 x_1),\]</span> donde <span class="math inline">\(h\)</span> es una función que toma valores en <span class="math inline">\([0,1]\)</span>. ¿Cúal es la función más simple que hace esto?</p>
-<div id="funcion-logistica" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Función logística</h3>
-<p>Comenzamos con el caso más simple, poniendo <span class="math inline">\(\beta_0=0\)</span> y <span class="math inline">\(\beta_1=1\)</span>, de modo que <span class="math display">\[p_1(x)=h(x).\]</span> ¿Cómo debe ser <span class="math inline">\(h\)</span> para garantizar que <span class="math inline">\(h(x)\)</span> está entre 0 y 1 para toda <span class="math inline">\(x\)</span>? No van a funcionar polinomios, por ejemplo, porque para un polinomio cuando <span class="math inline">\(x\)</span> tiende a infinito, el polinomio tiende a <span class="math inline">\(\infty\)</span> o a <span class="math inline">\(-\infty\)</span>. Hay varias posibilidades, pero una de las más simples es la función logística.</p>
-
-<div class="comentario">
-La función logística está dada por <span class="math display">\[h(x)=\frac{e^x}{1+e^x}\]</span>
-</div>
-
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="cf">function</span>(x){<span class="kw">exp</span>(x)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(x)) }
-<span class="kw">curve</span>(h, <span class="dt">from=</span><span class="op">-</span><span class="dv">6</span>, <span class="dt">to =</span><span class="dv">6</span>)</code></pre></div>
-<p><img src="06-logit-1_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>Esta función comprime adecuadamente (para nuestros propósitos) el rango de todos los reales dentro del intervalo <span class="math inline">\([0,1]\)</span>.</p>
-
-<div class="comentario">
-El modelo de regresión logística simple está dado por <span class="math display">\[p_1(x)=p_1(x;\beta)= h(\beta_0+\beta_1x_1)= \frac{e^{\beta_0+\beta_1x_1}}{1+ e^{\beta_0+\beta_1x_1}},\]</span> y <span class="math display">\[p_0(x)=p_0(x;\beta)=1-p_1(x;\beta),\]</span> donde <span class="math inline">\(\beta=(\beta_0,\beta_1)\)</span>.
-</div>
-
-<p>Este es un modelo paramétrico con 2 parámetros.</p>
-</div>
-<div id="ejemplo-2" class="section level3 unnumbered">
-<h3>Ejemplo</h3>
-<p>(Impago de tarjetas de crédito) Supongamos que <span class="math inline">\(X=\)</span> porcentaje del crédito máximo usado, y <span class="math inline">\(G\in\{1, 2\}\)</span>, donde <span class="math inline">\(1\)</span> corresponde al corriente y <span class="math inline">\(2\)</span> representa impago. Las probabilidades condicionales de clase para la clase <em>al corriente</em> podrían ser, por ejemplo:</p>
+<p>Por conveniencia, el valor de cada función discriminante (por ejemplo, la primera función discriminante) se escala de modo que su media sea cero y su varianza sea uno.</p>
+<p>La “proporción de traza” que se imprime al final es una medida de la separación porcentual lograda por cada función discriminante. Por ejemplo, para estos datos de vinos obtenemos los mismos valores que acabamos de calcular (68.75% y 31.25%).</p>
+<p>Una buena forma de mostrar los resultados de un análisis de discriminante lineal es hacer un histograma apilado de los valores de la función discriminante para las diferentes clases.</p>
+<p>Podemos hacer esto usando la función <code>ldahist()</code>. Por ejemplo, para hacer un histograma apilado de los valores de la primera función discriminante:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wine_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(wine_lda)
+<span class="kw">ldahist</span>(<span class="dt">data =</span> wine_pred<span class="op">$</span>x[,<span class="dv">1</span>], <span class="dt">g=</span>wine<span class="op">$</span>Type)</code></pre></div>
+<p><img src="12-lda-2_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Por lo tanto, investigamos si la segunda función discriminante separa esos cultivares, al hacer un histograma apilado de los valores de la segunda función discriminante:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ldahist</span>(<span class="dt">data =</span> wine_pred<span class="op">$</span>x[,<span class="dv">2</span>], <span class="dt">g=</span>wine<span class="op">$</span>Type)</code></pre></div>
+<p><img src="12-lda-2_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Concluimos que la segunda función discriminante distingue los vinos del Tipo 2 de los vinos de Tipo 1 y 3.</p>
+<p>Podemos obtener un diagrama de dispersión de las funciones discriminantes, etiquetando los puntos por clase:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wine<span class="op">$</span>LD1 &lt;-<span class="st"> </span>wine_pred<span class="op">$</span>x[,<span class="dv">1</span>]
+wine<span class="op">$</span>LD2 &lt;-<span class="st"> </span>wine_pred<span class="op">$</span>x[,<span class="dv">2</span>]
+wine<span class="op">$</span>Type &lt;-<span class="st"> </span><span class="kw">as.factor</span>(wine<span class="op">$</span>Type)
+<span class="kw">ggplot</span>(wine, <span class="kw">aes</span>(<span class="dt">x =</span> LD1, <span class="dt">y =</span> LD2, <span class="dt">color =</span> Type, <span class="dt">pch =</span> Type)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="12-lda-2_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+<p>Notas:</p>
 <ul>
-<li><span class="math inline">\(p_1(x) = P(G=1|X = x) =0.95\)</span> si <span class="math inline">\(x &lt; 15\%\)</span></li>
-<li><span class="math inline">\(p_1(x) = P(G=1|X = x) = 0.95 - 0.007(x-15)\)</span> si <span class="math inline">\(x&gt;=15\%\)</span></li>
+<li><p>En el diagrama de dispersión de las dos primeras funciones discriminantes, podemos ver que los vinos de los tres cultivares están bien separados.</p></li>
+<li><p>La primera función discriminante (eje x) separa muy bien los cultivares 1 y 3, pero no separa perfectamente los cultivares 1 y 3, ni los cultivares 2 y 3.</p></li>
+<li><p>La segunda función discriminante (eje y) logra una separación bastante buena de los cultivares 1 y 3, y los cultivares 2 y 3, aunque no es totalmente perfecto.</p></li>
+<li><p>Para lograr una muy buena separación de los tres cultivares, sería mejor usar juntas la primera y la segunda función discriminante, ya que la primera función discriminante puede separar los cultivares 1 y 3 muy bien, y la segunda función discriminante puede separar los cultivares 1 y 2, y los cultivares 2 y 3, razonablemente bien.</p></li>
 </ul>
-<p>Estas son probabilidades, pues hay otras variables que influyen en que un cliente permanezca al corriente o no en sus pagos más allá de información contenida en el porcentaje de crédito usado. Nótese que estas probabilidades son diferentes a las no condicionadas, por ejempo, podríamos tener que a total <span class="math inline">\(P(G=1)=0.83\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="cf">function</span>(x){
-  <span class="kw">ifelse</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">15</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.007</span> <span class="op">*</span><span class="st"> </span>(x <span class="op">-</span><span class="st"> </span><span class="dv">15</span>))
-}
-<span class="kw">curve</span>(p_<span class="dv">1</span>, <span class="dv">0</span>,<span class="dv">100</span>, <span class="dt">xlab =</span> <span class="st">&#39;Porcentaje de crédito máximo&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;p_1(x)&#39;</span>,
-  <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</code></pre></div>
-<p><img src="06-logit-1_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>Vamos a generar unos datos con un modelo simple:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1933</span>)
-x &lt;-<span class="st"> </span><span class="kw">pmin</span>(<span class="kw">rexp</span>(<span class="dv">500</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">30</span>),<span class="dv">100</span>)
-probs &lt;-<span class="st"> </span><span class="kw">p_1</span>(x)
-g &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">rbinom</span>(<span class="kw">length</span>(x), <span class="dv">1</span>, probs)<span class="op">==</span><span class="dv">1</span> ,<span class="dv">1</span>, <span class="dv">2</span>)
-dat_ent &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> x, <span class="dt">p_1 =</span> probs, <span class="dt">g =</span> <span class="kw">factor</span>(g))
-dat_ent <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(x, g) 
-<span class="co">#&gt; # A tibble: 500 x 2</span>
-<span class="co">#&gt;        x g    </span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;fct&gt;</span>
-<span class="co">#&gt; 1  0.532 1    </span>
-<span class="co">#&gt; 2 25.4   1    </span>
-<span class="co">#&gt; 3 37.5   1    </span>
-<span class="co">#&gt; 4 20.9   1    </span>
-<span class="co">#&gt; 5 70.9   2    </span>
-<span class="co">#&gt; 6 14.8   1    </span>
-<span class="co">#&gt; # ... with 494 more rows</span></code></pre></div>
-<p>Como este problema es de dos clases, podemos graficar como sigue:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graf_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dat_ent, <span class="kw">aes</span>(<span class="dt">x =</span> x)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> g, <span class="dt">y =</span> <span class="kw">as.numeric</span>(g<span class="op">==</span><span class="st">&#39;1&#39;</span>)), <span class="dt">width=</span><span class="dv">0</span>, <span class="dt">height=</span><span class="fl">0.1</span>)
-graf_<span class="dv">1</span></code></pre></div>
-<p><img src="06-logit-1_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>Ahora intentaremos ajustar a mano (intenta cambiar las betas para p_mod_1 y p_mod_2 en el ejemplo de abajo) algunos modelos logísticos para las probabilidades de clase:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graf_data &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">1</span>))
-h &lt;-<span class="st"> </span><span class="cf">function</span>(z) <span class="kw">exp</span>(z)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(z))
-p_logistico &lt;-<span class="st"> </span><span class="cf">function</span>(beta_<span class="dv">0</span>, beta_<span class="dv">1</span>){
-  p &lt;-<span class="st"> </span><span class="cf">function</span>(x){
-    z &lt;-<span class="st"> </span>beta_<span class="dv">0</span> <span class="op">+</span><span class="st"> </span>beta_<span class="dv">1</span><span class="op">*</span>x
-    <span class="kw">h</span>(z)
-  }
-}
-p_mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">p_logistico</span>(<span class="op">-</span><span class="dv">20</span>, <span class="dv">1</span>)
-p_mod_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">p_logistico</span>(<span class="fl">3.2</span>, <span class="op">-</span><span class="fl">0.05</span>)
-graf_data &lt;-<span class="st"> </span>graf_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">p_mod_1 =</span> <span class="kw">p_mod_1</span>(x), <span class="dt">p_mod_2 =</span> <span class="kw">p_mod_2</span>(x))
-graf_verdadero &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">p_1 =</span> <span class="kw">p_1</span>(x))
-graf_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_data, <span class="kw">aes</span>(<span class="dt">y =</span> p_mod_<span class="dv">2</span>), <span class="dt">colour =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">size=</span><span class="fl">1.2</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_data, <span class="kw">aes</span>(<span class="dt">y =</span> p_mod_<span class="dv">1</span>), <span class="dt">colour =</span> <span class="st">&#39;orange&#39;</span>, <span class="dt">size=</span><span class="fl">1.2</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_verdadero, <span class="kw">aes</span>(<span class="dt">y =</span> p_<span class="dv">1</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Probabilidad al corriente&#39;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&#39;% crédito usado&#39;</span>)</code></pre></div>
-<p><img src="06-logit-1_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>Podemos usar también la función glm de R para ajustar los coeficientes:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(g<span class="op">==</span><span class="dv">1</span> <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> dat_ent, <span class="dt">family =</span> <span class="st">&#39;binomial&#39;</span>)
-<span class="kw">coef</span>(mod_<span class="dv">1</span>)
-<span class="co">#&gt; (Intercept)           x </span>
-<span class="co">#&gt;      3.2447     -0.0435</span>
-p_mod_final &lt;-<span class="st"> </span><span class="kw">p_logistico</span>(<span class="kw">coef</span>(mod_<span class="dv">1</span>)[<span class="dv">1</span>], <span class="kw">coef</span>(mod_<span class="dv">1</span>)[<span class="dv">2</span>])
-graf_data &lt;-<span class="st"> </span>graf_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">p_mod_f =</span> <span class="kw">p_mod_final</span>(x))
-
-graf_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_data, <span class="kw">aes</span>(<span class="dt">y =</span> p_mod_f), <span class="dt">colour =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">size=</span><span class="fl">1.2</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_data, <span class="kw">aes</span>(<span class="dt">y =</span> p_mod_<span class="dv">1</span>), <span class="dt">colour =</span> <span class="st">&#39;orange&#39;</span>, <span class="dt">size=</span><span class="fl">1.2</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> graf_verdadero, <span class="kw">aes</span>(<span class="dt">y =</span> p_<span class="dv">1</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Probabilidad al corriente&#39;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&#39;% crédito usado&#39;</span>)</code></pre></div>
-<p><img src="06-logit-1_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /></p>
-
-<div class="information">
-<p>Por lo tanto, modelamos la probabilidad de que <span class="math inline">\(y = 1\)</span>, como</p>
-<p><span class="math display">\[
-P(y_i=1)=\mbox{logit}^{-1}(X_i\beta),
-\]</span></p>
-<p>bajo el supuesto de que las respuestas <span class="math inline">\(y_i\)</span> son <em>independientes</em> dadas estas probabilidades. Nos referimos a <span class="math inline">\(X\beta\)</span> como el <em>predictor lineal</em>.</p>
-La función logística definida anteriormente <span class="math inline">\(h(x)=\dfrac{e^x}{1+e^x}\)</span> es <span class="math inline">\(\mbox{logit}^{-1}\)</span>, la función inversa de <em>logit</em>.
-</div>
-
-</div>
-</div>
-<div id="tarea-4" class="section level2">
-<h2><span class="header-section-number">6.3</span> Tarea</h2>
-<ul>
-<li><p>Demostrar que, si <span class="math inline">\(p_1(x)\)</span> está dado como <span class="math display">\[
-p_1(x)=p_1(x;\beta)= h(\beta_0+\beta_1x_1)= \frac{e^{\beta_0+\beta_1x_1}}{1+ e^{\beta_0+\beta_1x_1}}
-\]</span> entonces también podemos escribir: <span class="math display">\[p_0(x)=\frac{1}{1+e^{\beta_0+\beta_1x_1}}.\]</span></p></li>
-<li><p>Graficar la función <span class="math inline">\(p_1(x;\beta)\)</span> para distintos valores de <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span>.</p></li>
-</ul>
-
 </div>
 </div>
             </section>
@@ -751,8 +598,8 @@ p_1(x)=p_1(x;\beta)= h(\beta_0+\beta_1x_1)= \frac{e^{\beta_0+\beta_1x_1}}{1+ e^{
           </div>
         </div>
       </div>
-<a href="analisis-de-datos-categoricos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="regresion-logistica-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="analisis-de-discriminante-lineal-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ejemplo-admisiones-al-mba.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
