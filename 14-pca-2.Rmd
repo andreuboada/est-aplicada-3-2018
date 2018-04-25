@@ -21,6 +21,7 @@ library(tidyverse)
 
 
 ## PCA probabilístico y Análisis de Factores
+
 La formulación de PCA esta fundadda en una proyección lineal de los datos sobre
 un subespacio de dimensión menor. En esta sección veremos que PCA también se 
 puede expresar como la solución de máxima verosimilitud de en un modelo 
@@ -64,7 +65,9 @@ que correponde al subespacio de componentes principales.
 El siguiente esquema explica el modelo PCA probabilístico desde el punto de
 vista generativo.
 
-<img src="imagenes/PCA_p.png" style="width: 600px;"/>
+```{r, echo = F, fig.align='center', dpi=150}
+knitr::include_graphics("figuras/PCA_p.png")
+```
 
 Desde este enfoque vemos que primero selecciona aleatoriamente un valor de la 
 variable latente ($x$) y después muestreamos el valor observado condicional
@@ -100,6 +103,7 @@ y por tanto $C=\tilde{W}{W}^T+\sigma^2I$. Este es un aspecto que consideraremos
 más a fondo en la parte de estimación.
 
 #### Máxima verosimilitud
+
 Consideramos la determinación de los parámetros usando máxima verosimilitud:
 $$
 \begin{aligned}
@@ -166,13 +170,14 @@ El manejo de faltantes es otra ventaja de la implementación EM.
 cuál no hay una solución cerrada.
 
 ### Análisis de factores
+
 El análisis de factores es muy similar a PCA probabilístico, la diferencia 
 radica en que en la distribución condicional de $Y|X$ la matriz de covarianza se 
 supone diagonal en lugar de isotrópica:
 
 $$Y|X \sim N(Wx + \mu, \Psi)$$
 
-Donde $\Psi$ es una matriz diagonal de dimensión $D \times D$. Al igual que en
+donde $\Psi$ es una matriz diagonal de dimensión $D \times D$. Al igual que en
 PCA probabilístico, el modelo de FA supone que las variables observadas son 
 independientes dado las latentes. En escencia el análisis de factores está 
 explicando la estructura de covarianza observada representando la varianza  
@@ -205,7 +210,7 @@ _vocab, reading, maze,..._ corresponden a las variables observadas mientras que
 $X_1$ y $X_2$ son las variables latentes. Observamos que añadir _estructura_ al
 problema resulta en una simplificación del modelo. 
 
-```{r, warning=FALSE,message=FALSE,echo=FALSE}
+```{r, warning=FALSE,message=FALSE, echo=FALSE, out.width='100%'}
 library(igraph)
 library(bnlearn) 
 areas <- colnames(ability.cov$cov)
@@ -217,7 +222,9 @@ arcs(ug, check.cycles = TRUE) = matrix(c("general", "picture", "general",
   "maze", "reading", "maze", "vocab", "reading", "vocab"), ncol = 2, 
   byrow = TRUE, dimnames = list(c(), c("from", "to")))
 plot(ug)
+```
 
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width='100%'}
 ug <- empty.graph(c("X1", "X2", areas))
 arcs(ug, check.cycles = TRUE) = matrix(c("X1", "general","X1", "picture", "X1", 
   "blocks", "X1", "maze", "X1", "reading", "X1", "vocab", "X2", "general", "X2",   
@@ -226,6 +233,7 @@ arcs(ug, check.cycles = TRUE) = matrix(c("X1", "general","X1", "picture", "X1",
   byrow = TRUE, dimnames = list(c(), c("from", "to")))
 plot(ug)
 ```
+
 
 En ocasiones, el análisis de factores se utiliza como una técnica de reducción 
 de dimensión que esta basada en un modelo. Idealmente, toda la información en 
@@ -477,38 +485,54 @@ $$\hat{x}_i = \Lambda^T\Psi^{-1}y_i$$
 
 **Ejemplo.** La base de datos wine contiene medidas en 13 atributos diferentes de 180 vinos.
 
-```{r fig.height=5, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(gridExtra)
 wine <- read_csv("datos/wine.csv")
-head(wine)
+head(wine) %>% knitr::kable()
+```
+
+```{r}
 pc.wine.1 <- princomp(wine, scores = TRUE)
 
 fa.wine <- factanal(wine, factors = 2, scores = "Bartlett")
 fa.pc.wine <- data.frame(fa1 = fa.wine$scores[, 1], pc1 = pc.wine.1$scores[, 1], 
   fa2 = fa.wine$scores[, 2], pc2 = pc.wine.1$scores[, 2])
+```
 
+
+```{r}
 comp_1 <- ggplot(fa.pc.wine, aes(x = fa1, y = pc1)) + 
   geom_point()
 comp_2 <- ggplot(fa.pc.wine, aes(x = fa1, y = pc2)) + 
   geom_point()
-
 grid.arrange(comp_1, comp_2, ncol = 2)
+```
 
+```{r}
 pc.wine.2 <- princomp(wine, scores = T, cor = T)
 
 fa.pc.wine <- data.frame(fa1 = fa.wine$scores[, 1], pc1 = pc.wine.2$scores[, 1], 
   fa2 = fa.wine$scores[, 2], pc2 = pc.wine.2$scores[, 2])
+```
 
+```{r, out.width='100%'}
 comp_1 <- ggplot(fa.pc.wine, aes(x = fa1, y = pc1)) + 
   geom_point()
 comp_2 <- ggplot(fa.pc.wine, aes(x = fa2, y = pc2)) + 
   geom_point()
 
 grid.arrange(comp_1, comp_2, ncol = 2)
-par(mfrow=c(1,2))
+```
+
+
+```{r, out.width='100%'}
+par(mfrow=c(2,1))
 biplot(pc.wine.1)
 biplot(pc.wine.2)
+```
 
+
+```{r}
 # Ejemplo simulación
 x1 <- rnorm(1000)
 x2 <- x1 + 0.001 * rnorm(1000)
@@ -527,9 +551,10 @@ fact.y <- fa(y, factors = 1, fm ="ml")
 pc.y <- princomp(y)
 fact.y$loadings
 pc.y$loadings
-
 fact.y
 ```
 
+
 En el ejemplo de simulación vemos que el análisis de componentes principales se alinea con la dirección de máxima varianza $X_3$ mientras que el análisis de factores ignora el componente no correlacionado y captura el componente correlacionado $X_2 + X_1$. Debido a que en FA modelamos diferentes _unicidades_ $u_j$ para cada $Y_j$ el análisis de factores puede verse como un modelo para la estructura de correlación de $Y_j$ en lugar de la estructura de covarianzas.
+
 
