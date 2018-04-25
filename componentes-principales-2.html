@@ -403,7 +403,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Para formular PCA probabilístico introducimos una variable latente <span class="math inline">\(X\)</span> que corresponde al subespacio de componentes principales, suponemos <span class="math inline">\(X\sim N(0, I)\)</span>. Por otra parte, la distribución de la variable aleatoria observada <span class="math inline">\(Y\)</span> condicional a la variable latente <span class="math inline">\(X\)</span> es <span class="math inline">\(Y|X\sim N(Wx+\mu, \sigma^2I\)</span></p>
 <p>Veremos que las columnas de <span class="math inline">\(W\)</span> (dimensión <span class="math inline">\(D\times M\)</span>) generan un subsepacio que correponde al subespacio de componentes principales.</p>
 <p>El siguiente esquema explica el modelo PCA probabilístico desde el punto de vista generativo.</p>
-<p><img src="imagenes/PCA_p.png" style="width: 600px;"/></p>
+<p><img src="figuras/PCA_p.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Desde este enfoque vemos que primero selecciona aleatoriamente un valor de la variable latente (<span class="math inline">\(x\)</span>) y después muestreamos el valor observado condicional a la variable latente, en particular la variable obsevada (de dimensión <span class="math inline">\(D\)</span>) se define usando una transformación lineal del espacio latente mas ruido Gaussiano aleatorio:</p>
 <p><span class="math display">\[y=Wx + \mu + \epsilon\]</span></p>
 <p>donde <span class="math inline">\(x\sim N(0, I)\)</span> de dimensión <span class="math inline">\(M\)</span> y <span class="math inline">\(\epsilon \sim N(0, \sigma^2I)\)</span> de dimensión <span class="math inline">\(D\)</span>.</p>
@@ -443,7 +443,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">15.1.1</span> Análisis de factores</h3>
 <p>El análisis de factores es muy similar a PCA probabilístico, la diferencia radica en que en la distribución condicional de <span class="math inline">\(Y|X\)</span> la matriz de covarianza se supone diagonal en lugar de isotrópica:</p>
 <p><span class="math display">\[Y|X \sim N(Wx + \mu, \Psi)\]</span></p>
-<p>Donde <span class="math inline">\(\Psi\)</span> es una matriz diagonal de dimensión <span class="math inline">\(D \times D\)</span>. Al igual que en PCA probabilístico, el modelo de FA supone que las variables observadas son independientes dado las latentes. En escencia el análisis de factores está explicando la estructura de covarianza observada representando la varianza<br />
+<p>donde <span class="math inline">\(\Psi\)</span> es una matriz diagonal de dimensión <span class="math inline">\(D \times D\)</span>. Al igual que en PCA probabilístico, el modelo de FA supone que las variables observadas son independientes dado las latentes. En escencia el análisis de factores está explicando la estructura de covarianza observada representando la varianza<br />
 independiente asociada a cada variable en la matriz <span class="math inline">\(W\)</span> y capturando la varianza compartda en <span class="math inline">\(W\)</span>.</p>
 <p>La distribución marginal de las variables observadas es <span class="math inline">\(X\sim N(\mu, C)\)</span> donde <span class="math display">\[C=WW^T+\Psi.\]</span></p>
 <p>De manera similar a PCA probabilístico el modelo es invariante a rotaciones en el espacio latente.</p>
@@ -453,7 +453,8 @@ independiente asociada a cada variable en la matriz <span class="math inline">\(
 <h2><span class="header-section-number">15.2</span> Análisis de factores (descripción tradicional)</h2>
 <p>Trataremos ahora con análisis de factores, los modelos que veremos se enfocan en variables observadas y latentes continuas. La idea esencial del análisis de factores es describir las relaciones entre varias variables observadas (<span class="math inline">\(Y=Y_1,...,Y_p\)</span>) a través de variables latentes (<span class="math inline">\(X_1,...,X_q\)</span>) donde <span class="math inline">\(q &lt; p\)</span>. Como ejemplo consideremos una encuesta de consumo de hogares, donde observamos el nivel de consumo de <span class="math inline">\(p\)</span> productos diferentes. Las variaciones de los componentes de <span class="math inline">\(Y\)</span> quizá se puedan explicar por 2 o 3 factores de conducta del hogar, estos podrían ser un deseo básico de comfort, o el deseo de alcanzar cierto nivel social u otros conceptos sociales. Es común que estos factores no observados sean de mayor interés que las observaciones en si mismas.</p>
 <p>En la gráfica inferior vemos un ejemplo en educación donde las variables <em>vocab, reading, maze,…</em> corresponden a las variables observadas mientras que <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span> son las variables latentes. Observamos que añadir <em>estructura</em> al problema resulta en una simplificación del modelo.</p>
-<p><img src="14-pca-2_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" /><img src="14-pca-2_files/figure-html/unnamed-chunk-3-2.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="14-pca-2_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="14-pca-2_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>En ocasiones, el análisis de factores se utiliza como una técnica de reducción de dimensión que esta basada en un modelo. Idealmente, toda la información en la base de datos se puede reproducir por un número menor de factores.</p>
 <div id="el-modelo" class="section level3">
 <h3><span class="header-section-number">15.2.1</span> El modelo</h3>
@@ -708,47 +709,190 @@ ability.promax &lt;-<span class="st"> </span><span class="kw">factanal</span>(<s
 <p><strong>Ejemplo.</strong> La base de datos wine contiene medidas en 13 atributos diferentes de 180 vinos.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gridExtra)
 wine &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/wine.csv&quot;</span>)
-<span class="kw">head</span>(wine)
-<span class="co">#&gt; # A tibble: 6 x 14</span>
-<span class="co">#&gt;    Type Alcohol Malic   Ash Alcalinity Magnesium Phenols Flavanoids</span>
-<span class="co">#&gt;   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;     &lt;int&gt;   &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     1    14.2  1.71  2.43       15.6       127    2.80       3.06</span>
-<span class="co">#&gt; 2     1    13.2  1.78  2.14       11.2       100    2.65       2.76</span>
-<span class="co">#&gt; 3     1    13.2  2.36  2.67       18.6       101    2.80       3.24</span>
-<span class="co">#&gt; 4     1    14.4  1.95  2.50       16.8       113    3.85       3.49</span>
-<span class="co">#&gt; 5     1    13.2  2.59  2.87       21.0       118    2.80       2.69</span>
-<span class="co">#&gt; 6     1    14.2  1.76  2.45       15.2       112    3.27       3.39</span>
-<span class="co">#&gt; # ... with 6 more variables: Nonflavanoids &lt;dbl&gt;, Proanthocyanins &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Color &lt;dbl&gt;, Hue &lt;dbl&gt;, Dilution &lt;dbl&gt;, Proline &lt;int&gt;</span>
-pc.wine.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">princomp</span>(wine, <span class="dt">scores =</span> <span class="ot">TRUE</span>)
+<span class="kw">head</span>(wine) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Type</th>
+<th align="right">Alcohol</th>
+<th align="right">Malic</th>
+<th align="right">Ash</th>
+<th align="right">Alcalinity</th>
+<th align="right">Magnesium</th>
+<th align="right">Phenols</th>
+<th align="right">Flavanoids</th>
+<th align="right">Nonflavanoids</th>
+<th align="right">Proanthocyanins</th>
+<th align="right">Color</th>
+<th align="right">Hue</th>
+<th align="right">Dilution</th>
+<th align="right">Proline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">14.2</td>
+<td align="right">1.71</td>
+<td align="right">2.43</td>
+<td align="right">15.6</td>
+<td align="right">127</td>
+<td align="right">2.80</td>
+<td align="right">3.06</td>
+<td align="right">0.28</td>
+<td align="right">2.29</td>
+<td align="right">5.64</td>
+<td align="right">1.04</td>
+<td align="right">3.92</td>
+<td align="right">1065</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">13.2</td>
+<td align="right">1.78</td>
+<td align="right">2.14</td>
+<td align="right">11.2</td>
+<td align="right">100</td>
+<td align="right">2.65</td>
+<td align="right">2.76</td>
+<td align="right">0.26</td>
+<td align="right">1.28</td>
+<td align="right">4.38</td>
+<td align="right">1.05</td>
+<td align="right">3.40</td>
+<td align="right">1050</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">13.2</td>
+<td align="right">2.36</td>
+<td align="right">2.67</td>
+<td align="right">18.6</td>
+<td align="right">101</td>
+<td align="right">2.80</td>
+<td align="right">3.24</td>
+<td align="right">0.30</td>
+<td align="right">2.81</td>
+<td align="right">5.68</td>
+<td align="right">1.03</td>
+<td align="right">3.17</td>
+<td align="right">1185</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">14.4</td>
+<td align="right">1.95</td>
+<td align="right">2.50</td>
+<td align="right">16.8</td>
+<td align="right">113</td>
+<td align="right">3.85</td>
+<td align="right">3.49</td>
+<td align="right">0.24</td>
+<td align="right">2.18</td>
+<td align="right">7.80</td>
+<td align="right">0.86</td>
+<td align="right">3.45</td>
+<td align="right">1480</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">13.2</td>
+<td align="right">2.59</td>
+<td align="right">2.87</td>
+<td align="right">21.0</td>
+<td align="right">118</td>
+<td align="right">2.80</td>
+<td align="right">2.69</td>
+<td align="right">0.39</td>
+<td align="right">1.82</td>
+<td align="right">4.32</td>
+<td align="right">1.04</td>
+<td align="right">2.93</td>
+<td align="right">735</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">14.2</td>
+<td align="right">1.76</td>
+<td align="right">2.45</td>
+<td align="right">15.2</td>
+<td align="right">112</td>
+<td align="right">3.27</td>
+<td align="right">3.39</td>
+<td align="right">0.34</td>
+<td align="right">1.97</td>
+<td align="right">6.75</td>
+<td align="right">1.05</td>
+<td align="right">2.85</td>
+<td align="right">1450</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pc.wine.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">princomp</span>(wine, <span class="dt">scores =</span> <span class="ot">TRUE</span>)
 
 fa.wine &lt;-<span class="st"> </span><span class="kw">factanal</span>(wine, <span class="dt">factors =</span> <span class="dv">2</span>, <span class="dt">scores =</span> <span class="st">&quot;Bartlett&quot;</span>)
 fa.pc.wine &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">fa1 =</span> fa.wine<span class="op">$</span>scores[, <span class="dv">1</span>], <span class="dt">pc1 =</span> pc.wine.<span class="dv">1</span><span class="op">$</span>scores[, <span class="dv">1</span>], 
-  <span class="dt">fa2 =</span> fa.wine<span class="op">$</span>scores[, <span class="dv">2</span>], <span class="dt">pc2 =</span> pc.wine.<span class="dv">1</span><span class="op">$</span>scores[, <span class="dv">2</span>])
-
-comp_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fa.pc.wine, <span class="kw">aes</span>(<span class="dt">x =</span> fa1, <span class="dt">y =</span> pc1)) <span class="op">+</span><span class="st"> </span>
+  <span class="dt">fa2 =</span> fa.wine<span class="op">$</span>scores[, <span class="dv">2</span>], <span class="dt">pc2 =</span> pc.wine.<span class="dv">1</span><span class="op">$</span>scores[, <span class="dv">2</span>])</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comp_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fa.pc.wine, <span class="kw">aes</span>(<span class="dt">x =</span> fa1, <span class="dt">y =</span> pc1)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()
 comp_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fa.pc.wine, <span class="kw">aes</span>(<span class="dt">x =</span> fa1, <span class="dt">y =</span> pc2)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()
-
-<span class="kw">grid.arrange</span>(comp_<span class="dv">1</span>, comp_<span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)
-
-pc.wine.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">princomp</span>(wine, <span class="dt">scores =</span> T, <span class="dt">cor =</span> T)
+<span class="kw">grid.arrange</span>(comp_<span class="dv">1</span>, comp_<span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="14-pca-2_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pc.wine.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">princomp</span>(wine, <span class="dt">scores =</span> T, <span class="dt">cor =</span> T)
 
 fa.pc.wine &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">fa1 =</span> fa.wine<span class="op">$</span>scores[, <span class="dv">1</span>], <span class="dt">pc1 =</span> pc.wine.<span class="dv">2</span><span class="op">$</span>scores[, <span class="dv">1</span>], 
-  <span class="dt">fa2 =</span> fa.wine<span class="op">$</span>scores[, <span class="dv">2</span>], <span class="dt">pc2 =</span> pc.wine.<span class="dv">2</span><span class="op">$</span>scores[, <span class="dv">2</span>])
-
-comp_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fa.pc.wine, <span class="kw">aes</span>(<span class="dt">x =</span> fa1, <span class="dt">y =</span> pc1)) <span class="op">+</span><span class="st"> </span>
+  <span class="dt">fa2 =</span> fa.wine<span class="op">$</span>scores[, <span class="dv">2</span>], <span class="dt">pc2 =</span> pc.wine.<span class="dv">2</span><span class="op">$</span>scores[, <span class="dv">2</span>])</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comp_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fa.pc.wine, <span class="kw">aes</span>(<span class="dt">x =</span> fa1, <span class="dt">y =</span> pc1)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()
 comp_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fa.pc.wine, <span class="kw">aes</span>(<span class="dt">x =</span> fa2, <span class="dt">y =</span> pc2)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()
 
-<span class="kw">grid.arrange</span>(comp_<span class="dv">1</span>, comp_<span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)
-<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="kw">grid.arrange</span>(comp_<span class="dv">1</span>, comp_<span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="14-pca-2_files/figure-html/unnamed-chunk-16-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))
 <span class="kw">biplot</span>(pc.wine.<span class="dv">1</span>)
-<span class="kw">biplot</span>(pc.wine.<span class="dv">2</span>)
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
 
-<span class="co"># Ejemplo simulación</span>
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+
+<span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
+<span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
+<span class="kw">biplot</span>(pc.wine.<span class="dv">2</span>)</code></pre></div>
+<p><img src="14-pca-2_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Ejemplo simulación</span>
 x1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)
 x2 &lt;-<span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span> <span class="op">*</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)
 x3 &lt;-<span class="st"> </span><span class="dv">10</span> <span class="op">*</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>) 
@@ -808,7 +952,6 @@ pc.y<span class="op">$</span>loadings
 <span class="co">#&gt; SS loadings     1.000  1.000  1.000</span>
 <span class="co">#&gt; Proportion Var  0.333  0.333  0.333</span>
 <span class="co">#&gt; Cumulative Var  0.333  0.667  1.000</span>
-
 fact.y
 <span class="co">#&gt; Factor Analysis using method =  ml</span>
 <span class="co">#&gt; Call: fa(r = y, fm = &quot;ml&quot;, factors = 1)</span>
@@ -841,7 +984,6 @@ fact.y
 <span class="co">#&gt; Correlation of (regression) scores with factors     1</span>
 <span class="co">#&gt; Multiple R square of scores with factors            1</span>
 <span class="co">#&gt; Minimum correlation of possible factor scores       1</span></code></pre></div>
-<p><img src="14-pca-2_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" /><img src="14-pca-2_files/figure-html/unnamed-chunk-10-2.png" width="70%" style="display: block; margin: auto;" /><img src="14-pca-2_files/figure-html/unnamed-chunk-10-3.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>En el ejemplo de simulación vemos que el análisis de componentes principales se alinea con la dirección de máxima varianza <span class="math inline">\(X_3\)</span> mientras que el análisis de factores ignora el componente no correlacionado y captura el componente correlacionado <span class="math inline">\(X_2 + X_1\)</span>. Debido a que en FA modelamos diferentes <em>unicidades</em> <span class="math inline">\(u_j\)</span> para cada <span class="math inline">\(Y_j\)</span> el análisis de factores puede verse como un modelo para la estructura de correlación de <span class="math inline">\(Y_j\)</span> en lugar de la estructura de covarianzas.</p>
 
 </div>
