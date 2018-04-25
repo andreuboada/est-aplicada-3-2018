@@ -210,7 +210,7 @@ _vocab, reading, maze,..._ corresponden a las variables observadas mientras que
 $X_1$ y $X_2$ son las variables latentes. Observamos que añadir _estructura_ al
 problema resulta en una simplificación del modelo. 
 
-```{r, warning=FALSE,message=FALSE, echo=FALSE, out.width='100%'}
+```{r, warning=FALSE,message=FALSE, echo=FALSE, out.width='100%',eval=FALSE}
 library(igraph)
 library(bnlearn) 
 areas <- colnames(ability.cov$cov)
@@ -224,7 +224,11 @@ arcs(ug, check.cycles = TRUE) = matrix(c("general", "picture", "general",
 plot(ug)
 ```
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, out.width='100%'}
+```{r, echo = F, fig.align='center', dpi=150}
+knitr::include_graphics("figuras/latentes_1.png")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width='100%', eval=FALSE}
 ug <- empty.graph(c("X1", "X2", areas))
 arcs(ug, check.cycles = TRUE) = matrix(c("X1", "general","X1", "picture", "X1", 
   "blocks", "X1", "maze", "X1", "reading", "X1", "vocab", "X2", "general", "X2",   
@@ -234,6 +238,9 @@ arcs(ug, check.cycles = TRUE) = matrix(c("X1", "general","X1", "picture", "X1",
 plot(ug)
 ```
 
+```{r, echo = F, fig.align='center', dpi=150}
+knitr::include_graphics("figuras/latentes_2.png")
+```
 
 En ocasiones, el análisis de factores se utiliza como una técnica de reducción 
 de dimensión que esta basada en un modelo. Idealmente, toda la información en 
