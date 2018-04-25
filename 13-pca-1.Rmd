@@ -254,7 +254,7 @@ u <- eigen_S$vectors
 
 par(mfrow=c(1,5))
 imageD(tres_mean)
-for(i in 1:4){
+for(i in 1: 4){
   imageD(u[, i])  
 }
 ```
@@ -293,19 +293,20 @@ La compresión está en que reemplazamos cada vector de observaciones de dimensi
 $D$ ($y_i$) por un vector de dimensión $M$.
 
 La siguiente figura muestra la compresión para distintos valores de $M$ del
-prmer dígito de la base de datos. 
+primer dígito de la base de datos. 
 
-```{r, fig.width=9.4, fig.height=2.5}
+```{r, fig.width=9.4, fig.height=2.5, eval = FALSE}
 tres_1 <- data_tres[3, ]
 par(mfrow=c(1,5))
 imageD(tres_1)
 for(M in c(1, 10, 50, 300)){
   u_M <- u[, 1:M]
-  y_M <- tres_1 %*% u_M
+  y_M <- as.numeric(tres_1) %*% u_M
   y_approx <- tres_mean + y_M %*% t(u_M)
   imageD(y_approx)
 }
 ```
+
 
 ### Ejemplo: compresión de una imagen
 
@@ -317,10 +318,10 @@ library(jpeg)
 
 grey <- readJPEG("figuras/perrito.jpg", native = FALSE)[,,1]
 
-pr <- pixmapGrey(grey)
+pr <- pixmapGrey(grey,cellres=1)
 plot(pr)
 
-size <- dim(img)
+size <- dim(grey)
 
 k <- 5 #was calculated with sum(s$d[1:285])/sum(s$d) = 0.9919 -> covers 99% of the data
 
@@ -338,11 +339,11 @@ y_M <- greyNoMean %*% u_M
 
 y_approx <- y_M %*% t(u_M)
 
-pr <- pixmapGrey(y_approx)
+pr <- pixmapGrey(y_approx,cellres=1)
 plot(pr)
 ## add mean
 y_mean = t(apply(y_approx,1,columnMeans,FUN="+"))
-pr <- pixmapGrey(y_mean)
+pr <- pixmapGrey(y_mean,cellres=1)
 plot(pr)
 ```
 
@@ -361,9 +362,8 @@ Veamos los datos _faithful_ de erupciones del volcán Old Faithful.
 head(faithful) %>% knitr::kable()
 ```
 
-Notamos que
-el tiempo entre erupciones es de un orden de magnitud mayor que la duración de 
-la erupción. Por ejemplo, si quisieramos hacer k-medias sería natural 
+Notamos que el tiempo entre erupciones es de un orden de magnitud mayor que la duración de 
+la erupción. Por ejemplo, si quisiéramos hacer k-medias (siguiente tema) sería natural 
 estandarizar los datos. Sin embargo, con PCA podemos normalizar los datos 
 para tener cero media y covarianza unitaria, de tal manera que la correlación 
 entre distintas variables es cero.
@@ -411,14 +411,30 @@ ggplot(faithful, aes(x = pc1, y = pc2)) +
 ```
 
 
+### Ejemplo: grado de marginación
+
+El grado de marginación fue definido por CONAPO desde 1990:
+
+* tiene como misión incluir a la población en los programas de desarrollo económico y social que se formulen dentro del sector gubernamental y vincular sus objetivos a las necesidades que plantean los fenómenos demográficos
+
+* permite diferenciar municipios según el impacto global de carencias que padece la población como resultado de la falta de acceso a la educación, la residencia en viviendas inadecuadas, la percepción de ingresos monetarios insuficientes y las relacionadas con la residencia en localidades pequeñas
+
+* contribuye a identificar las disparidades territoriales que existen entre los municipios
+
+* ha sido utilizado como criterio de las reglas de operación de diversos programas, lo que es un indicativo de su aceptación y uso cada vez más generalizado
+
+* define 4 dimensiones de la marginación: educación, vivienda, distribución de la población, ingresos monetarios
 
 
+```{r message=FALSE, warning=FALSE}
+base_estados <- read_csv("datos/base_estados.csv")
+base_estados %>% head(10) %>% knitr::kable()
+```
 
 
+1. Aplicar el método de componentes principales (utilizar `pcomp`)
 
-
-
-
+2. Hacer gráfica de los dos componentes.
 
 
 
