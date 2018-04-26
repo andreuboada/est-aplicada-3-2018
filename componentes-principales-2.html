@@ -453,8 +453,8 @@ independiente asociada a cada variable en la matriz <span class="math inline">\(
 <h2><span class="header-section-number">15.2</span> Análisis de factores (descripción tradicional)</h2>
 <p>Trataremos ahora con análisis de factores, los modelos que veremos se enfocan en variables observadas y latentes continuas. La idea esencial del análisis de factores es describir las relaciones entre varias variables observadas (<span class="math inline">\(Y=Y_1,...,Y_p\)</span>) a través de variables latentes (<span class="math inline">\(X_1,...,X_q\)</span>) donde <span class="math inline">\(q &lt; p\)</span>. Como ejemplo consideremos una encuesta de consumo de hogares, donde observamos el nivel de consumo de <span class="math inline">\(p\)</span> productos diferentes. Las variaciones de los componentes de <span class="math inline">\(Y\)</span> quizá se puedan explicar por 2 o 3 factores de conducta del hogar, estos podrían ser un deseo básico de comfort, o el deseo de alcanzar cierto nivel social u otros conceptos sociales. Es común que estos factores no observados sean de mayor interés que las observaciones en si mismas.</p>
 <p>En la gráfica inferior vemos un ejemplo en educación donde las variables <em>vocab, reading, maze,…</em> corresponden a las variables observadas mientras que <span class="math inline">\(X_1\)</span> y <span class="math inline">\(X_2\)</span> son las variables latentes. Observamos que añadir <em>estructura</em> al problema resulta en una simplificación del modelo.</p>
-<p><img src="14-pca-2_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<p><img src="14-pca-2_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/latentes_1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="figuras/latentes_2.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>En ocasiones, el análisis de factores se utiliza como una técnica de reducción de dimensión que esta basada en un modelo. Idealmente, toda la información en la base de datos se puede reproducir por un número menor de factores.</p>
 <div id="el-modelo" class="section level3">
 <h3><span class="header-section-number">15.2.1</span> El modelo</h3>
@@ -838,7 +838,7 @@ fa.pc.wine &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<spa
 comp_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fa.pc.wine, <span class="kw">aes</span>(<span class="dt">x =</span> fa1, <span class="dt">y =</span> pc2)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()
 <span class="kw">grid.arrange</span>(comp_<span class="dv">1</span>, comp_<span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="14-pca-2_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="14-pca-2_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pc.wine.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">princomp</span>(wine, <span class="dt">scores =</span> T, <span class="dt">cor =</span> T)
 
 fa.pc.wine &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">fa1 =</span> fa.wine<span class="op">$</span>scores[, <span class="dv">1</span>], <span class="dt">pc1 =</span> pc.wine.<span class="dv">2</span><span class="op">$</span>scores[, <span class="dv">1</span>], 
@@ -849,7 +849,7 @@ comp_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">gg
 <span class="st">  </span><span class="kw">geom_point</span>()
 
 <span class="kw">grid.arrange</span>(comp_<span class="dv">1</span>, comp_<span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="14-pca-2_files/figure-html/unnamed-chunk-16-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="14-pca-2_files/figure-html/unnamed-chunk-18-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))
 <span class="kw">biplot</span>(pc.wine.<span class="dv">1</span>)
 <span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
@@ -891,7 +891,7 @@ comp_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">gg
 <span class="co">#&gt; Warning in arrows(0, 0, y[, 1L] * 0.8, y[, 2L] * 0.8, col = col[2L], length</span>
 <span class="co">#&gt; = arrow.len): zero-length arrow is of indeterminate angle and so skipped</span>
 <span class="kw">biplot</span>(pc.wine.<span class="dv">2</span>)</code></pre></div>
-<p><img src="14-pca-2_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="14-pca-2_files/figure-html/unnamed-chunk-19-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Ejemplo simulación</span>
 x1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)
 x2 &lt;-<span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span> <span class="op">*</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)
