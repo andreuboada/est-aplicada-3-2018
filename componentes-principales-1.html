@@ -25,14 +25,14 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-04-25">
+<meta name="date" content="2018-05-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="ejemplo-admisiones-al-mba.html">
+<link rel="prev" href="analisis-de-discriminante-lineal-2.html">
 <link rel="next" href="componentes-principales-2.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -327,31 +327,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12" data-path="analisis-de-discriminante-lineal-2.html"><a href="analisis-de-discriminante-lineal-2.html"><i class="fa fa-check"></i><b>12</b> Análisis de Discriminante Lineal 2</a><ul>
 <li class="chapter" data-level="12.1" data-path="analisis-de-discriminante-lineal-2.html"><a href="analisis-de-discriminante-lineal-2.html#aplicaciones"><i class="fa fa-check"></i><b>12.1</b> Aplicaciones</a></li>
 <li class="chapter" data-level="12.2" data-path="analisis-de-discriminante-lineal-2.html"><a href="analisis-de-discriminante-lineal-2.html#ejemplo-vinos"><i class="fa fa-check"></i><b>12.2</b> Ejemplo: vinos</a></li>
+<li class="chapter" data-level="12.3" data-path="analisis-de-discriminante-lineal-2.html"><a href="analisis-de-discriminante-lineal-2.html#ejemplo-admisiones-al-mba"><i class="fa fa-check"></i><b>12.3</b> Ejemplo: admisiones al MBA</a></li>
+<li class="chapter" data-level="12.4" data-path="analisis-de-discriminante-lineal-2.html"><a href="analisis-de-discriminante-lineal-2.html#repaso-1"><i class="fa fa-check"></i><b>12.4</b> Repaso</a><ul>
+<li><a href="analisis-de-discriminante-lineal-2.html#caso-k2">Caso <span class="math inline">\(k=2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="ejemplo-admisiones-al-mba.html"><a href="ejemplo-admisiones-al-mba.html"><i class="fa fa-check"></i><b>13</b> Ejemplo: admisiones al MBA</a><ul>
-<li class="chapter" data-level="13.1" data-path="ejemplo-admisiones-al-mba.html"><a href="ejemplo-admisiones-al-mba.html#tarea-10"><i class="fa fa-check"></i><b>13.1</b> Tarea</a></li>
+<li class="chapter" data-level="12.5" data-path="analisis-de-discriminante-lineal-2.html"><a href="analisis-de-discriminante-lineal-2.html#supuestos-probabilisticos"><i class="fa fa-check"></i><b>12.5</b> Supuestos probabilísticos</a></li>
+<li class="chapter" data-level="12.6" data-path="analisis-de-discriminante-lineal-2.html"><a href="analisis-de-discriminante-lineal-2.html#relacion-con-minimos-cuadrados"><i class="fa fa-check"></i><b>12.6</b> Relación con mínimos cuadrados</a></li>
+<li class="chapter" data-level="12.7" data-path="analisis-de-discriminante-lineal-2.html"><a href="analisis-de-discriminante-lineal-2.html#tarea-10"><i class="fa fa-check"></i><b>12.7</b> Tarea</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html"><i class="fa fa-check"></i><b>14</b> Componentes Principales 1</a><ul>
-<li class="chapter" data-level="14.1" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#motivacion"><i class="fa fa-check"></i><b>14.1</b> Motivación</a></li>
-<li class="chapter" data-level="14.2" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#formulacion-de-maxima-varianza"><i class="fa fa-check"></i><b>14.2</b> Formulación de máxima varianza</a></li>
-<li class="chapter" data-level="14.3" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#formulacion-de-error-minimo"><i class="fa fa-check"></i><b>14.3</b> Formulación de error mínimo</a></li>
-<li class="chapter" data-level="14.4" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#aplicaciones-de-pca"><i class="fa fa-check"></i><b>14.4</b> Aplicaciones de PCA</a><ul>
-<li class="chapter" data-level="14.4.1" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#compresion-de-datos"><i class="fa fa-check"></i><b>14.4.1</b> Compresión de datos</a></li>
-<li class="chapter" data-level="14.4.2" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#ejemplo-compresion-de-una-imagen"><i class="fa fa-check"></i><b>14.4.2</b> Ejemplo: compresión de una imagen</a></li>
-<li class="chapter" data-level="14.4.3" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#ejemplo-grado-de-marginacion"><i class="fa fa-check"></i><b>14.4.3</b> Ejemplo: grado de marginación</a></li>
+<li class="chapter" data-level="13" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html"><i class="fa fa-check"></i><b>13</b> Componentes Principales 1</a><ul>
+<li class="chapter" data-level="13.1" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#motivacion"><i class="fa fa-check"></i><b>13.1</b> Motivación</a></li>
+<li class="chapter" data-level="13.2" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#formulacion-de-maxima-varianza"><i class="fa fa-check"></i><b>13.2</b> Formulación de máxima varianza</a></li>
+<li class="chapter" data-level="13.3" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#formulacion-de-error-minimo"><i class="fa fa-check"></i><b>13.3</b> Formulación de error mínimo</a></li>
+<li class="chapter" data-level="13.4" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#aplicaciones-de-pca"><i class="fa fa-check"></i><b>13.4</b> Aplicaciones de PCA</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#compresion-de-datos"><i class="fa fa-check"></i><b>13.4.1</b> Compresión de datos</a></li>
+<li class="chapter" data-level="13.4.2" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#ejemplo-compresion-de-una-imagen"><i class="fa fa-check"></i><b>13.4.2</b> Ejemplo: compresión de una imagen</a></li>
 </ul></li>
+<li class="chapter" data-level="13.5" data-path="componentes-principales-1.html"><a href="componentes-principales-1.html#tarea-11"><i class="fa fa-check"></i><b>13.5</b> Tarea</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html"><i class="fa fa-check"></i><b>15</b> Componentes Principales 2</a><ul>
-<li class="chapter" data-level="15.1" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#pca-probabilistico-y-analisis-de-factores"><i class="fa fa-check"></i><b>15.1</b> PCA probabilístico y Análisis de Factores</a><ul>
-<li class="chapter" data-level="15.1.1" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#analisis-de-factores"><i class="fa fa-check"></i><b>15.1.1</b> Análisis de factores</a></li>
+<li class="chapter" data-level="14" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html"><i class="fa fa-check"></i><b>14</b> Componentes Principales 2</a><ul>
+<li class="chapter" data-level="14.1" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#pca-probabilistico-y-analisis-de-factores"><i class="fa fa-check"></i><b>14.1</b> PCA probabilístico y Análisis de Factores</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#analisis-de-factores"><i class="fa fa-check"></i><b>14.1.1</b> Análisis de factores</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#analisis-de-factores-descripcion-tradicional"><i class="fa fa-check"></i><b>15.2</b> Análisis de factores (descripción tradicional)</a><ul>
-<li class="chapter" data-level="15.2.1" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#el-modelo"><i class="fa fa-check"></i><b>15.2.1</b> El modelo</a></li>
-<li class="chapter" data-level="15.2.2" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#estimacion-del-modelo"><i class="fa fa-check"></i><b>15.2.2</b> Estimación del modelo</a></li>
-<li class="chapter" data-level="15.2.3" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#analisis-de-factores-de-maxima-verosimilitud"><i class="fa fa-check"></i><b>15.2.3</b> Análisis de factores de máxima verosimilitud</a></li>
-<li class="chapter" data-level="15.2.4" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#evaluacion-del-modelo"><i class="fa fa-check"></i><b>15.2.4</b> Evaluación del modelo</a></li>
-<li class="chapter" data-level="15.2.5" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#visualizacion"><i class="fa fa-check"></i><b>15.2.5</b> Visualización</a></li>
+<li class="chapter" data-level="14.2" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#analisis-de-factores-descripcion-tradicional"><i class="fa fa-check"></i><b>14.2</b> Análisis de factores (descripción tradicional)</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#el-modelo"><i class="fa fa-check"></i><b>14.2.1</b> El modelo</a></li>
+<li class="chapter" data-level="14.2.2" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#estimacion-del-modelo"><i class="fa fa-check"></i><b>14.2.2</b> Estimación del modelo</a></li>
+<li class="chapter" data-level="14.2.3" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#analisis-de-factores-de-maxima-verosimilitud"><i class="fa fa-check"></i><b>14.2.3</b> Análisis de factores de máxima verosimilitud</a></li>
+<li class="chapter" data-level="14.2.4" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#evaluacion-del-modelo"><i class="fa fa-check"></i><b>14.2.4</b> Evaluación del modelo</a></li>
+<li class="chapter" data-level="14.2.5" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#visualizacion"><i class="fa fa-check"></i><b>14.2.5</b> Visualización</a></li>
 </ul></li>
+<li class="chapter" data-level="14.3" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#tarea-12"><i class="fa fa-check"></i><b>14.3</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -375,7 +380,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="componentes-principales-1" class="section level1">
-<h1><span class="header-section-number">Clase 14</span> Componentes Principales 1</h1>
+<h1><span class="header-section-number">Clase 13</span> Componentes Principales 1</h1>
 <style>
   .espacio {
     margin-bottom: 1cm;
@@ -391,7 +396,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 <span class="kw">library</span>(RColorBrewer)</code></pre></div>
 <div id="motivacion" class="section level2">
-<h2><span class="header-section-number">14.1</span> Motivación</h2>
+<h2><span class="header-section-number">13.1</span> Motivación</h2>
 <p>Muchos conjuntos de datos tienen la propiedad que los puntos caen en un variedad de dimensión mucho menor a la dimensión original de los datos.</p>
 <p>Para entender esta idea consideremos una base de datos consrtuida con uno de los dígitos de la base de datos <a href="http://yann.lecun.com/exdb/mnist/">mnist</a>, esta imagen esta representada por una matriz de <span class="math inline">\(64 \times 64\)</span> pixeles, ahora insertamos este dígito en una matriz más grande de <span class="math inline">\(100 \times 100\)</span> agregando espacio en blanco y variamos de manera aleatoria la orientación y ubicación del dígito.</p>
 <p><img src="figuras/digit_rotate.jpg" width="70%" style="display: block; margin: auto;" /></p>
@@ -437,7 +442,7 @@ imageD &lt;-<span class="st"> </span><span class="cf">function</span>(vec, <span
 </ul>
 </div>
 <div id="formulacion-de-maxima-varianza" class="section level2">
-<h2><span class="header-section-number">14.2</span> Formulación de máxima varianza</h2>
+<h2><span class="header-section-number">13.2</span> Formulación de máxima varianza</h2>
 <p>Consideremos un vector de observaciones <span class="math inline">\((y^1,...,y^n)\)</span> donde <span class="math inline">\(y_i\)</span> es de dimensión <span class="math inline">\(d\)</span>. Nuestro objetivo es proyectar los datos en un espacio de dimensión <span class="math inline">\(M&lt;D\)</span> maximizando la varianza de la proyección.</p>
 <p>Comencemos considerando la proyección en un espacio de dimensión uno, denotamos la dirección de este espacio por <span class="math inline">\(u_1\)</span> y por conveniencia usamos un vector unitario (<span class="math inline">\(u_1^Tu_1=1\)</span>). La proyección de cada punto <span class="math inline">\(y_i\)</span> es un escalar (pues <span class="math inline">\(M=1\)</span>) cuyo valor es <span class="math inline">\(u_1^Ty_i\)</span>. La media de los datos proyectados es <span class="math inline">\(u_1^T\bar{y}\)</span> donde</p>
 <p><span class="math display">\[
@@ -457,7 +462,7 @@ u_1^TSu_1=\lambda_1,
 <p>Si elegimos <span class="math inline">\(M&gt;1\)</span>, definimos los componentes de manera incremental, en cada paso seleccionamos una nueva dirección eligiendo cada nueva dirección como aquella que maximiza la varianza de la proyección sujeta a ser ortogonal a las direcciones (componentes) ya elegidos. Esto resulta en que la proyección lineal óptima para la cual la varianza de los datos proyectados es máxima esta definida por el conjunto de <span class="math inline">\(M\)</span> eigenvectores <span class="math inline">\(u_1,...,u_M\)</span> de la matriz de covarianzas <span class="math inline">\(S\)</span>.</p>
 </div>
 <div id="formulacion-de-error-minimo" class="section level2">
-<h2><span class="header-section-number">14.3</span> Formulación de error mínimo</h2>
+<h2><span class="header-section-number">13.3</span> Formulación de error mínimo</h2>
 <p>Ahora discutimos el segundo punto de vista de PCA. Sea <span class="math inline">\((u_1,...,u_D)\)</span> una base ortonormal de vectores, esto es <span class="math inline">\(u_i^Tu_j = 0\)</span> para toda <span class="math inline">\(i\)</span> distinta de <span class="math inline">\(j\)</span> y <span class="math inline">\(u_i^Tu_i = 1\)</span>.</p>
 <p>Como esta es una base de <span class="math inline">\(R^D\)</span> podemos expresar los datos observados como</p>
 <p><span class="math display">\[
@@ -501,10 +506,10 @@ J=\sum_{j=M+1}^D \lambda_j
 <p>por lo que para obtener el mínimo valor de <span class="math inline">\(J\)</span> hay que seleccionar los <span class="math inline">\(D-M\)</span> eigenvectores corresponidientes a los menores eigenvalores y por tanto los eigenvectores que definen el subespacio principal corresponden a los <span class="math inline">\(M\)</span> eigenvectores mayores.</p>
 </div>
 <div id="aplicaciones-de-pca" class="section level2">
-<h2><span class="header-section-number">14.4</span> Aplicaciones de PCA</h2>
+<h2><span class="header-section-number">13.4</span> Aplicaciones de PCA</h2>
 <p>Veamos un par de aplicaciones de PCA, comenzaremos con compresión de imágenes y luego examinaremos PCA como preprocesamiento.</p>
 <div id="compresion-de-datos" class="section level3">
-<h3><span class="header-section-number">14.4.1</span> Compresión de datos</h3>
+<h3><span class="header-section-number">13.4.1</span> Compresión de datos</h3>
 <p>Veamos un ejemplo de PCA para compresión de información usando la base de datos de mnist, en particular veamos los dígitos tres.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(data_tres)
 <span class="co">#&gt; [1] 6131  784</span></code></pre></div>
@@ -554,9 +559,9 @@ J &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">
 }</code></pre></div>
 </div>
 <div id="ejemplo-compresion-de-una-imagen" class="section level3">
-<h3><span class="header-section-number">14.4.2</span> Ejemplo: compresión de una imagen</h3>
+<h3><span class="header-section-number">13.4.2</span> Ejemplo: compresión de una imagen</h3>
 <div id="preprocesamiento" class="section level4">
-<h4><span class="header-section-number">14.4.2.1</span> Preprocesamiento</h4>
+<h4><span class="header-section-number">13.4.2.1</span> Preprocesamiento</h4>
 <p>Otra aplicación de componentes principales es preprocesamento, en este caso el objetivo no es reducción de dimensión sino la transformación de un conjunto de daros con el fin de estandarizar algunas de sus propiedades. Esto puede ser importante para el correcto funcionamiento de algoritmos o métodos que se desean usar después.</p>
 <p>Veamos los datos <em>faithful</em> de erupciones del volcán Old Faithful.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(faithful) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
@@ -611,252 +616,76 @@ z_i=L^{-1/2}U^T(y_i-\bar{y})
 =L^{-1/2}U^TSUL^{-1/2}=L{-1/2}LL^{-1/2}=I
 \]</span></p>
 <p>Esta operación se conoce como <em>whitening</em> o <em>sphereing</em>.</p>
+<p><br></p>
 </div>
 </div>
-<div id="ejemplo-grado-de-marginacion" class="section level3">
-<h3><span class="header-section-number">14.4.3</span> Ejemplo: grado de marginación</h3>
-<p>El grado de marginación fue definido por CONAPO desde 1990:</p>
-<ul>
-<li><p>tiene como misión incluir a la población en los programas de desarrollo económico y social que se formulen dentro del sector gubernamental y vincular sus objetivos a las necesidades que plantean los fenómenos demográficos</p></li>
-<li><p>permite diferenciar municipios según el impacto global de carencias que padece la población como resultado de la falta de acceso a la educación, la residencia en viviendas inadecuadas, la percepción de ingresos monetarios insuficientes y las relacionadas con la residencia en localidades pequeñas</p></li>
-<li><p>contribuye a identificar las disparidades territoriales que existen entre los municipios</p></li>
-<li><p>ha sido utilizado como criterio de las reglas de operación de diversos programas, lo que es un indicativo de su aceptación y uso cada vez más generalizado</p></li>
-<li><p>define 4 dimensiones de la marginación: educación, vivienda, distribución de la población, ingresos monetarios</p></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_estados &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/base_estados.csv&quot;</span>)
-base_estados <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="right">CVE_ENT</th>
-<th align="left">NOM_ENT</th>
-<th align="right">POB_TOT</th>
-<th align="right">ANALF</th>
-<th align="right">SPRIM</th>
-<th align="left">OVSDE</th>
-<th align="right">OVSEE</th>
-<th align="right">OVSAE</th>
-<th align="right">VHAC</th>
-<th align="right">OVPT</th>
-<th align="right">PL&lt;5000</th>
-<th align="right">PO2SM</th>
-<th align="left">OVSDSE</th>
-<th align="right">IM</th>
-<th align="left">GM</th>
-<th align="left">IND0A100</th>
-<th align="right">LUGAR</th>
-<th align="right">ANIO</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="left">Aguascalientes</td>
-<td align="right">719659</td>
-<td align="right">7.06</td>
-<td align="right">33.9</td>
-<td align="left">10.88</td>
-<td align="right">4.97</td>
-<td align="right">4.18</td>
-<td align="right">51.0</td>
-<td align="right">7.45</td>
-<td align="right">26.97</td>
-<td align="right">62.5</td>
-<td align="left">-</td>
-<td align="right">-0.89</td>
-<td align="left">Bajo</td>
-<td align="left">-</td>
-<td align="right">27</td>
-<td align="right">1990</td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="left">Baja California</td>
-<td align="right">1660855</td>
-<td align="right">4.68</td>
-<td align="right">24.0</td>
-<td align="left">4.89</td>
-<td align="right">10.49</td>
-<td align="right">19.59</td>
-<td align="right">45.4</td>
-<td align="right">8.13</td>
-<td align="right">11.95</td>
-<td align="right">40.0</td>
-<td align="left">-</td>
-<td align="right">-1.34</td>
-<td align="left">Muy bajo</td>
-<td align="left">-</td>
-<td align="right">30</td>
-<td align="right">1990</td>
-</tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="left">Baja California Sur</td>
-<td align="right">317764</td>
-<td align="right">5.39</td>
-<td align="right">27.8</td>
-<td align="left">7.03</td>
-<td align="right">11.10</td>
-<td align="right">10.17</td>
-<td align="right">48.6</td>
-<td align="right">13.99</td>
-<td align="right">25.60</td>
-<td align="right">54.1</td>
-<td align="left">-</td>
-<td align="right">-0.97</td>
-<td align="left">Bajo</td>
-<td align="left">-</td>
-<td align="right">28</td>
-<td align="right">1990</td>
-</tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="left">Campeche</td>
-<td align="right">535185</td>
-<td align="right">15.40</td>
-<td align="right">44.8</td>
-<td align="left">24.8</td>
-<td align="right">15.02</td>
-<td align="right">29.52</td>
-<td align="right">65.0</td>
-<td align="right">24.16</td>
-<td align="right">36.21</td>
-<td align="right">68.1</td>
-<td align="left">-</td>
-<td align="right">0.48</td>
-<td align="left">Alto</td>
-<td align="left">-</td>
-<td align="right">10</td>
-<td align="right">1990</td>
-</tr>
-<tr class="odd">
-<td align="right">5</td>
-<td align="left">Coahuila de Zaragoza</td>
-<td align="right">1972340</td>
-<td align="right">5.48</td>
-<td align="right">28.2</td>
-<td align="left">10.81</td>
-<td align="right">5.24</td>
-<td align="right">7.76</td>
-<td align="right">50.0</td>
-<td align="right">8.48</td>
-<td align="right">17.13</td>
-<td align="right">60.9</td>
-<td align="left">-</td>
-<td align="right">-1.05</td>
-<td align="left">Bajo</td>
-<td align="left">-</td>
-<td align="right">29</td>
-<td align="right">1990</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="left">Colima</td>
-<td align="right">428510</td>
-<td align="right">9.30</td>
-<td align="right">36.0</td>
-<td align="left">8.37</td>
-<td align="right">5.82</td>
-<td align="right">6.61</td>
-<td align="right">56.0</td>
-<td align="right">21.13</td>
-<td align="right">22.39</td>
-<td align="right">50.4</td>
-<td align="left">-</td>
-<td align="right">-0.76</td>
-<td align="left">Bajo</td>
-<td align="left">-</td>
-<td align="right">23</td>
-<td align="right">1990</td>
-</tr>
-<tr class="odd">
-<td align="right">7</td>
-<td align="left">Chiapas</td>
-<td align="right">3210496</td>
-<td align="right">30.12</td>
-<td align="right">62.1</td>
-<td align="left">42.66</td>
-<td align="right">34.92</td>
-<td align="right">42.09</td>
-<td align="right">74.1</td>
-<td align="right">50.90</td>
-<td align="right">66.56</td>
-<td align="right">80.1</td>
-<td align="left">-</td>
-<td align="right">2.36</td>
-<td align="left">Muy alto</td>
-<td align="left">-</td>
-<td align="right">1</td>
-<td align="right">1990</td>
-</tr>
-<tr class="even">
-<td align="right">8</td>
-<td align="left">Chihuahua</td>
-<td align="right">2441873</td>
-<td align="right">6.12</td>
-<td align="right">30.9</td>
-<td align="left">14.1</td>
-<td align="right">13.23</td>
-<td align="right">11.96</td>
-<td align="right">47.8</td>
-<td align="right">9.58</td>
-<td align="right">25.57</td>
-<td align="right">52.8</td>
-<td align="left">-</td>
-<td align="right">-0.87</td>
-<td align="left">Bajo</td>
-<td align="left">-</td>
-<td align="right">26</td>
-<td align="right">1990</td>
-</tr>
-<tr class="odd">
-<td align="right">9</td>
-<td align="left">Distrito Federal</td>
-<td align="right">8235744</td>
-<td align="right">4.00</td>
-<td align="right">16.8</td>
-<td align="left">1.81</td>
-<td align="right">0.76</td>
-<td align="right">3.33</td>
-<td align="right">45.6</td>
-<td align="right">2.45</td>
-<td align="right">0.32</td>
-<td align="right">60.5</td>
-<td align="left">-</td>
-<td align="right">-1.69</td>
-<td align="left">Muy bajo</td>
-<td align="left">-</td>
-<td align="right">32</td>
-<td align="right">1990</td>
-</tr>
-<tr class="even">
-<td align="right">10</td>
-<td align="left">Durango</td>
-<td align="right">1349378</td>
-<td align="right">6.99</td>
-<td align="right">39.5</td>
-<td align="left">32.38</td>
-<td align="right">13.73</td>
-<td align="right">14.98</td>
-<td align="right">53.5</td>
-<td align="right">20.04</td>
-<td align="right">49.29</td>
-<td align="right">67.7</td>
-<td align="left">-</td>
-<td align="right">0.01</td>
-<td align="left">Alto</td>
-<td align="left">-</td>
-<td align="right">15</td>
-<td align="right">1990</td>
-</tr>
-</tbody>
-</table>
+</div>
+<div id="tarea-11" class="section level2">
+<h2><span class="header-section-number">13.5</span> Tarea</h2>
 <ol style="list-style-type: decimal">
-<li><p>Aplicar el método de componentes principales (utilizar <code>pcomp</code>)</p></li>
-<li><p>Hacer gráfica de los dos componentes.</p></li>
+<li>Comprime una imagen utilizando análisis de componentes principales. Para esto haz lo siguiente:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Descarga una imagen en formato <code>jpg</code> o <code>jpeg</code> y lee la imagen en <code>R</code> utilizando el siguiente código:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(jpeg)
+<span class="kw">library</span>(pixmap)
+nick &lt;-<span class="st"> </span><span class="kw">readJPEG</span>(<span class="st">&quot;figuras/nick_bateman.jpg&quot;</span>, <span class="dt">native =</span> <span class="ot">FALSE</span>)[,,<span class="dv">1</span>]
+pr &lt;-<span class="st"> </span><span class="kw">pixmapGrey</span>(nick)
+<span class="co">#&gt; Warning in rep(cellres, length = 2): &#39;x&#39; is NULL so the result will be NULL</span>
+<span class="kw">plot</span>(pr)</code></pre></div>
+<p><img src="13-pca-1_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Haz una gráfica de los primeros 100 eigenvalores de la matriz de varianzas y covarianzas. ¿Cuántas componentes</p></li>
+<li><p>Completa el siguiente código para comprimir la imagen con <span class="math inline">\(M=1, 5, 10, 40, 50\)</span> componentes principales.</p></li>
+</ol>
+<p><span class="math display">\[
+S = X^TX = P DP^T
+\]</span></p>
+<p><span class="math display">\[
+\Sigma = D^{1/2}
+\]</span></p>
+<p><span class="math display">\[
+X = U \Sigma V^T
+\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S &lt;-<span class="st">  </span><span class="op">%*%</span><span class="st"> </span>
+eigen_S &lt;-<span class="st"> </span><span class="kw">eigen</span>(S)
+P &lt;-<span class="st"> </span>eigen_S<span class="op">$</span>vectors
+lambda &lt;-<span class="st"> </span>eigen_S<span class="op">$</span>values
+sqrt_lambda &lt;-<span class="st"> </span><span class="kw">sqrt</span>(lambda)
+sigma &lt;-<span class="st"> </span><span class="kw">diag</span>(sqrt_lambda, <span class="dt">nrow=</span>, <span class="dt">ncol =</span> )
+V =<span class="st"> </span>P
+sigma_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">solve</span>(sigma)
+U =<span class="st">  </span><span class="op">%*%</span><span class="st"> </span>V <span class="op">%*%</span><span class="st"> </span>
+X =<span class="st"> </span>U <span class="op">%*%</span><span class="st"> </span>sigma <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(V)
+<span class="cf">for</span>(M <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">40</span>, <span class="dv">50</span>)){
+  sigma_M &lt;-<span class="st"> </span>sigma[<span class="dv">1</span><span class="op">:</span>M,<span class="dv">1</span><span class="op">:</span>M]
+  sigma_Mk &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="dv">0</span>,,)
+  sigma_Mk[<span class="dv">1</span><span class="op">:</span>M,<span class="dv">1</span><span class="op">:</span>M] &lt;-<span class="st"> </span>sigma_M
+  approx &lt;-<span class="st"> </span>U <span class="op">%*%</span><span class="st">  </span><span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(V)
+  pr &lt;-<span class="st"> </span><span class="kw">pixmapGrey</span>(approx)
+  <span class="kw">plot</span>(pr)
+}</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Considera los datos de erupciones de volcanes.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+
+<span class="kw">ggplot</span>(faithful, <span class="kw">aes</span>(<span class="dt">x =</span> eruptions, <span class="dt">y =</span> waiting)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()
+
+faith_pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(faithful, <span class="dt">scale. =</span> <span class="ot">TRUE</span>)
+
+faithful<span class="op">$</span>pc1 &lt;-<span class="st"> </span>faith_pca<span class="op">$</span>x[, <span class="dv">1</span>]
+faithful<span class="op">$</span>pc2 &lt;-<span class="st"> </span>faith_pca<span class="op">$</span>x[, <span class="dv">2</span>]
+<span class="kw">ggplot</span>(faithful, <span class="kw">aes</span>(<span class="dt">x =</span> pc1, <span class="dt">y =</span> pc2)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="13-pca-1_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /><img src="13-pca-1_files/figure-html/unnamed-chunk-14-2.png" width="70%" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>Implementa <em>whitening</em> en los datos faithful.</p></li>
+<li><p>Compara las gráficas de los datos crudos y preprocesados.</p></li>
 </ol>
 
-</div>
 </div>
 </div>
             </section>
@@ -864,7 +693,7 @@ base_estados <span class="op">%&gt;%</span><span class="st"> </span><span class=
           </div>
         </div>
       </div>
-<a href="ejemplo-admisiones-al-mba.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analisis-de-discriminante-lineal-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="componentes-principales-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

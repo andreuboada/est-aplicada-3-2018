@@ -2,7 +2,7 @@
 --- 
 title: "Estadística Aplicada III"
 author: "Andreu Boada de Atela"
-date: "2018-04-25"
+date: "2018-05-02"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -27,7 +27,6 @@ description: "Notas y material para el curso de Estadística Aplicada III, 2018 
 - Componentes principales y análisis de factores
 - Análisis de la correlación canónica
 - Introducción a análisis de conglomerados
-- Introducción a estadística espacial
 
 ### Evaluación {-}
 

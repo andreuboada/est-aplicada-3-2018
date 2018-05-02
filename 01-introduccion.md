@@ -735,7 +735,7 @@ dds_blancos_hispanos %>%
 #> 3 13-17         3955.                3904.
 #> 4 18-21         9960.               10133.
 #> 5 22-50        40924.               40188.
-#> 6 51+          55585.               52670.
+#> 6 51+          55585                52670.
 ```
 
 ¿Se puede concluir que el típico hispano recibe menos fondos (es decir, gastos) que el típico blanco?

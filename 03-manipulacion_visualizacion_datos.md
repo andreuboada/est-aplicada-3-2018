@@ -669,12 +669,12 @@ billboard_tidy %>% arrange(artist, track, year, time) %>% head(20)
 #> # A tibble: 20 x 7
 #>    year artist track                   time   week  rank date      
 #>   <int> <chr>  <chr>                   <chr> <dbl> <int> <date>    
-#> 1  2000 2 Pac  Baby Don't Cry (Keep... 4:22     1.    87 2000-02-26
-#> 2  2000 2 Pac  Baby Don't Cry (Keep... 4:22     2.    82 2000-03-04
-#> 3  2000 2 Pac  Baby Don't Cry (Keep... 4:22     3.    72 2000-03-11
-#> 4  2000 2 Pac  Baby Don't Cry (Keep... 4:22     4.    77 2000-03-18
-#> 5  2000 2 Pac  Baby Don't Cry (Keep... 4:22     5.    87 2000-03-25
-#> 6  2000 2 Pac  Baby Don't Cry (Keep... 4:22     6.    94 2000-04-01
+#> 1  2000 2 Pac  Baby Don't Cry (Keep... 4:22      1    87 2000-02-26
+#> 2  2000 2 Pac  Baby Don't Cry (Keep... 4:22      2    82 2000-03-04
+#> 3  2000 2 Pac  Baby Don't Cry (Keep... 4:22      3    72 2000-03-11
+#> 4  2000 2 Pac  Baby Don't Cry (Keep... 4:22      4    77 2000-03-18
+#> 5  2000 2 Pac  Baby Don't Cry (Keep... 4:22      5    87 2000-03-25
+#> 6  2000 2 Pac  Baby Don't Cry (Keep... 4:22      6    94 2000-04-01
 #> # ... with 14 more rows
 ```
 
@@ -971,9 +971,9 @@ df_ej %>%
 #>   genero estatura
 #>   <fct>     <dbl>
 #> 1 mujer      1.65
-#> 2 hombre     1.80
-#> 3 mujer      1.70
-#> 4 mujer      1.60
+#> 2 hombre     1.8 
+#> 3 mujer      1.7 
+#> 4 mujer      1.6 
 #> 5 hombre     1.67
 ```
 
