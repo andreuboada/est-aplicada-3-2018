@@ -122,7 +122,7 @@ Notas:
 * Para lograr una muy buena separación de los tres cultivares, sería mejor usar juntas la primera y la segunda función discriminante, ya que la primera función discriminante puede separar los cultivares 1 y 3 muy bien, y la segunda función discriminante puede separar los cultivares 1 y 2, y los cultivares 2 y 3, razonablemente bien.
 
 
-# Ejemplo: admisiones al MBA
+## Ejemplo: admisiones al MBA
 
 Se tienen datos de admisión para los solicitantes a las escuelas de posgrado en administración de negocios. El objetivo es usar los puntajes de GPA y GMAT para predecir la probabilidad de admisión (admitido, no admitido y en el límite).
 
@@ -224,19 +224,294 @@ partimat(formula = De ~ GMAT + GPA, data = mba, method = "lda")
 partimat(formula = De ~ GMAT + GPA, data = mba, method = "qda") 
 ```
 
+## Repaso 
+
+Se tienen datos $x_1, x_2, \ldots, x_n \in \mathbb{R}^p$ y $y_1,\ldots,y_n\in \{1,2,\ldots,K\}$ donde
+
+$$
+\begin{eqnarray*}
+n &=& \mbox{# observaciones} \\
+p &=& \mbox{# de covariables o predictores} \\
+k &=& \mbox{# clases que dividen a todos los datos.}
+\end{eqnarray*}
+$$
+
+Definimos
+
+$$
+m_k = \dfrac{1}{N_k}\sum_{i\in C_k}x_i
+$$
+donde $N_k=\mbox{# de observaciones de la }k\mbox{-ésima clase y}C_k\mbox{ es el conjunto de índices de las observaciones de la }k\mbox{-ésima clase.}
+
+Una medida de la variabilidad dentro de cada clase es
+
+$$
+s_k^2 = \sum_{i\in C_k}{(y_i - w^T x_i)^2}
+$$
+porque el modelo está determinado por la ecuación $y(x)=w^Tx$.
+
+### Caso $k=2$ {-}
+
+El vector $w$ lo interpretamos como el vector de pesos que determinan el discriminante lineal.
+
+La clasificación subsecuente se hace de tal forma que si $y(x)>y_0$ se clasifica a la observación como perteneciente a la clase 1 y en otro caso a la clase 2.
+
+
+Definimos el criterio de Fisher como
+
+$$
+J(w)  = \dfrac{w^T(m_2 - m_1)}{s_1^2 + s_2^2}.
+$$
+
+Buscamos 
+$$
+\begin{eqnarray*}
+\mbox{max} && J(w) \\
+\mbox{s.a.} &\;& \| w \| = 1.
+\end{eqnarray*}
+$$
+
+**Idea:** En general, necesitamos encontrar la dirección de $w$ y pensar en que luego es posible normalizar.
+
+Definimos las matrices
+
+$$
+S_W = \sum_{i\in C_k}(x_i - m_1)(x_i-m_1)^T + \sum_{i\in C_k}(x_i - m_2)(x_i - m_2)^T
+$$
+y
+
+$$
+S_B = (m_2 - m_1)(m_2 - m_1)^T
+$$
+
+Se puede ver que
+
+$$
+J(w) = \dfrac{w^T S_B w}{w^T S_W w}.
+$$
+
+<p class="espacio">
+</p>
+
+```{block2, type = "information"}
+Si $x$ es un vector y $A$ es una matriz, entonces el gradiente de una forma cuadrática
+$$
+\dfrac{1}{2}x^T A x + b^T x + c
+$$
+es
+$$
+Ax + b.
+$$
+```
+
+<br>
+
+<br>
+
+Por lo tanto,
+
+$$
+\nabla J(w) = w^T S_B w \cdot \nabla_w(w^T S_W w) - w^T S_W w \cdot \nabla_w(w^T S_B w),
+$$
+por lo que $J(w)$ se maximiza cuando
+
+$$
+\begin{eqnarray*}
+(w^T S_B w) S_W w &=& (w^T S_W w)S_B w \\
+S_W w&=& \left(\dfrac{w^T S_W w}{w^T S_B w}\right) S_B w \\
+&=& \dfrac{w^T S_W w}{w^T S_B w} (m_2-m_1)(m_2 - m_1)^T w\\
+&=& \left\{\left(\dfrac{w^T S_W w}{w^T S_B w}\right)(m_2 - m_1)^T w\right\}(m_2-m_1).
+\end{eqnarray*}
+$$
+
+Por lo tanto, $w$ es tal que
+
+$$
+w = c \cdot S_W ^{-1}(m_2 - m_1)
+$$
+donde $c$ es una constante tal que $\|w\|_2^2=1$.
+
+## Supuestos probabilísticos
+
+Definimos como $\pi_k$ la probabilidad inicial de la pertenencia a la clase $k$, es decir,
+
+$$
+\pi_k = P(y_i = k).
+$$
+
+En la literatura las $\pi_i$'s se conocen como _probabilidades a priori_. Además podemos definir una dsitribución de probabilidad para $x$ para cada clase $k$
+
+$$
+f_k(x) = P(x|k).
+$$
+
+Por el teorema de Bayes
+
+$$
+p(k|x) = \dfrac{f_k(x)\pi_k}{\sum_{l=1}^K f_l(x)\pi_l}.
+$$
+
+A las probabilidades finales de cada clase $k$ dada una observación $x$ se les conoce comúnmente como _probabilidades posteriores_.
+
+En el análisis de discriminante lineal suponemos que $p(x|k)$ es la densidad normal
+
+$$
+f_k(x) = \dfrac{1}{(2\pi)^{p/2}|\Sigma_k|^{1/2}}\exp\left(-\dfrac{1}{2}(x-\mu_k)^T\Sigma_k ^{-1} (x-\mu_k)\right).
+$$
+
+En LDA suponemos que $\Sigma_k = \Sigma$ para toda $k$. A este supuesto le llamamos _supuesto de homogeneidad_.
+
+Para comparar la pertenencia de clases podemos ver el logaritmo del cociente entre las clases $k$ y $l$:
+
+$$
+\begin{eqnarray*}
+\log\dfrac{p(k|x)}{p(j|x)} &=& \log\dfrac{f_k(x)}{f_l(x)} + \log\left(\dfrac{\pi_k}{\pi_l}\right)\\
+&=& \log\left(\dfrac{\pi_k}{\pi_l}\right) -\dfrac{1}{2}(\mu_k - \mu_l)^T\Sigma^{-1}(\mu_k - \mu_l) + x^T\Sigma^{-1}(\mu_k - \mu_l).
+\end{eqnarray*}
+$$
+
+Ésta es una ecuación lineal en $x$. Esto implica que la superficie de decisión (que separa a las clases) es un hiperplano de dimensión $p$.
+
+Si dividimos $\mathbb{R}^p$ entre regiones que separan las clases $1,2,\ldots,K$, estas regiones están determinadas por hiperplanos. 
+
+```{r, echo = F, fig.align='center', dpi=400}
+knitr::include_graphics("figuras/lda_3.png")
+```
+
+<br>
+<br>
+
+Definimos las funciones de discriminante lineal como
+
+$$
+f_k(x) = x^T \Sigma ^{-1} \mu_k -\dfrac{1}{2}\mu_k^T \Sigma^{-1}\mu_k + \log(\pi_k).
+$$
+
+Estos los estimamos por máxima verosimilitud y es equivalente a la vista antes
+
+$$
+\hat{\pi}_k= \dfrac{N_k{}}N
+$$
+
+$$
+\hat{\mu}_k = \dfrac{1}{N_k}\sum_{i\in C_k}x_i
+$$
+
+$$
+\hat{\Sigma} = \dfrac{1}{N-K} \sum_{k=1}^{K}\sum_{i\in C_k}(x_i-\hat{\mu}_k)(x_i-\hat{\mu}_k)^T
+$$
+
+
+Si $\Sigma_k$ no es igual a $\Sigma$ para todas las clases entonces definimos las _funciones de discriminante cuadráticas_ (QDA) como
+
+$$
+f_k(x) = -\dfrac{1}{2}\log|\Sigma_k| - \dfrac{1}{2}(x-\mu_k)^T\Sigma_k^{-1}(x-\mu_k) + \log(\pi_k).
+$$
+
+Las superficies de decisión son ecuaciones cuadráticas en $\mathbb{R}^p$.
+
+```{block2, type = "nota"}
+**Nota**
+  
+<p class="espacio3">
+</p>
+  
+1. Las estimaciones se hacen de manera similar que para LDA excepto que en este caso se deben estimar todas las $\Sigma_k$`s por separado.
+
+2. El número de parámetros puede aumentar sustancialmente.
+
+```
+
+## Relación con mínimos cuadrados
+
+Vimos cómo utilizar regresión lineal para encontrar regiones de discriminante lineal. Codificamos $Y$ de la siguiente forma:
+
+$$
+y_i=(0,\ldots,0,N/N_1,0,\ldots,0)
+$$
+
+donde la posición distinta de $0$ es la $i$-ésima posición correspondiente a la observación cuando está en la clase 1, y cuando está en la clase 2 es
+
+$$
+y_i=(0,\ldots,0,-N/N_2,0,\ldots,0).
+$$
+
+El error como suma de cuadrados es:
+
+$$
+\dfrac{1}{2}\sum_{i=1}^n{(w^Tx_i+w_0-y_i)^2}.
+$$
+
+Derivando con respecto a $w_0$ y $w$ obtenemos:
+
+$$
+\begin{eqnarray*}
+\sum_{i=1}^n{(w^Tx_i+w_0-y_i)} &=& 0\\
+\sum_{i=1}^n{(w^Tx_i+w_0-y_i)\cdot x_i} &=& 0
+\end{eqnarray*}
+$$
+
+Sustituyendo las $y_i$`s obtenemos que
+
+$$
+w_0 = -w^Tm
+$$
+
+donde
+
+$$
+\sum_{i=1}^n{y_i} = N_1\dfrac{N}{N_1} - N_2\dfrac{N}{N_2},
+$$
+
+y $m$ es la media del conjunto de datos y está dado por
+
+$$
+m = \dfrac{1}{N}\sum_{i=1}^N x_i = \dfrac{1}{N}(N_1 m_1 + N_2 m_2).
+$$
+
+Se puede demostrar (tarea) que:
+
+$$
+\left(S_W + \dfrac{N_1N_2}{N}S_B\right)w=N(m_1 - m_2).
+$$
+
+Notemos que $S_B w$ está en la dirección de $m_2-m_1$ porque
+
+$$
+S_B = (m_2 - m_1)(m_2 - m_1)^T,
+$$
+
+y entonces $w$ es proporcional a $S_W^{-1}(m_2 - m_1)$.
+
+Por lo tanto, el resultado obtenido por mínimos cuadrados es equivalente a la dirección de discriminante lineal, ignorando factores escalares que no son relevantes. Por lo tanto, el vector de pesos coincide con el encontrado mediante el criterio de Fisher.
+
+El umbral $w_0$ es tal que si $y(x) = w^T(x-m)> 0$, entonces se clasifica en la clase 1, y en otro caso, se clasifica en la clase 2.
+
+```{block2, type = "information"}
+**Nota:** La extensión para múltiples clases es análoga a lo que ya hemos visto.
+```
+
+<br>
 
 ## Tarea 
 
+Utilizando las definiciones de las matrices de covarianza _intraclase_ $S_W$ e _interclase_ $S_B$ y que 
 
+$$
+w_0 = -w^tm,
+$$
+donde
+$$
+m = \dfrac{1}{N}\sum_{i=1}^N x_i = \dfrac{1}{N}(N_1 m_1 + N_2 m_2),
+$$
+demuestra que
 
+$$
+\sum_{i=1}^n{(w^Tx_i+w_0-y_i)\cdot x_i}= 0
+$$
 
+se puede escribir de la forma
 
-
-
-
-
-
-
-
-
-
+$$
+\left(S_W + \dfrac{N_1N_2}{N}S_B\right)w=N(m_1 - m_2).
+$$

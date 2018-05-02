@@ -323,7 +323,7 @@ plot(pr)
 
 size <- dim(grey)
 
-k <- 5 #was calculated with sum(s$d[1:285])/sum(s$d) = 0.9919 -> covers 99% of the data
+k <- 50 #was calculated with sum(s$d[1:285])/sum(s$d) = 0.9919 -> covers 99% of the data
 
 ## calculate mean
 columnMeans <- colMeans(grey)
@@ -395,9 +395,63 @@ $$
 
 Esta operación se conoce como _whitening_ o _sphereing_.
 
-```{r, echo=FALSE,eval=FALSE}
-head(faithful)
-par(mfrow=c(1, 2))
+<br>
+
+## Tarea
+
+1. Comprime una imagen utilizando análisis de componentes principales. Para esto haz lo siguiente:
+
+a. Descarga una imagen en formato `jpg` o `jpeg` y lee la imagen en `R` utilizando el siguiente código:
+
+```{r}
+library(jpeg)
+library(pixmap)
+nick <- readJPEG("figuras/nick_bateman.jpg", native = FALSE)[,,1]
+pr <- pixmapGrey(nick)
+plot(pr)
+```
+
+b. Haz una gráfica de los primeros 100 eigenvalores de la matriz de varianzas y covarianzas. ¿Cuántas componentes
+
+c. Completa el siguiente código para comprimir la imagen con $M=1, 5, 10, 40, 50$ componentes principales.
+
+$$
+S = X^TX = P DP^T
+$$
+
+$$
+\Sigma = D^{1/2}
+$$
+
+$$
+X = U \Sigma V^T
+$$
+
+```{r, eval=FALSE}
+S <-  %*% 
+eigen_S <- eigen(S)
+P <- eigen_S$vectors
+lambda <- eigen_S$values
+sqrt_lambda <- sqrt(lambda)
+sigma <- diag(sqrt_lambda, nrow=, ncol = )
+V = P
+sigma_1 <- solve(sigma)
+U =  %*% V %*% 
+X = U %*% sigma %*% t(V)
+for(M in c(1, 5, 10, 40, 50)){
+  sigma_M <- sigma[1:M,1:M]
+  sigma_Mk <- diag(0,,)
+  sigma_Mk[1:M,1:M] <- sigma_M
+  approx <- U %*%  %*% t(V)
+  pr <- pixmapGrey(approx)
+  plot(pr)
+}
+```
+
+2. Considera los datos de erupciones de volcanes.
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
 
 ggplot(faithful, aes(x = eruptions, y = waiting)) +
   geom_point()
@@ -410,70 +464,6 @@ ggplot(faithful, aes(x = pc1, y = pc2)) +
   geom_point()
 ```
 
+b. Implementa _whitening_ en los datos faithful. 
 
-### Ejemplo: grado de marginación
-
-El grado de marginación fue definido por CONAPO desde 1990:
-
-* tiene como misión incluir a la población en los programas de desarrollo económico y social que se formulen dentro del sector gubernamental y vincular sus objetivos a las necesidades que plantean los fenómenos demográficos
-
-* permite diferenciar municipios según el impacto global de carencias que padece la población como resultado de la falta de acceso a la educación, la residencia en viviendas inadecuadas, la percepción de ingresos monetarios insuficientes y las relacionadas con la residencia en localidades pequeñas
-
-* contribuye a identificar las disparidades territoriales que existen entre los municipios
-
-* ha sido utilizado como criterio de las reglas de operación de diversos programas, lo que es un indicativo de su aceptación y uso cada vez más generalizado
-
-* define 4 dimensiones de la marginación: educación, vivienda, distribución de la población, ingresos monetarios
-
-
-```{r message=FALSE, warning=FALSE}
-base_estados <- read_csv("datos/base_estados.csv")
-base_estados %>% head(10) %>% knitr::kable()
-```
-
-
-1. Aplicar el método de componentes principales (utilizar `pcomp`)
-
-2. Hacer gráfica de los dos componentes.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+c. Compara las gráficas de los datos crudos y preprocesados.

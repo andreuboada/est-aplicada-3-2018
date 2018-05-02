@@ -390,7 +390,7 @@ ggplot(datPred, aes(x=LD1, y=LD2) ) +
 1. Para comparar regresión lineal, análisis de discriminante lineal y regresión logística con dos clases utiliza el siguiente código para responder los incisos siguientes. Utiliza tu clave única como semilla.
 
 ```{r}
-clave_unica <- 110265
+clave_unica <- 123456
 set.seed(clave_unica)
 n <- 300
 x1 <- c(rnorm(n/3,-5), rnorm(n/3, 0, 1.5), rnorm(n/3, 5)) 
