@@ -532,8 +532,8 @@ grid.arrange(comp_1, comp_2, ncol = 2)
 ```
 
 
-```{r, out.width='100%'}
-par(mfrow=c(2,1))
+```{r message=FALSE, warning=FALSE, out.width='100%'}
+par(mfrow=c(1,2))
 biplot(pc.wine.1)
 biplot(pc.wine.2)
 ```

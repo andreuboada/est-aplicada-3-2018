@@ -1,0 +1,2274 @@
+idno,psu,dweight,stratval,gvjbevn,gvhlthc,gvslvol,gvslvue,gvcldcr,gvpdlwk,sbprvpv,sbeqsoc,sbcwkfm
+110701,107,0.5153," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",0,10,8,5,5,4,2,4,2
+110702,107,0.5153," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",5,10,10,10,5,10,4,4,4
+110703,107,0.5153," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",8,9,10,0,8,10,4,4,3
+110704,107,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",8,10,10,3,8,6,3,2,2
+110705,107,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",7,10,8,8,9,8,4,2,2
+110708,107,0.5153," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",0,10,10,5,7,7,2,2,2
+110710,107,0.5153," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",5,8,8,8,3,5,4,3,4
+110711,107,0.5153," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",6,8,8,4,5,7,3,3,2
+110712,107,0.5153," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",1,10,7,5,3,9,2,3,2
+110713,107,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",7,9,9,7,8,7,2,3,3
+110714,107,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",5,10,10,5,5,10,2,4,3
+110715,107,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",5,8,8,6,5,7,2,2,2
+110716,107,0.5153," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",6,10,10,10,10,10,NA,NA,2
+110718,107,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",8,9,9,8,6,6,3,4,2
+110719,107,0.5153," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",7,10,10,6,8,8,2,2,2
+110720,107,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",4,10,10,6,5,5,5,4,2
+112105,121,0.5153, Devon and Cornwall,6,9,6,5,7,4,3,4,2
+112108,121,1.0307, Devon and Cornwall,10,10,10,10,10,10,4,4,3
+112111,121,0.5153, Devon and Cornwall,5,9,7,7,8,8,2,2,2
+112113,121,0.5153, Devon and Cornwall,8,8,8,4,8,8,2,2,2
+112116,121,1.0307, Devon and Cornwall,3,7,10,5,2,6,1,4,2
+112119,121,0.5153, Devon and Cornwall,5,8,8,6,5,8,3,3,2
+112120,121,1.0307, Devon and Cornwall,6,10,10,6,2,7,2,4,3
+112201,122,1.0307, Devon and Cornwall,6,8,8,6,6,7,2,3,2
+112202,122,1.0307, Devon and Cornwall,3,10,10,3,3,5,3,5,2
+112204,122,1.0307, Devon and Cornwall,2,8,6,2,2,8,3,3,3
+112206,122,1.0307, Devon and Cornwall,5,5,10,2,6,6,2,4,4
+112207,122,1.0307, Devon and Cornwall,3,8,8,7,4,4,4,4,2
+112208,122,1.0307, Devon and Cornwall,7,9,9,8,8,7,2,4,2
+112209,122,2.5767, Devon and Cornwall,7,8,7,7,6,3,2,2,2
+112214,122,0.5153, Devon and Cornwall,3,10,9,5,7,8,2,2,2
+112216,122,1.546, Devon and Cornwall,5,8,8,5,5,5,3,2,2
+112218,122,1.0307, Devon and Cornwall,10,10,8,3,0,5,2,5,2
+112219,122,1.0307, Devon and Cornwall,3,10,8,3,3,4,4,2,4
+112301,123,1.0307, Devon and Cornwall,5,10,10,3,5,0,2,4,3
+112304,123,1.0307, Devon and Cornwall,8,10,10,5,10,7,4,4,2
+112305,123,1.0307, Devon and Cornwall,2,9,9,6,4,10,4,5,2
+112306,123,1.546, Devon and Cornwall,7,8,8,6,2,7,2,3,2
+112307,123,0.5153, Devon and Cornwall,7,9,9,9,9,9,2,2,2
+112310,123,0.5153, Devon and Cornwall,10,10,10,10,10,9,3,4,4
+112312,123,1.0307, Devon and Cornwall,6,10,10,4,NA,10,NA,NA,3
+112315,123,0.5153, Devon and Cornwall,3,10,8,4,4,3,3,4,3
+112318,123,1.0307, Devon and Cornwall,7,10,10,10,10,8,2,3,3
+112319,123,0.5153, Devon and Cornwall,5,8,8,5,5,5,3,3,3
+112320,123,1.0307, Devon and Cornwall,7,8,8,6,7,7,4,2,2
+112401,124,1.0307, Devon and Cornwall,8,10,8,4,8,7,4,3,1
+112402,124,0.5153, Devon and Cornwall,8,9,9,6,8,10,2,2,2
+112403,124,1.0307, Devon and Cornwall,7,10,7,5,7,8,3,2,2
+112404,124,1.0307, Devon and Cornwall,5,6,6,6,6,7,3,3,2
+112405,124,0.5153, Devon and Cornwall,10,10,10,10,10,10,3,3,3
+112407,124,1.0307, Devon and Cornwall,7,8,10,4,9,7,2,2,2
+112408,124,1.0307, Devon and Cornwall,9,8,8,9,9,9,2,4,2
+112409,124,1.0307, Devon and Cornwall,10,10,7,0,10,8,2,4,3
+112410,124,1.546, Devon and Cornwall,9,10,10,8,8,8,4,2,2
+112411,124,1.0307, Devon and Cornwall,8,9,9,5,5,8,3,3,2
+112414,124,1.0307, Devon and Cornwall,8,8,8,5,9,8,2,3,1
+112416,124,0.5153, Devon and Cornwall,7,9,8,7,8,9,3,4,2
+112419,124,0.5153, Devon and Cornwall,6,8,9,3,7,7,3,3,2
+112420,124,0.5153, Devon and Cornwall,3,9,8,4,6,8,2,4,2
+112501,125,1.546, Devon and Cornwall,6,10,10,6,8,8,4,3,3
+112502,125,1.0307, Devon and Cornwall,3,8,6,5,3,3,4,4,3
+112503,125,0.5153, Devon and Cornwall,5,8,8,8,7,8,2,2,2
+112504,125,0.5153, Devon and Cornwall,3,6,8,8,7,NA,4,2,2
+112505,125,1.0307, Devon and Cornwall,8,8,9,7,4,10,2,3,2
+112506,125,1.0307, Devon and Cornwall,7,9,9,3,3,6,3,4,2
+112510,125,1.0307, Devon and Cornwall,10,10,10,4,10,7,4,5,2
+112511,125,1.0307, Devon and Cornwall,8,7,8,7,NA,6,2,NA,2
+112513,125,0.5153, Devon and Cornwall,5,8,9,5,4,2,2,2,1
+112514,125,1.546, Devon and Cornwall,4,10,9,6,6,9,2,4,2
+112517,125,1.546, Devon and Cornwall,8,10,10,10,6,4,2,3,2
+112518,125,1.0307, Devon and Cornwall,8,9,10,7,10,9,3,3,3
+112520,125,0.5153, Devon and Cornwall,2,8,9,2,2,NA,4,3,3
+112602,126,1.0307, Devon and Cornwall,7,9,8,7,7,8,3,3,2
+112603,126,1.0307, Devon and Cornwall,10,10,10,10,10,10,2,2,2
+112606,126,1.0307, Devon and Cornwall,10,10,10,7,7,10,4,5,2
+112610,126,1.0307, Devon and Cornwall,6,8,9,4,6,5,2,3,3
+112611,126,1.0307, Devon and Cornwall,6,8,7,7,8,7,2,2,2
+112612,126,1.0307, Devon and Cornwall,10,7,10,10,2,6,4,4,2
+112613,126,1.0307, Devon and Cornwall,10,10,10,6,10,9,3,4,3
+112614,126,1.0307, Devon and Cornwall,7,10,10,7,8,8,2,2,2
+112617,126,0.5153, Devon and Cornwall,5,10,10,10,10,10,3,3,3
+112619,126,0.5153, Devon and Cornwall,5,10,10,10,10,10,3,4,3
+112620,126,1.0307, Devon and Cornwall,5,10,8,7,5,5,4,4,2
+112702,127,1.546, Devon and Cornwall,4,10,5,0,8,0,2,2,2
+112704,127,1.0307, Devon and Cornwall,10,10,10,5,8,8,3,3,2
+112706,127,1.0307, Devon and Cornwall,4,8,8,6,7,3,2,3,3
+112707,127,1.0307, Devon and Cornwall,0,10,10,2,6,5,4,4,2
+112713,127,1.0307, Devon and Cornwall,8,10,8,7,10,7,1,4,3
+112714,127,1.0307, Devon and Cornwall,4,8,10,0,6,10,2,3,2
+112715,127,0.5153, Devon and Cornwall,4,9,10,5,7,10,4,3,3
+112716,127,1.0307, Devon and Cornwall,0,8,10,5,1,0,1,3,1
+112717,127,1.0307, Devon and Cornwall,8,10,10,5,8,8,2,2,2
+112720,127,0.5153, Devon and Cornwall,3,7,8,4,6,6,3,2,2
+112802,128,1.0307, Somerset and Dorset,9,9,9,8,7,5,2,3,3
+112803,128,1.0307, Somerset and Dorset,7,10,10,5,8,10,4,2,4
+112804,128,1.0307, Somerset and Dorset,8,10,10,7,5,7,3,4,3
+112807,128,1.0307, Somerset and Dorset,10,10,10,8,7,9,3,2,2
+112810,128,2.0613, Somerset and Dorset,8,8,8,2,2,8,4,4,2
+112812,128,0.5153, Somerset and Dorset,3,10,10,10,7,10,2,2,2
+112813,128,1.546, Somerset and Dorset,8,9,9,5,7,7,3,4,2
+112814,128,1.0307, Somerset and Dorset,10,10,10,10,10,10,2,4,3
+112815,128,1.546, Somerset and Dorset,9,10,10,7,8,10,3,4,4
+112816,128,1.0307, Somerset and Dorset,8,9,9,5,9,8,3,4,3
+112817,128,1.0307, Somerset and Dorset,5,8,8,5,5,7,2,3,3
+112819,128,0.5153, Somerset and Dorset,8,8,8,7,8,8,3,4,3
+112902,129,0.5153, Somerset and Dorset,5,6,6,7,7,4,3,2,2
+112905,129,1.0307, Somerset and Dorset,8,9,7,5,4,7,3,4,2
+112906,129,1.0307, Somerset and Dorset,10,10,10,8,8,7,2,2,2
+112907,129,1.0307, Somerset and Dorset,0,8,8,5,7,4,4,4,3
+112912,129,0.5153, Somerset and Dorset,5,10,9,5,6,5,3,3,3
+112913,129,1.0307, Somerset and Dorset,8,9,10,7,5,10,3,2,2
+112915,129,0.5153, Somerset and Dorset,7,9,9,9,9,9,2,2,3
+112916,129,1.0307, Somerset and Dorset,8,10,10,7,7,6,3,3,3
+112918,129,1.0307, Somerset and Dorset,10,10,10,7,7,8,3,2,3
+112919,129,0.5153, Somerset and Dorset,3,9,9,6,8,9,2,2,2
+112920,129,1.0307, Somerset and Dorset,10,10,10,10,10,10,4,4,4
+113002,130,1.0307, Somerset and Dorset,6,8,9,4,4,7,4,4,3
+113003,130,0.5153, Somerset and Dorset,8,8,8,8,8,8,2,2,2
+113004,130,1.0307, Somerset and Dorset,7,10,10,8,8,8,2,2,3
+113007,130,1.546, Somerset and Dorset,3,8,8,6,6,4,3,4,2
+113009,130,1.0307, Somerset and Dorset,2,7,7,5,7,5,4,4,4
+113011,130,1.0307, Somerset and Dorset,7,10,10,8,8,10,4,4,3
+113012,130,0.5153, Somerset and Dorset,4,8,8,5,5,6,2,2,3
+113013,130,1.0307, Somerset and Dorset,10,10,10,5,10,10,3,3,3
+113014,130,1.0307, Somerset and Dorset,5,10,8,6,8,8,2,2,2
+113016,130,0.5153, Somerset and Dorset,10,10,10,5,5,7,4,4,2
+113018,130,0.5153, Somerset and Dorset,2,7,5,2,7,4,4,4,4
+113020,130,0.5153, Somerset and Dorset,5,8,10,5,5,6,2,2,2
+113102,131,1.0307, Somerset and Dorset,8,7,10,8,7,8,1,1,2
+113104,131,1.0307, Somerset and Dorset,7,7,7,7,7,7,2,2,2
+113107,131,1.0307, Somerset and Dorset,7,10,8,5,8,8,2,4,3
+113110,131,0.5153, Somerset and Dorset,4,8,8,4,4,7,2,2,2
+113113,131,0.5153, Somerset and Dorset,4,9,8,2,5,4,2,2,2
+113114,131,0.5153, Somerset and Dorset,10,10,10,10,5,7,3,3,3
+113115,131,1.0307, Somerset and Dorset,7,10,8,7,7,9,4,4,2
+113117,131,1.0307, Somerset and Dorset,5,7,7,4,3,6,3,3,2
+113201,132,1.0307, Somerset and Dorset,2,9,9,9,7,9,1,4,2
+113206,132,1.546, Somerset and Dorset,5,10,8,5,2,5,3,4,3
+113208,132,2.0613, Somerset and Dorset,3,8,7,7,3,6,2,4,4
+113211,132,0.5153, Somerset and Dorset,7,10,8,7,7,8,2,2,2
+113212,132,1.0307, Somerset and Dorset,2,9,10,6,6,6,2,4,3
+113215,132,1.546, Somerset and Dorset,8,10,10,7,9,10,2,3,2
+113301,133,1.546, Avon and Wiltshire  ,8,9,8,2,7,8,4,2,3
+113303,133,1.0307, Avon and Wiltshire  ,5,9,9,9,7,10,4,4,4
+113305,133,1.0307, Avon and Wiltshire  ,8,10,10,4,7,5,2,4,1
+113308,133,1.546, Avon and Wiltshire  ,9,10,10,8,9,10,1,2,4
+113310,133,1.0307, Avon and Wiltshire  ,1,9,6,5,5,7,2,3,2
+113311,133,1.0307, Avon and Wiltshire  ,7,7,8,4,9,8,4,2,2
+113312,133,1.546, Avon and Wiltshire  ,4,10,10,2,2,1,3,4,2
+113313,133,0.5153, Avon and Wiltshire  ,5,10,6,4,2,0,3,3,3
+113314,133,1.0307, Avon and Wiltshire  ,8,9,9,6,5,8,3,4,3
+113315,133,1.0307, Avon and Wiltshire  ,4,8,8,5,7,9,2,2,3
+113316,133,0.5153, Avon and Wiltshire  ,6,8,8,6,7,6,2,2,2
+113318,133,2.0613, Avon and Wiltshire  ,5,6,6,5,6,6,2,4,2
+113319,133,1.0307, Avon and Wiltshire  ,7,10,10,7,9,6,3,2,2
+113403,134,1.0307, Avon and Wiltshire  ,5,7,7,5,5,5,3,2,3
+113404,134,1.0307, Avon and Wiltshire  ,7,9,9,8,6,8,3,2,3
+113406,134,0.5153, Avon and Wiltshire  ,5,8,8,3,3,5,2,2,2
+113408,134,0.5153, Avon and Wiltshire  ,0,8,5,5,5,3,3,2,2
+113409,134,1.0307, Avon and Wiltshire  ,4,8,7,5,6,7,4,4,4
+113411,134,0.5153, Avon and Wiltshire  ,1,3,7,0,8,8,5,5,2
+113412,134,1.0307, Avon and Wiltshire  ,6,9,7,5,6,7,2,2,2
+113413,134,0.5153, Avon and Wiltshire  ,3,7,6,6,6,6,2,2,2
+113414,134,1.0307, Avon and Wiltshire  ,4,7,7,6,6,6,2,2,2
+113415,134,1.0307, Avon and Wiltshire  ,8,9,9,8,9,9,2,2,2
+113416,134,1.0307, Avon and Wiltshire  ,6,8,7,4,7,7,3,4,2
+113417,134,0.5153, Avon and Wiltshire  ,5,8,8,7,6,8,3,3,2
+113418,134,1.0307, Avon and Wiltshire  ,6,10,10,7,7,5,3,3,3
+113419,134,1.0307, Avon and Wiltshire  ,6,6,7,6,5,6,2,2,3
+113501,135,0.5153, Avon and Wiltshire  ,5,9,9,4,4,8,2,3,3
+113502,135,0.5153, Avon and Wiltshire  ,8,10,10,4,10,7,2,4,2
+113504,135,0.5153, Avon and Wiltshire  ,5,10,10,8,5,NA,2,4,2
+113506,135,1.0307, Avon and Wiltshire  ,6,8,8,8,7,7,2,2,2
+113509,135,0.5153, Avon and Wiltshire  ,5,10,10,10,10,5,2,4,2
+113510,135,0.5153, Avon and Wiltshire  ,7,10,9,5,7,7,4,4,4
+113513,135,2.0613, Avon and Wiltshire  ,6,10,9,7,4,8,1,2,1
+113514,135,2.5767, Avon and Wiltshire  ,10,10,10,8,10,10,3,4,3
+113518,135,0.5153, Avon and Wiltshire  ,5,5,5,5,8,NA,4,4,4
+113519,135,1.0307, Avon and Wiltshire  ,6,8,8,4,7,7,2,3,3
+113520,135,1.0307, Avon and Wiltshire  ,6,8,9,8,9,8,3,3,3
+113601,136,4, Avon and Wiltshire  ,7,8,9,9,9,9,2,3,3
+113602,136,0.5153, Avon and Wiltshire  ,1,10,6,3,5,5,4,4,2
+113603,136,1.0307, Avon and Wiltshire  ,6,10,10,6,NA,3,2,2,NA
+113604,136,1.0307, Avon and Wiltshire  ,3,8,8,8,8,8,2,3,3
+113606,136,1.0307, Avon and Wiltshire  ,7,9,9,7,8,9,3,3,3
+113607,136,1.0307, Avon and Wiltshire  ,5,9,9,7,6,5,2,3,3
+113610,136,1.0307, Avon and Wiltshire  ,10,10,10,7,7,8,2,2,2
+113612,136,1.546, Avon and Wiltshire  ,7,9,9,9,8,8,2,2,3
+113613,136,2.0613, Avon and Wiltshire  ,7,8,8,5,8,9,3,3,2
+113614,136,1.0307, Avon and Wiltshire  ,3,9,9,2,8,8,3,4,2
+113615,136,0.5153, Avon and Wiltshire  ,4,8,7,5,5,4,2,3,3
+113616,136,2.5767, Avon and Wiltshire  ,7,8,8,7,7,8,2,3,3
+113617,136,1.0307, Avon and Wiltshire  ,5,9,8,7,8,8,3,4,4
+113618,136,1.0307, Avon and Wiltshire  ,4,8,8,5,8,7,3,4,3
+113619,136,2.0613, Avon and Wiltshire  ,5,10,10,6,8,10,2,3,3
+113620,136,0.5153, Avon and Wiltshire  ,4,10,10,5,5,8,4,2,3
+113701,137,0.5153, Avon and Wiltshire  ,5,7,8,6,6,9,2,3,2
+113703,137,1.0307, Avon and Wiltshire  ,8,10,10,8,4,6,2,2,2
+113707,137,0.5153, Avon and Wiltshire  ,8,9,9,6,8,8,2,3,3
+113709,137,0.5153, Avon and Wiltshire  ,8,9,10,6,3,5,3,2,3
+113710,137,0.5153, Avon and Wiltshire  ,5,8,8,7,8,9,2,4,2
+113711,137,1.0307, Avon and Wiltshire  ,6,10,10,5,10,10,3,3,4
+113714,137,2.0613, Avon and Wiltshire  ,9,10,10,7,9,10,2,2,2
+113716,137,2.0613, Avon and Wiltshire  ,3,7,10,6,6,7,2,1,2
+113718,137,0.5153, Avon and Wiltshire  ,7,8,7,5,7,5,2,3,2
+113719,137,1.546, Avon and Wiltshire  ,6,9,8,6,8,6,2,3,4
+113802,138,0.5153, Avon and Wiltshire  ,3,10,10,5,5,7,1,2,2
+113804,138,0.5153, Avon and Wiltshire  ,2,10,7,7,0,0,2,3,3
+113805,138,0.5153, Avon and Wiltshire  ,7,8,8,6,5,6,1,2,2
+113807,138,1.0307, Avon and Wiltshire  ,5,9,9,3,10,5,2,2,4
+113808,138,1.0307, Avon and Wiltshire  ,6,8,8,6,NA,5,2,2,3
+113809,138,1.0307, Avon and Wiltshire  ,2,8,8,6,8,7,3,3,3
+113811,138,1.0307, Avon and Wiltshire  ,3,9,9,6,3,9,4,5,4
+113813,138,0.5153, Avon and Wiltshire  ,10,10,7,6,5,5,2,2,2
+113814,138,1.546, Avon and Wiltshire  ,8,8,8,7,7,8,4,4,4
+113816,138,0.5153, Avon and Wiltshire  ,5,10,9,6,8,7,2,2,2
+113819,138,1.0307, Avon and Wiltshire  ,7,7,7,7,7,8,3,4,3
+113820,138,1.0307, Avon and Wiltshire  ,6,8,8,7,7,5,3,3,2
+113901,139,1.0307, Gloucestershire and Gwent   ,6,9,9,6,9,9,2,2,2
+113902,139,0.5153, Gloucestershire and Gwent   ,10,9,9,4,7,8,2,2,2
+113903,139,0.5153, Gloucestershire and Gwent   ,7,8,8,5,5,5,2,2,2
+113906,139,0.5153, Gloucestershire and Gwent   ,10,10,10,7,6,6,3,3,2
+113908,139,1.0307, Gloucestershire and Gwent   ,8,10,10,6,6,5,2,2,3
+113909,139,1.0307, Gloucestershire and Gwent   ,4,10,10,7,4,1,3,4,2
+113910,139,1.0307, Gloucestershire and Gwent   ,4,8,8,7,6,4,2,3,2
+113911,139,1.546, Gloucestershire and Gwent   ,6,9,9,3,5,8,2,3,2
+113913,139,1.546, Gloucestershire and Gwent   ,2,10,10,10,7,0,4,2,2
+113914,139,1.0307, Gloucestershire and Gwent   ,5,9,9,5,6,7,2,2,2
+113915,139,0.5153, Gloucestershire and Gwent   ,3,10,9,8,9,9,1,3,2
+113917,139,1.546, Gloucestershire and Gwent   ,6,10,8,3,5,8,4,5,2
+113918,139,1.0307, Gloucestershire and Gwent   ,5,7,8,7,6,7,2,4,3
+113919,139,1.0307, Gloucestershire and Gwent   ,4,10,7,4,5,7,2,3,2
+113920,139,1.0307, Gloucestershire and Gwent   ,2,10,8,5,8,7,2,2,2
+114101,141,1.0307, Gloucestershire and Gwent   ,2,4,8,4,4,7,2,2,2
+114102,141,1.0307, Gloucestershire and Gwent   ,6,9,8,8,6,7,2,2,2
+114103,141,1.0307, Gloucestershire and Gwent   ,7,9,8,NA,5,6,2,3,2
+114106,141,1.0307, Gloucestershire and Gwent   ,7,8,7,7,6,5,3,4,3
+114107,141,0.5153, Gloucestershire and Gwent   ,5,7,8,5,6,6,3,3,3
+114109,141,1.0307, Gloucestershire and Gwent   ,7,10,7,5,6,5,2,4,NA
+114110,141,1.0307, Gloucestershire and Gwent   ,4,8,7,6,4,5,NA,NA,NA
+114112,141,0.5153, Gloucestershire and Gwent   ,5,7,7,5,NA,NA,2,4,NA
+114113,141,1.0307, Gloucestershire and Gwent   ,6,10,10,10,9,10,2,4,2
+114116,141,1.0307, Gloucestershire and Gwent   ,5,7,8,7,6,6,2,2,2
+114118,141,0.5153, Gloucestershire and Gwent   ,3,10,8,4,0,0,2,4,2
+114120,141,1.0307, Gloucestershire and Gwent   ,5,10,10,2,9,5,2,3,2
+114302,143,0.5153, Oxfordshire and Berkshire  ,4,9,9,4,8,8,2,2,2
+114304,143,0.5153, Oxfordshire and Berkshire  ,3,9,9,4,3,7,2,2,2
+114305,143,0.5153, Oxfordshire and Berkshire  ,4,9,9,5,4,7,2,2,2
+114306,143,1.546, Oxfordshire and Berkshire  ,4,8,7,6,5,6,2,2,3
+114307,143,0.5153, Oxfordshire and Berkshire  ,8,8,8,7,7,7,2,2,2
+114308,143,1.0307, Oxfordshire and Berkshire  ,6,9,9,6,9,7,2,2,3
+114309,143,1.0307, Oxfordshire and Berkshire  ,7,10,10,7,6,9,3,3,3
+114310,143,1.0307, Oxfordshire and Berkshire  ,4,8,9,4,6,8,2,2,2
+114311,143,0.5153, Oxfordshire and Berkshire  ,10,10,10,10,9,9,2,4,2
+114314,143,1.0307, Oxfordshire and Berkshire  ,3,8,8,6,7,3,2,2,2
+114315,143,1.0307, Oxfordshire and Berkshire  ,3,8,8,5,4,4,2,4,4
+114317,143,1.0307, Oxfordshire and Berkshire  ,5,9,9,5,6,5,2,2,2
+114318,143,0.5153, Oxfordshire and Berkshire  ,10,10,10,5,6,7,2,2,2
+114319,143,1.0307, Oxfordshire and Berkshire  ,7,8,8,8,8,8,2,2,2
+114320,143,0.5153, Oxfordshire and Berkshire  ,5,8,8,5,8,7,2,2,2
+114401,144,1.0307, Oxfordshire and Berkshire  ,7,8,8,7,7,7,3,3,2
+114402,144,1.0307, Oxfordshire and Berkshire  ,7,9,9,7,5,8,2,2,2
+114405,144,1.0307, Oxfordshire and Berkshire  ,8,10,10,8,8,10,2,4,4
+114406,144,1.0307, Oxfordshire and Berkshire  ,8,9,9,7,7,6,2,2,2
+114407,144,1.0307, Oxfordshire and Berkshire  ,7,9,9,7,7,9,4,2,3
+114411,144,1.0307, Oxfordshire and Berkshire  ,5,9,9,7,5,8,2,4,3
+114412,144,0.5153, Oxfordshire and Berkshire  ,7,10,8,6,7,4,4,2,2
+114413,144,1.0307, Oxfordshire and Berkshire  ,5,7,8,7,7,7,2,4,2
+114414,144,1.546, Oxfordshire and Berkshire  ,0,10,7,6,4,7,2,3,3
+114415,144,1.546, Oxfordshire and Berkshire  ,5,6,7,5,6,7,5,3,4
+114416,144,1.0307, Oxfordshire and Berkshire  ,8,10,10,5,7,4,1,4,2
+114417,144,0.5153, Oxfordshire and Berkshire  ,1,6,6,4,5,6,3,3,3
+114503,145,1.0307, Oxfordshire and Berkshire  ,5,7,7,5,8,8,2,2,NA
+114505,145,0.5153, Oxfordshire and Berkshire  ,0,10,8,8,10,10,2,2,2
+114508,145,1.0307, Oxfordshire and Berkshire  ,8,8,8,7,6,6,2,2,4
+114509,145,1.546, Oxfordshire and Berkshire  ,5,8,7,3,5,7,4,4,4
+114510,145,1.0307, Oxfordshire and Berkshire  ,5,10,9,6,7,7,4,4,4
+114514,145,1.546, Oxfordshire and Berkshire  ,8,10,9,5,6,8,3,3,2
+114515,145,1.0307, Oxfordshire and Berkshire  ,4,8,8,6,6,9,2,4,4
+114516,145,0.5153, Oxfordshire and Berkshire  ,7,8,9,7,9,5,3,3,3
+114518,145,1.0307, Oxfordshire and Berkshire  ,5,9,9,9,NA,8,1,2,2
+114519,145,1.0307, Oxfordshire and Berkshire  ,4,8,8,7,5,5,2,4,3
+114520,145,1.0307, Oxfordshire and Berkshire  ,2,4,4,4,2,5,4,4,3
+114602,146,1.0307, Oxfordshire and Berkshire  ,6,9,9,8,5,6,2,2,2
+114603,146,1.546, Oxfordshire and Berkshire  ,3,10,10,8,4,8,2,2,2
+114604,146,1.0307, Oxfordshire and Berkshire  ,5,9,9,6,5,6,2,2,2
+114605,146,1.546, Oxfordshire and Berkshire  ,3,8,7,5,5,5,2,3,3
+114606,146,0.5153, Oxfordshire and Berkshire  ,4,8,6,6,7,8,3,2,2
+114610,146,3.092, Oxfordshire and Berkshire  ,8,10,10,10,9,10,2,1,2
+114611,146,0.5153, Oxfordshire and Berkshire  ,9,9,9,8,9,6,4,3,4
+114612,146,1.0307, Oxfordshire and Berkshire  ,7,10,10,2,10,10,2,2,2
+114613,146,3.092, Oxfordshire and Berkshire  ,7,8,8,6,6,6,2,2,2
+114615,146,0.5153, Oxfordshire and Berkshire  ,7,9,9,7,8,5,3,3,2
+114617,146,1.0307, Oxfordshire and Berkshire  ,6,10,10,8,6,6,2,2,2
+114618,146,2.0613, Oxfordshire and Berkshire  ,3,8,8,2,7,8,2,2,2
+114620,146,0.5153, Oxfordshire and Berkshire  ,1,9,9,3,5,5,2,2,3
+114702,147,1.546, Oxfordshire and Berkshire  ,7,10,9,9,7,8,2,2,1
+114704,147,1.0307, Oxfordshire and Berkshire  ,6,6,6,6,6,6,2,NA,3
+114708,147,0.5153, Oxfordshire and Berkshire  ,1,8,8,7,7,8,2,2,3
+114709,147,1.0307, Oxfordshire and Berkshire  ,7,7,7,7,7,7,3,NA,NA
+114711,147,2.0613, Oxfordshire and Berkshire  ,4,6,6,5,6,7,4,4,3
+114714,147,1.0307, Oxfordshire and Berkshire  ,7,8,7,5,9,5,2,3,2
+114718,147,1.0307, Oxfordshire and Berkshire  ,9,9,9,8,8,8,2,3,2
+114719,147,1.546, Oxfordshire and Berkshire  ,6,9,8,7,8,8,3,3,2
+114720,147,1.0307, Oxfordshire and Berkshire  ,9,9,9,9,9,9,4,3,4
+114802,148,1.0307," Hampshire, W Sussex, Isle of Wight  ",2,8,8,2,7,8,3,4,4
+114803,148,1.0307," Hampshire, W Sussex, Isle of Wight  ",8,10,10,8,8,8,3,2,2
+114811,148,0.5153," Hampshire, W Sussex, Isle of Wight  ",2,10,10,8,10,9,2,2,NA
+114813,148,0.5153," Hampshire, W Sussex, Isle of Wight  ",8,10,9,7,7,7,3,4,3
+114816,148,0.5153," Hampshire, W Sussex, Isle of Wight  ",4,8,8,6,5,6,2,2,2
+114819,148,0.5153," Hampshire, W Sussex, Isle of Wight  ",5,10,10,5,8,7,2,4,2
+114901,149,0.5153," Hampshire, W Sussex, Isle of Wight  ",6,10,10,8,10,10,4,2,2
+114904,149,1.0307," Hampshire, W Sussex, Isle of Wight  ",5,6,6,5,7,7,2,4,2
+114905,149,0.5153," Hampshire, W Sussex, Isle of Wight  ",4,9,10,3,5,6,3,4,3
+114906,149,0.5153," Hampshire, W Sussex, Isle of Wight  ",10,10,9,7,8,10,3,4,2
+114907,149,1.0307," Hampshire, W Sussex, Isle of Wight  ",6,8,8,6,8,7,3,4,4
+114909,149,0.5153," Hampshire, W Sussex, Isle of Wight  ",7,10,10,3,10,8,2,3,1
+114911,149,1.0307," Hampshire, W Sussex, Isle of Wight  ",6,9,9,7,9,9,3,3,3
+114913,149,0.5153," Hampshire, W Sussex, Isle of Wight  ",6,8,9,7,10,9,3,3,2
+114914,149,0.5153," Hampshire, W Sussex, Isle of Wight  ",8,10,10,7,6,10,2,2,2
+114915,149,1.0307," Hampshire, W Sussex, Isle of Wight  ",4,8,9,4,5,5,5,4,1
+114916,149,1.546," Hampshire, W Sussex, Isle of Wight  ",6,7,7,7,6,6,2,3,2
+115003,150,1.546," Hampshire, W Sussex, Isle of Wight  ",10,10,10,10,10,10,2,4,1
+115004,150,2.0613," Hampshire, W Sussex, Isle of Wight  ",2,5,8,4,6,5,2,2,4
+115005,150,1.0307," Hampshire, W Sussex, Isle of Wight  ",0,10,10,0,5,5,2,2,2
+115006,150,1.546," Hampshire, W Sussex, Isle of Wight  ",8,8,5,4,6,4,4,4,4
+115007,150,0.5153," Hampshire, W Sussex, Isle of Wight  ",0,9,9,8,5,5,2,2,3
+115008,150,2.0613," Hampshire, W Sussex, Isle of Wight  ",5,10,10,7,5,9,2,3,2
+115012,150,1.546," Hampshire, W Sussex, Isle of Wight  ",7,9,8,5,7,4,3,4,3
+115014,150,0.5153," Hampshire, W Sussex, Isle of Wight  ",7,9,10,8,8,9,4,4,3
+115015,150,0.5153," Hampshire, W Sussex, Isle of Wight  ",3,5,5,4,3,7,2,2,2
+115016,150,0.5153," Hampshire, W Sussex, Isle of Wight  ",9,9,8,6,7,7,2,4,2
+115017,150,1.0307," Hampshire, W Sussex, Isle of Wight  ",10,10,10,2,3,5,4,2,2
+115018,150,0.5153," Hampshire, W Sussex, Isle of Wight  ",2,8,7,6,8,8,2,2,2
+115020,150,1.0307," Hampshire, W Sussex, Isle of Wight  ",1,10,10,10,10,8,2,2,2
+115101,151,1.546," Hampshire, W Sussex, Isle of Wight  ",4,9,9,6,9,8,3,2,2
+115102,151,1.0307," Hampshire, W Sussex, Isle of Wight  ",10,10,10,5,5,3,4,3,2
+115104,151,1.0307," Hampshire, W Sussex, Isle of Wight  ",4,10,10,8,7,8,3,2,2
+115105,151,1.546," Hampshire, W Sussex, Isle of Wight  ",6,10,10,5,7,9,4,4,3
+115106,151,1.0307," Hampshire, W Sussex, Isle of Wight  ",6,10,10,3,9,5,2,2,3
+115107,151,1.0307," Hampshire, W Sussex, Isle of Wight  ",1,3,5,3,2,3,2,3,3
+115108,151,1.0307," Hampshire, W Sussex, Isle of Wight  ",10,10,10,4,4,0,4,5,2
+115110,151,1.0307," Hampshire, W Sussex, Isle of Wight  ",5,9,8,4,10,8,4,2,4
+115115,151,0.5153," Hampshire, W Sussex, Isle of Wight  ",5,7,7,2,8,7,3,4,2
+115117,151,1.0307," Hampshire, W Sussex, Isle of Wight  ",2,10,10,8,8,10,4,2,3
+115201,152,0.5153," Hampshire, W Sussex, Isle of Wight  ",6,8,8,8,8,8,3,3,3
+115202,152,0.5153," Hampshire, W Sussex, Isle of Wight  ",4,8,8,6,7,6,3,2,2
+115203,152,1.0307," Hampshire, W Sussex, Isle of Wight  ",4,7,7,4,5,7,NA,2,2
+115204,152,1.0307," Hampshire, W Sussex, Isle of Wight  ",5,8,10,10,10,6,3,2,2
+115206,152,1.0307," Hampshire, W Sussex, Isle of Wight  ",0,9,10,10,10,9,3,4,4
+115209,152,0.5153," Hampshire, W Sussex, Isle of Wight  ",5,8,8,7,7,7,2,2,2
+115210,152,1.0307," Hampshire, W Sussex, Isle of Wight  ",6,8,7,4,4,5,2,4,NA
+115211,152,1.0307," Hampshire, W Sussex, Isle of Wight  ",3,8,7,3,6,5,3,3,3
+115215,152,0.5153," Hampshire, W Sussex, Isle of Wight  ",4,8,7,6,6,6,2,2,2
+115216,152,0.5153," Hampshire, W Sussex, Isle of Wight  ",9,10,10,7,7,9,4,3,2
+115218,152,1.0307," Hampshire, W Sussex, Isle of Wight  ",0,9,9,5,5,5,3,3,2
+115303,153,1.0307," Hampshire, W Sussex, Isle of Wight  ",8,10,7,6,6,4,2,4,2
+115304,153,1.546," Hampshire, W Sussex, Isle of Wight  ",7,9,9,7,8,7,2,4,2
+115305,153,1.0307," Hampshire, W Sussex, Isle of Wight  ",2,8,8,7,7,8,4,2,2
+115306,153,0.5153," Hampshire, W Sussex, Isle of Wight  ",8,10,8,7,7,8,3,4,2
+115310,153,1.0307," Hampshire, W Sussex, Isle of Wight  ",4,9,6,5,6,8,3,4,4
+115313,153,1.0307," Hampshire, W Sussex, Isle of Wight  ",1,10,3,6,1,1,2,2,2
+115318,153,1.0307," Hampshire, W Sussex, Isle of Wight  ",10,10,10,1,5,6,2,4,2
+115319,153,2.0613," Hampshire, W Sussex, Isle of Wight  ",6,8,7,7,9,5,2,4,3
+115401,154,0.5153," Hampshire, W Sussex, Isle of Wight  ",8,8,8,8,8,8,2,2,2
+115402,154,1.0307," Hampshire, W Sussex, Isle of Wight  ",5,10,10,5,5,8,2,2,2
+115405,154,1.0307," Hampshire, W Sussex, Isle of Wight  ",4,8,8,6,7,9,3,3,2
+115406,154,1.0307," Hampshire, W Sussex, Isle of Wight  ",9,9,9,6,8,9,2,4,4
+115407,154,2.0613," Hampshire, W Sussex, Isle of Wight  ",7,9,8,4,3,5,2,4,3
+115409,154,1.0307," Hampshire, W Sussex, Isle of Wight  ",5,10,6,5,7,4,2,2,2
+115410,154,0.5153," Hampshire, W Sussex, Isle of Wight  ",10,10,10,10,10,6,5,1,3
+115411,154,1.546," Hampshire, W Sussex, Isle of Wight  ",4,9,9,8,7,9,4,3,2
+115412,154,1.0307," Hampshire, W Sussex, Isle of Wight  ",8,10,10,2,8,8,2,2,2
+115414,154,1.546," Hampshire, W Sussex, Isle of Wight  ",5,5,9,5,8,7,4,2,2
+115415,154,0.5153," Hampshire, W Sussex, Isle of Wight  ",0,8,8,5,8,8,2,2,2
+115416,154,1.546," Hampshire, W Sussex, Isle of Wight  ",5,8,7,5,7,2,2,2,2
+115417,154,0.5153," Hampshire, W Sussex, Isle of Wight  ",5,10,10,0,10,10,1,3,2
+115420,154,1.0307," Hampshire, W Sussex, Isle of Wight  ",3,8,8,7,7,7,2,2,3
+115501,155,1.0307," Hampshire, W Sussex, Isle of Wight  ",7,8,8,5,7,4,3,4,3
+115502,155,0.5153," Hampshire, W Sussex, Isle of Wight  ",8,9,9,8,8,8,4,2,2
+115503,155,1.0307," Hampshire, W Sussex, Isle of Wight  ",3,9,9,5,7,10,2,3,2
+115506,155,1.0307," Hampshire, W Sussex, Isle of Wight  ",7,8,9,7,8,8,2,2,2
+115508,155,1.0307," Hampshire, W Sussex, Isle of Wight  ",7,8,8,8,8,6,2,2,2
+115509,155,1.546," Hampshire, W Sussex, Isle of Wight  ",6,4,4,4,4,6,2,2,2
+115510,155,0.5153," Hampshire, W Sussex, Isle of Wight  ",7,7,8,6,7,8,2,3,2
+115512,155,0.5153," Hampshire, W Sussex, Isle of Wight  ",8,8,8,6,8,10,3,2,2
+115515,155,1.0307," Hampshire, W Sussex, Isle of Wight  ",4,6,6,5,5,6,4,2,2
+115516,155,0.5153," Hampshire, W Sussex, Isle of Wight  ",4,10,10,1,8,8,3,3,3
+115517,155,1.0307," Hampshire, W Sussex, Isle of Wight  ",7,7,7,5,9,7,4,3,3
+115518,155,0.5153," Hampshire, W Sussex, Isle of Wight  ",4,10,8,9,7,7,3,2,2
+115520,155,1.0307," Hampshire, W Sussex, Isle of Wight  ",4,9,8,3,7,4,4,2,3
+115601,156,0.5153," Hampshire, W Sussex, Isle of Wight  ",8,9,9,6,9,8,2,2,2
+115602,156,1.0307," Hampshire, W Sussex, Isle of Wight  ",7,10,10,10,10,8,1,3,2
+115605,156,1.0307," Hampshire, W Sussex, Isle of Wight  ",1,8,6,2,6,6,2,4,4
+115607,156,1.0307," Hampshire, W Sussex, Isle of Wight  ",8,10,10,5,6,8,2,3,2
+115608,156,0.5153," Hampshire, W Sussex, Isle of Wight  ",7,10,10,5,10,10,2,2,2
+115610,156,0.5153," Hampshire, W Sussex, Isle of Wight  ",2,8,4,3,5,3,2,3,3
+115613,156,0.5153," Hampshire, W Sussex, Isle of Wight  ",9,9,10,8,8,8,2,3,2
+115614,156,1.546," Hampshire, W Sussex, Isle of Wight  ",7,10,7,5,5,5,3,2,3
+115615,156,1.0307," Hampshire, W Sussex, Isle of Wight  ",8,10,10,5,10,8,2,2,2
+115616,156,1.0307," Hampshire, W Sussex, Isle of Wight  ",0,10,7,3,8,8,5,5,4
+115617,156,0.5153," Hampshire, W Sussex, Isle of Wight  ",0,10,10,3,3,7,2,3,2
+115619,156,1.0307," Hampshire, W Sussex, Isle of Wight  ",7,9,9,8,NA,7,3,2,2
+115620,156,0.5153," Hampshire, W Sussex, Isle of Wight  ",7,8,8,5,7,7,3,4,2
+115705,157,1.0307," Hampshire, W Sussex, Isle of Wight  ",7,10,10,7,8,8,2,2,2
+115708,157,0.5153," Hampshire, W Sussex, Isle of Wight  ",6,10,8,9,5,8,2,2,2
+115709,157,1.0307," Hampshire, W Sussex, Isle of Wight  ",5,10,9,5,5,4,2,3,2
+115710,157,0.5153," Hampshire, W Sussex, Isle of Wight  ",5,8,9,3,9,8,3,4,4
+115715,157,1.0307," Hampshire, W Sussex, Isle of Wight  ",8,9,9,6,5,7,3,2,3
+115716,157,0.5153," Hampshire, W Sussex, Isle of Wight  ",5,8,10,5,9,7,2,2,2
+115717,157,1.0307," Hampshire, W Sussex, Isle of Wight  ",8,10,9,8,8,8,2,2,2
+115801,158,1.546, Kent and E Sussex  ,4,7,7,7,5,5,3,4,4
+115803,158,0.5153, Kent and E Sussex  ,0,8,9,5,10,0,5,4,3
+115805,158,0.5153, Kent and E Sussex  ,NA,7,6,4,8,7,2,4,3
+115808,158,1.0307, Kent and E Sussex  ,4,10,8,5,7,7,2,2,2
+115809,158,1.546, Kent and E Sussex  ,8,7,7,6,6,NA,2,2,2
+115810,158,1.0307, Kent and E Sussex  ,10,10,10,7,7,5,3,4,3
+115818,158,1.0307, Kent and E Sussex  ,10,9,8,5,5,7,1,2,2
+115902,159,1.0307, Kent and E Sussex  ,10,10,10,8,3,8,2,3,2
+115903,159,0.5153, Kent and E Sussex  ,1,10,9,6,7,6,2,3,3
+115905,159,1.0307, Kent and E Sussex  ,0,7,8,5,3,4,2,4,4
+115906,159,1.0307, Kent and E Sussex  ,6,7,7,7,7,8,2,3,3
+115907,159,1.0307, Kent and E Sussex  ,2,8,8,6,5,7,4,2,2
+115910,159,2.0613, Kent and E Sussex  ,3,8,8,4,7,5,4,4,2
+115912,159,2.0613, Kent and E Sussex  ,3,9,6,7,3,7,2,3,2
+115914,159,0.5153, Kent and E Sussex  ,10,10,10,10,10,10,2,2,2
+115915,159,0.5153, Kent and E Sussex  ,9,10,7,6,7,7,2,4,2
+115918,159,1.0307, Kent and E Sussex  ,2,8,9,4,9,6,2,2,2
+115920,159,1.546, Kent and E Sussex  ,4,7,7,4,0,7,2,3,2
+116001,160,1.0307, Kent and E Sussex  ,6,7,7,5,7,7,4,4,4
+116003,160,1.0307, Kent and E Sussex  ,7,8,8,7,7,7,3,3,3
+116004,160,0.5153, Kent and E Sussex  ,4,8,7,7,5,7,2,2,2
+116005,160,1.0307, Kent and E Sussex  ,6,8,8,6,8,10,2,4,4
+116007,160,1.0307, Kent and E Sussex  ,6,9,8,5,8,7,3,4,2
+116008,160,1.0307, Kent and E Sussex  ,4,10,10,5,6,6,2,4,3
+116009,160,1.0307, Kent and E Sussex  ,1,10,9,3,0,7,4,4,4
+116010,160,1.0307, Kent and E Sussex  ,10,10,10,6,8,8,2,2,2
+116011,160,0.5153, Kent and E Sussex  ,5,5,8,3,5,9,3,2,2
+116014,160,1.546, Kent and E Sussex  ,6,8,8,5,4,6,4,2,2
+116015,160,1.0307, Kent and E Sussex  ,10,10,10,10,4,5,2,4,3
+116016,160,1.0307, Kent and E Sussex  ,2,9,10,5,9,10,2,3,3
+116017,160,0.5153, Kent and E Sussex  ,6,10,10,6,6,8,4,4,2
+116018,160,0.5153, Kent and E Sussex  ,5,8,9,7,8,7,2,3,3
+116019,160,0.5153, Kent and E Sussex  ,9,10,10,9,10,9,4,2,2
+116020,160,1.0307, Kent and E Sussex  ,8,10,10,8,9,10,2,2,3
+116103,161,1.0307, Kent and E Sussex  ,7,10,10,5,9,10,3,4,3
+116104,161,0.5153, Kent and E Sussex  ,5,9,8,7,5,5,3,3,2
+116105,161,2.0613, Kent and E Sussex  ,5,8,7,5,4,3,2,2,3
+116110,161,1.0307, Kent and E Sussex  ,10,10,10,10,10,10,2,4,4
+116113,161,1.0307, Kent and E Sussex  ,9,10,10,8,6,9,4,4,2
+116117,161,1.0307, Kent and E Sussex  ,5,9,8,4,3,4,4,2,2
+116118,161,1.0307, Kent and E Sussex  ,4,9,9,4,9,5,3,4,3
+116201,162,1.0307, Kent and E Sussex  ,10,10,10,10,10,10,4,2,1
+116204,162,1.0307, Kent and E Sussex  ,2,10,10,10,8,8,3,4,2
+116205,162,1.0307, Kent and E Sussex  ,4,8,8,4,6,7,2,4,3
+116206,162,1.0307, Kent and E Sussex  ,4,8,9,3,7,5,3,4,3
+116209,162,0.5153, Kent and E Sussex  ,4,10,10,7,10,10,2,4,2
+116210,162,2.0613, Kent and E Sussex  ,8,9,9,7,8,9,4,2,2
+116213,162,0.5153, Kent and E Sussex  ,8,10,7,3,8,8,2,2,3
+116215,162,0.5153, Kent and E Sussex  ,0,5,6,4,4,6,2,4,2
+116217,162,0.5153, Kent and E Sussex  ,6,5,7,4,4,4,1,2,2
+116301,163,0.5153, Kent and E Sussex  ,1,8,6,5,5,5,5,3,2
+116302,163,2.0613, Kent and E Sussex  ,5,8,8,3,7,7,4,3,2
+116304,163,1.0307, Kent and E Sussex  ,6,9,9,5,9,5,3,3,2
+116306,163,1.0307, Kent and E Sussex  ,8,9,9,7,6,5,2,3,3
+116308,163,1.546, Kent and E Sussex  ,4,10,7,7,8,7,2,2,NA
+116310,163,1.0307, Kent and E Sussex  ,1,8,7,6,7,7,2,3,2
+116313,163,1.0307, Kent and E Sussex  ,8,8,8,7,6,2,2,5,2
+116315,163,0.5153, Kent and E Sussex  ,6,8,8,7,9,6,2,2,2
+116316,163,1.0307, Kent and E Sussex  ,6,10,10,6,7,8,3,4,2
+116317,163,0.5153, Kent and E Sussex  ,3,9,8,5,3,4,3,3,2
+116318,163,1.0307, Kent and E Sussex  ,2,8,6,3,5,3,2,2,2
+116319,163,1.0307, Kent and E Sussex  ,4,9,8,3,3,5,2,3,2
+116320,163,1.0307, Kent and E Sussex  ,5,8,7,7,3,2,2,4,2
+116401,164,1.0307, Kent and E Sussex  ,6,9,10,9,7,5,2,4,2
+116402,164,1.0307, Kent and E Sussex  ,3,10,10,10,8,9,4,4,2
+116404,164,2.0613, Kent and E Sussex  ,8,10,9,4,5,7,2,4,2
+116405,164,1.0307, Kent and E Sussex  ,3,9,9,4,8,8,2,4,3
+116407,164,1.0307, Kent and E Sussex  ,10,10,10,5,5,9,1,4,3
+116411,164,2.5767, Kent and E Sussex  ,6,10,10,5,6,8,3,4,2
+116413,164,3.092, Kent and E Sussex  ,4,10,8,5,5,8,3,2,2
+116415,164,2.0613, Kent and E Sussex  ,4,8,8,5,5,6,4,2,3
+116416,164,2.0613, Kent and E Sussex  ,10,10,10,5,8,8,2,3,2
+116417,164,4, Kent and E Sussex  ,9,9,9,6,10,7,3,1,2
+116418,164,0.5153, Kent and E Sussex  ,8,10,9,9,10,8,2,2,2
+116420,164,0.8012, Kent and E Sussex  ,1,7,8,4,4,8,2,4,4
+116503,165,0.5153, Kent and E Sussex  ,6,8,10,5,5,8,NA,3,3
+116505,165,2.0613, Kent and E Sussex  ,0,2,3,3,NA,4,NA,4,4
+116508,165,2.0613, Kent and E Sussex  ,8,10,10,7,9,8,2,2,2
+116509,165,0.5153, Kent and E Sussex  ,5,8,8,6,6,5,2,2,2
+116512,165,1.0307, Kent and E Sussex  ,7,9,10,10,5,NA,2,3,2
+116516,165,0.5153, Kent and E Sussex  ,9,9,10,7,7,6,2,3,3
+116520,165,0.5153, Kent and E Sussex  ,3,5,6,6,6,7,1,2,2
+116602,166,1.0307, Kent and E Sussex  ,2,9,8,3,8,5,3,3,2
+116604,166,1.0307, Kent and E Sussex  ,4,8,8,5,6,6,2,3,2
+116605,166,0.5153, Kent and E Sussex  ,5,8,8,5,8,8,3,3,3
+116607,166,1.0307, Kent and E Sussex  ,10,10,10,5,9,10,2,4,2
+116608,166,0.5153, Kent and E Sussex  ,3,7,9,5,5,7,2,1,2
+116609,166,1.0307, Kent and E Sussex  ,7,9,7,7,8,4,2,3,3
+116610,166,2.0613, Kent and E Sussex  ,7,8,7,6,6,7,2,2,2
+116612,166,2.0613, Kent and E Sussex  ,9,9,9,9,9,9,4,3,2
+116613,166,1.0307, Kent and E Sussex  ,8,10,9,6,5,7,2,3,2
+116615,166,0.5153, Kent and E Sussex  ,5,10,8,5,5,5,3,3,2
+116619,166,2.0613, Kent and E Sussex  ,3,5,7,5,4,3,3,4,3
+116620,166,1.0307, Kent and E Sussex  ,8,10,8,5,5,9,2,2,2
+116702,167,0.5153, Surrey and London Borough of Kingston-upon-Thames,1,8,8,6,NA,3,2,4,NA
+116703,167,0.5153, Surrey and London Borough of Kingston-upon-Thames,3,6,7,4,3,6,3,3,2
+116705,167,1.546, Surrey and London Borough of Kingston-upon-Thames,8,10,10,8,7,6,4,3,4
+116708,167,0.5153, Surrey and London Borough of Kingston-upon-Thames,0,10,10,5,6,0,5,4,4
+116709,167,0.5153, Surrey and London Borough of Kingston-upon-Thames,5,6,8,5,8,7,2,2,4
+116710,167,1.0307, Surrey and London Borough of Kingston-upon-Thames,4,10,10,5,8,9,2,3,2
+116713,167,0.5153, Surrey and London Borough of Kingston-upon-Thames,2,9,9,8,9,9,2,2,2
+116715,167,0.5153, Surrey and London Borough of Kingston-upon-Thames,10,10,10,6,10,9,2,1,2
+116716,167,0.5153, Surrey and London Borough of Kingston-upon-Thames,0,10,10,10,10,0,4,4,4
+116719,167,0.5153, Surrey and London Borough of Kingston-upon-Thames,0,7,5,5,5,7,3,4,3
+116720,167,0.5153, Surrey and London Borough of Kingston-upon-Thames,7,8,8,7,8,9,2,2,2
+116801,168,1.0307, Surrey and London Borough of Kingston-upon-Thames,3,8,7,4,5,6,2,2,4
+116802,168,1.0307, Surrey and London Borough of Kingston-upon-Thames,3,10,8,4,7,8,2,2,2
+116804,168,1.0307, Surrey and London Borough of Kingston-upon-Thames,4,8,7,4,5,5,2,4,3
+116805,168,1.0307, Surrey and London Borough of Kingston-upon-Thames,9,9,9,9,9,8,4,4,2
+116806,168,0.5153, Surrey and London Borough of Kingston-upon-Thames,3,10,7,7,5,6,3,3,NA
+116810,168,2.5767, Surrey and London Borough of Kingston-upon-Thames,7,9,6,1,7,5,2,2,2
+116812,168,1.0307, Surrey and London Borough of Kingston-upon-Thames,4,8,8,6,5,6,2,2,2
+116815,168,1.0307, Surrey and London Borough of Kingston-upon-Thames,5,9,8,3,5,5,4,4,2
+116818,168,0.5153, Surrey and London Borough of Kingston-upon-Thames,4,8,8,5,5,8,2,3,2
+116819,168,1.546, Surrey and London Borough of Kingston-upon-Thames,2,9,9,1,4,7,4,4,3
+116901,169,1.0307, Surrey and London Borough of Kingston-upon-Thames,4,8,8,4,9,5,2,4,4
+116902,169,0.5153, Surrey and London Borough of Kingston-upon-Thames,4,5,5,4,4,6,2,3,2
+116903,169,1.0307, Surrey and London Borough of Kingston-upon-Thames,8,9,8,5,5,8,2,2,2
+116904,169,1.0307, Surrey and London Borough of Kingston-upon-Thames,3,8,7,4,4,6,4,3,4
+116905,169,1.0307, Surrey and London Borough of Kingston-upon-Thames,3,5,6,6,5,7,2,2,3
+116906,169,1.546, Surrey and London Borough of Kingston-upon-Thames,2,7,7,2,2,6,3,3,4
+116907,169,1.0307, Surrey and London Borough of Kingston-upon-Thames,5,9,10,7,7,7,2,3,2
+116908,169,1.546, Surrey and London Borough of Kingston-upon-Thames,2,4,4,3,4,3,4,4,4
+116909,169,1.0307, Surrey and London Borough of Kingston-upon-Thames,4,8,6,4,6,8,4,3,3
+116911,169,2.0613, Surrey and London Borough of Kingston-upon-Thames,6,10,10,6,3,6,3,3,2
+116913,169,1.0307, Surrey and London Borough of Kingston-upon-Thames,3,4,7,3,5,5,2,2,3
+116914,169,0.5153, Surrey and London Borough of Kingston-upon-Thames,0,8,6,5,6,5,2,4,2
+116915,169,0.5153, Surrey and London Borough of Kingston-upon-Thames,2,9,10,5,10,7,4,4,3
+116918,169,1.0307, Surrey and London Borough of Kingston-upon-Thames,6,10,10,8,7,7,3,3,2
+116919,169,1.0307, Surrey and London Borough of Kingston-upon-Thames,7,10,8,6,8,7,2,2,3
+116920,169,1.0307, Surrey and London Borough of Kingston-upon-Thames,10,10,10,6,8,5,2,2,2
+117001,170,0.5153, Surrey and London Borough of Kingston-upon-Thames,5,10,9,5,9,8,2,2,1
+117002,170,0.5153, Surrey and London Borough of Kingston-upon-Thames,3,8,8,7,7,8,4,4,2
+117003,170,1.0307, Surrey and London Borough of Kingston-upon-Thames,1,8,8,8,8,8,2,2,2
+117005,170,1.0307, Surrey and London Borough of Kingston-upon-Thames,10,10,10,5,10,10,4,2,3
+117008,170,1.546, Surrey and London Borough of Kingston-upon-Thames,8,10,10,6,4,4,4,4,4
+117009,170,0.5153, Surrey and London Borough of Kingston-upon-Thames,9,10,10,10,10,10,3,3,3
+117010,170,1.0307, Surrey and London Borough of Kingston-upon-Thames,8,9,9,7,7,6,4,2,2
+117015,170,1.0307, Surrey and London Borough of Kingston-upon-Thames,7,9,8,8,7,8,2,2,3
+117016,170,0.5153, Surrey and London Borough of Kingston-upon-Thames,5,10,10,6,10,6,1,3,3
+117017,170,1.0307, Surrey and London Borough of Kingston-upon-Thames,5,8,8,6,4,2,5,5,5
+117020,170,1.0307, Surrey and London Borough of Kingston-upon-Thames,6,9,9,3,5,8,4,4,NA
+117102,171,1.0307, Rest of the Outer London Boroughs  ,5,10,9,9,8,10,2,2,2
+117103,171,1.0307, Rest of the Outer London Boroughs  ,2,6,6,4,6,6,5,4,3
+117104,171,1.546, Rest of the Outer London Boroughs  ,5,9,10,2,10,10,2,4,2
+117108,171,1.0307, Rest of the Outer London Boroughs  ,8,9,10,6,8,7,2,2,3
+117109,171,1.0307, Rest of the Outer London Boroughs  ,5,7,6,5,7,5,2,2,2
+117111,171,1.0307, Rest of the Outer London Boroughs  ,7,10,8,6,8,10,2,4,4
+117112,171,0.5153, Rest of the Outer London Boroughs  ,9,10,10,5,10,7,1,3,1
+117114,171,1.0307, Rest of the Outer London Boroughs  ,5,10,8,5,9,5,3,2,3
+117117,171,0.5153, Rest of the Outer London Boroughs  ,5,10,10,5,10,10,NA,NA,2
+117119,171,1.0307, Rest of the Outer London Boroughs  ,5,10,10,4,9,9,3,3,2
+117120,171,0.5153, Rest of the Outer London Boroughs  ,5,7,7,6,9,9,2,1,4
+117201,172,1.0307, Rest of the Outer London Boroughs  ,5,9,9,6,7,9,2,4,2
+117206,172,1.0307, Rest of the Outer London Boroughs  ,8,10,8,6,7,8,2,2,2
+117207,172,1.0307, Rest of the Outer London Boroughs  ,NA,8,8,8,8,8,2,2,2
+117211,172,1.0307, Rest of the Outer London Boroughs  ,10,10,10,5,0,8,4,4,4
+117212,172,1.0307, Rest of the Outer London Boroughs  ,10,10,5,10,10,5,2,3,3
+117214,172,1.0307, Rest of the Outer London Boroughs  ,0,10,10,0,1,9,2,4,2
+117215,172,1.0307, Rest of the Outer London Boroughs  ,6,8,8,5,5,5,2,4,3
+117218,172,0.5153, Rest of the Outer London Boroughs  ,2,8,8,5,7,7,2,2,2
+117219,172,1.0307, Rest of the Outer London Boroughs  ,6,7,7,6,6,6,3,2,3
+117220,172,1.0307, Rest of the Outer London Boroughs  ,3,9,9,4,9,8,4,2,2
+117305,173,1.0307, Rest of the Outer London Boroughs  ,5,9,10,7,8,10,3,2,2
+117310,173,1.0307, Rest of the Outer London Boroughs  ,5,5,5,5,5,5,3,3,3
+117311,173,1.546, Rest of the Outer London Boroughs  ,5,9,9,5,8,8,2,2,2
+117313,173,1.0307, Rest of the Outer London Boroughs  ,7,9,8,7,7,8,2,2,2
+117316,173,0.5153, Rest of the Outer London Boroughs  ,8,10,9,8,10,10,3,4,2
+117402,174,0.5153, Rest of the Outer London Boroughs  ,4,8,8,4,5,7,2,4,2
+117403,174,0.5153, Rest of the Outer London Boroughs  ,7,9,9,7,7,8,3,2,3
+117407,174,0.5153, Rest of the Outer London Boroughs  ,3,2,10,8,10,10,4,2,2
+117409,174,2.0613, Rest of the Outer London Boroughs  ,7,10,8,8,6,6,3,3,3
+117411,174,1.0307, Rest of the Outer London Boroughs  ,8,9,9,6,4,7,2,5,2
+117412,174,0.5153, Rest of the Outer London Boroughs  ,7,8,8,8,6,8,2,2,2
+117416,174,0.5153, Rest of the Outer London Boroughs  ,4,10,10,0,7,10,2,4,4
+117417,174,1.0307, Rest of the Outer London Boroughs  ,8,9,9,5,8,8,4,2,2
+117418,174,0.5153, Rest of the Outer London Boroughs  ,5,8,8,6,6,6,2,3,3
+117419,174,2.0613, Rest of the Outer London Boroughs  ,9,10,10,6,7,9,2,3,2
+117420,174,1.0307, Rest of the Outer London Boroughs  ,0,10,8,4,5,8,1,4,4
+117504,175,1.0307, Rest of the Outer London Boroughs  ,7,7,7,6,7,8,2,3,2
+117513,175,0.5153, Rest of the Outer London Boroughs  ,5,10,8,3,8,6,2,4,3
+117516,175,1.546, Rest of the Outer London Boroughs  ,10,10,10,5,7,10,4,4,3
+117517,175,1.0307, Rest of the Outer London Boroughs  ,5,7,7,7,7,6,2,2,2
+117601,176,1.0307, Rest of the Outer London Boroughs  ,7,8,8,5,5,3,2,4,4
+117607,176,1.546, Rest of the Outer London Boroughs  ,8,4,7,7,NA,7,3,3,3
+117608,176,0.5153, Rest of the Outer London Boroughs  ,9,10,10,6,8,10,4,3,2
+117616,176,0.5153, Rest of the Outer London Boroughs  ,7,8,7,7,7,5,3,3,3
+117617,176,1.0307, Rest of the Outer London Boroughs  ,5,10,9,4,8,8,3,4,3
+117701,177,1.0307, Rest of the Outer London Boroughs  ,7,10,9,3,7,8,2,2,1
+117703,177,1.0307, Rest of the Outer London Boroughs  ,3,10,7,5,5,5,3,3,4
+117705,177,1.0307, Rest of the Outer London Boroughs  ,1,10,5,4,7,6,2,2,2
+117706,177,0.5153, Rest of the Outer London Boroughs  ,6,10,10,7,8,6,4,4,3
+117707,177,1.0307, Rest of the Outer London Boroughs  ,8,9,8,3,7,3,4,4,4
+117708,177,0.5153, Rest of the Outer London Boroughs  ,7,7,8,8,7,9,4,2,1
+117709,177,1.0307, Rest of the Outer London Boroughs  ,6,8,10,5,8,8,1,2,2
+117711,177,0.5153, Rest of the Outer London Boroughs  ,7,9,7,7,9,5,4,4,4
+117712,177,1.0307, Rest of the Outer London Boroughs  ,6,9,8,8,8,2,2,3,4
+117713,177,1.0307, Rest of the Outer London Boroughs  ,6,8,8,7,6,8,2,2,3
+117714,177,1.546, Rest of the Outer London Boroughs  ,7,9,6,6,7,7,4,2,4
+117715,177,1.546, Rest of the Outer London Boroughs  ,8,10,8,8,8,7,2,3,3
+117718,177,1.0307, Rest of the Outer London Boroughs  ,5,10,10,5,7,8,3,3,2
+117719,177,1.0307, Rest of the Outer London Boroughs  ,7,8,8,6,5,6,2,2,2
+117801,178,1.0307, Rest of the Outer London Boroughs  ,4,9,9,9,7,7,2,4,2
+117804,178,0.5153, Rest of the Outer London Boroughs  ,8,10,9,8,10,8,1,1,1
+117806,178,0.5153, Rest of the Outer London Boroughs  ,6,5,4,7,7,8,3,2,2
+117807,178,1.0307, Rest of the Outer London Boroughs  ,7,9,7,6,9,5,4,2,2
+117812,178,0.5153, Rest of the Outer London Boroughs  ,4,10,9,7,9,9,2,4,4
+117814,178,1.0307, Rest of the Outer London Boroughs  ,5,7,8,6,6,8,1,1,1
+117815,178,1.0307, Rest of the Outer London Boroughs  ,3,7,7,3,5,5,2,4,3
+117816,178,1.0307, Rest of the Outer London Boroughs  ,2,10,8,6,10,8,4,4,3
+117818,178,0.5153, Rest of the Outer London Boroughs  ,6,8,7,6,7,7,2,3,2
+117820,178,0.5153, Rest of the Outer London Boroughs  ,2,7,7,3,6,5,4,4,3
+117903,179,1.0307, Rest of the Outer London Boroughs  ,8,10,7,5,7,10,4,3,3
+117905,179,0.5153, Rest of the Outer London Boroughs  ,5,6,5,5,4,3,3,4,4
+117914,179,0.5153, Rest of the Outer London Boroughs  ,10,10,10,7,NA,8,2,2,2
+117917,179,0.5153, Rest of the Outer London Boroughs  ,7,10,10,6,8,8,4,2,2
+117919,179,0.5153, Rest of the Outer London Boroughs  ,3,8,8,7,8,7,2,4,4
+117920,179,1.0307, Rest of the Outer London Boroughs  ,5,10,10,7,5,8,4,2,2
+118005,180,1.0307, Rest of the Outer London Boroughs  ,9,10,10,10,9,9,NA,2,3
+118006,180,1.0307, Rest of the Outer London Boroughs  ,8,10,10,6,8,9,1,2,4
+118007,180,1.0307, Rest of the Outer London Boroughs  ,1,9,10,8,4,6,2,3,3
+118008,180,1.0307, Rest of the Outer London Boroughs  ,4,8,8,8,8,8,3,4,3
+118010,180,0.5153, Rest of the Outer London Boroughs  ,7,10,8,6,7,7,1,3,3
+118012,180,1.0307, Rest of the Outer London Boroughs  ,3,9,7,7,8,8,3,4,4
+118017,180,1.0307, Rest of the Outer London Boroughs  ,2,10,10,6,7,7,2,4,2
+118018,180,1.0307, Rest of the Outer London Boroughs  ,8,10,10,8,9,8,3,4,3
+118019,180,1.0307, Rest of the Outer London Boroughs  ,6,7,8,5,7,7,3,2,4
+118101,181,1.546, Rest of the Outer London Boroughs  ,8,8,10,5,8,10,2,2,2
+118102,181,1.546, Rest of the Outer London Boroughs  ,7,8,8,7,8,8,4,2,2
+118103,181,1.0307, Rest of the Outer London Boroughs  ,3,9,10,5,7,7,4,3,4
+118106,181,0.5153, Rest of the Outer London Boroughs  ,3,8,8,6,8,8,2,2,2
+118107,181,1.0307, Rest of the Outer London Boroughs  ,4,10,10,10,10,10,2,2,3
+118108,181,1.0307, Rest of the Outer London Boroughs  ,5,10,10,10,10,10,2,2,2
+118110,181,1.0307, Rest of the Outer London Boroughs  ,7,9,9,7,9,9,2,2,2
+118117,181,1.0307, Rest of the Outer London Boroughs  ,6,10,10,5,5,8,3,3,3
+118118,181,0.5153, Rest of the Outer London Boroughs  ,6,9,9,7,6,8,4,4,2
+118120,181,1.546, Rest of the Outer London Boroughs  ,6,10,10,8,9,10,2,3,2
+118202,182,1.0307, Rest of the Outer London Boroughs  ,4,9,10,6,10,10,4,2,2
+118208,182,1.0307, Rest of the Outer London Boroughs  ,5,9,10,5,7,5,3,4,5
+118210,182,0.5153, Rest of the Outer London Boroughs  ,10,10,10,7,10,10,2,2,2
+118211,182,0.5153, Rest of the Outer London Boroughs  ,7,10,10,7,10,7,2,2,3
+118213,182,1.0307, Rest of the Outer London Boroughs  ,5,8,8,5,5,5,2,4,4
+118215,182,0.5153, Rest of the Outer London Boroughs  ,0,6,8,4,2,5,3,NA,NA
+118217,182,1.546, Rest of the Outer London Boroughs  ,5,8,8,6,9,9,3,3,2
+118303,183,1.0307, Rest of the Outer London Boroughs  ,4,9,9,7,6,9,2,2,2
+118306,183,1.546, Rest of the Outer London Boroughs  ,7,8,8,7,8,7,2,3,2
+118308,183,0.5153, Rest of the Outer London Boroughs  ,5,10,8,5,5,7,4,4,3
+118309,183,0.5153, Rest of the Outer London Boroughs  ,4,8,7,4,7,5,3,4,2
+118310,183,1.0307, Rest of the Outer London Boroughs  ,9,9,9,7,9,9,4,4,4
+118311,183,1.0307, Rest of the Outer London Boroughs  ,1,10,9,6,8,8,4,4,4
+118312,183,0.5153, Rest of the Outer London Boroughs  ,5,8,7,7,7,6,2,3,2
+118313,183,0.5153, Rest of the Outer London Boroughs  ,8,7,7,4,5,6,1,1,2
+118315,183,2.0613, Rest of the Outer London Boroughs  ,6,10,10,6,2,8,2,5,3
+118317,183,1.546, Rest of the Outer London Boroughs  ,6,10,10,8,10,10,2,4,4
+118319,183,1.0307, Rest of the Outer London Boroughs  ,7,8,8,6,8,8,2,4,2
+118402,184,1.0307, Rest of the Outer London Boroughs  ,5,10,10,5,5,6,3,2,3
+118405,184,0.5153, Rest of the Outer London Boroughs  ,8,10,10,10,9,9,4,3,4
+118406,184,1.0307, Rest of the Outer London Boroughs  ,4,6,6,7,7,5,2,4,4
+118409,184,0.5153, Rest of the Outer London Boroughs  ,8,10,8,6,9,6,2,3,4
+118413,184,1.0307, Rest of the Outer London Boroughs  ,8,9,7,8,7,8,2,3,3
+118414,184,2.0613, Rest of the Outer London Boroughs  ,5,8,8,8,8,7,3,3,3
+118417,184,1.0307, Rest of the Outer London Boroughs  ,6,10,10,6,10,8,1,2,3
+118418,184,1.0307, Rest of the Outer London Boroughs  ,7,9,8,6,7,6,2,2,2
+118502,185,0.5153, Rest of the Outer London Boroughs  ,7,10,10,10,10,7,1,2,2
+118505,185,0.5153, Rest of the Outer London Boroughs  ,8,8,8,6,7,7,2,4,3
+118508,185,1.0307, Rest of the Outer London Boroughs  ,3,9,8,6,7,6,2,2,2
+118509,185,0.5153, Rest of the Outer London Boroughs  ,6,7,7,6,6,7,4,4,2
+118510,185,1.0307, Rest of the Outer London Boroughs  ,2,9,9,5,9,9,2,2,4
+118511,185,1.0307, Rest of the Outer London Boroughs  ,7,8,8,8,7,8,2,4,2
+118513,185,1.546, Rest of the Outer London Boroughs  ,10,10,10,10,10,5,2,3,3
+118514,185,0.5153, Rest of the Outer London Boroughs  ,7,8,9,3,6,6,2,2,2
+118516,185,0.5153, Rest of the Outer London Boroughs  ,10,10,10,10,10,10,2,2,3
+118517,185,1.0307, Rest of the Outer London Boroughs  ,0,10,7,7,7,5,4,4,3
+118520,185,1.0307, Rest of the Outer London Boroughs  ,6,10,9,6,8,9,2,2,2
+118601,186,1.0307, Rest of the Outer London Boroughs  ,6,7,10,6,7,7,2,2,2
+118604,186,1.0307, Rest of the Outer London Boroughs  ,7,10,9,5,4,5,4,3,3
+118611,186,1.0307, Rest of the Outer London Boroughs  ,4,8,8,6,NA,NA,3,3,3
+118612,186,1.0307, Rest of the Outer London Boroughs  ,7,7,8,5,5,8,4,3,2
+118616,186,1.0307, Rest of the Outer London Boroughs  ,5,7,8,8,8,5,2,3,3
+118618,186,0.5153, Rest of the Outer London Boroughs  ,5,9,8,4,7,9,2,4,2
+118703,187,1.0307, Rest of the Outer London Boroughs  ,8,9,9,3,3,8,2,3,2
+118704,187,0.5153, Rest of the Outer London Boroughs  ,9,9,10,9,10,10,2,2,2
+118709,187,0.5153, Rest of the Outer London Boroughs  ,NA,NA,NA,NA,NA,NA,NA,NA,NA
+118711,187,1.0307, Rest of the Outer London Boroughs  ,6,8,8,7,6,6,3,3,2
+118712,187,0.5153, Rest of the Outer London Boroughs  ,1,8,7,4,4,6,2,2,2
+118715,187,1.0307, Rest of the Outer London Boroughs  ,3,10,10,7,10,10,2,4,2
+118719,187,1.0307, Rest of the Outer London Boroughs  ,9,9,9,9,9,9,2,2,2
+118803,188,0.5153, Inner London Boroughs  ,10,10,10,10,10,6,2,2,2
+118808,188,0.5153, Inner London Boroughs  ,7,10,9,6,6,6,3,2,2
+118810,188,1.546, Inner London Boroughs  ,8,9,7,4,6,5,2,2,2
+118811,188,1.0307, Inner London Boroughs  ,0,10,10,0,10,8,4,2,4
+118815,188,1.0307, Inner London Boroughs  ,6,10,8,6,7,4,2,2,2
+118816,188,1.546, Inner London Boroughs  ,7,9,10,8,6,7,2,2,2
+118817,188,1.0307, Inner London Boroughs  ,8,10,10,10,8,10,2,2,2
+118819,188,1.0307, Inner London Boroughs  ,3,6,6,4,5,5,4,4,4
+118903,189,0.5153, Inner London Boroughs  ,8,10,10,5,10,10,2,2,2
+118904,189,0.5153, Inner London Boroughs  ,7,7,6,3,5,7,2,4,4
+118908,189,1.0307, Inner London Boroughs  ,1,8,6,6,6,5,4,4,4
+118909,189,1.0307, Inner London Boroughs  ,4,5,6,6,4,3,3,3,2
+118912,189,1.546, Inner London Boroughs  ,2,7,8,5,7,8,2,2,2
+118913,189,0.5153, Inner London Boroughs  ,8,8,7,7,7,5,4,3,3
+118915,189,0.5153, Inner London Boroughs  ,3,7,8,3,6,5,2,4,4
+118917,189,0.5153, Inner London Boroughs  ,7,10,8,8,8,7,2,2,2
+118920,189,1.0307, Inner London Boroughs  ,3,8,8,5,7,7,4,4,2
+119001,190,1.0307, Inner London Boroughs  ,0,10,10,0,0,0,1,5,1
+119009,190,1.0307, Inner London Boroughs  ,3,10,10,7,7,7,4,4,3
+119104,191,1.0307, Inner London Boroughs  ,10,10,10,10,10,10,2,4,4
+119106,191,1.0307, Inner London Boroughs  ,6,10,10,8,10,7,1,3,3
+119114,191,1.0307, Inner London Boroughs  ,0,2,10,3,5,0,5,4,3
+119116,191,1.0307, Inner London Boroughs  ,6,8,9,9,9,8,2,2,2
+119202,192,0.5153, Inner London Boroughs  ,8,10,10,5,10,0,2,4,2
+119216,192,0.5153, Inner London Boroughs  ,7,8,9,NA,9,8,3,3,2
+119218,192,3.092, Inner London Boroughs  ,6,8,6,6,8,8,2,2,2
+119219,192,1.0307, Inner London Boroughs  ,2,9,7,6,5,5,4,3,4
+119304,193,0.5153, Inner London Boroughs  ,10,10,10,3,6,6,1,1,1
+119305,193,1.0307, Inner London Boroughs  ,10,10,10,10,10,10,2,3,2
+119307,193,1.0307, Inner London Boroughs  ,0,10,10,7,4,4,3,4,2
+119311,193,4, Inner London Boroughs  ,4,4,3,3,3,2,2,1,1
+119313,193,3.092, Inner London Boroughs  ,5,10,10,6,10,10,1,2,2
+119314,193,3.092, Inner London Boroughs  ,7,10,10,10,5,10,3,4,2
+119315,193,1.0307, Inner London Boroughs  ,10,10,10,10,10,10,2,4,1
+119316,193,0.5153, Inner London Boroughs  ,10,10,10,10,7,10,4,3,2
+119319,193,0.5153, Inner London Boroughs  ,5,9,9,6,9,6,2,1,2
+119320,193,0.5153, Inner London Boroughs  ,10,10,10,10,10,10,4,4,1
+119408,194,0.5153, Inner London Boroughs  ,6,0,10,7,7,10,1,1,1
+119411,194,0.5153, Inner London Boroughs  ,8,8,8,7,6,7,4,4,3
+119502,195,1.0307, Inner London Boroughs  ,10,10,10,10,10,10,3,3,2
+119505,195,0.5153, Inner London Boroughs  ,NA,NA,NA,NA,NA,NA,NA,NA,NA
+119516,195,2.0613, Inner London Boroughs  ,7,9,8,8,7,5,2,4,2
+119517,195,0.5153, Inner London Boroughs  ,2,7,7,3,3,5,3,3,4
+119520,195,0.5153, Inner London Boroughs  ,2,9,8,7,3,7,2,3,2
+119601,196,1.0307, Inner London Boroughs  ,10,10,10,7,10,9,3,3,2
+119605,196,0.5153, Inner London Boroughs  ,4,8,8,3,7,7,2,2,3
+119607,196,0.5153, Inner London Boroughs  ,7,8,8,6,8,7,2,2,2
+119609,196,1.0307, Inner London Boroughs  ,3,7,7,7,6,7,2,2,3
+119610,196,1.0307, Inner London Boroughs  ,6,7,8,4,5,6,4,2,2
+119612,196,1.0307, Inner London Boroughs  ,5,8,8,8,8,8,2,4,2
+119614,196,0.5153, Inner London Boroughs  ,6,8,7,5,7,7,4,4,3
+119619,196,1.0307, Inner London Boroughs  ,8,9,10,8,10,10,2,2,2
+119701,197,1.0307, Inner London Boroughs  ,5,10,8,8,10,10,2,3,2
+119705,197,1.0307, Inner London Boroughs  ,10,10,10,6,10,10,4,5,2
+119707,197,1.0307, Inner London Boroughs  ,5,10,8,5,10,10,2,4,2
+119709,197,1.0307, Inner London Boroughs  ,1,9,7,3,2,6,4,4,2
+119710,197,1.0307, Inner London Boroughs  ,5,8,8,5,6,7,2,2,3
+119712,197,1.0307, Inner London Boroughs  ,3,10,8,8,8,7,2,2,4
+119713,197,1.0307, Inner London Boroughs  ,8,10,10,5,5,10,4,4,3
+119716,197,2.0613, Inner London Boroughs  ,9,10,9,8,8,7,3,4,2
+119718,197,1.0307, Inner London Boroughs  ,5,10,10,2,9,3,2,3,1
+119803,198,1.0307, Essex and Hertfordshire  ,7,10,7,6,7,8,2,NA,2
+119804,198,1.0307, Essex and Hertfordshire  ,6,8,9,8,9,8,2,2,2
+119805,198,0.5153, Essex and Hertfordshire  ,8,10,10,10,10,10,2,1,1
+119806,198,1.546, Essex and Hertfordshire  ,10,10,10,10,6,3,2,4,2
+119808,198,1.0307, Essex and Hertfordshire  ,9,10,8,9,7,7,3,2,2
+119811,198,1.0307, Essex and Hertfordshire  ,8,10,10,8,8,10,4,2,2
+119814,198,1.0307, Essex and Hertfordshire  ,5,7,7,4,6,6,3,3,3
+119815,198,2.0613, Essex and Hertfordshire  ,7,9,9,5,8,7,2,3,2
+119817,198,2.0613, Essex and Hertfordshire  ,7,10,9,8,10,7,4,2,3
+119820,198,0.5153, Essex and Hertfordshire  ,7,9,9,6,6,7,3,4,3
+119901,199,1.0307, Essex and Hertfordshire  ,9,10,10,5,10,10,3,3,4
+119903,199,0.5153, Essex and Hertfordshire  ,10,10,10,5,10,10,2,3,2
+119904,199,0.5153, Essex and Hertfordshire  ,8,9,9,5,9,8,2,4,2
+119905,199,2.0613, Essex and Hertfordshire  ,6,7,8,5,5,6,4,3,4
+119909,199,1.0307, Essex and Hertfordshire  ,4,9,9,5,7,8,1,4,2
+119910,199,1.0307, Essex and Hertfordshire  ,5,9,8,6,7,6,2,3,2
+119913,199,1.0307, Essex and Hertfordshire  ,6,8,8,5,9,9,3,3,4
+119919,199,0.5153, Essex and Hertfordshire  ,3,6,7,5,5,5,2,2,3
+119920,199,1.0307, Essex and Hertfordshire  ,0,9,7,4,8,8,2,1,2
+120001,200,0.5153, Essex and Hertfordshire  ,9,10,10,8,10,10,2,3,2
+120003,200,1.0307, Essex and Hertfordshire  ,2,9,9,8,6,5,1,2,3
+120004,200,1.546, Essex and Hertfordshire  ,8,10,9,9,8,7,2,2,2
+120005,200,1.0307, Essex and Hertfordshire  ,8,9,9,8,7,9,2,2,2
+120009,200,0.5153, Essex and Hertfordshire  ,0,10,8,7,8,6,2,4,2
+120012,200,1.0307, Essex and Hertfordshire  ,3,9,8,5,7,8,3,3,2
+120013,200,1.0307, Essex and Hertfordshire  ,2,8,7,4,6,7,2,3,3
+120014,200,0.5153, Essex and Hertfordshire  ,1,8,9,2,8,8,2,4,4
+120016,200,1.0307, Essex and Hertfordshire  ,8,10,9,8,8,9,2,3,2
+120018,200,0.5153, Essex and Hertfordshire  ,3,10,10,5,8,8,2,4,3
+120019,200,0.5153, Essex and Hertfordshire  ,6,8,6,5,5,6,2,2,2
+120020,200,0.5153, Essex and Hertfordshire  ,0,8,7,3,2,2,4,4,4
+120103,201,1.0307, Essex and Hertfordshire  ,10,10,10,8,10,6,2,2,2
+120104,201,0.5153, Essex and Hertfordshire  ,2,10,8,7,7,9,2,3,4
+120107,201,1.0307, Essex and Hertfordshire  ,3,0,6,2,2,2,2,2,3
+120108,201,0.5153, Essex and Hertfordshire  ,2,7,7,3,1,2,2,2,2
+120110,201,1.0307, Essex and Hertfordshire  ,2,8,8,5,2,8,2,4,3
+120111,201,1.0307, Essex and Hertfordshire  ,6,8,8,7,7,5,2,3,3
+120115,201,1.546, Essex and Hertfordshire  ,7,10,10,6,7,6,2,2,2
+120116,201,0.5153, Essex and Hertfordshire  ,7,9,9,4,4,6,3,2,2
+120117,201,1.0307, Essex and Hertfordshire  ,3,9,10,5,3,7,4,3,4
+120119,201,1.0307, Essex and Hertfordshire  ,0,10,10,5,5,10,3,3,3
+120201,202,1.0307, Essex and Hertfordshire  ,2,9,2,2,8,2,4,5,5
+120202,202,2.0613, Essex and Hertfordshire  ,7,10,10,8,6,9,3,3,2
+120203,202,0.5153, Essex and Hertfordshire  ,8,7,7,5,7,7,3,4,4
+120206,202,0.5153, Essex and Hertfordshire  ,4,10,10,1,10,10,3,2,2
+120207,202,1.0307, Essex and Hertfordshire  ,9,10,10,10,9,10,2,3,4
+120208,202,1.0307, Essex and Hertfordshire  ,6,9,10,6,8,8,3,3,2
+120209,202,0.5153, Essex and Hertfordshire  ,3,4,8,7,5,5,4,1,3
+120211,202,3.6073, Essex and Hertfordshire  ,7,8,7,6,6,7,2,2,2
+120212,202,1.0307, Essex and Hertfordshire  ,7,9,9,5,7,8,3,3,3
+120213,202,0.5153, Essex and Hertfordshire  ,5,8,10,6,7,8,3,3,3
+120214,202,1.0307, Essex and Hertfordshire  ,4,10,7,3,NA,8,4,4,3
+120215,202,0.5153, Essex and Hertfordshire  ,3,7,8,5,6,7,2,2,2
+120217,202,0.5153, Essex and Hertfordshire  ,7,8,7,4,6,5,2,2,3
+120218,202,0.5153, Essex and Hertfordshire  ,7,8,8,7,7,8,3,4,2
+120303,203,1.0307, Essex and Hertfordshire  ,9,10,10,10,8,10,2,2,2
+120305,203,1.0307, Essex and Hertfordshire  ,7,7,8,6,8,7,2,2,2
+120309,203,1.546, Essex and Hertfordshire  ,7,9,9,7,9,8,2,3,2
+120310,203,1.0307, Essex and Hertfordshire  ,9,5,10,4,8,10,3,2,5
+120312,203,1.0307, Essex and Hertfordshire  ,7,10,10,8,10,10,2,3,2
+120313,203,0.5153, Essex and Hertfordshire  ,7,10,10,7,7,8,3,2,3
+120314,203,1.0307, Essex and Hertfordshire  ,8,8,7,5,5,8,3,4,3
+120318,203,1.0307, Essex and Hertfordshire  ,6,9,10,8,8,10,4,4,3
+120320,203,1.0307, Essex and Hertfordshire  ,5,10,10,7,10,10,4,4,4
+120401,204,1.0307, Essex and Hertfordshire  ,3,8,8,5,5,5,2,2,2
+120402,204,1.0307, Essex and Hertfordshire  ,4,8,10,7,7,6,2,2,3
+120403,204,1.0307, Essex and Hertfordshire  ,4,7,7,4,6,7,3,4,3
+120407,204,1.546, Essex and Hertfordshire  ,7,9,9,6,5,8,2,3,2
+120408,204,0.5153, Essex and Hertfordshire  ,7,9,9,2,8,2,2,4,2
+120411,204,1.0307, Essex and Hertfordshire  ,1,8,8,5,1,5,2,2,2
+120413,204,1.0307, Essex and Hertfordshire  ,5,9,10,7,8,9,2,4,2
+120414,204,0.5153, Essex and Hertfordshire  ,5,7,7,6,5,5,2,2,2
+120415,204,0.5153, Essex and Hertfordshire  ,3,10,10,6,7,10,2,4,3
+120416,204,1.0307, Essex and Hertfordshire  ,5,10,7,7,5,5,2,4,2
+120417,204,1.0307, Essex and Hertfordshire  ,5,9,7,6,7,7,2,3,4
+120418,204,1.546, Essex and Hertfordshire  ,3,4,6,6,6,6,NA,NA,4
+120419,204,1.0307, Essex and Hertfordshire  ,5,9,6,2,8,8,3,3,4
+120501,205,0.5153, Essex and Hertfordshire  ,5,8,8,5,8,8,2,2,2
+120504,205,1.0307, Essex and Hertfordshire  ,8,10,10,7,10,8,2,2,4
+120505,205,0.5153, Essex and Hertfordshire  ,6,7,5,5,4,5,2,2,2
+120506,205,2.0613, Essex and Hertfordshire  ,7,7,6,6,8,6,2,2,2
+120511,205,0.5153, Essex and Hertfordshire  ,6,10,10,6,10,8,3,3,5
+120513,205,0.5153, Essex and Hertfordshire  ,5,6,8,5,8,5,2,2,2
+120517,205,1.0307, Essex and Hertfordshire  ,7,8,9,4,8,8,2,4,2
+120518,205,0.5153, Essex and Hertfordshire  ,8,8,7,8,7,7,2,2,2
+120519,205,0.5153, Essex and Hertfordshire  ,7,8,9,6,9,7,2,2,3
+120520,205,1.0307, Essex and Hertfordshire  ,8,7,9,4,8,5,2,3,2
+120601,206,0.5153, Essex and Hertfordshire  ,9,10,10,10,10,9,3,4,3
+120602,206,0.5153, Essex and Hertfordshire  ,9,10,10,6,9,10,4,4,4
+120604,206,0.5153, Essex and Hertfordshire  ,9,10,10,7,9,8,2,3,NA
+120605,206,0.5153, Essex and Hertfordshire  ,3,8,9,3,9,10,4,4,1
+120606,206,1.0307, Essex and Hertfordshire  ,5,8,9,10,10,10,5,4,4
+120608,206,0.5153, Essex and Hertfordshire  ,4,8,7,5,6,7,2,3,3
+120609,206,2.0613, Essex and Hertfordshire  ,8,9,10,8,10,10,3,3,3
+120610,206,1.0307, Essex and Hertfordshire  ,5,8,8,8,8,6,2,2,2
+120613,206,0.5153, Essex and Hertfordshire  ,4,8,9,5,8,7,2,3,2
+120614,206,0.5153, Essex and Hertfordshire  ,10,10,10,10,10,10,3,3,3
+120615,206,1.0307, Essex and Hertfordshire  ,2,10,8,3,3,6,4,4,4
+120616,206,1.0307, Essex and Hertfordshire  ,10,10,8,8,10,10,4,4,4
+120617,206,1.0307, Essex and Hertfordshire  ,8,8,9,8,8,8,2,2,1
+120619,206,1.546, Essex and Hertfordshire  ,9,8,8,6,6,5,2,3,2
+120702,207,1.0307, Essex and Hertfordshire  ,2,10,10,0,6,7,3,3,2
+120704,207,0.5153, Essex and Hertfordshire  ,2,6,7,4,5,4,2,3,3
+120705,207,0.5153, Essex and Hertfordshire  ,7,9,10,2,8,8,4,4,4
+120706,207,1.0307, Essex and Hertfordshire  ,6,8,8,4,7,8,2,3,3
+120709,207,1.0307, Essex and Hertfordshire  ,5,8,8,5,5,7,2,3,4
+120711,207,1.0307, Essex and Hertfordshire  ,7,8,9,2,8,8,2,3,3
+120712,207,1.0307, Essex and Hertfordshire  ,7,9,9,5,7,8,4,3,3
+120713,207,1.546, Essex and Hertfordshire  ,8,9,9,6,7,7,3,3,2
+120715,207,1.0307, Essex and Hertfordshire  ,9,10,10,9,9,9,2,2,2
+120719,207,0.5153, Essex and Hertfordshire  ,NA,10,2,10,NA,7,4,NA,NA
+120720,207,1.0307, Essex and Hertfordshire  ,5,10,10,1,5,5,2,2,2
+120801,208,1.0307, Essex and Hertfordshire  ,4,8,6,5,3,7,3,2,2
+120802,208,0.5153, Essex and Hertfordshire  ,6,9,10,5,7,5,2,2,3
+120804,208,1.0307, Essex and Hertfordshire  ,7,10,9,6,9,9,2,2,2
+120806,208,1.0307, Essex and Hertfordshire  ,7,10,9,6,8,5,3,3,3
+120807,208,0.5153, Essex and Hertfordshire  ,8,10,10,6,9,8,3,2,3
+120810,208,1.0307, Essex and Hertfordshire  ,0,2,2,0,2,6,5,2,2
+120811,208,1.546, Essex and Hertfordshire  ,2,10,9,2,4,4,3,4,3
+120812,208,1.0307, Essex and Hertfordshire  ,5,8,8,8,9,7,2,2,2
+120815,208,1.546, Essex and Hertfordshire  ,7,9,9,8,7,9,2,2,2
+120818,208,1.546, Essex and Hertfordshire  ,8,10,10,8,8,8,2,2,2
+120819,208,1.0307, Essex and Hertfordshire  ,7,4,8,6,6,5,2,3,2
+120820,208,1.0307, Essex and Hertfordshire  ,7,10,9,5,9,10,2,2,4
+120901,209,1.0307, Suffolk and Norfolk  ,2,8,8,5,6,5,2,2,4
+120903,209,1.546, Suffolk and Norfolk  ,6,9,8,2,5,5,3,3,3
+120904,209,1.0307, Suffolk and Norfolk  ,5,8,8,6,5,5,2,3,3
+120905,209,1.0307, Suffolk and Norfolk  ,8,9,9,7,7,9,3,2,2
+120908,209,0.5153, Suffolk and Norfolk  ,2,10,10,6,5,9,2,3,4
+120912,209,1.546, Suffolk and Norfolk  ,7,9,9,6,6,8,2,2,2
+120913,209,0.5153, Suffolk and Norfolk  ,2,7,7,7,4,4,2,2,2
+120915,209,0.5153, Suffolk and Norfolk  ,3,9,9,4,9,7,3,2,2
+120918,209,1.546, Suffolk and Norfolk  ,3,7,7,7,4,5,3,3,3
+120920,209,1.0307, Suffolk and Norfolk  ,8,8,5,2,6,4,4,3,3
+121001,210,1.0307, Suffolk and Norfolk  ,8,8,10,6,5,8,4,3,NA
+121002,210,2.5767, Suffolk and Norfolk  ,2,9,10,2,5,2,4,4,2
+121006,210,2.0613, Suffolk and Norfolk  ,0,10,10,8,1,9,2,2,3
+121009,210,1.546, Suffolk and Norfolk  ,0,10,10,0,0,7,2,NA,NA
+121010,210,1.0307, Suffolk and Norfolk  ,3,10,6,3,3,3,2,4,NA
+121013,210,1.546, Suffolk and Norfolk  ,5,8,7,6,5,7,2,4,2
+121016,210,1.546, Suffolk and Norfolk  ,8,7,8,9,9,9,2,4,2
+121017,210,1.0307, Suffolk and Norfolk  ,7,9,9,7,8,8,3,2,2
+121018,210,1.546, Suffolk and Norfolk  ,6,8,8,8,7,7,2,2,2
+121020,210,0.5153, Suffolk and Norfolk  ,2,8,7,4,4,6,2,4,3
+121103,211,1.0307, Suffolk and Norfolk  ,1,10,9,2,3,6,2,2,3
+121104,211,1.0307, Suffolk and Norfolk  ,8,9,10,4,8,8,2,4,2
+121107,211,1.0307, Suffolk and Norfolk  ,3,10,10,7,10,10,2,2,2
+121108,211,0.5153, Suffolk and Norfolk  ,3,7,9,2,4,4,NA,4,NA
+121109,211,0.5153, Suffolk and Norfolk  ,7,10,10,5,8,8,2,4,2
+121110,211,1.0307, Suffolk and Norfolk  ,6,5,7,4,7,7,4,4,3
+121111,211,0.5153, Suffolk and Norfolk  ,5,8,9,7,6,6,2,4,2
+121115,211,1.546, Suffolk and Norfolk  ,7,10,10,8,10,10,2,4,2
+121117,211,1.0307, Suffolk and Norfolk  ,8,9,9,8,7,7,2,2,4
+121202,212,1.0307, Suffolk and Norfolk  ,8,10,9,9,9,10,4,3,2
+121203,212,1.0307, Suffolk and Norfolk  ,4,10,8,0,8,7,3,4,3
+121204,212,1.0307, Suffolk and Norfolk  ,8,9,9,9,6,7,1,1,2
+121205,212,1.0307, Suffolk and Norfolk  ,5,7,8,4,6,6,NA,NA,2
+121206,212,1.0307, Suffolk and Norfolk  ,10,10,10,7,10,10,4,3,3
+121207,212,0.5153, Suffolk and Norfolk  ,7,7,7,7,7,7,4,2,2
+121210,212,1.0307, Suffolk and Norfolk  ,9,9,10,7,7,10,2,2,2
+121212,212,1.0307, Suffolk and Norfolk  ,5,10,10,1,5,8,2,4,3
+121214,212,1.0307, Suffolk and Norfolk  ,9,8,8,10,5,9,4,3,4
+121215,212,1.0307, Suffolk and Norfolk  ,9,10,10,9,NA,7,4,4,2
+121216,212,1.546, Suffolk and Norfolk  ,6,10,10,4,5,8,3,4,4
+121217,212,1.0307, Suffolk and Norfolk  ,0,10,5,0,7,10,4,3,2
+121218,212,0.5153, Suffolk and Norfolk  ,7,10,10,5,9,9,3,3,4
+121219,212,0.5153, Suffolk and Norfolk  ,2,10,10,8,10,10,2,2,2
+121220,212,0.5153, Suffolk and Norfolk  ,0,10,10,0,10,8,4,4,4
+121302,213,1.0307, Suffolk and Norfolk  ,7,9,9,7,7,6,2,2,2
+121306,213,1.0307, Suffolk and Norfolk  ,5,9,9,5,6,9,2,2,2
+121308,213,1.0307, Suffolk and Norfolk  ,5,10,10,8,4,2,2,2,3
+121311,213,1.0307, Suffolk and Norfolk  ,5,9,9,7,7,7,4,4,3
+121312,213,1.0307, Suffolk and Norfolk  ,8,10,10,3,5,6,3,3,3
+121314,213,1.0307, Suffolk and Norfolk  ,7,10,10,7,8,8,3,3,2
+121317,213,1.0307, Suffolk and Norfolk  ,5,8,8,5,6,5,4,3,3
+121318,213,1.0307, Suffolk and Norfolk  ,6,10,10,8,5,8,2,2,2
+121320,213,1.0307, Suffolk and Norfolk  ,8,9,9,7,7,7,2,3,2
+121402,214,1.0307, Suffolk and Norfolk  ,6,9,9,6,7,5,3,4,3
+121403,214,0.5153, Suffolk and Norfolk  ,7,9,9,7,8,8,3,3,2
+121404,214,1.0307, Suffolk and Norfolk  ,4,7,5,5,4,5,2,3,4
+121405,214,0.5153, Suffolk and Norfolk  ,8,8,8,4,7,6,2,4,2
+121406,214,1.0307, Suffolk and Norfolk  ,7,9,9,7,9,7,2,4,4
+121409,214,1.0307, Suffolk and Norfolk  ,3,8,6,5,7,7,2,2,3
+121410,214,1.0307, Suffolk and Norfolk  ,5,10,10,5,0,5,2,4,3
+121414,214,1.0307, Suffolk and Norfolk  ,7,8,8,7,8,7,3,3,2
+121417,214,1.0307, Suffolk and Norfolk  ,6,9,9,8,8,7,2,4,3
+121418,214,1.0307, Suffolk and Norfolk  ,6,9,9,5,8,6,2,2,3
+121501,215,0.5153, Bucks and Beds  ,5,8,8,5,7,8,2,2,2
+121502,215,0.5153, Bucks and Beds  ,8,8,8,7,4,8,2,2,2
+121503,215,1.0307, Bucks and Beds  ,4,7,7,7,7,7,NA,2,NA
+121506,215,1.0307, Bucks and Beds  ,3,10,8,8,5,7,2,3,3
+121508,215,0.5153, Bucks and Beds  ,8,10,10,9,10,10,3,3,2
+121511,215,0.5153, Bucks and Beds  ,6,10,10,10,5,8,2,2,2
+121512,215,2.5767, Bucks and Beds  ,8,10,9,9,7,10,2,2,2
+121513,215,1.0307, Bucks and Beds  ,8,9,9,5,6,8,3,4,2
+121515,215,1.0307, Bucks and Beds  ,4,7,9,6,3,7,2,2,4
+121516,215,2.0613, Bucks and Beds  ,7,10,10,7,8,10,2,2,3
+121520,215,0.5153, Bucks and Beds  ,0,9,7,7,5,5,2,3,4
+121601,216,1.546, Bucks and Beds  ,9,8,9,5,9,9,2,2,4
+121605,216,0.5153, Bucks and Beds  ,6,9,9,6,9,9,3,4,2
+121607,216,1.0307, Bucks and Beds  ,7,10,8,6,10,7,1,2,3
+121609,216,2.5767, Bucks and Beds  ,NA,8,8,8,8,7,3,2,2
+121611,216,1.0307, Bucks and Beds  ,8,9,9,8,7,7,2,2,4
+121612,216,1.0307, Bucks and Beds  ,5,9,9,6,4,10,2,2,2
+121614,216,0.5153, Bucks and Beds  ,0,5,NA,NA,NA,8,4,2,2
+121616,216,1.0307, Bucks and Beds  ,4,8,8,7,8,7,2,3,2
+121619,216,1.0307, Bucks and Beds  ,6,8,8,5,7,8,2,3,2
+121701,217,1.0307, Bucks and Beds  ,3,10,10,7,6,6,2,2,2
+121703,217,1.0307, Bucks and Beds  ,7,10,8,4,4,7,NA,2,3
+121706,217,1.0307, Bucks and Beds  ,7,9,5,5,5,6,3,3,3
+121707,217,1.0307, Bucks and Beds  ,10,6,10,6,6,7,3,3,3
+121708,217,1.0307, Bucks and Beds  ,5,8,9,4,8,8,3,4,2
+121710,217,0.5153, Bucks and Beds  ,10,10,10,10,10,6,3,3,3
+121712,217,0.5153, Bucks and Beds  ,4,8,8,5,4,4,4,4,2
+121713,217,0.5153, Bucks and Beds  ,5,9,10,9,5,8,3,2,2
+121714,217,1.0307, Bucks and Beds  ,5,10,5,6,6,6,2,2,3
+121716,217,1.0307, Bucks and Beds  ,5,10,10,4,7,9,3,4,2
+121719,217,1.0307, Bucks and Beds  ,7,10,10,8,8,9,2,2,2
+121720,217,1.546, Bucks and Beds  ,5,8,9,7,9,7,2,2,2
+121801,218,1.546, Bucks and Beds  ,7,7,8,7,9,9,2,2,2
+121804,218,0.5153, Bucks and Beds  ,2,10,10,2,10,3,2,2,2
+121805,218,1.0307, Bucks and Beds  ,10,9,9,5,7,9,3,2,2
+121806,218,0.5153, Bucks and Beds  ,10,10,10,8,8,7,3,2,2
+121807,218,1.0307, Bucks and Beds  ,2,9,9,5,4,0,3,2,3
+121809,218,1.0307, Bucks and Beds  ,8,10,10,7,7,7,2,3,2
+121810,218,0.5153, Bucks and Beds  ,3,10,10,7,5,10,1,2,2
+121814,218,0.5153, Bucks and Beds  ,5,8,7,6,7,6,2,3,2
+121818,218,0.5153, Bucks and Beds  ,10,10,10,7,8,8,3,3,3
+121819,218,0.5153, Bucks and Beds  ,8,10,10,10,10,10,2,2,2
+121820,218,0.5153, Bucks and Beds  ,3,6,8,3,7,8,2,2,2
+121903,219,1.0307, Bucks and Beds  ,3,10,7,1,5,7,4,4,3
+121905,219,0.5153, Bucks and Beds  ,8,8,8,5,8,8,2,NA,2
+121906,219,1.0307, Bucks and Beds  ,10,10,10,8,8,10,4,3,2
+121908,219,1.546, Bucks and Beds  ,7,7,7,7,7,8,3,3,NA
+121909,219,1.0307, Bucks and Beds  ,8,5,2,5,4,6,4,2,2
+121910,219,0.5153, Bucks and Beds  ,1,10,10,7,8,8,2,2,2
+121912,219,0.5153, Bucks and Beds  ,6,8,9,4,5,NA,3,4,4
+121915,219,0.5153, Bucks and Beds  ,2,9,9,5,10,9,2,2,3
+121916,219,1.0307, Bucks and Beds  ,7,8,8,5,7,7,2,4,3
+121919,219,1.546, Bucks and Beds  ,6,8,8,5,3,5,2,4,2
+122001,220,0.5153, Cambs and Northants  ,4,8,9,5,5,7,2,3,4
+122002,220,1.0307, Cambs and Northants  ,0,10,10,10,0,10,2,2,3
+122003,220,1.546, Cambs and Northants  ,0,10,9,5,3,7,3,4,2
+122004,220,0.5153, Cambs and Northants  ,8,10,10,9,7,5,3,4,2
+122005,220,0.5153, Cambs and Northants  ,2,10,10,5,7,0,2,4,3
+122007,220,1.0307, Cambs and Northants  ,6,9,8,7,7,6,3,4,2
+122009,220,1.0307, Cambs and Northants  ,6,9,9,9,2,8,2,3,2
+122010,220,0.5153, Cambs and Northants  ,6,8,8,5,5,7,2,3,2
+122011,220,1.0307, Cambs and Northants  ,8,10,10,4,8,8,4,4,2
+122013,220,1.0307, Cambs and Northants  ,6,10,8,5,8,7,4,4,3
+122014,220,0.5153, Cambs and Northants  ,8,10,10,3,10,7,3,4,2
+122015,220,1.0307, Cambs and Northants  ,0,8,3,3,0,5,3,3,NA
+122018,220,2.5767, Cambs and Northants  ,5,9,7,5,7,7,2,3,2
+122020,220,0.5153, Cambs and Northants  ,3,7,7,3,3,7,2,4,2
+122101,221,1.0307, Cambs and Northants  ,4,8,8,5,7,4,4,4,2
+122102,221,0.5153, Cambs and Northants  ,8,9,10,5,5,7,4,2,2
+122103,221,0.5153, Cambs and Northants  ,6,9,9,5,5,5,3,2,2
+122104,221,2.5767, Cambs and Northants  ,6,5,8,5,5,1,NA,3,2
+122105,221,1.0307, Cambs and Northants  ,3,6,7,5,6,3,3,4,2
+122107,221,1.546, Cambs and Northants  ,5,8,9,6,8,7,2,3,3
+122110,221,1.0307, Cambs and Northants  ,6,10,8,4,10,5,2,4,2
+122112,221,1.0307, Cambs and Northants  ,5,8,8,5,7,6,3,3,3
+122113,221,1.0307, Cambs and Northants  ,5,10,10,5,7,7,2,3,3
+122115,221,0.5153, Cambs and Northants  ,10,10,10,10,10,10,2,2,2
+122116,221,0.5153, Cambs and Northants  ,8,10,10,7,10,10,2,2,4
+122117,221,1.0307, Cambs and Northants  ,8,8,8,8,6,8,4,2,3
+122119,221,0.5153, Cambs and Northants  ,3,5,6,4,3,3,2,NA,2
+122120,221,1.0307, Cambs and Northants  ,8,8,7,9,NA,5,2,3,2
+122201,222,1.546, Cambs and Northants  ,5,9,9,3,9,9,3,1,4
+122202,222,1.0307, Cambs and Northants  ,7,8,8,6,8,7,2,2,2
+122203,222,0.5153, Cambs and Northants  ,10,8,8,6,6,7,3,2,2
+122204,222,1.0307, Cambs and Northants  ,8,10,10,2,5,10,2,2,2
+122205,222,0.5153, Cambs and Northants  ,6,9,8,4,9,9,2,3,2
+122207,222,1.0307, Cambs and Northants  ,9,10,10,4,10,8,4,4,4
+122209,222,1.0307, Cambs and Northants  ,1,4,8,2,10,5,4,2,1
+122210,222,1.0307, Cambs and Northants  ,6,8,8,8,8,8,2,2,2
+122212,222,1.0307, Cambs and Northants  ,7,8,8,5,8,8,2,3,2
+122214,222,1.0307, Cambs and Northants  ,5,8,9,6,8,9,2,2,1
+122216,222,1.0307, Cambs and Northants  ,6,9,8,6,6,6,3,3,3
+122217,222,1.0307, Cambs and Northants  ,5,10,10,4,6,9,2,2,2
+122218,222,0.5153, Cambs and Northants  ,6,7,8,7,5,7,4,2,2
+122301,223,1.546, Cambs and Northants  ,9,10,9,7,7,6,2,4,5
+122303,223,0.5153, Cambs and Northants  ,5,9,7,6,8,3,3,4,3
+122305,223,1.0307, Cambs and Northants  ,3,8,8,5,6,7,2,4,4
+122307,223,0.5153, Cambs and Northants  ,5,9,9,4,7,7,1,2,2
+122308,223,1.0307, Cambs and Northants  ,1,8,8,6,5,6,4,4,2
+122309,223,1.0307, Cambs and Northants  ,8,8,8,7,5,7,3,2,2
+122310,223,0.5153, Cambs and Northants  ,2,7,9,7,7,6,2,2,2
+122311,223,1.0307, Cambs and Northants  ,6,9,8,5,4,6,2,2,2
+122312,223,1.0307, Cambs and Northants  ,3,6,6,3,3,4,3,3,3
+122313,223,1.0307, Cambs and Northants  ,8,10,7,6,5,4,2,2,2
+122314,223,0.5153, Cambs and Northants  ,9,9,9,8,8,8,2,2,2
+122316,223,1.0307, Cambs and Northants  ,7,8,8,8,7,9,3,2,3
+122317,223,1.0307, Cambs and Northants  ,10,10,10,3,3,8,1,2,2
+122318,223,4, Cambs and Northants  ,9,10,10,9,10,10,3,2,2
+122320,223,1.0307, Cambs and Northants  ,5,7,3,1,7,7,1,3,2
+122401,224,0.5153, Cambs and Northants  ,8,10,8,6,8,9,2,2,2
+122403,224,0.5153, Cambs and Northants  ,5,7,8,2,8,8,2,2,4
+122406,224,1.0307, Cambs and Northants  ,3,9,8,4,9,8,2,4,2
+122407,224,1.0307, Cambs and Northants  ,5,7,7,4,7,5,NA,4,2
+122408,224,1.0307, Cambs and Northants  ,5,8,8,5,8,7,4,4,4
+122409,224,0.5153, Cambs and Northants  ,7,8,9,7,7,7,2,1,2
+122410,224,1.0307, Cambs and Northants  ,5,9,9,4,5,7,2,2,3
+122411,224,0.5153, Cambs and Northants  ,8,8,10,3,7,8,4,4,2
+122412,224,0.5153, Cambs and Northants  ,7,9,9,5,5,7,1,3,2
+122413,224,1.0307, Cambs and Northants  ,7,9,9,9,8,7,4,3,2
+122414,224,0.5153, Cambs and Northants  ,8,10,10,8,10,10,2,4,3
+122415,224,1.0307, Cambs and Northants  ,7,7,8,6,5,5,2,2,2
+122419,224,1.0307, Cambs and Northants  ,0,10,10,1,5,10,3,3,3
+122420,224,1.0307, Cambs and Northants  ,8,10,6,7,9,3,4,4,2
+122501,225,1.0307, Warwickshire and Hereford & Worcester  ,3,7,5,1,7,8,4,2,4
+122502,225,1.0307, Warwickshire and Hereford & Worcester  ,8,10,8,6,8,8,2,2,2
+122503,225,0.5153, Warwickshire and Hereford & Worcester  ,5,8,10,5,6,5,3,2,2
+122504,225,1.0307, Warwickshire and Hereford & Worcester  ,7,8,8,6,4,6,2,3,2
+122507,225,0.5153, Warwickshire and Hereford & Worcester  ,7,9,9,5,4,4,3,4,3
+122510,225,0.5153, Warwickshire and Hereford & Worcester  ,5,9,9,4,3,5,2,3,2
+122511,225,1.0307, Warwickshire and Hereford & Worcester  ,0,10,10,6,5,7,2,3,2
+122512,225,1.0307, Warwickshire and Hereford & Worcester  ,0,7,6,2,4,7,2,3,2
+122513,225,1.0307, Warwickshire and Hereford & Worcester  ,5,10,10,0,8,8,3,5,3
+122514,225,1.0307, Warwickshire and Hereford & Worcester  ,3,8,9,8,5,6,2,2,2
+122515,225,0.5153, Warwickshire and Hereford & Worcester  ,7,6,6,3,8,8,2,3,3
+122518,225,1.546, Warwickshire and Hereford & Worcester  ,6,8,8,4,8,7,4,2,2
+122519,225,0.5153, Warwickshire and Hereford & Worcester  ,3,8,10,8,7,9,3,2,2
+122520,225,0.5153, Warwickshire and Hereford & Worcester  ,5,9,9,7,7,8,2,2,2
+122602,226,0.5153, Warwickshire and Hereford & Worcester  ,8,10,10,8,10,9,2,3,2
+122604,226,1.0307, Warwickshire and Hereford & Worcester  ,2,5,7,2,7,7,2,4,2
+122605,226,1.0307, Warwickshire and Hereford & Worcester  ,3,8,8,4,6,7,2,2,2
+122606,226,0.5153, Warwickshire and Hereford & Worcester  ,5,10,10,10,10,10,2,3,2
+122609,226,1.0307, Warwickshire and Hereford & Worcester  ,7,10,9,4,6,7,4,4,4
+122610,226,0.5153, Warwickshire and Hereford & Worcester  ,4,10,8,5,5,5,2,2,2
+122611,226,1.0307, Warwickshire and Hereford & Worcester  ,8,10,8,7,7,7,2,4,2
+122613,226,0.5153, Warwickshire and Hereford & Worcester  ,3,7,6,4,2,4,2,2,4
+122615,226,0.5153, Warwickshire and Hereford & Worcester  ,3,7,7,4,5,5,3,2,2
+122616,226,0.5153, Warwickshire and Hereford & Worcester  ,5,9,10,6,4,9,3,2,3
+122617,226,2.5767, Warwickshire and Hereford & Worcester  ,6,10,10,5,6,10,3,3,3
+122618,226,1.0307, Warwickshire and Hereford & Worcester  ,6,9,10,7,8,5,2,3,3
+122619,226,1.0307, Warwickshire and Hereford & Worcester  ,2,7,7,4,6,0,3,2,2
+122620,226,1.0307, Warwickshire and Hereford & Worcester  ,0,7,9,2,7,3,3,4,3
+122702,227,1.546, Warwickshire and Hereford & Worcester  ,10,10,10,8,8,6,2,2,2
+122704,227,0.5153, Warwickshire and Hereford & Worcester  ,8,10,10,6,6,8,2,3,2
+122707,227,1.0307, Warwickshire and Hereford & Worcester  ,8,10,10,8,7,9,1,1,2
+122711,227,0.5153, Warwickshire and Hereford & Worcester  ,1,10,5,5,3,4,2,5,2
+122712,227,1.0307, Warwickshire and Hereford & Worcester  ,8,10,10,6,5,7,3,4,4
+122714,227,1.0307, Warwickshire and Hereford & Worcester  ,10,10,10,8,8,10,3,2,2
+122719,227,1.0307, Warwickshire and Hereford & Worcester  ,3,8,7,3,6,8,2,2,3
+122720,227,1.0307, Warwickshire and Hereford & Worcester  ,8,10,10,8,8,10,2,3,3
+122801,228,1.0307, Warwickshire and Hereford & Worcester  ,2,10,9,2,5,8,2,4,3
+122803,228,1.0307, Warwickshire and Hereford & Worcester  ,6,9,9,5,8,8,3,2,2
+122804,228,1.0307, Warwickshire and Hereford & Worcester  ,7,9,9,4,4,5,4,4,2
+122805,228,2.0613, Warwickshire and Hereford & Worcester  ,4,5,6,5,6,7,2,2,2
+122806,228,1.0307, Warwickshire and Hereford & Worcester  ,1,9,10,5,8,7,3,3,4
+122807,228,0.5153, Warwickshire and Hereford & Worcester  ,3,9,8,6,9,1,2,2,3
+122809,228,0.5153, Warwickshire and Hereford & Worcester  ,8,9,9,7,8,7,3,3,2
+122811,228,0.5153, Warwickshire and Hereford & Worcester  ,8,9,9,7,6,7,3,4,2
+122813,228,2.0613, Warwickshire and Hereford & Worcester  ,5,9,7,5,7,5,2,4,2
+122814,228,0.5153, Warwickshire and Hereford & Worcester  ,5,8,8,5,9,8,3,4,4
+122815,228,1.0307, Warwickshire and Hereford & Worcester  ,10,10,10,10,10,10,NA,NA,2
+122817,228,1.0307, Warwickshire and Hereford & Worcester  ,8,10,10,8,8,8,3,3,4
+122818,228,1.0307, Warwickshire and Hereford & Worcester  ,0,10,10,5,3,7,3,4,2
+122902,229,1.0307, Warwickshire and Hereford & Worcester  ,5,10,8,8,7,8,2,3,2
+122903,229,0.5153, Warwickshire and Hereford & Worcester  ,4,9,8,8,3,7,4,2,2
+122904,229,0.5153, Warwickshire and Hereford & Worcester  ,7,10,9,5,7,5,2,2,2
+122905,229,0.5153, Warwickshire and Hereford & Worcester  ,5,10,8,5,4,5,4,3,2
+122906,229,0.5153, Warwickshire and Hereford & Worcester  ,5,8,8,5,8,5,2,2,4
+122910,229,1.0307, Warwickshire and Hereford & Worcester  ,3,7,7,2,4,5,2,4,3
+122913,229,1.0307, Warwickshire and Hereford & Worcester  ,3,9,9,9,6,9,3,3,3
+122914,229,1.546, Warwickshire and Hereford & Worcester  ,7,9,9,7,8,8,2,2,2
+122916,229,1.0307, Warwickshire and Hereford & Worcester  ,5,10,7,5,6,8,3,3,3
+122918,229,1.0307, Warwickshire and Hereford & Worcester  ,1,10,8,6,4,5,4,NA,2
+122919,229,1.0307, Warwickshire and Hereford & Worcester  ,3,9,9,4,5,9,2,4,3
+122920,229,0.5153, Warwickshire and Hereford & Worcester  ,2,8,8,4,4,3,2,2,3
+123001,230,1.0307, West Midlands metropolitan area  ,3,9,9,4,7,8,3,3,3
+123004,230,1.546, West Midlands metropolitan area  ,4,8,9,7,8,8,1,1,2
+123005,230,0.5153, West Midlands metropolitan area  ,10,10,10,10,10,10,3,2,3
+123018,230,1.0307, West Midlands metropolitan area  ,6,8,8,2,7,6,4,4,2
+123020,230,1.0307, West Midlands metropolitan area  ,2,9,9,4,3,9,2,4,4
+123102,231,2.0613, West Midlands metropolitan area  ,8,10,8,6,7,8,2,2,2
+123104,231,1.0307, West Midlands metropolitan area  ,0,10,8,4,7,5,2,3,2
+123105,231,0.5153, West Midlands metropolitan area  ,5,3,8,5,5,10,4,2,2
+123111,231,1.0307, West Midlands metropolitan area  ,5,8,8,5,7,5,2,2,3
+123116,231,0.5153, West Midlands metropolitan area  ,7,10,10,7,7,7,4,2,1
+123117,231,1.546, West Midlands metropolitan area  ,8,8,10,7,7,6,2,2,3
+123120,231,1.0307, West Midlands metropolitan area  ,5,8,9,3,7,7,4,4,3
+123202,232,1.0307, West Midlands metropolitan area  ,5,8,8,5,5,5,2,3,2
+123203,232,1.0307, West Midlands metropolitan area  ,8,10,10,7,6,8,2,2,2
+123205,232,1.0307, West Midlands metropolitan area  ,5,8,8,6,8,7,3,3,3
+123206,232,1.0307, West Midlands metropolitan area  ,7,8,8,7,8,6,3,2,2
+123208,232,0.5153, West Midlands metropolitan area  ,9,10,10,4,7,7,4,2,2
+123209,232,0.5153, West Midlands metropolitan area  ,5,7,7,6,8,5,4,4,3
+123213,232,0.5153, West Midlands metropolitan area  ,8,8,9,7,8,9,1,2,2
+123215,232,0.5153, West Midlands metropolitan area  ,5,7,8,8,5,8,3,4,4
+123219,232,1.546, West Midlands metropolitan area  ,6,6,5,5,6,8,4,4,4
+123302,233,0.5153, West Midlands metropolitan area  ,7,10,10,8,9,10,3,3,3
+123304,233,1.0307, West Midlands metropolitan area  ,3,7,8,3,7,8,2,2,2
+123306,233,1.0307, West Midlands metropolitan area  ,8,8,10,8,8,5,4,4,2
+123309,233,1.0307, West Midlands metropolitan area  ,7,8,7,7,6,6,3,2,3
+123311,233,2.0613, West Midlands metropolitan area  ,8,9,9,5,8,8,3,3,3
+123317,233,1.546, West Midlands metropolitan area  ,5,9,9,5,9,5,3,4,3
+123401,234,1.0307, West Midlands metropolitan area  ,10,10,10,10,10,10,2,4,4
+123402,234,2.0613, West Midlands metropolitan area  ,8,9,9,5,7,8,3,3,3
+123403,234,1.0307, West Midlands metropolitan area  ,10,10,NA,NA,NA,NA,NA,NA,NA
+123406,234,1.0307, West Midlands metropolitan area  ,7,7,7,3,7,7,2,3,2
+123412,234,0.5153, West Midlands metropolitan area  ,0,10,10,8,5,7,NA,NA,NA
+123415,234,0.5153, West Midlands metropolitan area  ,0,10,5,0,10,0,1,1,2
+123416,234,1.0307, West Midlands metropolitan area  ,2,10,10,5,3,8,3,3,3
+123418,234,1.0307, West Midlands metropolitan area  ,NA,7,9,8,8,8,2,2,2
+123420,234,1.0307, West Midlands metropolitan area  ,4,6,8,7,10,10,2,3,4
+123503,235,1.0307, West Midlands metropolitan area  ,10,10,10,5,7,8,1,4,2
+123508,235,1.0307, West Midlands metropolitan area  ,8,10,9,4,NA,5,3,3,3
+123511,235,1.0307, West Midlands metropolitan area  ,7,9,9,5,6,6,2,3,2
+123512,235,1.0307, West Midlands metropolitan area  ,4,6,5,5,6,7,3,3,3
+123515,235,0.5153, West Midlands metropolitan area  ,5,8,8,6,5,6,2,4,4
+123517,235,2.5767, West Midlands metropolitan area  ,8,8,8,NA,NA,7,NA,NA,NA
+123603,236,0.5153, West Midlands metropolitan area  ,8,7,10,5,8,10,3,2,4
+123604,236,0.5153, West Midlands metropolitan area  ,5,10,10,5,5,10,1,1,2
+123611,236,0.5153, West Midlands metropolitan area  ,5,5,5,5,5,6,3,3,2
+123618,236,2.0613, West Midlands metropolitan area  ,7,6,7,8,7,10,3,3,3
+123620,236,1.0307, West Midlands metropolitan area  ,9,9,10,5,10,8,2,4,4
+123704,237,0.5153, West Midlands metropolitan area  ,5,4,6,3,6,3,3,4,3
+123710,237,0.5153, West Midlands metropolitan area  ,7,9,9,5,8,9,2,4,4
+123718,237,1.0307, West Midlands metropolitan area  ,NA,NA,NA,NA,NA,NA,NA,NA,NA
+123720,237,0.5153, West Midlands metropolitan area  ,NA,NA,8,5,2,NA,NA,NA,NA
+123801,238,2.0613, West Midlands metropolitan area  ,10,3,2,1,5,0,2,2,NA
+123803,238,1.0307, West Midlands metropolitan area  ,7,10,9,5,8,3,4,4,2
+123804,238,1.0307, West Midlands metropolitan area  ,9,10,10,7,7,10,2,2,3
+123805,238,1.0307, West Midlands metropolitan area  ,7,8,8,3,7,8,2,2,4
+123807,238,0.5153, West Midlands metropolitan area  ,5,9,9,9,8,8,2,2,2
+123808,238,1.0307, West Midlands metropolitan area  ,10,10,10,10,10,10,2,2,2
+123809,238,1.0307, West Midlands metropolitan area  ,7,8,8,6,9,8,4,3,3
+123810,238,1.546, West Midlands metropolitan area  ,0,8,8,3,9,6,3,3,3
+123811,238,1.0307, West Midlands metropolitan area  ,6,10,10,6,8,8,2,3,2
+123815,238,1.546, West Midlands metropolitan area  ,5,6,6,4,7,7,3,3,2
+123816,238,1.0307, West Midlands metropolitan area  ,5,9,9,4,5,6,NA,3,2
+123901,239,1.546, West Midlands metropolitan area  ,8,7,10,3,7,6,4,4,4
+123902,239,1.0307, West Midlands metropolitan area  ,5,10,7,6,5,5,2,2,2
+123903,239,0.5153, West Midlands metropolitan area  ,10,10,10,10,9,10,5,3,3
+123905,239,1.0307, West Midlands metropolitan area  ,7,8,8,7,8,8,3,4,3
+123908,239,1.546, West Midlands metropolitan area  ,6,6,5,5,NA,4,3,3,2
+123909,239,0.5153, West Midlands metropolitan area  ,NA,NA,10,NA,NA,NA,NA,NA,NA
+123910,239,2.0613, West Midlands metropolitan area  ,7,0,9,8,9,8,4,4,4
+123912,239,0.5153, West Midlands metropolitan area  ,7,7,5,5,6,6,2,2,3
+123914,239,1.0307, West Midlands metropolitan area  ,5,2,8,8,7,10,1,2,2
+123917,239,0.5153, West Midlands metropolitan area  ,NA,6,6,NA,NA,NA,NA,NA,NA
+124002,240,1.0307, Shropshire and Staffordshire  ,4,8,6,6,4,5,2,2,2
+124003,240,1.0307, Shropshire and Staffordshire  ,8,8,8,3,5,5,2,4,3
+124005,240,1.0307, Shropshire and Staffordshire  ,3,7,5,5,6,8,2,2,2
+124007,240,0.5153, Shropshire and Staffordshire  ,5,10,10,5,5,7,2,4,2
+124008,240,1.546, Shropshire and Staffordshire  ,8,9,8,4,4,7,2,2,NA
+124012,240,1.546, Shropshire and Staffordshire  ,2,10,9,9,9,9,2,4,3
+124014,240,1.0307, Shropshire and Staffordshire  ,7,10,10,7,10,10,2,2,3
+124016,240,1.0307, Shropshire and Staffordshire  ,5,10,9,5,6,8,2,2,2
+124017,240,0.5153, Shropshire and Staffordshire  ,4,10,10,5,9,8,2,2,3
+124019,240,1.0307, Shropshire and Staffordshire  ,9,9,9,2,8,7,3,2,2
+124101,241,2.0613, Shropshire and Staffordshire  ,10,10,8,4,9,6,2,2,2
+124102,241,2.5767, Shropshire and Staffordshire  ,8,8,9,8,8,8,4,2,2
+124103,241,1.0307, Shropshire and Staffordshire  ,7,9,10,6,10,9,2,4,2
+124107,241,1.546, Shropshire and Staffordshire  ,7,8,8,8,8,8,2,4,2
+124108,241,2.5767, Shropshire and Staffordshire  ,5,9,8,8,10,10,2,3,2
+124110,241,1.0307, Shropshire and Staffordshire  ,7,8,9,4,5,6,2,2,2
+124112,241,1.0307, Shropshire and Staffordshire  ,8,10,8,5,8,7,2,4,3
+124114,241,1.0307, Shropshire and Staffordshire  ,5,7,7,7,3,7,4,3,3
+124115,241,1.0307, Shropshire and Staffordshire  ,8,9,9,5,5,8,2,4,2
+124118,241,1.546, Shropshire and Staffordshire  ,6,8,9,6,9,3,1,2,3
+124202,242,1.546, Shropshire and Staffordshire  ,6,7,9,3,8,8,NA,2,3
+124204,242,0.5153, Shropshire and Staffordshire  ,7,8,8,6,6,5,2,2,2
+124206,242,1.0307, Shropshire and Staffordshire  ,7,10,10,7,8,8,2,2,2
+124207,242,1.0307, Shropshire and Staffordshire  ,7,8,8,6,8,7,3,2,3
+124208,242,1.0307, Shropshire and Staffordshire  ,10,10,10,7,5,8,3,4,3
+124209,242,2.0613, Shropshire and Staffordshire  ,5,10,8,4,7,9,3,2,2
+124211,242,0.5153, Shropshire and Staffordshire  ,5,7,7,4,6,5,2,2,3
+124212,242,1.0307, Shropshire and Staffordshire  ,3,8,8,4,7,7,3,4,3
+124214,242,0.5153, Shropshire and Staffordshire  ,7,9,7,4,8,8,4,4,3
+124216,242,1.0307, Shropshire and Staffordshire  ,7,8,10,6,8,9,2,4,2
+124217,242,1.0307, Shropshire and Staffordshire  ,6,10,10,6,9,9,2,NA,2
+124219,242,1.0307, Shropshire and Staffordshire  ,9,10,8,8,9,10,2,4,3
+124301,243,1.0307, Shropshire and Staffordshire  ,10,10,10,8,10,10,3,3,4
+124303,243,0.5153, Shropshire and Staffordshire  ,6,6,7,4,5,5,3,3,3
+124304,243,0.5153, Shropshire and Staffordshire  ,8,10,10,6,6,5,3,4,2
+124305,243,1.0307, Shropshire and Staffordshire  ,4,8,8,5,8,6,1,2,2
+124308,243,1.0307, Shropshire and Staffordshire  ,8,10,10,8,6,10,5,1,3
+124311,243,1.0307, Shropshire and Staffordshire  ,8,10,10,8,10,9,2,4,2
+124314,243,1.546, Shropshire and Staffordshire  ,6,10,10,8,8,9,2,2,2
+124316,243,0.5153, Shropshire and Staffordshire  ,6,10,8,8,10,10,3,4,2
+124317,243,1.0307, Shropshire and Staffordshire  ,5,10,8,0,9,7,2,3,2
+124402,244,0.5153, Shropshire and Staffordshire  ,4,10,10,2,10,8,3,4,NA
+124406,244,1.0307, Shropshire and Staffordshire  ,8,5,7,4,9,8,2,4,3
+124413,244,1.0307, Shropshire and Staffordshire  ,9,9,9,9,7,8,3,2,2
+124418,244,1.0307, Shropshire and Staffordshire  ,8,10,7,7,7,7,2,2,2
+124419,244,1.0307, Shropshire and Staffordshire  ,5,10,10,5,1,10,1,4,2
+124420,244,1.0307, Shropshire and Staffordshire  ,8,9,8,8,9,9,3,3,4
+125501,255,1.0307, Leicestershire and Lincolnshire  ,5,9,9,4,9,5,2,3,2
+125503,255,0.5153, Leicestershire and Lincolnshire  ,7,10,10,7,2,8,2,2,2
+125504,255,1.0307, Leicestershire and Lincolnshire  ,6,10,10,6,10,6,2,3,2
+125505,255,0.5153, Leicestershire and Lincolnshire  ,5,8,10,8,3,9,5,2,2
+125508,255,1.0307, Leicestershire and Lincolnshire  ,3,10,9,8,7,8,2,3,2
+125510,255,1.0307, Leicestershire and Lincolnshire  ,9,10,10,10,10,10,2,2,4
+125513,255,1.0307, Leicestershire and Lincolnshire  ,2,10,7,5,5,8,4,4,2
+125514,255,0.5153, Leicestershire and Lincolnshire  ,1,9,7,3,2,5,4,3,4
+125515,255,0.5153, Leicestershire and Lincolnshire  ,3,9,7,4,6,9,2,4,2
+125517,255,0.5153, Leicestershire and Lincolnshire  ,3,6,6,6,6,7,3,3,3
+125518,255,1.0307, Leicestershire and Lincolnshire  ,6,8,8,8,6,8,2,4,2
+125519,255,0.5153, Leicestershire and Lincolnshire  ,7,9,9,7,6,6,2,4,2
+125520,255,1.0307, Leicestershire and Lincolnshire  ,4,9,9,6,7,7,2,3,2
+125601,256,1.546, Leicestershire and Lincolnshire  ,4,9,9,3,8,9,2,4,3
+125602,256,1.546, Leicestershire and Lincolnshire  ,4,8,8,6,8,9,2,2,2
+125603,256,1.546, Leicestershire and Lincolnshire  ,2,8,7,1,8,7,4,2,4
+125605,256,1.0307, Leicestershire and Lincolnshire  ,2,8,7,4,8,7,4,3,2
+125606,256,1.0307, Leicestershire and Lincolnshire  ,8,8,8,4,3,5,2,4,2
+125607,256,1.546, Leicestershire and Lincolnshire  ,5,8,8,3,8,8,3,2,2
+125608,256,0.5153, Leicestershire and Lincolnshire  ,8,10,10,7,8,9,2,2,2
+125609,256,1.0307, Leicestershire and Lincolnshire  ,6,10,10,5,0,6,2,4,3
+125610,256,0.5153, Leicestershire and Lincolnshire  ,6,7,9,6,6,5,2,2,2
+125613,256,0.5153, Leicestershire and Lincolnshire  ,4,10,10,5,8,5,3,4,3
+125614,256,0.5153, Leicestershire and Lincolnshire  ,6,NA,NA,10,10,10,2,NA,2
+125615,256,0.5153, Leicestershire and Lincolnshire  ,4,7,8,7,7,8,2,2,2
+125619,256,0.5153, Leicestershire and Lincolnshire  ,5,8,8,3,5,8,NA,NA,2
+125620,256,1.0307, Leicestershire and Lincolnshire  ,3,9,7,0,4,4,3,4,4
+125701,257,1.0307, Leicestershire and Lincolnshire  ,8,10,8,8,8,8,4,2,4
+125702,257,2.0613, Leicestershire and Lincolnshire  ,4,8,8,3,6,5,2,2,4
+125703,257,1.0307, Leicestershire and Lincolnshire  ,0,8,6,8,7,9,4,2,2
+125704,257,1.0307, Leicestershire and Lincolnshire  ,7,10,8,4,8,8,2,4,4
+125709,257,0.5153, Leicestershire and Lincolnshire  ,6,10,9,7,9,10,2,2,4
+125711,257,1.0307, Leicestershire and Lincolnshire  ,4,10,10,9,9,9,3,2,3
+125712,257,2.0613, Leicestershire and Lincolnshire  ,8,9,8,6,8,9,3,2,3
+125713,257,1.0307, Leicestershire and Lincolnshire  ,5,10,10,2,7,7,2,2,2
+125715,257,0.5153, Leicestershire and Lincolnshire  ,6,9,9,5,7,8,4,2,2
+125716,257,1.0307, Leicestershire and Lincolnshire  ,9,10,10,7,7,7,2,2,2
+125718,257,0.5153, Leicestershire and Lincolnshire  ,3,5,7,4,1,5,2,4,3
+125719,257,0.5153, Leicestershire and Lincolnshire  ,5,10,6,4,5,8,2,2,2
+125720,257,2.5767, Leicestershire and Lincolnshire  ,4,10,10,6,9,9,4,4,2
+125802,258,0.5153, Leicestershire and Lincolnshire  ,7,10,10,8,8,6,3,3,3
+125803,258,0.5153, Leicestershire and Lincolnshire  ,5,7,7,2,2,2,4,4,2
+125804,258,1.0307, Leicestershire and Lincolnshire  ,5,10,10,6,5,5,3,3,3
+125805,258,0.5153, Leicestershire and Lincolnshire  ,5,5,8,3,5,3,3,3,2
+125806,258,1.0307, Leicestershire and Lincolnshire  ,5,9,9,4,4,4,3,3,4
+125807,258,0.5153, Leicestershire and Lincolnshire  ,8,9,9,4,8,9,3,3,2
+125810,258,1.546, Leicestershire and Lincolnshire  ,8,8,7,4,7,8,2,4,3
+125811,258,0.5153, Leicestershire and Lincolnshire  ,9,10,10,7,6,6,2,2,3
+125813,258,0.5153, Leicestershire and Lincolnshire  ,3,10,10,4,NA,5,3,3,3
+125815,258,0.5153, Leicestershire and Lincolnshire  ,9,10,10,4,4,6,3,3,4
+125816,258,1.0307, Leicestershire and Lincolnshire  ,6,8,8,7,6,8,2,4,3
+125820,258,1.546, Leicestershire and Lincolnshire  ,8,10,10,7,5,5,2,4,4
+125903,259,0.5153, Leicestershire and Lincolnshire  ,4,4,4,4,4,4,3,2,3
+125904,259,0.5153, Leicestershire and Lincolnshire  ,5,7,7,4,5,8,2,2,2
+125905,259,0.5153, Leicestershire and Lincolnshire  ,10,10,10,3,10,9,4,3,3
+125906,259,1.546, Leicestershire and Lincolnshire  ,4,8,9,5,9,9,2,2,3
+125908,259,2.5767, Leicestershire and Lincolnshire  ,6,7,7,4,5,3,3,4,3
+125909,259,1.0307, Leicestershire and Lincolnshire  ,7,9,8,5,5,7,2,3,3
+125911,259,0.5153, Leicestershire and Lincolnshire  ,2,8,8,4,4,8,3,2,3
+125913,259,1.0307, Leicestershire and Lincolnshire  ,5,8,6,4,5,0,2,2,5
+125914,259,0.5153, Leicestershire and Lincolnshire  ,7,10,10,10,10,8,2,2,3
+125916,259,1.0307, Leicestershire and Lincolnshire  ,4,4,7,6,4,5,2,2,3
+125917,259,1.546, Leicestershire and Lincolnshire  ,6,6,6,6,6,6,4,3,3
+125918,259,1.0307, Leicestershire and Lincolnshire  ,5,5,5,5,5,5,3,3,3
+125919,259,1.546, Leicestershire and Lincolnshire  ,3,6,9,3,3,0,3,3,3
+125920,259,0.5153, Leicestershire and Lincolnshire  ,5,6,6,6,6,6,3,3,2
+126002,260,1.0307, Leicestershire and Lincolnshire  ,5,7,8,5,4,7,3,2,2
+126003,260,1.0307, Leicestershire and Lincolnshire  ,10,10,10,8,8,10,4,2,1
+126005,260,0.5153, Leicestershire and Lincolnshire  ,6,6,8,3,3,5,3,3,3
+126007,260,2.0613, Leicestershire and Lincolnshire  ,4,7,8,4,6,7,4,4,4
+126008,260,0.5153, Leicestershire and Lincolnshire  ,8,8,9,3,7,6,3,3,2
+126011,260,1.0307, Leicestershire and Lincolnshire  ,5,6,7,8,8,7,3,3,3
+126012,260,1.0307, Leicestershire and Lincolnshire  ,7,6,6,6,6,6,3,2,2
+126013,260,0.5153, Leicestershire and Lincolnshire  ,6,10,10,7,7,10,3,3,3
+126015,260,2.0613, Leicestershire and Lincolnshire  ,6,9,9,5,5,5,3,2,3
+126016,260,1.0307, Leicestershire and Lincolnshire  ,5,5,6,5,8,8,3,2,2
+126019,260,1.0307, Leicestershire and Lincolnshire  ,5,5,5,5,5,5,3,3,3
+126101,261,1.0307, Nottinghamshire and Derbyshire  ,NA,8,8,7,7,7,2,3,3
+126103,261,2.0613, Nottinghamshire and Derbyshire  ,3,7,8,3,7,8,2,4,2
+126106,261,2.0613, Nottinghamshire and Derbyshire  ,7,10,8,5,10,10,2,4,2
+126108,261,0.5153, Nottinghamshire and Derbyshire  ,4,8,10,4,10,9,1,2,1
+126109,261,1.0307, Nottinghamshire and Derbyshire  ,5,8,8,8,7,8,3,3,2
+126110,261,0.5153, Nottinghamshire and Derbyshire  ,8,10,10,10,8,6,3,2,3
+126112,261,1.546, Nottinghamshire and Derbyshire  ,5,8,8,7,6,6,2,3,2
+126113,261,1.0307, Nottinghamshire and Derbyshire  ,10,10,10,0,5,10,4,4,4
+126114,261,1.0307, Nottinghamshire and Derbyshire  ,5,10,10,5,8,9,3,3,2
+126116,261,1.0307, Nottinghamshire and Derbyshire  ,8,10,10,5,3,5,2,2,3
+126118,261,1.0307, Nottinghamshire and Derbyshire  ,5,10,10,5,9,9,4,3,2
+126119,261,1.0307, Nottinghamshire and Derbyshire  ,10,10,10,5,7,5,2,2,2
+126120,261,1.0307, Nottinghamshire and Derbyshire  ,4,9,9,2,8,7,3,2,2
+126202,262,1.0307, Nottinghamshire and Derbyshire  ,5,10,10,8,6,3,2,4,2
+126204,262,1.0307, Nottinghamshire and Derbyshire  ,4,7,5,4,5,6,4,4,2
+126205,262,1.546, Nottinghamshire and Derbyshire  ,7,10,10,9,10,8,2,3,2
+126209,262,1.0307, Nottinghamshire and Derbyshire  ,10,10,10,0,4,NA,4,5,4
+126212,262,0.5153, Nottinghamshire and Derbyshire  ,5,10,10,10,5,7,2,2,2
+126214,262,1.0307, Nottinghamshire and Derbyshire  ,7,10,10,2,5,9,2,4,2
+126219,262,0.5153, Nottinghamshire and Derbyshire  ,4,8,8,5,6,6,1,2,2
+126220,262,1.0307, Nottinghamshire and Derbyshire  ,6,8,5,1,5,6,2,2,2
+126302,263,1.0307, Nottinghamshire and Derbyshire  ,4,7,7,5,5,3,2,3,2
+126303,263,0.5153, Nottinghamshire and Derbyshire  ,7,10,10,8,5,10,4,4,3
+126305,263,4, Nottinghamshire and Derbyshire  ,4,4,4,3,4,6,NA,3,3
+126306,263,1.0307, Nottinghamshire and Derbyshire  ,7,10,10,7,8,8,2,2,2
+126307,263,1.546, Nottinghamshire and Derbyshire  ,8,8,7,7,5,9,2,3,4
+126308,263,0.5153, Nottinghamshire and Derbyshire  ,10,5,8,5,5,8,3,2,2
+126309,263,1.0307, Nottinghamshire and Derbyshire  ,9,8,8,6,7,8,2,3,3
+126310,263,1.0307, Nottinghamshire and Derbyshire  ,7,7,8,6,6,7,3,2,2
+126311,263,1.0307, Nottinghamshire and Derbyshire  ,5,5,5,5,5,5,2,4,2
+126312,263,1.0307, Nottinghamshire and Derbyshire  ,5,5,5,4,6,7,3,3,3
+126315,263,0.5153, Nottinghamshire and Derbyshire  ,8,8,10,7,7,9,3,2,2
+126316,263,1.0307, Nottinghamshire and Derbyshire  ,7,9,8,6,4,3,2,4,3
+126319,263,1.0307, Nottinghamshire and Derbyshire  ,3,9,7,5,8,8,2,4,2
+126401,264,1.0307, Nottinghamshire and Derbyshire  ,7,8,8,7,7,7,2,2,2
+126402,264,1.0307, Nottinghamshire and Derbyshire  ,6,10,10,2,5,10,2,2,2
+126410,264,0.5153, Nottinghamshire and Derbyshire  ,6,9,9,5,7,8,4,2,2
+126411,264,0.5153, Nottinghamshire and Derbyshire  ,8,9,8,6,8,NA,2,4,2
+126412,264,1.546, Nottinghamshire and Derbyshire  ,2,10,10,1,3,8,4,4,3
+126413,264,0.5153, Nottinghamshire and Derbyshire  ,5,6,7,7,4,5,4,4,3
+126414,264,1.0307, Nottinghamshire and Derbyshire  ,7,9,8,5,8,5,2,4,3
+126417,264,1.0307, Nottinghamshire and Derbyshire  ,8,9,9,6,7,6,3,2,2
+126418,264,1.546, Nottinghamshire and Derbyshire  ,4,10,10,5,8,5,3,2,2
+126419,264,1.0307, Nottinghamshire and Derbyshire  ,4,8,8,5,3,4,3,4,4
+126420,264,2.0613, Nottinghamshire and Derbyshire  ,2,7,4,2,4,4,2,3,2
+126501,265,1.0307, Nottinghamshire and Derbyshire  ,7,9,9,3,2,5,2,5,2
+126503,265,0.5153, Nottinghamshire and Derbyshire  ,5,10,8,3,7,10,2,3,3
+126504,265,1.0307, Nottinghamshire and Derbyshire  ,5,10,10,2,10,10,2,4,3
+126505,265,1.546, Nottinghamshire and Derbyshire  ,7,8,7,5,7,6,2,3,3
+126507,265,1.0307, Nottinghamshire and Derbyshire  ,5,9,7,4,7,6,2,2,2
+126511,265,1.0307, Nottinghamshire and Derbyshire  ,4,8,8,7,5,7,2,3,2
+126512,265,1.0307, Nottinghamshire and Derbyshire  ,6,7,5,2,7,9,2,2,4
+126514,265,1.0307, Nottinghamshire and Derbyshire  ,0,10,10,10,10,8,4,4,2
+126515,265,1.0307, Nottinghamshire and Derbyshire  ,8,9,9,5,7,8,3,4,2
+126517,265,1.0307, Nottinghamshire and Derbyshire  ,10,10,10,7,10,8,3,3,2
+126518,265,0.5153, Nottinghamshire and Derbyshire  ,10,10,10,7,6,7,2,3,2
+126519,265,1.0307, Nottinghamshire and Derbyshire  ,6,9,9,5,5,4,2,3,2
+126520,265,0.5153, Nottinghamshire and Derbyshire  ,8,8,8,7,7,6,2,2,2
+126601,266,1.0307, Nottinghamshire and Derbyshire  ,9,10,10,8,8,8,2,4,3
+126606,266,1.0307, Nottinghamshire and Derbyshire  ,7,7,7,7,7,7,2,3,3
+126607,266,2.0613, Nottinghamshire and Derbyshire  ,7,9,9,6,6,7,2,3,3
+126608,266,1.0307, Nottinghamshire and Derbyshire  ,3,8,8,8,6,5,4,4,3
+126609,266,1.0307, Nottinghamshire and Derbyshire  ,8,10,10,5,10,8,3,4,3
+126612,266,1.0307, Nottinghamshire and Derbyshire  ,6,8,8,6,8,8,2,3,2
+126613,266,0.5153, Nottinghamshire and Derbyshire  ,9,10,8,8,NA,5,5,5,5
+126616,266,1.0307, Nottinghamshire and Derbyshire  ,4,5,6,3,5,5,NA,NA,3
+126618,266,0.5153, Nottinghamshire and Derbyshire  ,3,10,10,7,5,5,4,3,4
+126620,266,1.0307, Nottinghamshire and Derbyshire  ,5,5,7,5,6,6,3,3,3
+126701,267,0.5153, Nottinghamshire and Derbyshire  ,8,9,9,5,8,9,2,2,2
+126702,267,0.5153, Nottinghamshire and Derbyshire  ,6,10,10,5,10,7,1,3,2
+126703,267,0.5153, Nottinghamshire and Derbyshire  ,10,9,8,6,8,8,2,2,2
+126704,267,0.5153, Nottinghamshire and Derbyshire  ,10,10,10,7,9,9,2,2,2
+126706,267,0.5153, Nottinghamshire and Derbyshire  ,8,10,9,8,9,10,4,3,4
+126707,267,1.0307, Nottinghamshire and Derbyshire  ,10,10,10,6,9,10,2,1,1
+126708,267,1.0307, Nottinghamshire and Derbyshire  ,8,10,10,7,9,7,2,2,2
+126710,267,1.0307, Nottinghamshire and Derbyshire  ,10,10,10,8,8,8,2,2,2
+126714,267,1.0307, Nottinghamshire and Derbyshire  ,9,10,10,10,10,10,2,2,2
+126717,267,2.0613, Nottinghamshire and Derbyshire  ,7,8,8,4,7,8,2,2,2
+126718,267,1.0307, Nottinghamshire and Derbyshire  ,7,10,10,6,10,10,2,4,2
+126719,267,1.0307, Nottinghamshire and Derbyshire  ,8,10,9,5,8,9,2,2,2
+126803,268,0.5153, Nottinghamshire and Derbyshire  ,8,8,10,7,NA,5,2,2,NA
+126807,268,1.0307, Nottinghamshire and Derbyshire  ,4,7,7,5,6,7,NA,3,3
+126808,268,1.0307, Nottinghamshire and Derbyshire  ,7,10,10,10,9,8,4,4,4
+126811,268,0.5153, Nottinghamshire and Derbyshire  ,0,10,10,4,0,0,4,3,3
+126812,268,0.5153, Nottinghamshire and Derbyshire  ,6,10,10,8,8,10,1,2,2
+126820,268,0.5153, Nottinghamshire and Derbyshire  ,6,8,6,5,6,5,4,2,3
+126901,269,1.0307, Cheshire  ,8,10,10,2,8,8,3,5,4
+126902,269,0.5153, Cheshire  ,4,7,8,6,5,7,2,2,2
+126903,269,1.0307, Cheshire  ,9,10,10,3,0,0,4,4,3
+126905,269,1.0307, Cheshire  ,3,10,10,8,NA,6,2,4,NA
+126909,269,2.0613, Cheshire  ,5,10,10,10,10,7,3,3,4
+126910,269,1.546, Cheshire  ,7,10,10,5,10,10,2,2,2
+126911,269,1.0307, Cheshire  ,3,8,7,5,8,7,2,3,4
+126913,269,1.0307, Cheshire  ,1,7,9,9,9,10,3,2,1
+126914,269,0.5153, Cheshire  ,1,7,4,2,7,7,4,4,2
+126915,269,0.5153, Cheshire  ,5,8,10,7,10,10,3,4,4
+126916,269,0.5153, Cheshire  ,7,10,9,7,4,9,3,3,4
+126918,269,1.0307, Cheshire  ,2,9,9,8,NA,7,2,3,4
+126919,269,1.0307, Cheshire  ,2,8,10,3,9,8,3,3,2
+127003,270,1.0307, Cheshire  ,7,10,10,9,8,8,4,3,3
+127006,270,0.5153, Cheshire  ,5,10,7,7,7,7,2,2,1
+127007,270,0.5153, Cheshire  ,9,9,7,7,8,5,4,2,2
+127008,270,1.0307, Cheshire  ,4,8,8,6,8,7,2,3,2
+127009,270,0.5153, Cheshire  ,6,9,8,8,8,6,2,2,3
+127010,270,1.0307, Cheshire  ,7,10,8,5,8,7,3,3,3
+127011,270,1.0307, Cheshire  ,7,10,9,9,8,10,4,3,2
+127012,270,1.0307, Cheshire  ,8,10,7,7,5,7,3,4,3
+127014,270,1.0307, Cheshire  ,10,10,10,8,9,10,2,2,2
+127015,270,1.0307, Cheshire  ,4,8,8,5,6,9,2,2,4
+127018,270,1.0307, Cheshire  ,5,8,8,5,5,5,4,3,3
+127020,270,1.0307, Cheshire  ,6,10,10,4,7,8,2,2,3
+127102,271,1.0307, Cheshire  ,3,9,10,7,8,8,2,2,1
+127106,271,0.5153, Cheshire  ,10,10,10,10,10,8,2,2,2
+127114,271,0.5153, Cheshire  ,9,10,9,8,NA,8,3,3,2
+127116,271,1.0307, Cheshire  ,8,10,10,7,NA,NA,3,3,3
+127117,271,1.546, Cheshire  ,5,10,10,6,8,5,3,4,2
+127120,271,1.0307, Cheshire  ,3,8,8,3,8,6,4,2,3
+127205,272,1.0307, Cheshire  ,7,10,10,7,8,3,2,4,4
+127208,272,0.5153, Cheshire  ,7,9,10,7,6,3,2,2,2
+127209,272,1.0307, Cheshire  ,5,6,7,5,5,6,2,3,2
+127211,272,0.5153, Cheshire  ,5,8,10,5,10,10,2,2,4
+127212,272,1.0307, Cheshire  ,7,10,10,7,9,8,2,2,3
+127213,272,0.5153, Cheshire  ,0,10,10,2,2,10,2,2,4
+127214,272,0.5153, Cheshire  ,3,8,6,4,5,8,2,2,2
+127215,272,1.0307, Cheshire  ,5,6,6,6,5,6,4,4,3
+127216,272,1.0307, Cheshire  ,8,10,9,7,4,6,2,3,4
+127218,272,0.5153, Cheshire  ,7,8,8,6,7,7,2,2,2
+127219,272,1.0307, Cheshire  ,6,9,9,9,9,6,4,3,4
+127301,273,0.5153, Merseyside  ,5,8,8,5,6,5,2,2,2
+127303,273,1.546, Merseyside  ,4,8,8,5,6,6,3,2,2
+127304,273,0.5153, Merseyside  ,10,10,10,10,10,9,2,2,2
+127307,273,0.5153, Merseyside  ,8,6,8,6,6,8,2,4,2
+127310,273,1.0307, Merseyside  ,8,8,8,6,8,6,2,4,4
+127311,273,1.546, Merseyside  ,7,8,8,7,7,8,4,4,3
+127314,273,1.0307, Merseyside  ,8,8,8,8,8,9,2,2,2
+127315,273,1.0307, Merseyside  ,8,8,8,6,5,7,2,4,NA
+127316,273,0.5153, Merseyside  ,10,10,10,4,10,8,2,3,4
+127318,273,1.0307, Merseyside  ,7,10,8,5,8,8,2,2,3
+127401,274,1.0307, Merseyside  ,2,10,10,9,9,9,3,4,3
+127404,274,1.546, Merseyside  ,9,10,10,8,9,9,2,2,2
+127406,274,1.546, Merseyside  ,6,9,9,8,8,10,4,4,4
+127408,274,1.0307, Merseyside  ,5,10,10,8,10,10,2,1,2
+127411,274,1.0307, Merseyside  ,9,10,10,1,9,10,4,4,2
+127412,274,1.0307, Merseyside  ,10,10,10,10,10,10,1,2,1
+127413,274,0.5153, Merseyside  ,10,10,10,10,10,6,2,4,2
+127415,274,1.0307, Merseyside  ,7,10,8,5,5,5,4,2,2
+127417,274,1.0307, Merseyside  ,8,10,8,7,NA,NA,1,4,2
+127419,274,0.5153, Merseyside  ,6,8,7,6,7,7,4,2,2
+127503,275,1.0307, Merseyside  ,8,8,8,4,4,7,2,2,3
+127504,275,1.0307, Merseyside  ,3,8,8,1,6,7,2,2,3
+127511,275,1.546, Merseyside  ,10,10,8,8,10,10,3,4,2
+127513,275,0.5153, Merseyside  ,10,10,6,10,0,0,2,2,2
+127516,275,1.0307, Merseyside  ,7,9,8,7,8,7,2,2,2
+127518,275,0.5153, Merseyside  ,2,6,6,3,5,5,2,3,2
+127601,276,1.0307, Merseyside  ,3,8,8,6,6,7,4,4,4
+127602,276,0.5153, Merseyside  ,4,9,8,7,7,8,2,2,2
+127603,276,2.0613, Merseyside  ,6,9,8,3,8,7,2,4,4
+127604,276,1.0307, Merseyside  ,5,10,10,7,7,8,2,2,4
+127606,276,2.0613, Merseyside  ,8,8,9,5,5,9,3,4,4
+127610,276,0.5153, Merseyside  ,8,10,8,4,4,5,2,4,3
+127615,276,1.0307, Merseyside  ,8,10,10,8,8,7,4,4,3
+127617,276,0.8012, Merseyside  ,4,8,4,5,5,7,4,4,3
+127618,276,0.5153, Merseyside  ,7,10,8,5,7,8,2,3,3
+127620,276,0.5153, Merseyside  ,8,9,9,9,10,9,1,2,2
+127703,277,0.5153, Merseyside  ,4,10,8,5,4,7,2,3,2
+127706,277,0.5153, Merseyside  ,7,10,10,5,8,7,3,3,NA
+127711,277,1.0307, Merseyside  ,9,9,8,8,8,7,3,3,3
+127713,277,0.5153, Merseyside  ,5,9,9,5,7,8,2,2,3
+127714,277,1.546, Merseyside  ,3,9,9,5,5,5,2,2,3
+127715,277,1.0307, Merseyside  ,5,5,7,7,5,5,2,2,2
+127719,277,1.546, Merseyside  ,5,10,10,5,5,8,2,2,2
+127720,277,0.5153, Merseyside  ,10,10,10,10,10,10,1,2,2
+127802,278,1.0307, Merseyside  ,10,10,10,8,8,10,3,3,2
+127803,278,1.546, Merseyside  ,5,8,8,4,8,6,2,3,3
+127808,278,1.0307, Merseyside  ,6,10,10,8,9,7,2,4,4
+127809,278,2.5767, Merseyside  ,6,7,7,6,8,5,2,2,4
+127811,278,1.0307, Merseyside  ,3,8,9,3,9,6,3,4,3
+127813,278,0.5153, Merseyside  ,3,10,10,7,10,10,3,3,2
+127814,278,2.0613, Merseyside  ,6,10,10,7,7,8,4,2,2
+127816,278,1.546, Merseyside  ,7,8,7,4,8,8,2,3,2
+127818,278,0.5153, Merseyside  ,5,10,10,7,10,10,3,3,3
+127906,279,1.0307, Greater Manchester  ,8,4,8,8,8,8,2,2,2
+127907,279,0.5153, Greater Manchester  ,7,7,9,7,10,10,2,3,4
+127908,279,1.0307, Greater Manchester  ,7,7,9,4,9,8,4,3,3
+127909,279,0.5153, Greater Manchester  ,5,7,7,7,8,8,3,3,2
+127911,279,1.0307, Greater Manchester  ,9,9,10,4,10,8,2,2,2
+127914,279,0.5153, Greater Manchester  ,7,7,10,6,7,5,NA,3,4
+127915,279,1.0307, Greater Manchester  ,7,7,5,5,10,10,3,2,2
+127916,279,1.546, Greater Manchester  ,8,10,10,10,10,10,3,3,3
+127918,279,1.0307, Greater Manchester  ,10,10,10,7,10,10,1,1,2
+127920,279,0.5153, Greater Manchester  ,2,7,7,5,5,6,2,3,2
+128001,280,1.546, Greater Manchester  ,6,7,7,7,7,6,2,3,2
+128002,280,1.0307, Greater Manchester  ,4,7,6,5,5,5,2,2,3
+128003,280,0.5153, Greater Manchester  ,8,10,10,5,8,10,2,2,2
+128005,280,0.5153, Greater Manchester  ,5,7,7,7,9,8,3,4,3
+128007,280,1.0307, Greater Manchester  ,6,8,8,7,8,7,3,4,2
+128011,280,1.0307, Greater Manchester  ,5,8,8,6,7,8,2,3,3
+128015,280,2.0613, Greater Manchester  ,10,10,9,8,8,9,2,3,2
+128018,280,1.0307, Greater Manchester  ,6,9,8,8,7,6,2,4,2
+128019,280,1.0307, Greater Manchester  ,6,8,6,3,6,5,2,2,2
+128101,281,1.0307, Greater Manchester  ,6,10,8,8,7,8,2,2,2
+128103,281,1.0307, Greater Manchester  ,5,8,5,5,5,5,4,2,2
+128104,281,1.0307, Greater Manchester  ,6,9,9,8,9,9,2,3,2
+128107,281,1.546, Greater Manchester  ,1,10,9,6,5,8,1,5,4
+128108,281,1.0307, Greater Manchester  ,9,10,10,7,10,10,1,2,1
+128109,281,2.0613, Greater Manchester  ,2,8,8,3,5,8,4,4,2
+128110,281,1.0307, Greater Manchester  ,1,8,8,5,5,NA,2,3,2
+128114,281,1.0307, Greater Manchester  ,0,10,9,8,8,2,2,2,3
+128116,281,1.0307, Greater Manchester  ,6,7,8,4,NA,8,2,4,2
+128117,281,1.0307, Greater Manchester  ,3,7,6,4,5,6,2,3,4
+128204,282,1.0307, Greater Manchester  ,5,7,8,7,5,4,2,2,2
+128206,282,1.0307, Greater Manchester  ,9,6,9,9,8,8,2,2,2
+128207,282,0.5153, Greater Manchester  ,5,8,7,7,5,7,2,2,2
+128209,282,1.0307, Greater Manchester  ,5,6,9,7,5,8,2,2,2
+128213,282,1.0307, Greater Manchester  ,5,10,10,7,10,10,4,4,2
+128217,282,1.546, Greater Manchester  ,8,8,7,8,8,8,2,2,2
+128220,282,2.0613, Greater Manchester  ,5,7,6,3,6,6,2,2,2
+128302,283,0.5153, Greater Manchester  ,10,8,5,5,8,8,2,2,4
+128303,283,1.546, Greater Manchester  ,7,0,10,5,7,7,1,4,2
+128305,283,1.0307, Greater Manchester  ,10,10,10,5,10,10,2,4,2
+128306,283,1.0307, Greater Manchester  ,6,9,8,6,8,6,1,4,3
+128307,283,1.546, Greater Manchester  ,8,10,10,8,10,10,1,1,2
+128308,283,2.0613, Greater Manchester  ,0,10,10,0,10,9,4,2,5
+128310,283,1.546, Greater Manchester  ,6,3,7,4,7,3,2,2,2
+128312,283,2.5767, Greater Manchester  ,0,10,10,5,0,5,3,2,4
+128313,283,1.0307, Greater Manchester  ,5,10,10,5,5,7,2,2,2
+128315,283,0.5153, Greater Manchester  ,4,7,7,6,6,8,2,3,2
+128403,284,0.5153, Greater Manchester  ,8,9,9,2,9,9,4,2,4
+128406,284,1.546, Greater Manchester  ,6,6,8,5,9,10,4,2,2
+128409,284,0.5153, Greater Manchester  ,7,10,10,1,10,6,4,4,4
+128410,284,1.0307, Greater Manchester  ,4,10,7,5,7,7,3,3,3
+128411,284,1.0307, Greater Manchester  ,0,10,9,5,8,9,2,2,2
+128412,284,1.0307, Greater Manchester  ,5,7,7,5,7,6,3,4,2
+128413,284,1.0307, Greater Manchester  ,7,10,10,5,8,8,2,3,3
+128416,284,0.5153, Greater Manchester  ,8,8,9,7,6,8,4,2,2
+128418,284,0.5153, Greater Manchester  ,5,6,8,5,8,8,2,2,2
+128419,284,1.0307, Greater Manchester  ,6,10,10,10,10,10,3,2,2
+128501,285,1.0307, Greater Manchester  ,7,10,10,4,9,10,3,4,3
+128504,285,1.0307, Greater Manchester  ,7,9,7,7,6,7,1,2,3
+128506,285,1.0307, Greater Manchester  ,9,9,10,7,9,9,4,4,4
+128507,285,0.5153, Greater Manchester  ,5,10,5,5,10,10,5,5,2
+128508,285,2.0613, Greater Manchester  ,5,8,7,7,7,7,2,4,2
+128515,285,2.5767, Greater Manchester  ,8,9,9,6,7,8,4,3,4
+128516,285,1.0307, Greater Manchester  ,5,10,10,5,8,10,2,2,2
+128517,285,2.0613, Greater Manchester  ,9,10,9,9,7,8,2,3,2
+128602,286,1.546, Greater Manchester  ,NA,9,9,2,5,4,3,3,2
+128603,286,0.5153, Greater Manchester  ,5,7,7,7,7,8,2,2,NA
+128604,286,1.0307, Greater Manchester  ,8,7,7,7,7,7,NA,3,4
+128611,286,0.5153, Greater Manchester  ,2,10,10,8,10,10,4,4,2
+128612,286,0.5153, Greater Manchester  ,NA,8,NA,4,3,4,2,2,2
+128613,286,1.0307, Greater Manchester  ,5,8,10,5,10,8,3,NA,2
+128620,286,1.0307, Greater Manchester  ,3,10,10,5,5,8,2,2,2
+128702,287,4, Greater Manchester  ,10,10,10,10,10,10,2,2,2
+128703,287,1.546, Greater Manchester  ,8,8,8,8,8,8,4,3,3
+128704,287,1.0307, Greater Manchester  ,6,7,7,6,7,7,2,2,4
+128707,287,0.5153, Greater Manchester  ,5,9,8,6,6,6,3,4,1
+128708,287,0.5153, Greater Manchester  ,9,10,10,5,6,5,4,4,3
+128710,287,1.546, Greater Manchester  ,8,10,9,7,7,8,4,4,3
+128716,287,0.5153, Greater Manchester  ,5,8,9,3,9,6,2,4,3
+128717,287,1.0307, Greater Manchester  ,10,10,10,10,10,10,4,4,4
+128718,287,1.546, Greater Manchester  ,7,9,8,5,5,8,4,5,3
+128801,288,0.5153, Lancashire  ,8,10,10,10,8,8,3,3,2
+128803,288,1.0307, Lancashire  ,5,8,8,8,8,7,2,2,2
+128804,288,1.546, Lancashire  ,10,10,10,5,10,10,2,2,2
+128807,288,1.0307, Lancashire  ,7,9,9,7,8,7,3,4,2
+128808,288,1.0307, Lancashire  ,2,10,8,7,7,7,2,2,2
+128809,288,1.0307, Lancashire  ,10,10,10,10,10,10,2,4,4
+128810,288,0.5153, Lancashire  ,8,10,8,6,8,8,2,4,3
+128811,288,1.0307, Lancashire  ,5,10,10,10,10,10,2,2,2
+128812,288,1.546, Lancashire  ,10,10,10,10,10,10,2,2,3
+128813,288,1.0307, Lancashire  ,7,10,8,5,10,8,2,4,2
+128814,288,0.5153, Lancashire  ,10,10,10,5,7,7,2,2,2
+128815,288,1.0307, Lancashire  ,2,10,10,6,8,8,3,3,2
+128817,288,1.0307, Lancashire  ,6,10,10,7,7,9,3,4,2
+128818,288,0.5153, Lancashire  ,5,10,10,7,8,8,2,4,2
+128901,289,1.0307, Lancashire  ,6,8,10,6,8,8,5,3,2
+128902,289,1.0307, Lancashire  ,0,9,8,4,0,8,2,2,4
+128905,289,0.5153, Lancashire  ,5,9,9,5,5,9,2,3,3
+128906,289,1.0307, Lancashire  ,8,10,8,4,6,5,2,4,2
+128908,289,1.0307, Lancashire  ,6,9,6,4,4,7,4,5,4
+128909,289,0.5153, Lancashire  ,5,8,8,4,5,5,NA,3,3
+128910,289,1.0307, Lancashire  ,1,8,5,8,6,6,3,3,2
+128911,289,1.0307, Lancashire  ,8,8,9,5,8,9,3,3,3
+128915,289,1.0307, Lancashire  ,8,10,1,8,10,9,2,2,2
+129004,290,1.546, Lancashire  ,6,7,8,7,6,6,2,2,3
+129005,290,0.5153, Lancashire  ,6,8,8,6,6,5,2,4,2
+129006,290,1.0307, Lancashire  ,6,10,8,6,9,8,4,2,2
+129007,290,2.0613, Lancashire  ,8,10,9,8,9,8,2,2,2
+129009,290,1.0307, Lancashire  ,4,9,9,9,7,5,2,2,2
+129012,290,1.0307, Lancashire  ,7,8,10,2,5,10,4,4,4
+129013,290,1.0307, Lancashire  ,2,8,7,3,8,8,3,3,2
+129015,290,0.5153, Lancashire  ,10,7,9,7,8,7,2,4,2
+129016,290,0.5153, Lancashire  ,5,8,9,6,8,8,3,3,3
+129017,290,1.0307, Lancashire  ,2,8,7,7,8,8,2,3,2
+129103,291,2.0613, Lancashire  ,9,10,7,10,5,10,2,2,2
+129104,291,1.0307, Lancashire  ,5,10,10,8,8,9,2,2,3
+129105,291,1.546, Lancashire  ,6,10,10,5,10,10,2,3,4
+129106,291,1.0307, Lancashire  ,8,9,10,8,9,9,4,2,2
+129107,291,1.0307, Lancashire  ,4,10,10,4,7,10,4,4,4
+129108,291,2.5767, Lancashire  ,4,7,7,5,6,5,3,3,4
+129109,291,1.546, Lancashire  ,10,10,10,10,10,10,2,4,4
+129111,291,1.0307, Lancashire  ,7,8,10,4,8,8,2,4,4
+129114,291,1.0307, Lancashire  ,8,10,10,8,8,10,2,4,2
+129118,291,1.0307, Lancashire  ,5,10,10,3,7,6,2,5,4
+129119,291,1.546, Lancashire  ,8,8,8,4,4,8,4,4,2
+129201,292,0.5153, Lancashire  ,10,10,10,7,10,10,2,2,2
+129204,292,0.5153, Lancashire  ,6,8,8,6,5,6,3,3,2
+129206,292,0.5153, Lancashire  ,7,9,9,5,7,7,3,4,2
+129208,292,1.0307, Lancashire  ,5,8,6,6,6,7,1,2,1
+129210,292,0.5153, Lancashire  ,7,10,10,3,8,3,2,2,2
+129211,292,1.0307, Lancashire  ,10,10,10,10,10,10,3,4,4
+129213,292,0.5153, Lancashire  ,6,10,10,5,6,8,2,2,2
+129214,292,2.0613, Lancashire  ,6,10,9,8,6,5,2,3,2
+129216,292,0.5153, Lancashire  ,6,9,9,8,8,8,2,4,2
+129218,292,2.0613, Lancashire  ,8,10,10,9,9,7,4,2,2
+129220,292,1.0307, Lancashire  ,10,10,10,3,10,7,2,3,2
+129301,293,1.0307, Lancashire  ,2,10,10,8,10,10,2,4,2
+129302,293,1.0307, Lancashire  ,10,10,10,10,9,10,3,5,1
+129307,293,3.092, Lancashire  ,10,10,9,3,9,10,2,4,2
+129310,293,1.0307, Lancashire  ,9,10,10,10,10,8,2,3,2
+129313,293,2.5767, Lancashire  ,8,9,9,9,9,10,3,2,2
+129317,293,0.5153, Lancashire  ,10,10,10,10,6,10,2,4,2
+129318,293,2.5767, Lancashire  ,10,10,10,5,8,8,2,4,4
+129320,293,3.092, Lancashire  ,10,10,10,10,10,10,1,4,2
+129403,294,1.0307, South Yorkshire  ,10,9,7,8,5,4,1,2,2
+129404,294,1.0307, South Yorkshire  ,10,10,10,5,8,8,3,2,3
+129406,294,0.5153, South Yorkshire  ,8,8,8,3,6,0,4,4,3
+129408,294,1.0307, South Yorkshire  ,7,9,9,0,5,5,2,4,3
+129411,294,1.546, South Yorkshire  ,10,10,10,10,10,10,2,4,2
+129413,294,1.0307, South Yorkshire  ,3,10,10,7,7,10,2,4,2
+129414,294,1.0307, South Yorkshire  ,6,9,9,9,9,10,2,2,2
+129420,294,1.0307, South Yorkshire  ,7,8,8,5,7,8,2,4,2
+129501,295,1.0307, South Yorkshire  ,6,8,8,7,8,8,3,2,2
+129502,295,1.0307, South Yorkshire  ,6,5,5,4,4,5,2,2,2
+129504,295,0.5153, South Yorkshire  ,4,8,6,5,6,5,2,3,2
+129507,295,1.0307, South Yorkshire  ,6,9,9,6,8,8,2,2,2
+129509,295,1.0307, South Yorkshire  ,10,10,10,7,8,10,2,2,2
+129510,295,1.0307, South Yorkshire  ,7,9,9,5,4,8,2,2,3
+129511,295,0.5153, South Yorkshire  ,10,10,10,8,8,8,2,3,2
+129513,295,1.0307, South Yorkshire  ,0,10,10,5,5,5,4,4,3
+129514,295,1.546, South Yorkshire  ,10,10,10,1,5,10,3,3,2
+129515,295,1.0307, South Yorkshire  ,3,9,9,3,5,5,3,4,4
+129518,295,1.0307, South Yorkshire  ,5,8,8,3,5,8,2,2,3
+129519,295,1.0307, South Yorkshire  ,4,7,6,6,6,5,3,3,3
+129520,295,1.0307, South Yorkshire  ,8,10,10,3,5,9,4,3,4
+129601,296,1.0307, South Yorkshire  ,4,5,4,3,3,4,3,2,2
+129603,296,0.5153, South Yorkshire  ,8,9,10,3,6,7,5,4,3
+129605,296,1.0307, South Yorkshire  ,6,6,6,6,6,6,2,2,2
+129606,296,1.0307, South Yorkshire  ,8,10,10,3,10,9,1,5,3
+129610,296,0.5153, South Yorkshire  ,1,10,8,8,4,4,1,1,2
+129612,296,1.0307, South Yorkshire  ,6,9,8,7,7,7,3,4,2
+129613,296,4, South Yorkshire  ,8,7,8,6,8,7,3,4,2
+129614,296,1.0307, South Yorkshire  ,5,10,10,5,10,10,5,5,3
+129615,296,0.5153, South Yorkshire  ,4,3,5,4,8,5,3,4,4
+129618,296,3.092, South Yorkshire  ,6,8,7,4,7,5,3,2,4
+129620,296,1.546, South Yorkshire  ,5,10,10,3,5,4,3,2,1
+129701,297,1.0307, South Yorkshire  ,7,7,7,5,7,7,2,4,1
+129702,297,0.5153, South Yorkshire  ,8,10,10,5,5,10,2,2,2
+129707,297,1.0307, South Yorkshire  ,1,7,6,2,8,9,2,4,2
+129708,297,1.0307, South Yorkshire  ,3,7,7,3,6,6,2,2,4
+129713,297,1.0307, South Yorkshire  ,6,9,10,7,8,6,2,4,4
+129715,297,1.0307, South Yorkshire  ,10,10,10,10,10,5,2,4,3
+129716,297,1.0307, South Yorkshire  ,0,8,8,3,5,5,2,4,3
+129717,297,1.0307, South Yorkshire  ,1,10,8,8,5,5,2,2,1
+129718,297,1.0307, South Yorkshire  ,7,10,10,0,10,10,3,3,3
+129719,297,2.0613, South Yorkshire  ,7,8,8,3,4,6,2,4,2
+129720,297,1.0307, South Yorkshire  ,7,8,8,8,7,7,2,2,2
+129801,298,2.0613, South Yorkshire  ,10,10,10,10,10,10,3,2,3
+129802,298,1.0307, South Yorkshire  ,6,6,8,6,8,6,3,4,4
+129804,298,1.0307, South Yorkshire  ,5,8,8,8,8,10,3,3,4
+129806,298,1.0307, South Yorkshire  ,4,8,9,7,8,8,2,3,2
+129808,298,1.0307, South Yorkshire  ,3,10,8,7,7,6,2,2,4
+129811,298,0.5153, South Yorkshire  ,6,10,10,6,6,8,1,4,3
+129812,298,3.092, South Yorkshire  ,5,10,10,3,5,7,3,4,3
+129819,298,0.5153, South Yorkshire  ,2,8,8,4,6,5,3,3,4
+129901,299,1.0307, West Yorkshire  ,2,8,8,6,8,8,4,4,3
+129906,299,0.5153, West Yorkshire  ,0,10,7,8,6,5,2,4,2
+129910,299,1.0307, West Yorkshire  ,6,8,8,5,8,7,NA,4,2
+129912,299,1.0307, West Yorkshire  ,7,10,8,6,8,8,2,3,2
+129913,299,0.5153, West Yorkshire  ,9,10,10,8,10,10,4,4,2
+129914,299,1.0307, West Yorkshire  ,8,10,9,8,8,7,1,1,2
+129917,299,0.5153, West Yorkshire  ,NA,10,NA,NA,NA,NA,NA,NA,NA
+129918,299,0.5153, West Yorkshire  ,5,5,5,5,5,5,NA,NA,NA
+129919,299,0.5153, West Yorkshire  ,8,10,7,7,7,6,2,2,2
+129920,299,1.0307, West Yorkshire  ,2,10,8,4,4,7,2,2,2
+130002,300,1.0307, West Yorkshire  ,5,8,8,4,8,8,2,2,2
+130005,300,1.0307, West Yorkshire  ,8,10,7,7,5,5,2,2,2
+130006,300,3.092, West Yorkshire  ,3,10,7,4,7,7,4,5,4
+130010,300,1.0307, West Yorkshire  ,4,9,9,3,8,8,2,3,2
+130011,300,1.546, West Yorkshire  ,7,8,9,7,8,9,1,2,3
+130018,300,1.0307, West Yorkshire  ,3,8,8,6,NA,6,NA,3,2
+130019,300,0.5153, West Yorkshire  ,5,10,10,4,7,8,2,4,2
+130101,301,1.0141, West Yorkshire  ,0,10,7,3,2,5,2,3,2
+130103,301,1.0141, West Yorkshire  ,8,10,10,10,10,10,2,2,3
+130104,301,0.5071, West Yorkshire  ,7,10,10,8,6,3,3,3,2
+130105,301,1.0141, West Yorkshire  ,9,9,9,8,7,7,2,3,3
+130106,301,0.5071, West Yorkshire  ,8,9,9,8,9,9,2,2,2
+130108,301,2.0282, West Yorkshire  ,5,10,10,7,8,8,3,3,3
+130110,301,1.0141, West Yorkshire  ,7,10,8,5,5,10,2,2,3
+130111,301,1.5212, West Yorkshire  ,8,7,9,7,9,9,2,4,2
+130112,301,1.0141, West Yorkshire  ,7,9,7,6,7,8,4,4,4
+130113,301,0.5071, West Yorkshire  ,6,9,9,6,6,8,2,3,3
+130116,301,1.5212, West Yorkshire  ,10,9,7,10,6,5,2,2,2
+130117,301,1.0141, West Yorkshire  ,8,8,9,9,7,9,2,2,2
+130201,302,1.0141, West Yorkshire  ,5,10,10,6,8,10,2,3,2
+130204,302,1.0141, West Yorkshire  ,10,10,10,8,8,7,3,4,4
+130205,302,0.5071, West Yorkshire  ,8,10,10,7,10,10,2,3,4
+130206,302,1.5212, West Yorkshire  ,1,10,10,6,8,10,4,4,2
+130210,302,1.0141, West Yorkshire  ,1,9,10,3,6,8,2,4,3
+130212,302,0.5071, West Yorkshire  ,6,9,10,5,NA,5,4,3,3
+130215,302,2.0282, West Yorkshire  ,10,10,10,1,10,10,2,2,2
+130218,302,1.0141, West Yorkshire  ,6,6,8,8,8,6,2,3,2
+130301,303,0.5071, West Yorkshire  ,10,10,10,6,2,5,2,2,2
+130304,303,0.5071, West Yorkshire  ,8,9,9,9,9,7,2,2,1
+130305,303,0.5071, West Yorkshire  ,6,8,9,6,5,7,2,2,3
+130306,303,1.0141, West Yorkshire  ,5,6,5,5,5,7,3,3,2
+130307,303,1.0141, West Yorkshire  ,6,9,7,6,6,7,3,4,4
+130308,303,0.5071, West Yorkshire  ,8,8,8,5,7,9,2,2,2
+130310,303,1.0141, West Yorkshire  ,9,9,9,7,7,8,2,2,2
+130311,303,1.0141, West Yorkshire  ,8,10,8,8,6,9,4,2,2
+130312,303,1.0141, West Yorkshire  ,5,9,9,7,6,6,4,2,3
+130315,303,0.5071, West Yorkshire  ,7,8,9,6,7,7,2,2,2
+130318,303,1.0141, West Yorkshire  ,7,8,8,6,7,7,4,2,2
+130319,303,1.0141, West Yorkshire  ,2,8,9,2,7,8,1,4,2
+130320,303,1.0141, West Yorkshire  ,7,10,8,4,8,8,4,4,3
+130407,304,2.5353, West Yorkshire  ,4,8,9,3,6,6,4,NA,4
+130408,304,1.0141, West Yorkshire  ,2,5,8,4,6,6,2,2,2
+130409,304,1.0141, West Yorkshire  ,6,10,8,5,5,8,3,2,2
+130410,304,2.0282, West Yorkshire  ,5,8,8,5,6,8,2,3,2
+130413,304,0.5071, West Yorkshire  ,8,9,10,5,8,8,1,2,1
+130414,304,1.0141, West Yorkshire  ,10,9,10,10,NA,10,2,NA,NA
+130415,304,1.0141, West Yorkshire  ,6,10,10,4,10,8,2,4,4
+130416,304,1.0141, West Yorkshire  ,10,10,10,10,10,10,1,2,2
+130417,304,2.0282, West Yorkshire  ,7,7,5,5,5,6,2,4,4
+130420,304,0.5071, West Yorkshire  ,8,10,7,5,10,9,5,5,5
+130501,305,1.5212, West Yorkshire  ,10,10,10,10,10,5,1,1,1
+130502,305,0.5071, West Yorkshire  ,10,10,10,10,10,10,5,5,5
+130503,305,1.0141, West Yorkshire  ,10,10,10,10,10,10,1,2,1
+130504,305,0.5071, West Yorkshire  ,10,10,10,10,10,10,1,1,1
+130505,305,2.0282, West Yorkshire  ,10,10,10,10,10,10,2,2,5
+130506,305,0.5071, West Yorkshire  ,10,8,8,8,8,6,2,2,2
+130508,305,1.0141, West Yorkshire  ,10,10,10,10,10,10,1,1,1
+130509,305,1.0141, West Yorkshire  ,10,10,10,10,10,10,3,2,2
+130511,305,1.0141, West Yorkshire  ,10,10,9,10,1,5,1,2,1
+130512,305,0.5071, West Yorkshire  ,10,10,10,10,10,10,1,1,1
+130513,305,1.0141, West Yorkshire  ,10,10,10,10,10,10,1,1,1
+130515,305,0.5071, West Yorkshire  ,10,10,10,10,10,10,1,1,1
+130516,305,0.5071, West Yorkshire  ,10,10,10,10,10,10,1,1,1
+130517,305,1.0141, West Yorkshire  ,10,10,10,10,10,10,1,1,1
+130518,305,2.0282, West Yorkshire  ,10,10,10,10,10,10,1,1,1
+130602,306,0.5071, West Yorkshire  ,3,10,7,5,6,8,2,4,NA
+130604,306,0.5071, West Yorkshire  ,10,10,10,10,8,10,2,2,1
+130606,306,2.5353, West Yorkshire  ,7,10,8,5,8,8,2,2,2
+130607,306,0.5071, West Yorkshire  ,0,10,9,4,1,7,2,4,2
+130610,306,1.5212, West Yorkshire  ,8,9,9,8,9,5,2,2,2
+130615,306,2.0282, West Yorkshire  ,9,10,10,10,10,10,2,2,2
+130618,306,0.5071, West Yorkshire  ,5,10,10,5,10,0,2,3,3
+130619,306,0.5071, West Yorkshire  ,9,10,10,4,5,5,3,3,2
+130702,307,1.0141, North Yorkshire and Humberside  ,3,8,8,6,3,5,2,3,2
+130703,307,1.5212, North Yorkshire and Humberside  ,6,7,10,4,4,7,4,3,3
+130708,307,0.5071, North Yorkshire and Humberside  ,6,7,7,6,6,6,2,2,2
+130709,307,1.0141, North Yorkshire and Humberside  ,4,8,8,4,6,7,2,4,NA
+130712,307,0.5071, North Yorkshire and Humberside  ,7,7,9,4,5,6,NA,2,2
+130713,307,0.5071, North Yorkshire and Humberside  ,3,9,8,6,4,NA,2,2,NA
+130715,307,1.0141, North Yorkshire and Humberside  ,6,10,10,10,5,4,2,2,2
+130718,307,1.0141, North Yorkshire and Humberside  ,3,7,8,5,5,5,2,NA,4
+130720,307,0.5071, North Yorkshire and Humberside  ,6,9,8,4,6,5,3,4,2
+130804,308,1.5212, North Yorkshire and Humberside  ,9,10,10,10,9,7,5,5,4
+130805,308,1.0141, North Yorkshire and Humberside  ,7,9,9,8,8,8,2,2,2
+130806,308,0.5071, North Yorkshire and Humberside  ,8,10,10,NA,NA,8,1,2,4
+130807,308,0.5071, North Yorkshire and Humberside  ,6,8,8,4,7,8,2,4,4
+130808,308,1.0141, North Yorkshire and Humberside  ,10,10,10,10,5,10,4,4,3
+130809,308,0.5071, North Yorkshire and Humberside  ,7,9,10,7,4,6,2,2,2
+130810,308,1.0141, North Yorkshire and Humberside  ,6,10,10,5,5,10,4,4,2
+130813,308,1.0141, North Yorkshire and Humberside  ,7,10,10,10,10,5,2,2,3
+130814,308,0.5071, North Yorkshire and Humberside  ,6,10,8,7,7,9,1,2,2
+130816,308,1.0141, North Yorkshire and Humberside  ,10,10,10,6,4,9,4,4,4
+130819,308,1.0141, North Yorkshire and Humberside  ,3,8,9,5,4,5,3,4,3
+130905,309,0.5071, North Yorkshire and Humberside  ,4,10,10,5,4,7,2,3,2
+130906,309,0.5071, North Yorkshire and Humberside  ,7,10,10,5,8,9,3,4,4
+130907,309,0.5071, North Yorkshire and Humberside  ,10,10,10,10,10,10,4,4,2
+130908,309,1.0141, North Yorkshire and Humberside  ,10,10,10,9,9,8,3,4,3
+130909,309,0.5071, North Yorkshire and Humberside  ,7,9,10,7,7,7,2,4,4
+130911,309,1.0141, North Yorkshire and Humberside  ,7,10,7,7,7,10,2,4,2
+130913,309,0.5071, North Yorkshire and Humberside  ,5,8,9,7,7,7,4,4,4
+130916,309,0.5071, North Yorkshire and Humberside  ,7,8,9,8,7,6,3,3,2
+130917,309,0.5071, North Yorkshire and Humberside  ,10,10,10,10,5,4,2,3,2
+130918,309,1.0141, North Yorkshire and Humberside  ,2,7,7,3,6,7,4,3,2
+130919,309,0.5071, North Yorkshire and Humberside  ,5,8,8,7,9,9,2,4,4
+130920,309,0.5071, North Yorkshire and Humberside  ,8,8,8,8,10,8,2,2,2
+131001,310,0.5071, North Yorkshire and Humberside  ,7,8,8,6,8,8,2,2,2
+131003,310,0.5071, North Yorkshire and Humberside  ,NA,10,10,NA,NA,NA,2,3,2
+131004,310,1.0141, North Yorkshire and Humberside  ,6,10,10,5,NA,5,3,2,2
+131005,310,1.5212, North Yorkshire and Humberside  ,9,10,9,8,10,10,5,5,5
+131006,310,2.0282, North Yorkshire and Humberside  ,5,8,8,6,8,8,2,2,2
+131007,310,1.0141, North Yorkshire and Humberside  ,2,4,7,4,5,6,4,2,2
+131011,310,0.5071, North Yorkshire and Humberside  ,10,10,10,7,NA,7,3,NA,NA
+131012,310,1.0141, North Yorkshire and Humberside  ,5,8,9,6,8,6,2,4,4
+131013,310,1.0141, North Yorkshire and Humberside  ,0,10,10,10,1,7,1,2,3
+131014,310,1.5212, North Yorkshire and Humberside  ,4,9,5,3,NA,NA,4,4,NA
+131017,310,2.0282, North Yorkshire and Humberside  ,0,8,9,6,9,7,2,4,4
+131018,310,1.0141, North Yorkshire and Humberside  ,9,10,10,6,10,9,2,2,2
+131019,310,1.0141, North Yorkshire and Humberside  ,4,7,8,3,4,5,4,4,4
+131020,310,1.5212, North Yorkshire and Humberside  ,4,7,7,5,6,4,2,4,4
+131101,311,0.5071, North Yorkshire and Humberside  ,8,8,8,6,6,8,3,3,3
+131102,311,0.5071, North Yorkshire and Humberside  ,9,10,9,7,6,6,2,2,2
+131104,311,0.5071, North Yorkshire and Humberside  ,4,7,8,6,6,8,3,4,4
+131105,311,1.0141, North Yorkshire and Humberside  ,8,10,5,5,7,8,4,4,4
+131108,311,1.0141, North Yorkshire and Humberside  ,10,10,8,6,6,6,4,4,2
+131109,311,0.5071, North Yorkshire and Humberside  ,6,9,10,6,6,5,2,2,2
+131111,311,1.0141, North Yorkshire and Humberside  ,2,8,8,5,5,4,2,4,2
+131112,311,0.5071, North Yorkshire and Humberside  ,5,10,10,5,5,5,2,2,4
+131116,311,1.0141, North Yorkshire and Humberside  ,7,9,9,8,9,8,2,2,3
+131117,311,1.0141, North Yorkshire and Humberside  ,2,9,9,6,9,8,3,3,4
+131119,311,1.0141, North Yorkshire and Humberside  ,9,9,9,5,9,9,2,3,3
+131205,312,0.5071, North Yorkshire and Humberside  ,2,10,8,8,8,5,1,3,2
+131208,312,1.0141, North Yorkshire and Humberside  ,5,6,7,8,5,5,2,4,2
+131209,312,0.5071, North Yorkshire and Humberside  ,2,10,10,4,8,5,4,4,4
+131211,312,0.5071, North Yorkshire and Humberside  ,7,10,10,8,5,10,3,2,3
+131214,312,0.5071, North Yorkshire and Humberside  ,6,8,9,6,3,4,2,3,3
+131217,312,1.0141, North Yorkshire and Humberside  ,3,8,9,5,3,5,3,4,4
+131303,313,1.0141, North Yorkshire and Humberside  ,9,10,10,9,10,10,2,2,2
+131304,313,1.0141, North Yorkshire and Humberside  ,5,10,10,6,7,7,2,2,2
+131307,313,1.0141, North Yorkshire and Humberside  ,8,10,10,7,7,7,2,4,2
+131309,313,1.0141, North Yorkshire and Humberside  ,10,10,10,NA,6,7,4,3,4
+131310,313,1.5212, North Yorkshire and Humberside  ,10,10,8,5,5,5,4,4,4
+131311,313,2.0282, North Yorkshire and Humberside  ,4,8,8,4,5,4,4,4,3
+131312,313,0.5071, North Yorkshire and Humberside  ,5,9,7,5,4,8,2,3,4
+131313,313,2.0282, North Yorkshire and Humberside  ,8,9,9,6,8,8,3,3,4
+131315,313,1.0141, North Yorkshire and Humberside  ,3,10,10,5,7,10,2,3,4
+131317,313,1.0141, North Yorkshire and Humberside  ,6,8,7,4,4,4,2,2,4
+131318,313,1.5212, North Yorkshire and Humberside  ,4,10,8,0,8,7,2,4,3
+131319,313,0.5071, North Yorkshire and Humberside  ,9,10,10,9,9,8,1,1,2
+131401,314,1.0141, Cleveland and County Durham  ,0,10,10,5,5,5,2,2,2
+131402,314,0.5071, Cleveland and County Durham  ,4,8,9,9,6,8,2,2,2
+131404,314,0.5071, Cleveland and County Durham  ,5,10,10,5,9,5,2,2,4
+131406,314,1.0141, Cleveland and County Durham  ,7,9,9,8,7,7,2,2,2
+131407,314,1.0141, Cleveland and County Durham  ,10,10,10,6,6,10,2,3,4
+131408,314,1.0141, Cleveland and County Durham  ,8,10,6,4,4,8,4,4,2
+131410,314,1.0141, Cleveland and County Durham  ,6,7,8,5,6,8,3,2,2
+131411,314,1.5212, Cleveland and County Durham  ,10,10,10,9,10,9,2,2,2
+131412,314,1.0141, Cleveland and County Durham  ,10,10,10,0,10,8,3,2,2
+131413,314,0.5071, Cleveland and County Durham  ,4,8,8,6,6,6,2,4,2
+131414,314,1.0141, Cleveland and County Durham  ,9,10,10,9,8,8,4,2,2
+131415,314,1.0141, Cleveland and County Durham  ,10,10,10,3,10,10,2,2,2
+131416,314,2.0282, Cleveland and County Durham  ,2,10,8,3,8,7,3,4,4
+131419,314,1.0141, Cleveland and County Durham  ,7,7,6,2,2,5,2,2,2
+131420,314,0.5071, Cleveland and County Durham  ,9,9,9,9,9,9,2,3,2
+131501,315,1.0141, Cleveland and County Durham  ,6,7,6,6,6,6,2,2,4
+131503,315,0.5071, Cleveland and County Durham  ,9,9,9,8,6,7,2,1,2
+131505,315,0.5071, Cleveland and County Durham  ,10,5,10,5,5,10,5,2,2
+131507,315,1.5212, Cleveland and County Durham  ,7,10,4,2,8,8,3,3,NA
+131508,315,1.0141, Cleveland and County Durham  ,5,10,10,6,10,10,3,3,2
+131509,315,0.5071, Cleveland and County Durham  ,6,8,8,6,6,7,2,4,4
+131510,315,0.5071, Cleveland and County Durham  ,5,6,10,10,10,10,3,2,NA
+131512,315,1.0141, Cleveland and County Durham  ,8,10,10,8,10,10,4,4,2
+131514,315,0.5071, Cleveland and County Durham  ,8,8,6,6,6,6,4,4,3
+131517,315,1.5212, Cleveland and County Durham  ,2,10,10,10,7,8,NA,NA,3
+131519,315,2.5353, Cleveland and County Durham  ,10,10,10,10,10,10,3,NA,NA
+131601,316,1.5212, Cleveland and County Durham  ,8,10,10,7,8,8,2,2,2
+131602,316,1.0141, Cleveland and County Durham  ,3,10,10,10,7,10,2,3,2
+131604,316,1.0141, Cleveland and County Durham  ,5,6,7,5,4,6,3,4,2
+131609,316,1.0141, Cleveland and County Durham  ,10,10,10,7,8,8,3,2,2
+131611,316,1.0141, Cleveland and County Durham  ,4,10,8,3,5,7,2,3,2
+131612,316,2.0282, Cleveland and County Durham  ,10,10,10,10,10,10,4,5,2
+131705,317,0.5071, Cleveland and County Durham  ,7,9,6,5,7,6,3,3,4
+131709,317,1.0141, Cleveland and County Durham  ,6,8,9,5,7,6,2,4,3
+131710,317,0.5071, Cleveland and County Durham  ,7,10,6,8,9,10,4,3,2
+131713,317,1.0141, Cleveland and County Durham  ,2,10,7,7,7,5,3,4,4
+131718,317,0.5071, Cleveland and County Durham  ,5,7,8,5,8,8,2,2,2
+131719,317,0.5071, Cleveland and County Durham  ,4,7,8,4,6,5,2,4,3
+131801,318,0.5071, Tyne & Wear   ,6,9,8,5,6,9,3,3,3
+131802,318,1.0141, Tyne & Wear   ,5,9,8,7,6,8,2,2,2
+131804,318,1.5212, Tyne & Wear   ,10,10,10,10,10,10,2,4,2
+131805,318,1.5212, Tyne & Wear   ,10,9,9,9,9,9,4,4,3
+131806,318,1.0141, Tyne & Wear   ,5,8,8,8,8,7,4,2,2
+131807,318,0.5071, Tyne & Wear   ,5,10,8,8,10,7,3,3,2
+131808,318,1.0141, Tyne & Wear   ,4,7,6,5,5,6,3,3,4
+131809,318,0.5071, Tyne & Wear   ,4,7,9,9,10,10,2,3,2
+131812,318,1.0141, Tyne & Wear   ,7,9,9,6,9,9,2,3,3
+131816,318,1.0141, Tyne & Wear   ,9,10,10,9,9,7,2,4,4
+131817,318,1.0141, Tyne & Wear   ,3,9,7,6,6,5,2,4,2
+131818,318,1.5212, Tyne & Wear   ,4,9,9,6,6,7,3,3,2
+131819,318,2.5353, Tyne & Wear   ,7,7,7,7,7,8,3,4,2
+131901,319,0.5071, Tyne & Wear   ,4,9,9,6,5,5,4,4,3
+131902,319,0.5071, Tyne & Wear   ,9,8,9,5,5,7,3,4,2
+131903,319,1.0141, Tyne & Wear   ,7,10,7,7,4,5,3,2,3
+131907,319,0.5071, Tyne & Wear   ,6,10,10,4,8,10,4,5,2
+131910,319,1.5212, Tyne & Wear   ,4,7,7,7,7,7,4,3,2
+131915,319,0.5071, Tyne & Wear   ,7,10,10,7,4,10,2,2,3
+131916,319,1.5212, Tyne & Wear   ,6,9,10,6,6,6,3,2,3
+131918,319,1.0141, Tyne & Wear   ,7,8,8,4,6,6,2,3,2
+131920,319,0.5071, Tyne & Wear   ,4,8,8,6,6,8,2,4,3
+132001,320,0.5071, Tyne & Wear   ,1,10,8,5,10,10,3,3,2
+132005,320,0.5071, Tyne & Wear   ,5,8,6,7,8,7,2,2,2
+132006,320,0.5071, Tyne & Wear   ,3,7,7,4,8,7,2,2,2
+132007,320,1.0141, Tyne & Wear   ,9,10,10,10,10,10,3,2,2
+132009,320,1.0141, Tyne & Wear   ,0,10,2,2,10,10,2,5,5
+132010,320,1.0141, Tyne & Wear   ,10,10,10,10,10,10,3,4,1
+132012,320,1.0141, Tyne & Wear   ,4,9,8,5,8,9,4,2,5
+132013,320,1.0141, Tyne & Wear   ,6,8,8,7,8,8,2,2,2
+132014,320,1.0141, Tyne & Wear   ,4,10,10,5,5,5,4,4,3
+132015,320,0.5071, Tyne & Wear   ,7,9,8,7,6,9,4,4,4
+132019,320,1.0141, Tyne & Wear   ,8,9,8,8,7,8,4,2,4
+132102,321,1.5212, Tyne & Wear   ,8,9,9,6,8,9,2,2,3
+132103,321,0.5071, Tyne & Wear   ,3,9,9,9,7,8,4,4,4
+132104,321,1.0141, Tyne & Wear   ,1,6,5,4,3,8,2,3,3
+132106,321,1.0141, Tyne & Wear   ,5,8,7,5,8,7,2,2,2
+132107,321,0.5071, Tyne & Wear   ,10,10,7,5,3,2,2,3,3
+132109,321,0.5071, Tyne & Wear   ,9,10,10,8,4,0,2,3,2
+132111,321,0.5071, Tyne & Wear   ,2,9,7,3,9,NA,2,4,2
+132113,321,1.0141, Tyne & Wear   ,5,10,10,10,10,3,2,3,3
+132117,321,1.0141, Tyne & Wear   ,4,7,8,5,7,6,2,3,2
+132118,321,1.0141, Tyne & Wear   ,2,8,10,6,8,9,2,2,3
+132119,321,1.0141, Tyne & Wear   ,8,10,10,10,10,10,2,3,2
+132120,321,2.0282, Tyne & Wear   ,0,8,10,6,7,10,3,3,3
+132203,322,2.0282, Northumberland and Cumbria  ,6,8,6,6,5,7,2,2,2
+132204,322,1.0141, Northumberland and Cumbria  ,9,10,9,6,7,6,4,3,3
+132205,322,1.0141, Northumberland and Cumbria  ,8,8,8,6,8,8,2,2,2
+132207,322,1.0141, Northumberland and Cumbria  ,7,9,9,6,7,8,3,3,3
+132215,322,1.0141, Northumberland and Cumbria  ,6,8,10,7,9,8,2,4,2
+132220,322,1.0141, Northumberland and Cumbria  ,3,7,7,3,6,7,4,4,2
+132301,323,1.0141, Northumberland and Cumbria  ,6,7,7,5,8,7,3,3,2
+132302,323,1.0141, Northumberland and Cumbria  ,3,9,7,4,6,7,2,2,1
+132303,323,2.0282, Northumberland and Cumbria  ,5,10,7,6,7,9,3,2,2
+132304,323,0.5071, Northumberland and Cumbria  ,4,8,7,7,7,6,2,3,2
+132305,323,0.5071, Northumberland and Cumbria  ,9,10,10,8,7,8,2,2,2
+132306,323,1.5212, Northumberland and Cumbria  ,10,9,10,5,10,7,2,1,1
+132307,323,1.0141, Northumberland and Cumbria  ,3,8,8,3,6,8,3,3,3
+132308,323,1.0141, Northumberland and Cumbria  ,7,9,9,6,6,8,2,2,2
+132310,323,1.0141, Northumberland and Cumbria  ,5,4,4,5,5,5,3,3,3
+132311,323,1.0141, Northumberland and Cumbria  ,6,10,8,7,9,8,2,3,2
+132313,323,1.0141, Northumberland and Cumbria  ,5,10,10,7,8,8,3,3,3
+132314,323,1.0141, Northumberland and Cumbria  ,5,8,7,6,6,6,2,3,2
+132318,323,1.0141, Northumberland and Cumbria  ,8,10,10,8,NA,8,2,2,2
+132320,323,1.0141, Northumberland and Cumbria  ,0,6,7,5,5,6,2,2,3
+132403,324,1.0141, Northumberland and Cumbria  ,8,10,10,8,8,8,2,2,NA
+132405,324,1.0141, Northumberland and Cumbria  ,8,8,8,5,6,7,2,2,2
+132407,324,0.5071, Northumberland and Cumbria  ,7,9,8,5,5,8,2,2,3
+132408,324,0.5071, Northumberland and Cumbria  ,5,10,10,5,8,10,4,4,2
+132410,324,0.5071, Northumberland and Cumbria  ,10,10,10,10,10,10,2,2,3
+132415,324,0.5071, Northumberland and Cumbria  ,10,10,10,10,10,0,4,2,4
+132419,324,2.0282, Northumberland and Cumbria  ,7,8,6,5,5,5,4,4,3
+132420,324,1.0141, Northumberland and Cumbria  ,5,7,8,8,9,8,4,4,4
+132504,325,1.0141, Northumberland and Cumbria  ,9,10,9,5,7,1,3,3,3
+132505,325,1.0141, Northumberland and Cumbria  ,5,8,8,7,6,7,2,2,NA
+132509,325,1.0141, Northumberland and Cumbria  ,7,10,9,9,9,8,1,1,2
+132510,325,0.5071, Northumberland and Cumbria  ,NA,10,5,10,1,10,1,3,3
+132511,325,1.0141, Northumberland and Cumbria  ,2,9,9,1,4,5,2,2,2
+132515,325,0.5071, Northumberland and Cumbria  ,7,10,6,8,10,5,2,3,2
+132516,325,0.5071, Northumberland and Cumbria  ,0,10,10,NA,10,0,2,3,2
+132517,325,2.0282, Northumberland and Cumbria  ,5,8,8,4,9,5,3,2,2
+210103,101,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",8,8,8,8,6,6,2,3,2
+210104,101,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",8,8,8,3,8,6,3,2,4
+210106,101,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",7,10,10,6,9,7,3,3,3
+210107,101,1.546," Postal areas G, ML (Glasgow and Lanarkshire)",6,7,7,4,6,5,3,3,2
+210108,101,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",10,10,10,5,10,8,4,4,2
+210109,101,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",8,10,8,8,8,6,3,3,4
+210113,101,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",10,10,10,5,7,7,2,4,3
+210114,101,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",6,4,6,4,4,6,2,4,2
+210115,101,1.546," Postal areas G, ML (Glasgow and Lanarkshire)",3,5,5,4,5,5,3,3,4
+210116,101,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",5,10,5,5,5,5,2,2,2
+210117,101,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",10,10,10,5,5,7,2,2,2
+210203,102,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",10,10,10,10,10,10,2,4,4
+210204,102,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",4,8,10,2,5,4,4,3,3
+210210,102,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",6,8,8,6,7,6,4,3,3
+210218,102,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",8,10,10,9,9,9,2,1,2
+210304,103,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",10,10,10,10,10,10,3,3,3
+210308,103,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",7,10,10,7,10,5,2,4,1
+210309,103,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",8,8,10,8,8,7,2,2,2
+210310,103,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",6,7,7,4,5,7,3,3,2
+210311,103,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",8,10,10,8,10,10,3,4,2
+210312,103,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",5,8,8,7,7,7,2,3,2
+210313,103,2.0613," Postal areas G, ML (Glasgow and Lanarkshire)",2,7,7,6,3,7,2,2,2
+210403,104,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",2,8,8,0,8,8,4,4,3
+210405,104,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",7,9,9,9,8,4,2,2,1
+210406,104,1.546," Postal areas G, ML (Glasgow and Lanarkshire)",9,9,9,3,5,2,1,4,4
+210409,104,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",4,7,7,5,5,5,2,3,2
+210411,104,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",7,10,10,3,8,10,2,NA,4
+210413,104,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",7,9,10,7,7,10,3,4,3
+210416,104,1.546," Postal areas G, ML (Glasgow and Lanarkshire)",4,10,9,9,8,7,3,2,3
+210417,104,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",7,8,8,8,8,8,3,3,3
+210418,104,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",5,9,9,6,9,9,3,3,2
+210503,105,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",4,9,8,8,5,7,2,3,2
+210504,105,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",6,8,10,8,6,7,2,4,4
+210506,105,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",7,8,8,8,6,7,2,2,2
+210507,105,1.546," Postal areas G, ML (Glasgow and Lanarkshire)",7,8,8,6,8,8,4,4,3
+210508,105,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",5,9,9,4,4,7,4,4,NA
+210510,105,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",7,8,8,8,6,7,2,2,2
+210515,105,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",8,7,10,9,9,9,4,3,2
+210520,105,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",8,10,8,8,6,8,2,NA,2
+210608,106,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",7,10,10,7,7,8,2,2,2
+210609,106,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",7,8,8,5,8,8,4,4,4
+210610,106,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",8,10,7,6,7,5,4,2,2
+210611,106,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",7,9,7,7,7,7,2,2,2
+210613,106,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",10,10,10,6,10,9,2,4,2
+210615,106,1.546," Postal areas G, ML (Glasgow and Lanarkshire)",7,8,8,7,10,10,2,2,2
+210616,106,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",8,8,10,8,7,7,2,2,2
+210618,106,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",10,10,10,8,10,10,2,4,2
+210619,106,1.0307," Postal areas G, ML (Glasgow and Lanarkshire)",7,8,7,5,6,7,3,3,2
+210620,106,0.5153," Postal areas G, ML (Glasgow and Lanarkshire)",5,8,8,6,8,7,2,4,3
+210802,108,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",0,10,10,10,10,10,2,4,2
+210804,108,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",6,7,7,7,7,6,2,3,2
+210805,108,0.5153," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",10,10,10,10,10,10,5,2,1
+210806,108,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",8,10,10,7,8,10,2,4,2
+210809,108,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",7,9,8,8,8,7,2,4,4
+210811,108,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",6,9,7,7,8,6,2,2,NA
+210902,109,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",6,6,8,5,NA,1,4,2,2
+210910,109,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",5,8,7,6,7,4,2,4,4
+210914,109,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",4,8,8,8,5,5,3,4,4
+210915,109,0.5153," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",7,10,10,7,10,10,NA,NA,2
+210920,109,1.0307," Postal areas KA, DG, TD (Ayrshire, Dumfries & Galloway, Borders)",8,10,10,7,7,7,2,2,2
+211003,110,1.0307," Postal areas EH, FK (Lothian and Central)",6,8,8,7,6,8,2,2,2
+211006,110,1.0307," Postal areas EH, FK (Lothian and Central)",8,9,9,7,8,8,3,3,4
+211009,110,0.5153," Postal areas EH, FK (Lothian and Central)",0,10,10,6,10,10,4,2,4
+211010,110,1.0307," Postal areas EH, FK (Lothian and Central)",7,10,10,8,8,10,2,2,3
+211011,110,0.5153," Postal areas EH, FK (Lothian and Central)",3,8,8,5,5,3,3,4,3
+211012,110,1.0307," Postal areas EH, FK (Lothian and Central)",10,10,10,10,7,10,2,2,2
+211015,110,1.0307," Postal areas EH, FK (Lothian and Central)",7,9,9,8,8,8,2,2,2
+211016,110,0.5153," Postal areas EH, FK (Lothian and Central)",8,7,8,7,8,8,2,4,2
+211017,110,1.546," Postal areas EH, FK (Lothian and Central)",7,10,10,6,8,10,2,4,4
+211018,110,1.0307," Postal areas EH, FK (Lothian and Central)",2,7,8,3,3,7,3,4,2
+211019,110,1.0307," Postal areas EH, FK (Lothian and Central)",5,5,6,6,6,7,2,2,4
+211020,110,1.0307," Postal areas EH, FK (Lothian and Central)",9,10,10,4,6,10,4,2,1
+211101,111,0.5153," Postal areas EH, FK (Lothian and Central)",8,10,10,4,10,4,3,4,4
+211102,111,0.5153," Postal areas EH, FK (Lothian and Central)",4,7,8,8,6,8,2,3,3
+211107,111,0.5153," Postal areas EH, FK (Lothian and Central)",8,10,10,10,5,0,5,2,2
+211112,111,1.0307," Postal areas EH, FK (Lothian and Central)",5,8,8,5,8,8,3,3,3
+211113,111,0.5153," Postal areas EH, FK (Lothian and Central)",7,10,7,7,8,10,4,5,4
+211115,111,1.0307," Postal areas EH, FK (Lothian and Central)",5,8,8,5,7,6,4,3,4
+211116,111,1.0307," Postal areas EH, FK (Lothian and Central)",7,7,10,6,10,8,2,2,2
+211118,111,1.0307," Postal areas EH, FK (Lothian and Central)",7,10,10,8,8,10,2,3,3
+211120,111,1.0307," Postal areas EH, FK (Lothian and Central)",6,10,8,7,10,7,4,3,2
+211203,112,1.0307," Postal areas EH, FK (Lothian and Central)",0,10,10,2,5,4,3,2,4
+211204,112,1.0307," Postal areas EH, FK (Lothian and Central)",8,8,8,8,8,8,2,4,3
+211208,112,1.0307," Postal areas EH, FK (Lothian and Central)",6,9,9,6,8,8,4,4,4
+211210,112,1.0307," Postal areas EH, FK (Lothian and Central)",3,10,10,10,10,10,2,2,2
+211212,112,0.5153," Postal areas EH, FK (Lothian and Central)",8,10,10,9,9,10,2,2,2
+211214,112,1.0307," Postal areas EH, FK (Lothian and Central)",3,10,8,4,3,6,2,3,2
+211215,112,1.0307," Postal areas EH, FK (Lothian and Central)",6,10,10,5,8,8,3,4,3
+211219,112,1.0307," Postal areas EH, FK (Lothian and Central)",10,10,10,8,10,NA,NA,NA,NA
+211220,112,1.0307," Postal areas EH, FK (Lothian and Central)",8,10,10,10,10,10,2,2,2
+211303,113,1.0307," Postal areas EH, FK (Lothian and Central)",4,10,9,9,8,8,3,4,3
+211304,113,1.0307," Postal areas EH, FK (Lothian and Central)",7,9,8,4,9,9,3,2,2
+211305,113,1.0307," Postal areas EH, FK (Lothian and Central)",5,8,8,5,6,6,2,2,2
+211307,113,2.5767," Postal areas EH, FK (Lothian and Central)",7,10,8,8,8,9,2,2,NA
+211308,113,1.0307," Postal areas EH, FK (Lothian and Central)",8,10,10,7,10,10,2,2,2
+211309,113,0.5153," Postal areas EH, FK (Lothian and Central)",5,10,8,6,9,8,2,2,3
+211313,113,0.5153," Postal areas EH, FK (Lothian and Central)",0,7,5,5,5,4,2,2,3
+211315,113,0.5153," Postal areas EH, FK (Lothian and Central)",4,8,8,4,4,7,2,2,2
+211320,113,1.0307," Postal areas EH, FK (Lothian and Central)",7,8,8,5,6,5,2,2,2
+211401,114,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",9,9,9,9,9,9,2,2,2
+211403,114,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",10,10,10,8,10,6,2,2,2
+211406,114,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",7,7,6,4,5,5,3,3,3
+211407,114,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",9,10,6,5,8,5,3,3,3
+211409,114,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",4,7,7,3,5,5,2,3,3
+211410,114,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",10,10,7,7,9,9,2,2,4
+211412,114,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",2,9,7,5,9,7,4,4,3
+211416,114,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",9,9,10,4,7,9,4,2,2
+211417,114,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",3,10,9,4,9,7,3,4,3
+211418,114,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",5,10,7,6,4,5,2,2,3
+211502,115,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",7,10,8,5,7,7,2,2,3
+211504,115,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",7,10,6,3,5,3,3,4,4
+211506,115,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",8,10,10,8,10,7,2,2,2
+211507,115,1.546," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",5,7,7,4,4,6,4,4,2
+211510,115,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",8,10,10,10,10,10,NA,4,2
+211511,115,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",5,10,10,5,3,8,2,4,3
+211514,115,1.546," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",8,10,10,6,8,5,4,4,4
+211515,115,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",5,8,7,6,6,9,4,2,2
+211517,115,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",6,8,9,5,8,7,2,3,2
+211518,115,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",6,8,8,6,8,8,3,2,2
+211519,115,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",3,8,9,5,7,9,2,2,2
+211520,115,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",7,7,7,5,7,7,3,2,2
+211601,116,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",3,8,8,7,7,NA,2,4,NA
+211602,116,1.546," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",NA,8,8,NA,7,9,4,4,3
+211604,116,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",10,10,10,8,10,8,2,2,2
+211605,116,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",10,10,10,10,10,10,2,2,2
+211612,116,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",7,8,8,5,7,NA,4,3,2
+211613,116,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",8,10,10,5,9,5,4,4,4
+211615,116,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",6,8,8,6,8,8,2,3,2
+211616,116,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",5,7,8,5,6,7,3,3,2
+211618,116,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",6,8,8,6,5,8,2,3,3
+211703,117,1.546," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",5,8,8,6,5,7,3,2,2
+211704,117,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",9,9,9,8,9,9,3,4,3
+211708,117,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",6,7,7,7,6,3,4,1,2
+211712,117,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",8,8,8,8,8,6,1,1,2
+211720,117,4," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",7,7,8,8,8,6,2,2,2
+211801,118,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",6,8,8,4,6,5,2,4,2
+211802,118,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",4,8,7,6,6,4,3,4,3
+211804,118,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",10,10,10,8,8,9,2,3,1
+211806,118,1.0307," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",8,9,9,8,8,7,2,2,2
+211807,118,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",5,6,5,5,3,5,2,3,3
+211808,118,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",7,10,8,6,7,8,3,4,2
+211812,118,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",7,10,10,8,6,8,3,2,2
+211815,118,1.546," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",4,8,8,8,7,6,2,3,2
+211816,118,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",8,10,10,4,6,5,3,3,2
+211820,118,0.5153," Postal areas KY, DD, AB (Fife, Dundee and Grampian)",0,9,9,7,6,8,2,3,2
+211901,119,0.5153," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",7,9,7,6,6,8,2,2,2
+211903,119,1.0307," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",1,9,9,6,3,0,4,4,2
+211905,119,0.5153," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",10,10,10,7,7,10,4,NA,2
+211907,119,1.0307," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",0,10,10,8,3,0,NA,2,NA
+211910,119,1.546," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",10,10,10,5,5,10,2,2,2
+211911,119,0.5153," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",8,8,8,6,3,5,2,NA,2
+211913,119,1.0307," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",7,10,10,7,7,10,1,1,4
+211914,119,0.5153," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",8,9,7,4,5,6,4,3,2
+211915,119,1.0307," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",5,10,9,6,9,8,3,3,3
+211916,119,1.0307," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",9,10,10,10,5,8,2,3,2
+211919,119,1.0307," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",3,10,10,5,5,9,2,3,2
+211920,119,0.5153," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",7,9,8,8,8,8,3,2,3
+212003,120,0.5153," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",6,9,9,7,9,9,3,2,3
+212004,120,0.5153," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",4,9,9,6,9,9,2,2,NA
+212005,120,0.5153," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",10,10,9,9,9,9,4,NA,4
+212007,120,1.0307," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",10,10,10,7,10,10,4,4,2
+212008,120,0.5153," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",NA,10,10,10,10,10,2,2,2
+212010,120,1.0307," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",4,8,7,6,8,7,3,3,3
+212011,120,1.546," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",8,10,10,8,5,10,4,4,4
+212015,120,1.0307," Postal areas PA, PH, IV (parts) (Rest of Scotland south of CC)",5,6,7,7,5,6,2,2,3
+314003,140,0.5153, Gloucestershire and Gwent   ,10,10,10,7,7,0,4,2,2
+314005,140,1.0307, Gloucestershire and Gwent   ,10,10,10,6,8,10,2,2,2
+314006,140,1.0307, Gloucestershire and Gwent   ,10,10,10,10,5,5,NA,3,2
+314007,140,1.0307, Gloucestershire and Gwent   ,4,10,5,5,5,6,2,2,2
+314008,140,1.546, Gloucestershire and Gwent   ,5,10,10,5,10,10,2,2,2
+314009,140,1.0307, Gloucestershire and Gwent   ,5,9,9,8,4,8,2,2,2
+314010,140,0.5153, Gloucestershire and Gwent   ,10,10,10,10,10,10,2,2,3
+314011,140,1.0307, Gloucestershire and Gwent   ,7,9,9,7,9,9,3,3,4
+314012,140,1.0307, Gloucestershire and Gwent   ,10,10,10,10,10,10,1,1,2
+314013,140,0.5153, Gloucestershire and Gwent   ,8,8,8,8,8,8,2,2,2
+314014,140,0.5153, Gloucestershire and Gwent   ,5,10,10,8,8,10,NA,NA,2
+314015,140,1.0307, Gloucestershire and Gwent   ,9,9,8,7,8,9,3,4,3
+314017,140,2.0613, Gloucestershire and Gwent   ,4,10,9,4,5,7,2,4,3
+314018,140,1.546, Gloucestershire and Gwent   ,10,10,10,10,10,10,NA,NA,2
+314019,140,1.0307, Gloucestershire and Gwent   ,6,9,7,6,10,5,3,3,3
+314020,140,1.0307, Gloucestershire and Gwent   ,6,9,9,9,6,8,3,4,2
+314202,142,1.0307, Gloucestershire and Gwent   ,5,10,8,8,10,5,2,5,3
+314203,142,0.5153, Gloucestershire and Gwent   ,5,7,8,6,7,7,2,3,2
+314204,142,1.546, Gloucestershire and Gwent   ,3,8,8,5,7,7,2,3,3
+314210,142,1.0307, Gloucestershire and Gwent   ,7,10,10,8,8,8,2,2,3
+314211,142,0.5153, Gloucestershire and Gwent   ,8,9,7,7,7,6,3,2,3
+314212,142,1.0307, Gloucestershire and Gwent   ,8,10,10,6,10,10,2,2,1
+314213,142,1.546, Gloucestershire and Gwent   ,4,8,8,7,7,6,4,3,2
+314214,142,0.5153, Gloucestershire and Gwent   ,8,10,10,8,8,8,4,2,2
+314215,142,1.0307, Gloucestershire and Gwent   ,7,9,9,9,5,7,4,2,2
+314220,142,1.0307, Gloucestershire and Gwent   ,3,8,9,3,3,3,1,2,2
+324502,245,1.546, Mid Glamorgan and South Glamorgan  ,5,10,9,5,5,7,2,2,4
+324504,245,0.5153, Mid Glamorgan and South Glamorgan  ,10,10,10,10,8,8,3,3,2
+324507,245,0.5153, Mid Glamorgan and South Glamorgan  ,6,10,10,8,7,9,2,2,2
+324509,245,2.0613, Mid Glamorgan and South Glamorgan  ,8,10,10,2,8,6,4,4,2
+324511,245,1.0307, Mid Glamorgan and South Glamorgan  ,7,8,8,6,6,8,4,NA,2
+324512,245,0.5153, Mid Glamorgan and South Glamorgan  ,5,9,9,8,7,7,3,4,2
+324513,245,0.5153, Mid Glamorgan and South Glamorgan  ,8,9,8,8,8,8,2,4,NA
+324515,245,0.5153, Mid Glamorgan and South Glamorgan  ,8,10,10,8,9,10,2,2,2
+324516,245,1.0307, Mid Glamorgan and South Glamorgan  ,3,10,8,5,6,8,3,2,2
+324517,245,0.5153, Mid Glamorgan and South Glamorgan  ,0,2,10,0,8,5,4,2,2
+324520,245,1.0307, Mid Glamorgan and South Glamorgan  ,10,9,9,7,10,7,2,2,1
+324612,246,1.0307, Mid Glamorgan and South Glamorgan  ,7,8,8,8,8,8,3,3,3
+324613,246,1.0307, Mid Glamorgan and South Glamorgan  ,9,9,9,5,9,9,2,2,2
+324614,246,1.546, Mid Glamorgan and South Glamorgan  ,10,10,10,10,10,10,2,2,2
+324615,246,1.0307, Mid Glamorgan and South Glamorgan  ,5,7,7,5,6,7,3,3,2
+324702,247,1.0307, Mid Glamorgan and South Glamorgan  ,5,5,5,5,5,5,3,3,3
+324703,247,1.0307, Mid Glamorgan and South Glamorgan  ,4,10,9,3,7,9,3,3,3
+324705,247,1.0307, Mid Glamorgan and South Glamorgan  ,5,5,5,4,5,4,3,3,3
+324706,247,1.0307, Mid Glamorgan and South Glamorgan  ,3,8,8,2,8,3,4,2,4
+324707,247,1.0307, Mid Glamorgan and South Glamorgan  ,7,9,7,5,5,7,4,4,4
+324708,247,1.0307, Mid Glamorgan and South Glamorgan  ,4,8,9,6,7,7,NA,3,3
+324711,247,1.0307, Mid Glamorgan and South Glamorgan  ,7,10,9,7,7,9,4,4,4
+324712,247,1.0307, Mid Glamorgan and South Glamorgan  ,4,9,5,4,7,8,2,4,2
+324714,247,1.0307, Mid Glamorgan and South Glamorgan  ,5,10,8,6,5,5,2,4,2
+324716,247,0.5153, Mid Glamorgan and South Glamorgan  ,5,5,5,5,5,5,3,3,3
+324718,247,1.0307, Mid Glamorgan and South Glamorgan  ,8,10,10,7,9,10,3,2,3
+324719,247,1.0307, Mid Glamorgan and South Glamorgan  ,6,7,8,6,7,7,2,NA,2
+324720,247,1.546, Mid Glamorgan and South Glamorgan  ,8,9,9,4,7,NA,2,2,2
+324801,248,1.0307, Mid Glamorgan and South Glamorgan  ,7,10,8,8,6,7,2,2,2
+324802,248,1.0307, Mid Glamorgan and South Glamorgan  ,4,9,8,6,6,5,2,2,2
+324803,248,0.5153, Mid Glamorgan and South Glamorgan  ,7,10,9,8,7,4,1,1,3
+324806,248,1.0307, Mid Glamorgan and South Glamorgan  ,6,8,8,8,8,7,5,3,3
+324807,248,0.5153, Mid Glamorgan and South Glamorgan  ,5,10,10,4,4,5,3,3,3
+324809,248,0.5153, Mid Glamorgan and South Glamorgan  ,7,10,8,8,8,7,3,2,3
+324810,248,1.0307, Mid Glamorgan and South Glamorgan  ,5,8,8,3,4,5,2,3,4
+324811,248,1.0307, Mid Glamorgan and South Glamorgan  ,10,10,10,10,8,8,3,3,2
+324812,248,1.0307, Mid Glamorgan and South Glamorgan  ,5,9,9,5,9,7,3,3,2
+324901,249,0.5153, West Glamorgan and Dyfed  ,10,10,10,6,4,8,2,3,2
+324902,249,0.5153, West Glamorgan and Dyfed  ,10,10,10,8,3,8,2,2,2
+324903,249,0.5153, West Glamorgan and Dyfed  ,8,9,8,8,6,6,2,2,2
+324904,249,1.0307, West Glamorgan and Dyfed  ,3,10,10,9,7,10,2,3,2
+324905,249,0.5153, West Glamorgan and Dyfed  ,10,10,10,8,5,7,2,2,2
+324906,249,1.0307, West Glamorgan and Dyfed  ,8,10,9,6,10,10,2,3,4
+324908,249,2.0613, West Glamorgan and Dyfed  ,7,9,9,7,7,7,2,2,3
+324909,249,0.5153, West Glamorgan and Dyfed  ,3,8,7,5,4,2,3,2,2
+324910,249,0.5153, West Glamorgan and Dyfed  ,9,9,9,9,NA,6,2,2,3
+324911,249,0.5153, West Glamorgan and Dyfed  ,4,10,10,6,8,8,4,4,2
+324912,249,1.0307, West Glamorgan and Dyfed  ,8,10,10,8,7,8,2,3,3
+324913,249,1.0307, West Glamorgan and Dyfed  ,9,10,10,7,10,9,2,4,3
+324917,249,0.5153, West Glamorgan and Dyfed  ,7,10,8,4,5,1,2,2,5
+324918,249,0.5153, West Glamorgan and Dyfed  ,4,10,10,5,10,8,2,4,3
+324919,249,1.0307, West Glamorgan and Dyfed  ,5,8,9,7,5,5,4,4,4
+324920,249,0.5153, West Glamorgan and Dyfed  ,7,10,10,10,10,8,3,2,2
+325004,250,1.0307, West Glamorgan and Dyfed  ,9,7,8,2,5,8,4,2,2
+325006,250,1.0307, West Glamorgan and Dyfed  ,5,8,9,2,7,5,4,4,4
+325007,250,1.0307, West Glamorgan and Dyfed  ,9,10,10,2,7,5,2,3,2
+325014,250,1.0307, West Glamorgan and Dyfed  ,4,7,7,5,5,6,3,4,4
+325019,250,1.0307, West Glamorgan and Dyfed  ,6,8,8,4,5,5,3,2,2
+325020,250,0.5153, West Glamorgan and Dyfed  ,4,10,10,7,2,4,3,2,2
+325104,251,0.5153, West Glamorgan and Dyfed  ,0,10,5,2,2,2,2,2,2
+325106,251,1.0307, West Glamorgan and Dyfed  ,6,9,8,6,2,5,2,2,2
+325108,251,1.0307, West Glamorgan and Dyfed  ,3,9,9,9,9,9,2,2,3
+325109,251,1.0307, West Glamorgan and Dyfed  ,8,10,10,10,10,8,2,2,3
+325111,251,0.5153, West Glamorgan and Dyfed  ,8,8,9,9,10,9,2,3,2
+325113,251,0.5153, West Glamorgan and Dyfed  ,10,10,10,10,10,10,2,1,3
+325201,252,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",1,7,7,3,6,7,4,4,3
+325202,252,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",5,10,10,7,5,7,2,3,2
+325203,252,1.546," Powys, Clwyd and Gwynedd (including Anglesey)  ",5,10,10,10,10,8,4,2,2
+325204,252,0.5153," Powys, Clwyd and Gwynedd (including Anglesey)  ",7,10,10,10,8,8,4,2,2
+325205,252,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",8,9,9,8,10,10,2,2,4
+325208,252,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",8,8,9,5,6,6,3,4,2
+325209,252,1.546," Powys, Clwyd and Gwynedd (including Anglesey)  ",8,10,10,6,7,7,2,2,NA
+325212,252,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",8,10,9,8,9,9,2,3,3
+325213,252,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",2,10,10,10,10,8,2,3,2
+325214,252,1.546," Powys, Clwyd and Gwynedd (including Anglesey)  ",5,7,7,5,4,6,4,3,3
+325215,252,0.5153," Powys, Clwyd and Gwynedd (including Anglesey)  ",5,6,10,9,7,7,3,3,3
+325216,252,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",6,8,8,6,6,7,4,4,NA
+325217,252,1.546," Powys, Clwyd and Gwynedd (including Anglesey)  ",1,9,8,4,6,6,2,4,2
+325218,252,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",0,0,0,0,0,0,4,4,4
+325219,252,0.5153," Powys, Clwyd and Gwynedd (including Anglesey)  ",8,10,10,7,9,10,2,2,4
+325220,252,0.5153," Powys, Clwyd and Gwynedd (including Anglesey)  ",3,8,9,7,4,8,2,2,2
+325303,253,0.5153," Powys, Clwyd and Gwynedd (including Anglesey)  ",9,9,9,5,9,10,2,3,3
+325305,253,1.546," Powys, Clwyd and Gwynedd (including Anglesey)  ",4,9,9,6,6,6,4,2,2
+325306,253,0.5153," Powys, Clwyd and Gwynedd (including Anglesey)  ",4,9,9,6,8,9,2,2,2
+325309,253,0.5153," Powys, Clwyd and Gwynedd (including Anglesey)  ",1,9,7,4,6,7,4,3,2
+325310,253,0.5153," Powys, Clwyd and Gwynedd (including Anglesey)  ",9,9,9,9,9,9,2,2,2
+325313,253,2.0613," Powys, Clwyd and Gwynedd (including Anglesey)  ",6,9,9,4,10,7,2,4,2
+325314,253,0.5153," Powys, Clwyd and Gwynedd (including Anglesey)  ",4,10,8,6,8,8,2,2,2
+325315,253,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",8,8,8,8,8,8,4,4,4
+325316,253,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",7,7,8,6,8,8,2,4,2
+325317,253,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",7,10,10,7,10,10,1,1,3
+325318,253,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",10,10,7,6,9,10,2,2,2
+325319,253,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",10,10,10,7,10,10,2,4,2
+325405,254,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",3,9,9,3,5,7,3,3,2
+325406,254,3.092," Powys, Clwyd and Gwynedd (including Anglesey)  ",2,8,9,5,9,9,2,4,2
+325407,254,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",3,8,9,5,6,8,4,4,4
+325408,254,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",5,8,8,6,8,8,3,4,4
+325410,254,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",6,10,6,4,4,4,2,2,1
+325412,254,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",6,10,7,3,5,7,4,4,4
+325413,254,2.0613," Powys, Clwyd and Gwynedd (including Anglesey)  ",9,9,9,7,7,9,3,3,3
+325414,254,1.546," Powys, Clwyd and Gwynedd (including Anglesey)  ",3,7,8,7,7,9,2,4,2
+325415,254,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",5,8,8,5,5,6,3,2,2
+325419,254,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",9,9,9,9,9,9,3,3,3
+325420,254,1.0307," Powys, Clwyd and Gwynedd (including Anglesey)  ",5,6,6,6,7,7,3,3,2
