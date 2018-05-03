@@ -1,0 +1,26 @@
+
+# Análisis de conglomerados (clustering) 2
+
+<style>
+  .espacio {
+    margin-bottom: 1cm;
+  }
+</style>
+  
+  <style>
+  .espacio3 {
+    margin-bottom: 3cm;
+  }
+</style>
+
+<p class="espacio">
+</p>
+
+
+```r
+library(tidyverse)
+```
+
+## Clustering jerárquico
+
+

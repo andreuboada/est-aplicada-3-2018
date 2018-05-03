@@ -179,7 +179,7 @@ print(read_csv)
 #>         locale = locale, skip = skip, comment = comment, n_max = n_max, 
 #>         guess_max = guess_max, progress = progress)
 #> }
-#> <bytecode: 0x5bb2640>
+#> <bytecode: 0x4aaa4f8>
 #> <environment: namespace:readr>
 ```
 
@@ -2001,7 +2001,7 @@ Batting %>% sample_n(10) %>% knitr::kable()
 ```r
 system.time(lm(R ~ AB + teamID, Batting))
 #>    user  system elapsed 
-#>   2.727   0.124   2.852
+#>    2.98    0.12    3.10
 ```
 
 - __user time__: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.
@@ -2014,7 +2014,7 @@ El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:
 ```r
 system.time(readLines("http://www.jhsph.edu"))
 #>    user  system elapsed 
-#>   0.021   0.000   1.208
+#>   0.021   0.012   1.345
 ```
 
 
@@ -2026,7 +2026,7 @@ system.time(mclapply(2000:2006,
     lm(R ~ AB, sub)
 }, mc.cores = 5))
 #>    user  system elapsed 
-#>   0.063   0.071   0.101
+#>   0.063   0.063   0.094
 ```
 
 Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.
@@ -2071,28 +2071,28 @@ est_r_st <- system.time({
 
 dplyr_st
 #>    user  system elapsed 
-#>   0.118   0.007   0.126
+#>   0.147   0.025   0.171
 ```
 
 
 ```r
 plyr_st
 #>    user  system elapsed 
-#>   6.786   0.021   6.808
+#>   9.059   0.453   9.517
 ```
 
 
 ```r
 est_l_st
 #>    user  system elapsed 
-#>   63.91    2.61   66.52
+#>   63.69    2.99   66.70
 ```
 
 
 ```r
 est_r_st
 #>    user  system elapsed 
-#>   0.626   0.020   0.645
+#>   0.583   0.012   0.595
 ```
 
 La función `system.time` supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es `Rprof()`.
@@ -2271,7 +2271,7 @@ system.time(
         aciertos[i] <- TRUE
 })
 #>    user  system elapsed 
-#>   0.309   0.008   0.317
+#>   0.279   0.004   0.283
 ```
 
 
@@ -2283,7 +2283,7 @@ system.time(
         aciertos[i] <- TRUE
 })
 #>    user  system elapsed 
-#>   0.304   0.000   0.305
+#>   0.260   0.003   0.264
 ```
 
 Usando `rbind`:
@@ -2299,7 +2299,7 @@ mi.df
 }
 system.time(mi.df.1 <- crecer_rbind())
 #>    user  system elapsed 
-#>   0.843   0.004   0.847
+#>   0.734   0.000   0.734
 ```
 
 Si definimos el tamaño del data.frame obtenemos mejoras:
@@ -2316,7 +2316,7 @@ mi.df <- data.frame(a = rep(NA, 1000), b = rep(NA, 1000))
 }
 system.time(mi.df.1 <- crecer_rbind_2())
 #>    user  system elapsed 
-#>   0.078   0.000   0.078
+#>   0.072   0.000   0.072
 ```
 
 Finalmente, veamos un enfoque totalmente vectorizado
@@ -2331,7 +2331,7 @@ porcolumna_df <- function(){
 }
 system.time(mi.df.2 <- porcolumna_df())
 #>    user  system elapsed 
-#>   0.001   0.000   0.001
+#>   0.000   0.000   0.001
 ```
 
 A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectorización, este incremento conlleva un costo en memoria. Si comparamos la versión mas lenta con la más rápida, en la última debemos asignar a, b y mi.df. Entonces, no siempre es mejor vectorizar, pues si consumimos la memoria, entonces la versión vectorizada puede enfrentarse al problema de uso de memoria en disco, que tiene aun más grandes penalizaciones en el desempeño que los ciclos que hemos visto.

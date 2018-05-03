@@ -358,6 +358,31 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="14.3" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#tarea-12"><i class="fa fa-check"></i><b>14.3</b> Tarea</a></li>
 </ul></li>
+<li class="chapter" data-level="15" data-path="correlaciones-canonicas-cca.html"><a href="correlaciones-canonicas-cca.html"><i class="fa fa-check"></i><b>15</b> Correlaciones Canónicas (CCA)</a></li>
+<li class="chapter" data-level="16" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html"><i class="fa fa-check"></i><b>16</b> Análisis de conglomerados (clustering) 1</a><ul>
+<li class="chapter" data-level="16.1" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#introduccion"><i class="fa fa-check"></i><b>16.1</b> Introducción</a><ul>
+<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#ejemplo-7"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#enfoques-combinatorio-y-basado-en-modelos."><i class="fa fa-check"></i><b>16.2</b> Enfoques: combinatorio y basado en modelos.</a></li>
+<li class="chapter" data-level="16.3" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#k-medias"><i class="fa fa-check"></i><b>16.3</b> K-medias</a><ul>
+<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#algoritmo-de-k-medias"><i class="fa fa-check"></i>Algoritmo de k-medias</a></li>
+<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#ejemplo-8"><i class="fa fa-check"></i>Ejemplo</a></li>
+<li><a href="analisis-de-conglomerados-clustering-1.html#usando-la-funcion-kmeans">Usando la funcion <code>kmeans</code></a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#seleccion-de-numero-de-clusters."><i class="fa fa-check"></i><b>16.4</b> Selección de número de clusters.</a><ul>
+<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#variacion-dentro-de-clusters-para-distintas-soluciones"><i class="fa fa-check"></i>Variación dentro de clusters para distintas soluciones</a></li>
+<li class="chapter" data-level="16.4.1" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#criterios-especificos"><i class="fa fa-check"></i><b>16.4.1</b> Criterios específicos</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#dificultades-en-segmentacionclustering."><i class="fa fa-check"></i><b>16.5</b> Dificultades en segmentación/clustering.</a><ul>
+<li class="chapter" data-level="16.5.1" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#estructuras-no-compactas"><i class="fa fa-check"></i><b>16.5.1</b> Estructuras no compactas</a></li>
+<li class="chapter" data-level="16.5.2" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#existencia-o-no-de-grupos-naturales"><i class="fa fa-check"></i><b>16.5.2</b> Existencia o no de grupos “naturales”</a></li>
+<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#grupos-en-dimension-alta"><i class="fa fa-check"></i>Grupos en dimensión alta</a></li>
+<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#dificultades-en-la-seleccion-de-metrica"><i class="fa fa-check"></i>Dificultades en la selección de métrica</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="analisis-de-conglomerados-clustering-2.html"><a href="analisis-de-conglomerados-clustering-2.html"><i class="fa fa-check"></i><b>17</b> Análisis de conglomerados (clustering) 2</a><ul>
+<li class="chapter" data-level="17.1" data-path="analisis-de-conglomerados-clustering-2.html"><a href="analisis-de-conglomerados-clustering-2.html#clustering-jerarquico"><i class="fa fa-check"></i><b>17.1</b> Clustering jerárquico</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
@@ -517,7 +542,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&gt;         locale = locale, skip = skip, comment = comment, n_max = n_max, </span>
 <span class="co">#&gt;         guess_max = guess_max, progress = progress)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x5bb2640&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x4aaa4f8&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:readr&gt;</span></code></pre></div>
 <p>Como el paquete <code>readr</code> está cargado en la sesión podemos llamar a la función <code>read_csv</code> que se usará más adelante.</p>
 <p><strong>Importante</strong>: Los paquetes se instalan una vez únicamente después de descargar una nueva versión de R. Las librerías se cargan en cada sesión de R nueva.</p>
@@ -2070,7 +2095,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB <span class="op">+</span><span class="st"> </span>teamID, Batting))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   2.727   0.124   2.852</span></code></pre></div>
+<span class="co">#&gt;    2.98    0.12    3.10</span></code></pre></div>
 <ul>
 <li><p><strong>user time</strong>: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.</p></li>
 <li><p><strong>elapsed time</strong>: tiempo en el reloj, tiempo que experimenta la persona.</p></li>
@@ -2078,7 +2103,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <p>El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">readLines</span>(<span class="st">&quot;http://www.jhsph.edu&quot;</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.021   0.000   1.208</span></code></pre></div>
+<span class="co">#&gt;   0.021   0.012   1.345</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(parallel)
 <span class="kw">system.time</span>(<span class="kw">mclapply</span>(<span class="dv">2000</span><span class="op">:</span><span class="dv">2006</span>, 
   <span class="cf">function</span>(x){
@@ -2086,7 +2111,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
     <span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB, sub)
 }, <span class="dt">mc.cores =</span> <span class="dv">5</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.063   0.071   0.101</span></code></pre></div>
+<span class="co">#&gt;   0.063   0.063   0.094</span></code></pre></div>
 <p>Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr</span>
 dplyr_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
@@ -2126,16 +2151,16 @@ est_r_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
 
 dplyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.118   0.007   0.126</span></code></pre></div>
+<span class="co">#&gt;   0.147   0.025   0.171</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   6.786   0.021   6.808</span></code></pre></div>
+<span class="co">#&gt;   9.059   0.453   9.517</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_l_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   63.91    2.61   66.52</span></code></pre></div>
+<span class="co">#&gt;   63.69    2.99   66.70</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_r_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.626   0.020   0.645</span></code></pre></div>
+<span class="co">#&gt;   0.583   0.012   0.595</span></code></pre></div>
 <p>La función <code>system.time</code> supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es <code>Rprof()</code>.</p>
 <p>Rprof es un perfilador de muestreo que registra cambios en la pila de funciones, funciona tomando muestras a intervalos regulares y tabula cuánto tiempo se lleva en cada función.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>, <span class="dt">interval =</span> <span class="fl">0.015</span>, <span class="dt">line.profiling =</span> <span class="ot">TRUE</span>)
@@ -2272,7 +2297,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.309   0.008   0.317</span></code></pre></div>
+<span class="co">#&gt;   0.279   0.004   0.283</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aciertos &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">FALSE</span>, <span class="fl">1e+06</span>) 
 <span class="kw">system.time</span>(
   <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="fl">1e+05</span>) {
@@ -2280,7 +2305,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.304   0.000   0.305</span></code></pre></div>
+<span class="co">#&gt;   0.260   0.003   0.264</span></code></pre></div>
 <p>Usando <code>rbind</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind &lt;-<span class="st"> </span><span class="cf">function</span>(){
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">character</span>(<span class="dv">0</span>), <span class="dt">b =</span> <span class="kw">numeric</span>(<span class="dv">0</span>)) 
@@ -2291,7 +2316,7 @@ mi.df
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.843   0.004   0.847</span></code></pre></div>
+<span class="co">#&gt;   0.734   0.000   0.734</span></code></pre></div>
 <p>Si definimos el tamaño del data.frame obtenemos mejoras:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="cf">function</span>() {
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>), <span class="dt">b =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)) 
@@ -2303,7 +2328,7 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind_2</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.078   0.000   0.078</span></code></pre></div>
+<span class="co">#&gt;   0.072   0.000   0.072</span></code></pre></div>
 <p>Finalmente, veamos un enfoque totalmente vectorizado</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">porcolumna_df &lt;-<span class="st"> </span><span class="cf">function</span>(){
   a &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>) 
@@ -2313,7 +2338,7 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">porcolumna_df</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.001   0.000   0.001</span></code></pre></div>
+<span class="co">#&gt;   0.000   0.000   0.001</span></code></pre></div>
 <p>A pesar de que aumentamos la velocidad conforme aumentamos el nivel de vectorización, este incremento conlleva un costo en memoria. Si comparamos la versión mas lenta con la más rápida, en la última debemos asignar a, b y mi.df. Entonces, no siempre es mejor vectorizar, pues si consumimos la memoria, entonces la versión vectorizada puede enfrentarse al problema de uso de memoria en disco, que tiene aun más grandes penalizaciones en el desempeño que los ciclos que hemos visto.</p>
 <p><strong>4 Paralelizar</strong></p>
 <p>Paralelizar usa varios cores para trabajar de manera simultánea en varias secciones de un problema, no reduce el tiempo computacional pero incrementa el tiempo del usuario pues aprovecha los recursos. Como referencia está <a href="https://www.amazon.com/Parallel-Computing-Data-Science-Examples/dp/1466587016">Parallel Computing for Data Science</a> de Norm Matloff.</p>
