@@ -578,13 +578,11 @@ El grado de marginación fue definido por CONAPO en 1990:
 
 * define 4 dimensiones de la marginación: educación, vivienda, distribución de la población, ingresos monetarios.
 
-
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 base_estados <- read_csv("datos/base_estados.csv")
 base_estados %>% head(10) %>% select(NOM_ENT, ANALF:PO2SM, ANIO) %>% knitr::kable()
 ```
-
 
 1. Aplica el método de componentes principales (utiliza la función `princomp` como en los ejemplos de arriba.) Las variables para obtener las componentes son: `ANALF`, `SPRIM`, `OVSEE`, `OVSDE`, `OVSAE`, `VHAC`, `OVPT`, `PL<5000`, `PO2SM`. Haz una gráfica para 1990 de las componentes principales donde el eje principal esté en el eje horizontal y el eje secundario en el eje vertical. Sustituye los espacios que digan `<rellenar>`.
 
@@ -629,6 +627,7 @@ clasif_dalenius = function(x, n = NULL, Ls = 5, add = 5, labels = NULL){
   return(cluster)
 }
 ```
+
 
 Completa el código sustituyendo donde diga `<rellenar>`:
 
