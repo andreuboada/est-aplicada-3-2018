@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-05-02">
+<meta name="date" content="2018-05-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -588,14 +588,14 @@ Volviendo a la pregunta original: ¿Cuántos factores debo modelar? La respuesta
 <ol style="list-style-type: decimal">
 <li><p>Inicializa <span class="math inline">\(\hat{\Psi}\)</span> (cualquier valor)</p></li>
 <li><p><span class="math inline">\(\hat{\Psi}=\)</span> los <span class="math inline">\(K\)</span> mayores eigenvectores de la matriz <span class="math display">\[(\hat{S} - \hat{\Psi})\]</span> Nos fijamos en esta diferencia porque nos interesa explicar las covarianzas a través de los factores comunes.</p></li>
-<li><p><span class="math inline">\(\hat{\Psi} = diag(S-\hat{\Lambda}\hat{\Lambda}^T)\)</span></p></li>
+<li><p><span class="math inline">\(\hat{\Psi} = \mbox{diag}(S-\hat{\Lambda}\hat{\Lambda}^T)\)</span></p></li>
 </ol>
 <p>Los pasos 2 y 3 se repiten hasta alcanzar convergencia. Este algoritmo no es muy popular debido a que la convergencia no está asegurada, se considera lento y los valores iniciales de <span class="math inline">\(\Psi\)</span> suelen influenciar la solución final.</p>
 </div>
 </div>
 <div id="analisis-de-factores-de-maxima-verosimilitud" class="section level3">
 <h3><span class="header-section-number">14.2.3</span> Análisis de factores de máxima verosimilitud</h3>
-<p>Supongamos ahora que, <span class="math display">\[X \sim N(0, I)\]</span> <span class="math display">\[U \sim N(0,\Psi)\]</span> Entonces la distribución del vector de variables aleatorias observables <span class="math inline">\(Y\)</span> es <span class="math display">\[Y \sim N(\mu + \Lambda x, \Sigma)\]</span> donde <span class="math inline">\(\Sigma = \Lambda \Lambda^T + \Psi\)</span> (igual que antes). Es fácil ver que la distribución condicional de <span class="math inline">\(Y\)</span> es: <span class="math display">\[Y|X \sim N(\mu + \Lambda x, \Psi)\]</span> por tanto, se cumple las independencias condicionales que leemos en la gráfica. Ahora, la log verosimilitud es: <span class="math display">\[log L(\Sigma) = - \frac{np}{2} log(2\pi) - \frac{n}{2}log det(\Sigma) - \frac{n}{2}tr(\Sigma^{-1}S)\]</span> buscamos parámetros<span class="math inline">\(\hat{\Lambda}\)</span> y <span class="math inline">\(\hat{Psi}\)</span> que maximizen esta log-verosimilitud, sin embargo, estos parámetros no se pueden separar facilmente (es decir maximizar individualmente) ya que están relacionados a través de <span class="math inline">\(det(\Sigma)\)</span> y <span class="math inline">\(\Sigma^{-1}\)</span>. No hay una forma cerrada para encontrar los parámetros de máxima verosimilitud de la expresión anterior. Recurrimos entonces al algoritmo <strong>EM</strong>, donde en el paso <strong>E</strong> <em>rellanamos</em> los valores de <span class="math inline">\(X\)</span> y en el paso <strong>M</strong> estimamos <span class="math inline">\(\Lambda\)</span> y <span class="math inline">\(\Psi\)</span> utilizando que éstos parámetros se pueden separar si conozco <span class="math inline">\(X\)</span>.</p>
+<p>Supongamos ahora que, <span class="math display">\[X \sim N(0, I)\]</span> <span class="math display">\[U \sim N(0,\Psi)\]</span> Entonces la distribución del vector de variables aleatorias observables <span class="math inline">\(Y\)</span> es <span class="math display">\[Y \sim N(\mu + \Lambda x, \Sigma)\]</span> donde <span class="math inline">\(\Sigma = \Lambda \Lambda^T + \Psi\)</span> (igual que antes). Es fácil ver que la distribución condicional de <span class="math inline">\(Y\)</span> es: <span class="math display">\[Y|X \sim N(\mu + \Lambda x, \Psi)\]</span> por tanto, se cumple las independencias condicionales que leemos en la gráfica. Ahora, la log verosimilitud es: <span class="math display">\[\log L(\Sigma) = - \frac{np}{2} \log(2\pi) - \frac{n}{2}\log \det(\Sigma) - \frac{n}{2}\mbox{tr}(\Sigma^{-1}S)\]</span> buscamos parámetros<span class="math inline">\(\hat{\Lambda}\)</span> y <span class="math inline">\(\hat{Psi}\)</span> que maximizen esta log-verosimilitud, sin embargo, estos parámetros no se pueden separar facilmente (es decir maximizar individualmente) ya que están relacionados a través de <span class="math inline">\(det(\Sigma)\)</span> y <span class="math inline">\(\Sigma^{-1}\)</span>. No hay una forma cerrada para encontrar los parámetros de máxima verosimilitud de la expresión anterior. Recurrimos entonces al algoritmo <strong>EM</strong>, donde en el paso <strong>E</strong> <em>rellanamos</em> los valores de <span class="math inline">\(X\)</span> y en el paso <strong>M</strong> estimamos <span class="math inline">\(\Lambda\)</span> y <span class="math inline">\(\Psi\)</span> utilizando que éstos parámetros se pueden separar si conozco <span class="math inline">\(X\)</span>.</p>
 </div>
 <div id="evaluacion-del-modelo" class="section level3">
 <h3><span class="header-section-number">14.2.4</span> Evaluación del modelo</h3>
@@ -989,240 +989,183 @@ fact.y
 <li><p>ha sido utilizado como criterio de las reglas de operación de diversos programas, lo que es un indicativo de su aceptación y uso cada vez más generalizado; y</p></li>
 <li><p>define 4 dimensiones de la marginación: educación, vivienda, distribución de la población, ingresos monetarios.</p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_estados &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/base_estados.csv&quot;</span>)
-base_estados <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+base_estados &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/base_estados.csv&quot;</span>)
+base_estados <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(NOM_ENT, ANALF<span class="op">:</span>PO2SM, ANIO) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th align="right">CVE_ENT</th>
 <th align="left">NOM_ENT</th>
-<th align="right">POB_TOT</th>
 <th align="right">ANALF</th>
 <th align="right">SPRIM</th>
-<th align="left">OVSDE</th>
+<th align="right">OVSDE</th>
 <th align="right">OVSEE</th>
 <th align="right">OVSAE</th>
 <th align="right">VHAC</th>
 <th align="right">OVPT</th>
 <th align="right">PL&lt;5000</th>
 <th align="right">PO2SM</th>
-<th align="left">OVSDSE</th>
-<th align="right">IM</th>
-<th align="left">GM</th>
-<th align="left">IND0A100</th>
-<th align="right">LUGAR</th>
 <th align="right">ANIO</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">1</td>
 <td align="left">Aguascalientes</td>
-<td align="right">719659</td>
 <td align="right">7.06</td>
 <td align="right">33.9</td>
-<td align="left">10.88</td>
+<td align="right">10.88</td>
 <td align="right">4.97</td>
 <td align="right">4.18</td>
 <td align="right">51.0</td>
 <td align="right">7.45</td>
 <td align="right">26.97</td>
 <td align="right">62.5</td>
-<td align="left">-</td>
-<td align="right">-0.89</td>
-<td align="left">Bajo</td>
-<td align="left">-</td>
-<td align="right">27</td>
 <td align="right">1990</td>
 </tr>
 <tr class="even">
-<td align="right">2</td>
 <td align="left">Baja California</td>
-<td align="right">1660855</td>
 <td align="right">4.68</td>
 <td align="right">24.0</td>
-<td align="left">4.89</td>
+<td align="right">4.89</td>
 <td align="right">10.49</td>
 <td align="right">19.59</td>
 <td align="right">45.4</td>
 <td align="right">8.13</td>
 <td align="right">11.95</td>
 <td align="right">40.0</td>
-<td align="left">-</td>
-<td align="right">-1.34</td>
-<td align="left">Muy bajo</td>
-<td align="left">-</td>
-<td align="right">30</td>
 <td align="right">1990</td>
 </tr>
 <tr class="odd">
-<td align="right">3</td>
 <td align="left">Baja California Sur</td>
-<td align="right">317764</td>
 <td align="right">5.39</td>
 <td align="right">27.8</td>
-<td align="left">7.03</td>
+<td align="right">7.03</td>
 <td align="right">11.10</td>
 <td align="right">10.17</td>
 <td align="right">48.6</td>
 <td align="right">13.99</td>
 <td align="right">25.60</td>
 <td align="right">54.1</td>
-<td align="left">-</td>
-<td align="right">-0.97</td>
-<td align="left">Bajo</td>
-<td align="left">-</td>
-<td align="right">28</td>
 <td align="right">1990</td>
 </tr>
 <tr class="even">
-<td align="right">4</td>
 <td align="left">Campeche</td>
-<td align="right">535185</td>
 <td align="right">15.40</td>
 <td align="right">44.8</td>
-<td align="left">24.8</td>
+<td align="right">24.80</td>
 <td align="right">15.02</td>
 <td align="right">29.52</td>
 <td align="right">65.0</td>
 <td align="right">24.16</td>
 <td align="right">36.21</td>
 <td align="right">68.1</td>
-<td align="left">-</td>
-<td align="right">0.48</td>
-<td align="left">Alto</td>
-<td align="left">-</td>
-<td align="right">10</td>
 <td align="right">1990</td>
 </tr>
 <tr class="odd">
-<td align="right">5</td>
-<td align="left">Coahuila de Zaragoza</td>
-<td align="right">1972340</td>
+<td align="left">Coahuila</td>
 <td align="right">5.48</td>
 <td align="right">28.2</td>
-<td align="left">10.81</td>
+<td align="right">10.81</td>
 <td align="right">5.24</td>
 <td align="right">7.76</td>
 <td align="right">50.0</td>
 <td align="right">8.48</td>
 <td align="right">17.13</td>
 <td align="right">60.9</td>
-<td align="left">-</td>
-<td align="right">-1.05</td>
-<td align="left">Bajo</td>
-<td align="left">-</td>
-<td align="right">29</td>
 <td align="right">1990</td>
 </tr>
 <tr class="even">
-<td align="right">6</td>
 <td align="left">Colima</td>
-<td align="right">428510</td>
 <td align="right">9.30</td>
 <td align="right">36.0</td>
-<td align="left">8.37</td>
+<td align="right">8.37</td>
 <td align="right">5.82</td>
 <td align="right">6.61</td>
 <td align="right">56.0</td>
 <td align="right">21.13</td>
 <td align="right">22.39</td>
 <td align="right">50.4</td>
-<td align="left">-</td>
-<td align="right">-0.76</td>
-<td align="left">Bajo</td>
-<td align="left">-</td>
-<td align="right">23</td>
 <td align="right">1990</td>
 </tr>
 <tr class="odd">
-<td align="right">7</td>
 <td align="left">Chiapas</td>
-<td align="right">3210496</td>
 <td align="right">30.12</td>
 <td align="right">62.1</td>
-<td align="left">42.66</td>
+<td align="right">42.66</td>
 <td align="right">34.92</td>
 <td align="right">42.09</td>
 <td align="right">74.1</td>
 <td align="right">50.90</td>
 <td align="right">66.56</td>
 <td align="right">80.1</td>
-<td align="left">-</td>
-<td align="right">2.36</td>
-<td align="left">Muy alto</td>
-<td align="left">-</td>
-<td align="right">1</td>
 <td align="right">1990</td>
 </tr>
 <tr class="even">
-<td align="right">8</td>
 <td align="left">Chihuahua</td>
-<td align="right">2441873</td>
 <td align="right">6.12</td>
 <td align="right">30.9</td>
-<td align="left">14.1</td>
+<td align="right">14.10</td>
 <td align="right">13.23</td>
 <td align="right">11.96</td>
 <td align="right">47.8</td>
 <td align="right">9.58</td>
 <td align="right">25.57</td>
 <td align="right">52.8</td>
-<td align="left">-</td>
-<td align="right">-0.87</td>
-<td align="left">Bajo</td>
-<td align="left">-</td>
-<td align="right">26</td>
 <td align="right">1990</td>
 </tr>
 <tr class="odd">
-<td align="right">9</td>
-<td align="left">Distrito Federal</td>
-<td align="right">8235744</td>
+<td align="left">CDMX</td>
 <td align="right">4.00</td>
 <td align="right">16.8</td>
-<td align="left">1.81</td>
+<td align="right">1.81</td>
 <td align="right">0.76</td>
 <td align="right">3.33</td>
 <td align="right">45.6</td>
 <td align="right">2.45</td>
 <td align="right">0.32</td>
 <td align="right">60.5</td>
-<td align="left">-</td>
-<td align="right">-1.69</td>
-<td align="left">Muy bajo</td>
-<td align="left">-</td>
-<td align="right">32</td>
 <td align="right">1990</td>
 </tr>
 <tr class="even">
-<td align="right">10</td>
 <td align="left">Durango</td>
-<td align="right">1349378</td>
 <td align="right">6.99</td>
 <td align="right">39.5</td>
-<td align="left">32.38</td>
+<td align="right">32.38</td>
 <td align="right">13.73</td>
 <td align="right">14.98</td>
 <td align="right">53.5</td>
 <td align="right">20.04</td>
 <td align="right">49.29</td>
 <td align="right">67.7</td>
-<td align="left">-</td>
-<td align="right">0.01</td>
-<td align="left">Alto</td>
-<td align="left">-</td>
-<td align="right">15</td>
 <td align="right">1990</td>
 </tr>
 </tbody>
 </table>
 <ol style="list-style-type: decimal">
-<li><p>Aplica el método de componentes principales (utiliza la función <code>princomp</code> como en los ejemplos de arriba.) Las variables para obtener las componentes son: <code>ANALF</code>, <code>SPRIM</code>, <code>OVSDE</code>, <code>OVSEE</code>, <code>OVSAE</code>, <code>VHAC</code>, <code>OVPT</code>, <code>PL&lt;5000</code>, <code>PO2SM</code>. No olvides que se debe hacer componentes principales para <em>cada año</em>.</p></li>
-<li><p>Utiliza la siguiente función para clasificar los componentes principales con el <em>método de Dalenius</em>.</p></li>
+<li>Aplica el método de componentes principales (utiliza la función <code>princomp</code> como en los ejemplos de arriba.) Las variables para obtener las componentes son: <code>ANALF</code>, <code>SPRIM</code>, <code>OVSEE</code>, <code>OVSDE</code>, <code>OVSAE</code>, <code>VHAC</code>, <code>OVPT</code>, <code>PL&lt;5000</code>, <code>PO2SM</code>. Haz una gráfica para 1990 de las componentes principales donde el eje principal esté en el eje horizontal y el eje secundario en el eje vertical. Sustituye los espacios que digan <strong><rellenar></strong>.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos &lt;-<span class="st"> </span>base_estados <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(CVE_ENT, NOM_ENT, ANIO, ANALF, SPRIM, OVSDE, OVSEE, 
+         OVSAE, VHAC, OVPT, <span class="st">`</span><span class="dt">PL&lt;5000</span><span class="st">`</span>, PO2SM) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.funs =</span> <span class="op">~</span><span class="kw">as.numeric</span>(.), <span class="kw">vars</span>(<span class="op">-</span>NOM_ENT)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(<span class="op">&lt;</span>rellenar<span class="op">&gt;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.funs =</span> <span class="kw">funs</span>((. <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(.))<span class="op">/</span><span class="kw">sd</span>(.)), <span class="kw">vars</span>(<span class="op">-</span><span class="er">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="op">-</span><span class="er">&lt;</span>rellenar<span class="op">&gt;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as_tibble</span>()
+  
+indice &lt;-<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="op">&lt;</span>rellenar<span class="op">&gt;</span><span class="st"> </span><span class="er">==</span><span class="st"> </span><span class="dv">1990</span>)
+
+indice_pca &lt;-<span class="st"> </span><span class="kw">princomp</span>(<span class="dt">x =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">scores =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">cor =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>)
+indice<span class="op">$</span>comp1 &lt;-<span class="st"> </span>indice_pca<span class="op">$</span>scores[,<span class="dv">1</span>]
+indice<span class="op">$</span>comp2 &lt;-<span class="st"> </span>indice_pca<span class="op">$</span>scores[,<span class="dv">2</span>]
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> indice, <span class="kw">aes</span>(<span class="dt">x=</span><span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">y=</span><span class="op">&lt;</span>rellenar<span class="op">&gt;</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Haz una gráfica de la medida de distorsión <span class="math inline">\(J\)</span> asociada a la elección del número de componentes <span class="math inline">\(M\)</span> (dada por la suma de los eigenvalores <span class="math inline">\(M+1\)</span> a <span class="math inline">\(D\)</span>).</p></li>
+<li><p>Utiliza la siguiente función para clasificar los componentes principales con el <em>método de Dalenius</em>. La tabla resultado debe tener las siguientes columnas: <code>anio</code> ,<code>cve_ent</code>, <code>nom_ent</code>, <code>eje1</code>, <code>eje2</code>, <code>dal</code>, y <code>GM</code>. No olvides que se debe hacer componentes principales para <em>cada año</em>.</p></li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stratification)
-clasif_dalenius =<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">n =</span> <span class="ot">NULL</span>, <span class="dt">Ls =</span> <span class="dv">3</span>, <span class="dt">add =</span> <span class="dv">5</span>, <span class="dt">labels =</span> <span class="ot">NULL</span>){
+clasif_dalenius =<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">n =</span> <span class="ot">NULL</span>, <span class="dt">Ls =</span> <span class="dv">5</span>, <span class="dt">add =</span> <span class="dv">5</span>, <span class="dt">labels =</span> <span class="ot">NULL</span>){
   
   x_<span class="dv">1</span> =<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>add
   
@@ -1232,63 +1175,98 @@ clasif_dalenius =<span class="st"> </span><span class="cf">function</span>(x, <s
         
   dalenius =<span class="st"> </span><span class="kw">strata.cumrootf</span>(x_<span class="dv">1</span>, <span class="dt">n =</span> n, <span class="dt">Ls =</span> Ls, <span class="dt">model =</span> <span class="st">&#39;none&#39;</span>)
   boundaries =<span class="st"> </span>dalenius<span class="op">$</span>bh <span class="op">-</span><span class="st"> </span>add
-  
   cluster =<span class="st"> </span><span class="kw">cut</span>(x, <span class="kw">c</span>(<span class="op">-</span><span class="ot">Inf</span>, boundaries, <span class="ot">Inf</span>), <span class="dt">labels =</span> labels)
   
   <span class="kw">return</span>(cluster)
 }</code></pre></div>
-<p>La tabla resultado debe tener las siguientes columnas: <code>anio</code> ,<code>estado</code>, <code>eje1</code>, <code>eje2</code>, <code>dal</code>, y <code>kfn</code>.</p>
-<ol start="3" style="list-style-type: decimal">
+<p>Completa el código sustituyendo donde diga <strong><rellenar></strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">warn=</span><span class="op">-</span><span class="dv">1</span>)
+anios &lt;-<span class="st"> </span><span class="kw">unique</span>(datos<span class="op">$</span>ANIO)
+
+calcula_gm &lt;-<span class="st"> </span><span class="cf">function</span>(anio){
+  indice &lt;-<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(ANIO <span class="op">==</span><span class="st"> </span>anio)
+  cve_ent &lt;-<span class="st"> </span>indice<span class="op">$</span>CVE_ENT
+  nom_ent &lt;-<span class="st"> </span>indice<span class="op">$</span>NOM_ENT
+  x =<span class="st"> </span><span class="er">&lt;</span>rellenar<span class="op">&gt;</span>
+<span class="st">  </span>indice_pca &lt;-<span class="st"> </span><span class="kw">princomp</span>(x, <span class="dt">scores =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">cor =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>)
+  eje1 &lt;-<span class="st"> </span>indice_pca<span class="op">$</span>scores[,<span class="dv">1</span>]
+  eje2 &lt;-<span class="st"> </span>indice_pca<span class="op">$</span>scores[,<span class="dv">2</span>]
+  dal &lt;-<span class="st"> </span><span class="kw">clasif_dalenius</span>(<span class="dt">x =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">add =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">n =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>)
+  GM &lt;-<span class="st"> </span><span class="kw">ordered</span>(dal, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;Muy Baja&#39;</span>, <span class="st">&#39;Baja&#39;</span>, <span class="st">&#39;Media&#39;</span>, <span class="st">&#39;Alta&#39;</span>, <span class="st">&#39;Muy Alta&#39;</span>))
+  
+  <span class="kw">tibble</span>(anio, cve_ent, nom_ent, eje1, eje2, dal, GM)
+}
+
+df &lt;-<span class="st"> </span><span class="kw">map_df</span>(<span class="dt">.x =</span> anios, <span class="dt">.f =</span> calcula_gm)</code></pre></div>
+<ol start="4" style="list-style-type: decimal">
 <li>Haz una gráfica de los dos componentes como la que se muestra abajo.</li>
 </ol>
-<p><img src="figuras/dalenius_2015.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>Utiliza la siguiente función para producir la gráfica:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">clasif_plot =<span class="st"> </span><span class="cf">function</span>(df, year, <span class="dt">clustvar =</span> <span class="st">&#39;dal&#39;</span>, <span class="dt">ellipse =</span> F){
-  plot_titles =<span class="st"> </span><span class="kw">list</span>(<span class="st">&#39;dal&#39;</span> =<span class="st"> &#39;Dalenius&#39;</span>,
-              <span class="st">&#39;kfn&#39;</span> =<span class="st"> &#39;Vecinos Lejanos&#39;</span>)
-  df <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(anio <span class="op">==</span><span class="st"> </span>year) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes_string</span>(<span class="st">&#39;eje1&#39;</span>, <span class="st">&#39;eje2&#39;</span>, <span class="dt">group =</span> clustvar)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&#39;dashed&#39;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&#39;dashed&#39;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes_string</span>(<span class="dt">color =</span> clustvar, <span class="dt">shape =</span> clustvar), <span class="dt">size =</span> <span class="dv">4</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> plot_titles[[clustvar]],
-         <span class="dt">subtitle =</span> year,
+<p><img src="figuras/dalenius.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Utiliza el siguiente código para producir la gráfica. Sustituye los espacios que digan <rellenar>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(maptools)
+etiquetar &lt;-<span class="st"> </span><span class="cf">function</span>(df, x, y, <span class="dt">etiq =</span> <span class="st">&quot;etiq&quot;</span>, <span class="dt">size =</span> <span class="fl">3.5</span>){
+  df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(df)
+  <span class="kw">plot</span>(df[, x], df[, y])
+  orden &lt;-<span class="st"> </span><span class="kw">pointLabel</span>(df[, x], df[, y], df[, etiq], <span class="dt">doPlot =</span> <span class="ot">TRUE</span>,
+    <span class="dt">cex =</span> <span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>size, <span class="dt">xpd =</span> <span class="ot">TRUE</span>)
+  <span class="kw">dev.off</span>()
+  df<span class="op">$</span>a &lt;-<span class="st"> </span>orden<span class="op">$</span>x
+  df<span class="op">$</span>b &lt;-<span class="st"> </span>orden<span class="op">$</span>y
+  df
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RColorBrewer)
+<span class="kw">set.seed</span>(<span class="dv">110265</span>)
+df_etiq &lt;-<span class="st"> </span><span class="kw">etiquetar</span>(df, <span class="st">&quot;eje1&quot;</span>, <span class="st">&quot;eje2&quot;</span>, <span class="dt">etiq =</span> <span class="st">&quot;nom_ent&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)
+
+df_etiq <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">&lt;</span>rellenar<span class="op">&gt;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="op">&lt;</span>rellenar<span class="op">&gt;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&#39;dashed&#39;</span>, <span class="dt">color =</span> <span class="st">&#39;gray60&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">linetype =</span> <span class="st">&#39;dashed&#39;</span>, <span class="dt">color =</span> <span class="st">&#39;gray60&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="op">&lt;</span>rellenar<span class="op">&gt;</span>), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">show.legend =</span> T) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Dalenius&#39;</span>,
+         <span class="dt">subtitle =</span> <span class="dv">1990</span>,
          <span class="dt">x =</span> <span class="st">&#39;Eje Principal&#39;</span>,
          <span class="dt">y =</span> <span class="st">&#39;Eje Secundario&#39;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">data =</span> <span class="kw">filter</span>(df, anio <span class="op">==</span><span class="st"> </span>year),
-              <span class="kw">aes</span>(<span class="dt">x =</span> eje1, <span class="dt">y =</span> eje2, <span class="dt">label =</span> estado),
-              <span class="dt">size =</span> <span class="dv">2</span>,
-              <span class="dt">nudge_x =</span> .<span class="dv">3</span>,
-              <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>,
-              <span class="dt">check_overlap =</span> T) <span class="op">+</span>
-<span class="st">    </span><span class="kw">scale_colour_manual</span>(<span class="dt">breaks =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,
-                        <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;Muy Bajo&#39;</span>, <span class="st">&#39;Bajo&#39;</span>, <span class="st">&#39;Medio&#39;</span>, <span class="st">&#39;Alto&#39;</span>, <span class="st">&#39;Muy Alto&#39;</span>),
-                        <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&#39;green3&#39;</span>, <span class="st">&#39;darkolivegreen3&#39;</span>, <span class="st">&#39;wheat3&#39;</span>, <span class="st">&#39;sandybrown&#39;</span>, <span class="st">&#39;tomato1&#39;</span>), 
-                        <span class="dt">name =</span> <span class="st">&quot;Nivel de marginación&quot;) +</span>
-<span class="st">    scale_shape_manual(name = &#39;Nivel de marginación&#39;,</span>
-<span class="st">                       breaks = 1:5,</span>
-<span class="st">                       labels = c(&#39;Muy Bajo&#39;, &#39;Bajo&#39;, &#39;Medio&#39;, &#39;Alto&#39;, &#39;Muy Alto&#39;),</span>
-<span class="st">                       values = 15:19) +</span>
-<span class="st">    theme_solarized() +</span>
-<span class="st">    theme(axis.ticks.y = element_blank(),</span>
-<span class="st">          axis.ticks.x = element_blank(),</span>
-<span class="st">          axis.text.x = element_blank(),</span>
-<span class="st">          axis.text.y = element_blank(),</span>
-<span class="st">          strip.background = element_rect(fill = &#39;cornsilk2&#39;, color = &#39;cornsilk2&#39;),</span>
-<span class="st">          legend.key = element_rect(fill = &#39;cornsilk1&#39;),</span>
-<span class="st">          axis.line = element_line(linetype = &#39;blank&#39;),</span>
-<span class="st">          rect = element_rect(color = &#39;cornsilk2&#39;, linetype = &#39;blank&#39;)) -&gt; p</span>
-<span class="st">  </span>
-<span class="st">  pf &lt;- p</span>
-<span class="st">  </span>
-<span class="st">  if(ellipse){</span>
-<span class="st">    pf &lt;- pf + </span>
-<span class="st">      stat_ellipse(aes_string(&#39;eje1&#39;, &#39;eje2&#39;, color = clustvar, group = clustvar), size = 1)</span>
-<span class="st">  }</span>
-<span class="st">  </span>
-<span class="st">  pf</span>
-<span class="st">}</span></code></pre></div>
+<span class="st">    </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">x =</span> a, <span class="dt">y =</span> b, <span class="dt">label =</span> nom_ent), <span class="dt">size =</span> <span class="fl">2.5</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_colour_manual</span>(<span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;Muy Baja&#39;</span>, <span class="st">&#39;Baja&#39;</span>, <span class="st">&#39;Media&#39;</span>, <span class="st">&#39;Alta&#39;</span>, <span class="st">&#39;Muy Alta&#39;</span>),
+                        <span class="dt">values =</span> <span class="kw">rev</span>(<span class="kw">brewer.pal</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">name =</span> <span class="st">&quot;PiYG&quot;</span>)), 
+                        <span class="dt">name =</span> <span class="st">&quot;Marginación&quot;)</span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>Haz una gráfica como ésta que muestre en un mapa tus resultados:</li>
+</ol>
+<p><img src="figuras/mex_marg.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Para hacer la gráfica usa este código:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(scales)
+<span class="kw">library</span>(rgdal)
+<span class="kw">library</span>(ggmap)
+
+<span class="co"># Leer geometrías del mapa</span>
+edo_shp &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="st">&quot;datos/estados_ligero&quot;</span>, <span class="dt">layer =</span> <span class="st">&quot;estados_ligero&quot;</span>)
+edo_shp<span class="op">@</span>data<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span><span class="op">:</span><span class="dv">32</span>)
+edo_shp<span class="op">@</span>data<span class="op">$</span>CVE_ENT  &lt;-<span class="st"> </span>edo_shp<span class="op">@</span>data<span class="op">$</span>id
+edo_df &lt;-<span class="st"> </span><span class="kw">fortify</span>(edo_shp, <span class="dt">region =</span> <span class="st">&quot;CVE_ENT&quot;</span>)
+
+<span class="co"># Añadir variables al mapa</span>
+df_<span class="dv">2010</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(anio <span class="op">==</span><span class="st"> </span><span class="dv">2010</span>)
+
+<span class="co"># Añadimos las variables de interés a la base de datos mun_df</span>
+edo_ind &lt;-<span class="st"> </span>edo_df <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CVE_ENT =</span> <span class="kw">as.integer</span>(id)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">left_join</span>(df_<span class="dv">2010</span>, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;CVE_ENT&#39;</span>=<span class="st">&#39;cve_ent&#39;</span>))
+
+<span class="co"># Obtenemos el mapa de Google</span>
+mapa &lt;-<span class="st"> </span><span class="kw">get_googlemap</span>(<span class="kw">c</span>(<span class="dt">lon =</span> <span class="op">-</span><span class="dv">102</span>, <span class="dt">lat =</span> <span class="dv">24</span>), <span class="dt">zoom =</span> <span class="dv">4</span>, <span class="dt">maptype =</span> <span class="st">&quot;hybrid&quot;</span>,
+                      <span class="dt">style =</span> <span class="st">&#39;feature:administrative.country|element:labels|visibility:off&#39;</span>)
+
+<span class="kw">ggmap</span>(mapa) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> edo_ind, <span class="kw">aes</span>(long, lat, <span class="dt">group =</span> group, <span class="dt">fill =</span> GM),
+               <span class="dt">color =</span> <span class="st">&quot;gray30&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span>, <span class="dt">alpha =</span> <span class="fl">0.7</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Grado de marginación en 2010&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">119</span>, <span class="op">-</span><span class="dv">86</span>), <span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">14</span>, <span class="dv">33</span>), <span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">rev</span>(<span class="kw">brewer.pal</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">name =</span> <span class="st">&quot;PiYG&quot;</span>)),
+                    <span class="dt">name=</span> <span class="st">&quot;Marginación&quot;, guide = guide_legend(reverse = T))</span></code></pre></div>
 
 </div>
 </div>

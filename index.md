@@ -2,7 +2,7 @@
 --- 
 title: "Estadística Aplicada III"
 author: "Andreu Boada de Atela"
-date: "2018-05-02"
+date: "2018-05-05"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
