@@ -1142,7 +1142,7 @@ base_estados <span class="op">%&gt;%</span><span class="st"> </span><span class=
 </tbody>
 </table>
 <ol style="list-style-type: decimal">
-<li>Aplica el método de componentes principales (utiliza la función <code>princomp</code> como en los ejemplos de arriba.) Las variables para obtener las componentes son: <code>ANALF</code>, <code>SPRIM</code>, <code>OVSEE</code>, <code>OVSDE</code>, <code>OVSAE</code>, <code>VHAC</code>, <code>OVPT</code>, <code>PL&lt;5000</code>, <code>PO2SM</code>. Haz una gráfica para 1990 de las componentes principales donde el eje principal esté en el eje horizontal y el eje secundario en el eje vertical. Sustituye los espacios que digan <strong><rellenar></strong>.</li>
+<li>Aplica el método de componentes principales (utiliza la función <code>princomp</code> como en los ejemplos de arriba.) Las variables para obtener las componentes son: <code>ANALF</code>, <code>SPRIM</code>, <code>OVSEE</code>, <code>OVSDE</code>, <code>OVSAE</code>, <code>VHAC</code>, <code>OVPT</code>, <code>PL&lt;5000</code>, <code>PO2SM</code>. Haz una gráfica para 1990 de las componentes principales donde el eje principal esté en el eje horizontal y el eje secundario en el eje vertical. Sustituye los espacios que digan <code>&lt;rellenar&gt;</code>.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos &lt;-<span class="st"> </span>base_estados <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">select</span>(CVE_ENT, NOM_ENT, ANIO, ANALF, SPRIM, OVSDE, OVSEE, 
@@ -1179,7 +1179,7 @@ clasif_dalenius =<span class="st"> </span><span class="cf">function</span>(x, <s
   
   <span class="kw">return</span>(cluster)
 }</code></pre></div>
-<p>Completa el código sustituyendo donde diga <strong><rellenar></strong>:</p>
+<p>Completa el código sustituyendo donde diga <code>&lt;rellenar&gt;</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">warn=</span><span class="op">-</span><span class="dv">1</span>)
 anios &lt;-<span class="st"> </span><span class="kw">unique</span>(datos<span class="op">$</span>ANIO)
 
@@ -1202,7 +1202,7 @@ df &lt;-<span class="st"> </span><span class="kw">map_df</span>(<span class="dt"
 <li>Haz una gráfica de los dos componentes como la que se muestra abajo.</li>
 </ol>
 <p><img src="figuras/dalenius.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>Utiliza el siguiente código para producir la gráfica. Sustituye los espacios que digan <rellenar>:</p>
+<p>Utiliza el siguiente código para producir la gráfica. Sustituye los espacios que digan <code>&lt;rellenar&gt;</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(maptools)
 etiquetar &lt;-<span class="st"> </span><span class="cf">function</span>(df, x, y, <span class="dt">etiq =</span> <span class="st">&quot;etiq&quot;</span>, <span class="dt">size =</span> <span class="fl">3.5</span>){
   df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(df)
