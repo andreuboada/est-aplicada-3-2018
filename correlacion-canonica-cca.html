@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="intro.html">
+<link rel="prev" href="componentes-principales-2.html">
+<link rel="next" href="conglomerados-clustering-1.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -412,64 +412,590 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Estadística Aplicada III</h1>
-<p class="author"><em>Andreu Boada de Atela</em></p>
-<p class="date"><em>2018-05-10</em></p>
-</div>
-<div id="temario-y-referencias" class="section level1 unnumbered">
-<h1>Temario y referencias</h1>
-<p><strong>Todas las notas y material del curso estarán en este</strong> <a href="https://github.com/andreuboada/est-aplicada-3-2018">repositorio</a>.</p>
-<ul>
-<li>Análisis exploratorio de datos</li>
-<li>Temas selectos de R</li>
-<li>Análisis de datos categóricos</li>
-<li>Regresión logística</li>
-<li>Regularización y selección de modelos</li>
-<li>Introducción a modelos lineales generalizados</li>
-<li>Análisis de discriminante lineal</li>
-<li>Componentes principales y análisis de factores</li>
-<li>Análisis de la correlación canónica</li>
-<li>Introducción a análisis de conglomerados</li>
-</ul>
-<div id="evaluacion" class="section level3 unnumbered">
-<h3>Evaluación</h3>
-<ul>
-<li>Tareas semanales (20%)</li>
-<li>Examen parcial (30% práctico, 20% teórico)</li>
-<li>Un examen final (30% práctico)</li>
-</ul>
-</div>
-<div id="software-r-y-rstudio" class="section level3 unnumbered">
-<h3>Software: R y Rstudio</h3>
-<ul>
-<li><a href="https://cran.r-project.org">R</a> Sitio de R (CRAN)</li>
-<li><a href="https://www.rstudio.com/products/RStudio/">Rstudio</a> Interfaz gráfica para trabajar en R.</li>
-<li><a href="https://www.rstudio.com/online-learning/#R">Recursos para aprender R</a></li>
-</ul>
-</div>
-<div id="referencias-principales" class="section level3 unnumbered">
-<h3>Referencias principales</h3>
-<ul>
-<li><p><a href="https://www.amazon.com/gp/product/052168689X/">Gelman, A., &amp; Hill, J. (2006). Data Analysis using Regression and Multilevel/hierarchical Models. Cambridge University Press.</a></p></li>
-<li><p><a href="http://www.springer.com/us/book/9780387310732">Christopher, M. B. (2016). Pattern Recognition and Machine Learning. Springer.</a></p></li>
-<li><p><a href="https://www.wiley.com/en-us/Categorical+Data+Analysis%2C+3rd+Edition-p-9780470463635">Agresti, Alan. (2013). Categorical Data Analysis. 3rd ed. Wiley.</a></p></li>
-<li><p><a href="https://www.pearson.com/us/higher-education/program/Johnson-Applied-Multivariate-Statistical-Analysis-6th-Edition/PGM274834.html">Johnson, R., y Wichern, D. (2007). Applied Multivariate Statistical Analysis. 6th ed. Pearson Prentice Hall.</a></p></li>
-</ul>
-</div>
-<div id="otras-referencias" class="section level3 unnumbered">
-<h3>Otras referencias</h3>
-<ul>
-<li><p><a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Friedman, J., Hastie, T., &amp; Tibshirani, R. (2001). The Elements of Statistical Learning. Springer.</a></p></li>
-<li><p><a href="https://www.amazon.com/Introduction-Multivariate-Statistical-Analysis/dp/0471360910">Anderson, T. W. (2003). An Introduction to Multivariate Statistical Analysis. 3rd ed. Wiley.</a></p></li>
-<li><p><a href="https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469">Field, A., Miles, J., &amp; Field, Z. (2012). Discovering Statistics Using R. Sage publications.</a></p></li>
-<li><p><a href="https://www.amazon.com/Introduction-Applied-Multivariate-Analysis-Use/dp/1441996494">Everitt, B., &amp; Hothorn, T. (2011). An Introduction to Applied Multivariate Analysis with R. Springer</a></p></li>
-</ul>
-</div>
-<div id="tareas" class="section level3 unnumbered">
-<h3>Tareas</h3>
-<p>Enviar tareas por correo electrónico a: <a href="andreuboadadeatela@gmail.com" class="uri">andreuboadadeatela@gmail.com</a> con el asunto “EAPLICADA3-Tarea-[XX]-[clave única 1]-[clave única 2]” donde [XX] es el número de la tarea, [clave única 1] y [clave única 2] son tu clave y la de tu compañero con quien vas a trabajar durante el semestre.</p>
+<div id="correlacion-canonica-cca" class="section level1">
+<h1><span class="header-section-number">Clase 15</span> Correlación Canónica (CCA)</h1>
+<style>
+  .espacio {
+    margin-bottom: 1cm;
+  }
+</style>
+<style>
+  .espacio3 {
+    margin-bottom: 3cm;
+  }
+</style>
+<p class="espacio">
+</p>
+<div id="cca-vs-pca" class="section level2">
+<h2><span class="header-section-number">15.1</span> CCA vs PCA</h2>
+<p class="espacio3">
+</p>
 
+<div class="nota">
+<ul>
+<li><p>Anteriormente, estudiamos los métodos analíticos de factores como un enfoque para comprender las fuentes clave de variación <em>dentro</em> de conjuntos de variables.</p></li>
+<li><p>Hay situaciones en las que tenemos varios conjuntos de variables, y buscamos una comprensión de las dimensiones clave que se correlacionan <em>entre</em> conjuntos.</p></li>
+<li>El análisis de correlación canónica es uno de los métodos más antiguos y mejor conocidos para descubrir y explorar dimensiones que están correlacionadas <em>entre</em> conjuntos, pero no están correlacionadas <em>dentro</em> del conjunto.
+</div>
+</li>
+</ul>
+<p class="espacio3">
+</p>
+<p>El análisis de correlación canónica se concentra en la correlación entre una <em>combinación lineal</em> de variables en un conjunto y la <em>combinación lineal</em> de variables en otro conjunto. La idea es determinar primero el par de combinaciones lineales que tienen la combinación lineal más grande. Después, el par de combinaciones lineales que tienen correlación más grande entre todos los pares que no están correlacionados con el primero, y así sucesivamente.</p>
+<p>A los pares de combinaciones lineales se les llama <em>variables canónicas</em> y a sus correlaciones se les llama <em>correlaciones canónicas</em>.</p>
+<p>Las correlaciones canónicas miden qué tan fuerte es la asociación entre dos conjuntos de variables.</p>
+</div>
+<div id="variables-y-correlaciones-canonicas" class="section level2">
+<h2><span class="header-section-number">15.2</span> Variables y correlaciones canónicas</h2>
+<p>Nos interesa medir la asociación entre <em>dos</em> grupos de variables:</p>
+<ul>
+<li><p>El primer grupo (de <span class="math inline">\(p\)</span> variables) está representado por vector aleatorio <span class="math inline">\(X^{(1)}\)</span></p></li>
+<li><p>El segundo grupo (de <span class="math inline">\(q\)</span> variables) está representado por otro vector aleatorio <span class="math inline">\(X^{(2)}\)</span></p></li>
+</ul>
+<p>Suponemos en lo que sigue que <span class="math inline">\(p \leq q\)</span>.</p>
+<p>Para los vectores aleatorios <span class="math inline">\(X^{(1)}\)</span> y <span class="math inline">\(X^{(2)}\)</span> sea</p>
+<p><span class="math display">\[
+E(X^{(1)}) = \mu^{(1)},\qquad \mbox{Var}(X^{(1)}) = \Sigma_{11}
+\]</span></p>
+<p><span class="math display">\[
+E(X^{(2)}) = \mu^{(2)},\qquad \mbox{Var}(X^{(2)}) = \Sigma_{22}
+\]</span></p>
+<p><span class="math display">\[
+\mbox{Cov}\left(X^{(1)},X^{(2)}\right) = \Sigma_{12} = \Sigma_{21}
+\]</span></p>
+<p>Ponemos</p>
+<p><span class="math display">\[
+X = \left(X^{(1)}, X^{(2)}\right)
+\]</span></p>
+<p>con vector de media</p>
+<p><span class="math display">\[
+\mu = (\mu^{(1)},\mu^{(2)})
+\]</span></p>
+<p>y matriz de covarianzas</p>
+<p><span class="math display">\[
+\Sigma = \left[
+\begin{array}{c|c}
+\Sigma_{11} &amp; \Sigma_{12} \\
+\hline
+\Sigma_{21} &amp; \Sigma_{22}
+\end{array}
+\right]
+\]</span></p>
+<p class="espacio">
+</p>
+
+<div class="nota">
+<p>Observaciones:</p>
+<ul>
+<li><p>Las correlaciones entre pares de variables, una de <span class="math inline">\(X^{(1)}\)</span> y la otra de <span class="math inline">\(X^{(2)}\)</span> está contenidas en la matriz <span class="math inline">\(\Sigma_{12}\)</span>.</p></li>
+<li><p><span class="math inline">\(\Sigma_{12}\)</span> es de dimensión <span class="math inline">\(pq\)</span>. Si <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span> son grandes, la interpretación de <span class="math inline">\(\Sigma_{12}\)</span> puede ser muy complicada. En este caso, es usual interpretar más fácilmente combinaciones lineales de las variables de cada grupo.</p></li>
+<li>La tarea principal del <em>análisis canónico</em> es resumir la asociación entre <span class="math inline">\(X^{(1)}\)</span> y <span class="math inline">\(X^{(2)}\)</span>.
+</div>
+</li>
+</ul>
+<p class="espacio">
+</p>
+<div id="combinaciones-lineaes-de-factores" class="section level3">
+<h3><span class="header-section-number">15.2.1</span> Combinaciones lineaes de factores</h3>
+<p>Las combinaciones lineales proveen de interpretación a conjuntos de variables. Sea</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+U &amp;=&amp; a^T X^{(1)} \\
+V &amp;=&amp; b^T X^{(2)}
+\end{eqnarray*}
+\]</span></p>
+<p>para un par de vectores <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>. Por lo tanto,</p>
+<p><span class="math display">\[
+\mbox{Var}(U) = a^T \mbox{Var}(X^{(1)}) a = a^T\Sigma_{11}a
+\]</span></p>
+<p><span class="math display">\[
+\mbox{Var}(V) = b^T \mbox{Var}(X^{(2)}) b = b^T\Sigma_{22}b
+\]</span></p>
+<p><span class="math display">\[
+\mbox{Cov}(U,V) = a^T \mbox{Cov}\left(X^{(1)},X^{(2)}\right) b = a^T\Sigma_{12}b.
+\]</span></p>
+<p>Buscamos coeficientes de los vectores <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> tales que:</p>
+<p><span class="math display">\[
+\mbox{Corr}(U,V) = \dfrac{a^T\Sigma_{12}b}{\sqrt{a^T\Sigma_{11}a}\sqrt{b^T\Sigma_{22}b}}.
+\]</span></p>
+<p>Sea <span class="math inline">\(k\)</span> entre <span class="math inline">\(1\)</span> y <span class="math inline">\(p\leq q\)</span>, entonces al <span class="math inline">\(k\)</span>-ésimo par de combinaciones lineales <span class="math inline">\(U_k\)</span> y <span class="math inline">\(V_kl\)</span> con varianzas unitarias y que maximizan la correlación entre las opciones que no estén correlacionadas con las anteriores, se les llama <em><span class="math inline">\(k\)</span>-ésimo par de variables canónicas</em>.</p>
+<p class="espacio3">
+</p>
+
+<div class="nota">
+<p>Suponemos que <span class="math inline">\(\Sigma_{12}\)</span> es de rango completo, entonces</p>
+<p><span class="math display">\[
+\max_{u,v}\mbox{Corr}(U,V) = \rho_1^*,
+\]</span></p>
+<p>se alcanza en las combinaciones lineales (primer par canónico):</p>
+<p><span class="math display">\[
+U_{1}=\underbrace{e_{1}^{T}\Sigma_{11}^{-1}}_{a_{1}^{T}}X^{(1)}, \qquad \mbox{ y } \qquad V_{1}=\underbrace{f_{1}^{T}\Sigma_{22}^{-1}}_{b_{1}^{T}}X^{(2)} 
+\]</span></p>
+<p>donde <span class="math inline">\(\mbox{Var}\left(X_i^{(1)}\right) = \sigma_{ii}\)</span> para <span class="math inline">\(i=1,2,\ldots,p\)</span>.</p>
+<p>El <span class="math inline">\(k\)</span>-ésimo par de variables canónicas <span class="math inline">\(k=2,3,\ldots,p\)</span>,</p>
+<p><span class="math display">\[
+U_k = e_k^T\Sigma_{11}^{-1/2}X^{(1)},\qquad V_k = f_k^T\Sigma_{22}^{-1/2}X^{(2)}
+\]</span></p>
+<p>maximiza</p>
+<p><span class="math display">\[
+\mbox{Corr}(U_k,V_k)=\rho_k^*
+\]</span></p>
+entre las combinaciones lineales que no están correlacionadas con las variables canónicas precedentes de <span class="math inline">\(1,2,\ldots,k-1\)</span>.
+</div>
+
+<p class="espacio3">
+</p>
+<p>Aquí <span class="math inline">\({\rho_1^*}^2 \geq {\rho_2^*}^2 \geq \cdots \geq {\rho_p^*}^2\)</span> son los eigenvalores de</p>
+<p><span class="math display">\[
+\Sigma_{11}^{-1/2} \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21} \Sigma_{11}^{-1/2},
+\]</span></p>
+<p>y <span class="math inline">\(e_1,e_2,\ldots,e_p\)</span> son los eigenvectores asociados.</p>
+<p>De la misma forma <span class="math inline">\({\rho_1^*}^2,{\rho_2^*}^2,\ldots,{\rho_p^*}^2\)</span> son los eigenvalores asociados a los <span class="math inline">\(p\)</span> eigenvectores de dimensión <span class="math inline">\(q\)</span>, <span class="math inline">\(f_1,f_2,\ldots,f_p\)</span>, de la matriz</p>
+<p><span class="math display">\[
+\Sigma_{22}^{-1/2} \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12} \Sigma_{22}^{-1/2}.
+\]</span></p>
+<p class="espacio">
+</p>
+
+<div class="information">
+<p><strong>Propiedades:</strong> Para <span class="math inline">\(k,\,l = 1,2,\ldots,p\)</span>:</p>
+<p class="espacio">
+</p>
+<ul>
+<li><p><span class="math inline">\(\mbox{Var}(U_k) = \mbox{Var}(V_k)\)</span> = 1</p></li>
+<li><p><span class="math inline">\(\mbox{Cov}(U_k,U_l) = \mbox{Corr}(U_k,U_l) = 0 \quad k\neq l\)</span></p></li>
+<li><p><span class="math inline">\(\mbox{Cov}(V_k,V_l) = \mbox{Corr}(V_k,V_l) = 0 \quad k\neq l\)</span></p></li>
+<li><span class="math inline">\(\mbox{Cov}(U_k,V_l) = \mbox{Corr}(U_k,V_l) = 0 \quad k\neq l\)</span>
+</div>
+</li>
+</ul>
+<p><br></p>
+<p>Si las variables originales están estandarizadas <span class="math inline">\(Z^{(1)}=\left(Z^{(1)}_1,\ldots,Z^{(1)}_p\right)\)</span> entonces</p>
+<p><span class="math display">\[
+U_k = a_k^T Z^{(1)} = e_k^T \rho_{11}^{-1} Z^{(1)}
+\]</span> <span class="math display">\[
+V_k = b_k^T Z^{(2)} = f_k^T \rho_{22}^{-1} Z^{(2)}
+\]</span></p>
+<p>Aquí sucede que <span class="math inline">\(\mbox{Cov}(Z^{(1)}) = \rho_{11}\)</span>, es decir, la covarianza de <span class="math inline">\(Z^{(1)}\)</span> la representamos como matriz de correlaciones utilizando la letra <span class="math inline">\(\rho\)</span>, y de forma similar, <span class="math inline">\(\mbox{Cov}(Z^{(2)}) = \rho_{22}\)</span>.</p>
+<p>Además se puede ver que:</p>
+<p><span class="math display">\[
+\mbox{Corr}(U_k,V_k) = \rho_k^*, \quad k=1,2,\ldots,p
+\]</span></p>
+<p>donde <span class="math inline">\({\rho_1^*}^2\geq{\rho_2^*}^2\geq\ldots\geq{\rho_p^*}^2\)</span> son los eigenvalores de la matriz</p>
+<p><span class="math display">\[
+\rho_{11}^{-1/2}\rho_{12}\rho_{22}^{-1}\rho_{21}\rho_{11}^{-1/2}
+\]</span></p>
+<p><br></p>
+<hr />
+<p>Notemos que:</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+a_k^T(X^{(1)}-\mu^{(1)}) &amp;=&amp; a_{k1}(X_1^{(1)}-\mu_1^{(1)}) + \cdots+a_{kp}(X_p^{(1)}-\mu_p^{(1)})\\
+&amp;=&amp; a_{k1}\sqrt{\sigma_{11}}\dfrac{(X_1^{(1)}-\mu_1^{(1)})}{\sqrt{\sigma_{11}}} + \cdots+a_{kp}\sqrt{\sigma_{pp}}\dfrac{(X_p^{(1)}-\mu_p^{(1)})}{\sqrt{\sigma_{pp}}}.
+\end{eqnarray*}
+\]</span></p>
+<p>Por lo tanto, los coeficientes canónicos de las variables estandarizadas</p>
+<p><span class="math display">\[
+Z_i ^{(1)} = \dfrac{X_i^{(1)}- \mu_i^{(1)}}{\sqrt{\sigma_{ii}}}
+\]</span></p>
+<p>están relacionados simplemente con los coeficientes canónicos de la variable original <span class="math inline">\(X_i^{(1)}\)</span>. Más específicamente, si <span class="math inline">\(a_k\)</span> es el vector de coeficientes de la <span class="math inline">\(k\)</span>-ésima variable canónica <span class="math inline">\(U_k\)</span>, entonces</p>
+<p><span class="math display">\[
+a_k^TV_{11}^{1/2}
+\]</span></p>
+<p>es el vector de coeficientes de la <span class="math inline">\(k\)</span>-ésima variable canónica de las variables estandarizadas <span class="math inline">\(Z^{(1)}\)</span>. Aquí <span class="math inline">\(V_{11}^{1/2}\)</span> es la matriz diagonal con <span class="math inline">\(i\)</span>-ésimo elemento <span class="math inline">\(\sqrt{\sigma_{ii}}\)</span>.</p>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<img src="figuras/manicule2.jpg" />
+<div class="centered">
+<p class="espacio">
+</p>
+<p>Al estandarizar las variables <span class="math inline">\(X^{(1)}\)</span> y <span class="math inline">\(X^{(2)}\)</span> y realizar análisis de correlación canónica sobre <span class="math inline">\(Z^{(1)}\)</span> y <span class="math inline">\(Z^{(2)}\)</span>, las correlaciones canónicas</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Se multiplican por un factor de <span class="math inline">\(\sqrt{\sigma_{ii}}\)</span>.</p></li>
+<li><p>No cambian.</p></li>
+<li><p>Deben sumar <span class="math inline">\(1\)</span>.</p></li>
+<li><p>Ninguna de las anteriores.</p></li>
+</ol>
+<p class="espacio3">
+</p>
+</div>
+<p><br></p>
+<hr />
+</div>
+<div id="ejemplo-simple" class="section level3">
+<h3><span class="header-section-number">15.2.2</span> Ejemplo simple</h3>
+<p><span class="math display">\[
+X=\begin{pmatrix}
+1 &amp; 1 &amp; 3 \\
+2 &amp; 3 &amp; 2 \\
+1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 2 \\
+2 &amp; 2 &amp; 3 \\
+3 &amp; 3 &amp; 2 \\
+1 &amp; 3 &amp; 2 \\
+4 &amp; 3 &amp; 5 \\
+5 &amp; 5 &amp; 5 
+\end{pmatrix}, \qquad Y= \left(\begin{array}{rrr}
+4 &amp; 4 &amp; −1.07846 \\
+3 &amp; 3 &amp; 1.214359 \\
+2 &amp; 2 &amp; 0.307180 \\
+2 &amp; 3 &amp; −0.385641 \\
+2 &amp; 1 &amp; −0.078461 \\
+1 &amp; 1 &amp; 1.61436 \\
+1 &amp; 2 &amp; 0.814359 \\
+2 &amp; 1 &amp; -0.0641016 \\
+1 &amp; 2 &amp; 1.5359 \\
+\end{array}\right)
+\]</span></p>
+<p>En este ejemplo, construimos la tercera columna de <span class="math inline">\(Y\)</span> de las columnas de <span class="math inline">\(X\)</span> con los pesos lineales <span class="math inline">\(a\)</span> = <span class="math inline">\((0.4, 0.6, -\sqrt{0.48})\)</span>.</p>
+<p>Algunas preguntas:</p>
+<ul>
+<li><p>¿Cuál debería ser el primer vector de pesos canónicos para las variables <span class="math inline">\(Y\)</span>?</p></li>
+<li><p>¿Cuál debería ser la primera correlación canónica?</p></li>
+</ul>
+<p>Respuestas:</p>
+<ul>
+<li><p>El propósito del análisis de correlación canónica es (a) buscar y (b) caracterizar la redundancia lineal entre ambos conjuntos de variables.</p></li>
+<li><p>En nuestro ejemplo simple, una de las variables en <span class="math inline">\(Y\)</span> se puede reproducir exactamente como una combinación lineal de las tres variables en X.</p></li>
+<li><p>El análisis de correlación canónica (si funciona correctamente) simplemente seleccionará <span class="math inline">\(y_3\)</span> como la primera variable canónica en el conjunto <span class="math inline">\(Y\)</span>, con pesos canónicos <span class="math inline">\(b = (0,0,1)\)</span>, y recupera la combinación lineal de las variables del primer grupo utilizada para generar <span class="math inline">\(y_3\)</span>, generando <span class="math inline">\(a = (0.4, 0.6, -\sqrt{0.48})\)</span> como los pesos canónicos para el conjunto <span class="math inline">\(X\)</span>.</p></li>
+<li><p>La primera correlación canónica será, por supuesto, 1.</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>( <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,
+    <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,
+    <span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>),<span class="dv">9</span>,<span class="dv">3</span>,<span class="dt">byrow=</span>T)
+
+Y &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>( <span class="dv">4</span>,<span class="dv">4</span>,<span class="op">-</span><span class="fl">1.07846</span>,
+               <span class="dv">3</span>,<span class="dv">3</span>,<span class="fl">1.214359</span>,
+               <span class="dv">2</span>,<span class="dv">2</span>,<span class="fl">0.307180</span>,
+               <span class="dv">2</span>,<span class="dv">3</span>,<span class="op">-</span><span class="fl">0.385641</span>,
+               <span class="dv">2</span>,<span class="dv">1</span>,<span class="op">-</span><span class="fl">0.078461</span>,
+               <span class="dv">1</span>,<span class="dv">1</span>,<span class="fl">1.61436</span>,
+               <span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">0.814359</span>,
+               <span class="dv">2</span>,<span class="dv">1</span>,<span class="op">-</span><span class="fl">0.0641016</span>,
+       <span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">1.535900</span>),<span class="dv">9</span>,<span class="dv">3</span>,<span class="dt">byrow=</span>T)</code></pre></div>
+<p>Para calcular los pesos completamente, necesitamos las matrices de varianzas y covarianzas para <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, así como las matrices de covarianza cruzada.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S_xy &lt;-<span class="st"> </span><span class="kw">cov</span>(X, Y)
+S_xx &lt;-<span class="st"> </span><span class="kw">var</span>(X)
+S_yx &lt;-<span class="st"> </span><span class="kw">cov</span>(Y, X)
+S_yy &lt;-<span class="st"> </span><span class="kw">var</span>(Y)
+S_xy
+<span class="co">#&gt;        [,1]   [,2]     [,3]</span>
+<span class="co">#&gt; [1,] -0.625 -0.778  0.69679</span>
+<span class="co">#&gt; [2,] -0.750 -0.556  0.95242</span>
+<span class="co">#&gt; [3,] -0.125 -0.347 -0.00826</span></code></pre></div>
+<p>Ahora que tenemos estas matrices, es fácil calcular los pesos canónicos y las correlaciones canónicas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A &lt;-<span class="st"> </span><span class="kw">eigen</span>(<span class="kw">solve</span>(S_xx) <span class="op">%*%</span><span class="st"> </span>S_xy <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(S_yy) <span class="op">%*%</span><span class="st"> </span>S_yx)<span class="op">$</span>vectors
+B &lt;-<span class="st"> </span><span class="kw">eigen</span>(<span class="kw">solve</span>(S_yy) <span class="op">%*%</span><span class="st"> </span>S_yx <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(S_xx) <span class="op">%*%</span><span class="st"> </span>S_xy)<span class="op">$</span>vectors
+R &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">eigen</span>(<span class="kw">solve</span>(S_yy) <span class="op">%*%</span><span class="st"> </span>S_yx <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(S_xx) <span class="op">%*%</span><span class="st"> </span>S_xy)<span class="op">$</span>values)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A
+<span class="co">#&gt;        [,1]   [,2]   [,3]</span>
+<span class="co">#&gt; [1,]  0.400  0.796 -0.578</span>
+<span class="co">#&gt; [2,]  0.600 -0.584  0.429</span>
+<span class="co">#&gt; [3,] -0.693 -0.160  0.695</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">B
+<span class="co">#&gt;           [,1]    [,2]   [,3]</span>
+<span class="co">#&gt; [1,]  1.94e-07 -0.5365 -0.835</span>
+<span class="co">#&gt; [2,] -4.34e-07  0.8438  0.139</span>
+<span class="co">#&gt; [3,]  1.00e+00  0.0136 -0.533</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R
+<span class="co">#&gt; [1] 1.000 0.519 0.091</span></code></pre></div>
+</div>
+</div>
+<div id="ejemplo-test-psicologico" class="section level2">
+<h2><span class="header-section-number">15.3</span> Ejemplo: test psicológico</h2>
+<p>Supongamos que se desea investigar asociaciones entre mediciones psicológicas y medidas de desempeño académico y contamos con datos con 600 observaciones de ocho variables. Las variables psicológicas son <code>locus_of_control</code>, <code>self_concept</code> y <code>motivation</code>. Las variables académicas son pruebas estandarizadas en lectura (<code>read</code>), redacción (<code>write</code>), matemáticas (<code>math</code>) y ciencia (<code>science</code>). Además, la variable <code>female</code> es una variable indicadora de que una estudiante es mujer.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(GGally)
+<span class="kw">library</span>(CCA)
+
+psychademic <span class="op">%&gt;%</span><span class="st"> </span>head <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">locus_of_control</th>
+<th align="right">self_concept</th>
+<th align="left">motivation</th>
+<th align="right">read</th>
+<th align="right">write</th>
+<th align="right">math</th>
+<th align="right">science</th>
+<th align="left">sex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">-0.84</td>
+<td align="right">-0.24</td>
+<td align="left">4</td>
+<td align="right">54.8</td>
+<td align="right">64.5</td>
+<td align="right">44.5</td>
+<td align="right">52.6</td>
+<td align="left">female</td>
+</tr>
+<tr class="even">
+<td align="right">-0.38</td>
+<td align="right">-0.47</td>
+<td align="left">3</td>
+<td align="right">62.7</td>
+<td align="right">43.7</td>
+<td align="right">44.7</td>
+<td align="right">52.6</td>
+<td align="left">female</td>
+</tr>
+<tr class="odd">
+<td align="right">0.89</td>
+<td align="right">0.59</td>
+<td align="left">3</td>
+<td align="right">60.6</td>
+<td align="right">56.7</td>
+<td align="right">70.5</td>
+<td align="right">58.0</td>
+<td align="left">male</td>
+</tr>
+<tr class="even">
+<td align="right">0.71</td>
+<td align="right">0.28</td>
+<td align="left">3</td>
+<td align="right">62.7</td>
+<td align="right">56.7</td>
+<td align="right">54.7</td>
+<td align="right">58.0</td>
+<td align="left">male</td>
+</tr>
+<tr class="odd">
+<td align="right">-0.64</td>
+<td align="right">0.03</td>
+<td align="left">4</td>
+<td align="right">41.6</td>
+<td align="right">46.3</td>
+<td align="right">38.4</td>
+<td align="right">36.3</td>
+<td align="left">female</td>
+</tr>
+<tr class="even">
+<td align="right">1.11</td>
+<td align="right">0.90</td>
+<td align="left">2</td>
+<td align="right">62.7</td>
+<td align="right">64.5</td>
+<td align="right">61.4</td>
+<td align="right">58.0</td>
+<td align="left">female</td>
+</tr>
+</tbody>
+</table>
+<p>Las variables psicológicas son:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(psych_variables &lt;-<span class="st"> </span><span class="kw">attr</span>(psychademic, <span class="st">&quot;psychology&quot;</span>))
+<span class="co">#&gt; [1] &quot;locus_of_control&quot; &quot;self_concept&quot;     &quot;motivation&quot;</span></code></pre></div>
+<p>Las variables académicas son:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(academic_variables &lt;-<span class="st"> </span><span class="kw">attr</span>(psychademic, <span class="st">&quot;academic&quot;</span>))
+<span class="co">#&gt; [1] &quot;read&quot;    &quot;write&quot;   &quot;math&quot;    &quot;science&quot; &quot;sex&quot;</span></code></pre></div>
+<p>Veamos las correlaciones entre las variables psicológicas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggpairs</span>(psychademic, psych_variables, <span class="dt">title =</span> <span class="st">&quot;Within Psychological Variables&quot;</span>)</code></pre></div>
+<p><img src="15-cca_files/figure-html/unnamed-chunk-16-1.png" width="90%" height="400cm" style="display: block; margin: auto;" /></p>
+<p>Y entre las académicas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggpairs</span>(psychademic, academic_variables, <span class="dt">title =</span> <span class="st">&quot;Within Academic Variables&quot;</span>)</code></pre></div>
+<p><img src="15-cca_files/figure-html/unnamed-chunk-17-1.png" width="90%" height="400cm" style="display: block; margin: auto;" /></p>
+<p>Veamos las correlaciones entre pares de ambos grupos de variables:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggduo</span>(
+  psychademic, psych_variables, academic_variables,
+  <span class="dt">types =</span> <span class="kw">list</span>(<span class="dt">continuous =</span> <span class="st">&quot;smooth_lm&quot;</span>),
+  <span class="dt">title =</span> <span class="st">&quot;Between Academic and Psychological Variable Correlation&quot;</span>,
+  <span class="dt">xlab =</span> <span class="st">&quot;Psychological&quot;</span>,
+  <span class="dt">ylab =</span> <span class="st">&quot;Academic&quot;</span>
+)</code></pre></div>
+<p><img src="15-cca_files/figure-html/unnamed-chunk-18-1.png" width="100%" height="480cm" style="display: block; margin: auto;" /></p>
+<p>También podemos analizar las correlaciones numéricamente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datos &lt;-<span class="st"> </span>psychademic <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate_at</span>(<span class="dt">.funs =</span> as.numeric, <span class="dt">.vars =</span> <span class="kw">vars</span>(<span class="op">-</span>sex)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sex =</span> <span class="kw">ifelse</span>(sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>, <span class="dv">1</span>, <span class="dv">0</span>))
+<span class="kw">matcor</span>(datos[,psych_variables], datos[,academic_variables])
+<span class="co">#&gt; $Xcor</span>
+<span class="co">#&gt;                  locus_of_control self_concept motivation</span>
+<span class="co">#&gt; locus_of_control            1.000        0.171      0.245</span>
+<span class="co">#&gt; self_concept                0.171        1.000      0.289</span>
+<span class="co">#&gt; motivation                  0.245        0.289      1.000</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Ycor</span>
+<span class="co">#&gt;            read write    math science     sex</span>
+<span class="co">#&gt; read     1.0000 0.629  0.6793   0.691 -0.0417</span>
+<span class="co">#&gt; write    0.6286 1.000  0.6327   0.569  0.2443</span>
+<span class="co">#&gt; math     0.6793 0.633  1.0000   0.650 -0.0482</span>
+<span class="co">#&gt; science  0.6907 0.569  0.6495   1.000 -0.1382</span>
+<span class="co">#&gt; sex     -0.0417 0.244 -0.0482  -0.138  1.0000</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $XYcor</span>
+<span class="co">#&gt;                  locus_of_control self_concept motivation    read  write</span>
+<span class="co">#&gt; locus_of_control            1.000       0.1712     0.2450  0.3736 0.3589</span>
+<span class="co">#&gt; self_concept                0.171       1.0000     0.2890  0.0607 0.0194</span>
+<span class="co">#&gt; motivation                  0.245       0.2890     1.0000  0.2105 0.2541</span>
+<span class="co">#&gt; read                        0.374       0.0607     0.2105  1.0000 0.6286</span>
+<span class="co">#&gt; write                       0.359       0.0194     0.2541  0.6286 1.0000</span>
+<span class="co">#&gt; math                        0.337       0.0536     0.1949  0.6793 0.6327</span>
+<span class="co">#&gt; science                     0.325       0.0698     0.1159  0.6907 0.5691</span>
+<span class="co">#&gt; sex                         0.113      -0.1260     0.0979 -0.0417 0.2443</span>
+<span class="co">#&gt;                     math science     sex</span>
+<span class="co">#&gt; locus_of_control  0.3373  0.3246  0.1134</span>
+<span class="co">#&gt; self_concept      0.0536  0.0698 -0.1260</span>
+<span class="co">#&gt; motivation        0.1949  0.1159  0.0979</span>
+<span class="co">#&gt; read              0.6793  0.6907 -0.0417</span>
+<span class="co">#&gt; write             0.6327  0.5691  0.2443</span>
+<span class="co">#&gt; math              1.0000  0.6495 -0.0482</span>
+<span class="co">#&gt; science           0.6495  1.0000 -0.1382</span>
+<span class="co">#&gt; sex              -0.0482 -0.1382  1.0000</span></code></pre></div>
+<p>LLevamos a cabo CCA:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cc1 &lt;-<span class="st"> </span><span class="kw">cc</span>(datos[,psych_variables], datos[,academic_variables])
+
+<span class="co"># correlaciones canónicas</span>
+cc1<span class="op">$</span>cor
+<span class="co">#&gt; [1] 0.464 0.167 0.104</span></code></pre></div>
+<p>Coeficientes canónicos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cc1[<span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]
+<span class="co">#&gt; $xcoef</span>
+<span class="co">#&gt;                    [,1]   [,2]   [,3]</span>
+<span class="co">#&gt; locus_of_control -1.254 -0.619 -0.663</span>
+<span class="co">#&gt; self_concept      0.351 -1.191  0.823</span>
+<span class="co">#&gt; motivation       -0.421  0.675  0.670</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $ycoef</span>
+<span class="co">#&gt;            [,1]     [,2]     [,3]</span>
+<span class="co">#&gt; read    -0.0446 -0.00504  0.02123</span>
+<span class="co">#&gt; write   -0.0359  0.04198  0.09164</span>
+<span class="co">#&gt; math    -0.0234  0.00410  0.00923</span>
+<span class="co">#&gt; science -0.0051 -0.08479 -0.10992</span>
+<span class="co">#&gt; sex     -0.6321  1.08910 -1.79242</span></code></pre></div>
+<p class="espacio">
+</p>
+
+<div class="information">
+<p><strong>Nota:</strong></p>
+<p class="espacio">
+</p>
+<ul>
+<li><p>Las correlaciones anteriores son entre las variables observadas y las variables canónicas, a estas se les conoce como <em>cargas canónicas</em>.</p></li>
+<li><p>Las variables canónicas son en realidad un tipo de variable latente.</p></li>
+<li>En general, el número de dimensiones canónicas es igual al número de variables en el conjunto más pequeño; sin embargo, la cantidad de dimensiones significativas puede ser aún menor. Las dimensiones canónicas, también conocidas como variables canónicas, son variables latentes que son análogas a los factores obtenidos en el análisis de factores.
+</div>
+</li>
+</ul>
+<p><br></p>
+<p>En este ejemplo particular, hay tres dimensiones canónicas, de las cuales solo las dos primeras son estadísticamente significativas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ev &lt;-<span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>cc1<span class="op">$</span>cor<span class="op">^</span><span class="dv">2</span>)
+
+n &lt;-<span class="st"> </span><span class="kw">dim</span>(datos)[<span class="dv">1</span>]
+p &lt;-<span class="st"> </span><span class="kw">length</span>(datos[,psych_variables])
+q &lt;-<span class="st"> </span><span class="kw">length</span>(datos[,academic_variables])
+k &lt;-<span class="st"> </span><span class="kw">min</span>(p, q)
+m &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span><span class="dv">3</span><span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>(p <span class="op">+</span><span class="st"> </span>q)<span class="op">/</span><span class="dv">2</span>
+
+w &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">cumprod</span>(<span class="kw">rev</span>(ev)))
+
+d1 &lt;-<span class="st"> </span>d2 &lt;-<span class="st"> </span>f &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;numeric&quot;</span>, k)
+
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>k) {
+    s &lt;-<span class="st"> </span><span class="kw">sqrt</span>((p<span class="op">^</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>q<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span>)<span class="op">/</span>(p<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>q<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">5</span>))
+    si &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span>s
+    d1[i] &lt;-<span class="st"> </span>p <span class="op">*</span><span class="st"> </span>q
+    d2[i] &lt;-<span class="st"> </span>m <span class="op">*</span><span class="st"> </span>s <span class="op">-</span><span class="st"> </span>p <span class="op">*</span><span class="st"> </span>q<span class="op">/</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+    r &lt;-<span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>w[i]<span class="op">^</span>si)<span class="op">/</span>w[i]<span class="op">^</span>si
+    f[i] &lt;-<span class="st"> </span>r <span class="op">*</span><span class="st"> </span>d2[i]<span class="op">/</span>d1[i]
+    p &lt;-<span class="st"> </span>p <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
+    q &lt;-<span class="st"> </span>q <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
+}
+
+pv &lt;-<span class="st"> </span><span class="kw">pf</span>(f, d1, d2, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)
+(dmat &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">WilksL =</span> w, <span class="dt">F =</span> f, <span class="dt">df1 =</span> d1, <span class="dt">df2 =</span> d2, <span class="dt">p =</span> pv))
+<span class="co">#&gt;      WilksL     F df1  df2        p</span>
+<span class="co">#&gt; [1,]  0.754 11.71  15 1635 7.79e-28</span>
+<span class="co">#&gt; [2,]  0.962  2.94   8 1186 2.97e-03</span>
+<span class="co">#&gt; [3,]  0.989  2.16   3  594 9.19e-02</span></code></pre></div>
+<p>Cuando las variables en el modelo tienen desviaciones estándar muy diferentes, los coeficientes estandarizados permiten una comparación más fácil entre las variables.</p>
+<p>Coeficientes canónicos estandarizados para variables psicológicas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s1 &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="kw">sqrt</span>(<span class="kw">diag</span>(<span class="kw">cov</span>(datos[,psych_variables]))))
+s1 <span class="op">%*%</span><span class="st"> </span>cc1<span class="op">$</span>xcoef
+<span class="co">#&gt;        [,1]   [,2]   [,3]</span>
+<span class="co">#&gt; [1,] -0.841 -0.415 -0.444</span>
+<span class="co">#&gt; [2,]  0.248 -0.840  0.581</span>
+<span class="co">#&gt; [3,] -0.432  0.693  0.688</span></code></pre></div>
+<p>Coeficientes canónicos estandarizados para variables académicas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s2 &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="kw">sqrt</span>(<span class="kw">diag</span>(<span class="kw">cov</span>(datos[,academic_variables]))))
+s2 <span class="op">%*%</span><span class="st"> </span>cc1<span class="op">$</span>ycoef
+<span class="co">#&gt;         [,1]    [,2]    [,3]</span>
+<span class="co">#&gt; [1,] -0.4506 -0.0509  0.2145</span>
+<span class="co">#&gt; [2,] -0.3489  0.4083  0.8914</span>
+<span class="co">#&gt; [3,] -0.2202  0.0386  0.0869</span>
+<span class="co">#&gt; [4,] -0.0495 -0.8229 -1.0669</span>
+<span class="co">#&gt; [5,] -0.3150  0.5428 -0.8933</span></code></pre></div>
+<p>Los coeficientes canónicos estandarizados se interpretan de manera análoga a la interpretación de los coeficientes de regresión estandarizados. Por ejemplo, para la variable de lectura, un aumento de la desviación estándar en lectura se refleja en una disminución de 0.45 desviaciones estándar de en la primera variable canónica del conjunto 2 cuando las otras variables en el modelo se mantienen constantes.</p>
+</div>
+<div id="tarea-13" class="section level2">
+<h2><span class="header-section-number">15.4</span> Tarea</h2>
+<p>Como parte de un estudio más amplio de los efectos de la estructura organizacional en la “satisfacción laboral”, Dunham investigó en qué medida las medidas de satisfacción laboral están relacionadas con las características del trabajo. Utilizando un instrumento de encuesta, Dunham obtuvo medidas de <span class="math inline">\(p = 5\)</span> características del trabajo y <span class="math inline">\(q = 7\)</span> variables de satisfacción laboral para <span class="math inline">\(n = 784\)</span> ejecutivos de la rama corporativa de una gran corporación comercial minorista. ¿Las medidas de satisfacción laboral están asociadas con las características del trabajo? La respuesta puede tener implicaciones para el diseño del trabajo.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+worksat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/worksat.csv&quot;</span>)
+worksat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>() 
+<span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    784 obs. of  13 variables:</span>
+<span class="co">#&gt;  $ ID                          : int  1 2 3 4 5 6 7 8 9 10 ...</span>
+<span class="co">#&gt;  $ SupervisorSatisfaction(Y1)  : num  -0.1529 -1.2486 0.8356 0.0264 0.4826 ...</span>
+<span class="co">#&gt;  $ CareerFutureSatisfaction(Y2): num  -2.04 -1.083 1.439 0.441 0.652 ...</span>
+<span class="co">#&gt;  $ FinancialSatisfaction(Y3)   : num  -2.083 -1.295 0.392 -0.591 0.872 ...</span>
+<span class="co">#&gt;  $ WorkloadSatisfaction(Y4)    : num  -0.553 -0.633 0.488 0.986 -1.424 ...</span>
+<span class="co">#&gt;  $ CompanyIdentification(Y5)   : num  -1.7599 0.0725 0.4898 -0.0888 -0.7677 ...</span>
+<span class="co">#&gt;  $ WorkTypeSatisfaction(Y6)    : num  -2.027 -0.38 -1.992 1.477 -0.404 ...</span>
+<span class="co">#&gt;  $ GeneralSatisfaction(Y7)     : num  -2.304 1.19 1.591 0.793 -0.772 ...</span>
+<span class="co">#&gt;  $ FeedbackQuality(X1)         : num  -0.347 -0.737 -0.382 0.432 -1.029 ...</span>
+<span class="co">#&gt;  $ TaskSignificance(X2)        : num  -0.75 -1.038 -1.557 0.187 -0.627 ...</span>
+<span class="co">#&gt;  $ TaskVariety(X3)             : num  -1.33 0.626 0.604 0.833 0.229 ...</span>
+<span class="co">#&gt;  $ TaskIdentity(X4)            : num  -2.706 0.2 -1.308 1.335 0.177 ...</span>
+<span class="co">#&gt;  $ Autonomy(X5)                : num  -1.815 0.673 -0.994 0.138 -0.508 ...</span>
+<span class="co">#&gt;  - attr(*, &quot;spec&quot;)=List of 2</span>
+<span class="co">#&gt;   ..$ cols   :List of 13</span>
+<span class="co">#&gt;   .. ..$ ID                          : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ SupervisorSatisfaction(Y1)  : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ CareerFutureSatisfaction(Y2): list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ FinancialSatisfaction(Y3)   : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ WorkloadSatisfaction(Y4)    : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ CompanyIdentification(Y5)   : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ WorkTypeSatisfaction(Y6)    : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ GeneralSatisfaction(Y7)     : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ FeedbackQuality(X1)         : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ TaskSignificance(X2)        : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ TaskVariety(X3)             : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ TaskIdentity(X4)            : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   .. ..$ Autonomy(X5)                : list()</span>
+<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   ..$ default: list()</span>
+<span class="co">#&gt;   .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;</span>
+<span class="co">#&gt;   ..- attr(*, &quot;class&quot;)= chr &quot;col_spec&quot;</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li><p>Calcula la matriz de correlaciones muestrales basada en las 784 observaciones.</p></li>
+<li><p>Encuentra los eigenvalores de <span class="math inline">\(\Sigma_{11}^{-1/2} \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21} \Sigma_{11}^{-1/2}\)</span> y verifica que estos eigenvalores son los mismos eigenvalores de <span class="math inline">\(\Sigma_{22}^{-1/2} \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12} \Sigma_{22}^{-1/2}\)</span>.</p></li>
+<li><p>Calcula todas las correlaciones canónicas y las variables canónicas.</p></li>
+<li><p>Reporta los coeficientes de las variables canónicas e interpreta el primer par de variables canónicas. Primero analiza qué variables contribuyen más a cada variable canónica. Para proporcionar interpretaciones de <span class="math inline">\(U_1\)</span> y <span class="math inline">\(V_1\)</span>, calcula las correlaciones muestrales entre <span class="math inline">\(U_1\)</span> y las variables que la componen y entre <span class="math inline">\(V_1\)</span> y sus variables respectivas. Además, haz una tabla que muestre las correlaciones entre las variables de un conjunto y la primera variable canónica del otro conjunto.</p></li>
+<li><p>Sean <span class="math inline">\(Z^{(l)}\)</span> y <span class="math inline">\(Z^{(2)}\)</span> las variables estandarizadas correspondientes a <span class="math inline">\(X^{(1)}\)</span> y <span class="math inline">\(X^{(2)}\)</span>, respectivamente. ¿Qué proporción de la varianza muestral total de <span class="math inline">\(Z^{(1)}\)</span> se explica por la variable canónica <span class="math inline">\(U_1\)</span>? ¿Qué proporción de la varianza muestral total de <span class="math inline">\(Z^{(2)}\)</span> se explica por la variable canónica <span class="math inline">\(V_1\)</span>? Discute tus respuestas.</p></li>
+</ol>
+<div id="referencias--" class="section level4">
+<h4><span class="header-section-number">15.4.0.1</span> Referencias {-}+</h4>
+<ul>
+<li>Dunham, R. B. (1977). Reactions to job characteristics: Moderating effects of the organization. Academy of Management Journal, 20(1), 42-65.</li>
+</ul>
+
+</div>
 </div>
 </div>
             </section>
@@ -477,8 +1003,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="componentes-principales-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conglomerados-clustering-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="intro.html">
+<link rel="prev" href="conglomerados-clustering-1.html">
+<link rel="next" href="referencias.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -412,63 +412,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Estadística Aplicada III</h1>
-<p class="author"><em>Andreu Boada de Atela</em></p>
-<p class="date"><em>2018-05-10</em></p>
-</div>
-<div id="temario-y-referencias" class="section level1 unnumbered">
-<h1>Temario y referencias</h1>
-<p><strong>Todas las notas y material del curso estarán en este</strong> <a href="https://github.com/andreuboada/est-aplicada-3-2018">repositorio</a>.</p>
-<ul>
-<li>Análisis exploratorio de datos</li>
-<li>Temas selectos de R</li>
-<li>Análisis de datos categóricos</li>
-<li>Regresión logística</li>
-<li>Regularización y selección de modelos</li>
-<li>Introducción a modelos lineales generalizados</li>
-<li>Análisis de discriminante lineal</li>
-<li>Componentes principales y análisis de factores</li>
-<li>Análisis de la correlación canónica</li>
-<li>Introducción a análisis de conglomerados</li>
-</ul>
-<div id="evaluacion" class="section level3 unnumbered">
-<h3>Evaluación</h3>
-<ul>
-<li>Tareas semanales (20%)</li>
-<li>Examen parcial (30% práctico, 20% teórico)</li>
-<li>Un examen final (30% práctico)</li>
-</ul>
-</div>
-<div id="software-r-y-rstudio" class="section level3 unnumbered">
-<h3>Software: R y Rstudio</h3>
-<ul>
-<li><a href="https://cran.r-project.org">R</a> Sitio de R (CRAN)</li>
-<li><a href="https://www.rstudio.com/products/RStudio/">Rstudio</a> Interfaz gráfica para trabajar en R.</li>
-<li><a href="https://www.rstudio.com/online-learning/#R">Recursos para aprender R</a></li>
-</ul>
-</div>
-<div id="referencias-principales" class="section level3 unnumbered">
-<h3>Referencias principales</h3>
-<ul>
-<li><p><a href="https://www.amazon.com/gp/product/052168689X/">Gelman, A., &amp; Hill, J. (2006). Data Analysis using Regression and Multilevel/hierarchical Models. Cambridge University Press.</a></p></li>
-<li><p><a href="http://www.springer.com/us/book/9780387310732">Christopher, M. B. (2016). Pattern Recognition and Machine Learning. Springer.</a></p></li>
-<li><p><a href="https://www.wiley.com/en-us/Categorical+Data+Analysis%2C+3rd+Edition-p-9780470463635">Agresti, Alan. (2013). Categorical Data Analysis. 3rd ed. Wiley.</a></p></li>
-<li><p><a href="https://www.pearson.com/us/higher-education/program/Johnson-Applied-Multivariate-Statistical-Analysis-6th-Edition/PGM274834.html">Johnson, R., y Wichern, D. (2007). Applied Multivariate Statistical Analysis. 6th ed. Pearson Prentice Hall.</a></p></li>
-</ul>
-</div>
-<div id="otras-referencias" class="section level3 unnumbered">
-<h3>Otras referencias</h3>
-<ul>
-<li><p><a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Friedman, J., Hastie, T., &amp; Tibshirani, R. (2001). The Elements of Statistical Learning. Springer.</a></p></li>
-<li><p><a href="https://www.amazon.com/Introduction-Multivariate-Statistical-Analysis/dp/0471360910">Anderson, T. W. (2003). An Introduction to Multivariate Statistical Analysis. 3rd ed. Wiley.</a></p></li>
-<li><p><a href="https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469">Field, A., Miles, J., &amp; Field, Z. (2012). Discovering Statistics Using R. Sage publications.</a></p></li>
-<li><p><a href="https://www.amazon.com/Introduction-Applied-Multivariate-Analysis-Use/dp/1441996494">Everitt, B., &amp; Hothorn, T. (2011). An Introduction to Applied Multivariate Analysis with R. Springer</a></p></li>
-</ul>
-</div>
-<div id="tareas" class="section level3 unnumbered">
-<h3>Tareas</h3>
-<p>Enviar tareas por correo electrónico a: <a href="andreuboadadeatela@gmail.com" class="uri">andreuboadadeatela@gmail.com</a> con el asunto “EAPLICADA3-Tarea-[XX]-[clave única 1]-[clave única 2]” donde [XX] es el número de la tarea, [clave única 1] y [clave única 2] son tu clave y la de tu compañero con quien vas a trabajar durante el semestre.</p>
+<div id="conglomerados-clustering-2" class="section level1">
+<h1><span class="header-section-number">Clase 17</span> Conglomerados (clustering) 2</h1>
+<style>
+  .espacio {
+    margin-bottom: 1cm;
+  }
+</style>
+<style>
+  .espacio3 {
+    margin-bottom: 3cm;
+  }
+</style>
+<p class="espacio">
+</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<div id="clustering-jerarquico" class="section level2">
+<h2><span class="header-section-number">17.1</span> Clustering jerárquico</h2>
 
 </div>
 </div>
@@ -477,8 +437,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="conglomerados-clustering-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

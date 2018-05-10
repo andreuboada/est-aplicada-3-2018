@@ -1,5 +1,5 @@
 
-# Análisis de conglomerados (clustering) 2
+# Conglomerados (clustering) 2
 
 <style>
   .espacio {

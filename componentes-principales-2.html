@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Aplicada III</title>
   <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
-  <meta name="generator" content="bookdown 0.7.8 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.10 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Aplicada III" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-05-05">
+<meta name="date" content="2018-05-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="componentes-principales-1.html">
-<link rel="next" href="correlaciones-canonicas-cca.html">
+<link rel="next" href="correlacion-canonica-cca.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -358,30 +358,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="14.3" data-path="componentes-principales-2.html"><a href="componentes-principales-2.html#tarea-12"><i class="fa fa-check"></i><b>14.3</b> Tarea</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="correlaciones-canonicas-cca.html"><a href="correlaciones-canonicas-cca.html"><i class="fa fa-check"></i><b>15</b> Correlaciones Canónicas (CCA)</a></li>
-<li class="chapter" data-level="16" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html"><i class="fa fa-check"></i><b>16</b> Análisis de conglomerados (clustering) 1</a><ul>
-<li class="chapter" data-level="16.1" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#introduccion"><i class="fa fa-check"></i><b>16.1</b> Introducción</a><ul>
-<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#ejemplo-7"><i class="fa fa-check"></i>Ejemplo</a></li>
+<li class="chapter" data-level="15" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html"><i class="fa fa-check"></i><b>15</b> Correlación Canónica (CCA)</a><ul>
+<li class="chapter" data-level="15.1" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html#cca-vs-pca"><i class="fa fa-check"></i><b>15.1</b> CCA vs PCA</a></li>
+<li class="chapter" data-level="15.2" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html#variables-y-correlaciones-canonicas"><i class="fa fa-check"></i><b>15.2</b> Variables y correlaciones canónicas</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html#combinaciones-lineaes-de-factores"><i class="fa fa-check"></i><b>15.2.1</b> Combinaciones lineaes de factores</a></li>
+<li class="chapter" data-level="15.2.2" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html#ejemplo-simple"><i class="fa fa-check"></i><b>15.2.2</b> Ejemplo simple</a></li>
 </ul></li>
-<li class="chapter" data-level="16.2" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#enfoques-combinatorio-y-basado-en-modelos."><i class="fa fa-check"></i><b>16.2</b> Enfoques: combinatorio y basado en modelos.</a></li>
-<li class="chapter" data-level="16.3" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#k-medias"><i class="fa fa-check"></i><b>16.3</b> K-medias</a><ul>
-<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#algoritmo-de-k-medias"><i class="fa fa-check"></i>Algoritmo de k-medias</a></li>
-<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#ejemplo-8"><i class="fa fa-check"></i>Ejemplo</a></li>
-<li><a href="analisis-de-conglomerados-clustering-1.html#usando-la-funcion-kmeans">Usando la funcion <code>kmeans</code></a></li>
+<li class="chapter" data-level="15.3" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html#ejemplo-test-psicologico"><i class="fa fa-check"></i><b>15.3</b> Ejemplo: test psicológico</a></li>
+<li class="chapter" data-level="15.4" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html#tarea-13"><i class="fa fa-check"></i><b>15.4</b> Tarea</a></li>
 </ul></li>
-<li class="chapter" data-level="16.4" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#seleccion-de-numero-de-clusters."><i class="fa fa-check"></i><b>16.4</b> Selección de número de clusters.</a><ul>
-<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#variacion-dentro-de-clusters-para-distintas-soluciones"><i class="fa fa-check"></i>Variación dentro de clusters para distintas soluciones</a></li>
-<li class="chapter" data-level="16.4.1" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#criterios-especificos"><i class="fa fa-check"></i><b>16.4.1</b> Criterios específicos</a></li>
+<li class="chapter" data-level="16" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html"><i class="fa fa-check"></i><b>16</b> Conglomerados (clustering) 1</a><ul>
+<li class="chapter" data-level="16.1" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#introduccion"><i class="fa fa-check"></i><b>16.1</b> Introducción</a><ul>
+<li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#ejemplo-7"><i class="fa fa-check"></i>Ejemplo</a></li>
 </ul></li>
-<li class="chapter" data-level="16.5" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#dificultades-en-segmentacionclustering."><i class="fa fa-check"></i><b>16.5</b> Dificultades en segmentación/clustering.</a><ul>
-<li class="chapter" data-level="16.5.1" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#estructuras-no-compactas"><i class="fa fa-check"></i><b>16.5.1</b> Estructuras no compactas</a></li>
-<li class="chapter" data-level="16.5.2" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#existencia-o-no-de-grupos-naturales"><i class="fa fa-check"></i><b>16.5.2</b> Existencia o no de grupos “naturales”</a></li>
-<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#grupos-en-dimension-alta"><i class="fa fa-check"></i>Grupos en dimensión alta</a></li>
-<li class="chapter" data-level="" data-path="analisis-de-conglomerados-clustering-1.html"><a href="analisis-de-conglomerados-clustering-1.html#dificultades-en-la-seleccion-de-metrica"><i class="fa fa-check"></i>Dificultades en la selección de métrica</a></li>
+<li class="chapter" data-level="16.2" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#enfoques-combinatorio-y-basado-en-modelos."><i class="fa fa-check"></i><b>16.2</b> Enfoques: combinatorio y basado en modelos.</a></li>
+<li class="chapter" data-level="16.3" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#k-medias"><i class="fa fa-check"></i><b>16.3</b> K-medias</a><ul>
+<li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#algoritmo-de-k-medias"><i class="fa fa-check"></i>Algoritmo de k-medias</a></li>
+<li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#ejemplo-8"><i class="fa fa-check"></i>Ejemplo</a></li>
+<li><a href="conglomerados-clustering-1.html#usando-la-funcion-kmeans">Usando la funcion <code>kmeans</code></a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#seleccion-de-numero-de-clusters."><i class="fa fa-check"></i><b>16.4</b> Selección de número de clusters.</a><ul>
+<li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#variacion-dentro-de-clusters-para-distintas-soluciones"><i class="fa fa-check"></i>Variación dentro de clusters para distintas soluciones</a></li>
+<li class="chapter" data-level="16.4.1" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#criterios-especificos"><i class="fa fa-check"></i><b>16.4.1</b> Criterios específicos</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#dificultades-en-segmentacionclustering."><i class="fa fa-check"></i><b>16.5</b> Dificultades en segmentación/clustering.</a><ul>
+<li class="chapter" data-level="16.5.1" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#estructuras-no-compactas"><i class="fa fa-check"></i><b>16.5.1</b> Estructuras no compactas</a></li>
+<li class="chapter" data-level="16.5.2" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#existencia-o-no-de-grupos-naturales"><i class="fa fa-check"></i><b>16.5.2</b> Existencia o no de grupos “naturales”</a></li>
+<li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#grupos-en-dimension-alta"><i class="fa fa-check"></i>Grupos en dimensión alta</a></li>
+<li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#dificultades-en-la-seleccion-de-metrica"><i class="fa fa-check"></i>Dificultades en la selección de métrica</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="analisis-de-conglomerados-clustering-2.html"><a href="analisis-de-conglomerados-clustering-2.html"><i class="fa fa-check"></i><b>17</b> Análisis de conglomerados (clustering) 2</a><ul>
-<li class="chapter" data-level="17.1" data-path="analisis-de-conglomerados-clustering-2.html"><a href="analisis-de-conglomerados-clustering-2.html#clustering-jerarquico"><i class="fa fa-check"></i><b>17.1</b> Clustering jerárquico</a></li>
+<li class="chapter" data-level="17" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html"><i class="fa fa-check"></i><b>17</b> Conglomerados (clustering) 2</a><ul>
+<li class="chapter" data-level="17.1" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#clustering-jerarquico"><i class="fa fa-check"></i><b>17.1</b> Clustering jerárquico</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -1276,7 +1284,7 @@ mapa &lt;-<span class="st"> </span><span class="kw">get_googlemap</span>(<span c
         </div>
       </div>
 <a href="componentes-principales-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="correlaciones-canonicas-cca.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="correlacion-canonica-cca.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
