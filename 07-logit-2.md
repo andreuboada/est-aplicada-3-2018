@@ -1281,12 +1281,11 @@ Hay dos razones por las cuales una regresión logística puede estar no identifi
 
 ## Tarea
 
-Los datos `nes` (de la encuesta _National Election Study_) contienen datos de la preferencia presidencial y el ingreso de los votantes durante las elecciones de 1992. Los datos, junto con otras variables que incluyen _sex_, _ethnicity_, _education_, _party identification_, y _political ideology_.
+Los datos `nes` (de la encuesta _National Election Study_) contienen datos de la preferencia presidencial y el ingreso de los votantes durante las elecciones de 1992. Los datos, junto con otras variables que incluyen _sex_ (`gender`), _ethnicity_ (`race`), _education_ (`educ1`), _party identification_ (`partyid7`), _ingreso_ (`ìncome`), y _political ideology_ (`ìdeo7`).
 
-1. Ajusta varios modelos de regresión logística del apoyo a Bush dadas estas entradas incluyendo como predictores el ingreso y las variables antes mencionadas. Considera incluir algunas o todas las variables en el modelo.
+1. Ajusta varios modelos de regresión logística del apoyo a Bush (para el año 1992) dadas estas entradas incluyendo como predictores el ingreso y las variables antes mencionadas. La variable respuesta es `vote` como vimos en clase.
 
-2. Evalúa y compara los diferentes modelos que ajustaste. Considera los coeficientes estimados y sus errores estándar. ¿Son significativos? 
+2. Evalúa y compara diferentes modelos que hayas ajustado. Considera los coeficientes estimados y sus errores estándar. ¿Son significativos? Compara modelos utilizando AIC.
 
 3. Elige el mejor modelo e interprétalo. Compara la importancia de cada variable de entrada en la predicción.
 
-4. Ajusta el modelo `vote ~ income + female + black` para los años 1960, 1964, 1968, y 1972. ¿Qué sucedió con el coeficiente de `black` de 1964? Ve los datos e investiga por qué se obtuvo esta estimación extrema. ¿Qué se podría hacer para ajustar el modelo en 1964?

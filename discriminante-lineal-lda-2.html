@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="conglomerados-clustering-2.html">
-
+<link rel="prev" href="discriminante-lineal-lda-1.html">
+<link rel="next" href="componentes-principales-1.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -412,28 +412,620 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="referencias" class="section level1 unnumbered">
-<h1>Referencias</h1>
+<div id="discriminante-lineal-lda-2" class="section level1">
+<h1><span class="header-section-number">Clase 12</span> Discriminante Lineal (LDA) 2</h1>
+<style>
+  .espacio {
+    margin-bottom: 1cm;
+  }
+</style>
+<style>
+  .espacio3 {
+    margin-bottom: 3cm;
+  }
+</style>
+<p class="espacio">
+</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<div id="aplicaciones" class="section level2">
+<h2><span class="header-section-number">12.1</span> Aplicaciones</h2>
+<p>El análisis discriminante lineal (LDA) de Fisher es un método utilizado en estadística, reconocimiento de patrones y aprendizaje estadístico para encontrar una combinación lineal de variables que caracteriza o separa dos o más clases de objetos o eventos.</p>
+<p>La combinación lineal resultante se puede utilizar como un clasificador lineal o, más comúnmente, para la reducción de dimensionalidad antes de usar otro método de clasificación.</p>
+<p>El análisis de discriminante lineal tiene entre sus posibles aplicaciones:</p>
+<ol style="list-style-type: decimal">
+<li><p>Predicción de bancarrota: la predicción de bancarrota se basa en datos de en indicadores contables y otras variables financieras. El análisis discriminante lineal fue el primer método estadístico aplicado para explicar sistemáticamente qué empresas entraron en bancarrota vs. cuáles sobrevivieron.</p></li>
+<li><p>Marketing: el análisis discriminante solía utilizarse para determinar los factores que distinguen diferentes tipos de clientes y/o productos utilizando datos provenientes de encuestas u otras fuentes de datos.</p></li>
+<li><p>Estudios biomédicos: la principal aplicación del análisis discriminante en medicina es la evaluación del estado de gravedad de un paciente y el pronóstico del desenlace de la enfermedad. Por ejemplo, en un análisis retrospectivo, los pacientes se dividen en grupos según la gravedad de la enfermedad: leve, moderada y grave. Luego, se estudian los resultados de los análisis clínicos y de laboratorio para ver qué variables son toman valores diferentes entre los grupos estudiados. Usando estas variables, se construyen funciones discriminantes que ayudan a clasificar objetivamente la enfermedad en un futuro paciente en leve, moderada o severa.</p></li>
+</ol>
+<p>El análisis de discriminante lineal también se conoce como “análisis discriminante canónico”, o simplemente “análisis discriminante”.</p>
+</div>
+<div id="ejemplo-vinos" class="section level2">
+<h2><span class="header-section-number">12.2</span> Ejemplo: vinos</h2>
+<p>Tenemos 13 concentraciones químicas que describen muestras de vino de tres cultivares.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wine &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/wine.csv&quot;</span>)
+wine <span class="op">%&gt;%</span><span class="st"> </span>head <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Type</th>
+<th align="right">Alcohol</th>
+<th align="right">Malic</th>
+<th align="right">Ash</th>
+<th align="right">Alcalinity</th>
+<th align="right">Magnesium</th>
+<th align="right">Phenols</th>
+<th align="right">Flavanoids</th>
+<th align="right">Nonflavanoids</th>
+<th align="right">Proanthocyanins</th>
+<th align="right">Color</th>
+<th align="right">Hue</th>
+<th align="right">Dilution</th>
+<th align="right">Proline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">14.2</td>
+<td align="right">1.71</td>
+<td align="right">2.43</td>
+<td align="right">15.6</td>
+<td align="right">127</td>
+<td align="right">2.80</td>
+<td align="right">3.06</td>
+<td align="right">0.28</td>
+<td align="right">2.29</td>
+<td align="right">5.64</td>
+<td align="right">1.04</td>
+<td align="right">3.92</td>
+<td align="right">1065</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">13.2</td>
+<td align="right">1.78</td>
+<td align="right">2.14</td>
+<td align="right">11.2</td>
+<td align="right">100</td>
+<td align="right">2.65</td>
+<td align="right">2.76</td>
+<td align="right">0.26</td>
+<td align="right">1.28</td>
+<td align="right">4.38</td>
+<td align="right">1.05</td>
+<td align="right">3.40</td>
+<td align="right">1050</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">13.2</td>
+<td align="right">2.36</td>
+<td align="right">2.67</td>
+<td align="right">18.6</td>
+<td align="right">101</td>
+<td align="right">2.80</td>
+<td align="right">3.24</td>
+<td align="right">0.30</td>
+<td align="right">2.81</td>
+<td align="right">5.68</td>
+<td align="right">1.03</td>
+<td align="right">3.17</td>
+<td align="right">1185</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">14.4</td>
+<td align="right">1.95</td>
+<td align="right">2.50</td>
+<td align="right">16.8</td>
+<td align="right">113</td>
+<td align="right">3.85</td>
+<td align="right">3.49</td>
+<td align="right">0.24</td>
+<td align="right">2.18</td>
+<td align="right">7.80</td>
+<td align="right">0.86</td>
+<td align="right">3.45</td>
+<td align="right">1480</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">13.2</td>
+<td align="right">2.59</td>
+<td align="right">2.87</td>
+<td align="right">21.0</td>
+<td align="right">118</td>
+<td align="right">2.80</td>
+<td align="right">2.69</td>
+<td align="right">0.39</td>
+<td align="right">1.82</td>
+<td align="right">4.32</td>
+<td align="right">1.04</td>
+<td align="right">2.93</td>
+<td align="right">735</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">14.2</td>
+<td align="right">1.76</td>
+<td align="right">2.45</td>
+<td align="right">15.2</td>
+<td align="right">112</td>
+<td align="right">3.27</td>
+<td align="right">3.39</td>
+<td align="right">0.34</td>
+<td align="right">1.97</td>
+<td align="right">6.75</td>
+<td align="right">1.05</td>
+<td align="right">2.85</td>
+<td align="right">1450</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GGally)
+<span class="kw">ggpairs</span>(wine[<span class="dv">2</span><span class="op">:</span><span class="dv">6</span>], <span class="dt">columns =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">title =</span> <span class="st">&quot;&quot;</span>,  
+  <span class="dt">axisLabels =</span> <span class="st">&quot;show&quot;</span>, <span class="dt">columnLabels =</span> <span class="kw">colnames</span>(wine[<span class="dv">2</span><span class="op">:</span><span class="dv">6</span>]))</code></pre></div>
+<p><img src="12-lda-2_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>El propósito del análisis de discriminante lineal (LDA) en este ejemplo es encontrar las combinaciones lineales de las variables originales (las 13 concentraciones químicas) que proporcionen <em>la mejor separación</em> posible entre los grupos (variedades de vino) en nuestro conjunto de datos.</p>
+<p>Supongamos entonces que queremos separar los vinos por cultivar. Los vinos provienen de tres cultivares diferentes, por lo que el número de clases es <span class="math inline">\(K = 3\)</span> y el número de variables predictoras es 13 (concentraciones de 13 componentes químicos, <span class="math inline">\(p = 13\)</span>).</p>
+<p>El número máximo de funciones discriminantes útiles que pueden separar los vinos por cultivar es el mínimo entre <span class="math inline">\(K-1\)</span> y <span class="math inline">\(p\)</span>, por lo que en este caso es el número de superficies de decisión es 2.</p>
+<p>Por lo tanto, podemos encontrar como máximo 2 funciones discriminantes útiles para separar los vinos por cultivar, utilizando las 13 variables de concentraciones químicas.</p>
+<p>Ajustamos el modelo de discriminante lineal:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
+wine_lda &lt;-<span class="st"> </span><span class="kw">lda</span>(Type <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> wine)</code></pre></div>
+<p>Para obtener los valores de los pesos de las funciones discriminantes, podemos escribir:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wine_lda
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lda(Type ~ ., data = wine)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Prior probabilities of groups:</span>
+<span class="co">#&gt;     1     2     3 </span>
+<span class="co">#&gt; 0.331 0.399 0.270 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Group means:</span>
+<span class="co">#&gt;   Alcohol Malic  Ash Alcalinity Magnesium Phenols Flavanoids Nonflavanoids</span>
+<span class="co">#&gt; 1    13.7  2.01 2.46       17.0     106.3    2.84      2.982         0.290</span>
+<span class="co">#&gt; 2    12.3  1.93 2.24       20.2      94.5    2.26      2.081         0.364</span>
+<span class="co">#&gt; 3    13.2  3.33 2.44       21.4      99.3    1.68      0.781         0.448</span>
+<span class="co">#&gt;   Proanthocyanins Color   Hue Dilution Proline</span>
+<span class="co">#&gt; 1            1.90  5.53 1.062     3.16    1116</span>
+<span class="co">#&gt; 2            1.63  3.09 1.056     2.79     520</span>
+<span class="co">#&gt; 3            1.15  7.40 0.683     1.68     630</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients of linear discriminants:</span>
+<span class="co">#&gt;                      LD1       LD2</span>
+<span class="co">#&gt; Alcohol         -0.40340  0.871793</span>
+<span class="co">#&gt; Malic            0.16525  0.305380</span>
+<span class="co">#&gt; Ash             -0.36908  2.345850</span>
+<span class="co">#&gt; Alcalinity       0.15480 -0.146381</span>
+<span class="co">#&gt; Magnesium       -0.00216 -0.000463</span>
+<span class="co">#&gt; Phenols          0.61805 -0.032213</span>
+<span class="co">#&gt; Flavanoids      -1.66119 -0.491998</span>
+<span class="co">#&gt; Nonflavanoids   -1.49582 -1.630954</span>
+<span class="co">#&gt; Proanthocyanins  0.13409 -0.307088</span>
+<span class="co">#&gt; Color            0.35506  0.253231</span>
+<span class="co">#&gt; Hue             -0.81804 -1.515634</span>
+<span class="co">#&gt; Dilution        -1.15756  0.051184</span>
+<span class="co">#&gt; Proline         -0.00269  0.002853</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Proportion of trace:</span>
+<span class="co">#&gt;   LD1   LD2 </span>
+<span class="co">#&gt; 0.688 0.312</span></code></pre></div>
+<p>Esto significa que la primera función discriminante es una combinación lineal de las variables: <span class="math display">\[
+-0.403 \cdot \mbox{Alcohol} + 0.165 \cdot \mbox{Malic} \;+\cdots+\; -0.003 \cdot \mbox{Proline}. 
+\]</span></p>
+<p>Por conveniencia, el valor de cada función discriminante (por ejemplo, la primera función discriminante) se escala de modo que su media sea cero y su varianza sea uno.</p>
+<p>La “proporción de traza” que se imprime al final es una medida de la separación porcentual lograda por cada función discriminante. Por ejemplo, para estos datos de vinos obtenemos los mismos valores que acabamos de calcular (68.75% y 31.25%).</p>
+<p>Una buena forma de mostrar los resultados de un análisis de discriminante lineal es hacer un histograma apilado de los valores de la función discriminante para las diferentes clases.</p>
+<p>Podemos hacer esto usando la función <code>ldahist()</code>. Por ejemplo, para hacer un histograma apilado de los valores de la primera función discriminante:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wine_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(wine_lda)
+<span class="kw">ldahist</span>(<span class="dt">data =</span> wine_pred<span class="op">$</span>x[,<span class="dv">1</span>], <span class="dt">g=</span>wine<span class="op">$</span>Type)</code></pre></div>
+<p><img src="12-lda-2_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Por lo tanto, investigamos si la segunda función discriminante separa esos cultivares, al hacer un histograma apilado de los valores de la segunda función discriminante:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ldahist</span>(<span class="dt">data =</span> wine_pred<span class="op">$</span>x[,<span class="dv">2</span>], <span class="dt">g=</span>wine<span class="op">$</span>Type)</code></pre></div>
+<p><img src="12-lda-2_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Concluimos que la segunda función discriminante distingue los vinos del Tipo 2 de los vinos de Tipo 1 y 3.</p>
+<p>Podemos obtener un diagrama de dispersión de las funciones discriminantes, etiquetando los puntos por clase:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wine<span class="op">$</span>LD1 &lt;-<span class="st"> </span>wine_pred<span class="op">$</span>x[,<span class="dv">1</span>]
+wine<span class="op">$</span>LD2 &lt;-<span class="st"> </span>wine_pred<span class="op">$</span>x[,<span class="dv">2</span>]
+wine<span class="op">$</span>Type &lt;-<span class="st"> </span><span class="kw">as.factor</span>(wine<span class="op">$</span>Type)
+<span class="kw">ggplot</span>(wine, <span class="kw">aes</span>(<span class="dt">x =</span> LD1, <span class="dt">y =</span> LD2, <span class="dt">color =</span> Type, <span class="dt">pch =</span> Type)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="12-lda-2_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p class="espacio">
+</p>
+<p>Notas:</p>
+<ul>
+<li><p>En el diagrama de dispersión de las dos primeras funciones discriminantes, podemos ver que los vinos de los tres cultivares están bien separados.</p></li>
+<li><p>La primera función discriminante (eje x) separa muy bien los cultivares 1 y 3, pero no separa perfectamente los cultivares 1 y 3, ni los cultivares 2 y 3.</p></li>
+<li><p>La segunda función discriminante (eje y) logra una separación bastante buena de los cultivares 1 y 3, y los cultivares 2 y 3, aunque no es totalmente perfecto.</p></li>
+<li><p>Para lograr una muy buena separación de los tres cultivares, sería mejor usar juntas la primera y la segunda función discriminante, ya que la primera función discriminante puede separar los cultivares 1 y 3 muy bien, y la segunda función discriminante puede separar los cultivares 1 y 2, y los cultivares 2 y 3, razonablemente bien.</p></li>
+</ul>
+</div>
+<div id="ejemplo-admisiones-al-mba" class="section level2">
+<h2><span class="header-section-number">12.3</span> Ejemplo: admisiones al MBA</h2>
+<p>Se tienen datos de admisión para los solicitantes a las escuelas de posgrado en administración de negocios. El objetivo es usar los puntajes de GPA y GMAT para predecir la probabilidad de admisión (admitido, no admitido y en el límite).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">url &lt;-<span class="st"> &#39;http://www.biz.uiowa.edu/faculty/jledolter/DataMining/admission.csv&#39;</span>
+mba &lt;-<span class="st"> </span><span class="kw">read_csv</span>(url)
+<span class="co">#&gt; Parsed with column specification:</span>
+<span class="co">#&gt; cols(</span>
+<span class="co">#&gt;   GPA = col_double(),</span>
+<span class="co">#&gt;   GMAT = col_integer(),</span>
+<span class="co">#&gt;   De = col_character()</span>
+<span class="co">#&gt; )</span>
+mba <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">GPA</th>
+<th align="right">GMAT</th>
+<th align="left">De</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">3.26</td>
+<td align="right">664</td>
+<td align="left">admit</td>
+</tr>
+<tr class="even">
+<td align="right">2.35</td>
+<td align="right">321</td>
+<td align="left">notadmit</td>
+</tr>
+<tr class="odd">
+<td align="right">2.36</td>
+<td align="right">399</td>
+<td align="left">notadmit</td>
+</tr>
+<tr class="even">
+<td align="right">2.57</td>
+<td align="right">542</td>
+<td align="left">notadmit</td>
+</tr>
+<tr class="odd">
+<td align="right">2.85</td>
+<td align="right">381</td>
+<td align="left">notadmit</td>
+</tr>
+<tr class="even">
+<td align="right">3.12</td>
+<td align="right">463</td>
+<td align="left">border</td>
+</tr>
+<tr class="odd">
+<td align="right">3.44</td>
+<td align="right">692</td>
+<td align="left">admit</td>
+</tr>
+<tr class="even">
+<td align="right">3.47</td>
+<td align="right">552</td>
+<td align="left">admit</td>
+</tr>
+<tr class="odd">
+<td align="right">2.19</td>
+<td align="right">411</td>
+<td align="left">notadmit</td>
+</tr>
+<tr class="even">
+<td align="right">2.51</td>
+<td align="right">412</td>
+<td align="left">notadmit</td>
+</tr>
+</tbody>
+</table>
+<p>Primero veamos un diagrama de dispersión de los datos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mba, <span class="kw">aes</span>(<span class="dt">x=</span>GPA, <span class="dt">y =</span> GMAT, <span class="dt">color =</span> De)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="12-lda-2_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Comencemos haciendo el análisis de discriminante lineal, observemos que en este caso tenemos 3 clases:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">lda</span>(De <span class="op">~</span><span class="st"> </span>., mba)
+m1
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lda(De ~ ., data = mba)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Prior probabilities of groups:</span>
+<span class="co">#&gt;    admit   border notadmit </span>
+<span class="co">#&gt;    0.365    0.306    0.329 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Group means:</span>
+<span class="co">#&gt;           GPA GMAT</span>
+<span class="co">#&gt; admit    3.40  561</span>
+<span class="co">#&gt; border   2.99  446</span>
+<span class="co">#&gt; notadmit 2.48  447</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients of linear discriminants:</span>
+<span class="co">#&gt;          LD1     LD2</span>
+<span class="co">#&gt; GPA  5.00877  1.8767</span>
+<span class="co">#&gt; GMAT 0.00857 -0.0145</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Proportion of trace:</span>
+<span class="co">#&gt;    LD1    LD2 </span>
+<span class="co">#&gt; 0.9673 0.0327</span></code></pre></div>
+<p>Para analizar podemos hacer una predicción para una nueva observación en específico:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(m1, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">GPA =</span> <span class="fl">3.21</span>, <span class="dt">GMAT =</span> <span class="dv">497</span>))
+<span class="co">#&gt; $class</span>
+<span class="co">#&gt; [1] admit</span>
+<span class="co">#&gt; Levels: admit border notadmit</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $posterior</span>
+<span class="co">#&gt;   admit border notadmit</span>
+<span class="co">#&gt; 1 0.518  0.482 0.000356</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $x</span>
+<span class="co">#&gt;    LD1   LD2</span>
+<span class="co">#&gt; 1 1.25 0.318</span></code></pre></div>
+<p>La predicción es muy ambigua. La razón es que con una sola función de discriminante no es posible separar los datos. La razón es que no se cumple el supuesto</p>
+<p><span class="math display">\[
+\Sigma_k = \Sigma\quad \mbox{para toda } k.
+\]</span></p>
+<p>Usamos análisis discriminante cuadrático:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2 &lt;-<span class="st"> </span><span class="kw">qda</span>(De <span class="op">~</span><span class="st"> </span>., mba)
+m2
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; qda(De ~ ., data = mba)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Prior probabilities of groups:</span>
+<span class="co">#&gt;    admit   border notadmit </span>
+<span class="co">#&gt;    0.365    0.306    0.329 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Group means:</span>
+<span class="co">#&gt;           GPA GMAT</span>
+<span class="co">#&gt; admit    3.40  561</span>
+<span class="co">#&gt; border   2.99  446</span>
+<span class="co">#&gt; notadmit 2.48  447</span></code></pre></div>
+<p>Repetimos la predicción para el mismo punto:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(m2, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">GPA =</span> <span class="fl">3.21</span>, <span class="dt">GMAT =</span> <span class="dv">497</span>))
+<span class="co">#&gt; $class</span>
+<span class="co">#&gt; [1] admit</span>
+<span class="co">#&gt; Levels: admit border notadmit</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $posterior</span>
+<span class="co">#&gt;   admit border notadmit</span>
+<span class="co">#&gt; 1 0.923 0.0769 0.000454</span></code></pre></div>
+<p>¿Qué modelo es el mejor? Para responder a esta pregunta, evaluamos el análisis de discriminante lineal seleccionando aleatoriamente 60 de 85 estudiantes, estimando los parámetros en los datos y clasificando a los 25 estudiantes restantes de la muestra retenida.</p>
+<p>Repetimos esto 100 veces primero con LDA:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">85</span>
+nt &lt;-<span class="st"> </span><span class="dv">60</span>
+neval &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span>nt
+rep &lt;-<span class="st"> </span><span class="dv">100</span>
 
-<div id="refs" class="references">
-<div>
-<p>Fisher, Ronald A. 1936. “The Use of Multiple Measurements in Taxonomic Problems.” <em>Annals of Human Genetics</em> 7 (2). Wiley Online Library: 179–88.</p>
+<span class="kw">set.seed</span>(<span class="dv">123456</span>)
+calcula_error &lt;-<span class="st"> </span><span class="cf">function</span>(i){
+  muestra &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>n, nt)
+  m1 &lt;-<span class="st"> </span><span class="kw">lda</span>(De <span class="op">~</span><span class="st"> </span>., mba[muestra,])
+  tablin &lt;-<span class="st"> </span><span class="kw">table</span>(mba<span class="op">$</span>De[<span class="op">-</span>muestra],<span class="kw">predict</span>(m1,mba[<span class="op">-</span>muestra,])<span class="op">$</span>class)
+  <span class="kw">return</span>((neval<span class="op">-</span><span class="kw">sum</span>(<span class="kw">diag</span>(tablin)))<span class="op">/</span>neval)
+}
+
+merrlin &lt;-<span class="st"> </span><span class="kw">map_dbl</span>(<span class="dt">.x =</span> <span class="dv">1</span><span class="op">:</span>rep, <span class="dt">.f =</span> calcula_error)
+<span class="kw">mean</span>(merrlin)
+<span class="co">#&gt; [1] 0.0964</span></code></pre></div>
+<p>Ahora con QDA:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">calcula_error_Q &lt;-<span class="st"> </span><span class="cf">function</span>(i){
+  muestra &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>n, nt)
+  m1 &lt;-<span class="st"> </span><span class="kw">qda</span>(De <span class="op">~</span><span class="st"> </span>., mba[muestra,])
+  tablin &lt;-<span class="st"> </span><span class="kw">table</span>(mba<span class="op">$</span>De[<span class="op">-</span>muestra],<span class="kw">predict</span>(m1,mba[<span class="op">-</span>muestra,])<span class="op">$</span>class)
+  <span class="kw">return</span>((neval<span class="op">-</span><span class="kw">sum</span>(<span class="kw">diag</span>(tablin)))<span class="op">/</span>neval)
+}
+
+qerrlin &lt;-<span class="st"> </span><span class="kw">map_dbl</span>(<span class="dt">.x =</span> <span class="dv">1</span><span class="op">:</span>rep, <span class="dt">.f =</span> calcula_error_Q)
+<span class="kw">mean</span>(qerrlin)
+<span class="co">#&gt; [1] 0.0588</span></code></pre></div>
+<p>Logramos una tasa de clasificación errónea del 9% en LDA y aproximadamente del 6% en QDA. En este caso ambos métodos funcionan bien porque las dimensiones del problema son más menores: <span class="math inline">\(p\)</span>, <span class="math inline">\(n\)</span>, y <span class="math inline">\(K\)</span> chicas.</p>
+<p>R también nos da algunas herramientas de visualización. Por ejemplo el paquete <code>klaR</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(klaR)
+mba<span class="op">$</span>De &lt;-<span class="st"> </span><span class="kw">as.factor</span>(mba<span class="op">$</span>De)
+<span class="kw">partimat</span>(<span class="dt">formula =</span> De <span class="op">~</span><span class="st"> </span>GMAT <span class="op">+</span><span class="st"> </span>GPA, <span class="dt">data =</span> mba, <span class="dt">method =</span> <span class="st">&quot;lda&quot;</span>) </code></pre></div>
+<p><img src="12-lda-2_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">partimat</span>(<span class="dt">formula =</span> De <span class="op">~</span><span class="st"> </span>GMAT <span class="op">+</span><span class="st"> </span>GPA, <span class="dt">data =</span> mba, <span class="dt">method =</span> <span class="st">&quot;qda&quot;</span>) </code></pre></div>
+<p><img src="12-lda-2_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
-<div>
-<p>Johnson, Richard Arnold, Dean W Wichern, and others. 2014. <em>Applied Multivariate Statistical Analysis</em>. Vol. 4. Prentice-Hall New Jersey.</p>
+<div id="repaso-1" class="section level2">
+<h2><span class="header-section-number">12.4</span> Repaso</h2>
+<p>Se tienen datos <span class="math inline">\(x_1, x_2, \ldots, x_n \in \mathbb{R}^p\)</span> y <span class="math inline">\(y_1,\ldots,y_n\in \{1,2,\ldots,K\}\)</span> donde</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+n &amp;=&amp; \mbox{# observaciones} \\
+p &amp;=&amp; \mbox{# de covariables o predictores} \\
+k &amp;=&amp; \mbox{# clases que dividen a todos los datos.}
+\end{eqnarray*}
+\]</span></p>
+<p>Definimos</p>
+<p><span class="math display">\[
+m_k = \dfrac{1}{N_k}\sum_{i\in C_k}x_i
+\]</span> donde $N_k=kC_kk</p>
+<p>Una medida de la variabilidad dentro de cada clase es</p>
+<p><span class="math display">\[
+s_k^2 = \sum_{i\in C_k}{(y_i - w^T x_i)^2}
+\]</span> porque el modelo está determinado por la ecuación <span class="math inline">\(y(x)=w^Tx\)</span>.</p>
+<div id="caso-k2" class="section level3 unnumbered">
+<h3>Caso <span class="math inline">\(k=2\)</span></h3>
+<p>El vector <span class="math inline">\(w\)</span> lo interpretamos como el vector de pesos que determinan el discriminante lineal.</p>
+<p>La clasificación subsecuente se hace de tal forma que si <span class="math inline">\(y(x)&gt;y_0\)</span> se clasifica a la observación como perteneciente a la clase 1 y en otro caso a la clase 2.</p>
+<p>Definimos el criterio de Fisher como</p>
+<p><span class="math display">\[
+J(w)  = \dfrac{w^T(m_2 - m_1)}{s_1^2 + s_2^2}.
+\]</span></p>
+<p>Buscamos <span class="math display">\[
+\begin{eqnarray*}
+\mbox{max} &amp;&amp; J(w) \\
+\mbox{s.a.} &amp;\;&amp; \| w \| = 1.
+\end{eqnarray*}
+\]</span></p>
+<p><strong>Idea:</strong> En general, necesitamos encontrar la dirección de <span class="math inline">\(w\)</span> y pensar en que luego es posible normalizar.</p>
+<p>Definimos las matrices</p>
+<p><span class="math display">\[
+S_W = \sum_{i\in C_k}(x_i - m_1)(x_i-m_1)^T + \sum_{i\in C_k}(x_i - m_2)(x_i - m_2)^T
+\]</span> y</p>
+<p><span class="math display">\[
+S_B = (m_2 - m_1)(m_2 - m_1)^T
+\]</span></p>
+<p>Se puede ver que</p>
+<p><span class="math display">\[
+J(w) = \dfrac{w^T S_B w}{w^T S_W w}.
+\]</span></p>
+<p class="espacio">
+</p>
+
+<div class="information">
+Si <span class="math inline">\(x\)</span> es un vector y <span class="math inline">\(A\)</span> es una matriz, entonces el gradiente de una forma cuadrática <span class="math display">\[
+\dfrac{1}{2}x^T A x + b^T x + c
+\]</span> es <span class="math display">\[
+Ax + b.
+\]</span>
 </div>
-<div>
-<p>Long, J Scott, Jeremy Freese, and others. 2001. “Predicted Probabilities for Count Models.” <em>Stata Journal</em> 1 (1). StataCorp LP: 51–57.</p>
+
+<p><br></p>
+<p><br></p>
+<p>Por lo tanto,</p>
+<p><span class="math display">\[
+\nabla J(w) = w^T S_B w \cdot \nabla_w(w^T S_W w) - w^T S_W w \cdot \nabla_w(w^T S_B w),
+\]</span> por lo que <span class="math inline">\(J(w)\)</span> se maximiza cuando</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+(w^T S_B w) S_W w &amp;=&amp; (w^T S_W w)S_B w \\
+S_W w&amp;=&amp; \left(\dfrac{w^T S_W w}{w^T S_B w}\right) S_B w \\
+&amp;=&amp; \dfrac{w^T S_W w}{w^T S_B w} (m_2-m_1)(m_2 - m_1)^T w\\
+&amp;=&amp; \left\{\left(\dfrac{w^T S_W w}{w^T S_B w}\right)(m_2 - m_1)^T w\right\}(m_2-m_1).
+\end{eqnarray*}
+\]</span></p>
+<p>Por lo tanto, <span class="math inline">\(w\)</span> es tal que</p>
+<p><span class="math display">\[
+w = c \cdot S_W ^{-1}(m_2 - m_1)
+\]</span> donde <span class="math inline">\(c\)</span> es una constante tal que <span class="math inline">\(\|w\|_2^2=1\)</span>.</p>
 </div>
-<div>
-<p>RJ, LITTLE. 1978. “Generalized Linear Models for Cross-Classified Data from the Wfs.”</p>
 </div>
-<div>
-<p>Tufte, Edward, and P Graves-Morris. 2014. “The Visual Display of Quantitative Information.; 1983.”</p>
+<div id="supuestos-probabilisticos" class="section level2">
+<h2><span class="header-section-number">12.5</span> Supuestos probabilísticos</h2>
+<p>Definimos como <span class="math inline">\(\pi_k\)</span> la probabilidad inicial de la pertenencia a la clase <span class="math inline">\(k\)</span>, es decir,</p>
+<p><span class="math display">\[
+\pi_k = P(y_i = k).
+\]</span></p>
+<p>En la literatura las <span class="math inline">\(\pi_i\)</span>’s se conocen como <em>probabilidades a priori</em>. Además podemos definir una dsitribución de probabilidad para <span class="math inline">\(x\)</span> para cada clase <span class="math inline">\(k\)</span></p>
+<p><span class="math display">\[
+f_k(x) = P(x|k).
+\]</span></p>
+<p>Por el teorema de Bayes</p>
+<p><span class="math display">\[
+p(k|x) = \dfrac{f_k(x)\pi_k}{\sum_{l=1}^K f_l(x)\pi_l}.
+\]</span></p>
+<p>A las probabilidades finales de cada clase <span class="math inline">\(k\)</span> dada una observación <span class="math inline">\(x\)</span> se les conoce comúnmente como <em>probabilidades posteriores</em>.</p>
+<p>En el análisis de discriminante lineal suponemos que <span class="math inline">\(p(x|k)\)</span> es la densidad normal</p>
+<p><span class="math display">\[
+f_k(x) = \dfrac{1}{(2\pi)^{p/2}|\Sigma_k|^{1/2}}\exp\left(-\dfrac{1}{2}(x-\mu_k)^T\Sigma_k ^{-1} (x-\mu_k)\right).
+\]</span></p>
+<p>En LDA suponemos que <span class="math inline">\(\Sigma_k = \Sigma\)</span> para toda <span class="math inline">\(k\)</span>. A este supuesto le llamamos <em>supuesto de homogeneidad</em>.</p>
+<p>Para comparar la pertenencia de clases podemos ver el logaritmo del cociente entre las clases <span class="math inline">\(k\)</span> y <span class="math inline">\(l\)</span>:</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+\log\dfrac{p(k|x)}{p(j|x)} &amp;=&amp; \log\dfrac{f_k(x)}{f_l(x)} + \log\left(\dfrac{\pi_k}{\pi_l}\right)\\
+&amp;=&amp; \log\left(\dfrac{\pi_k}{\pi_l}\right) -\dfrac{1}{2}(\mu_k - \mu_l)^T\Sigma^{-1}(\mu_k - \mu_l) + x^T\Sigma^{-1}(\mu_k - \mu_l).
+\end{eqnarray*}
+\]</span></p>
+<p>Ésta es una ecuación lineal en <span class="math inline">\(x\)</span>. Esto implica que la superficie de decisión (que separa a las clases) es un hiperplano de dimensión <span class="math inline">\(p\)</span>.</p>
+<p>Si dividimos <span class="math inline">\(\mathbb{R}^p\)</span> entre regiones que separan las clases <span class="math inline">\(1,2,\ldots,K\)</span>, estas regiones están determinadas por hiperplanos.</p>
+<p><img src="figuras/lda_3.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><br> <br></p>
+<p>Definimos las funciones de discriminante lineal como</p>
+<p><span class="math display">\[
+f_k(x) = x^T \Sigma ^{-1} \mu_k -\dfrac{1}{2}\mu_k^T \Sigma^{-1}\mu_k + \log(\pi_k).
+\]</span></p>
+<p>Estos los estimamos por máxima verosimilitud y es equivalente a la vista antes</p>
+<p><span class="math display">\[
+\hat{\pi}_k= \dfrac{N_k{}}N
+\]</span></p>
+<p><span class="math display">\[
+\hat{\mu}_k = \dfrac{1}{N_k}\sum_{i\in C_k}x_i
+\]</span></p>
+<p><span class="math display">\[
+\hat{\Sigma} = \dfrac{1}{N-K} \sum_{k=1}^{K}\sum_{i\in C_k}(x_i-\hat{\mu}_k)(x_i-\hat{\mu}_k)^T
+\]</span></p>
+<p>Si <span class="math inline">\(\Sigma_k\)</span> no es igual a <span class="math inline">\(\Sigma\)</span> para todas las clases entonces definimos las <em>funciones de discriminante cuadráticas</em> (QDA) como</p>
+<p><span class="math display">\[
+f_k(x) = -\dfrac{1}{2}\log|\Sigma_k| - \dfrac{1}{2}(x-\mu_k)^T\Sigma_k^{-1}(x-\mu_k) + \log(\pi_k).
+\]</span></p>
+<p>Las superficies de decisión son ecuaciones cuadráticas en <span class="math inline">\(\mathbb{R}^p\)</span>.</p>
+
+<div class="nota">
+<p><strong>Nota</strong></p>
+<p class="espacio3">
+</p>
+<ol style="list-style-type: decimal">
+<li><p>Las estimaciones se hacen de manera similar que para LDA excepto que en este caso se deben estimar todas las <span class="math inline">\(\Sigma_k\)</span>`s por separado.</p></li>
+<li>El número de parámetros puede aumentar sustancialmente.</li>
+</ol>
 </div>
-<div>
-<p>Wickham, Hadley, and Garrett Grolemund. 2016. “R for Data Science.” Sebastopol, CA: O’Reilly. ‘http://r4ds.had.co.nz‘.</p>
+
 </div>
+<div id="relacion-con-minimos-cuadrados" class="section level2">
+<h2><span class="header-section-number">12.6</span> Relación con mínimos cuadrados</h2>
+<p>Vimos cómo utilizar regresión lineal para encontrar regiones de discriminante lineal. Codificamos <span class="math inline">\(Y\)</span> de la siguiente forma:</p>
+<p><span class="math display">\[
+y_i=(0,\ldots,0,N/N_1,0,\ldots,0)
+\]</span></p>
+<p>donde la posición distinta de <span class="math inline">\(0\)</span> es la <span class="math inline">\(i\)</span>-ésima posición correspondiente a la observación cuando está en la clase 1, y cuando está en la clase 2 es</p>
+<p><span class="math display">\[
+y_i=(0,\ldots,0,-N/N_2,0,\ldots,0).
+\]</span></p>
+<p>El error como suma de cuadrados es:</p>
+<p><span class="math display">\[
+\dfrac{1}{2}\sum_{i=1}^n{(w^Tx_i+w_0-y_i)^2}.
+\]</span></p>
+<p>Derivando con respecto a <span class="math inline">\(w_0\)</span> y <span class="math inline">\(w\)</span> obtenemos:</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+\sum_{i=1}^n{(w^Tx_i+w_0-y_i)} &amp;=&amp; 0\\
+\sum_{i=1}^n{(w^Tx_i+w_0-y_i)\cdot x_i} &amp;=&amp; 0
+\end{eqnarray*}
+\]</span></p>
+<p>Sustituyendo las <span class="math inline">\(y_i\)</span>`s obtenemos que</p>
+<p><span class="math display">\[
+w_0 = -w^Tm
+\]</span></p>
+<p>donde</p>
+<p><span class="math display">\[
+\sum_{i=1}^n{y_i} = N_1\dfrac{N}{N_1} - N_2\dfrac{N}{N_2},
+\]</span></p>
+<p>y <span class="math inline">\(m\)</span> es la media del conjunto de datos y está dado por</p>
+<p><span class="math display">\[
+m = \dfrac{1}{N}\sum_{i=1}^N x_i = \dfrac{1}{N}(N_1 m_1 + N_2 m_2).
+\]</span></p>
+<p>Se puede demostrar (tarea) que:</p>
+<p><span class="math display">\[
+\left(S_W + \dfrac{N_1N_2}{N}S_B\right)w=N(m_1 - m_2).
+\]</span></p>
+<p>Notemos que <span class="math inline">\(S_B w\)</span> está en la dirección de <span class="math inline">\(m_2-m_1\)</span> porque</p>
+<p><span class="math display">\[
+S_B = (m_2 - m_1)(m_2 - m_1)^T,
+\]</span></p>
+<p>y entonces <span class="math inline">\(w\)</span> es proporcional a <span class="math inline">\(S_W^{-1}(m_2 - m_1)\)</span>.</p>
+<p>Por lo tanto, el resultado obtenido por mínimos cuadrados es equivalente a la dirección de discriminante lineal, ignorando factores escalares que no son relevantes. Por lo tanto, el vector de pesos coincide con el encontrado mediante el criterio de Fisher.</p>
+<p>El umbral <span class="math inline">\(w_0\)</span> es tal que si <span class="math inline">\(y(x) = w^T(x-m)&gt; 0\)</span>, entonces se clasifica en la clase 1, y en otro caso, se clasifica en la clase 2.</p>
+
+<div class="information">
+<strong>Nota:</strong> La extensión para múltiples clases es análoga a lo que ya hemos visto.
+</div>
+
+<p><br></p>
+</div>
+<div id="tarea-10" class="section level2">
+<h2><span class="header-section-number">12.7</span> Tarea</h2>
+<p>Utilizando las definiciones de las matrices de covarianza <em>intraclase</em> <span class="math inline">\(S_W\)</span> e <em>interclase</em> <span class="math inline">\(S_B\)</span> y que</p>
+<p><span class="math display">\[
+w_0 = -w^tm,
+\]</span> donde <span class="math display">\[
+m = \dfrac{1}{N}\sum_{i=1}^N x_i = \dfrac{1}{N}(N_1 m_1 + N_2 m_2),
+\]</span> demuestra que</p>
+<p><span class="math display">\[
+\sum_{i=1}^n{(w^Tx_i+w_0-y_i)\cdot x_i}= 0
+\]</span></p>
+<p>se puede escribir de la forma</p>
+<p><span class="math display">\[
+\left(S_W + \dfrac{N_1N_2}{N}S_B\right)w=N(m_1 - m_2).
+\]</span></p>
+
 </div>
 </div>
             </section>
@@ -441,8 +1033,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="conglomerados-clustering-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="discriminante-lineal-lda-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="componentes-principales-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
