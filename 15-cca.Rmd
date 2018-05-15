@@ -550,12 +550,6 @@ if(!file.exists("datos/sst.mon.anom.nc")){
 }
 ```
 
-```{r}
-RCurl::getURL(url_pres)
-curl_fetch_disk(url_pres, path = "datos/slp.mnmean.nc", handle = new_handle(CONNECTTIMEOUT = 60))
-```
-
-
 Leemos los datos:
 
 ```{r}
