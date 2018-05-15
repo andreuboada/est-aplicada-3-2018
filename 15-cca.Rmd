@@ -536,19 +536,25 @@ Veamos ahora el uso del Análisis de Correlación Canónica (CCA) para encontrar
 
 Descargamos los campos de anomalías mensuales de presión superficial del mar (SLP) y temperatura de la superficie del mar (TSM) para la región del Pacífico ecuatorial de la [NOAA](https://www.esrl.noaa.gov/).
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, results='hide'}
 library(curl)
 
 url_pres <- "ftp://ftp.cdc.noaa.gov/Datasets.other/hadslp/slp.mnmean.nc"
 if(!file.exists("datos/slp.mnmean.nc")){
-  curl_fetch_disk(url = url_pres, path = "datos/slp.mnmean.nc")
+  curl_fetch_disk(url_pres, path = "datos/slp.mnmean.nc", handle = new_handle(CONNECTTIMEOUT = 60))
 }
 
 url_temp <- "http://www.esrl.noaa.gov/psd/thredds/fileServer/Datasets/kaplan_sst/sst.mon.anom.nc"
 if(!file.exists("datos/sst.mon.anom.nc")){
-  curl_fetch_disk(url = url_temp, path = "datos/sst.mon.anom.nc")
+  curl_fetch_disk(url = url_temp, path = "datos/sst.mon.anom.nc", handle = new_handle(CONNECTTIMEOUT = 60))
 }
 ```
+
+```{r}
+RCurl::getURL(url_pres)
+curl_fetch_disk(url_pres, path = "datos/slp.mnmean.nc", handle = new_handle(CONNECTTIMEOUT = 60))
+```
+
 
 Leemos los datos:
 
