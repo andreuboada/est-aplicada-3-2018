@@ -537,16 +537,16 @@ Veamos ahora el uso del Análisis de Correlación Canónica (CCA) para encontrar
 Descargamos los campos de anomalías mensuales de presión superficial del mar (SLP) y temperatura de la superficie del mar (TSM) para la región del Pacífico ecuatorial de la [NOAA](https://www.esrl.noaa.gov/).
 
 ```{r message=FALSE, warning=FALSE}
-library(tidyverse)
+library(curl)
 
 url_pres <- "ftp://ftp.cdc.noaa.gov/Datasets.other/hadslp/slp.mnmean.nc"
 if(!file.exists("datos/slp.mnmean.nc")){
-  download.file(url = url_pres, destfile = "datos/slp.mnmean.nc")
+  curl_fetch_disk(url = url_pres, path = "datos/slp.mnmean.nc")
 }
 
 url_temp <- "http://www.esrl.noaa.gov/psd/thredds/fileServer/Datasets/kaplan_sst/sst.mon.anom.nc"
 if(!file.exists("datos/sst.mon.anom.nc")){
-  download.file(url = url_temp, destfile = "datos/sst.mon.anom.nc")
+  curl_fetch_disk(url = url_temp, path = "datos/sst.mon.anom.nc")
 }
 ```
 
@@ -893,7 +893,7 @@ for(i in 1:mindim){
 # cca.sig  <- p.asym(rho, xdim[1], xdim[2], ydim[2], tstat = "Pillai")
 ```
 
-```{r}
+```{r, echo = FALSE}
 bp.cca <- function(eofx,eofy, 
 n_pcx_incl=eofx$n_sig, n_pcy_incl=eofy$n_sig, 
 rowx_incl=1:length(eofx$A[,1]), rowy_incl=1:length(eofy$A[,1]),
