@@ -628,6 +628,432 @@ s2 %*% cc1$ycoef
 
 Los coeficientes canónicos estandarizados se interpretan de manera análoga a la interpretación de los coeficientes de regresión estandarizados. Por ejemplo, para la variable de lectura, un aumento de la desviación estándar en lectura se refleja en una disminución de 0.45 desviaciones estándar de en la primera variable canónica del conjunto 2 cuando las otras variables en el modelo se mantienen constantes.
 
+## Ejemplo: fenómenos meteorológicos
+
+Ejemplo de (Marc MeNugget)[https://menugget.blogspot.mx/2012/03/canonical-correlation-analysis-for.html].
+
+Veamos ahora el uso del Análisis de Correlación Canónica (CCA) para encontrar patrones entre pares de observaciones en campos climáticos. El método produce resultados similares a los de componentes principales, pero los patrones reflejan la _correlación_ máxima en vez de la _covarianza_ máxima. Además, el resultado del modelo es una combinación de modelos lineales que se pueden usar para un modelo de predicción de un campo climático.
+
+Descargamos los campos de anomalías mensuales de presión superficial del mar (SLP) y temperatura de la superficie del mar (TSM) para la región del Pacífico ecuatorial de la [NOAA](https://www.esrl.noaa.gov/).
+
+
+```r
+library(curl)
+
+url_pres <- "ftp://ftp.cdc.noaa.gov/Datasets.other/hadslp/slp.mnmean.nc"
+if(!file.exists("datos/slp.mnmean.nc")){
+  curl_fetch_disk(url_pres, path = "datos/slp.mnmean.nc", handle = new_handle(CONNECTTIMEOUT = 60))
+}
+
+url_temp <- "http://www.esrl.noaa.gov/psd/thredds/fileServer/Datasets/kaplan_sst/sst.mon.anom.nc"
+if(!file.exists("datos/sst.mon.anom.nc")){
+  curl_fetch_disk(url = url_temp, path = "datos/sst.mon.anom.nc", handle = new_handle(CONNECTTIMEOUT = 60))
+}
+```
+
+Leemos los datos:
+
+
+```r
+library(maps)
+library(mapproj)
+library(ncdf4)
+library(CCP)
+library(irlba)
+nc <- nc_open(filename = "datos/slp.mnmean.nc")
+slp.lon <- ncvar_get(nc, "lon")
+slp.lat <- ncvar_get(nc, "lat")
+slp.t <- ncvar_get(nc, "time")
+slp.raw <- ncvar_get(nc, "slp")
+nc_close(nc)
+slp.t <- as.Date(slp.t, origin="1800-01-01")
+temp <- which(slp.lon > 180)
+slp.lon[temp] <- slp.lon[temp] - 360
+slp.grd <- expand.grid(slp.lon, slp.lat)
+colnames(slp.grd) <- c("lon", "lat")
+slp <- matrix(c(slp.raw), nrow=length(slp.t), ncol<-length(slp.lon)*length(slp.lat), byrow=TRUE)
+row.names(slp) <- as.character(slp.t)
+```
+
+Calculamos anomalías en la presión superficial del mar:
+
+
+```r
+anomaly <- function(y, x, level="daily"){ 
+ y <- as.matrix(y)
+ 
+ if(level=="monthly"){levs=unique(x$mon)}
+ if(level=="daily"){levs=unique(x$yday)}
+ 
+ levs_lookup=vector("list", length(levs))
+ names(levs_lookup)<-levs
+ for(i in 1:length(levs)){
+  if(level=="monthly"){levs_lookup[[i]]<-which(x$mon == names(levs_lookup[i]))}
+  if(level=="daily"){levs_lookup[[i]]<-which(x$yday == names(levs_lookup[i]))}
+ }
+ 
+ for(j in 1:length(levs)){
+  y[levs_lookup[[j]],] <- t(t(as.matrix(y[levs_lookup[[j]],])) - apply(as.matrix(y[levs_lookup[[j]],]), 2, mean, na.rm=TRUE))
+ }
+ 
+ y
+}
+```
+
+
+```r
+slp <- anomaly(slp, as.POSIXlt(slp.t), level="monthly")
+```
+
+Leemos los datos de temperaturas:
+
+
+```r
+nc <- nc_open(filename = "datos/sst.mon.anom.nc")
+sst.lon <- ncvar_get(nc, "lon")
+sst.lat <- ncvar_get(nc, "lat")
+sst.t <- ncvar_get(nc, "time")
+sst.raw <- ncvar_get(nc, "sst")
+nc_close(nc)
+sst.t <- as.Date(sst.t, origin="1800-01-01")
+temp <- which(sst.lon > 180)
+sst.lon[temp] <- sst.lon[temp] - 360
+sst.grd <- expand.grid(sst.lon, sst.lat)
+colnames(sst.grd) <- c("lon", "lat")
+sst <- matrix(c(sst.raw), nrow=length(sst.t), ncol<-length(sst.lon)*length(sst.lat), byrow=TRUE)
+row.names(sst) <- as.character(sst.t)
+```
+
+Tomamos un subconjunto de los datos de acuerdo a fechas:
+
+
+```r
+t.min <- as.Date("1980-01-01")
+t.max1 <- as.Date("1998-12-01")
+t.max2 <- as.Date("2018-04-01")
+slp.t.incl <- which(slp.t >= t.min & slp.t <= t.max2)
+sst.t.incl <- which(sst.t >= t.min & sst.t <= t.max2)
+```
+
+Nos concentramos primero en la región del pacífico:
+
+
+```r
+lon.lim <- c(-180, -70)
+lat.lim <- c(-30, 30)
+
+slp.grd.incl <- which(slp.grd[,1] < -70 & slp.grd[,1] > -180 & slp.grd[,2] < 30 & slp.grd[,2] > -30)
+sst.grd.incl <- which(sst.grd[,1] < -70 & sst.grd[,1] > -180 & sst.grd[,2] < 30 & sst.grd[,2] > -30)
+```
+
+Centramos cada una de las matrices:
+
+
+```r
+X <- slp[slp.t.incl, slp.grd.incl]
+Y <- sst[sst.t.incl, sst.grd.incl]
+Y[is.na(Y)] <- 0
+X_c <- scale(X, center=TRUE, scale=FALSE)
+Y_c <- scale(Y, center=TRUE, scale=FALSE)
+```
+
+
+
+Analicemos en las medias de ambas variables a través del tiempo:
+
+
+```r
+X_m <- matrix(apply(X,1,mean),nrow=nrow(X_c), ncol=1)
+rownames(X_m) <- rownames(X)
+Y_m <- matrix(apply(Y,1,mean),nrow=nrow(Y_c), ncol=1)
+rownames(Y_m) <- rownames(Y)
+zran <- range(X_m, Y_m)
+zlim <- c(-max(abs(zran)), max(abs(zran)))
+pal <- color.palette(c("red", "yellow", "white", "cyan", "blue"), c(10,1,1,10))
+colorvalues1 <- val2col(X_m, zlim, col=pal(ncol))
+colorvalues2 <- val2col(Y_m, zlim, col=pal(ncol))
+```
+
+Creamos polígonos para graficar:
+
+
+```r
+#slp
+spacing <- 5
+slp.poly <- vector(mode="list", dim(slp.grd)[1])
+for(i in seq(slp.poly)){
+ x=c(slp.grd[i,1]-spacing/2, slp.grd[i,1]+spacing/2, slp.grd[i,1]+spacing/2, slp.grd[i,1]-spacing/2)
+ y=c(slp.grd[i,2]-spacing/2, slp.grd[i,2]-spacing/2, slp.grd[i,2]+spacing/2, slp.grd[i,2]+spacing/2)
+ slp.poly[[i]] <- data.frame(x=x, y=y)
+}
+ 
+#sst
+spacing <- 5
+sst.poly <- vector(mode="list", dim(sst.grd)[1])
+for(i in seq(sst.poly)){
+ x=c(sst.grd[i,1]-spacing/2, sst.grd[i,1]+spacing/2, sst.grd[i,1]+spacing/2, sst.grd[i,1]-spacing/2)
+ y=c(sst.grd[i,2]-spacing/2, sst.grd[i,2]-spacing/2, sst.grd[i,2]+spacing/2, sst.grd[i,2]+spacing/2)
+ sst.poly[[i]] <- data.frame(x=x, y=y)
+}
+```
+
+Gráfica de anomalías de presión a nivel del mar:
+
+
+```r
+#mapproj settings
+project="fisheye"
+orientation=c(mean(lat.lim), mean(lon.lim), 0)
+PAR=1
+par(mai=c(0.1, 0.1, 0.1, 0.1))
+map("world",project=project, orientation=orientation, par=PAR, ylim=lat.lim, xlim=lon.lim)
+for(i in seq(slp.grd.incl)){
+  polygon(mapproject(x=slp.poly[[slp.grd.incl[i]]][,1], y=slp.poly[[slp.grd.incl[i]]][,2]), col=colorvalues1[i], border=colorvalues1[i], lwd=0.3)
+}
+map("world",project=project, orientation=orientation, par=PAR, fill=FALSE, add=TRUE, col="black")
+map.grid(c(-180, 180, -90, 90), nx=36, ny=18, labels=FALSE, col="grey", lwd=1)
+box()
+```
+
+<img src="15-cca_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" />
+
+Mapa de anomalías 
+
+
+```r
+par(mai=c(0.1, 0.1, 0.1, 0.1))
+map("world",project=project, orientation=orientation, par=PAR, ylim=lat.lim, xlim=lon.lim, xaxs="i", yaxs="i")
+for(i in seq(sst.grd.incl)){
+  polygon(mapproject(x=sst.poly[[sst.grd.incl[i]]][,1], y=sst.poly[[sst.grd.incl[i]]][,2]), col=colorvalues2[i], border=colorvalues2[i], lwd=0.3)
+}
+map("world",project=project, orientation=orientation, par=PAR, fill=FALSE, add=TRUE, col="black")
+map.grid(c(-180, 180, -90, 90), nx=36, ny=18, labels=FALSE, col="grey", lwd=1)
+box()
+```
+
+<img src="15-cca_files/figure-html/unnamed-chunk-38-1.png" width="70%" style="display: block; margin: auto;" />
+
+Ahora hacemos el análisis de correlación canónica. Primero calculamos la covarianza entre $X$ y $Y$:
+
+
+```r
+cov4gappy <- function(F1, F2=NULL){
+    if(is.null(F2)){
+        F1 <- as.matrix(F1)
+        F1_val<-replace(F1, which(!is.na(F1)), 1)
+        F1_val<-replace(F1_val, which(is.na(F1_val)), 0) 
+        n_pairs=(t(F1_val)%*%F1_val)
+ 
+        F1<-replace(F1, which(is.na(F1)), 0)
+        cov_mat <- (t(F1)%*%F1)/n_pairs
+        cov_mat <- replace(cov_mat, which(is.na(cov_mat)), 0)
+    }
+ 
+    if(!is.null(F2)){
+        if(dim(F1)[1] == dim(F2)[1]){
+            F1 <- as.matrix(F1)
+            F2 <- as.matrix(F2)
+ 
+            F1_val<-replace(F1, which(!is.na(F1)), 1)
+            F1_val<-replace(F1_val, which(is.na(F1_val)), 0) 
+            F2_val<-replace(F2, which(!is.na(F2)), 1)
+            F2_val<-replace(F2_val, which(is.na(F2_val)), 0) 
+            n_pairs=(t(F1_val)%*%F2_val)
+ 
+            F1<-replace(F1, which(is.na(F1)), 0)
+            F2<-replace(F2, which(is.na(F2)), 0)
+            cov_mat <- (t(F1)%*%F2)/n_pairs
+            cov_mat <- replace(cov_mat, which(is.na(cov_mat)), 0)
+ 
+        } else {
+            print("ERROR; matrices columns not of the same lengths")
+        }
+    }
+ 
+    cov_mat
+}
+
+exp.mat<-function(MAT, EXP, tol=NULL){
+ MAT <- as.matrix(MAT)
+ matdim <- dim(MAT)
+ if(is.null(tol)){
+  tol=min(1e-7, .Machine$double.eps*max(matdim)*max(MAT))
+ }
+ if(matdim[1]>=matdim[2]){ 
+  svd1 <- svd(MAT)
+  keep <- which(svd1$d > tol)
+  res <- t(svd1$u[,keep]%*%diag(svd1$d[keep]^EXP, nrow=length(keep))%*%t(svd1$v[,keep]))
+ }
+ if(matdim[1]<matdim[2]){ 
+  svd1 <- svd(t(MAT))
+  keep <- which(svd1$d > tol)
+  res <- svd1$u[,keep]%*%diag(svd1$d[keep]^EXP, nrow=length(keep))%*%t(svd1$v[,keep])
+ }
+ return(res)
+}
+```
+
+
+
+```r
+F1 <- as.matrix(X_c)
+F2 <- as.matrix(Y_c)
+
+F1 <- as.matrix(F1)
+F1_val<-replace(F1, which(!is.na(F1)), 1)
+F1_val<-replace(F1_val, which(is.na(F1_val)), 0) 
+n_pairs=(t(F1_val)%*%F1_val)
+ 
+F1<-replace(F1, which(is.na(F1)), 0)
+cov_mat1 <- (t(F1)%*%F1)/n_pairs
+cov_mat1 <- replace(cov_mat1, which(is.na(cov_mat1)), 0)
+
+F2 <- as.matrix(F2)
+F2_val<-replace(F2, which(!is.na(F2)), 1)
+F2_val<-replace(F2_val, which(is.na(F2_val)), 0) 
+n_pairs=(t(F2_val)%*%F2_val)
+ 
+F2<-replace(F2, which(is.na(F2)), 0)
+cov_mat2 <- (t(F2)%*%F2)/n_pairs
+cov_mat2 <- replace(cov_mat2, which(is.na(cov_mat2)), 0)
+
+L1 <- irlba(cov_mat1, nu=5, nv=5)
+L2 <- irlba(cov_mat2, nu=5, nv=5)
+
+A1_coeff <- replace(F1, which(is.na(F1)), 0)%*%L1$u[,1:5]
+A1_norm <- F1_val%*%(L1$u[,1:5]^2)
+A1=A1_coeff/A1_norm
+
+A2_coeff <- replace(F2, which(is.na(F2)), 0)%*%L2$u[,1:5]
+A2_norm <- F2_val%*%(L2$u[,1:5]^2)
+A2=A2_coeff/A2_norm
+
+x <- A1[,1:5] %*% exp.mat(diag(L1$d[1:5]), -0.5)
+y <- A2[,1:5] %*% exp.mat(diag(L2$d[1:5]), -0.5)
+```
+
+Hacemos descomposición en valores singulares:
+
+
+```r
+
+xdim <- dim(t(x))
+ydim <- dim(t(y))
+ 
+mindim=min(xdim[2], ydim[2])
+xcols <- 1:xdim[2]
+ycols <- (xdim[2]+1):(xdim[2]+ydim[2])
+ 
+Sxx <- cov4gappy(t(x))
+Sxy <- cov4gappy(t(x),t(y))
+Syy <- cov4gappy(t(y))
+
+svd1 <- svd(exp.mat(Syy, -0.5) %*% t(Sxy) %*% exp.mat(Sxx, -0.5))
+A <- exp.mat(Sxx, -0.5) %*% svd1$v
+B <- exp.mat(Syy, -0.5) %*% svd1$u
+```
+
+Veamos las variables canónicas:
+
+
+```r
+V <- t(x) %*% A
+W <- t(y) %*% B
+
+rho=NA*1:mindim
+for(i in 1:mindim){
+  rho[i] <- cor(as.vector(W[,i]), as.vector(V[,i]), use="pairwise")
+}
+ 
+# A test of CCA significance
+# cca.sig  <- p.asym(rho, xdim[1], xdim[2], ydim[2], tstat = "Pillai")
+```
+
+
+
+
+Repetimos los mapas de las variables canónicas (primer par):
+
+
+```r
+eof.slp <- eof.mca(slp[slp.t.incl, slp.grd.incl], centered=TRUE, nu=20)
+eof.sst <- eof.mca(sst[sst.t.incl, sst.grd.incl], centered=TRUE, nu=20)
+dim(eof.slp$A)
+#> [1] 228  20
+dim(eof.sst$A)
+#> [1] 460  20
+
+#CCA model will be built on a smaller time subset of the PCs (eof$A)
+eof.slp.match <- which(as.Date(rownames(eof.slp$A)) >= t.min & as.Date(rownames(eof.slp$A)) <= t.max1)
+eof.sst.match <- which(as.Date(rownames(eof.sst$A)) >= t.min & as.Date(rownames(eof.sst$A)) <= t.max1)
+ 
+#The BPCCA model based on SLP and SST EOFS
+bpcca <- bp.cca(eof.slp, eof.sst,
+n_pcx_incl=eof.slp$n_sig, n_pcy_incl=eof.sst$n_sig, 
+rowx_incl=eof.slp.match, rowy_incl=eof.sst.match)
+#>  Pillai-Bartlett Trace, using F-approximation:
+#>             stat approx df1  df2  p.value
+#> 1 to 5:  1.08708  12.34  25 1110 0.00e+00
+#> 2 to 5:  0.44913   6.91  16 1120 2.44e-15
+#> 3 to 5:  0.16898   4.39   9 1130 1.17e-05
+#> 4 to 5:  0.03486   2.00   4 1140 9.22e-02
+#> 5 to 5:  0.00922   2.12   1 1150 1.45e-01
+ 
+ 
+###Map of CCA
+slp.cca.modes <- eof.slp$u[,1:bpcca$n_pcx_incl] %*% bpcca$A
+sst.cca.modes <- eof.sst$u[,1:bpcca$n_pcy_incl] %*% bpcca$B
+
+MODE=1
+zran <- range(slp.cca.modes[,MODE], sst.cca.modes[,MODE])
+zlim <- c(-max(abs(zran)), max(abs(zran)))
+ 
+heights=c(3,2)
+widths=c(4,4,0.5)
+pal=color.palette(c("red", "yellow", "white", "cyan", "blue"), c(10,1,1,10))
+ncol=100
+res=200
+colorvalues1 <- val2col(slp.cca.modes[,MODE], zlim, col=pal(ncol)) #color levels for the polygons
+colorvalues2 <- val2col(sst.cca.modes[,MODE], zlim, col=pal(ncol)) #color levels for the polygons
+ 
+#mapproj settings
+project="fisheye"
+orientation=c(mean(lat.lim), mean(lon.lim), 0)
+PAR=1
+ 
+par(omi=c(0.5, 0.5, 0.5, 0.5), ps=12)
+par(mai=c(0.1, 0.1, 0.1, 0.1))
+map("world",project=project, orientation=orientation, par=PAR, ylim=lat.lim, xlim=lon.lim)
+for(i in seq(slp.grd.incl)){
+ polygon(mapproject(x=slp.poly[[slp.grd.incl[i]]][,1], y=slp.poly[[slp.grd.incl[i]]][,2]), col=colorvalues1[i], border=colorvalues1[i], lwd=0.3)
+}
+map("world",project=project, orientation=orientation, par=PAR, fill=FALSE, add=TRUE, col="black")
+map.grid(c(-180, 180, -90, 90), nx=36, ny=18, labels=FALSE, col="grey", lwd=1)
+
+par(mai=c(0.1, 0.1, 0.1, 0.1))
+map("world",project=project, orientation=orientation, par=PAR, ylim=lat.lim, xlim=lon.lim, xaxs="i", yaxs="i")
+for(i in seq(sst.grd.incl)){
+ polygon(mapproject(x=sst.poly[[sst.grd.incl[i]]][,1], y=sst.poly[[sst.grd.incl[i]]][,2]), col=colorvalues2[i], border=colorvalues2[i], lwd=0.3)
+}
+map("world",project=project, orientation=orientation, par=PAR, fill=FALSE, add=TRUE, col="black")
+map.grid(c(-180, 180, -90, 90), nx=36, ny=18, labels=FALSE, col="grey", lwd=1)
+```
+
+<img src="15-cca_files/figure-html/unnamed-chunk-44-1.png" width="70%" style="display: block; margin: auto;" /><img src="15-cca_files/figure-html/unnamed-chunk-44-2.png" width="70%" style="display: block; margin: auto;" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Tarea

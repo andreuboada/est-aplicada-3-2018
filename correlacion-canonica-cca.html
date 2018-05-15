@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-05-10">
+<meta name="date" content="2018-05-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -365,7 +365,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.2.2" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html#ejemplo-simple"><i class="fa fa-check"></i><b>15.2.2</b> Ejemplo simple</a></li>
 </ul></li>
 <li class="chapter" data-level="15.3" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html#ejemplo-test-psicologico"><i class="fa fa-check"></i><b>15.3</b> Ejemplo: test psicológico</a></li>
-<li class="chapter" data-level="15.4" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html#tarea-13"><i class="fa fa-check"></i><b>15.4</b> Tarea</a></li>
+<li class="chapter" data-level="15.4" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html#ejemplo-fenomenos-meteorologicos"><i class="fa fa-check"></i><b>15.4</b> Ejemplo: fenómenos meteorológicos</a></li>
+<li class="chapter" data-level="15.5" data-path="correlacion-canonica-cca.html"><a href="correlacion-canonica-cca.html#tarea-13"><i class="fa fa-check"></i><b>15.5</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html"><i class="fa fa-check"></i><b>16</b> Conglomerados (clustering) 1</a><ul>
 <li class="chapter" data-level="16.1" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#introduccion"><i class="fa fa-check"></i><b>16.1</b> Introducción</a><ul>
@@ -931,8 +932,328 @@ s2 <span class="op">%*%</span><span class="st"> </span>cc1<span class="op">$</sp
 <span class="co">#&gt; [5,] -0.3150  0.5428 -0.8933</span></code></pre></div>
 <p>Los coeficientes canónicos estandarizados se interpretan de manera análoga a la interpretación de los coeficientes de regresión estandarizados. Por ejemplo, para la variable de lectura, un aumento de la desviación estándar en lectura se refleja en una disminución de 0.45 desviaciones estándar de en la primera variable canónica del conjunto 2 cuando las otras variables en el modelo se mantienen constantes.</p>
 </div>
+<div id="ejemplo-fenomenos-meteorologicos" class="section level2">
+<h2><span class="header-section-number">15.4</span> Ejemplo: fenómenos meteorológicos</h2>
+<p>Ejemplo de (Marc MeNugget)[<a href="https://menugget.blogspot.mx/2012/03/canonical-correlation-analysis-for.html" class="uri">https://menugget.blogspot.mx/2012/03/canonical-correlation-analysis-for.html</a>].</p>
+<p>Veamos ahora el uso del Análisis de Correlación Canónica (CCA) para encontrar patrones entre pares de observaciones en campos climáticos. El método produce resultados similares a los de componentes principales, pero los patrones reflejan la <em>correlación</em> máxima en vez de la <em>covarianza</em> máxima. Además, el resultado del modelo es una combinación de modelos lineales que se pueden usar para un modelo de predicción de un campo climático.</p>
+<p>Descargamos los campos de anomalías mensuales de presión superficial del mar (SLP) y temperatura de la superficie del mar (TSM) para la región del Pacífico ecuatorial de la <a href="https://www.esrl.noaa.gov/">NOAA</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(curl)
+
+url_pres &lt;-<span class="st"> &quot;ftp://ftp.cdc.noaa.gov/Datasets.other/hadslp/slp.mnmean.nc&quot;</span>
+<span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&quot;datos/slp.mnmean.nc&quot;</span>)){
+  <span class="kw">curl_fetch_disk</span>(url_pres, <span class="dt">path =</span> <span class="st">&quot;datos/slp.mnmean.nc&quot;</span>, <span class="dt">handle =</span> <span class="kw">new_handle</span>(<span class="dt">CONNECTTIMEOUT =</span> <span class="dv">60</span>))
+}
+
+url_temp &lt;-<span class="st"> &quot;http://www.esrl.noaa.gov/psd/thredds/fileServer/Datasets/kaplan_sst/sst.mon.anom.nc&quot;</span>
+<span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&quot;datos/sst.mon.anom.nc&quot;</span>)){
+  <span class="kw">curl_fetch_disk</span>(<span class="dt">url =</span> url_temp, <span class="dt">path =</span> <span class="st">&quot;datos/sst.mon.anom.nc&quot;</span>, <span class="dt">handle =</span> <span class="kw">new_handle</span>(<span class="dt">CONNECTTIMEOUT =</span> <span class="dv">60</span>))
+}</code></pre></div>
+<p>Leemos los datos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(maps)
+<span class="kw">library</span>(mapproj)
+<span class="kw">library</span>(ncdf4)
+<span class="kw">library</span>(CCP)
+<span class="kw">library</span>(irlba)
+nc &lt;-<span class="st"> </span><span class="kw">nc_open</span>(<span class="dt">filename =</span> <span class="st">&quot;datos/slp.mnmean.nc&quot;</span>)
+slp.lon &lt;-<span class="st"> </span><span class="kw">ncvar_get</span>(nc, <span class="st">&quot;lon&quot;</span>)
+slp.lat &lt;-<span class="st"> </span><span class="kw">ncvar_get</span>(nc, <span class="st">&quot;lat&quot;</span>)
+slp.t &lt;-<span class="st"> </span><span class="kw">ncvar_get</span>(nc, <span class="st">&quot;time&quot;</span>)
+slp.raw &lt;-<span class="st"> </span><span class="kw">ncvar_get</span>(nc, <span class="st">&quot;slp&quot;</span>)
+<span class="kw">nc_close</span>(nc)
+slp.t &lt;-<span class="st"> </span><span class="kw">as.Date</span>(slp.t, <span class="dt">origin=</span><span class="st">&quot;1800-01-01&quot;</span>)
+temp &lt;-<span class="st"> </span><span class="kw">which</span>(slp.lon <span class="op">&gt;</span><span class="st"> </span><span class="dv">180</span>)
+slp.lon[temp] &lt;-<span class="st"> </span>slp.lon[temp] <span class="op">-</span><span class="st"> </span><span class="dv">360</span>
+slp.grd &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(slp.lon, slp.lat)
+<span class="kw">colnames</span>(slp.grd) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;lon&quot;</span>, <span class="st">&quot;lat&quot;</span>)
+slp &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(slp.raw), <span class="dt">nrow=</span><span class="kw">length</span>(slp.t), ncol&lt;-<span class="kw">length</span>(slp.lon)<span class="op">*</span><span class="kw">length</span>(slp.lat), <span class="dt">byrow=</span><span class="ot">TRUE</span>)
+<span class="kw">row.names</span>(slp) &lt;-<span class="st"> </span><span class="kw">as.character</span>(slp.t)</code></pre></div>
+<p>Calculamos anomalías en la presión superficial del mar:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">anomaly &lt;-<span class="st"> </span><span class="cf">function</span>(y, x, <span class="dt">level=</span><span class="st">&quot;daily&quot;</span>){ 
+ y &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(y)
+ 
+ <span class="cf">if</span>(level<span class="op">==</span><span class="st">&quot;monthly&quot;</span>){levs=<span class="kw">unique</span>(x<span class="op">$</span>mon)}
+ <span class="cf">if</span>(level<span class="op">==</span><span class="st">&quot;daily&quot;</span>){levs=<span class="kw">unique</span>(x<span class="op">$</span>yday)}
+ 
+ levs_lookup=<span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="kw">length</span>(levs))
+ <span class="kw">names</span>(levs_lookup)&lt;-levs
+ <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(levs)){
+  <span class="cf">if</span>(level<span class="op">==</span><span class="st">&quot;monthly&quot;</span>){levs_lookup[[i]]&lt;-<span class="kw">which</span>(x<span class="op">$</span>mon <span class="op">==</span><span class="st"> </span><span class="kw">names</span>(levs_lookup[i]))}
+  <span class="cf">if</span>(level<span class="op">==</span><span class="st">&quot;daily&quot;</span>){levs_lookup[[i]]&lt;-<span class="kw">which</span>(x<span class="op">$</span>yday <span class="op">==</span><span class="st"> </span><span class="kw">names</span>(levs_lookup[i]))}
+ }
+ 
+ <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(levs)){
+  y[levs_lookup[[j]],] &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">t</span>(<span class="kw">as.matrix</span>(y[levs_lookup[[j]],])) <span class="op">-</span><span class="st"> </span><span class="kw">apply</span>(<span class="kw">as.matrix</span>(y[levs_lookup[[j]],]), <span class="dv">2</span>, mean, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))
+ }
+ 
+ y
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">slp &lt;-<span class="st"> </span><span class="kw">anomaly</span>(slp, <span class="kw">as.POSIXlt</span>(slp.t), <span class="dt">level=</span><span class="st">&quot;monthly&quot;</span>)</code></pre></div>
+<p>Leemos los datos de temperaturas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nc &lt;-<span class="st"> </span><span class="kw">nc_open</span>(<span class="dt">filename =</span> <span class="st">&quot;datos/sst.mon.anom.nc&quot;</span>)
+sst.lon &lt;-<span class="st"> </span><span class="kw">ncvar_get</span>(nc, <span class="st">&quot;lon&quot;</span>)
+sst.lat &lt;-<span class="st"> </span><span class="kw">ncvar_get</span>(nc, <span class="st">&quot;lat&quot;</span>)
+sst.t &lt;-<span class="st"> </span><span class="kw">ncvar_get</span>(nc, <span class="st">&quot;time&quot;</span>)
+sst.raw &lt;-<span class="st"> </span><span class="kw">ncvar_get</span>(nc, <span class="st">&quot;sst&quot;</span>)
+<span class="kw">nc_close</span>(nc)
+sst.t &lt;-<span class="st"> </span><span class="kw">as.Date</span>(sst.t, <span class="dt">origin=</span><span class="st">&quot;1800-01-01&quot;</span>)
+temp &lt;-<span class="st"> </span><span class="kw">which</span>(sst.lon <span class="op">&gt;</span><span class="st"> </span><span class="dv">180</span>)
+sst.lon[temp] &lt;-<span class="st"> </span>sst.lon[temp] <span class="op">-</span><span class="st"> </span><span class="dv">360</span>
+sst.grd &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(sst.lon, sst.lat)
+<span class="kw">colnames</span>(sst.grd) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;lon&quot;</span>, <span class="st">&quot;lat&quot;</span>)
+sst &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(sst.raw), <span class="dt">nrow=</span><span class="kw">length</span>(sst.t), ncol&lt;-<span class="kw">length</span>(sst.lon)<span class="op">*</span><span class="kw">length</span>(sst.lat), <span class="dt">byrow=</span><span class="ot">TRUE</span>)
+<span class="kw">row.names</span>(sst) &lt;-<span class="st"> </span><span class="kw">as.character</span>(sst.t)</code></pre></div>
+<p>Tomamos un subconjunto de los datos de acuerdo a fechas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t.min &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;1980-01-01&quot;</span>)
+t.max1 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;1998-12-01&quot;</span>)
+t.max2 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2018-04-01&quot;</span>)
+slp.t.incl &lt;-<span class="st"> </span><span class="kw">which</span>(slp.t <span class="op">&gt;=</span><span class="st"> </span>t.min <span class="op">&amp;</span><span class="st"> </span>slp.t <span class="op">&lt;=</span><span class="st"> </span>t.max2)
+sst.t.incl &lt;-<span class="st"> </span><span class="kw">which</span>(sst.t <span class="op">&gt;=</span><span class="st"> </span>t.min <span class="op">&amp;</span><span class="st"> </span>sst.t <span class="op">&lt;=</span><span class="st"> </span>t.max2)</code></pre></div>
+<p>Nos concentramos primero en la región del pacífico:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lon.lim &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">180</span>, <span class="op">-</span><span class="dv">70</span>)
+lat.lim &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">30</span>, <span class="dv">30</span>)
+
+slp.grd.incl &lt;-<span class="st"> </span><span class="kw">which</span>(slp.grd[,<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span><span class="op">-</span><span class="dv">70</span> <span class="op">&amp;</span><span class="st"> </span>slp.grd[,<span class="dv">1</span>] <span class="op">&gt;</span><span class="st"> </span><span class="op">-</span><span class="dv">180</span> <span class="op">&amp;</span><span class="st"> </span>slp.grd[,<span class="dv">2</span>] <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>slp.grd[,<span class="dv">2</span>] <span class="op">&gt;</span><span class="st"> </span><span class="op">-</span><span class="dv">30</span>)
+sst.grd.incl &lt;-<span class="st"> </span><span class="kw">which</span>(sst.grd[,<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span><span class="op">-</span><span class="dv">70</span> <span class="op">&amp;</span><span class="st"> </span>sst.grd[,<span class="dv">1</span>] <span class="op">&gt;</span><span class="st"> </span><span class="op">-</span><span class="dv">180</span> <span class="op">&amp;</span><span class="st"> </span>sst.grd[,<span class="dv">2</span>] <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>sst.grd[,<span class="dv">2</span>] <span class="op">&gt;</span><span class="st"> </span><span class="op">-</span><span class="dv">30</span>)</code></pre></div>
+<p>Centramos cada una de las matrices:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X &lt;-<span class="st"> </span>slp[slp.t.incl, slp.grd.incl]
+Y &lt;-<span class="st"> </span>sst[sst.t.incl, sst.grd.incl]
+Y[<span class="kw">is.na</span>(Y)] &lt;-<span class="st"> </span><span class="dv">0</span>
+X_c &lt;-<span class="st"> </span><span class="kw">scale</span>(X, <span class="dt">center=</span><span class="ot">TRUE</span>, <span class="dt">scale=</span><span class="ot">FALSE</span>)
+Y_c &lt;-<span class="st"> </span><span class="kw">scale</span>(Y, <span class="dt">center=</span><span class="ot">TRUE</span>, <span class="dt">scale=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p>Analicemos en las medias de ambas variables a través del tiempo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X_m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">apply</span>(X,<span class="dv">1</span>,mean),<span class="dt">nrow=</span><span class="kw">nrow</span>(X_c), <span class="dt">ncol=</span><span class="dv">1</span>)
+<span class="kw">rownames</span>(X_m) &lt;-<span class="st"> </span><span class="kw">rownames</span>(X)
+Y_m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">apply</span>(Y,<span class="dv">1</span>,mean),<span class="dt">nrow=</span><span class="kw">nrow</span>(Y_c), <span class="dt">ncol=</span><span class="dv">1</span>)
+<span class="kw">rownames</span>(Y_m) &lt;-<span class="st"> </span><span class="kw">rownames</span>(Y)
+zran &lt;-<span class="st"> </span><span class="kw">range</span>(X_m, Y_m)
+zlim &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="kw">max</span>(<span class="kw">abs</span>(zran)), <span class="kw">max</span>(<span class="kw">abs</span>(zran)))
+pal &lt;-<span class="st"> </span><span class="kw">color.palette</span>(<span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;cyan&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">10</span>))
+colorvalues1 &lt;-<span class="st"> </span><span class="kw">val2col</span>(X_m, zlim, <span class="dt">col=</span><span class="kw">pal</span>(ncol))
+colorvalues2 &lt;-<span class="st"> </span><span class="kw">val2col</span>(Y_m, zlim, <span class="dt">col=</span><span class="kw">pal</span>(ncol))</code></pre></div>
+<p>Creamos polígonos para graficar:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#slp</span>
+spacing &lt;-<span class="st"> </span><span class="dv">5</span>
+slp.poly &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&quot;list&quot;</span>, <span class="kw">dim</span>(slp.grd)[<span class="dv">1</span>])
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq</span>(slp.poly)){
+ x=<span class="kw">c</span>(slp.grd[i,<span class="dv">1</span>]<span class="op">-</span>spacing<span class="op">/</span><span class="dv">2</span>, slp.grd[i,<span class="dv">1</span>]<span class="op">+</span>spacing<span class="op">/</span><span class="dv">2</span>, slp.grd[i,<span class="dv">1</span>]<span class="op">+</span>spacing<span class="op">/</span><span class="dv">2</span>, slp.grd[i,<span class="dv">1</span>]<span class="op">-</span>spacing<span class="op">/</span><span class="dv">2</span>)
+ y=<span class="kw">c</span>(slp.grd[i,<span class="dv">2</span>]<span class="op">-</span>spacing<span class="op">/</span><span class="dv">2</span>, slp.grd[i,<span class="dv">2</span>]<span class="op">-</span>spacing<span class="op">/</span><span class="dv">2</span>, slp.grd[i,<span class="dv">2</span>]<span class="op">+</span>spacing<span class="op">/</span><span class="dv">2</span>, slp.grd[i,<span class="dv">2</span>]<span class="op">+</span>spacing<span class="op">/</span><span class="dv">2</span>)
+ slp.poly[[i]] &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y)
+}
+ 
+<span class="co">#sst</span>
+spacing &lt;-<span class="st"> </span><span class="dv">5</span>
+sst.poly &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&quot;list&quot;</span>, <span class="kw">dim</span>(sst.grd)[<span class="dv">1</span>])
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq</span>(sst.poly)){
+ x=<span class="kw">c</span>(sst.grd[i,<span class="dv">1</span>]<span class="op">-</span>spacing<span class="op">/</span><span class="dv">2</span>, sst.grd[i,<span class="dv">1</span>]<span class="op">+</span>spacing<span class="op">/</span><span class="dv">2</span>, sst.grd[i,<span class="dv">1</span>]<span class="op">+</span>spacing<span class="op">/</span><span class="dv">2</span>, sst.grd[i,<span class="dv">1</span>]<span class="op">-</span>spacing<span class="op">/</span><span class="dv">2</span>)
+ y=<span class="kw">c</span>(sst.grd[i,<span class="dv">2</span>]<span class="op">-</span>spacing<span class="op">/</span><span class="dv">2</span>, sst.grd[i,<span class="dv">2</span>]<span class="op">-</span>spacing<span class="op">/</span><span class="dv">2</span>, sst.grd[i,<span class="dv">2</span>]<span class="op">+</span>spacing<span class="op">/</span><span class="dv">2</span>, sst.grd[i,<span class="dv">2</span>]<span class="op">+</span>spacing<span class="op">/</span><span class="dv">2</span>)
+ sst.poly[[i]] &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y)
+}</code></pre></div>
+<p>Gráfica de anomalías de presión a nivel del mar:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#mapproj settings</span>
+project=<span class="st">&quot;fisheye&quot;</span>
+orientation=<span class="kw">c</span>(<span class="kw">mean</span>(lat.lim), <span class="kw">mean</span>(lon.lim), <span class="dv">0</span>)
+PAR=<span class="dv">1</span>
+<span class="kw">par</span>(<span class="dt">mai=</span><span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))
+<span class="kw">map</span>(<span class="st">&quot;world&quot;</span>,<span class="dt">project=</span>project, <span class="dt">orientation=</span>orientation, <span class="dt">par=</span>PAR, <span class="dt">ylim=</span>lat.lim, <span class="dt">xlim=</span>lon.lim)
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq</span>(slp.grd.incl)){
+  <span class="kw">polygon</span>(<span class="kw">mapproject</span>(<span class="dt">x=</span>slp.poly[[slp.grd.incl[i]]][,<span class="dv">1</span>], <span class="dt">y=</span>slp.poly[[slp.grd.incl[i]]][,<span class="dv">2</span>]), <span class="dt">col=</span>colorvalues1[i], <span class="dt">border=</span>colorvalues1[i], <span class="dt">lwd=</span><span class="fl">0.3</span>)
+}
+<span class="kw">map</span>(<span class="st">&quot;world&quot;</span>,<span class="dt">project=</span>project, <span class="dt">orientation=</span>orientation, <span class="dt">par=</span>PAR, <span class="dt">fill=</span><span class="ot">FALSE</span>, <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>)
+<span class="kw">map.grid</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">180</span>, <span class="dv">180</span>, <span class="op">-</span><span class="dv">90</span>, <span class="dv">90</span>), <span class="dt">nx=</span><span class="dv">36</span>, <span class="dt">ny=</span><span class="dv">18</span>, <span class="dt">labels=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;grey&quot;</span>, <span class="dt">lwd=</span><span class="dv">1</span>)
+<span class="kw">box</span>()</code></pre></div>
+<p><img src="15-cca_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Mapa de anomalías</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mai=</span><span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))
+<span class="kw">map</span>(<span class="st">&quot;world&quot;</span>,<span class="dt">project=</span>project, <span class="dt">orientation=</span>orientation, <span class="dt">par=</span>PAR, <span class="dt">ylim=</span>lat.lim, <span class="dt">xlim=</span>lon.lim, <span class="dt">xaxs=</span><span class="st">&quot;i&quot;</span>, <span class="dt">yaxs=</span><span class="st">&quot;i&quot;</span>)
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq</span>(sst.grd.incl)){
+  <span class="kw">polygon</span>(<span class="kw">mapproject</span>(<span class="dt">x=</span>sst.poly[[sst.grd.incl[i]]][,<span class="dv">1</span>], <span class="dt">y=</span>sst.poly[[sst.grd.incl[i]]][,<span class="dv">2</span>]), <span class="dt">col=</span>colorvalues2[i], <span class="dt">border=</span>colorvalues2[i], <span class="dt">lwd=</span><span class="fl">0.3</span>)
+}
+<span class="kw">map</span>(<span class="st">&quot;world&quot;</span>,<span class="dt">project=</span>project, <span class="dt">orientation=</span>orientation, <span class="dt">par=</span>PAR, <span class="dt">fill=</span><span class="ot">FALSE</span>, <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>)
+<span class="kw">map.grid</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">180</span>, <span class="dv">180</span>, <span class="op">-</span><span class="dv">90</span>, <span class="dv">90</span>), <span class="dt">nx=</span><span class="dv">36</span>, <span class="dt">ny=</span><span class="dv">18</span>, <span class="dt">labels=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;grey&quot;</span>, <span class="dt">lwd=</span><span class="dv">1</span>)
+<span class="kw">box</span>()</code></pre></div>
+<p><img src="15-cca_files/figure-html/unnamed-chunk-38-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Ahora hacemos el análisis de correlación canónica. Primero calculamos la covarianza entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cov4gappy &lt;-<span class="st"> </span><span class="cf">function</span>(F1, <span class="dt">F2=</span><span class="ot">NULL</span>){
+    <span class="cf">if</span>(<span class="kw">is.null</span>(F2)){
+        F1 &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(F1)
+        F1_val&lt;-<span class="kw">replace</span>(F1, <span class="kw">which</span>(<span class="op">!</span><span class="kw">is.na</span>(F1)), <span class="dv">1</span>)
+        F1_val&lt;-<span class="kw">replace</span>(F1_val, <span class="kw">which</span>(<span class="kw">is.na</span>(F1_val)), <span class="dv">0</span>) 
+        n_pairs=(<span class="kw">t</span>(F1_val)<span class="op">%*%</span>F1_val)
+ 
+        F1&lt;-<span class="kw">replace</span>(F1, <span class="kw">which</span>(<span class="kw">is.na</span>(F1)), <span class="dv">0</span>)
+        cov_mat &lt;-<span class="st"> </span>(<span class="kw">t</span>(F1)<span class="op">%*%</span>F1)<span class="op">/</span>n_pairs
+        cov_mat &lt;-<span class="st"> </span><span class="kw">replace</span>(cov_mat, <span class="kw">which</span>(<span class="kw">is.na</span>(cov_mat)), <span class="dv">0</span>)
+    }
+ 
+    <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.null</span>(F2)){
+        <span class="cf">if</span>(<span class="kw">dim</span>(F1)[<span class="dv">1</span>] <span class="op">==</span><span class="st"> </span><span class="kw">dim</span>(F2)[<span class="dv">1</span>]){
+            F1 &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(F1)
+            F2 &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(F2)
+ 
+            F1_val&lt;-<span class="kw">replace</span>(F1, <span class="kw">which</span>(<span class="op">!</span><span class="kw">is.na</span>(F1)), <span class="dv">1</span>)
+            F1_val&lt;-<span class="kw">replace</span>(F1_val, <span class="kw">which</span>(<span class="kw">is.na</span>(F1_val)), <span class="dv">0</span>) 
+            F2_val&lt;-<span class="kw">replace</span>(F2, <span class="kw">which</span>(<span class="op">!</span><span class="kw">is.na</span>(F2)), <span class="dv">1</span>)
+            F2_val&lt;-<span class="kw">replace</span>(F2_val, <span class="kw">which</span>(<span class="kw">is.na</span>(F2_val)), <span class="dv">0</span>) 
+            n_pairs=(<span class="kw">t</span>(F1_val)<span class="op">%*%</span>F2_val)
+ 
+            F1&lt;-<span class="kw">replace</span>(F1, <span class="kw">which</span>(<span class="kw">is.na</span>(F1)), <span class="dv">0</span>)
+            F2&lt;-<span class="kw">replace</span>(F2, <span class="kw">which</span>(<span class="kw">is.na</span>(F2)), <span class="dv">0</span>)
+            cov_mat &lt;-<span class="st"> </span>(<span class="kw">t</span>(F1)<span class="op">%*%</span>F2)<span class="op">/</span>n_pairs
+            cov_mat &lt;-<span class="st"> </span><span class="kw">replace</span>(cov_mat, <span class="kw">which</span>(<span class="kw">is.na</span>(cov_mat)), <span class="dv">0</span>)
+ 
+        } <span class="cf">else</span> {
+            <span class="kw">print</span>(<span class="st">&quot;ERROR; matrices columns not of the same lengths&quot;</span>)
+        }
+    }
+ 
+    cov_mat
+}
+
+exp.mat&lt;-<span class="cf">function</span>(MAT, EXP, <span class="dt">tol=</span><span class="ot">NULL</span>){
+ MAT &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(MAT)
+ matdim &lt;-<span class="st"> </span><span class="kw">dim</span>(MAT)
+ <span class="cf">if</span>(<span class="kw">is.null</span>(tol)){
+  tol=<span class="kw">min</span>(<span class="fl">1e-7</span>, .Machine<span class="op">$</span>double.eps<span class="op">*</span><span class="kw">max</span>(matdim)<span class="op">*</span><span class="kw">max</span>(MAT))
+ }
+ <span class="cf">if</span>(matdim[<span class="dv">1</span>]<span class="op">&gt;=</span>matdim[<span class="dv">2</span>]){ 
+  svd1 &lt;-<span class="st"> </span><span class="kw">svd</span>(MAT)
+  keep &lt;-<span class="st"> </span><span class="kw">which</span>(svd1<span class="op">$</span>d <span class="op">&gt;</span><span class="st"> </span>tol)
+  res &lt;-<span class="st"> </span><span class="kw">t</span>(svd1<span class="op">$</span>u[,keep]<span class="op">%*%</span><span class="kw">diag</span>(svd1<span class="op">$</span>d[keep]<span class="op">^</span>EXP, <span class="dt">nrow=</span><span class="kw">length</span>(keep))<span class="op">%*%</span><span class="kw">t</span>(svd1<span class="op">$</span>v[,keep]))
+ }
+ <span class="cf">if</span>(matdim[<span class="dv">1</span>]<span class="op">&lt;</span>matdim[<span class="dv">2</span>]){ 
+  svd1 &lt;-<span class="st"> </span><span class="kw">svd</span>(<span class="kw">t</span>(MAT))
+  keep &lt;-<span class="st"> </span><span class="kw">which</span>(svd1<span class="op">$</span>d <span class="op">&gt;</span><span class="st"> </span>tol)
+  res &lt;-<span class="st"> </span>svd1<span class="op">$</span>u[,keep]<span class="op">%*%</span><span class="kw">diag</span>(svd1<span class="op">$</span>d[keep]<span class="op">^</span>EXP, <span class="dt">nrow=</span><span class="kw">length</span>(keep))<span class="op">%*%</span><span class="kw">t</span>(svd1<span class="op">$</span>v[,keep])
+ }
+ <span class="kw">return</span>(res)
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">F1 &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(X_c)
+F2 &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(Y_c)
+
+F1 &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(F1)
+F1_val&lt;-<span class="kw">replace</span>(F1, <span class="kw">which</span>(<span class="op">!</span><span class="kw">is.na</span>(F1)), <span class="dv">1</span>)
+F1_val&lt;-<span class="kw">replace</span>(F1_val, <span class="kw">which</span>(<span class="kw">is.na</span>(F1_val)), <span class="dv">0</span>) 
+n_pairs=(<span class="kw">t</span>(F1_val)<span class="op">%*%</span>F1_val)
+ 
+F1&lt;-<span class="kw">replace</span>(F1, <span class="kw">which</span>(<span class="kw">is.na</span>(F1)), <span class="dv">0</span>)
+cov_mat1 &lt;-<span class="st"> </span>(<span class="kw">t</span>(F1)<span class="op">%*%</span>F1)<span class="op">/</span>n_pairs
+cov_mat1 &lt;-<span class="st"> </span><span class="kw">replace</span>(cov_mat1, <span class="kw">which</span>(<span class="kw">is.na</span>(cov_mat1)), <span class="dv">0</span>)
+
+F2 &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(F2)
+F2_val&lt;-<span class="kw">replace</span>(F2, <span class="kw">which</span>(<span class="op">!</span><span class="kw">is.na</span>(F2)), <span class="dv">1</span>)
+F2_val&lt;-<span class="kw">replace</span>(F2_val, <span class="kw">which</span>(<span class="kw">is.na</span>(F2_val)), <span class="dv">0</span>) 
+n_pairs=(<span class="kw">t</span>(F2_val)<span class="op">%*%</span>F2_val)
+ 
+F2&lt;-<span class="kw">replace</span>(F2, <span class="kw">which</span>(<span class="kw">is.na</span>(F2)), <span class="dv">0</span>)
+cov_mat2 &lt;-<span class="st"> </span>(<span class="kw">t</span>(F2)<span class="op">%*%</span>F2)<span class="op">/</span>n_pairs
+cov_mat2 &lt;-<span class="st"> </span><span class="kw">replace</span>(cov_mat2, <span class="kw">which</span>(<span class="kw">is.na</span>(cov_mat2)), <span class="dv">0</span>)
+
+L1 &lt;-<span class="st"> </span><span class="kw">irlba</span>(cov_mat1, <span class="dt">nu=</span><span class="dv">5</span>, <span class="dt">nv=</span><span class="dv">5</span>)
+L2 &lt;-<span class="st"> </span><span class="kw">irlba</span>(cov_mat2, <span class="dt">nu=</span><span class="dv">5</span>, <span class="dt">nv=</span><span class="dv">5</span>)
+
+A1_coeff &lt;-<span class="st"> </span><span class="kw">replace</span>(F1, <span class="kw">which</span>(<span class="kw">is.na</span>(F1)), <span class="dv">0</span>)<span class="op">%*%</span>L1<span class="op">$</span>u[,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]
+A1_norm &lt;-<span class="st"> </span>F1_val<span class="op">%*%</span>(L1<span class="op">$</span>u[,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]<span class="op">^</span><span class="dv">2</span>)
+A1=A1_coeff<span class="op">/</span>A1_norm
+
+A2_coeff &lt;-<span class="st"> </span><span class="kw">replace</span>(F2, <span class="kw">which</span>(<span class="kw">is.na</span>(F2)), <span class="dv">0</span>)<span class="op">%*%</span>L2<span class="op">$</span>u[,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]
+A2_norm &lt;-<span class="st"> </span>F2_val<span class="op">%*%</span>(L2<span class="op">$</span>u[,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]<span class="op">^</span><span class="dv">2</span>)
+A2=A2_coeff<span class="op">/</span>A2_norm
+
+x &lt;-<span class="st"> </span>A1[,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] <span class="op">%*%</span><span class="st"> </span><span class="kw">exp.mat</span>(<span class="kw">diag</span>(L1<span class="op">$</span>d[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]), <span class="op">-</span><span class="fl">0.5</span>)
+y &lt;-<span class="st"> </span>A2[,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] <span class="op">%*%</span><span class="st"> </span><span class="kw">exp.mat</span>(<span class="kw">diag</span>(L2<span class="op">$</span>d[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]), <span class="op">-</span><span class="fl">0.5</span>)</code></pre></div>
+<p>Hacemos descomposición en valores singulares:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+xdim &lt;-<span class="st"> </span><span class="kw">dim</span>(<span class="kw">t</span>(x))
+ydim &lt;-<span class="st"> </span><span class="kw">dim</span>(<span class="kw">t</span>(y))
+ 
+mindim=<span class="kw">min</span>(xdim[<span class="dv">2</span>], ydim[<span class="dv">2</span>])
+xcols &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span>xdim[<span class="dv">2</span>]
+ycols &lt;-<span class="st"> </span>(xdim[<span class="dv">2</span>]<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>(xdim[<span class="dv">2</span>]<span class="op">+</span>ydim[<span class="dv">2</span>])
+ 
+Sxx &lt;-<span class="st"> </span><span class="kw">cov4gappy</span>(<span class="kw">t</span>(x))
+Sxy &lt;-<span class="st"> </span><span class="kw">cov4gappy</span>(<span class="kw">t</span>(x),<span class="kw">t</span>(y))
+Syy &lt;-<span class="st"> </span><span class="kw">cov4gappy</span>(<span class="kw">t</span>(y))
+
+svd1 &lt;-<span class="st"> </span><span class="kw">svd</span>(<span class="kw">exp.mat</span>(Syy, <span class="op">-</span><span class="fl">0.5</span>) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(Sxy) <span class="op">%*%</span><span class="st"> </span><span class="kw">exp.mat</span>(Sxx, <span class="op">-</span><span class="fl">0.5</span>))
+A &lt;-<span class="st"> </span><span class="kw">exp.mat</span>(Sxx, <span class="op">-</span><span class="fl">0.5</span>) <span class="op">%*%</span><span class="st"> </span>svd1<span class="op">$</span>v
+B &lt;-<span class="st"> </span><span class="kw">exp.mat</span>(Syy, <span class="op">-</span><span class="fl">0.5</span>) <span class="op">%*%</span><span class="st"> </span>svd1<span class="op">$</span>u</code></pre></div>
+<p>Veamos las variables canónicas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">V &lt;-<span class="st"> </span><span class="kw">t</span>(x) <span class="op">%*%</span><span class="st"> </span>A
+W &lt;-<span class="st"> </span><span class="kw">t</span>(y) <span class="op">%*%</span><span class="st"> </span>B
+
+rho=<span class="ot">NA</span><span class="op">*</span><span class="dv">1</span><span class="op">:</span>mindim
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>mindim){
+  rho[i] &lt;-<span class="st"> </span><span class="kw">cor</span>(<span class="kw">as.vector</span>(W[,i]), <span class="kw">as.vector</span>(V[,i]), <span class="dt">use=</span><span class="st">&quot;pairwise&quot;</span>)
+}
+ 
+<span class="co"># A test of CCA significance</span>
+<span class="co"># cca.sig  &lt;- p.asym(rho, xdim[1], xdim[2], ydim[2], tstat = &quot;Pillai&quot;)</span></code></pre></div>
+<p>Repetimos los mapas de las variables canónicas (primer par):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eof.slp &lt;-<span class="st"> </span><span class="kw">eof.mca</span>(slp[slp.t.incl, slp.grd.incl], <span class="dt">centered=</span><span class="ot">TRUE</span>, <span class="dt">nu=</span><span class="dv">20</span>)
+eof.sst &lt;-<span class="st"> </span><span class="kw">eof.mca</span>(sst[sst.t.incl, sst.grd.incl], <span class="dt">centered=</span><span class="ot">TRUE</span>, <span class="dt">nu=</span><span class="dv">20</span>)
+<span class="kw">dim</span>(eof.slp<span class="op">$</span>A)
+<span class="co">#&gt; [1] 228  20</span>
+<span class="kw">dim</span>(eof.sst<span class="op">$</span>A)
+<span class="co">#&gt; [1] 460  20</span>
+
+<span class="co">#CCA model will be built on a smaller time subset of the PCs (eof$A)</span>
+eof.slp.match &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">as.Date</span>(<span class="kw">rownames</span>(eof.slp<span class="op">$</span>A)) <span class="op">&gt;=</span><span class="st"> </span>t.min <span class="op">&amp;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">rownames</span>(eof.slp<span class="op">$</span>A)) <span class="op">&lt;=</span><span class="st"> </span>t.max1)
+eof.sst.match &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">as.Date</span>(<span class="kw">rownames</span>(eof.sst<span class="op">$</span>A)) <span class="op">&gt;=</span><span class="st"> </span>t.min <span class="op">&amp;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">rownames</span>(eof.sst<span class="op">$</span>A)) <span class="op">&lt;=</span><span class="st"> </span>t.max1)
+ 
+<span class="co">#The BPCCA model based on SLP and SST EOFS</span>
+bpcca &lt;-<span class="st"> </span><span class="kw">bp.cca</span>(eof.slp, eof.sst,
+<span class="dt">n_pcx_incl=</span>eof.slp<span class="op">$</span>n_sig, <span class="dt">n_pcy_incl=</span>eof.sst<span class="op">$</span>n_sig, 
+<span class="dt">rowx_incl=</span>eof.slp.match, <span class="dt">rowy_incl=</span>eof.sst.match)
+<span class="co">#&gt;  Pillai-Bartlett Trace, using F-approximation:</span>
+<span class="co">#&gt;             stat approx df1  df2  p.value</span>
+<span class="co">#&gt; 1 to 5:  1.08708  12.34  25 1110 0.00e+00</span>
+<span class="co">#&gt; 2 to 5:  0.44913   6.91  16 1120 2.44e-15</span>
+<span class="co">#&gt; 3 to 5:  0.16898   4.39   9 1130 1.17e-05</span>
+<span class="co">#&gt; 4 to 5:  0.03486   2.00   4 1140 9.22e-02</span>
+<span class="co">#&gt; 5 to 5:  0.00922   2.12   1 1150 1.45e-01</span>
+ 
+ 
+###Map of CCA
+slp.cca.modes &lt;-<span class="st"> </span>eof.slp<span class="op">$</span>u[,<span class="dv">1</span><span class="op">:</span>bpcca<span class="op">$</span>n_pcx_incl] <span class="op">%*%</span><span class="st"> </span>bpcca<span class="op">$</span>A
+sst.cca.modes &lt;-<span class="st"> </span>eof.sst<span class="op">$</span>u[,<span class="dv">1</span><span class="op">:</span>bpcca<span class="op">$</span>n_pcy_incl] <span class="op">%*%</span><span class="st"> </span>bpcca<span class="op">$</span>B
+
+MODE=<span class="dv">1</span>
+zran &lt;-<span class="st"> </span><span class="kw">range</span>(slp.cca.modes[,MODE], sst.cca.modes[,MODE])
+zlim &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="kw">max</span>(<span class="kw">abs</span>(zran)), <span class="kw">max</span>(<span class="kw">abs</span>(zran)))
+ 
+heights=<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)
+widths=<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="fl">0.5</span>)
+pal=<span class="kw">color.palette</span>(<span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;cyan&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">10</span>))
+ncol=<span class="dv">100</span>
+res=<span class="dv">200</span>
+colorvalues1 &lt;-<span class="st"> </span><span class="kw">val2col</span>(slp.cca.modes[,MODE], zlim, <span class="dt">col=</span><span class="kw">pal</span>(ncol)) <span class="co">#color levels for the polygons</span>
+colorvalues2 &lt;-<span class="st"> </span><span class="kw">val2col</span>(sst.cca.modes[,MODE], zlim, <span class="dt">col=</span><span class="kw">pal</span>(ncol)) <span class="co">#color levels for the polygons</span>
+ 
+<span class="co">#mapproj settings</span>
+project=<span class="st">&quot;fisheye&quot;</span>
+orientation=<span class="kw">c</span>(<span class="kw">mean</span>(lat.lim), <span class="kw">mean</span>(lon.lim), <span class="dv">0</span>)
+PAR=<span class="dv">1</span>
+ 
+<span class="kw">par</span>(<span class="dt">omi=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">ps=</span><span class="dv">12</span>)
+<span class="kw">par</span>(<span class="dt">mai=</span><span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))
+<span class="kw">map</span>(<span class="st">&quot;world&quot;</span>,<span class="dt">project=</span>project, <span class="dt">orientation=</span>orientation, <span class="dt">par=</span>PAR, <span class="dt">ylim=</span>lat.lim, <span class="dt">xlim=</span>lon.lim)
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq</span>(slp.grd.incl)){
+ <span class="kw">polygon</span>(<span class="kw">mapproject</span>(<span class="dt">x=</span>slp.poly[[slp.grd.incl[i]]][,<span class="dv">1</span>], <span class="dt">y=</span>slp.poly[[slp.grd.incl[i]]][,<span class="dv">2</span>]), <span class="dt">col=</span>colorvalues1[i], <span class="dt">border=</span>colorvalues1[i], <span class="dt">lwd=</span><span class="fl">0.3</span>)
+}
+<span class="kw">map</span>(<span class="st">&quot;world&quot;</span>,<span class="dt">project=</span>project, <span class="dt">orientation=</span>orientation, <span class="dt">par=</span>PAR, <span class="dt">fill=</span><span class="ot">FALSE</span>, <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>)
+<span class="kw">map.grid</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">180</span>, <span class="dv">180</span>, <span class="op">-</span><span class="dv">90</span>, <span class="dv">90</span>), <span class="dt">nx=</span><span class="dv">36</span>, <span class="dt">ny=</span><span class="dv">18</span>, <span class="dt">labels=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;grey&quot;</span>, <span class="dt">lwd=</span><span class="dv">1</span>)
+
+<span class="kw">par</span>(<span class="dt">mai=</span><span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))
+<span class="kw">map</span>(<span class="st">&quot;world&quot;</span>,<span class="dt">project=</span>project, <span class="dt">orientation=</span>orientation, <span class="dt">par=</span>PAR, <span class="dt">ylim=</span>lat.lim, <span class="dt">xlim=</span>lon.lim, <span class="dt">xaxs=</span><span class="st">&quot;i&quot;</span>, <span class="dt">yaxs=</span><span class="st">&quot;i&quot;</span>)
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq</span>(sst.grd.incl)){
+ <span class="kw">polygon</span>(<span class="kw">mapproject</span>(<span class="dt">x=</span>sst.poly[[sst.grd.incl[i]]][,<span class="dv">1</span>], <span class="dt">y=</span>sst.poly[[sst.grd.incl[i]]][,<span class="dv">2</span>]), <span class="dt">col=</span>colorvalues2[i], <span class="dt">border=</span>colorvalues2[i], <span class="dt">lwd=</span><span class="fl">0.3</span>)
+}
+<span class="kw">map</span>(<span class="st">&quot;world&quot;</span>,<span class="dt">project=</span>project, <span class="dt">orientation=</span>orientation, <span class="dt">par=</span>PAR, <span class="dt">fill=</span><span class="ot">FALSE</span>, <span class="dt">add=</span><span class="ot">TRUE</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>)
+<span class="kw">map.grid</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">180</span>, <span class="dv">180</span>, <span class="op">-</span><span class="dv">90</span>, <span class="dv">90</span>), <span class="dt">nx=</span><span class="dv">36</span>, <span class="dt">ny=</span><span class="dv">18</span>, <span class="dt">labels=</span><span class="ot">FALSE</span>, <span class="dt">col=</span><span class="st">&quot;grey&quot;</span>, <span class="dt">lwd=</span><span class="dv">1</span>)</code></pre></div>
+<p><img src="15-cca_files/figure-html/unnamed-chunk-44-1.png" width="70%" style="display: block; margin: auto;" /><img src="15-cca_files/figure-html/unnamed-chunk-44-2.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
 <div id="tarea-13" class="section level2">
-<h2><span class="header-section-number">15.4</span> Tarea</h2>
+<h2><span class="header-section-number">15.5</span> Tarea</h2>
 <p>Como parte de un estudio más amplio de los efectos de la estructura organizacional en la “satisfacción laboral”, Dunham investigó en qué medida las medidas de satisfacción laboral están relacionadas con las características del trabajo. Utilizando un instrumento de encuesta, Dunham obtuvo medidas de <span class="math inline">\(p = 5\)</span> características del trabajo y <span class="math inline">\(q = 7\)</span> variables de satisfacción laboral para <span class="math inline">\(n = 784\)</span> ejecutivos de la rama corporativa de una gran corporación comercial minorista. ¿Las medidas de satisfacción laboral están asociadas con las características del trabajo? La respuesta puede tener implicaciones para el diseño del trabajo.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 worksat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/worksat.csv&quot;</span>)
@@ -990,7 +1311,7 @@ worksat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <li><p>Sean <span class="math inline">\(Z^{(l)}\)</span> y <span class="math inline">\(Z^{(2)}\)</span> las variables estandarizadas correspondientes a <span class="math inline">\(X^{(1)}\)</span> y <span class="math inline">\(X^{(2)}\)</span>, respectivamente. ¿Qué proporción de la varianza muestral total de <span class="math inline">\(Z^{(1)}\)</span> se explica por la variable canónica <span class="math inline">\(U_1\)</span>? ¿Qué proporción de la varianza muestral total de <span class="math inline">\(Z^{(2)}\)</span> se explica por la variable canónica <span class="math inline">\(V_1\)</span>? Discute tus respuestas.</p></li>
 </ol>
 <div id="referencias--" class="section level4">
-<h4><span class="header-section-number">15.4.0.1</span> Referencias {-}+</h4>
+<h4><span class="header-section-number">15.5.0.1</span> Referencias {-}+</h4>
 <ul>
 <li>Dunham, R. B. (1977). Reactions to job characteristics: Moderating effects of the organization. Academy of Management Journal, 20(1), 42-65.</li>
 </ul>
