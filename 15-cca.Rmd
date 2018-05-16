@@ -1255,6 +1255,7 @@ Como parte de un estudio más amplio de los efectos de la estructura organizacio
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 worksat <- read_csv("datos/worksat.csv")
+attr(worksat, "spec") <- NULL
 worksat %>% str() 
 ```
 
