@@ -21,4 +21,332 @@ library(tidyverse)
 
 ## Clustering jerárquico
 
+El clustering jerárquico es un algoritmo de agrupamiento _aglomerativo_. Cada muestra se asigna a su propio grupo y luego el algoritmo continúa iterativamente, uniendo los dos grupos más similares en cada paso y continuando hasta que solo haya un grupo. 
+
+Así pues, en el clustering aglomerativo, se comienza con los objetos individuales. Por lo que, inicialmente se tienen tantos clusters como objetos. Nos referimos a _objetos_ porque los _métodos de enlace_ se pueden aplicar tanto a observaciones como a variables en los datos.
+
+Los pares de objetos más similares se agrupan primero, y posteriormente estos grupos se mezclan sucesivamente de acuerdo con sus similitudes.
+
+## Métodos de enlace (Cluster Linkage)
+
+Los métodos de enlace son útiles para agrupar observaciones y variables. Vamos a ver:
+
+* Enlace simple: mínima distancia o vecino más cercano
+
+* Enlace completo: máxima distancia o vecino más lejano
+
+* Enlace promedio: distancia promedio
+
+La mezcla de clusters bajo los tres criterios de enlace la podemos ver en el siguiente diagrama:
+
+```{r, echo = F, fig.align='center', dpi=150}
+knitr::include_graphics("figuras/linkage.png")
+```
+
+a. enlace simple: $d_{24}$
+
+b. enlace completo: $d_{15}$
+
+c. enlace promedio: $\dfrac{d_{13}+d_{14}+d_{15}+d_{23}+d_{24}+d_{25}}{6}$
+
+
+El enlace simple hace que los grupos se fusionen de acuerdo con la distancia entre sus miembros más cercanos. En el enlace completo los grupos se fusionan de acuerdo con la distancia entre sus miembros más lejanos. Y en el enlace promedio los grupos se fusionan de acuerdo con la distancia promedio entre todos los pares de miembros en los respectivos grupos.
+
+Los siguientes son los pasos para hacer clustering jerárquico para $N$ objetos (observaciones o variables):
+
+1. Comienza con $N$ clusters, cada uno con un solo elemento y una matriz de $N\times N$ de distancias (o similitudes) $D=\{d_{jk}\}$.
+
+2. Busca la matriz de distancias el par de elementos más cercanos (más similares). Sea $d_{UV}$ la distancia entre el par de clusters "más similares" $U$ y $V$.
+
+3. Une los clusters $U$ y $V$. Nombra el nuevo cluster como $(UV)$. Actualiza las entradas en la matriz de distancias:
+
+  (a) eliminar filas y columnas correspondientes to $U$ y $V$ y
+  
+  (b) agregar una fila y columna con las distancias de $(UV)$ a los demás grupos.
+  
+4. Repetir los pasos $2$ y $3$ $N-1$ veces. Todos los objetos al final pertenecerán al mismo cluster. Se debe registrar qué elementos se unen en cada iteración y la distancias mínimas en las cuáles se hacen los agrupamientos.
+
+### Enlace simple
+
+Los grupos se forman uniendo _vecinos más cercanos_:
+
+* Se calcula la matriz $D=\{d_{jk}\}$ y se unen clusters con mínima distancia $d_{UV}$
+
+$$
+d_{(UV)W} = \min{\{d_{UW},d_{VW}\}}
+$$
+donde $d_{UW},d_{VW}$ son las distancias de los vecinos más cercanos de $U$ y $W$, y $V$ y $W$, respectivamente.
+
+#### Ejemplo {-}
+
+Aquí hay un ejemplo simple que demuestra cómo funciona la agrupación jerárquica. Primero simularemos algunos datos en tres clústeres separados.
+
+```{r}
+set.seed(1234)
+x <- rnorm(12, rep(1:3,each=4), 0.2)
+y <- rnorm(12, rep(c(1,2,1),each=4), 0.2)
+plot(x,y,col="blue",pch=19,cex=2)
+text(x+0.05,y+0.05,labels=as.character(1:12))
+```
+
+El primer paso en el enfoque de agrupamiento básico es calcular la distancia entre cada punto con cada otro punto. El resultado es una matriz de distancia, que se puede calcular con la función `dist()` en R.
+
+Aquí hay solo una parte de la matriz de distancia asociada con la figura de arriba.
+
+```{r}
+dataFrame <- data.frame(x=x, y=y)
+dist(dataFrame)
+```
+
+La métrica de distancia predeterminada utilizada por la función dist () es la distancia euclidiana.
+
+Tenga en cuenta que generalmente no tendrá que calcular explícitamente la matriz de distancia (a menos que esté inventando su propio método de agrupamiento). Aquí simplemente lo imprimo para mostrar lo que sucede internamente.
+
+En primer lugar, un enfoque aglomerativo de agrupamiento intenta encontrar los dos puntos más cercanos entre sí. En otras palabras, queremos encontrar la entrada más pequeña que no sea cero en la matriz de distancia.
+
+```{r}
+rdistxy <- as.matrix(dist(dataFrame))
+
+## Remove the diagonal from consideration
+diag(rdistxy) <- diag(rdistxy) + 1e5
+
+# Find the index of the points with minimum distance
+ind <- which(rdistxy == min(rdistxy),arr.ind=TRUE)
+ind
+```
+
+Ahora podemos trazar los puntos y mostrar qué dos puntos están más cerca entre sí de acuerdo con nuestra métrica de distancia.
+
+```{r}
+plot(x,y,col="blue",pch=19,cex=2)
+text(x+0.05,y+0.05,labels=as.character(1:12))
+points(x[ind[1,]],y[ind[1,]],col="orange",pch=19,cex=2)
+```
+
+El siguiente paso para el algoritmo es comenzar a dibujar el árbol, el primer paso sería "fusionar" estos dos puntos.
+
+```{r}
+par(mfrow = c(1, 2))
+plot(x,y,col="blue",pch=19,cex=2, main = "Data")
+text(x+0.05,y+0.05,labels=as.character(1:12))
+points(x[ind[1,]],y[ind[1,]],col="orange",pch=19,cex=2)
+
+# Make a cluster and cut it at the right height
+hcluster <- dist(dataFrame) %>% hclust
+dendro <- as.dendrogram(hcluster)
+cutDendro <- cut(dendro,h=(hcluster$height[1]+0.00001) )
+plot(cutDendro$lower[[11]],yaxt="n",main="Comenzar árbol")
+```
+
+Ahora que hemos combinado las dos primeras "hojas" de este árbol, podemos activar el algoritmo y continuar construyendo el árbol. Ahora, los dos puntos que identificamos en la iteración anterior se "fusionarán" en un solo punto, como se muestra a continuación.
+
+```{r}
+rdistxy <- dist(dataFrame) %>% as.matrix
+diag(rdistxy) <- diag(rdistxy) + 1e5
+
+# Find the index of the points with minimum distance
+ind <- which(rdistxy == min(rdistxy),arr.ind=TRUE)
+
+# Plot the points with the minimum overlayed
+plot(x,y,col="blue",pch=19,cex=2)
+text(x+0.05,y+0.05,labels=as.character(1:12))
+points(x[ind[1,]],y[ind[1,]],col="orange",pch=19,cex=2)
+points(mean(x[ind[1,]]),mean(y[ind[1,]]),col="black",cex=3,lwd=3,pch=3)
+points(mean(x[ind[1,]]),mean(y[ind[1,]]),col="orange",cex=5,lwd=3,pch=1)
+```
+
+Necesitamos buscar en la matriz de distancia los próximos dos puntos más cercanos, ignorando los primeros dos que ya fusionamos.
+
+```{r}
+nextmin <- rdistxy[order(rdistxy)][3]
+ind <- which(rdistxy == nextmin,arr.ind=TRUE)
+ind
+```
+
+Ahora podemos trazar los datos con este próximo par de puntos y la hojas del árbol fusionado.
+
+```{r, out.width='100%'}
+par(mfrow=c(1,3))
+plot(x,y,col="blue",pch=19,cex=2)
+text(x+0.05,y+0.05,labels=as.character(1:12))
+points(x[c(5,6)],y[c(5,6)],col="orange",pch=19,cex=2)
+points(x[ind[1,]],y[ind[1,]],col="red",pch=19,cex=2)
+
+# Make dendogram plots
+distxy <- dist(dataFrame)
+hcluster <- hclust(distxy)
+dendro <- as.dendrogram(hcluster)
+cutDendro <- cut(dendro,h=(hcluster$height[2]) )
+plot(cutDendro$lower[[10]],yaxt="n")
+plot(cutDendro$lower[[5]],yaxt="n")
+```
+
+En la siguiente iteración se deberá unir
+
+Y así sucesivamente. Si tuviéramos que continuar de esta manera, identificando los dos puntos más cercanos y fusionándolos, terminaríamos con un dendrograma que se parece a este. Aquí, llamamos a `hclust()` para ejecutar el algoritmo de agrupamiento.
+
+```{r}
+hClustering <- data.frame(x=x,y=y) %>% dist %>% hclust
+plot(hClustering)
+```
+
+Los resultados del procedimiento anterior se pueden representar gráficamente en la forma de un diagrama de árbol conocido como _dendrograma_. Las ramas representan clusters y las ramas se juntan en la unión de dos grupos en el nivel de la distancia mínima que se indica claramente con respecto a un eje de la gráfica.  
+
+Del dendrograma anterior está claro que hay tres clusters, cada uno con cuatro puntos.
+
+
+El enlace simple junta clusters basándose en la distanccia más corta entre ellos, por lo que la técnica no puede diferenciar entre clusters no muy bien diferenciados. 
+
+Por otro lado, es uno de los pocos métodos que puede delinear clusters no elipsoidales. Esta tendencia a elegir clusters largos encadenados se conoce como _encadenamiento_ (o chaining). El encadenamiento puede ser confuso si los elementos de un extremo de la cadena son muy diferentes a los elementos del otro extremo.
+
+```{r, echo = F, fig.align='center', dpi=130}
+knitr::include_graphics("figuras/chaining.png")
+```
+
+
+### Enlace completo
+
+El algoritmo de nuevo comienza enocntrando el elemento mínimo en $D=\{d_{jk}\}$ y uniendo los objetos correspondientes, tales como $U$ y $V$, para obtener el cluster $(UV)$. En el paso 3 del algoritmo se calcula la distancia entre $(UV)$ y un un cluster $W$ como
+
+$$
+d_{(UV)W} = \max\{d_{UW},d_{VW}\}
+$$
+
+### Enlace promedio
+
+En el enlace promedio la distancia entre clusters se calcula como el _promedio_ de las distancias entre pares de elementos en donde un miembro del para pertenece a cada cluster.
+
+```{r}
+dataFrame <- data.frame(x=x,y=y)
+plot(x,y,col="blue",pch=19,cex=2)
+points(mean(x[1:4]),mean(y[1:4]),col="orange",pch=3,lwd=3,cex=3)
+points(mean(x[5:8]),mean(y[5:8]),col="orange",pch=3,lwd=3,cex=3)
+segments(mean(x[1:4]),mean(y[1:4]),mean(x[5:8]),mean(y[5:8]),lwd=3,col="orange")
+```
+
+De nuevo, la entrada de cada grupo son observaciones o variables. El algoritmo calcula la distancia entre un cluster $(UV)$ y un cluster $W$ como
+
+$$
+d_{(UV)W} = \dfrac{\sum_i\sum_k d_{ik}}{N_{(UV)}N_W}
+$$
+
+donde $d_{ik}$ es la distancia entre el objeto $i$ del cluster $(UV)$ y el objeto $k$ del cluster $W$, y $N_{(UV)}$ y $N_W$ son el número de elementos en los clusters $(UV)$ y $W$, respectivamente.
+
+## Ejemplo: genes de tejidos
+
+Veremos los conceptos y el código necesarios para realizar el análisis de clustering con los datos de expresión genética del tejido:
+
+```{r message=FALSE, warning=FALSE}
+tissues <- read_csv("datos/tissuesGeneExpression.csv")
+dim(tissues)
+```
+
+Estos son tejidos diferentes, pero pretendemos que no sabemos para ver los resultados del clustering jerárquico. El primer paso es calcular la distancia entre cada muestra:
+
+```{r}
+e <- tissues %>% select(starts_with('X')) %>% as.matrix
+d <- dist(e)
+str(d)
+```
+
+Este es de tamaño:
+
+$$
+\dfrac{N(N-1)}{2}=\dfrac{189\times188}{2} = 17766.
+$$
+
+Con la distancia entre cada par de muestras calculadas, necesitamos algoritmos de agrupamiento para unirlos en grupos. La agrupación jerárquica es uno de los muchos algoritmos de agrupamiento disponibles para hacer esto. Cada muestra se asigna a su propio grupo y luego el algoritmo continúa iterativamente, uniendo los dos grupos más similares en cada paso y continuando hasta que solo haya un grupo. Si bien hemos definido las distancias entre las muestras, aún no hemos definido las distancias entre los grupos. Se pueden hacer varias cosas de este modo y todas dependen de las distancias pares individuales. El archivo de ayuda para `hclust` incluye información detallada.
+
+Podemos realizar una agrupación jerárquica basada en las distancias definidas anteriormente utilizando la función `hclust`. Esta función devuelve un objeto `hclust` que describe las agrupaciones que se crearon utilizando el algoritmo descrito anteriormente. El método `plot 'representa estas relaciones con un árbol o dendrograma:
+
+```{r, out.width='100%'}
+library(rafalib)
+hc <- hclust(d)
+plot(hc,labels=tissues$Tissue,cex=0.5)
+```
+
+¿Esta técnica "descubre" los grupos definidos por los diferentes tejidos? En esta gráfica, no es fácil ver los diferentes tejidos, así que agregamos colores usando la función `myplclust` del paquete `rafalib`.
+
+```{r, out.width='100%'}
+myplclust(hc, labels=tissues$Tissue, lab.col=as.fumeric(tissues$Tissue), cex=0.5)
+```
+
+Visualmente, parece que la técnica de agrupamiento ha descubierto los tejidos. Sin embargo, la agrupación jerárquica no define clústeres específicos, sino que define el dendrograma anterior. Desde el dendrograma podemos descifrar la distancia entre dos grupos observando la altura a la cual los dos grupos se dividen en dos. Para definir clusters, necesitamos "cortar el árbol" a cierta distancia y agrupar todas las muestras que están dentro de esa distancia en grupos a continuación. Para visualizar esto, dibujamos una línea horizontal a la altura que queremos cortar y esto define esa línea. Usamos 120 como ejemplo:
+
+```{r, out.width='100%'}
+myplclust(hc, labels=tissues$Tissue, lab.col=as.fumeric(tissues$Tissue),cex=0.5)
+abline(h=120)
+```
+
+Si usamos la línea de arriba para cortar el árbol en grupos, podemos examinar cómo los grupos se superponen con los tejidos reales:
+
+```{r}
+hclusters <- cutree(hc, h=120)
+table(true=tissues$Tissue, cluster=hclusters)
+```
+
+También podemos pedirle a `cutree` que nos devuelva un número determinado de clusters. La función entonces automáticamente encuentra la altura que resulta en el número solicitado de clusters:
+
+```{r}
+hclusters <- cutree(hc, k=8)
+table(true=tissues$Tissue, cluster=hclusters)
+```
+
+En ambos casos, vemos que, con algunas excepciones, cada tejido está representado de manera única por uno de los grupos. En algunos casos, el único tejido se extiende a través de dos tejidos, lo cual se debe a la selección de demasiados grupos. La selección de la cantidad de clusters generalmente es un paso desafiante en la práctica y un área activa de investigación.
+
+## Mapas de calor
+
+Los _mapas de calor_ son omnipresentes en la literatura de genómica. Son diagramas muy útiles para visualizar las medidas de un subconjunto de filas en todas las muestras. Se agregan dendogramas en la parte superior y en el lado que se crea con la agrupación jerárquica.
+
+Recomendamos la función` heatmap.2` del paquete `gplots` en CRAN porque es un poco más personalizada. Por ejemplo, se estira para llenar la ventana.
+
+```{r, message=FALSE}
+library(gplots)
+y <- matrix(rnorm(500), 100, 5, dimnames=list(paste("g", 1:100, sep=""), paste("t", 1:5, sep=""))) 
+heatmap.2(y)
+```
+
+```{r, warning=FALSE, message=FALSE}
+## Row- and column-wise clustering 
+hr <- hclust(as.dist(1-cor(t(y), method="pearson")), method="complete")
+hc <- hclust(as.dist(1-cor(y, method="spearman")), method="complete") 
+## Tree cutting
+mycl <- cutree(hr, h=max(hr$height)/1.5); mycolhc <- rainbow(length(unique(mycl)), start=0.1, end=0.9); mycolhc <- mycolhc[as.vector(mycl)] 
+## Plot heatmap 
+mycol <- colorpanel(40, "darkblue", "yellow", "white") # or try redgreen(75)
+heatmap.2(y, Rowv=as.dendrogram(hr), Colv=as.dendrogram(hc), col=mycol, scale="row", density.info="none", trace="none", RowSideColors=mycolhc) 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

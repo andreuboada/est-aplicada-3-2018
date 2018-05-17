@@ -11,6 +11,7 @@ before_script:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install netcdf-bin
+  - sudo apt-get install libnetcdf-dev
 script:
   - "./_build.sh"
   - "./_deploy.sh"
