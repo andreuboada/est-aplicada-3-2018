@@ -542,12 +542,12 @@ library(curl)
 url_pres <- "ftp://ftp.cdc.noaa.gov/Datasets.other/hadslp/slp.mnmean.nc"
 if(!file.exists("datos/slp.mnmean.nc")){
   curl_fetch_disk(url_pres, path = "datos/slp.mnmean.nc", 
-                  handle = new_handle(CONNECTTIMEOUT = 120))
+                  handle = new_handle(CONNECTTIMEOUT = 240))
 }
 
 url_temp <- "http://www.esrl.noaa.gov/psd/thredds/fileServer/Datasets/kaplan_sst/sst.mon.anom.nc"
 if(!file.exists("datos/sst.mon.anom.nc")){
-  curl_fetch_disk(url = url_temp, path = "datos/sst.mon.anom.nc", handle = new_handle(CONNECTTIMEOUT = 120))
+  curl_fetch_disk(url = url_temp, path = "datos/sst.mon.anom.nc", handle = new_handle(CONNECTTIMEOUT = 240))
 }
 ```
 
