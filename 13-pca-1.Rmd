@@ -403,10 +403,10 @@ Esta operación se conoce como _whitening_ o _sphereing_.
 
 a. Descarga una imagen en formato `jpg` o `jpeg` y lee la imagen en `R` utilizando el siguiente código:
 
-```{r}
+```{r, eval=FALSE}
 library(jpeg)
 library(pixmap)
-nick <- readJPEG("figuras/nick_bateman.jpg", native = FALSE)[,,1]
+nick <- readJPEG("figura.jpg", native = FALSE)[,,1]
 pr <- pixmapGrey(nick)
 plot(pr)
 ```
