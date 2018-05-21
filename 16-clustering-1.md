@@ -485,7 +485,7 @@ grupos_df <- lapply(ajustes_km[1:8], function(aj){
              id= 1:length(aj$cluster))}) %>% bind_rows()
 grupo_df_2 <- left_join(grupos_df, quakes_1)
 ggplot(grupo_df_2, aes(x=lat, y=long, colour=factor(cluster))) + facet_wrap(~num) +
-  geom_point()
+  geom_point() + theme(legend.position="right")
 ```
 
 <img src="16-clustering-1_files/figure-html/unnamed-chunk-19-1.png" width="100%" style="display: block; margin: auto;" />
@@ -714,7 +714,7 @@ resumen_perfil_5 <- resumen_5 %>% group_by(variable) %>%
 
 ggplot(resumen_perfil_5, aes(x = variable, y = perfil, 
                       colour = factor(cluster), group = cluster)) + 
-  geom_point() + coord_flip() + geom_line() + facet_wrap(~cluster) + geom_hline(yintercept=0, colour='gray')
+  geom_point() + coord_flip() + geom_line() + facet_wrap(~cluster) + geom_hline(yintercept=0, colour='gray') + theme(legend.position="right")
 ```
 
 <img src="16-clustering-1_files/figure-html/unnamed-chunk-31-1.png" width="100%" style="display: block; margin: auto;" />
@@ -965,3 +965,64 @@ de los clusters.
 - Estructuras relativamente dispersas que quisiéramos agrupar
 - Clusters no bien definidos.
 - Dificultad en escoger una métrica única apropiada para el problema, el resultado puede depender mucho del algoritmo, el criterio del analista, y la muestra de entrenamiento. Eso no quiere decir que **la segmentación de casos que produce el algoritmo no sea útil**, más bien que es difìcil obtener grupos *naturales*</div>\EndKnitrBlock{comentario}
+
+## Tarea
+
+La medición de la pobreza se realiza cada dos años a nivel nacional y por entidad 
+federativa,  y  cada  cinco  años  a  nivel  municipal.  Para  ello,  el
+[CONVEVAL](https://www.coneval.org.mx/Informes/Coordinacion/Publicaciones%20oficiales/FOLLETO_MEDICION_MULTIDIMENSIONAL.pdf) utiliza  la 
+información que genera el Instituto Nacional de Estadística y Geografía (INEGI).
+
+La medición oficial de la pobreza permite conocer la situación social de toda población 
+mexicana y el tipo de atención que requiere cada grupo de población. Esta característica 
+es  única  en  la  historia  de  la  medición  de  pobreza  en  México.  Además  proporciona 
+información relevante para que las políticas públicas de reducción de la pobreza sean 
+más efectivas.
+
+* Una persona se encuentra en situación de pobreza cuando presenta una o más 
+carencias sociales y no tiene un ingreso suficiente para satisfacer sus necesidades.
+
+* Una persona se encuentra en situación de pobreza extrema cuando 
+presenta tres o más carencias sociales definidas anteriormente y no 
+tiene un ingreso suficiente para adquirir una canasta alimentaria.
+
+* Una persona es vulnerable por carencias sociales cuando presenta al menos una 
+carencia social, pero tiene un ingreso suficiente para satisfacer sus necesidades.
+
+* Una persona se encuentra en situación vulnerable por ingresos cuando no tiene 
+un ingreso suficiente para satisfacer sus necesidades pero tiene cubiertas todas sus 
+carencias sociales
+
+Los siguientes datos se obtuvieron de las diversas encuestas realizadas por INEGI y se calcularon seis índices de carencias:
+
+1. Carencia por rezago educativo
+2. Carencia por acceso a los servicios de salud
+3. Carencia por acceso a la seguridad social
+4. Carencia por acceso a la calidad y espacios en la vivienda
+5. Carencia por acceso a los servicios básicos en la vivienda
+6. Carencia por acceso a la alimentación
+
+
+
+```r
+carencias <- read_csv("datos/carencias_coneval.csv")
+carencias %>% head()
+#> # A tibble: 6 x 9
+#>   cve_muni entidad     municipio      ic_rezedu_porcent… ic_asalud_porcen…
+#>   <chr>    <chr>       <chr>                       <dbl>             <dbl>
+#> 1 01001    Aguascalie… Aguascalientes               11.7             15.1 
+#> 2 01002    Aguascalie… Asientos                     19.8              5.98
+#> 3 01003    Aguascalie… Calvillo                     23.2              9.88
+#> 4 01004    Aguascalie… Cosío                        14.7              5.52
+#> 5 01005    Aguascalie… Jesús María                  17.3             15.2 
+#> 6 01006    Aguascalie… Pabellón de A…               15.3             10.5 
+#> # ... with 4 more variables: ic_segsoc_porcentaje <dbl>,
+#> #   ic_cv_porcentaje <dbl>, ic_sbv_porcentaje <dbl>,
+#> #   ic_ali_porcentaje <dbl>
+```
+
+1. Utiliza k-medias para obtener 5 grupos de municipios según sus carencias sociales. 
+
+2. Describe los grupos según estas variables.
+
+3. Interpreta los grupos en términos de sus carencias.

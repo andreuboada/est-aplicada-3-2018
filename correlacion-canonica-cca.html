@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-05-15">
+<meta name="date" content="2018-05-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -388,9 +388,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#grupos-en-dimension-alta"><i class="fa fa-check"></i>Grupos en dimensión alta</a></li>
 <li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#dificultades-en-la-seleccion-de-metrica"><i class="fa fa-check"></i>Dificultades en la selección de métrica</a></li>
 </ul></li>
+<li class="chapter" data-level="16.6" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#tarea-14"><i class="fa fa-check"></i><b>16.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html"><i class="fa fa-check"></i><b>17</b> Conglomerados (clustering) 2</a><ul>
 <li class="chapter" data-level="17.1" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#clustering-jerarquico"><i class="fa fa-check"></i><b>17.1</b> Clustering jerárquico</a></li>
+<li class="chapter" data-level="17.2" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#metodos-de-enlace-cluster-linkage"><i class="fa fa-check"></i><b>17.2</b> Métodos de enlace (Cluster Linkage)</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-simple"><i class="fa fa-check"></i><b>17.2.1</b> Enlace simple</a></li>
+<li class="chapter" data-level="17.2.2" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-completo"><i class="fa fa-check"></i><b>17.2.2</b> Enlace completo</a></li>
+<li class="chapter" data-level="17.2.3" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-promedio"><i class="fa fa-check"></i><b>17.2.3</b> Enlace promedio</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#ejemplo-genes-de-tejidos"><i class="fa fa-check"></i><b>17.3</b> Ejemplo: genes de tejidos</a></li>
+<li class="chapter" data-level="17.4" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#mapas-de-calor"><i class="fa fa-check"></i><b>17.4</b> Mapas de calor</a></li>
+<li class="chapter" data-level="17.5" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#metodo-de-ward"><i class="fa fa-check"></i><b>17.5</b> Método de Ward</a></li>
+<li class="chapter" data-level="17.6" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#tarea-15"><i class="fa fa-check"></i><b>17.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -941,12 +951,13 @@ s2 <span class="op">%*%</span><span class="st"> </span>cc1<span class="op">$</sp
 
 url_pres &lt;-<span class="st"> &quot;ftp://ftp.cdc.noaa.gov/Datasets.other/hadslp/slp.mnmean.nc&quot;</span>
 <span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&quot;datos/slp.mnmean.nc&quot;</span>)){
-  <span class="kw">curl_fetch_disk</span>(url_pres, <span class="dt">path =</span> <span class="st">&quot;datos/slp.mnmean.nc&quot;</span>, <span class="dt">handle =</span> <span class="kw">new_handle</span>(<span class="dt">CONNECTTIMEOUT =</span> <span class="dv">60</span>))
+  <span class="kw">curl_fetch_disk</span>(url_pres, <span class="dt">path =</span> <span class="st">&quot;datos/slp.mnmean.nc&quot;</span>, 
+                  <span class="dt">handle =</span> <span class="kw">new_handle</span>(<span class="dt">CONNECTTIMEOUT =</span> <span class="dv">240</span>))
 }
 
 url_temp &lt;-<span class="st"> &quot;http://www.esrl.noaa.gov/psd/thredds/fileServer/Datasets/kaplan_sst/sst.mon.anom.nc&quot;</span>
 <span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&quot;datos/sst.mon.anom.nc&quot;</span>)){
-  <span class="kw">curl_fetch_disk</span>(<span class="dt">url =</span> url_temp, <span class="dt">path =</span> <span class="st">&quot;datos/sst.mon.anom.nc&quot;</span>, <span class="dt">handle =</span> <span class="kw">new_handle</span>(<span class="dt">CONNECTTIMEOUT =</span> <span class="dv">60</span>))
+  <span class="kw">curl_fetch_disk</span>(<span class="dt">url =</span> url_temp, <span class="dt">path =</span> <span class="st">&quot;datos/sst.mon.anom.nc&quot;</span>, <span class="dt">handle =</span> <span class="kw">new_handle</span>(<span class="dt">CONNECTTIMEOUT =</span> <span class="dv">240</span>))
 }</code></pre></div>
 <p>Leemos los datos:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(maps)
@@ -1257,6 +1268,7 @@ PAR=<span class="dv">1</span>
 <p>Como parte de un estudio más amplio de los efectos de la estructura organizacional en la “satisfacción laboral”, Dunham investigó en qué medida las medidas de satisfacción laboral están relacionadas con las características del trabajo. Utilizando un instrumento de encuesta, Dunham obtuvo medidas de <span class="math inline">\(p = 5\)</span> características del trabajo y <span class="math inline">\(q = 7\)</span> variables de satisfacción laboral para <span class="math inline">\(n = 784\)</span> ejecutivos de la rama corporativa de una gran corporación comercial minorista. ¿Las medidas de satisfacción laboral están asociadas con las características del trabajo? La respuesta puede tener implicaciones para el diseño del trabajo.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 worksat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/worksat.csv&quot;</span>)
+<span class="kw">attr</span>(worksat, <span class="st">&quot;spec&quot;</span>) &lt;-<span class="st"> </span><span class="ot">NULL</span>
 worksat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>() 
 <span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    784 obs. of  13 variables:</span>
 <span class="co">#&gt;  $ ID                          : int  1 2 3 4 5 6 7 8 9 10 ...</span>
@@ -1271,38 +1283,7 @@ worksat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <span class="co">#&gt;  $ TaskSignificance(X2)        : num  -0.75 -1.038 -1.557 0.187 -0.627 ...</span>
 <span class="co">#&gt;  $ TaskVariety(X3)             : num  -1.33 0.626 0.604 0.833 0.229 ...</span>
 <span class="co">#&gt;  $ TaskIdentity(X4)            : num  -2.706 0.2 -1.308 1.335 0.177 ...</span>
-<span class="co">#&gt;  $ Autonomy(X5)                : num  -1.815 0.673 -0.994 0.138 -0.508 ...</span>
-<span class="co">#&gt;  - attr(*, &quot;spec&quot;)=List of 2</span>
-<span class="co">#&gt;   ..$ cols   :List of 13</span>
-<span class="co">#&gt;   .. ..$ ID                          : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ SupervisorSatisfaction(Y1)  : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ CareerFutureSatisfaction(Y2): list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ FinancialSatisfaction(Y3)   : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ WorkloadSatisfaction(Y4)    : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ CompanyIdentification(Y5)   : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ WorkTypeSatisfaction(Y6)    : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ GeneralSatisfaction(Y7)     : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ FeedbackQuality(X1)         : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ TaskSignificance(X2)        : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ TaskVariety(X3)             : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ TaskIdentity(X4)            : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   .. ..$ Autonomy(X5)                : list()</span>
-<span class="co">#&gt;   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   ..$ default: list()</span>
-<span class="co">#&gt;   .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;</span>
-<span class="co">#&gt;   ..- attr(*, &quot;class&quot;)= chr &quot;col_spec&quot;</span></code></pre></div>
+<span class="co">#&gt;  $ Autonomy(X5)                : num  -1.815 0.673 -0.994 0.138 -0.508 ...</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><p>Calcula la matriz de correlaciones muestrales basada en las 784 observaciones.</p></li>
 <li><p>Encuentra los eigenvalores de <span class="math inline">\(\Sigma_{11}^{-1/2} \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21} \Sigma_{11}^{-1/2}\)</span> y verifica que estos eigenvalores son los mismos eigenvalores de <span class="math inline">\(\Sigma_{22}^{-1/2} \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12} \Sigma_{22}^{-1/2}\)</span>.</p></li>

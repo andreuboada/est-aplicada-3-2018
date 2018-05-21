@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-05-15">
+<meta name="date" content="2018-05-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -388,9 +388,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#grupos-en-dimension-alta"><i class="fa fa-check"></i>Grupos en dimensión alta</a></li>
 <li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#dificultades-en-la-seleccion-de-metrica"><i class="fa fa-check"></i>Dificultades en la selección de métrica</a></li>
 </ul></li>
+<li class="chapter" data-level="16.6" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#tarea-14"><i class="fa fa-check"></i><b>16.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html"><i class="fa fa-check"></i><b>17</b> Conglomerados (clustering) 2</a><ul>
 <li class="chapter" data-level="17.1" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#clustering-jerarquico"><i class="fa fa-check"></i><b>17.1</b> Clustering jerárquico</a></li>
+<li class="chapter" data-level="17.2" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#metodos-de-enlace-cluster-linkage"><i class="fa fa-check"></i><b>17.2</b> Métodos de enlace (Cluster Linkage)</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-simple"><i class="fa fa-check"></i><b>17.2.1</b> Enlace simple</a></li>
+<li class="chapter" data-level="17.2.2" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-completo"><i class="fa fa-check"></i><b>17.2.2</b> Enlace completo</a></li>
+<li class="chapter" data-level="17.2.3" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-promedio"><i class="fa fa-check"></i><b>17.2.3</b> Enlace promedio</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#ejemplo-genes-de-tejidos"><i class="fa fa-check"></i><b>17.3</b> Ejemplo: genes de tejidos</a></li>
+<li class="chapter" data-level="17.4" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#mapas-de-calor"><i class="fa fa-check"></i><b>17.4</b> Mapas de calor</a></li>
+<li class="chapter" data-level="17.5" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#metodo-de-ward"><i class="fa fa-check"></i><b>17.5</b> Método de Ward</a></li>
+<li class="chapter" data-level="17.6" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#tarea-15"><i class="fa fa-check"></i><b>17.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -551,7 +561,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&gt;         locale = locale, skip = skip, comment = comment, n_max = n_max, </span>
 <span class="co">#&gt;         guess_max = guess_max, progress = progress)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x4fab4f0&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x6279820&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:readr&gt;</span></code></pre></div>
 <p>Como el paquete <code>readr</code> está cargado en la sesión podemos llamar a la función <code>read_csv</code> que se usará más adelante.</p>
 <p><strong>Importante</strong>: Los paquetes se instalan una vez únicamente después de descargar una nueva versión de R. Las librerías se cargan en cada sesión de R nueva.</p>
@@ -2104,7 +2114,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB <span class="op">+</span><span class="st"> </span>teamID, Batting))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   2.740   0.076   2.816</span></code></pre></div>
+<span class="co">#&gt;    2.94    0.08    3.02</span></code></pre></div>
 <ul>
 <li><p><strong>user time</strong>: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.</p></li>
 <li><p><strong>elapsed time</strong>: tiempo en el reloj, tiempo que experimenta la persona.</p></li>
@@ -2112,7 +2122,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <p>El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">readLines</span>(<span class="st">&quot;http://www.jhsph.edu&quot;</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.024   0.000   0.654</span></code></pre></div>
+<span class="co">#&gt;   0.016   0.004   0.635</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(parallel)
 <span class="kw">system.time</span>(<span class="kw">mclapply</span>(<span class="dv">2000</span><span class="op">:</span><span class="dv">2006</span>, 
   <span class="cf">function</span>(x){
@@ -2120,7 +2130,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
     <span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB, sub)
 }, <span class="dt">mc.cores =</span> <span class="dv">5</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.064   0.072   0.087</span></code></pre></div>
+<span class="co">#&gt;   0.108   0.052   0.088</span></code></pre></div>
 <p>Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr</span>
 dplyr_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
@@ -2160,16 +2170,16 @@ est_r_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
 
 dplyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.124   0.000   0.126</span></code></pre></div>
+<span class="co">#&gt;   0.132   0.000   0.132</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   5.928   0.004   5.932</span></code></pre></div>
+<span class="co">#&gt;   6.944   0.016   6.967</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_l_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   44.83    1.66   46.49</span></code></pre></div>
+<span class="co">#&gt;  63.312   0.016  63.364</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_r_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.536   0.016   0.555</span></code></pre></div>
+<span class="co">#&gt;   0.556   0.024   0.582</span></code></pre></div>
 <p>La función <code>system.time</code> supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es <code>Rprof()</code>.</p>
 <p>Rprof es un perfilador de muestreo que registra cambios en la pila de funciones, funciona tomando muestras a intervalos regulares y tabula cuánto tiempo se lleva en cada función.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>, <span class="dt">interval =</span> <span class="fl">0.015</span>, <span class="dt">line.profiling =</span> <span class="ot">TRUE</span>)
@@ -2306,7 +2316,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.232   0.012   0.245</span></code></pre></div>
+<span class="co">#&gt;   0.324   0.008   0.332</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aciertos &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">FALSE</span>, <span class="fl">1e+06</span>) 
 <span class="kw">system.time</span>(
   <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="fl">1e+05</span>) {
@@ -2314,7 +2324,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.224   0.000   0.224</span></code></pre></div>
+<span class="co">#&gt;   0.276   0.000   0.276</span></code></pre></div>
 <p>Usando <code>rbind</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind &lt;-<span class="st"> </span><span class="cf">function</span>(){
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">character</span>(<span class="dv">0</span>), <span class="dt">b =</span> <span class="kw">numeric</span>(<span class="dv">0</span>)) 
@@ -2325,7 +2335,7 @@ mi.df
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.704   0.000   0.703</span></code></pre></div>
+<span class="co">#&gt;   0.800   0.000   0.799</span></code></pre></div>
 <p>Si definimos el tamaño del data.frame obtenemos mejoras:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="cf">function</span>() {
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>), <span class="dt">b =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)) 
@@ -2337,7 +2347,7 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind_2</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.056   0.000   0.057</span></code></pre></div>
+<span class="co">#&gt;   0.080   0.000   0.081</span></code></pre></div>
 <p>Finalmente, veamos un enfoque totalmente vectorizado</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">porcolumna_df &lt;-<span class="st"> </span><span class="cf">function</span>(){
   a &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>) 

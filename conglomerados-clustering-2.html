@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-05-15">
+<meta name="date" content="2018-05-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -388,9 +388,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#grupos-en-dimension-alta"><i class="fa fa-check"></i>Grupos en dimensión alta</a></li>
 <li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#dificultades-en-la-seleccion-de-metrica"><i class="fa fa-check"></i>Dificultades en la selección de métrica</a></li>
 </ul></li>
+<li class="chapter" data-level="16.6" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#tarea-14"><i class="fa fa-check"></i><b>16.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html"><i class="fa fa-check"></i><b>17</b> Conglomerados (clustering) 2</a><ul>
 <li class="chapter" data-level="17.1" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#clustering-jerarquico"><i class="fa fa-check"></i><b>17.1</b> Clustering jerárquico</a></li>
+<li class="chapter" data-level="17.2" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#metodos-de-enlace-cluster-linkage"><i class="fa fa-check"></i><b>17.2</b> Métodos de enlace (Cluster Linkage)</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-simple"><i class="fa fa-check"></i><b>17.2.1</b> Enlace simple</a></li>
+<li class="chapter" data-level="17.2.2" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-completo"><i class="fa fa-check"></i><b>17.2.2</b> Enlace completo</a></li>
+<li class="chapter" data-level="17.2.3" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-promedio"><i class="fa fa-check"></i><b>17.2.3</b> Enlace promedio</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#ejemplo-genes-de-tejidos"><i class="fa fa-check"></i><b>17.3</b> Ejemplo: genes de tejidos</a></li>
+<li class="chapter" data-level="17.4" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#mapas-de-calor"><i class="fa fa-check"></i><b>17.4</b> Mapas de calor</a></li>
+<li class="chapter" data-level="17.5" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#metodo-de-ward"><i class="fa fa-check"></i><b>17.5</b> Método de Ward</a></li>
+<li class="chapter" data-level="17.6" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#tarea-15"><i class="fa fa-check"></i><b>17.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -430,7 +440,483 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
 <div id="clustering-jerarquico" class="section level2">
 <h2><span class="header-section-number">17.1</span> Clustering jerárquico</h2>
+<p>El clustering jerárquico es un algoritmo de agrupamiento <em>aglomerativo</em>. Cada muestra se asigna a su propio grupo y luego el algoritmo continúa iterativamente, uniendo los dos grupos más similares en cada paso y continuando hasta que solo haya un grupo.</p>
+<p>Así pues, en el clustering aglomerativo, se comienza con los objetos individuales. Por lo que, inicialmente se tienen tantos clusters como objetos. Nos referimos a <em>objetos</em> porque los <em>métodos de enlace</em> se pueden aplicar tanto a observaciones como a variables en los datos.</p>
+<p>Los pares de objetos más similares se agrupan primero, y posteriormente estos grupos se mezclan sucesivamente de acuerdo con sus similitudes.</p>
+</div>
+<div id="metodos-de-enlace-cluster-linkage" class="section level2">
+<h2><span class="header-section-number">17.2</span> Métodos de enlace (Cluster Linkage)</h2>
+<p>Los métodos de enlace son útiles para agrupar observaciones y variables. Vamos a ver:</p>
+<ul>
+<li><p>Enlace simple: mínima distancia o vecino más cercano</p></li>
+<li><p>Enlace completo: máxima distancia o vecino más lejano</p></li>
+<li><p>Enlace promedio: distancia promedio</p></li>
+</ul>
+<p>La mezcla de clusters bajo los tres criterios de enlace la podemos ver en el siguiente diagrama:</p>
+<p><img src="figuras/linkage.png" width="70%" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>enlace simple: <span class="math inline">\(d_{24}\)</span></p></li>
+<li><p>enlace completo: <span class="math inline">\(d_{15}\)</span></p></li>
+<li><p>enlace promedio: <span class="math inline">\(\dfrac{d_{13}+d_{14}+d_{15}+d_{23}+d_{24}+d_{25}}{6}\)</span></p></li>
+</ol>
+<p>El enlace simple hace que los grupos se fusionen de acuerdo con la distancia entre sus miembros más cercanos. En el enlace completo los grupos se fusionan de acuerdo con la distancia entre sus miembros más lejanos. Y en el enlace promedio los grupos se fusionan de acuerdo con la distancia promedio entre todos los pares de miembros en los respectivos grupos.</p>
+<p>Los siguientes son los pasos para hacer clustering jerárquico para <span class="math inline">\(N\)</span> objetos (observaciones o variables):</p>
+<ol style="list-style-type: decimal">
+<li><p>Comienza con <span class="math inline">\(N\)</span> clusters, cada uno con un solo elemento y una matriz de <span class="math inline">\(N\times N\)</span> de distancias (o similitudes) <span class="math inline">\(D=\{d_{jk}\}\)</span>.</p></li>
+<li><p>Busca la matriz de distancias el par de elementos más cercanos (más similares). Sea <span class="math inline">\(d_{UV}\)</span> la distancia entre el par de clusters “más similares” <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span>.</p></li>
+<li><p>Une los clusters <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span>. Nombra el nuevo cluster como <span class="math inline">\((UV)\)</span>. Actualiza las entradas en la matriz de distancias:</p></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>eliminar filas y columnas correspondientes to <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span> y</p></li>
+<li><p>agregar una fila y columna con las distancias de <span class="math inline">\((UV)\)</span> a los demás grupos.</p></li>
+</ol>
+<ol start="4" style="list-style-type: decimal">
+<li>Repetir los pasos <span class="math inline">\(2\)</span> y <span class="math inline">\(3\)</span> <span class="math inline">\(N-1\)</span> veces. Todos los objetos al final pertenecerán al mismo cluster. Se debe registrar qué elementos se unen en cada iteración y la distancias mínimas en las cuáles se hacen los agrupamientos.</li>
+</ol>
+<div id="enlace-simple" class="section level3">
+<h3><span class="header-section-number">17.2.1</span> Enlace simple</h3>
+<p>Los grupos se forman uniendo <em>vecinos más cercanos</em>:</p>
+<ul>
+<li>Se calcula la matriz <span class="math inline">\(D=\{d_{jk}\}\)</span> y se unen clusters con mínima distancia <span class="math inline">\(d_{UV}\)</span></li>
+</ul>
+<p><span class="math display">\[
+d_{(UV)W} = \min{\{d_{UW},d_{VW}\}}
+\]</span> donde <span class="math inline">\(d_{UW},d_{VW}\)</span> son las distancias de los vecinos más cercanos de <span class="math inline">\(U\)</span> y <span class="math inline">\(W\)</span>, y <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span>, respectivamente.</p>
+<div id="ejemplo-11" class="section level4 unnumbered">
+<h4>Ejemplo</h4>
+<p>Aquí hay un ejemplo simple que demuestra cómo funciona la agrupación jerárquica. Primero simularemos algunos datos en tres clústeres separados.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1234</span>)
+x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">12</span>, <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">each=</span><span class="dv">4</span>), <span class="fl">0.2</span>)
+y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">12</span>, <span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>),<span class="dt">each=</span><span class="dv">4</span>), <span class="fl">0.2</span>)
+<span class="kw">plot</span>(x,y,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="dv">2</span>)
+<span class="kw">text</span>(x<span class="op">+</span><span class="fl">0.05</span>,y<span class="op">+</span><span class="fl">0.05</span>,<span class="dt">labels=</span><span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>))</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>El primer paso en el enfoque de agrupamiento básico es calcular la distancia entre cada punto con cada otro punto. El resultado es una matriz de distancias, que se puede calcular con la función <code>dist()</code> en R.</p>
+<p>Aquí hay solo una parte de la matriz de distancias asociada con la figura de arriba.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataFrame &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y)
+<span class="kw">dist</span>(dataFrame)
+<span class="co">#&gt;         1      2      3      4      5      6      7      8      9     10</span>
+<span class="co">#&gt; 2  0.3412                                                               </span>
+<span class="co">#&gt; 3  0.5749 0.2410                                                        </span>
+<span class="co">#&gt; 4  0.2638 0.5258 0.7186                                                 </span>
+<span class="co">#&gt; 5  1.6942 1.3582 1.1195 1.8067                                          </span>
+<span class="co">#&gt; 6  1.6581 1.3196 1.0834 1.7808 0.0815                                   </span>
+<span class="co">#&gt; 7  1.4982 1.1662 0.9257 1.6013 0.2111 0.2167                            </span>
+<span class="co">#&gt; 8  1.9915 1.6909 1.4565 2.0285 0.6170 0.6979 0.6506                     </span>
+<span class="co">#&gt; 9  2.1363 1.8317 1.6784 2.3568 1.1835 1.1150 1.2858 1.7646              </span>
+<span class="co">#&gt; 10 2.0642 1.7700 1.6311 2.2924 1.2385 1.1655 1.3206 1.8352 0.1409       </span>
+<span class="co">#&gt; 11 2.1470 1.8518 1.7107 2.3746 1.2815 1.2108 1.3737 1.8700 0.1162 0.0832</span>
+<span class="co">#&gt; 12 2.0566 1.7466 1.5866 2.2723 1.0770 1.0078 1.1774 1.6622 0.1085 0.1913</span>
+<span class="co">#&gt;        11</span>
+<span class="co">#&gt; 2        </span>
+<span class="co">#&gt; 3        </span>
+<span class="co">#&gt; 4        </span>
+<span class="co">#&gt; 5        </span>
+<span class="co">#&gt; 6        </span>
+<span class="co">#&gt; 7        </span>
+<span class="co">#&gt; 8        </span>
+<span class="co">#&gt; 9        </span>
+<span class="co">#&gt; 10       </span>
+<span class="co">#&gt; 11       </span>
+<span class="co">#&gt; 12 0.2080</span></code></pre></div>
+<p>La métrica de distancia predeterminada utilizada por la función <code>dist()</code> es la distancia euclidiana.</p>
+<p>Generalmente no tenemos que calcular explícitamente la matriz de distancias (a menos que esté inventando su propio método de agrupamiento).</p>
+<p>En primer lugar, el enfoque aglomerativo intenta encontrar los dos puntos más cercanos entre sí. En otras palabras, queremos encontrar la entrada más pequeña que no sea cero en la matriz de distancias.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rdistxy &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">dist</span>(dataFrame))
 
+## Quitar la diagonal para calcular mínima distancia
+<span class="kw">diag</span>(rdistxy) &lt;-<span class="st"> </span><span class="kw">diag</span>(rdistxy) <span class="op">+</span><span class="st"> </span><span class="fl">1e5</span>
+
+<span class="co"># Índice de la mínima distancia</span>
+ind &lt;-<span class="st"> </span><span class="kw">which</span>(rdistxy <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(rdistxy),<span class="dt">arr.ind=</span><span class="ot">TRUE</span>)
+ind
+<span class="co">#&gt;   row col</span>
+<span class="co">#&gt; 6   6   5</span>
+<span class="co">#&gt; 5   5   6</span></code></pre></div>
+<p>Ahora podemos trazar los puntos y mostrar qué dos puntos están más cerca entre sí de acuerdo con nuestra métrica de distancia.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(x,y,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="dv">2</span>)
+<span class="kw">text</span>(x<span class="op">+</span><span class="fl">0.05</span>,y<span class="op">+</span><span class="fl">0.05</span>,<span class="dt">labels=</span><span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>))
+<span class="kw">points</span>(x[ind[<span class="dv">1</span>,]],y[ind[<span class="dv">1</span>,]],<span class="dt">col=</span><span class="st">&quot;orange&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="dv">2</span>)</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>El siguiente paso para el algoritmo es comenzar a dibujar el árbol, el primer paso sería “fusionar” estos dos puntos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">plot</span>(x,y,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="dv">2</span>, <span class="dt">main =</span> <span class="st">&quot;Data&quot;</span>)
+<span class="kw">text</span>(x<span class="op">+</span><span class="fl">0.05</span>,y<span class="op">+</span><span class="fl">0.05</span>,<span class="dt">labels=</span><span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>))
+<span class="kw">points</span>(x[ind[<span class="dv">1</span>,]],y[ind[<span class="dv">1</span>,]],<span class="dt">col=</span><span class="st">&quot;orange&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="dv">2</span>)
+
+hcluster &lt;-<span class="st"> </span><span class="kw">dist</span>(dataFrame) <span class="op">%&gt;%</span><span class="st"> </span>hclust
+dendro &lt;-<span class="st"> </span><span class="kw">as.dendrogram</span>(hcluster)
+cutDendro &lt;-<span class="st"> </span><span class="kw">cut</span>(dendro,<span class="dt">h=</span>(hcluster<span class="op">$</span>height[<span class="dv">1</span>]<span class="op">+</span><span class="fl">0.00001</span>) )
+<span class="kw">plot</span>(cutDendro<span class="op">$</span>lower[[<span class="dv">11</span>]],<span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Comenzar árbol&quot;</span>)</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Ahora que hemos combinado las dos primeras “hojas” de este árbol, podemos activar el algoritmo y continuar construyendo el árbol. Ahora, los dos puntos que identificamos en la iteración anterior se “fusionarán” en un solo punto, como se muestra a continuación.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rdistxy &lt;-<span class="st"> </span><span class="kw">dist</span>(dataFrame) <span class="op">%&gt;%</span><span class="st"> </span>as.matrix
+<span class="kw">diag</span>(rdistxy) &lt;-<span class="st"> </span><span class="kw">diag</span>(rdistxy) <span class="op">+</span><span class="st"> </span><span class="fl">1e5</span>
+
+<span class="co"># Encontrar índice de mínima distancia</span>
+ind &lt;-<span class="st"> </span><span class="kw">which</span>(rdistxy <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(rdistxy),<span class="dt">arr.ind=</span><span class="ot">TRUE</span>)
+
+<span class="co"># Graficamos</span>
+<span class="kw">plot</span>(x,y,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="dv">2</span>)
+<span class="kw">text</span>(x<span class="op">+</span><span class="fl">0.05</span>,y<span class="op">+</span><span class="fl">0.05</span>,<span class="dt">labels=</span><span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>))
+<span class="kw">points</span>(x[ind[<span class="dv">1</span>,]],y[ind[<span class="dv">1</span>,]],<span class="dt">col=</span><span class="st">&quot;orange&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="dv">2</span>)
+<span class="kw">points</span>(<span class="kw">mean</span>(x[ind[<span class="dv">1</span>,]]),<span class="kw">mean</span>(y[ind[<span class="dv">1</span>,]]),<span class="dt">col=</span><span class="st">&quot;black&quot;</span>,<span class="dt">cex=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">pch=</span><span class="dv">3</span>)
+<span class="kw">points</span>(<span class="kw">mean</span>(x[ind[<span class="dv">1</span>,]]),<span class="kw">mean</span>(y[ind[<span class="dv">1</span>,]]),<span class="dt">col=</span><span class="st">&quot;orange&quot;</span>,<span class="dt">cex=</span><span class="dv">5</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">pch=</span><span class="dv">1</span>)</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Necesitamos buscar en la matriz de distancias los próximos dos puntos más cercanos, ignorando los primeros dos que ya fusionamos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nextmin &lt;-<span class="st"> </span>rdistxy[<span class="kw">order</span>(rdistxy)][<span class="dv">3</span>]
+ind &lt;-<span class="st"> </span><span class="kw">which</span>(rdistxy <span class="op">==</span><span class="st"> </span>nextmin,<span class="dt">arr.ind=</span><span class="ot">TRUE</span>)
+ind
+<span class="co">#&gt;    row col</span>
+<span class="co">#&gt; 11  11  10</span>
+<span class="co">#&gt; 10  10  11</span></code></pre></div>
+<p>Ahora podemos trazar los datos con este próximo par de puntos y la hojas del árbol fusionado.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))
+<span class="kw">plot</span>(x,y,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="dv">2</span>)
+<span class="kw">text</span>(x<span class="op">+</span><span class="fl">0.05</span>,y<span class="op">+</span><span class="fl">0.05</span>,<span class="dt">labels=</span><span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>))
+<span class="kw">points</span>(x[<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>)],y[<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>)],<span class="dt">col=</span><span class="st">&quot;orange&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="dv">2</span>)
+<span class="kw">points</span>(x[ind[<span class="dv">1</span>,]],y[ind[<span class="dv">1</span>,]],<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="dv">2</span>)
+
+<span class="co"># Gráfica del dendrograma</span>
+distxy &lt;-<span class="st"> </span><span class="kw">dist</span>(dataFrame)
+hcluster &lt;-<span class="st"> </span><span class="kw">hclust</span>(distxy)
+dendro &lt;-<span class="st"> </span><span class="kw">as.dendrogram</span>(hcluster)
+cutDendro &lt;-<span class="st"> </span><span class="kw">cut</span>(dendro,<span class="dt">h=</span>(hcluster<span class="op">$</span>height[<span class="dv">2</span>]) )
+<span class="kw">plot</span>(cutDendro<span class="op">$</span>lower[[<span class="dv">10</span>]],<span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>)
+<span class="kw">plot</span>(cutDendro<span class="op">$</span>lower[[<span class="dv">5</span>]],<span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>)</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>En la siguiente iteración se deberá unir</p>
+<p>Y así sucesivamente. Si tuviéramos que continuar de esta manera, identificando los dos puntos más cercanos y fusionándolos, terminaríamos con un dendrograma que se parece a este. Aquí, llamamos a <code>hclust()</code> para ejecutar el algoritmo de agrupamiento.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hClustering &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y) <span class="op">%&gt;%</span><span class="st"> </span>dist <span class="op">%&gt;%</span><span class="st"> </span>hclust
+<span class="kw">plot</span>(hClustering)</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Los resultados del procedimiento anterior se pueden representar gráficamente en la forma de un diagrama de árbol conocido como <em>dendrograma</em>. Las ramas representan clusters y las ramas se juntan en la unión de dos grupos en el nivel de la distancia mínima que se indica claramente con respecto a un eje de la gráfica.</p>
+<p>Del dendrograma anterior está claro que hay tres clusters, cada uno con cuatro puntos.</p>
+<p>El enlace simple junta clusters basándose en la distanccia más corta entre ellos, por lo que la técnica no puede diferenciar entre clusters no muy bien diferenciados.</p>
+<p>Por otro lado, es uno de los pocos métodos que puede delinear clusters no elipsoidales. Esta tendencia a elegir clusters largos encadenados se conoce como <em>encadenamiento</em> (o chaining). El encadenamiento puede ser confuso si los elementos de un extremo de la cadena son muy diferentes a los elementos del otro extremo.</p>
+<p><img src="figuras/chaining.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="enlace-completo" class="section level3">
+<h3><span class="header-section-number">17.2.2</span> Enlace completo</h3>
+<p>El algoritmo de nuevo comienza enocntrando el elemento mínimo en <span class="math inline">\(D=\{d_{jk}\}\)</span> y uniendo los objetos correspondientes, tales como <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span>, para obtener el cluster <span class="math inline">\((UV)\)</span>. En el paso 3 del algoritmo se calcula la distancia entre <span class="math inline">\((UV)\)</span> y un un cluster <span class="math inline">\(W\)</span> como</p>
+<p><span class="math display">\[
+d_{(UV)W} = \max\{d_{UW},d_{VW}\}
+\]</span></p>
+</div>
+<div id="enlace-promedio" class="section level3">
+<h3><span class="header-section-number">17.2.3</span> Enlace promedio</h3>
+<p>En el enlace promedio la distancia entre clusters se calcula como el <em>promedio</em> de las distancias entre pares de elementos en donde un miembro del para pertenece a cada cluster.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataFrame &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y)
+<span class="kw">plot</span>(x,y,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="dv">2</span>)
+<span class="kw">points</span>(<span class="kw">mean</span>(x[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]),<span class="kw">mean</span>(y[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]),<span class="dt">col=</span><span class="st">&quot;orange&quot;</span>,<span class="dt">pch=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">cex=</span><span class="dv">3</span>)
+<span class="kw">points</span>(<span class="kw">mean</span>(x[<span class="dv">5</span><span class="op">:</span><span class="dv">8</span>]),<span class="kw">mean</span>(y[<span class="dv">5</span><span class="op">:</span><span class="dv">8</span>]),<span class="dt">col=</span><span class="st">&quot;orange&quot;</span>,<span class="dt">pch=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">cex=</span><span class="dv">3</span>)
+<span class="kw">segments</span>(<span class="kw">mean</span>(x[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]),<span class="kw">mean</span>(y[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]),<span class="kw">mean</span>(x[<span class="dv">5</span><span class="op">:</span><span class="dv">8</span>]),<span class="kw">mean</span>(y[<span class="dv">5</span><span class="op">:</span><span class="dv">8</span>]),<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="st">&quot;orange&quot;</span>)</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>De nuevo, la entrada de cada grupo son observaciones o variables. El algoritmo calcula la distancia entre un cluster <span class="math inline">\((UV)\)</span> y un cluster <span class="math inline">\(W\)</span> como</p>
+<p><span class="math display">\[
+d_{(UV)W} = \dfrac{\sum_i\sum_k d_{ik}}{N_{(UV)}N_W}
+\]</span></p>
+<p>donde <span class="math inline">\(d_{ik}\)</span> es la distancia entre el objeto <span class="math inline">\(i\)</span> del cluster <span class="math inline">\((UV)\)</span> y el objeto <span class="math inline">\(k\)</span> del cluster <span class="math inline">\(W\)</span>, y <span class="math inline">\(N_{(UV)}\)</span> y <span class="math inline">\(N_W\)</span> son el número de elementos en los clusters <span class="math inline">\((UV)\)</span> y <span class="math inline">\(W\)</span>, respectivamente.</p>
+</div>
+</div>
+<div id="ejemplo-genes-de-tejidos" class="section level2">
+<h2><span class="header-section-number">17.3</span> Ejemplo: genes de tejidos</h2>
+<p>Veremos los conceptos y el código necesarios para realizar el análisis de clustering con los datos de expresión genética del tejido:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tissues &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/tissuesGeneExpression.csv&quot;</span>)
+<span class="kw">dim</span>(tissues)
+<span class="co">#&gt; [1]   189 22221</span></code></pre></div>
+<p>Sabemos que en general son tejidos <em>diferentes</em>, pero pretendemos que no sabemos para ver los resultados del clustering jerárquico. El primer paso es calcular la distancia entre cada observación:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">e &lt;-<span class="st"> </span>tissues <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&#39;X&#39;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>as.matrix
+d &lt;-<span class="st"> </span><span class="kw">dist</span>(e)
+<span class="kw">str</span>(d)
+<span class="co">#&gt;  &#39;dist&#39; num [1:17766] 85.9 84.4 101.1 90.3 83.3 ...</span>
+<span class="co">#&gt;  - attr(*, &quot;Size&quot;)= int 189</span>
+<span class="co">#&gt;  - attr(*, &quot;Diag&quot;)= logi FALSE</span>
+<span class="co">#&gt;  - attr(*, &quot;Upper&quot;)= logi FALSE</span>
+<span class="co">#&gt;  - attr(*, &quot;method&quot;)= chr &quot;euclidean&quot;</span>
+<span class="co">#&gt;  - attr(*, &quot;call&quot;)= language dist(x = e)</span></code></pre></div>
+<p>Este es de tamaño:</p>
+<p><span class="math display">\[
+\dfrac{N(N-1)}{2}=\dfrac{189\times188}{2} = 17766.
+\]</span></p>
+<p>Con la distancia entre cada par de muestras calculadas, necesitamos algoritmos de agrupamiento para unirlos en grupos. La agrupación jerárquica es uno de los muchos algoritmos de agrupamiento disponibles para hacer esto. Cada muestra se asigna a su propio grupo y luego el algoritmo continúa iterativamente, uniendo los dos grupos más similares en cada paso y continuando hasta que solo haya un grupo. Si bien hemos definido las distancias entre las muestras, aún no hemos definido las distancias entre los grupos. Se pueden hacer varias cosas de este modo y todas dependen de las distancias pares individuales. El archivo de ayuda para <code>hclust</code> incluye información detallada.</p>
+<p>Podemos realizar una agrupación jerárquica basada en las distancias definidas anteriormente utilizando la función <code>hclust</code>. Esta función devuelve un objeto <code>hclust</code> que describe las agrupaciones que se crearon utilizando el algoritmo descrito anteriormente.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hc &lt;-<span class="st"> </span><span class="kw">hclust</span>(d)
+<span class="kw">plot</span>(hc,<span class="dt">labels=</span>tissues<span class="op">$</span>Tissue,<span class="dt">cex=</span><span class="fl">0.5</span>)</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>¿Esta técnica “descubre” los grupos definidos por los diferentes tejidos? En esta gráfica, no es fácil ver los diferentes tejidos, así que agregamos colores usando la función <code>myplclust</code> del paquete <code>rafalib</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rafalib)
+<span class="kw">myplclust</span>(hc, <span class="dt">labels=</span>tissues<span class="op">$</span>Tissue, <span class="dt">lab.col=</span><span class="kw">as.fumeric</span>(tissues<span class="op">$</span>Tissue), <span class="dt">cex=</span><span class="fl">0.5</span>)</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-18-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Otra forma de calcular el dendrograma cuando no se tienen tantas observaciones es con la función <code>fviz_dend</code> del paquete <code>factoextra</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res.hc &lt;-<span class="st"> </span>tissues <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&#39;X&#39;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>as.matrix <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">dist</span>(<span class="dt">method =</span> <span class="st">&quot;euclidean&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Calcula matriz de disimilitudes</span>
+<span class="st">  </span><span class="kw">hclust</span>(<span class="dt">method =</span> <span class="st">&quot;average&quot;</span>)     <span class="co"># Calcula clustering jerárquico</span>
+
+<span class="co"># Corta en 4 grupos y colorea por grupo</span>
+<span class="kw">library</span>(factoextra)
+<span class="co">#&gt; Welcome! Related Books: `Practical Guide To Cluster Analysis in R` at https://goo.gl/13EFCZ</span>
+<span class="kw">fviz_dend</span>(res.hc, <span class="dt">k =</span> <span class="dv">6</span>, 
+          <span class="dt">cex =</span> <span class="fl">0.5</span>, 
+          <span class="dt">color_labels_by_k =</span> <span class="ot">TRUE</span>, <span class="co"># color de etiquetas por grupo</span>
+          <span class="dt">rect =</span> <span class="ot">TRUE</span> <span class="co"># Agrega rectángulo en cada grupo</span>
+          )</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-19-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Visualmente, parece que la técnica de agrupamiento ha descubierto los tejidos. Sin embargo, la agrupación jerárquica no define clústeres específicos, sino que define el dendrograma anterior. Desde el dendrograma podemos descifrar la distancia entre dos grupos observando la altura a la cual los dos grupos se dividen en dos. Para definir clusters, necesitamos “cortar el árbol” a cierta distancia y agrupar todas las muestras que están dentro de esa distancia en grupos a continuación. Para visualizar esto, dibujamos una línea horizontal a la altura que queremos cortar y esto define esa línea. Usamos 120 como ejemplo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">myplclust</span>(hc, <span class="dt">labels=</span>tissues<span class="op">$</span>Tissue, <span class="dt">lab.col=</span><span class="kw">as.fumeric</span>(tissues<span class="op">$</span>Tissue),<span class="dt">cex=</span><span class="fl">0.5</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">120</span>)</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-20-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Si usamos la línea de arriba para cortar el árbol en grupos, entonces podemos examinar cómo los grupos se superponen con los tejidos reales. Para esto utilizamos la función <code>cutree</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hclusters &lt;-<span class="st"> </span><span class="kw">cutree</span>(hc, <span class="dt">h=</span><span class="dv">120</span>)
+<span class="kw">table</span>(<span class="dt">true=</span>tissues<span class="op">$</span>Tissue, <span class="dt">cluster=</span>hclusters)
+<span class="co">#&gt;              cluster</span>
+<span class="co">#&gt; true           1  2  3  4  5  6  7  8  9 10 11 12 13 14</span>
+<span class="co">#&gt;   cerebellum   0  0  0  0 31  0  0  0  2  0  0  5  0  0</span>
+<span class="co">#&gt;   colon        0  0  0  0  0  0 34  0  0  0  0  0  0  0</span>
+<span class="co">#&gt;   endometrium  0  0  0  0  0  0  0  0  0  0 15  0  0  0</span>
+<span class="co">#&gt;   hippocampus  0  0 12 19  0  0  0  0  0  0  0  0  0  0</span>
+<span class="co">#&gt;   kidney       9 18  0  0  0 10  0  0  2  0  0  0  0  0</span>
+<span class="co">#&gt;   liver        0  0  0  0  0  0  0 24  0  2  0  0  0  0</span>
+<span class="co">#&gt;   placenta     0  0  0  0  0  0  0  0  0  0  0  0  2  4</span></code></pre></div>
+<p>También podemos pedirle a <code>cutree</code> que nos devuelva un número determinado de clusters. La función entonces automáticamente encuentra la altura que resulta en el número solicitado de clusters:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hclusters &lt;-<span class="st"> </span><span class="kw">cutree</span>(hc, <span class="dt">k=</span><span class="dv">8</span>)
+<span class="kw">table</span>(<span class="dt">true=</span>tissues<span class="op">$</span>Tissue, <span class="dt">cluster=</span>hclusters)
+<span class="co">#&gt;              cluster</span>
+<span class="co">#&gt; true           1  2  3  4  5  6  7  8</span>
+<span class="co">#&gt;   cerebellum   0  0 31  0  0  2  5  0</span>
+<span class="co">#&gt;   colon        0  0  0 34  0  0  0  0</span>
+<span class="co">#&gt;   endometrium 15  0  0  0  0  0  0  0</span>
+<span class="co">#&gt;   hippocampus  0 12 19  0  0  0  0  0</span>
+<span class="co">#&gt;   kidney      37  0  0  0  0  2  0  0</span>
+<span class="co">#&gt;   liver        0  0  0  0 24  2  0  0</span>
+<span class="co">#&gt;   placenta     0  0  0  0  0  0  0  6</span></code></pre></div>
+<p>En ambos casos, vemos que, con algunas excepciones, cada tejido está representado de manera única por uno de los grupos. En algunos casos, el único tejido se extiende a través de dos tejidos, lo cual se debe a la selección de demasiados grupos. La selección de la cantidad de clusters generalmente es un paso desafiante en la práctica y un área activa de investigación.</p>
+</div>
+<div id="mapas-de-calor" class="section level2">
+<h2><span class="header-section-number">17.4</span> Mapas de calor</h2>
+<p>Los <em>mapas de calor</em> son diagramas muy útiles para visualizar las observaciones. Se agregan dendogramas en la parte superior y en el lado que se crea con la agrupación jerárquica.</p>
+<p>Utilizamos la función <code>heatmap.2</code> del paquete <code>gplots</code> y las primeras <em>cinco</em> componentes principales:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gmodels)
+pc.res &lt;-<span class="st"> </span>tissues <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&#39;X&#39;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">fast.prcomp</span>()</code></pre></div>
+<p>Vemos una gráfica de los eigenvalores calculado en componentes principales:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fviz_eig</span>(pc.res, <span class="dt">geom =</span> <span class="st">&#39;line&#39;</span>, <span class="dt">ncp =</span> <span class="dv">30</span>)</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Por lo tanto, consideramos que sólo sería necesario usar las primeras 8 componentes principales para explicar la mayoría de la variación en los datos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">PCA &lt;-<span class="st"> </span>pc.res<span class="op">$</span>x[,<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>]
+colnames_PCA &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&#39;PC&#39;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>)
+
+tissues_pca &lt;-<span class="st"> </span>PCA <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">as.tibble</span>()
+
+<span class="kw">colnames</span>(tissues_pca) &lt;-<span class="st"> </span>colnames_PCA</code></pre></div>
+<p>Hacemos el clustering jerárquico utilizando el método de enlace completo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pca.hc &lt;-<span class="st"> </span>tissues_pca <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>as.matrix <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">dist</span>(<span class="dt">method =</span> <span class="st">&quot;euclidean&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">hclust</span>(<span class="dt">method =</span> <span class="st">&quot;complete&quot;</span>)</code></pre></div>
+<p>Veamos el mapa de calor con dendrogramas. Primero hacemos el truncamiento del árbol:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Truncamiento del árbol</span>
+mycl &lt;-<span class="st"> </span><span class="kw">cutree</span>(pca.hc, <span class="dt">h =</span> <span class="kw">max</span>(pca.hc<span class="op">$</span>height)<span class="op">/</span><span class="fl">1.5</span>)</code></pre></div>
+<p>Obtenemos los colores de arcoiris :) 🌈</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">as.matrix</span>(tissues_pca)
+rc &lt;-<span class="st"> </span><span class="kw">rainbow</span>(<span class="kw">nrow</span>(x), <span class="dt">start=</span><span class="dv">0</span>, <span class="dt">end=</span>.<span class="dv">3</span>)
+cc &lt;-<span class="st"> </span><span class="kw">rainbow</span>(<span class="kw">ncol</span>(x), <span class="dt">start=</span><span class="dv">0</span>, <span class="dt">end=</span>.<span class="dv">3</span>)</code></pre></div>
+<p>Graficamos el mapa de calor:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gplots)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: &#39;gplots&#39;</span>
+<span class="co">#&gt; The following object is masked from &#39;package:stats&#39;:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     lowess</span>
+<span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span>))
+<span class="kw">heatmap.2</span>(<span class="dt">x =</span> x, 
+          <span class="dt">hclustfun =</span> hclust,
+          <span class="dt">keysize =</span> <span class="dv">3</span>,
+          <span class="dt">scale =</span> <span class="st">&#39;row&#39;</span>,
+          <span class="dt">col =</span> <span class="kw">cm.colors</span>(<span class="dv">255</span>),
+          <span class="dt">reorderfun =</span> <span class="cf">function</span>(d, w) <span class="kw">reorder</span>(d, w, <span class="dt">agglo.FUN =</span> mean),
+          <span class="dt">dendrogram =</span> <span class="st">&#39;both&#39;</span>, 
+          <span class="dt">density =</span> <span class="st">&quot;density&quot;</span>,
+          <span class="dt">RowSideColors =</span> rc, 
+          <span class="dt">ColSideColors =</span> cc,
+          <span class="dt">tracecol =</span> <span class="st">&quot;olivedrab1&quot;</span>
+  )</code></pre></div>
+<p><img src="17-clustering-2_files/figure-html/unnamed-chunk-29-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="metodo-de-ward" class="section level2">
+<h2><span class="header-section-number">17.5</span> Método de Ward</h2>
+<p>Ward <span class="citation">(Ward Jr <a href="#ref-ward1963hierarchical">1963</a>)</span> consideró el procedimiento de clustering jerárquico pero basándose mejor en minimizar la “pérdida de información” de unir dos grupos.</p>
+<p class="espacio">
+</p>
+
+<div class="information">
+En la <em>teoría de la información</em>, la <strong>entropía de Shannon</strong> es una medida de la incertidumbre asociada a una variable aleatoria. En otras palabras, cuantifica el contenido de información promedio que un receptor pierde cuando no conoce el valor de la variable aleatoria.
+</div>
+
+<p><br></p>
+<p>Ward calculó la <em>pérdida de información</em> como el incremento en un criterio de error de suma de cuadrados <span class="math inline">\(\mbox{ESS}\)</span>. Primero, dado un cluster <span class="math inline">\(k\)</span>, definimos <span class="math inline">\(\mbox{ESS}_k\)</span> como la suma de las desviaciones al cuadrado de cada observación en el cluster a su respectivo centroide (la media del clúster).</p>
+<p>Si se tienen <span class="math inline">\(K\)</span> clusters, definimos <span class="math inline">\(\mbox{ESS}\)</span> como</p>
+<p><span class="math display">\[
+\mbox{ESS} = \mbox{ESS}_1 + \mbox{ESS}_2 + \cdots + \mbox{ESS}_K.
+\]</span></p>
+<p>En cada paso del análisis, se considera la unión de cada posible par de clusters, y los dos clusters cuya unión resulte en un menor incremento del <span class="math inline">\(\mbox{ESS}\)</span> (mínima pérdida de información) se combinan.</p>
+<p>Inicialmente, cada cluster consiste de un solo elemento, y si hay <span class="math inline">\(N\)</span> elementos, <span class="math inline">\(\mbox{ESS}_k=0,\, k=1,2,\ldots,N\)</span>, por lo que <span class="math inline">\(\mbox{ESS}=0\)</span>. En el otro extremo, cuando todas las observaciones se combinan en un mismo cluster de <span class="math inline">\(N\)</span> elementos, el valor de <span class="math inline">\(\mbox{ESS}\)</span> está dado por</p>
+<p><span class="math display">\[
+\mbox{ESS} = \sum_{j=1}^N{(x_j - \bar{x})^T(x_j - \bar{x})}
+\]</span></p>
+<p>donde <span class="math inline">\(x_j\)</span> es el vector asociado a la <span class="math inline">\(j\)</span>-ésima observación y <span class="math inline">\(\bar{x}\)</span> es la media de <em>todas las observaciones</em>.</p>
+</div>
+<div id="tarea-15" class="section level2">
+<h2><span class="header-section-number">17.6</span> Tarea</h2>
+<p>Sustituye los espacios que digan <code>&lt;rellenar&gt;</code>.</p>
+<ol style="list-style-type: decimal">
+<li>Utiliza la función <code>fviz_nbclust</code> del paquete <code>factoextra</code> para producir una gráfica de</li>
+</ol>
+<p><span class="math display">\[W(C) = \sum_{k=1}^K W(C_k),\]</span></p>
+<p>es decir, las distancias <strong>dentro de cada grupo</strong> (within groups), que también llamamos la _suma total de cuadrados <em>intracluster</em>, para cada tamaño de cluster <span class="math inline">\(k=1,2,\ldots,12\)</span> utilizando el método de <em>k-medias</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(factoextra)
+
+coneval &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;datos/carencias_coneval.csv&quot;</span>) 
+
+coneval <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()
+<span class="co">#&gt; # A tibble: 6 x 9</span>
+<span class="co">#&gt;   cve_muni entidad     municipio      ic_rezedu_porcent… ic_asalud_porcen…</span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;                       &lt;dbl&gt;             &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 01001    Aguascalie… Aguascalientes               11.7             15.1 </span>
+<span class="co">#&gt; 2 01002    Aguascalie… Asientos                     19.8              5.98</span>
+<span class="co">#&gt; 3 01003    Aguascalie… Calvillo                     23.2              9.88</span>
+<span class="co">#&gt; 4 01004    Aguascalie… Cosío                        14.7              5.52</span>
+<span class="co">#&gt; 5 01005    Aguascalie… Jesús María                  17.3             15.2 </span>
+<span class="co">#&gt; 6 01006    Aguascalie… Pabellón de A…               15.3             10.5 </span>
+<span class="co">#&gt; # ... with 4 more variables: ic_segsoc_porcentaje &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   ic_cv_porcentaje &lt;dbl&gt;, ic_sbv_porcentaje &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   ic_ali_porcentaje &lt;dbl&gt;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coneval <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>cve_muni, <span class="op">-</span>entidad, <span class="op">-</span>municipio) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">fviz_nbclust</span>(kmeans, <span class="dt">method =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">k.max =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>)</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Determina cuál debe ser el número óptimo de clusters <span class="math inline">\(k\)</span> y explica por qué.</p></li>
+<li><p>Utiliza la función <code>fviz_cluster</code> para hacer una gráfica con las dos primeras componentes principales y con las observaciones representadas como <em>puntos</em> y colores conforme a cada grupo utilizando el método de clustering de <code>k-medias</code> con 100 puntos de inicio aleatorios.</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coneval_escalado &lt;-<span class="st"> </span>coneval <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>cve_muni, <span class="op">-</span>entidad, <span class="op">-</span>municipio) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate_all</span>(<span class="kw">funs</span>(scale))
+
+<span class="kw">set.seed</span>(<span class="dv">123456</span>)
+km.res &lt;-<span class="st"> </span><span class="kw">kmeans</span>(<span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">centers =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">nstart =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>)
+
+<span class="co"># Gráfica de componentes principales y clusters</span>
+<span class="kw">fviz_cluster</span>(km.res, 
+             <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>,
+             <span class="dt">ellipse.type =</span> <span class="st">&quot;euclid&quot;</span>,
+             <span class="dt">data =</span> coneval[, <span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)],
+             <span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>, 
+             <span class="dt">ggtheme =</span> <span class="kw">theme_minimal</span>())</code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Ahora realiza clustering jerárquico con los datos de carencias utilizando el método de Ward. Para esto usa la función <code>hcut</code> del paquete <code>factoextra</code>.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hc.cut &lt;-<span class="st"> </span><span class="kw">hcut</span>(coneval_escalado, 
+               <span class="dt">k =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, 
+               <span class="dt">hc_func =</span> <span class="st">&quot;hclust&quot;</span>,
+               <span class="dt">hc_method =</span> <span class="st">&quot;ward.D2&quot;</span>, 
+               <span class="dt">hc_metric =</span> <span class="st">&quot;euclidean&quot;</span>)
+
+<span class="kw">library</span>(rafalib)
+<span class="kw">myplclust</span>(hc.cut, <span class="dt">labels=</span><span class="dv">1</span><span class="op">:</span><span class="dv">2457</span>, <span class="dt">lab.col=</span><span class="kw">as.character</span>(hc.cut<span class="op">$</span>cluster), <span class="dt">cex=</span><span class="fl">0.5</span>)</code></pre></div>
+<p>Podríamos hacer también un dendrograma circular:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ape)
+colors =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#2E9FDF&quot;</span>, <span class="st">&quot;#FF00FF&quot;</span>, <span class="st">&quot;#00AFBB&quot;</span>, <span class="st">&quot;#D8BFD8&quot;</span>, <span class="st">&quot;#FC4E07&quot;</span>)
+clus4 =<span class="st"> </span><span class="kw">cutree</span>(hc.cut, <span class="dv">5</span>)
+<span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span>))
+<span class="kw">plot</span>(<span class="kw">as.phylo</span>(hc.cut), <span class="dt">type =</span> <span class="st">&quot;fan&quot;</span>, <span class="dt">tip.color =</span> colors[clus4],
+     <span class="dt">label.offset =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)</code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Haz una gráfica de componentes utilizando clustering jerárquico con el método de Ward. ¿Cómo se compara con la clasificación obtenida con el método de k-medias?</p></li>
+<li><p>Haz un mapa a nivel municipio utilizando la clasificación de clustering jerárquico con el método de Ward y <span class="math inline">\(k = 5\)</span> clusters.</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Clustering jerárquico </span>
+coneval<span class="op">$</span>cluster_hc &lt;-<span class="st"> </span>coneval_escalado <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">hcut</span>(<span class="dt">k =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">hc_func =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">hc_method =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">hc_metric =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>.<span class="op">$</span>cluster
+
+coneval &lt;-<span class="st"> </span>coneval <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">cluster_hc =</span> <span class="kw">as.factor</span>(cluster_hc))
+
+<span class="kw">library</span>(rgdal)
+<span class="kw">library</span>(rgeos)
+<span class="kw">library</span>(ggmap)
+
+<span class="co"># Leer geometrías del mapa de municipios</span>
+mun_shp &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="st">&quot;datos/municipios_ligero/&quot;</span>, <span class="dt">layer =</span> <span class="st">&quot;municipios_ligero&quot;</span>)
+mun_df &lt;-<span class="st"> </span><span class="kw">fortify</span>(mun_shp, <span class="dt">region =</span> <span class="st">&#39;id&#39;</span>)
+dat_shp &lt;-<span class="st"> </span>mun_shp<span class="op">@</span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">cve_muni =</span> <span class="kw">paste0</span>(CVE_ENT,CVE_MUN)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(id, cve_muni)
+
+<span class="co"># Leer geometrías del mapa de municipios</span>
+edo_shp &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="st">&quot;datos/estados_ligero&quot;</span>, <span class="dt">layer =</span> <span class="st">&quot;estados_ligero&quot;</span>)
+edo_shp<span class="op">@</span>data<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span><span class="op">:</span><span class="dv">32</span>)
+edo_shp<span class="op">@</span>data<span class="op">$</span>CVE_ENT  &lt;-<span class="st"> </span>edo_shp<span class="op">@</span>data<span class="op">$</span>id
+edo_df &lt;-<span class="st"> </span><span class="kw">fortify</span>(edo_shp, <span class="dt">region =</span> <span class="st">&quot;CVE_ENT&quot;</span>)
+
+<span class="co"># Añadimos las variables de interés a la base de datos mun_df</span>
+mun_ind &lt;-<span class="st"> </span>mun_df <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">left_join</span>(<span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">by =</span> <span class="st">&#39;id&#39;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">left_join</span>(coneval, <span class="dt">by =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>)
+
+paleta &lt;-<span class="st"> </span>RColorBrewer<span class="op">::</span><span class="kw">brewer.pal</span>(<span class="dv">5</span>, <span class="st">&quot;Blues&quot;</span>)
+<span class="kw">ggplot</span>(mun_ind) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> mun_ind, <span class="kw">aes</span>(long, lat, <span class="dt">group =</span> group, <span class="dt">fill =</span> cluster_hc)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> edo_df, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group),
+    <span class="dt">fill =</span> <span class="ot">NA</span>, <span class="dt">color =</span> <span class="st">&quot;darkgray&quot;</span>, <span class="dt">size =</span> <span class="fl">0.25</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_nothing</span>(<span class="dt">legend =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="co">#fondo blanco</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#paleta </span>
+<span class="st">  </span><span class="kw">coord_map</span>()</code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li>Elige una entidad del país que empiece con la primera letra de alguno de tus nombres o apellidos y haz un mapa de la primera componente principal. Se le conoce como <em>Índice de carencias</em>. Nota que la escala de colores es <em>continua</em>.</li>
+</ol>
+<p><img src="figuras/morelos.png" width="70%" style="display: block; margin: auto;" /></p>
+<ol start="8" style="list-style-type: decimal">
+<li>Haz una gráfica que compare las medias de las carencias por k-medias y clustering jerárquico incluyendo intervalos de cuantiles del <span class="math inline">\(2.5\%\)</span> y del <span class="math inline">\(97.5\%\)</span>.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Clustering por k-medias</span>
+coneval<span class="op">$</span>cluster_km &lt;-<span class="st"> </span>coneval_escalado <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">kmeans</span>(<span class="dt">centers =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">nstart =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>.<span class="op">$</span>cluster
+
+coneval &lt;-<span class="st"> </span>coneval <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">cluster_km =</span> <span class="kw">as.factor</span>(cluster_km))
+
+<span class="co"># Pasamos a forma larga</span>
+coneval_larga &lt;-<span class="st"> </span>coneval <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> variable, <span class="dt">value =</span> valor, <span class="kw">matches</span>(<span class="st">&#39;porcentaje&#39;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> metodo, <span class="dt">value =</span> cluster, <span class="kw">matches</span>(<span class="st">&#39;cluster&#39;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(<span class="op">&lt;</span>rellenar<span class="op">&gt;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">media =</span> <span class="kw">mean</span>(<span class="op">&lt;</span>rellenar<span class="op">&gt;</span>), 
+            <span class="dt">q1 =</span> <span class="kw">quantile</span>(<span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="fl">0.025</span>), 
+            <span class="dt">q3 =</span> <span class="kw">quantile</span>(<span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="fl">0.975</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">variable =</span> <span class="kw">str_replace</span>(variable, <span class="dt">pattern =</span> <span class="st">&quot;_porcentaje&quot;</span>, <span class="st">&quot;&quot;</span>),
+         <span class="dt">variable =</span> <span class="kw">str_replace</span>(variable, <span class="dt">pattern =</span> <span class="st">&quot;ic_&quot;</span>, <span class="st">&quot;&quot;</span>),
+         <span class="dt">metodo =</span> <span class="kw">str_replace</span>(metodo, <span class="dt">pattern =</span> <span class="st">&quot;cluster_&quot;</span>, <span class="st">&quot;&quot;</span>))
+
+<span class="co"># Graficamos</span>
+<span class="kw">ggplot</span>(coneval_larga, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">xend =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">color =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">y =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>, <span class="dt">yend =</span> <span class="op">&lt;</span>rellenar<span class="op">&gt;</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(. <span class="op">~</span><span class="st"> </span><span class="er">&lt;</span>rellenar<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
+<p><img src="figuras/clustering.png" width="70%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-ward1963hierarchical">
+<p>Ward Jr, Joe H. 1963. “Hierarchical Grouping to Optimize an Objective Function.” <em>Journal of the American Statistical Association</em> 58 (301). Taylor &amp; Francis: 236–44.</p>
 </div>
 </div>
             </section>

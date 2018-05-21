@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-05-15">
+<meta name="date" content="2018-05-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -388,9 +388,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#grupos-en-dimension-alta"><i class="fa fa-check"></i>Grupos en dimensión alta</a></li>
 <li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#dificultades-en-la-seleccion-de-metrica"><i class="fa fa-check"></i>Dificultades en la selección de métrica</a></li>
 </ul></li>
+<li class="chapter" data-level="16.6" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#tarea-14"><i class="fa fa-check"></i><b>16.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html"><i class="fa fa-check"></i><b>17</b> Conglomerados (clustering) 2</a><ul>
 <li class="chapter" data-level="17.1" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#clustering-jerarquico"><i class="fa fa-check"></i><b>17.1</b> Clustering jerárquico</a></li>
+<li class="chapter" data-level="17.2" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#metodos-de-enlace-cluster-linkage"><i class="fa fa-check"></i><b>17.2</b> Métodos de enlace (Cluster Linkage)</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-simple"><i class="fa fa-check"></i><b>17.2.1</b> Enlace simple</a></li>
+<li class="chapter" data-level="17.2.2" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-completo"><i class="fa fa-check"></i><b>17.2.2</b> Enlace completo</a></li>
+<li class="chapter" data-level="17.2.3" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-promedio"><i class="fa fa-check"></i><b>17.2.3</b> Enlace promedio</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#ejemplo-genes-de-tejidos"><i class="fa fa-check"></i><b>17.3</b> Ejemplo: genes de tejidos</a></li>
+<li class="chapter" data-level="17.4" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#mapas-de-calor"><i class="fa fa-check"></i><b>17.4</b> Mapas de calor</a></li>
+<li class="chapter" data-level="17.5" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#metodo-de-ward"><i class="fa fa-check"></i><b>17.5</b> Método de Ward</a></li>
+<li class="chapter" data-level="17.6" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#tarea-15"><i class="fa fa-check"></i><b>17.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -1259,7 +1269,7 @@ edo_df &lt;-<span class="st"> </span><span class="kw">fortify</span>(edo_shp, <s
 <span class="co"># Añadir variables al mapa</span>
 df_<span class="dv">2010</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(anio <span class="op">==</span><span class="st"> </span><span class="dv">2010</span>)
 
-<span class="co"># Añadimos las variables de interés a la base de datos mun_df</span>
+<span class="co"># Añadimos las variables de interés a la base de datos edo_df</span>
 edo_ind &lt;-<span class="st"> </span>edo_df <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CVE_ENT =</span> <span class="kw">as.integer</span>(id)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">left_join</span>(df_<span class="dv">2010</span>, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;CVE_ENT&#39;</span>=<span class="st">&#39;cve_ent&#39;</span>))

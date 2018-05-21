@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-05-15">
+<meta name="date" content="2018-05-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -388,9 +388,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#grupos-en-dimension-alta"><i class="fa fa-check"></i>Grupos en dimensión alta</a></li>
 <li class="chapter" data-level="" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#dificultades-en-la-seleccion-de-metrica"><i class="fa fa-check"></i>Dificultades en la selección de métrica</a></li>
 </ul></li>
+<li class="chapter" data-level="16.6" data-path="conglomerados-clustering-1.html"><a href="conglomerados-clustering-1.html#tarea-14"><i class="fa fa-check"></i><b>16.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html"><i class="fa fa-check"></i><b>17</b> Conglomerados (clustering) 2</a><ul>
 <li class="chapter" data-level="17.1" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#clustering-jerarquico"><i class="fa fa-check"></i><b>17.1</b> Clustering jerárquico</a></li>
+<li class="chapter" data-level="17.2" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#metodos-de-enlace-cluster-linkage"><i class="fa fa-check"></i><b>17.2</b> Métodos de enlace (Cluster Linkage)</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-simple"><i class="fa fa-check"></i><b>17.2.1</b> Enlace simple</a></li>
+<li class="chapter" data-level="17.2.2" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-completo"><i class="fa fa-check"></i><b>17.2.2</b> Enlace completo</a></li>
+<li class="chapter" data-level="17.2.3" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#enlace-promedio"><i class="fa fa-check"></i><b>17.2.3</b> Enlace promedio</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#ejemplo-genes-de-tejidos"><i class="fa fa-check"></i><b>17.3</b> Ejemplo: genes de tejidos</a></li>
+<li class="chapter" data-level="17.4" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#mapas-de-calor"><i class="fa fa-check"></i><b>17.4</b> Mapas de calor</a></li>
+<li class="chapter" data-level="17.5" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#metodo-de-ward"><i class="fa fa-check"></i><b>17.5</b> Método de Ward</a></li>
+<li class="chapter" data-level="17.6" data-path="conglomerados-clustering-2.html"><a href="conglomerados-clustering-2.html#tarea-15"><i class="fa fa-check"></i><b>17.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -2981,7 +2991,7 @@ song <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 <td align="left">Kernkraft 400</td>
 <td align="right">2000</td>
 <td align="left">3:30</td>
-<td align="right">316</td>
+<td align="right">317</td>
 </tr>
 <tr class="even">
 <td align="left">Brooks, Garth</td>
@@ -2995,42 +3005,42 @@ song <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 <td align="left">Get Up</td>
 <td align="right">2000</td>
 <td align="left">4:02</td>
-<td align="right">167</td>
+<td align="right">164</td>
 </tr>
 <tr class="even">
 <td align="left">Sisqo</td>
 <td align="left">Thong Song</td>
 <td align="right">2000</td>
 <td align="left">4:05</td>
-<td align="right">265</td>
+<td align="right">266</td>
 </tr>
 <tr class="odd">
 <td align="left">Next</td>
 <td align="left">Wifey</td>
 <td align="right">2000</td>
 <td align="left">4:03</td>
-<td align="right">224</td>
+<td align="right">225</td>
 </tr>
 <tr class="even">
 <td align="left">Diffie, Joe</td>
 <td align="left">The Quittin’ Kind</td>
 <td align="right">2000</td>
 <td align="left">3:23</td>
-<td align="right">79</td>
+<td align="right">76</td>
 </tr>
 <tr class="odd">
 <td align="left">Lil Wayne</td>
 <td align="left">Tha Block Is Hot</td>
 <td align="right">2000</td>
 <td align="left">4:13</td>
-<td align="right">172</td>
+<td align="right">171</td>
 </tr>
 <tr class="even">
 <td align="left">SheDaisy</td>
 <td align="left">This Woman Needs</td>
 <td align="right">2000</td>
 <td align="left">3:20</td>
-<td align="right">258</td>
+<td align="right">259</td>
 </tr>
 <tr class="odd">
 <td align="left">Aaliyah</td>
@@ -3066,15 +3076,15 @@ rank <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 <tbody>
 <tr class="odd">
 <td align="right">253</td>
-<td align="left">2000-07-15</td>
-<td align="right">23</td>
-<td align="right">26</td>
+<td align="left">2000-02-19</td>
+<td align="right">4</td>
+<td align="right">44</td>
 </tr>
 <tr class="even">
 <td align="right">255</td>
-<td align="left">2000-03-11</td>
-<td align="right">21</td>
-<td align="right">4</td>
+<td align="left">2000-04-15</td>
+<td align="right">2</td>
+<td align="right">58</td>
 </tr>
 <tr class="odd">
 <td align="right">126</td>
@@ -3090,15 +3100,15 @@ rank <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 </tr>
 <tr class="odd">
 <td align="right">131</td>
-<td align="left">1999-10-30</td>
+<td align="left">1999-12-25</td>
 <td align="right">4</td>
-<td align="right">43</td>
+<td align="right">42</td>
 </tr>
 <tr class="even">
-<td align="right">214</td>
+<td align="right">213</td>
 <td align="left">2000-10-28</td>
-<td align="right">8</td>
-<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">98</td>
 </tr>
 <tr class="odd">
 <td align="right">156</td>
@@ -3107,10 +3117,10 @@ rank <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 <td align="right">36</td>
 </tr>
 <tr class="even">
-<td align="right">211</td>
-<td align="left">2000-12-02</td>
-<td align="right">13</td>
-<td align="right">45</td>
+<td align="right">209</td>
+<td align="left">2000-07-15</td>
+<td align="right">10</td>
+<td align="right">84</td>
 </tr>
 <tr class="odd">
 <td align="right">157</td>
@@ -3119,10 +3129,10 @@ rank <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sam
 <td align="right">75</td>
 </tr>
 <tr class="even">
-<td align="right">264</td>
-<td align="left">2000-07-01</td>
-<td align="right">2</td>
-<td align="right">66</td>
+<td align="right">262</td>
+<td align="left">2000-07-29</td>
+<td align="right">5</td>
+<td align="right">25</td>
 </tr>
 </tbody>
 </table>

@@ -694,14 +694,14 @@ song %>% sample_n(10) %>% knitr::kable()
 
 artist           track                   year  time    song_id
 ---------------  ---------------------  -----  -----  --------
-Zombie Nation    Kernkraft 400           2000  3:30        316
+Zombie Nation    Kernkraft 400           2000  3:30        317
 Brooks, Garth    Do What You Gotta Do    2000  2:56         48
-Larrieux, Amel   Get Up                  2000  4:02        167
-Sisqo            Thong Song              2000  4:05        265
-Next             Wifey                   2000  4:03        224
-Diffie, Joe      The Quittin' Kind       2000  3:23         79
-Lil Wayne        Tha Block Is Hot        2000  4:13        172
-SheDaisy         This Woman Needs        2000  3:20        258
+Larrieux, Amel   Get Up                  2000  4:02        164
+Sisqo            Thong Song              2000  4:05        266
+Next             Wifey                   2000  4:03        225
+Diffie, Joe      The Quittin' Kind       2000  3:23         76
+Lil Wayne        Tha Block Is Hot        2000  4:13        171
+SheDaisy         This Woman Needs        2000  3:20        259
 Aaliyah          Try Again               2000  4:03          9
 Jay-Z            Big Pimpin'             2000  3:55        145
 
@@ -719,16 +719,16 @@ rank %>% sample_n(10) %>% knitr::kable()
 
  song_id  date          week   rank
 --------  -----------  -----  -----
-     253  2000-07-15      23     26
-     255  2000-03-11      21      4
+     253  2000-02-19       4     44
+     255  2000-04-15       2     58
      126  2000-04-08       8     77
       65  2000-09-23       1     97
-     131  1999-10-30       4     43
-     214  2000-10-28       8     10
+     131  1999-12-25       4     42
+     213  2000-10-28       1     98
      156  2000-09-16       7     36
-     211  2000-12-02      13     45
+     209  2000-07-15      10     84
      157  2000-08-19       3     75
-     264  2000-07-01       2     66
+     262  2000-07-29       5     25
 
 <br>
 

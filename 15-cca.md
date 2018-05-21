@@ -642,12 +642,13 @@ library(curl)
 
 url_pres <- "ftp://ftp.cdc.noaa.gov/Datasets.other/hadslp/slp.mnmean.nc"
 if(!file.exists("datos/slp.mnmean.nc")){
-  curl_fetch_disk(url_pres, path = "datos/slp.mnmean.nc", handle = new_handle(CONNECTTIMEOUT = 60))
+  curl_fetch_disk(url_pres, path = "datos/slp.mnmean.nc", 
+                  handle = new_handle(CONNECTTIMEOUT = 240))
 }
 
 url_temp <- "http://www.esrl.noaa.gov/psd/thredds/fileServer/Datasets/kaplan_sst/sst.mon.anom.nc"
 if(!file.exists("datos/sst.mon.anom.nc")){
-  curl_fetch_disk(url = url_temp, path = "datos/sst.mon.anom.nc", handle = new_handle(CONNECTTIMEOUT = 60))
+  curl_fetch_disk(url = url_temp, path = "datos/sst.mon.anom.nc", handle = new_handle(CONNECTTIMEOUT = 240))
 }
 ```
 
@@ -971,7 +972,6 @@ for(i in 1:mindim){
 
 
 
-
 Repetimos los mapas de las variables canónicas (primer par):
 
 
@@ -1064,6 +1064,7 @@ Como parte de un estudio más amplio de los efectos de la estructura organizacio
 ```r
 library(tidyverse)
 worksat <- read_csv("datos/worksat.csv")
+attr(worksat, "spec") <- NULL
 worksat %>% str() 
 #> Classes 'tbl_df', 'tbl' and 'data.frame':	784 obs. of  13 variables:
 #>  $ ID                          : int  1 2 3 4 5 6 7 8 9 10 ...
@@ -1079,37 +1080,6 @@ worksat %>% str()
 #>  $ TaskVariety(X3)             : num  -1.33 0.626 0.604 0.833 0.229 ...
 #>  $ TaskIdentity(X4)            : num  -2.706 0.2 -1.308 1.335 0.177 ...
 #>  $ Autonomy(X5)                : num  -1.815 0.673 -0.994 0.138 -0.508 ...
-#>  - attr(*, "spec")=List of 2
-#>   ..$ cols   :List of 13
-#>   .. ..$ ID                          : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-#>   .. ..$ SupervisorSatisfaction(Y1)  : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   .. ..$ CareerFutureSatisfaction(Y2): list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   .. ..$ FinancialSatisfaction(Y3)   : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   .. ..$ WorkloadSatisfaction(Y4)    : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   .. ..$ CompanyIdentification(Y5)   : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   .. ..$ WorkTypeSatisfaction(Y6)    : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   .. ..$ GeneralSatisfaction(Y7)     : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   .. ..$ FeedbackQuality(X1)         : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   .. ..$ TaskSignificance(X2)        : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   .. ..$ TaskVariety(X3)             : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   .. ..$ TaskIdentity(X4)            : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   .. ..$ Autonomy(X5)                : list()
-#>   .. .. ..- attr(*, "class")= chr  "collector_double" "collector"
-#>   ..$ default: list()
-#>   .. ..- attr(*, "class")= chr  "collector_guess" "collector"
-#>   ..- attr(*, "class")= chr "col_spec"
 ```
 
 1. Calcula la matriz de correlaciones muestrales basada en las 784 observaciones.
