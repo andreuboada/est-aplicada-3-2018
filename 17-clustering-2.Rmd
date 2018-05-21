@@ -315,14 +315,9 @@ En ambos casos, vemos que, con algunas excepciones, cada tejido está representa
 
 Los _mapas de calor_ son diagramas muy útiles para visualizar las observaciones. Se agregan dendogramas en la parte superior y en el lado que se crea con la agrupación jerárquica.
 
-Utilizamos la función `heatmap.2` del paquete `gplots` y las primeras _cinco_ componentes principales de las 22
+Utilizamos la función `heatmap.2` del paquete `gplots` y las primeras _cinco_ componentes principales:
 
 ```{r, message=FALSE}
-library(gplots)
-y <- matrix(rnorm(500), 100, 5, dimnames=list(paste("g", 1:100, sep=""), paste("t", 1:5, sep=""))) 
-heatmap.2(y)
-
-
 library(gmodels)
 pc.res <- tissues %>% 
   select(starts_with('X')) %>% 
@@ -374,6 +369,7 @@ cc <- rainbow(ncol(x), start=0, end=.3)
 Graficamos el mapa de calor:
 
 ```{r}
+library(gplots)
 par(mar=c(0.1,0.1,0.1,0.1))
 heatmap.2(x = x, 
           hclustfun = hclust,
