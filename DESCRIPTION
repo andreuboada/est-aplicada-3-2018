@@ -2,5 +2,5 @@ Package: placeholder
 Type: Book
 Title: Does not matter.
 Version: 0.0.1
-Imports: bookdown, ggplot2, dplyr, tidyr, readr, purrr, knitr, MASS, tabplot, ROCR, imager, glmnet, tidytext, tidyverse, methods, irlba, ggrepel, stargazer, Hmisc, maptools, stringr, forcats, Lahman, countrycode, gapminder, kableExtra, lattice, reshape2, proportion, questionr, oddsratio, rJava, Deducer, crayon, arm, ggmap, tabplot, GGally, matlib, klaR, RColorBrewer, bmp, pixmap, jpeg, igraph, bnlearn, psych, gridExtra, stratification, CCA, maps, mapproj, ncdf4, CCP, rafalib, gplots
+Imports: bookdown, ggplot2, dplyr, tidyr, readr, purrr, knitr, MASS, tabplot, ROCR, imager, glmnet, tidytext, tidyverse, methods, irlba, ggrepel, stargazer, Hmisc, maptools, stringr, forcats, Lahman, countrycode, gapminder, kableExtra, lattice, reshape2, proportion, questionr, oddsratio, rJava, Deducer, crayon, arm, ggmap, tabplot, GGally, matlib, klaR, RColorBrewer, bmp, pixmap, jpeg, igraph, bnlearn, psych, gridExtra, stratification, CCA, maps, mapproj, ncdf4, CCP, rafalib, gplots, factoextra, ape
 Remotes: rstudio/bookdown

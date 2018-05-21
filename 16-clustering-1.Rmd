@@ -854,10 +854,7 @@ Los siguientes datos se obtuvieron de las diversas encuestas realizadas por INEG
 
 ```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 carencias <- read_csv("datos/carencias_coneval.csv")
-carencias %>% 
-  select(entidad,municipio,ic_rezedu_porcentaje,ic_asalud_porcentaje,
-         ic_segsoc_porcentaje,ic_cv_porcentaje,ic_sbv_porcentaje,ic_ali_porcentaje) %>% 
-  head()
+carencias %>% head()
 ```
 
 1. Utiliza k-medias para obtener 5 grupos de municipios según sus carencias sociales. 
