@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estadística Aplicada III</title>
   <meta name="description" content="Notas y material para el curso de Estadística Aplicada III, 2018 (ITAM)">
-  <meta name="generator" content="bookdown 0.7.10 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7.11 and GitBook 2.6.7">
 
   <meta property="og:title" content="Estadística Aplicada III" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Andreu Boada de Atela">
 
 
-<meta name="date" content="2018-05-21">
+<meta name="date" content="2018-05-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,6 +47,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -561,7 +562,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&gt;         locale = locale, skip = skip, comment = comment, n_max = n_max, </span>
 <span class="co">#&gt;         guess_max = guess_max, progress = progress)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x6279820&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x62c9840&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:readr&gt;</span></code></pre></div>
 <p>Como el paquete <code>readr</code> está cargado en la sesión podemos llamar a la función <code>read_csv</code> que se usará más adelante.</p>
 <p><strong>Importante</strong>: Los paquetes se instalan una vez únicamente después de descargar una nueva versión de R. Las librerías se cargan en cada sesión de R nueva.</p>
@@ -2114,7 +2115,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB <span class="op">+</span><span class="st"> </span>teamID, Batting))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;    2.94    0.08    3.02</span></code></pre></div>
+<span class="co">#&gt;   3.300   0.068   3.365</span></code></pre></div>
 <ul>
 <li><p><strong>user time</strong>: Tiempo usado por el CPU(s) para evaluar esta expresión, tiempo que experimenta la computadora.</p></li>
 <li><p><strong>elapsed time</strong>: tiempo en el reloj, tiempo que experimenta la persona.</p></li>
@@ -2122,7 +2123,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
 <p>El tiempo de usuario (user) usualmente es menor que el tiempo transcurrido:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">readLines</span>(<span class="st">&quot;http://www.jhsph.edu&quot;</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.016   0.004   0.635</span></code></pre></div>
+<span class="co">#&gt;   0.024   0.004   0.634</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(parallel)
 <span class="kw">system.time</span>(<span class="kw">mclapply</span>(<span class="dv">2000</span><span class="op">:</span><span class="dv">2006</span>, 
   <span class="cf">function</span>(x){
@@ -2130,7 +2131,7 @@ Batting <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">
     <span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>AB, sub)
 }, <span class="dt">mc.cores =</span> <span class="dv">5</span>))
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.108   0.052   0.088</span></code></pre></div>
+<span class="co">#&gt;   0.048   0.064   0.088</span></code></pre></div>
 <p>Comparemos la velocidad de dplyr con funciones que se encuentran en R estándar y plyr.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr</span>
 dplyr_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
@@ -2170,16 +2171,16 @@ est_r_st &lt;-<span class="st"> </span><span class="kw">system.time</span>({
 
 dplyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.132   0.000   0.132</span></code></pre></div>
+<span class="co">#&gt;   0.136   0.000   0.137</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plyr_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   6.944   0.016   6.967</span></code></pre></div>
+<span class="co">#&gt;   6.712   0.016   6.731</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_l_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;  63.312   0.016  63.364</span></code></pre></div>
+<span class="co">#&gt;  50.360   0.628  50.988</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">est_r_st
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.556   0.024   0.582</span></code></pre></div>
+<span class="co">#&gt;   0.568   0.012   0.576</span></code></pre></div>
 <p>La función <code>system.time</code> supone que sabes donde buscar, es decir, que expresiones debes evaluar, una función que puede ser más útil cuando uno desconoce cuál es la función que alenta un programa es <code>Rprof()</code>.</p>
 <p>Rprof es un perfilador de muestreo que registra cambios en la pila de funciones, funciona tomando muestras a intervalos regulares y tabula cuánto tiempo se lleva en cada función.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Rprof</span>(<span class="st">&quot;out/lm_rprof.out&quot;</span>, <span class="dt">interval =</span> <span class="fl">0.015</span>, <span class="dt">line.profiling =</span> <span class="ot">TRUE</span>)
@@ -2316,7 +2317,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.324   0.008   0.332</span></code></pre></div>
+<span class="co">#&gt;   0.248   0.004   0.248</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aciertos &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">FALSE</span>, <span class="fl">1e+06</span>) 
 <span class="kw">system.time</span>(
   <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="fl">1e+05</span>) {
@@ -2324,7 +2325,7 @@ Batting <span class="op">%&gt;%</span>
         aciertos[i] &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 })
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.276   0.000   0.276</span></code></pre></div>
+<span class="co">#&gt;   0.256   0.000   0.258</span></code></pre></div>
 <p>Usando <code>rbind</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind &lt;-<span class="st"> </span><span class="cf">function</span>(){
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">character</span>(<span class="dv">0</span>), <span class="dt">b =</span> <span class="kw">numeric</span>(<span class="dv">0</span>)) 
@@ -2335,7 +2336,7 @@ mi.df
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.800   0.000   0.799</span></code></pre></div>
+<span class="co">#&gt;   0.692   0.000   0.695</span></code></pre></div>
 <p>Si definimos el tamaño del data.frame obtenemos mejoras:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crecer_rbind_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="cf">function</span>() {
 mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>), <span class="dt">b =</span> <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">1000</span>)) 
@@ -2347,7 +2348,7 @@ mi.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span cla
 }
 <span class="kw">system.time</span>(mi.df.<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">crecer_rbind_2</span>())
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.080   0.000   0.081</span></code></pre></div>
+<span class="co">#&gt;   0.080   0.000   0.079</span></code></pre></div>
 <p>Finalmente, veamos un enfoque totalmente vectorizado</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">porcolumna_df &lt;-<span class="st"> </span><span class="cf">function</span>(){
   a &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>) 
