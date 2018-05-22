@@ -1,0 +1,474 @@
+---
+title: "Proyecto final de Estadística Aplicada 3"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+## Instrucciones
+
+1. Entregar por correo electrónico a más tardar el 29 de mayo antes de medianoche.
+
+2. Habrá un punto extra para quienes lo entreguen antes de la medianoche del 28 de mayo.
+
+2. Se trabajará en equipos de dos personas. 
+
+3. Se entrega un reporte por equipo.
+
+4. El reporte debe explicar claramente las respuestas e incluir el código. 
+
+5. Está **prohibido** discutir con otros equipos.
+
+6. Cada ejercicio tiene un peso de 2 puntos.
+
+## Ejercicios
+
+### Ejercicio 1 (Tarea 14)
+
+El grado de marginación fue definido por [CONAPO en 1990](https://www.gob.mx/cms/uploads/attachment/file/159050/07_Anexo_C.pdf):
+
+* tiene como misión incluir a la población en los programas de desarrollo económico y social que se formulen dentro del sector gubernamental y vincular sus objetivos a las necesidades que plantean los fenómenos demográficos;
+
+* permite diferenciar municipios según el impacto global de carencias que padece la población como resultado de la falta de acceso a la educación, la residencia en viviendas inadecuadas, la percepción de ingresos monetarios insuficientes y las relacionadas con la residencia en localidades pequeñas;
+
+* contribuye a identificar las disparidades territoriales que existen entre los municipios;
+
+* ha sido utilizado como criterio de las reglas de operación de diversos programas, lo que es un indicativo de su aceptación y uso cada vez más generalizado; y
+
+* define 4 dimensiones de la marginación: educación, vivienda, distribución de la población, ingresos monetarios.
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+base_estados <- read_csv("datos/base_estados.csv")
+base_estados %>% head(10) %>% select(NOM_ENT, ANALF:PO2SM, ANIO) %>% knitr::kable()
+```
+
+a. (0.2 puntos) Aplica el método de componentes principales (utiliza la función `princomp` como en los ejemplos de arriba.) Las variables para obtener las componentes son: `ANALF`, `SPRIM`, `OVSEE`, `OVSDE`, `OVSAE`, `VHAC`, `OVPT`, `PL<5000`, `PO2SM`. Haz una gráfica para 1990 de las componentes principales donde el eje principal esté en el eje horizontal y el eje secundario en el eje vertical. Sustituye los espacios que digan `<rellenar>`.
+
+```{r, eval=FALSE}
+datos <- base_estados %>% 
+  select(CVE_ENT, NOM_ENT, ANIO, ANALF, SPRIM, OVSDE, OVSEE, 
+         OVSAE, VHAC, OVPT, `PL<5000`, PO2SM) %>%
+  mutate_at(.funs = ~as.numeric(.), vars(-NOM_ENT)) %>%
+  group_by(<rellenar>) %>%
+  mutate_at(.funs = funs((. - mean(.))/sd(.)), vars(-<rellenar>, -<rellenar>)) %>%
+  ungroup() %>% as_tibble()
+  
+indice <- datos %>% filter(<rellenar> == 1990)
+
+indice_pca <- princomp(x = <rellenar>, scores = <rellenar>, cor = <rellenar>)
+indice$comp1 <- indice_pca$scores[,1]
+indice$comp2 <- indice_pca$scores[,2]
+
+ggplot(data = indice, aes(x=<rellenar>, y=<rellenar>)) +
+  geom_point()
+```
+
+b. (0.4 puntos) Haz una gráfica de la medida de distorsión $J$ asociada a la elección del número de 
+componentes $M$ (dada por la suma de los eigenvalores $M+1$ a $D$).
+
+c. (0.8 puntos) Utiliza la siguiente función para clasificar los componentes principales con el _método de Dalenius_. La tabla resultado debe tener las siguientes columnas: `anio` ,`cve_ent`, `nom_ent`, `eje1`, `eje2`, `dal`, y `GM`. No olvides que se debe hacer componentes principales para _cada año_.
+
+```{r}
+library(stratification)
+clasif_dalenius = function(x, n = NULL, Ls = 5, add = 5, labels = NULL){
+  
+  x_1 = x + add
+  
+  if(is.null(n)){
+    n <- length(x)
+  }
+        
+  dalenius = strata.cumrootf(x_1, n = n, Ls = Ls, model = 'none')
+  boundaries = dalenius$bh - add
+  cluster = cut(x, c(-Inf, boundaries, Inf), labels = labels)
+  
+  return(cluster)
+}
+```
+
+
+Completa el código sustituyendo donde diga `<rellenar>`:
+
+```{r eval=FALSE, message=FALSE, warning=FALSE}
+options(warn=-1)
+anios <- unique(datos$ANIO)
+
+calcula_gm <- function(anio){
+  indice <- datos %>% filter(ANIO == anio)
+  cve_ent <- indice$CVE_ENT
+  nom_ent <- indice$NOM_ENT
+  x = <rellenar>
+  indice_pca <- princomp(x, scores = <rellenar>, cor = <rellenar>)
+  eje1 <- indice_pca$scores[,1]
+  eje2 <- indice_pca$scores[,2]
+  dal <- clasif_dalenius(x = <rellenar>, add = <rellenar>, n = <rellenar>)
+  GM <- ordered(dal, labels = c('Muy Baja', 'Baja', 'Media', 'Alta', 'Muy Alta'))
+  
+  tibble(anio, cve_ent, nom_ent, eje1, eje2, dal, GM)
+}
+
+df <- map_df(.x = anios, .f = calcula_gm)
+```
+
+
+d. (0.3 puntos) Haz una gráfica de los dos componentes como la que se muestra abajo.
+
+```{r, echo = F, fig.width=5, fig.align='center'}
+knitr::include_graphics("figuras/dalenius.png")
+```
+
+Utiliza el siguiente código para producir la gráfica. Sustituye los espacios que digan `<rellenar>`:
+
+```{r, eval=FALSE}
+library(maptools)
+etiquetar <- function(df, x, y, etiq = "etiq", size = 3.5){
+  df <- as.data.frame(df)
+  plot(df[, x], df[, y])
+  orden <- pointLabel(df[, x], df[, y], df[, etiq], doPlot = TRUE,
+    cex = 0.5 * size, xpd = TRUE)
+  dev.off()
+  df$a <- orden$x
+  df$b <- orden$y
+  df
+}
+```
+
+```{r, eval=FALSE}
+library(RColorBrewer)
+set.seed(110265)
+df_etiq <- etiquetar(df, "eje1", "eje2", etiq = "nom_ent", size = 1.5)
+
+df_etiq %>%
+  filter(<rellenar>) %>%
+  ggplot(<rellenar>) +
+    geom_vline(xintercept = 0, linetype = 'dashed', color = 'gray60') +
+    geom_hline(yintercept = 0, linetype = 'dashed', color = 'gray60') +
+    geom_point(aes(<rellenar>), size = 3, show.legend = T) +
+    labs(title = 'Dalenius',
+         subtitle = 1990,
+         x = 'Eje Principal',
+         y = 'Eje Secundario') +
+    geom_text(aes(x = a, y = b, label = nom_ent), size = 2.5) +
+    scale_colour_manual(labels = c('Muy Baja', 'Baja', 'Media', 'Alta', 'Muy Alta'),
+                        values = rev(brewer.pal(n = 5, name = "PiYG")), 
+                        name = "Marginación")
+```
+
+
+e. (0.3 puntos) Haz una gráfica como ésta que muestre en un mapa tus resultados:
+
+```{r, echo = F, fig.align='center'}
+knitr::include_graphics("figuras/mex_marg.png")
+```
+
+Para hacer la gráfica usa este código:
+
+```{r, eval=FALSE}
+library(scales)
+library(rgdal)
+library(ggmap)
+
+# Leer geometrías del mapa
+edo_shp <- readOGR("datos/estados_ligero", layer = "estados_ligero")
+edo_shp@data$id <- c(1:4,7,8,5,6,9:32)
+edo_shp@data$CVE_ENT  <- edo_shp@data$id
+edo_df <- fortify(edo_shp, region = "CVE_ENT")
+
+# Añadir variables al mapa
+df_2010 <- df %>% filter(anio == 2010)
+
+# Añadimos las variables de interés a la base de datos edo_df
+edo_ind <- edo_df %>%
+  mutate(CVE_ENT = as.integer(id)) %>%
+  left_join(df_2010, by = c('CVE_ENT'='cve_ent'))
+
+# Obtenemos el mapa de Google
+mapa <- get_googlemap(c(lon = -102, lat = 24), zoom = 4, maptype = "hybrid",
+                      style = 'feature:administrative.country|element:labels|visibility:off')
+
+ggmap(mapa) + 
+  geom_polygon(data = edo_ind, aes(long, lat, group = group, fill = GM),
+               color = "gray30", size = 0.5, alpha = 0.7) +
+  labs(title = "Grado de marginación en 2010") +
+  scale_x_continuous(limits = c(-119, -86), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(14, 33), expand = c(0, 0)) +
+  scale_fill_manual(values = rev(brewer.pal(n = 5, name = "PiYG")),
+                    name= "Marginación", guide = guide_legend(reverse = T))
+```
+
+### Ejercicio 2 (Tarea 16)
+
+La medición de la pobreza se realiza cada dos años a nivel nacional y por entidad 
+federativa,  y  cada  cinco  años  a  nivel  municipal.  Para  ello,  el
+[CONVEVAL](https://www.coneval.org.mx/Informes/Coordinacion/Publicaciones%20oficiales/FOLLETO_MEDICION_MULTIDIMENSIONAL.pdf) utiliza  la 
+información que genera el Instituto Nacional de Estadística y Geografía (INEGI).
+
+La medición oficial de la pobreza permite conocer la situación social de toda población 
+mexicana y el tipo de atención que requiere cada grupo de población. Esta característica 
+es  única  en  la  historia  de  la  medición  de  pobreza  en  México.  Además  proporciona 
+información relevante para que las políticas públicas de reducción de la pobreza sean 
+más efectivas.
+
+* Una persona se encuentra en situación de pobreza cuando presenta una o más 
+carencias sociales y no tiene un ingreso suficiente para satisfacer sus necesidades.
+
+* Una persona se encuentra en situación de pobreza extrema cuando 
+presenta tres o más carencias sociales definidas anteriormente y no 
+tiene un ingreso suficiente para adquirir una canasta alimentaria.
+
+* Una persona es vulnerable por carencias sociales cuando presenta al menos una 
+carencia social, pero tiene un ingreso suficiente para satisfacer sus necesidades.
+
+* Una persona se encuentra en situación vulnerable por ingresos cuando no tiene 
+un ingreso suficiente para satisfacer sus necesidades pero tiene cubiertas todas sus 
+carencias sociales
+
+Los siguientes datos se obtuvieron de las diversas encuestas realizadas por INEGI y se calcularon seis índices de carencias:
+
+1. Carencia por rezago educativo
+2. Carencia por acceso a los servicios de salud
+3. Carencia por acceso a la seguridad social
+4. Carencia por acceso a la calidad y espacios en la vivienda
+5. Carencia por acceso a los servicios básicos en la vivienda
+6. Carencia por acceso a la alimentación
+
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
+library(tidyverse)
+carencias <- read_csv("datos/carencias_coneval.csv")
+carencias %>% head(10) %>% knitr::kable()
+```
+
+a. (0.5 punto) Utiliza k-medias para obtener 5 grupos de municipios según sus carencias sociales. 
+
+b. (0.5 puntos) Describe los grupos según estas variables.
+
+c. (1 punto) Interpreta los grupos en términos de sus carencias.
+
+### Ejercicio 3 (Tarea 17)
+
+Sustituye los espacios que digan `<rellenar>`.
+
+a. (0.2 puntos) Utiliza la función `fviz_nbclust` del paquete `factoextra` para producir una gráfica de
+
+$$W(C) = \sum_{k=1}^K W(C_k),$$
+
+es decir, las distancias **dentro de cada grupo** (within groups), que también llamamos la _suma total de cuadrados _intracluster_, para cada tamaño de cluster $k=1,2,\ldots,12$ utilizando el método de _k-medias_.
+
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
+library(tidyverse)
+library(factoextra)
+
+coneval <- read_csv("datos/carencias_coneval.csv") 
+
+coneval %>% head()
+```
+
+```{r, eval=FALSE}
+coneval %>% 
+  select(-cve_muni, -entidad, -municipio) %>% 
+  fviz_nbclust(kmeans, method = <rellenar>, k.max = <rellenar>)
+```
+
+b. (0.1 puntos) Determina cuál debe ser el número óptimo de clusters $k$ y explica por qué.
+
+c. (0.2 puntos) Utiliza la función `fviz_cluster` para hacer una gráfica con las dos primeras componentes principales y con las observaciones representadas como _puntos_ y colores conforme a cada grupo
+utilizando el método de clustering de `k-medias` con 100 puntos de inicio aleatorios.
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+coneval_escalado <- coneval %>% 
+  select(-cve_muni, -entidad, -municipio) %>%
+  mutate_all(funs(scale))
+
+set.seed(123456)
+km.res <- kmeans(<rellenar>, centers = <rellenar>, nstart = <rellenar>)
+
+# Gráfica de componentes principales y clusters
+fviz_cluster(km.res, 
+             geom = "point",
+             ellipse.type = "euclid",
+             data = coneval[, -c(1,2,3)],
+             palette = "Set2", 
+             ggtheme = theme_minimal())
+```
+
+d. (0.2 puntos) Ahora realiza clustering jerárquico con los datos de carencias utilizando el método de Ward. Para esto usa la función `hcut` del paquete `factoextra`.
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+hc.cut <- hcut(coneval_escalado, 
+               k = <rellenar>, 
+               hc_func = "hclust",
+               hc_method = "ward.D2", 
+               hc_metric = "euclidean")
+
+library(rafalib)
+myplclust(hc.cut, labels=1:2457, lab.col=as.character(hc.cut$cluster), cex=0.5)
+```
+
+Podríamos hacer también un dendrograma circular:
+
+```{r message=FALSE, warning=FALSE, fig.width=5, eval=FALSE, fig.align='center'}
+library(ape)
+colors = c("#2E9FDF", "#FF00FF", "#00AFBB", "#D8BFD8", "#FC4E07")
+clus4 = cutree(hc.cut, 5)
+par(mar=c(0.1,0.1,0.1,0.1))
+plot(as.phylo(hc.cut), type = "fan", tip.color = colors[clus4],
+     label.offset = 1, cex = 0.7)
+```
+
+e. (0.3 puntos) Haz una gráfica de componentes utilizando clustering jerárquico con el método de Ward. ¿Cómo se compara con la clasificación obtenida con el método de k-medias?
+
+f. (0.2 puntos) Haz un mapa a nivel municipio utilizando la clasificación de clustering jerárquico con el método de Ward y $k = 5$ clusters.
+
+```{r message=FALSE, warning=FALSE, fig.width=5, eval=FALSE, fig.align='center'}
+# Clustering jerárquico 
+coneval$cluster_hc <- coneval_escalado %>% 
+  hcut(k = <rellenar>, hc_func = <rellenar>, hc_method = <rellenar>, hc_metric = <rellenar>) %>%
+  .$cluster
+
+coneval <- coneval %>% mutate(cluster_hc = as.factor(cluster_hc))
+
+library(rgdal)
+library(rgeos)
+library(ggmap)
+
+# Leer geometrías del mapa de municipios
+mun_shp <- readOGR("datos/municipios_ligero/", layer = "municipios_ligero")
+mun_df <- fortify(mun_shp, region = 'id')
+dat_shp <- mun_shp@data %>% mutate(cve_muni = paste0(CVE_ENT,CVE_MUN)) %>% select(id, cve_muni)
+
+# Leer geometrías del mapa de municipios
+edo_shp <- readOGR("datos/estados_ligero", layer = "estados_ligero")
+edo_shp@data$id <- c(1:4,7,8,5,6,9:32)
+edo_shp@data$CVE_ENT  <- edo_shp@data$id
+edo_df <- fortify(edo_shp, region = "CVE_ENT")
+
+# Añadimos las variables de interés a la base de datos mun_df
+mun_ind <- mun_df %>%
+  left_join(<rellenar>, by = 'id') %>%
+  left_join(coneval, by = <rellenar>)
+
+paleta <- RColorBrewer::brewer.pal(5, "Blues")
+ggplot(mun_ind) + 
+  geom_polygon(data = mun_ind, aes(long, lat, group = group, fill = cluster_hc)) +
+  geom_polygon(data = edo_df, aes(x = long, y = lat, group = group),
+    fill = NA, color = "darkgray", size = 0.25) +
+  theme_nothing(legend = TRUE) + #fondo blanco
+  guides(fill = guide_legend(reverse = TRUE)) +
+  scale_fill_manual(values = <rellenar>) + #paleta 
+  coord_map()
+```
+
+g. (0.5 puntos) Elige una entidad del país que empiece con la primera letra de alguno de tus nombres o apellidos y haz un mapa de la primera componente principal. Se le conoce como _Índice de carencias_. Nota que la escala de colores es _continua_.
+
+```{r, echo = F, fig.align='center', fig.width=5}
+knitr::include_graphics("figuras/morelos.png")
+```
+
+h. (0.3 puntos) Haz una gráfica que compare las medias de las carencias por k-medias y clustering jerárquico incluyendo intervalos de cuantiles del $2.5\%$ y del $97.5\%$.
+
+```{r, eval=FALSE}
+# Clustering por k-medias
+coneval$cluster_km <- coneval_escalado %>% 
+  kmeans(centers = <rellenar>, nstart = <rellenar>) %>%
+  .$cluster
+
+coneval <- coneval %>% mutate(cluster_km = as.factor(cluster_km))
+
+# Pasamos a forma larga
+coneval_larga <- coneval %>%
+  gather(key = variable, value = valor, matches('porcentaje')) %>%
+  gather(key = metodo, value = cluster, matches('cluster')) %>%
+  group_by(<rellenar>) %>%
+  summarise(media = mean(<rellenar>), 
+            q1 = quantile(<rellenar>, 0.025), 
+            q3 = quantile(<rellenar>, 0.975)) %>%
+  ungroup() %>%
+  mutate(variable = str_replace(variable, pattern = "_porcentaje", ""),
+         variable = str_replace(variable, pattern = "ic_", ""),
+         metodo = str_replace(metodo, pattern = "cluster_", ""))
+
+# Graficamos
+ggplot(coneval_larga, aes(x = <rellenar>, xend = <rellenar>, color = <rellenar>)) +
+  geom_point(aes(y = <rellenar>)) +
+  geom_segment(aes(y = <rellenar>, yend = <rellenar>)) +
+  facet_grid(. ~ <rellenar>) + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+```{r echo=F, fig.align='center', fig.width=5}
+knitr::include_graphics("figuras/clustering.png")
+```
+
+### Ejercicio 4 
+
+La pesca de salmón es un recurso de mucho valor en Estados Unidos y Canadá. Como es un recurso limitado, entonces debe ser administrado eficientemente. Más aún, como más de un país está involucrado, puede haber problemas de inequidad en la pesca, es decir, que los pescadores comerciales de Alaska no puedan atrapar demasiados salmones canadienses o vice versa.
+
+Estos peces tienen un ciclo de vida notable: nacen en arroyos de agua dulce y después de un año o dos nadan en el océano. Después de un par de años en agua salada, regresan a su lugar de nacimiento para desovar y morir. En el momento en que están a punto de regresar como peces maduros, se cosechan mientras están en el océano. Para ayudar a regular las capturas, las muestras de peces tomadas durante la cosecha deben identificarse como procedentes de las aguas de Alaska o de Canadá. Los peces llevan información sobre su lugar de nacimiento en el _crecimiento de los anillos de sus escamas_. Típicamente, los anillos asociados con crecimiento en agua dulce son más pequeños para el salmón de Alaska que para el de Canadá. 
+
+Los datos contienen los diámetros de las regiones del anillo de crecimiento (multiplicados por 100):
+
+$$
+\begin{eqnarray*}
+X_1 &=& \mbox{diámetro de sus anillos para el primer año de crecimiento en agua dulce}\\
+&& \mbox{(centésimas de pulgadas)}\\
+X_2 &=& \mbox{diámetro de sus anillos para el primer año de crecimiento marino}\\
+&& \mbox{(centésimas de pulgadas)}
+\end{eqnarray*}
+$$
+
+```{r message=FALSE, warning=FALSE, paged.print=TRUE, results='hide'}
+library(tidyverse)
+salmon <- read_csv("datos/salmon.csv")
+```
+
+```{r}
+salmon %>% sample_n(10) %>% knitr::kable()
+```
+
+El género está codificado de tal forma que 1 corresponde a pez hembra y el 2 a pez macho.
+
+a. (0.2 puntos) Ajusta un modelo de discriminante lineal, en el cual la variable dependiente es el origen del salmón y las variables independientes o explicativas son $X_1$ (diámetro del anillo del salmón en agua dulcce en su primer año) y $X_2$ (díametro del anillo del salmón en agua marina). ¿Qué porcentaje de la varianza se explica con el primer discriminante lineal?
+
+b. (0.2 puntos) Realiza una tabla de contingencias del origen del salmón observado contra el que predice el modelo. Reporta la sensitividad y sensibilidad del ajuste y escribe y explica la interpretación de ambas medidas de ajuste.
+
+c. (0.3 puntos) Deterermina si el modelo es injusto para pescadores de Alaska o pescadores canadienses usando los resultados del inciso anterior. Explica por qué si o por qué no.
+
+d. (0.3 puntos) Haz una gráfica de diagramas de dispersión para cada uno de los grupos de salmones (Alaska y Candaienses). ¿Es razonable agrupar ambos conjuntos de observaciones?
+
+e. (0.2 puntos) Utiliza un modelo de discriminante lineal suponiendo homogeneidad de las varianzas. Haz un diagrama de los discriminantes lineales junto con las observaciiones con diferente color y forma (`shape`) para los dos grupos. ¿Se puede concluir que el diámetro del crecimiento de los anillos separa a los dos grupos razonablemente bien? Explica.
+
+f. (0.3 puntos) Repite el inciso a. para los salmones machos y los salmones hembra _por separado_. ¿Es más fácil discriminar los salmones machos de Alaska que los de Canadá, o bien, más fácil los salmones hembra de Alaska que las de Canadá? ¿Podría ser útil el género para discriminar el origen de los salomnes?
+
+g. (0.1 puntos) Utiliza regresión logística para ajustar el modelo únicamente con las covariables de crecimiento de agua dulce y crecimiento de agua marina. 
+
+h. (0.3 puntos) Interpreta los coeficientes del modelo.
+
+i. (0.1 puntos) Clasifica las observaciones utilizando el modelo de regresión logística. Calcula la tasa de error del modelo ajustado.
+
+### Ejercicio 5
+
+Tenemos datos de cereales para desayunar de tres fabricantes: General Mills (G), Kellog's (K) y Quaker (Q).
+
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
+cereals <- read_csv("datos/cereal.csv")
+cereals %>% sample_n(10) %>% knitr::kable()
+```
+
+a. (0.2 puntos) Utiliza un modelo de discriminante lineal para clasificar los cereales utilizando todas las variables de la información nutricional de los cereales.
+
+b. (0.3 puntos) Contesta: ¿Parece que algunos fabricantes están asociados con cereales más "nutricionales" (altos en proteínas, bajos en grasa, altos en fibra, bajos en azúcar, etc.) que otros? Explica tu respuesta.
+
+b. (0.5 puntos) Interpreta los coeficientes de las funciones de discriminante.
+
+c. (0.5 puntos) Haz una gráfica de las superficies (rectas) de decisión sobre los ajustados por el modelo por grupo de cereal.
+
+d. (0.5 puntos) Investiga la información nutricional de 3 cereales que no estén en los datos y clasifica el cereal usando el modelo. Compara tu resultado y explica si los fabricantes de los cereales que elegiste son similares a los fabricantes de la clasificación.
